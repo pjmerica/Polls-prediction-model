@@ -1,0 +1,11 @@
+# Downloaded source data + generated outputs
+data/
+*.csv
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.ipynb_checkpoints/
+.env
