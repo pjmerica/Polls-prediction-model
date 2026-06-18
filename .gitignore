@@ -2,6 +2,10 @@
 data/
 *.csv
 
+# ...but DO commit the small illustrative result samples
+!data_samples/
+!data_samples/*.csv
+
 # Python
 __pycache__/
 *.py[cod]

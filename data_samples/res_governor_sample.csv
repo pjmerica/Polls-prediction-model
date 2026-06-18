@@ -1,0 +1,27 @@
+id,race_id,state_abbrev,state,office_id,office_name,office_seat_name,cycle,stage,special,party,politician_id,candidate_id,candidate_name,ballot_party,ranked_choice_round,votes,percent,unopposed,winner,alt_result_text,source
+30523,8986,WI,Wisconsin,566,Governor,,2022,general,False,,2088.0,30436.0,Tim Michels,REP,,1268535,47.752297204205554,,False,,https://elections.wi.gov/elections/election-results#accordion-5601
+29991,8965,KS,Kansas,208,Governor,,2022,general,False,,18739.0,30568.0,Dennis D. Pyle,IND,,20452,2.026961401311004,,False,,https://sos.ks.gov/elections/22elec/2022-General-Official-Vote-Totals.pdf
+29990,8965,KS,Kansas,208,Governor,,2022,general,False,,18041.0,29623.0,Seth Cordell,LIB,,11106,1.100695937950323,,False,,https://sos.ks.gov/elections/22elec/2022-General-Official-Vote-Totals.pdf
+29989,8965,KS,Kansas,208,Governor,,2022,general,False,,8686.0,28665.0,Laura Kelly,DEM,,499849,49.53914675747623,,True,,https://sos.ks.gov/elections/22elec/2022-General-Official-Vote-Totals.pdf
+29988,8965,KS,Kansas,208,Governor,,2022,general,False,,17693.0,28666.0,Derek Schmidt,REP,,477591,47.33319590326244,,False,,https://sos.ks.gov/elections/22elec/2022-General-Official-Vote-Totals.pdf
+30148,8954,AZ,Arizona,23,Governor,,2022,general,False,,18931.0,30848.0,Liana West,W,,254,0.0099238714038175,,False,,https://azsos.gov/sites/default/files/2022Dec05_General_Election_Canvass_Web.pdf
+30147,8954,AZ,Arizona,23,Governor,,2022,general,False,,17852.0,29367.0,William Pounds IV,W,,139,0.0054307800201993,,False,,https://azsos.gov/sites/default/files/2022Dec05_General_Election_Canvass_Web.pdf
+30146,8954,AZ,Arizona,23,Governor,,2022,general,False,,18930.0,30847.0,Rayshawn D'Anthony Merrill,W,,44,0.0017190958337321,,False,,https://azsos.gov/sites/default/files/2022Dec05_General_Election_Canvass_Web.pdf
+30145,8954,AZ,Arizona,23,Governor,,2022,general,False,,12859.0,30846.0,Anthony Camboni,W,,41,0.0016018847541595,,False,,https://azsos.gov/sites/default/files/2022Dec05_General_Election_Canvass_Web.pdf
+30144,8954,AZ,Arizona,23,Governor,,2022,general,False,,18894.0,30794.0,Mikaela Shonnie Lutes-Burton,W,,213,0.008321986649658,,False,,https://azsos.gov/sites/default/files/2022Dec05_General_Election_Canvass_Web.pdf
+30143,8954,AZ,Arizona,23,Governor,,2022,general,False,,12303.0,30845.0,Alice Novoa,W,,55,0.0021488697921652,,False,,https://azsos.gov/sites/default/files/2022Dec05_General_Election_Canvass_Web.pdf
+30142,8954,AZ,Arizona,23,Governor,,2022,general,False,,18929.0,30844.0,Steph Noelle Denny,W,,74,0.0028912066294586,,False,,https://azsos.gov/sites/default/files/2022Dec05_General_Election_Canvass_Web.pdf
+30141,8954,AZ,Arizona,23,Governor,,2022,general,False,,17723.0,28718.0,Katie Hobbs,DEM,,1287891,50.31836482729924,,True,,https://azsos.gov/sites/default/files/2022Dec05_General_Election_Canvass_Web.pdf
+30140,8954,AZ,Arizona,23,Governor,,2022,general,False,,14238.0,28719.0,Kari Lake,REP,,1270774,49.64959747761757,,False,,https://azsos.gov/sites/default/files/2022Dec05_General_Election_Canvass_Web.pdf
+30527,8986,WI,Wisconsin,566,Governor,,2022,general,False,,,,,,,1879,0.0707324326460856,,,Scattering,https://elections.wi.gov/elections/election-results#accordion-5601
+30526,8986,WI,Wisconsin,566,Governor,,2022,general,False,,18948.0,30878.0,Seth Haskin,W,,104,0.0039149403912681,,False,,https://elections.wi.gov/elections/election-results#accordion-5601
+30525,8986,WI,Wisconsin,566,Governor,,2022,general,False,,18342.0,30030.0,Joan Ellis Beglinger,IND,,27198,1.023832199631845,,False,,https://elections.wi.gov/elections/election-results#accordion-5601
+30524,8986,WI,Wisconsin,566,Governor,,2022,general,False,,9104.0,19212.0,Tony Evers,DEM,,1358774,51.14922322312525,,True,,https://elections.wi.gov/elections/election-results#accordion-5601
+31374,8979,PA,Pennsylvania,443,Governor,,2022,general,False,,18237.0,29887.0,Joe Soloski,OTH,,20518,0.382357726046783,,False,,https://www.electionreturns.pa.gov/
+31373,8979,PA,Pennsylvania,443,Governor,,2022,general,False,,18235.0,29885.0,Christina P.K. DiGiulio,GRE,,24436,0.4553705718724626,,False,,https://www.electionreturns.pa.gov/
+31372,8979,PA,Pennsylvania,443,Governor,,2022,general,False,,18236.0,29886.0,Matt Hackenburg,LIB,,51611,0.9617830489814074,,False,,https://www.electionreturns.pa.gov/
+31371,8979,PA,Pennsylvania,443,Governor,,2022,general,False,,18443.0,30156.0,Douglas V. Mastriano,REP,,2238477,41.71454213510209,,False,,https://www.electionreturns.pa.gov/
+31370,8979,PA,Pennsylvania,443,Governor,,2022,general,False,,6809.0,29888.0,Josh Shapiro,DEM,,3031137,56.485946517997256,,True,,https://www.electionreturns.pa.gov/
+29776,8960,GA,Georgia,140,Governor,,2022,general,False,,10253.0,29536.0,Shane Hazel,LIB,,28163,0.7123727174124198,,False,,https://results.enr.clarityelections.com/GA/115465/web.307039/#/summary
+29775,8960,GA,Georgia,140,Governor,,2022,general,False,,6785.0,16673.0,Stacey Abrams,DEM,,1813673,45.87619087126853,,False,,https://results.enr.clarityelections.com/GA/115465/web.307039/#/summary
+29774,8960,GA,Georgia,140,Governor,,2022,general,False,,8660.0,16674.0,Brian Kemp,REP,,2111572,53.411436411319045,,True,,https://results.enr.clarityelections.com/GA/115465/web.307039/#/summary

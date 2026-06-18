@@ -8,7 +8,9 @@ There is no single downloadable file with "every poll + who won," so this projec
 
 - **Current polls** — [New York Times poll CSVs](https://www.nytimes.com/newsgraphics/polls/senate.csv) (`senate.csv`, `house.csv`, `governor.csv`) — same columns as old 538, updated continuously, CC-BY.
 - **Historical polls** — Internet Archive snapshot of FiveThirtyEight's `*_polls_historical.csv` (frozen but complete).
-- **Results / who won** — [FiveThirtyEight `election-results` repo](https://github.com/fivethirtyeight/election-results), which includes a per-candidate `winner` flag.
+- **Results / who won** — [FiveThirtyEight `election-results` repo](https://github.com/fivethirtyeight/election-results), which includes a per-candidate `winner` flag. Covers **all races, 1976–2024**.
+
+📄 **Full provenance — every source URL, schema, and how each was found — is in [DATA_SOURCES.md](DATA_SOURCES.md).** Small illustrative result samples are committed under [`data_samples/`](data_samples/).
 
 ### Time range
 
