@@ -164,9 +164,10 @@ general, 2018–2024). All features below are **leak-free** (no use of `vote_pct
 that lets XGBoost learn the *direction* of each macro effect (e.g. high inflation hurts the
 in-party candidate).
 
-Each macro metric is condensed from **monthly** data (from `data/macro_monthly.csv`) over the
-**expanding window from Jan 2016 to that cycle's election eve** (2018 sees 2016→Nov 2018, 2020
-sees 2016→Nov 2020, …). Per metric there are **7 features**:
+Each macro metric is condensed from **monthly** data (from `data/macro_monthly.csv`) over
+**that cycle's own window = prior election eve → this election eve** (2018 ← 2016-11→2018-11,
+2020 ← 2018-11→2020-11, 2022 ← 2020-11→2022-11, 2024 ← 2022-11→2024-11). So `max` is *that
+cycle's* peak, not the all-time max since 2016. Per metric there are **7 features**:
 
 | naming pattern | meaning (layman) |
 |---|---|

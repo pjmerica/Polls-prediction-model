@@ -1,12 +1,13 @@
 # Downloaded source data + generated outputs
-data/
+data/*
 *.csv
 
 # ...but DO commit the small illustrative result samples
 !data_samples/
 !data_samples/*.csv
 
-# ...and DO commit the static monthly macro series (fixed historical record, pulled once)
+# ...and DO commit the static monthly macro series (fixed historical record, pulled once).
+# Note: ignore data/* (contents) not data/ (dir) so this un-ignore can take effect.
 !data/macro_monthly.csv
 
 # Python

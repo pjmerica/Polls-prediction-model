@@ -102,7 +102,7 @@ National economic & political conditions. **Architecture: pull once, commit, nev
 Past months never change, so `fetch_macro.py` downloads **monthly** series (2016 → now) from
 FRED a single time and saves `data/macro_monthly.csv` (committed as static reference data).
 `macro_features.py` then reads that CSV **with no network** and, for each election cycle, uses
-the **expanding window from Jan 2016 to that cycle's election eve** (2018 → 2016–Nov 2018,
+**each cycle's own window = prior election eve → this election eve** (2018 → Nov 2016–Nov 2018,
 2020 → 2016–Nov 2020, 2022 → 2016–Nov 2022, 2024 → 2016–Nov 2024). Each indicator is condensed
 into trajectory stats: `eve / mean / max / min / std / trend / last12_delta`. The model decides
 which matter (heavy regularization drops the rest).

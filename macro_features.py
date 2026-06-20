@@ -1,10 +1,14 @@
 """Build per-cycle macro / political-climate features from the STATIC monthly CSV.
 
 Reads `data/macro_monthly.csv` (produced once by `fetch_macro.py`; committed, never re-pulled).
-For each election cycle, uses the **expanding window from 2016-01 up to that cycle's election
-eve** (2018 -> 2016..2018-11, 2020 -> 2016..2020-11, etc.) and condenses each metric's monthly
-series into trajectory stats: eve / mean / max / min / std / trend / last12_delta. The model
-then decides which of these matter (heavy regularization drops the rest).
+For each election cycle, the trajectory stats are computed over **that cycle's own window =
+the prior election eve up to this election eve** (2018 -> 2016-11..2018-11, 2020 -> 2018-11..
+2020-11, 2022 -> 2020-11..2022-11, 2024 -> 2022-11..2024-11). So `max`/`mean`/`std`/`trend`
+reflect *each cycle's own* conditions, not the all-time max since 2016. The CSV still holds the
+full 2016->now history; only the per-cycle slice is summarized.
+
+Stats per metric: eve / mean / max / min / std / trend / last12_delta. The model decides which
+matter (heavy regularization drops the rest).
 
 No network. If the CSV is missing, raises a clear error telling you to run fetch_macro.py.
 """
@@ -15,7 +19,9 @@ import pandas as pd
 CYCLES = [2018, 2020, 2022, 2024]
 PRES_PARTY = {2018: "REP", 2020: "REP", 2022: "DEM", 2024: "DEM"}
 CSV_PATH = "data/macro_monthly.csv"
-WINDOW_START = "2016-01-01"
+# Each cycle's window starts the day after the PRIOR election eve. For the first modeled cycle
+# (2018) the prior election is 2016, so its window starts 2016-11.
+PRIOR_EVE = {2018: "2016-11-01", 2020: "2018-11-01", 2022: "2020-11-01", 2024: "2022-11-01"}
 
 # metrics that should enter the model as YoY % change of an index, not the raw level
 YOY_METRICS = {"cpi"}   # cpi index -> inflation YoY%
@@ -46,22 +52,22 @@ def load_monthly(path=CSV_PATH):
     return m
 
 def build_macro(path=CSV_PATH):
-    """Return {cycle: {feature: value}} from the saved monthly CSV (expanding 2016->eve window)."""
+    """Return {cycle: {feature: value}} — stats over each cycle's own (prior-eve -> eve) window."""
     m = load_monthly(path)
     metrics = sorted(m["metric"].unique())
     rows = {}
     for cyc in CYCLES:
-        eve = _eve(cyc)
+        start = pd.Timestamp(PRIOR_EVE[cyc]); eve = _eve(cyc)
         f = {}
         for metric in metrics:
-            s = (m[m["metric"] == metric]
-                 .set_index("date")["value"].sort_index())
-            s = s[(s.index >= WINDOW_START) & (s.index <= eve)]
-            if metric in YOY_METRICS:                      # index -> YoY %
-                s = (s / s.shift(12) - 1.0) * 100.0
+            full = (m[m["metric"] == metric].set_index("date")["value"].sort_index())
+            if metric in YOY_METRICS:
+                # compute YoY on the FULL series (needs 12 prior months), THEN slice to the cycle window
+                full = (full / full.shift(12) - 1.0) * 100.0
                 name = "inflation"
             else:
                 name = metric
+            s = full[(full.index > start) & (full.index <= eve)]   # this cycle's window only
             f.update(_stats(s, name))
         rows[cyc] = f
     return rows

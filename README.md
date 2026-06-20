@@ -67,11 +67,11 @@ calibration and would matter more for a margin model.
 
 ### Macro data is pulled once and committed
 Economic history doesn't change retroactively (2018's inflation is fixed forever), so we
-pull it **once** and save `data/macro_monthly.csv` — monthly readings from 2016 to now for
-~12 indicators. The model then uses, for each election, the **expanding window from Jan 2016
-up to that cycle's election eve** (2018 → 2016–Nov 2018, 2020 → 2016–Nov 2020, …) and
-condenses each indicator into trajectory stats (eve level, mean, max, min, std, trend,
-12-month change). XGBoost decides which matter.
+pull it **once** and save `data/macro_monthly.csv` — monthly readings from 2016 to now. The
+model then uses, for each election, **that cycle's own window (prior election eve → this
+election eve)** — 2018 ← Nov 2016–Nov 2018, 2020 ← Nov 2018–Nov 2020, etc. — and condenses
+each indicator into trajectory stats (eve level, mean, max, min, std, trend, 12-month change),
+so e.g. `inflation_max` is *that cycle's* peak, not the all-time peak. XGBoost decides which matter.
 
 ## Run
 
