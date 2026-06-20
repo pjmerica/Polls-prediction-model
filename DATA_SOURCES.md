@@ -96,28 +96,50 @@ Democratic wave fading to the flat 2024 environment.
 
 ---
 
-## 5. Macro / political-climate features — `macro_features.py`
+## 5. Macro / political-climate features — `fetch_macro.py` + `macro_features.py`
 
-National per-cycle economic & approval conditions, each turned into campaign-year
-**trajectory stats** (election-eve / mean / max / std / trend). Built by `macro_features.py`,
-which tries FRED live and falls back to a documented election-eve table if FRED is unreachable.
+National economic & political conditions. **Architecture: pull once, commit, never re-pull.**
+Past months never change, so `fetch_macro.py` downloads **monthly** series (2016 → now) from
+FRED a single time and saves `data/macro_monthly.csv` (committed as static reference data).
+`macro_features.py` then reads that CSV **with no network** and, for each election cycle, uses
+the **expanding window from Jan 2016 to that cycle's election eve** (2018 → 2016–Nov 2018,
+2020 → 2016–Nov 2020, 2022 → 2016–Nov 2022, 2024 → 2016–Nov 2024). Each indicator is condensed
+into trajectory stats: `eve / mean / max / min / std / trend / last12_delta`. The model decides
+which matter (heavy regularization drops the rest).
 
-| metric | source | series / origin |
-|---|---|---|
-| Unemployment rate | FRED | `UNRATE` — https://fred.stlouisfed.org/graph/fredgraph.csv?id=UNRATE |
-| Gas price (regular) | FRED | `GASREGW` — https://fred.stlouisfed.org/graph/fredgraph.csv?id=GASREGW |
-| Inflation (CPI → YoY%) | FRED | `CPIAUCSL` — https://fred.stlouisfed.org/graph/fredgraph.csv?id=CPIAUCSL |
-| Real GDP growth (annualized) | FRED | `A191RL1Q225SBEA` — https://fred.stlouisfed.org/graph/fredgraph.csv?id=A191RL1Q225SBEA |
-| Presidential approval | Gallup / 538 averages | documented monthly table in `macro_features.py` (no clean FRED series) |
-| President's party (per cycle) | historical record | `PRES_PARTY` in `macro_features.py`: 2018 REP, 2020 REP, 2022 DEM, 2024 DEM |
+**Series pulled** (FRED CSV endpoint `https://fred.stlouisfed.org/graph/fredgraph.csv?id=<ID>`, no key):
 
-The FRED CSV endpoint is `https://fred.stlouisfed.org/graph/fredgraph.csv?id=<SERIES_ID>`
-(no API key). `is_president_party` (candidate's party == sitting president's party) is the
-interaction key that lets XGBoost learn each macro effect's direction.
+| metric | FRED id | freq | meaning |
+|---|---|---|---|
+| `unemployment` | `UNRATE` | monthly | unemployment rate, % |
+| `cpi` → `inflation` | `CPIAUCSL` | monthly | CPI index; converted to YoY % inflation downstream |
+| `gas` | `GASREGW` | weekly→monthly | regular gas price, $/gal |
+| `gdp` | `A191RL1Q225SBEA` | quarterly→monthly | real GDP growth, annualized % |
+| `sentiment` | `UMCSENT` | monthly | U. Michigan consumer sentiment ("the vibe" — strong election predictor) |
+| `real_income` | `DSPIC96` | monthly | real disposable personal income |
+| `sp500` | `SP500` | daily→monthly | S&P 500 index (wealth effect) |
+| `mortgage30` | `MORTGAGE30US` | weekly→monthly | 30-yr fixed mortgage rate, % |
+| `fed_funds` | `FEDFUNDS` | monthly | effective federal funds rate, % |
+| `jobless_claims` | `ICSA` | weekly→monthly | initial unemployment claims |
+| `real_wage` | `LES1252881600Q` | quarterly→monthly | real median weekly earnings |
+| `med_income` | `MEHOINUSA672N` | annual→monthly | real median household income |
+
+Presidential **approval** is included from a documented monthly table inside `fetch_macro.py`
+(FRED has no clean approval series); replace with a live source if you have one.
+**President's party** per cycle: `PRES_PARTY` in `macro_features.py` (2018 REP, 2020 REP, 2022
+DEM, 2024 DEM). `is_president_party` (candidate's party == president's party) is the interaction
+key that lets XGBoost learn each macro effect's *direction* (e.g. low approval hurts the in-party).
+
+**To (re)generate:** `python fetch_macro.py` on a machine with FRED access → writes/commits
+`data/macro_monthly.csv`. Only needed once, or to extend to a new election cycle.
+
+> Note: FRED's `fredgraph.csv` host is blocked in some sandboxes. DBnomics (a free aggregator)
+> does **not** mirror FRED — only the upstream agencies (BLS/BEA/EIA) — so it's not a drop-in
+> substitute. Run `fetch_macro.py` on a normal network.
 
 **Caveat:** these are national values constant within a cycle; with only 4 cycles they carry
-little independent signal and need heavy regularization (see `model.ipynb` section 5). The
-fallback values are election-eve only, so `*_std`/`*_trend` are 0 unless run with live FRED.
+little independent signal for *win/lose* and need heavy regularization. They're mainly here for
+calibration and for a future *margin* model.
 
 ---
 

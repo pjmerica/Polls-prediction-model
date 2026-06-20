@@ -1,43 +1,96 @@
 # Polls prediction model
 
-Building a model to predict whether a candidate will win an election (U.S. Senate, House, and Governor races, **2018–present**).
+Predicts whether a U.S. candidate **wins their election** — Senate, House, and Governor
+races, 2018–present — using polling plus political and economic context.
 
-## Data
+---
 
-There is no single downloadable file with "every poll + who won," so this project assembles one from free public sources. FiveThirtyEight was dissolved in March 2025 and its poll endpoints now return HTML, so the notebook uses live replacements that share the **same 538 schema**:
+## For a non-technical reader (what is this?)
 
-- **Current polls** — [New York Times poll CSVs](https://www.nytimes.com/newsgraphics/polls/senate.csv) (`senate.csv`, `house.csv`, `governor.csv`) — same columns as old 538, updated continuously, CC-BY.
-- **Historical polls** — Internet Archive snapshot of FiveThirtyEight's `*_polls_historical.csv` (frozen but complete).
-- **Results / who won** — [FiveThirtyEight `election-results` repo](https://github.com/fivethirtyeight/election-results), which includes a per-candidate `winner` flag. Covers **all races, 1976–2024**.
+Every election, pollsters ask voters who they'll support. This project asks: **how well
+can you predict the actual winner from those polls, and does adding "context" (the economy,
+the president's approval, who's the incumbent) help?**
 
-📄 **Docs:** [DATA_SOURCES.md](DATA_SOURCES.md) (every source URL + how each was found) · [DATA_DICTIONARY.md](DATA_DICTIONARY.md) (every variable explained) · [MISSINGNESS_REPORT.md](MISSINGNESS_REPORT.md) (per-column missingness). Small illustrative result samples are under [`data_samples/`](data_samples/).
+We gathered every poll we could find since 2018, matched each one to who actually won,
+and trained a machine-learning model. The honest headline result:
 
-### Time range
+> **Just betting on whoever is ahead in the polls is already about as good as it gets.**
+> Our fancier model ties it but doesn't beat it for calling winners. Where the model *does*
+> help is giving a trustworthy **probability** (e.g. "this candidate has a 72% chance"),
+> which a simple "who's ahead" rule can't.
 
-Election *results* go back to 1976, but machine-readable *polls* effectively begin in **2018** (when 538's poll database starts). You can't model races that have no polls, so 2018–present is the working range — ~26k poll rows, ~17k with a known winner.
+That's a real, well-known fact about U.S. elections — the polls already contain most of
+the signal. We keep adding features (economy, incumbency, etc.) because they sharpen the
+probabilities and set up a future model that predicts *margin of victory*, where there's
+more room to add value.
 
-## `build_dataset.ipynb`
+---
 
-Downloads all sources, standardizes state codes and candidate names, and joins each poll to its race's eventual result.
+## For a data scientist (how it works)
 
-Output is **long format**: one row per individual poll (per candidate), with the race outcome (`won`, `vote_pct`, `race_winning_pct`) attached, plus a `race_id` for grouping. All original poll columns (pollster, sample size, dates, rating, methodology) are preserved so nothing is lost before modeling. A `has_result` flag marks which poll rows matched a result.
+**Task:** binary classification, `won ∈ {0,1}`, one row per candidate per race.
+**Model:** XGBoost, hyperparameters grid-searched live.
+**Validation:** leave-one-cycle-out CV (train on 3 election cycles, test the held-out 4th,
+rotate). Never random splits — that would leak the future.
 
-Saved to `polls_long_with_results.csv` (gitignored — regenerate by running the notebook).
+**Why no single dataset exists:** there's no public file of "polls + who won," so we join two:
 
-Approximate match rate (poll → result): Senate ~76%, Governor ~58%, House ~53% (House is lower because district polling is sparse and names are harder to match).
+| layer | source | notes |
+|---|---|---|
+| **Polls** | NYT poll CSVs (current) + Internet Archive snapshot of FiveThirtyEight (historical) | 538 was dissolved 3/2025; NYT publishes the same schema. Polls start **2018**. |
+| **Results** (who won) | [FiveThirtyEight `election-results` repo](https://github.com/fivethirtyeight/election-results) | per-candidate `winner` flag, all races 1976–2024 |
+| **Partisan lean** | 538 `partisan-lean` (state + district) | CPVI-style; district file is 2022 vintage (~41% House coverage) |
+| **National environment** | 538 generic ballot (Internet Archive) | per-cycle DEM−REP |
+| **Macro / economy** | FRED monthly series (one-time pull, see below) | unemployment, inflation, gas, GDP, consumer sentiment, mortgage rate, S&P 500, etc. |
+
+**Headline finding (cross-validated):** a one-variable "poll softmax" baseline
+(AUC ≈ 0.965, Brier ≈ 0.071) matches or beats the full ~80-feature XGBoost
+(AUC ≈ 0.96, Brier ≈ 0.08) on win/lose. Polls are the ceiling. The features improve
+calibration and would matter more for a margin model.
+
+📄 **Deep docs:** [AGENTS.md](AGENTS.md) (start here if you're contributing) ·
+[DATA_SOURCES.md](DATA_SOURCES.md) (every URL + how found) ·
+[DATA_DICTIONARY.md](DATA_DICTIONARY.md) (every variable) ·
+[MISSINGNESS_REPORT.md](MISSINGNESS_REPORT.md).
+
+---
+
+## Pipeline (run order)
+
+```
+1. build_dataset.ipynb   → downloads polls + results, joins them
+                           → polls_long_with_results.csv  (one row per poll-candidate)
+2. fetch_macro.py        → ONE-TIME pull of monthly economic data from FRED
+                           → data/macro_monthly.csv  (static; committed; never re-pull)
+3. model.ipynb           → features + tuning + cross-validation + poll-only benchmark
+```
+
+### Macro data is pulled once and committed
+Economic history doesn't change retroactively (2018's inflation is fixed forever), so we
+pull it **once** and save `data/macro_monthly.csv` — monthly readings from 2016 to now for
+~12 indicators. The model then uses, for each election, the **expanding window from Jan 2016
+up to that cycle's election eve** (2018 → 2016–Nov 2018, 2020 → 2016–Nov 2020, …) and
+condenses each indicator into trajectory stats (eve level, mean, max, min, std, trend,
+12-month change). XGBoost decides which matter.
 
 ## Run
 
 ```bash
-pip install pandas numpy requests jupyter
+pip install pandas numpy requests xgboost scikit-learn jupyter matplotlib openpyxl
 ```
 
-Open `build_dataset.ipynb` and run top to bottom. The first run downloads source data into a local `data/` folder and caches it. (The Internet Archive can rate-limit with HTTP 429 — just re-run the download cell; cached files are skipped.)
+1. **`build_dataset.ipynb`** — run top to bottom (downloads polls + results, caches to `data/`).
+2. **`python fetch_macro.py`** — run **once** on a machine with internet (creates
+   `data/macro_monthly.csv`; commit it). Skip if the CSV is already committed.
+3. **`model.ipynb`** — run top to bottom.
 
-> ⚠️ **Workflow rule:** whenever you change the model's feature set, **re-run the entire `model.ipynb` end-to-end including the hyperparameter grid search** — never reuse previously tuned params. Params tuned for one feature set can make a new feature set look worse than it is (adding the macro features with stale params showed a regression that disappeared after re-tuning). Let regularization drop non-predictive features rather than hand-curating.
+> ⚠️ **Workflow rule:** whenever you change the model's feature set, **re-run the entire
+> `model.ipynb` end-to-end including the grid search** — never reuse old hyperparameters.
+> Params tuned for one feature set can make a new set look worse than it is. Let regularization
+> drop non-predictive features rather than hand-curating. (More rules + traps in [AGENTS.md](AGENTS.md).)
 
 ## Next steps
-
-- Collapse the long table to one row per race for modeling.
-- Split train/test **by year** (e.g. train ≤ 2022, test 2024) to avoid leaking the future.
-- Don't use `vote_pct` / `race_winning_pct` as model inputs — they're outcomes.
+- Predict **margin / overperformance vs polls** instead of win/lose — where features can
+  actually beat the polls.
+- A time-varying **district PVI** to strengthen House (the weakest office).
+- Probability **calibration** (isotonic/Platt) for even tighter Brier.

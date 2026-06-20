@@ -6,6 +6,9 @@ data/
 !data_samples/
 !data_samples/*.csv
 
+# ...and DO commit the static monthly macro series (fixed historical record, pulled once)
+!data/macro_monthly.csv
+
 # Python
 __pycache__/
 *.py[cod]

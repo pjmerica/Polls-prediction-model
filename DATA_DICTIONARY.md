@@ -160,25 +160,37 @@ general, 2018–2024). All features below are **leak-free** (no use of `vote_pct
 | `is_senate` / `is_gov` | 0% | Office one-hots (House = both 0). |
 
 ### 2f. National environment & macro/climate (per-cycle; 0% missing — filled for every cycle)
-`is_president_party` = 1 if the candidate's party holds the White House (the interaction key
-that lets XGBoost learn the *sign* of macro effects). Each macro metric below appears as five
-trajectory stats: `*_eve` (election-eve level), `*_mean`, `*_max`, `*_std` (spread), `*_trend`
-(slope into the election).
+`is_president_party` = 1 if the candidate's party holds the White House — the interaction key
+that lets XGBoost learn the *direction* of each macro effect (e.g. high inflation hurts the
+in-party candidate).
 
-| metric (→ 5 features each) | source | meaning |
-|---|---|---|
-| `natl_env_cand` | 538 generic ballot | National DEM−REP environment, signed to party (single value, not 5). |
-| `approval_*` | Gallup/538 (documented) | Presidential approval over the campaign year. |
-| `inflation_*` | FRED `CPIAUCSL` → YoY | Consumer-price inflation, year-over-year %. |
-| `gdp_*` | FRED `A191RL1Q225SBEA` | Real GDP growth, annualized %. |
-| `unemployment_*` | FRED `UNRATE` | Unemployment rate %. |
-| `gas_*` | FRED `GASREGW` | Regular gas price, $/gal. |
+Each macro metric is condensed from **monthly** data (from `data/macro_monthly.csv`) over the
+**expanding window from Jan 2016 to that cycle's election eve** (2018 sees 2016→Nov 2018, 2020
+sees 2016→Nov 2020, …). Per metric there are **7 features**:
 
-> **Macro caveat:** these are national values constant within a cycle, so with only 4 cycles
-> they carry little independent signal and require heavy regularization (the grid search picks
-> `colsample_bytree=0.4`, `reg_lambda=20`, which effectively drops the non-predictive ones).
-> When FRED is unreachable, `macro_features.py` falls back to documented election-eve constants
-> (so `*_std`/`*_trend` collapse to 0 until run with live FRED).
+| naming pattern | meaning (layman) |
+|---|---|
+| `<metric>_eve` | the value right before the election (the latest reading) |
+| `<metric>_mean` | average level over the whole 2016→eve window |
+| `<metric>_max` | the highest it ever got (e.g. the inflation/gas peak) |
+| `<metric>_min` | the lowest it got |
+| `<metric>_std` | how much it bounced around (variance/spread) |
+| `<metric>_trend` | slope — rising or falling into the election |
+| `<metric>_last12_delta` | change vs 12 months earlier (the *change* voters feel) |
+
+**Metrics** (`<metric>` ∈, 12 total): `unemployment`, `inflation` (from CPI YoY), `gas`, `gdp`,
+`sentiment` (U. Michigan consumer sentiment), `real_income`, `sp500`, `mortgage30`, `fed_funds`,
+`jobless_claims`, `real_wage`, `med_income`, plus `approval` → **~84 macro features/cycle**.
+Plus `natl_env_cand` (538 generic-ballot DEM−REP, signed to the candidate's party; a single value).
+
+Sources: all economic metrics from **FRED** (see `fetch_macro.py` / DATA_SOURCES.md §5);
+`approval` from a documented monthly table; `natl_env_cand` from the 538 generic ballot.
+
+> **Macro caveat:** these are national values *constant within a cycle*, so with only 4 cycles
+> (2018/2020/2022/2024) they carry little independent signal for **win/lose** and are heavily
+> regularized away by the grid search (low `colsample_bytree` + high `reg_lambda`). They are kept
+> for calibration and as the foundation for a future **margin** model. Data is static (pulled
+> once into `data/macro_monthly.csv`); it is **not** re-downloaded on every model run.
 
 ### 2g. Outcome (label / excluded-from-features)
 | column | meaning |
