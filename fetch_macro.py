@@ -17,7 +17,10 @@ Each series is resolved to monthly. Any series that fails to fetch is SKIPPED wi
 import os, requests
 import pandas as pd
 
-START = "2016-01-01"
+# Pull the FULL available history of each series (CPI/unemployment ~1947, gas ~1990, etc.).
+# It's static reference data, so we keep everything in case we get older polls later.
+# The model only *uses* the cycles it can match to polls (2018+), but the data is all here.
+START = None   # set to e.g. "2016-01-01" to truncate; None = each series' full range
 OUT = "data/macro_monthly.csv"
 H = {"User-Agent": "Mozilla/5.0 (research)"}
 BASE = "https://api.db.nomics.world/v22/series"
@@ -66,7 +69,8 @@ def build():
         try:
             s = fetch(prov, ds, code)
             s = s.resample("MS").ffill() if freq in ("Q", "A") else s.resample("MS").mean()
-            s = s[s.index >= START]
+            if START is not None:
+                s = s[s.index >= START]
             if s.empty:
                 raise RuntimeError("empty after window")
             out = s.reset_index(); out.columns = ["date", "value"]; out["metric"] = metric
@@ -77,7 +81,9 @@ def build():
 
     ap = pd.DataFrame([(pd.Timestamp(k + "-01"), v, "approval") for k, v in APPROVAL.items()],
                       columns=["date", "value", "metric"])
-    ap = ap[ap["date"] >= START]; frames.append(ap); ok.append("approval")
+    if START is not None:
+        ap = ap[ap["date"] >= START]
+    frames.append(ap); ok.append("approval")
 
     allm = pd.concat(frames, ignore_index=True).sort_values(["metric", "date"])
     allm.to_csv(OUT, index=False)

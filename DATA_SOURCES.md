@@ -130,8 +130,14 @@ Presidential **approval** is included from a documented monthly table inside `fe
 DEM, 2024 DEM). `is_president_party` (candidate's party == president's party) is the interaction
 key that lets XGBoost learn each macro effect's *direction* (e.g. low approval hurts the in-party).
 
-**To (re)generate:** `python fetch_macro.py` on a machine with FRED access → writes/commits
-`data/macro_monthly.csv`. Only needed once, or to extend to a new election cycle.
+**Coverage:** the CSV stores each series' **full available history** (CPI 1947, unemployment
+1948, fed funds 1954, core CPI 1957, gas 1990, U-6 1994 → present) — not just the poll era.
+We keep it all in case older poll data becomes available later; the model only *uses* cycles it
+can match to polls (2018+). Approval is ~2016+ (documented table).
+
+**To (re)generate:** `python fetch_macro.py` (pulls from DBnomics; no key) → writes
+`data/macro_monthly.csv`. Set `START` in the script to truncate; `None` = full history.
+Only needed once, or to extend to a new election cycle.
 
 > Note: FRED's `fredgraph.csv` host is blocked in some sandboxes. DBnomics (a free aggregator)
 > does **not** mirror FRED — only the upstream agencies (BLS/BEA/EIA) — so it's not a drop-in
