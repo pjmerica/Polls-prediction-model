@@ -10,7 +10,7 @@ There is no single downloadable file with "every poll + who won," so this projec
 - **Historical polls** — Internet Archive snapshot of FiveThirtyEight's `*_polls_historical.csv` (frozen but complete).
 - **Results / who won** — [FiveThirtyEight `election-results` repo](https://github.com/fivethirtyeight/election-results), which includes a per-candidate `winner` flag. Covers **all races, 1976–2024**.
 
-📄 **Full provenance — every source URL, schema, and how each was found — is in [DATA_SOURCES.md](DATA_SOURCES.md).** Small illustrative result samples are committed under [`data_samples/`](data_samples/).
+📄 **Docs:** [DATA_SOURCES.md](DATA_SOURCES.md) (every source URL + how each was found) · [DATA_DICTIONARY.md](DATA_DICTIONARY.md) (every variable explained) · [MISSINGNESS_REPORT.md](MISSINGNESS_REPORT.md) (per-column missingness). Small illustrative result samples are under [`data_samples/`](data_samples/).
 
 ### Time range
 

@@ -79,8 +79,8 @@ not recoverable) and RealClearPolitics (no bulk export), so **2018 is the floor.
 - https://raw.githubusercontent.com/fivethirtyeight/data/master/partisan-lean/fivethirtyeight_partisan_lean_DISTRICTS.csv
 
 A CPVI-style lean per state (51 rows) and per district (435 rows), 2022 vintage.
-Negative = Republican-leaning. **Caveat:** single vintage, so post-2022 redistricting
-districts have ~41% coverage.
+Negative = Republican-leaning. **Caveat:** single vintage, so in the model feature table
+`lean_cand` is ~59% missing (post-2022 redistricting districts don't match).
 
 ---
 
@@ -93,6 +93,38 @@ http://web.archive.org/web/2id_/https://projects.fivethirtyeight.com/polls/data/
 Used to compute a per-cycle DEM−REP national environment (last 30 days before the
 election). Values: 2018 +7.8, 2020 +7.5, 2022 +0.7, 2024 +0.1 — captures the
 Democratic wave fading to the flat 2024 environment.
+
+---
+
+## 5. Macro / political-climate features — `macro_features.py`
+
+National per-cycle economic & approval conditions, each turned into campaign-year
+**trajectory stats** (election-eve / mean / max / std / trend). Built by `macro_features.py`,
+which tries FRED live and falls back to a documented election-eve table if FRED is unreachable.
+
+| metric | source | series / origin |
+|---|---|---|
+| Unemployment rate | FRED | `UNRATE` — https://fred.stlouisfed.org/graph/fredgraph.csv?id=UNRATE |
+| Gas price (regular) | FRED | `GASREGW` — https://fred.stlouisfed.org/graph/fredgraph.csv?id=GASREGW |
+| Inflation (CPI → YoY%) | FRED | `CPIAUCSL` — https://fred.stlouisfed.org/graph/fredgraph.csv?id=CPIAUCSL |
+| Real GDP growth (annualized) | FRED | `A191RL1Q225SBEA` — https://fred.stlouisfed.org/graph/fredgraph.csv?id=A191RL1Q225SBEA |
+| Presidential approval | Gallup / 538 averages | documented monthly table in `macro_features.py` (no clean FRED series) |
+| President's party (per cycle) | historical record | `PRES_PARTY` in `macro_features.py`: 2018 REP, 2020 REP, 2022 DEM, 2024 DEM |
+
+The FRED CSV endpoint is `https://fred.stlouisfed.org/graph/fredgraph.csv?id=<SERIES_ID>`
+(no API key). `is_president_party` (candidate's party == sitting president's party) is the
+interaction key that lets XGBoost learn each macro effect's direction.
+
+**Caveat:** these are national values constant within a cycle; with only 4 cycles they carry
+little independent signal and need heavy regularization (see `model.ipynb` section 5). The
+fallback values are election-eve only, so `*_std`/`*_trend` are 0 unless run with live FRED.
+
+---
+
+## Related docs
+- **[DATA_DICTIONARY.md](DATA_DICTIONARY.md)** — every column in both the long file and the
+  model feature table, with meanings.
+- **[MISSINGNESS_REPORT.md](MISSINGNESS_REPORT.md)** — per-column missingness for both datasets.
 
 ---
 
