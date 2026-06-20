@@ -34,6 +34,8 @@ pip install pandas numpy requests jupyter
 
 Open `build_dataset.ipynb` and run top to bottom. The first run downloads source data into a local `data/` folder and caches it. (The Internet Archive can rate-limit with HTTP 429 — just re-run the download cell; cached files are skipped.)
 
+> ⚠️ **Workflow rule:** whenever you change the model's feature set, **re-run the entire `model.ipynb` end-to-end including the hyperparameter grid search** — never reuse previously tuned params. Params tuned for one feature set can make a new feature set look worse than it is (adding the macro features with stale params showed a regression that disappeared after re-tuning). Let regularization drop non-predictive features rather than hand-curating.
+
 ## Next steps
 
 - Collapse the long table to one row per race for modeling.
