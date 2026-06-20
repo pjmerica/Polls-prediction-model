@@ -179,13 +179,18 @@ cycle's* peak, not the all-time max since 2016. Per metric there are **7 feature
 | `<metric>_trend` | slope — rising or falling into the election |
 | `<metric>_last12_delta` | change vs 12 months earlier (the *change* voters feel) |
 
-**Metrics** (`<metric>` ∈, 12 total): `unemployment`, `inflation` (from CPI YoY), `gas`, `gdp`,
-`sentiment` (U. Michigan consumer sentiment), `real_income`, `sp500`, `mortgage30`, `fed_funds`,
-`jobless_claims`, `real_wage`, `med_income`, plus `approval` → **~84 macro features/cycle**.
-Plus `natl_env_cand` (538 generic-ballot DEM−REP, signed to the candidate's party; a single value).
+**Metrics** (`<metric>` ∈, **7 total**, as actually pulled): `unemployment`, `inflation`
+(from CPI YoY), `cpi_core`, `gas`, `fed_funds`, `unemp_u6`, `approval` → **49 macro
+features/cycle** (7 metrics × 7 stats). Plus `natl_env_cand` (538 generic-ballot DEM−REP,
+signed to the candidate's party; a single value).
 
-Sources: all economic metrics from **FRED** (see `fetch_macro.py` / DATA_SOURCES.md §5);
-`approval` from a documented monthly table; `natl_env_cand` from the 538 generic ballot.
+Exact per-cycle windows: 2018 ← 2016-11→2018-11 · 2020 ← 2018-11→2020-11 ·
+2022 ← 2020-11→2022-11 · 2024 ← 2022-11→2024-11. (Full detail in [METHODOLOGY.md](METHODOLOGY.md).)
+
+Sources: economic metrics from **DBnomics** (BLS/EIA/Federal Reserve — see DATA_SOURCES.md §5
+and `fetch_macro.py`); `approval` from a documented monthly table; `natl_env_cand` from the
+538 generic ballot. (`fetch_macro.py` lists more candidate series, e.g. GDP/sentiment/S&P, but
+only the 7 above resolved cleanly via DBnomics; others skip gracefully.)
 
 > **Macro caveat:** these are national values *constant within a cycle*, so with only 4 cycles
 > (2018/2020/2022/2024) they carry little independent signal for **win/lose** and are heavily

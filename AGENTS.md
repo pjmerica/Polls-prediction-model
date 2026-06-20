@@ -17,7 +17,7 @@ the infrastructure is the basis for a future *margin* model where features can h
 ```
 1. build_dataset.ipynb   -> downloads polls + results, joins them
                             -> writes polls_long_with_results.csv  (one row per poll-candidate)
-2. fetch_macro.py        -> ONE-TIME pull of monthly economic data from FRED
+2. fetch_macro.py        -> ONE-TIME pull of monthly economic data (DBnomics)
                             -> writes data/macro_monthly.csv  (static, committed, never re-pull)
 3. model.ipynb           -> reads both files, builds features, tunes + trains XGBoost,
                             cross-validates, benchmarks vs polls-only
@@ -27,11 +27,12 @@ the infrastructure is the basis for a future *margin* model where features can h
 | file | what it does |
 |---|---|
 | `build_dataset.ipynb` | Downloads & joins polls + election results -> `polls_long_with_results.csv`. |
-| `fetch_macro.py` | One-time FRED pull -> `data/macro_monthly.csv`. Run once; data is static. |
+| `fetch_macro.py` | One-time DBnomics pull -> `data/macro_monthly.csv` (monthly, back to 1947). Run once; static. |
 | `macro_features.py` | Reads `data/macro_monthly.csv`, builds per-cycle macro features (no network). |
 | `model.ipynb` | The model: feature engineering, tuning, CV, benchmark. |
 | `data/` | Cached downloads (gitignored) **except** `macro_monthly.csv` (committed). |
 | `data_samples/` | Tiny committed samples of the result files (so schema is visible without downloading). |
+| `METHODOLOGY.md` | **Exact time windows** for every feature (per-cycle macro windows, poll recency, etc.). |
 | `DATA_SOURCES.md` | Every data source, exact URL, and how it was found. |
 | `DATA_DICTIONARY.md` | Every column/feature explained (layman + technical). |
 | `MISSINGNESS_REPORT.md` | Per-column missingness for both datasets. |
@@ -69,15 +70,15 @@ the infrastructure is the basis for a future *margin* model where features can h
   "did nothing." Always confirm the printed feature count matches `macro_features.py`'s direct output.
 - **The 'party' column in the results files is 100% null** — the real party is in `ballot_party`.
 - **`district` is empty for Senate/Governor** (statewide) — that's correct, not missing data.
-- **FRED's `fredgraph.csv` host may be blocked in some sandboxes** (it was in the dev sandbox).
-  Run `fetch_macro.py` on a normal network. DBnomics does *not* mirror FRED (only the source
-  agencies BLS/BEA/EIA), so it's not a drop-in substitute.
+- **FRED's `fredgraph.csv` host was unreachable from both the sandbox AND the user's machine**, so
+  `fetch_macro.py` now uses **DBnomics** (free, no key) pulling the upstream agencies (BLS/EIA/Fed).
+  DBnomics does *not* mirror FRED itself — use the agency series codes (already wired in the script).
 
 ## Environment
 ```
 pip install pandas numpy requests xgboost scikit-learn jupyter matplotlib openpyxl
 ```
-Polls/results download on first `build_dataset.ipynb` run. `fetch_macro.py` needs FRED access.
+Polls/results download on first `build_dataset.ipynb` run. `fetch_macro.py` pulls from DBnomics (no key). The macro CSV is already committed, so you usually don't need to re-run it.
 
 ## Current honest performance (leave-one-cycle-out CV, 2018–2024)
 - XGBoost: AUC ~0.96, Brier ~0.08, race-winner accuracy ~0.86

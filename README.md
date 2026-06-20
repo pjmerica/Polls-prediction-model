@@ -41,14 +41,15 @@ rotate). Never random splits — that would leak the future.
 | **Results** (who won) | [FiveThirtyEight `election-results` repo](https://github.com/fivethirtyeight/election-results) | per-candidate `winner` flag, all races 1976–2024 |
 | **Partisan lean** | 538 `partisan-lean` (state + district) | CPVI-style; district file is 2022 vintage (~41% House coverage) |
 | **National environment** | 538 generic ballot (Internet Archive) | per-cycle DEM−REP |
-| **Macro / economy** | FRED monthly series (one-time pull, see below) | unemployment, inflation, gas, GDP, consumer sentiment, mortgage rate, S&P 500, etc. |
+| **Macro / economy** | DBnomics monthly series (one-time pull, see below) | unemployment, inflation (CPI), core CPI, gas, fed funds, U-6, approval — condensed per cycle |
 
 **Headline finding (cross-validated):** a one-variable "poll softmax" baseline
-(AUC ≈ 0.965, Brier ≈ 0.071) matches or beats the full ~80-feature XGBoost
+(AUC ≈ 0.965, Brier ≈ 0.071) matches or beats the full 88-feature XGBoost
 (AUC ≈ 0.96, Brier ≈ 0.08) on win/lose. Polls are the ceiling. The features improve
 calibration and would matter more for a margin model.
 
 📄 **Deep docs:** [AGENTS.md](AGENTS.md) (start here if you're contributing) ·
+[METHODOLOGY.md](METHODOLOGY.md) (**exact time windows for every feature**) ·
 [DATA_SOURCES.md](DATA_SOURCES.md) (every URL + how found) ·
 [DATA_DICTIONARY.md](DATA_DICTIONARY.md) (every variable) ·
 [MISSINGNESS_REPORT.md](MISSINGNESS_REPORT.md).
@@ -60,14 +61,15 @@ calibration and would matter more for a margin model.
 ```
 1. build_dataset.ipynb   → downloads polls + results, joins them
                            → polls_long_with_results.csv  (one row per poll-candidate)
-2. fetch_macro.py        → ONE-TIME pull of monthly economic data from FRED
+2. fetch_macro.py        → ONE-TIME pull of monthly economic data (DBnomics)
                            → data/macro_monthly.csv  (static; committed; never re-pull)
 3. model.ipynb           → features + tuning + cross-validation + poll-only benchmark
 ```
 
 ### Macro data is pulled once and committed
 Economic history doesn't change retroactively (2018's inflation is fixed forever), so we
-pull it **once** and save `data/macro_monthly.csv` — monthly readings from 2016 to now. The
+pull it **once** and save `data/macro_monthly.csv` — monthly readings back to 1947 for the
+core series (CPI, unemployment), kept in full in case older polls surface. The
 model then uses, for each election, **that cycle's own window (prior election eve → this
 election eve)** — 2018 ← Nov 2016–Nov 2018, 2020 ← Nov 2018–Nov 2020, etc. — and condenses
 each indicator into trajectory stats (eve level, mean, max, min, std, trend, 12-month change),
@@ -80,7 +82,7 @@ pip install pandas numpy requests xgboost scikit-learn jupyter matplotlib openpy
 ```
 
 1. **`build_dataset.ipynb`** — run top to bottom (downloads polls + results, caches to `data/`).
-2. **`python fetch_macro.py`** — run **once** on a machine with internet (creates
+2. **`python fetch_macro.py`** — run **once** on a machine with internet (pulls from DBnomics; creates
    `data/macro_monthly.csv`; commit it). Skip if the CSV is already committed.
 3. **`model.ipynb`** — run top to bottom.
 
