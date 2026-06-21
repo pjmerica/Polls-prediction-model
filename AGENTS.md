@@ -76,7 +76,7 @@ the infrastructure is the basis for a future *margin* model where features can h
 
 ## Environment
 ```
-pip install pandas numpy requests xgboost scikit-learn jupyter matplotlib openpyxl
+pip install pandas numpy requests xgboost scikit-learn jupyter matplotlib openpyxl shap
 ```
 Polls/results download on first `build_dataset.ipynb` run. `fetch_macro.py` pulls from DBnomics (no key). The macro CSV is already committed, so you usually don't need to re-run it.
 

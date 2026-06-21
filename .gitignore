@@ -10,6 +10,9 @@ data/*
 # Note: ignore data/* (contents) not data/ (dir) so this un-ignore can take effect.
 !data/macro_monthly.csv
 
+# ...and the generated feature-importance table (small, handy to diff across runs)
+!feature_importance.csv
+
 # Python
 __pycache__/
 *.py[cod]

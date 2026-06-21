@@ -7,8 +7,9 @@ the prior election eve up to this election eve** (2018 -> 2016-11..2018-11, 2020
 reflect *each cycle's own* conditions, not the all-time max since 2016. The CSV still holds the
 full 2016->now history; only the per-cycle slice is summarized.
 
-Stats per metric: eve / mean / max / min / std / trend / last12_delta. The model decides which
-matter (heavy regularization drops the rest).
+Stats per metric: (a) full-window: eve / mean / max / min / std / trend / last12_delta, plus
+(b) recency cuts — avg / max / trend over the **last 3, 6, and 12 months** before election eve.
+The model decides which matter (heavy regularization drops the rest).
 
 No network. If the CSV is missing, raises a clear error telling you to run fetch_macro.py.
 """
@@ -43,6 +44,25 @@ def _stats(s, prefix):
             f"{prefix}_std": float(v.std()), f"{prefix}_trend": trend,
             f"{prefix}_last12_delta": last12}
 
+# Recency cuts: the final N months of the cycle's window, ending at election eve.
+RECENCY_CUTS = {"3mo": 3, "6mo": 6, "12mo": 12}
+
+def _recency_stats(s, prefix):
+    """avg / max / trend over the last 3, 6, and 12 months of the (already cycle-windowed) series `s`."""
+    out = {}
+    for label, n in RECENCY_CUTS.items():
+        v = s.dropna().values.astype(float)[-n:]
+        if len(v) == 0:
+            out[f"{prefix}_avg_{label}"] = np.nan
+            out[f"{prefix}_max_{label}"] = np.nan
+            out[f"{prefix}_trend_{label}"] = np.nan
+            continue
+        x = np.arange(len(v))
+        out[f"{prefix}_avg_{label}"] = float(v.mean())
+        out[f"{prefix}_max_{label}"] = float(v.max())
+        out[f"{prefix}_trend_{label}"] = float(np.polyfit(x, v, 1)[0]) if len(v) >= 2 else 0.0
+    return out
+
 def load_monthly(path=CSV_PATH):
     if not os.path.exists(path):
         raise FileNotFoundError(
@@ -68,7 +88,8 @@ def build_macro(path=CSV_PATH):
             else:
                 name = metric
             s = full[(full.index > start) & (full.index <= eve)]   # this cycle's window only
-            f.update(_stats(s, name))
+            f.update(_stats(s, name))            # full-cycle stats (max/min/std/trend/...)
+            f.update(_recency_stats(s, name))    # last-3/6/12-month avg/max/trend cuts
         rows[cyc] = f
     return rows
 

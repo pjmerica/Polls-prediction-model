@@ -78,7 +78,7 @@ so e.g. `inflation_max` is *that cycle's* peak, not the all-time peak. XGBoost d
 ## Run
 
 ```bash
-pip install pandas numpy requests xgboost scikit-learn jupyter matplotlib openpyxl
+pip install pandas numpy requests xgboost scikit-learn jupyter matplotlib openpyxl shap
 ```
 
 1. **`build_dataset.ipynb`** — run top to bottom (downloads polls + results, caches to `data/`).
