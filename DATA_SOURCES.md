@@ -57,14 +57,17 @@ NYT publishes 538-schema poll CSVs, updated continuously, CC-BY:
 - https://www.nytimes.com/newsgraphics/polls/house.csv
 - https://www.nytimes.com/newsgraphics/polls/governor.csv
 
-### Historical — Internet Archive snapshot of 538
-The Wayback Machine "latest capture, raw" form (`2id_`) of the old 538 files:
+### Historical — frozen, COMMITTED to the repo
+The historical poll files originally came from a Wayback Machine snapshot of the old 538 files:
 ```
 http://web.archive.org/web/2id_/https://projects.fivethirtyeight.com/polls/data/senate_polls_historical.csv
 http://web.archive.org/web/2id_/https://projects.fivethirtyeight.com/polls/data/house_polls_historical.csv
 http://web.archive.org/web/2id_/https://projects.fivethirtyeight.com/polls/data/governor_polls_historical.csv
 ```
-(The Archive can rate-limit with HTTP 429 — just retry; downloads are cached.)
+**These are now committed** as `data/{senate,house,governor}_historical.csv` (they never change),
+so the pipeline reads them locally and **does not hit the Internet Archive**. The Wayback URLs
+above are kept only as documentation of origin — the Archive is slow/unreliable (often times out),
+which is exactly why we froze the files into the repo.
 
 **Coverage limit:** machine-readable polls effectively begin in **2018** (when 538's
 poll database started). Pre-2018 downballot polls lived in HuffPost Pollster (defunct,
@@ -86,13 +89,14 @@ Negative = Republican-leaning. **Caveat:** single vintage, so in the model featu
 
 ## 4. National environment — a model feature
 
-**Source:** Internet Archive snapshot of 538's generic-ballot file
-```
-http://web.archive.org/web/2id_/https://projects.fivethirtyeight.com/polls/data/generic_ballot_polls_historical.csv
-```
-Used to compute a per-cycle DEM−REP national environment (last 30 days before the
-election). Values: 2018 +7.8, 2020 +7.5, 2022 +0.7, 2024 +0.1 — captures the
-Democratic wave fading to the flat 2024 environment.
+Per-cycle generic-ballot DEM−REP margin (last ~30 days before each election):
+**2018 +7.8, 2020 +7.5, 2022 +0.7, 2024 +0.1** — captures the Democratic wave fading to the
+flat 2024 environment.
+
+**Source:** originally the 538 generic-ballot file via Internet Archive
+(`generic_ballot_polls_historical.csv`). The Archive is now unreachable (times out for us), so
+these four static values are **hardcoded** as `natl_env` in `model.ipynb` — they are fixed
+historical record, computed/verified from that snapshot earlier. No live fetch.
 
 ---
 

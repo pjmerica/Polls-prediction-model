@@ -90,3 +90,20 @@ Polls/results download on first `build_dataset.ipynb` run. `fetch_macro.py` pull
   **overperformance vs polls** — polls don't already contain that answer, so features have room.
 - **House is the weak spot** (district partisan-lean only ~41% covered); a time-varying
   district PVI would help there.
+
+### TODO: generic-ballot recency cuts (planned, not yet built)
+We want monthly generic-ballot D−R over time so we can add 3/6/12-month avg/max/trend cuts
+(like the macro features). Current state: `natl_env` in `model.ipynb` is just 4 hardcoded
+per-cycle eve values (2018 +7.8, 2020 +7.5, 2022 +0.7, 2024 +0.1) — the daily 2018–2024
+series lived only on the Internet Archive, which is now unreachable.
+**Plan / sources for a `fetch_generic_ballot.py` (pull once → `data/generic_ballot_monthly.csv`
+→ commit; only fetch live in production):**
+- **RealClearPolling** `realclearpolling.com/polls/state-of-the-union/generic-congressional-vote`
+  (and per-cycle equivalents) — most consistent structured source.
+- **Wikipedia** "Generic ballot"/"Opinion polling for the YYYY U.S. House elections" — has
+  per-poll tables but the exact article title/table index varies by cycle (the 2022 *main*
+  House article does NOT contain the poll list; the dedicated polling article title still needs
+  to be pinned down). `pd.read_html(io.StringIO(requests.get(url).text))` is the parse path.
+- **GitHub `fivethirtyeight/data/congress-generic-ballot/generic_topline_historical.csv`**
+  exists but only covers **1995–2016** (too old for our 2018+ cycles).
+Once the monthly CSV exists, mirror the macro recency-cut logic in `macro_features.py`.
