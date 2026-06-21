@@ -13,6 +13,14 @@ data/*
 # ...and the generated feature-importance table (small, handy to diff across runs)
 !feature_importance.csv
 
+# ...and DO commit the FROZEN historical poll snapshots (Internet Archive captures of 538,
+# which never change). Committing them removes the fragile/rate-limited live Wayback dependency.
+# Current-cycle NYT files (*_current.csv) and result files stay ignored (they refresh / are on live GitHub).
+!data/senate_historical.csv
+!data/house_historical.csv
+!data/governor_historical.csv
+!data/generic_ballot_historical.csv
+
 # Python
 __pycache__/
 *.py[cod]
