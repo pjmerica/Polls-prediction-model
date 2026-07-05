@@ -15,11 +15,26 @@ data/*
 
 # ...and DO commit the FROZEN historical poll snapshots (Internet Archive captures of 538,
 # which never change). Committing them removes the fragile/rate-limited live Wayback dependency.
-# Current-cycle NYT files (*_current.csv) and result files stay ignored (they refresh / are on live GitHub).
 !data/senate_historical.csv
 !data/house_historical.csv
 !data/governor_historical.csv
 !data/generic_ballot_historical.csv
+
+# ...and the NYT "current" poll files — the 2024 cycle is OVER, so these are frozen history now
+# too. If re-fetched, the NYT endpoint would serve 2026-cycle polls (or nothing) and silently
+# change the training data. Committed = the training set is reproducible offline.
+!data/senate_current.csv
+!data/house_current.csv
+!data/governor_current.csv
+
+# ...and the results + metadata files (538's repos are unmaintained; past results never change;
+# the repos could vanish). With these, ALL model inputs are committed — no network on any run.
+!data/res_senate.csv
+!data/res_house.csv
+!data/res_governor.csv
+!data/races.csv
+!data/lean_states.csv
+!data/lean_districts.csv
 
 # Python
 __pycache__/
