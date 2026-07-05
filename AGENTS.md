@@ -32,6 +32,7 @@ the infrastructure is the basis for a future *margin* model where features can h
 | `model.ipynb` | The model: feature engineering, tuning, CV, benchmark. |
 | `data/` | Cached downloads (gitignored) **except** `macro_monthly.csv` (committed). |
 | `data_samples/` | Tiny committed samples of the result files (so schema is visible without downloading). |
+| `CONCERNS.md` | **Ranked audit of risks + the improvement queue** (2026-07-05). Read before extending the model — includes the "no 538 in production" constraint. |
 | `METHODOLOGY.md` | **Exact time windows** for every feature (per-cycle macro windows, poll recency, etc.). |
 | `DATA_SOURCES.md` | Every data source, exact URL, and how it was found. |
 | `DATA_DICTIONARY.md` | Every column/feature explained (layman + technical). |
