@@ -38,6 +38,9 @@ data/*
 !data/raw_polls_538.csv
 !data/generic_ballot_hist_538.csv
 !data/approval_monthly.csv
+!data/generic_ballot_monthly.csv
+!data/fec_summary.csv
+!data/redistricted_2026.csv
 
 # ...and the trained production model artifacts (predict.py / predict_margin.py load these)
 !data/model_xgb.json

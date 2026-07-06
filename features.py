@@ -119,6 +119,38 @@ def prior_margin(margin_map, year, state, office, district):
             return v
     return np.nan
 
+# ---------------------------------------------------------------- FEC fundraising
+
+def fec_cand_key(name):
+    """'PELTOLA, MARY (ALIAS)' -> norm_name('mary peltola') -> 'peltola m'."""
+    s = re.sub(r"\(.*?\)", "", str(name))
+    parts = s.split(",", 1)
+    s = (parts[1] + " " + parts[0]) if len(parts) == 2 else s
+    return norm_name(s)
+
+def load_fec(path=None):
+    """data/fec_summary.csv -> {(cycle,state,office,district,cand_key): {receipts,...}}.
+
+    Senate district = ''; FEC House at-large '00' -> '1' (matches our race keys).
+    NOTE the cutoff caveat in fetch_fec.py: historical totals run through Dec 31, so
+    RATIO features (share/composition) are the trustworthy ones; raw totals are secondary.
+    """
+    path = path or os.path.join(DATA_DIR, "fec_summary.csv")
+    f = pd.read_csv(path, dtype={"district": str})
+    f["cand_key"] = f["cand_name"].map(fec_cand_key)
+    f["district"] = [("" if o == "Senate"
+                      else ("1" if str(di) in ("00", "0", "nan") else str(int(float(di)))))
+                     for o, di in zip(f["office"], f["district"])]
+    f = f.sort_values("receipts", ascending=False).drop_duplicates(
+        ["cycle", "state", "office", "district", "cand_key"])
+    return {(r.cycle, r.state, r.office, r.district, r.cand_key):
+            dict(receipts=r.receipts, indiv=r.indiv_contrib, pac=r.pac_contrib,
+                 party=r.party_contrib, self=r.self_fund)
+            for r in f.itertuples()}
+
+FUND_FEATS = ["fund_receipts_ln", "fund_share", "fund_indiv_pct", "fund_pac_pct",
+              "fund_party_pct", "fund_self_pct"]
+
 # ---------------------------------------------------------------- poll prep
 
 def prepare_polls(d):
@@ -218,7 +250,8 @@ def candidate_poll_adj(d, house):
 
 # ---------------------------------------------------------------- main builder
 
-def build_candidate_table(d, macro, natl_env_map, funds, house_train_years=None, house=None):
+def build_candidate_table(d, macro, natl_env_map, funds, house_train_years=None, house=None,
+                          fec=None):
     """Collapse prepared long polls `d` -> one row per candidate per race, with features.
 
     d must have: race_id, year, state, office, district, candidate, cand_key, party_std,
@@ -262,6 +295,17 @@ def build_candidate_table(d, macro, natl_env_map, funds, house_train_years=None,
             adj = gc["pct"] - gc["pollster"].map(lambda p: sign * house.get(norm_pollster(p), 0.0))
             md = dyn.get(ck, {})
 
+            fe = fec.get((yr, st, of, di, ck)) if fec is not None else None
+            rec = fe["receipts"] if fe else np.nan
+            fund = dict(
+                fund_receipts_ln=(np.log1p(rec) if fe and rec > 0 else np.nan),
+                fund_indiv_pct=(fe["indiv"] / rec if fe and rec > 0 else np.nan),
+                fund_pac_pct=(fe["pac"] / rec if fe and rec > 0 else np.nan),
+                fund_party_pct=(fe["party"] / rec if fe and rec > 0 else np.nan),
+                fund_self_pct=(fe["self"] / rec if fe and rec > 0 else np.nan),
+                _fund_receipts=(rec if fe else np.nan),
+            ) if fec is not None else {}
+
             rows.append(dict(
                 race_id=race_id, year=yr, state=st, office=of, district=di,
                 cand_key=ck, candidate=gc["candidate"].iloc[0], party=party,
@@ -291,9 +335,16 @@ def build_candidate_table(d, macro, natl_env_map, funds, house_train_years=None,
                 min_margin=md.get("min_margin", np.nan),
                 margin_trend=md.get("margin_trend", np.nan),
                 is_president_party=int(party == PRES_PARTY.get(yr)),
+                **fund,
                 **macro.get(yr, {}),
             ))
     c = pd.DataFrame(rows)
+
+    if fec is not None:
+        # share of the race's (matched) money — the ratio feature robust to cutoff dates
+        tot = c.groupby("race_id")["_fund_receipts"].transform("sum")
+        c["fund_share"] = np.where(tot > 0, c["_fund_receipts"] / tot, np.nan)
+        c = c.drop(columns="_fund_receipts")
 
     # race-relative features (all based on the plain poll average)
     c["field_best"] = c.groupby("race_id")["poll_avg"].transform(
@@ -319,9 +370,10 @@ def build_candidate_table(d, macro, natl_env_map, funds, house_train_years=None,
     c["gap_x_recency"] = c["poll_lead"] * (1.0 / (1.0 + c["min_days"].clip(lower=0) / 30.0))
     return c
 
-def feature_list(macro_feats):
-    """The model's input columns. Everything here is available for future races."""
-    return [
+def feature_list(macro_feats, fund=False):
+    """The model's input columns. Everything here is available for future races.
+    fund=True appends the FEC fundraising features (pass fec=load_fec() to the builder)."""
+    return ([] if not fund else list(FUND_FEATS)) + [
         "poll_avg", "poll_last", "poll_last30", "poll_std", "n_polls",
         "n_polls_over50", "frac_polls_over50", "race_total_polls",
         "avg_sample", "min_days",
