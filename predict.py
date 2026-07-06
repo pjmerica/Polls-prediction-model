@@ -105,7 +105,38 @@ def load_agg_polls(paths, cycle):
 
     d["race_id"] = (d["year"].astype(str) + "_" + d["state"] + "_" + d["office"]
                     + d["district"].map(F.dist_str).radd("-").where(d["district"].map(F.dist_str) != "", ""))
-    return F.prepare_polls(d)
+    return drop_stale_candidates(F.prepare_polls(d))
+
+def drop_stale_candidates(d, stale_days=14):
+    """Drop candidates who stopped being polled before the race moved on.
+
+    'General' feeds carry hypothetical matchups from the primary season (e.g. ME-Sen 2026
+    polled Mills-vs-Collins AND Platner-vs-Collins for months). Once the real nominee
+    emerges, the losing primary candidates stop appearing in new polls — so anyone whose
+    LAST poll is > stale_days older than the race's most recent poll is presumed out.
+
+    Guards (per race): never drop below 2 candidates, and never lose a whole party that
+    had polling — in those cases the race is left untouched (sparsely polled races).
+    """
+    last_cand = d.groupby(["race_id", "cand_key"])["end_date"].transform("max")
+    last_race = d.groupby("race_id")["end_date"].transform("max")
+    keep = last_cand >= (last_race - pd.Timedelta(days=stale_days))
+
+    kept = d[keep]
+    reverted = []
+    for rid, orig in d.groupby("race_id"):
+        g = kept[kept["race_id"] == rid]
+        two_before = orig["cand_key"].nunique() >= 2
+        parties_before = {"DEM", "REP"} & set(orig["party_std"])
+        if (two_before and g["cand_key"].nunique() < 2) or \
+           (parties_before and not parties_before <= set(g["party_std"])):
+            reverted.append(rid)
+    out = pd.concat([kept[~kept["race_id"].isin(reverted)],
+                     d[d["race_id"].isin(reverted)]], ignore_index=True)
+    n_dropped = d.groupby(["race_id", "cand_key"]).ngroups - out.groupby(["race_id", "cand_key"]).ngroups
+    print(f"stale-candidate filter: dropped {n_dropped} candidates "
+          f"(no polls within {stale_days}d of their race's latest; {len(reverted)} races left untouched by guards)")
+    return out
 
 def main():
     ap = argparse.ArgumentParser()
