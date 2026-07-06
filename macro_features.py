@@ -17,18 +17,17 @@ import os
 import numpy as np
 import pandas as pd
 
-CYCLES = [2018, 2020, 2022, 2024]
-PRES_PARTY = {2018: "REP", 2020: "REP", 2022: "DEM", 2024: "DEM"}
+# Cycle constants live in cycles.py (single source of truth); PRES_PARTY is re-exported
+# here because model code historically imports it from this module.
+from cycles import CYCLES, PRES_PARTY, eve as _cycle_eve, prior_eve as _cycle_prior_eve
+
 CSV_PATH = "data/macro_monthly.csv"
-# Each cycle's window starts the day after the PRIOR election eve. For the first modeled cycle
-# (2018) the prior election is 2016, so its window starts 2016-11.
-PRIOR_EVE = {2018: "2016-11-01", 2020: "2018-11-01", 2022: "2020-11-01", 2024: "2022-11-01"}
 
 # metrics that should enter the model as YoY % change of an index, not the raw level
 YOY_METRICS = {"cpi"}   # cpi index -> inflation YoY%
 
 def _eve(cycle):
-    return pd.Timestamp(f"{cycle}-11-01")   # election-eve cutoff (first of Nov of the cycle)
+    return _cycle_eve(cycle)   # election-eve cutoff (first of Nov of the cycle)
 
 def _stats(s, prefix):
     """eve / mean / max / min / std / trend / last12_delta for a monthly Series (date-indexed)."""
@@ -71,13 +70,16 @@ def load_monthly(path=CSV_PATH):
     m = pd.read_csv(path, parse_dates=["date"])
     return m
 
-def build_macro(path=CSV_PATH):
-    """Return {cycle: {feature: value}} — stats over each cycle's own (prior-eve -> eve) window."""
+def build_macro(path=CSV_PATH, cycles=None):
+    """Return {cycle: {feature: value}} — stats over each cycle's own (prior-eve -> eve) window.
+
+    `cycles` defaults to the full modeled list from cycles.py; pass e.g. [2026] at predict time.
+    """
     m = load_monthly(path)
     metrics = sorted(m["metric"].unique())
     rows = {}
-    for cyc in CYCLES:
-        start = pd.Timestamp(PRIOR_EVE[cyc]); eve = _eve(cyc)
+    for cyc in (cycles or CYCLES):
+        start = _cycle_prior_eve(cyc); eve = _eve(cyc)
         f = {}
         for metric in metrics:
             full = (m[m["metric"] == metric].set_index("date")["value"].sort_index())

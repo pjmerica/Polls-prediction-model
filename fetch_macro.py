@@ -49,18 +49,10 @@ def fetch(provider, dataset, code, timeout=45):
                   if len(d["period"][0]) == 7 else pd.to_datetime(d["period"]))
     return pd.to_numeric(s, errors="coerce").dropna()
 
-# Presidential approval (no clean DBnomics series): documented monthly table (538/Gallup avg).
-APPROVAL = {
-    **{f"2016-{m:02d}": v for m, v in zip(range(1,13), [46,48,50,51,51,51,50,50,52,54,57,57])},
-    **{f"2017-{m:02d}": v for m, v in zip(range(1,13), [45,43,40,41,40,39,38,37,38,38,38,39])},
-    **{f"2018-{m:02d}": v for m, v in zip(range(1,13), [40,40,41,42,42,43,43,42,43,44,43,43])},
-    **{f"2019-{m:02d}": v for m, v in zip(range(1,13), [40,44,43,42,42,42,42,42,43,42,43,45])},
-    **{f"2020-{m:02d}": v for m, v in zip(range(1,13), [44,44,45,46,43,41,41,42,43,45,45,45])},
-    **{f"2021-{m:02d}": v for m, v in zip(range(1,13), [55,55,54,54,54,52,50,49,46,43,43,43])},
-    **{f"2022-{m:02d}": v for m, v in zip(range(1,13), [43,42,42,42,41,39,38,42,43,43,42,43])},
-    **{f"2023-{m:02d}": v for m, v in zip(range(1,13), [43,42,42,42,40,41,41,42,40,40,40,39])},
-    **{f"2024-{m:02d}": v for m, v in zip(range(1,13), [40,38,38,39,39,38,38,40,42,42,40,40])},
-}
+# Presidential approval now comes from data/approval_monthly.csv, produced by
+# fetch_approval.py (Gallup via UCSB American Presidency Project, 1993->present).
+# Run `python fetch_approval.py` first if that file is missing.
+APPROVAL_CSV = "data/approval_monthly.csv"
 
 def build():
     os.makedirs("data", exist_ok=True)
@@ -79,11 +71,13 @@ def build():
         except Exception as e:
             skipped.append(metric); print(f"  SKIP {metric:14} {prov}/{ds}/{code}  ({e})")
 
-    ap = pd.DataFrame([(pd.Timestamp(k + "-01"), v, "approval") for k, v in APPROVAL.items()],
-                      columns=["date", "value", "metric"])
+    if not os.path.exists(APPROVAL_CSV):
+        raise FileNotFoundError(f"{APPROVAL_CSV} not found - run `python fetch_approval.py` first")
+    ap = pd.read_csv(APPROVAL_CSV, parse_dates=["date"])
     if START is not None:
         ap = ap[ap["date"] >= START]
     frames.append(ap); ok.append("approval")
+    print(f"  OK   approval       {len(ap)} months  ({ap['date'].min().date()}..{ap['date'].max().date()})  <- {APPROVAL_CSV}")
 
     allm = pd.concat(frames, ignore_index=True).sort_values(["metric", "date"])
     allm.to_csv(OUT, index=False)
