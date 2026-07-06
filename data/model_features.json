@@ -1,5 +1,11 @@
 {
  "features": [
+  "fund_receipts_ln",
+  "fund_share",
+  "fund_indiv_pct",
+  "fund_pac_pct",
+  "fund_party_pct",
+  "fund_self_pct",
   "poll_avg",
   "poll_last",
   "poll_last30",
@@ -344,8 +350,8 @@
  ],
  "xgb_params": {
   "max_depth": 2,
-  "learning_rate": 0.03,
-  "n_estimators": 150,
+  "learning_rate": 0.02,
+  "n_estimators": 300,
   "min_child_weight": 15,
   "subsample": 0.8,
   "colsample_bytree": 1.0,

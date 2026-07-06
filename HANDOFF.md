@@ -110,3 +110,31 @@ break, and what to do next, in order.
   betting: if 2026 polls share a bias, every model edge moves together. Mitigations to
   build: cycle-bias prior feature (prior cycles' signed error by state/party, shrunken),
   and report edge-portfolio exposure by party on the dashboard.
+
+## Retrain batch 4 (staged 2026-07-06, run AFTER run 3 publishes)
+Feature-changing items implemented-or-designed but NOT yet in the training path:
+1. **Dual-seat fix** — build_dataset.ipynb already patched (source-only): specials get
+   district 'S' from results `special` flag + seat class (polls) + '-GS_' race marker
+   (raw_polls); House special NY-19-2022 dropped. RE-RUN build_dataset first (regenerates
+   polls_long_with_results.csv), THEN both model notebooks.
+2. **Cycle-bias prior feature** (to build in features.py): mean signed poll-margin error of
+   the state's (or region's) races in PRIOR cycles, shrunken toward the national prior-cycle
+   mean. Strictly prior-cycle info = leak-free.
+3. **Shrunken house effects**: multiply each pollster's dev by n/(n+K), K≈5 polls.
+4. **is_redistricted feature** from data/redistricted_2026.csv (0 for all training cycles,
+   1 for 2026 redrawn-state House rows) + consider NaNing prior_margin_cand there.
+5. **Tune the poll-softmax baseline temperature** on TUNE_CYCLES before comparing (currently
+   hardcoded 3.0 — potentially understates the baseline).
+Then: run build_dataset → model.ipynb → margin_model.ipynb → refresh_dashboard → publish.
+
+## Bias-robustness tooling (shipped 2026-07-06, active at predict time — no retrain needed)
+- predict.py / predict_margin.py now emit win_prob_R3 / win_prob_D3 (pred_margin_R3/D3):
+  re-predictions under a uniform ±3-point national poll shift; races whose PICK flips are
+  marked `bias_fragile` and badged ≈ FRAGILE on the dashboard (treat as no-edge).
+- Model tab meta line shows EDGE EXPOSURE (n D-lean vs R-lean edges): if your open edges
+  are lopsided toward one party, you're making ONE correlated bet on 2026 poll bias.
+- Tab shows a DATA STALE banner when model_data.js is >30h old (CI swallows compare
+  failures; this makes them visible).
+- refresh_dashboard.py runs a feed-freshness watchdog (approval/GB/unemployment ≤2mo lag,
+  sentiment ≤13mo) — soft upstream deaths now print loud FEED STALE warnings.
+- predict loader schema guards: required columns, pct∈[0,100], date parse rate, min races.

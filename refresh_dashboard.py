@@ -31,8 +31,9 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 AGG = os.path.join(HERE, "..", "Polling Agg", "Polling agg and Prediction markets")
 
 STEPS_FEEDS = [
-    ([sys.executable, "fetch_approval.py"], "approval (Gallup/UCSB)"),
-    ([sys.executable, "fetch_macro.py"], "economy (BLS API + DBnomics)"),
+    ([sys.executable, "fetch_approval.py"], "approval (Gallup/UCSB + VoteHub)"),
+    ([sys.executable, "fetch_generic_ballot.py", "--monthly"], "generic ballot monthly (538 hist + VoteHub)"),
+    ([sys.executable, "fetch_macro.py"], "economy incl. sentiment (BLS API + DBnomics) + merge"),
 ]
 STEPS_PREDICT = [
     ([sys.executable, "predict.py"], "win probabilities"),
@@ -45,6 +46,34 @@ def run(cmd, label, cwd=HERE):
     if r.returncode != 0:
         raise SystemExit(f"step failed: {label} (exit {r.returncode})")
 
+def check_feed_freshness():
+    """Loud staleness warnings — a dead upstream (VoteHub, DBnomics, BLS) fails SOFTLY in
+    the fetch scripts, so a stale feed looks identical to a working one without this."""
+    import pandas as pd
+    today = pd.Timestamp.now()
+    checks = [  # (file, metric filter or None, max acceptable months of lag)
+        ("data/approval_monthly.csv", None, 2),
+        ("data/generic_ballot_monthly.csv", None, 2),
+        ("data/macro_monthly.csv", "unemployment", 2),
+        ("data/macro_monthly.csv", "sentiment", 13),   # DBnomics mirror lags ~1yr (known)
+    ]
+    warned = False
+    for path, metric, max_lag in checks:
+        p = os.path.join(HERE, path)
+        if not os.path.exists(p):
+            print(f"!! FEED MISSING: {path}"); warned = True; continue
+        df = pd.read_csv(p, parse_dates=["date"])
+        if metric is not None:
+            df = df[df["metric"] == metric]
+        lag = (today.year - df["date"].max().year) * 12 + (today.month - df["date"].max().month)
+        label = f"{path}" + (f" [{metric}]" if metric else "")
+        if lag > max_lag:
+            print(f"!! FEED STALE: {label} ends {df['date'].max().date()} "
+                  f"({lag} months old, allowed {max_lag}) — upstream may have died silently")
+            warned = True
+    if not warned:
+        print("feed freshness: all OK")
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--no-feeds", action="store_true",
@@ -54,6 +83,7 @@ def main():
     if not args.no_feeds:
         for cmd, label in STEPS_FEEDS:
             run(cmd, label)
+    check_feed_freshness()
     for cmd, label in STEPS_PREDICT:
         run(cmd, label)
 

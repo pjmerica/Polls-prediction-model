@@ -61,10 +61,15 @@ def parse_race_id(rid):
         district = "S"   # SPECIAL election (e.g. 2026-SEN-FL-S) — its own race, never merged
     return year, office, state, district
 
+REQUIRED_FEED_COLS = {"race_id", "pollster", "candidate", "party", "stage",
+                      "sample_size", "end_date", "implied_prob"}
+
 def load_agg_polls(paths, cycle):
     frames = []
     for i, p in enumerate(paths):
         df = pd.read_csv(p, low_memory=False)
+        missing = REQUIRED_FEED_COLS - set(df.columns)
+        assert not missing, f"feed schema drift in {p}: missing columns {sorted(missing)}"
         df["_src_priority"] = i          # earlier path wins dedup ties (NYT first)
         frames.append(df)
     raw = pd.concat(frames, ignore_index=True)
@@ -107,7 +112,17 @@ def load_agg_polls(paths, cycle):
 
     d["race_id"] = (d["year"].astype(str) + "_" + d["state"] + "_" + d["office"]
                     + d["district"].map(F.dist_str).radd("-").where(d["district"].map(F.dist_str) != "", ""))
-    return drop_stale_candidates(F.prepare_polls(d))
+    d = drop_stale_candidates(F.prepare_polls(d))
+
+    # schema sanity: a silent upstream change (pct scale, stage labels, race_id format)
+    # must crash here, loudly, instead of producing confident garbage downstream
+    bad_pct = ~d["pct"].between(0, 100)
+    assert bad_pct.mean() < 0.01, \
+        f"feed pct out of [0,100] for {bad_pct.mean():.1%} of rows — implied_prob scale changed?"
+    assert d["end_date"].notna().mean() > 0.95, "feed end_date mostly unparseable"
+    n_races = d["race_id"].nunique()
+    assert n_races >= 20, f"only {n_races} general races parsed — race_id/stage format changed?"
+    return d
 
 def drop_stale_candidates(d, stale_days=14):
     """Drop candidates who stopped being polled before the race moved on.
@@ -185,7 +200,8 @@ def main():
                   "natl_env_cand will be missing (NaN)")
 
     funds = F.load_fundamentals()
-    cand = F.build_candidate_table(d, macro, ne, funds, house=house, fec=F.load_fec())
+    fec = F.load_fec()
+    cand = F.build_candidate_table(d, macro, ne, funds, house=house, fec=fec)
 
     # guard: every feature the artifact expects must exist in the built table — reindex
     # would otherwise silently fill a whole missing block with NaN and predict garbage
@@ -193,13 +209,35 @@ def main():
     assert not missing, f"artifact expects features absent from the built table: {missing[:8]}"
     X = cand.reindex(columns=meta["features"])
     cand["win_prob"] = model.predict_proba(X)[:, 1]
+
+    # ---- poll-bias robustness sweep (cycle-level poll error is historically ±4-7 pts,
+    # shared across ALL races — see HANDOFF.md). Re-predict under a uniform 3-point
+    # national margin shift each way; picks that flip are bias-fragile, not edges. ----
+    for label, dem_shift in [("R3", -3.0), ("D3", +3.0)]:
+        ds = d.copy()
+        sgn = ds["party_std"].map({"DEM": 1, "REP": -1}).fillna(0)
+        ds["pct"] = ds["pct"] + sgn * dem_shift / 2
+        cs = F.build_candidate_table(ds, macro, ne, funds, house=house, fec=fec)
+        cs["p"] = model.predict_proba(cs.reindex(columns=meta["features"]))[:, 1]
+        m = cs.set_index(["race_id", "cand_key"])["p"]
+        cand[f"win_prob_{label}"] = [m.get((r, c)) for r, c in
+                                     zip(cand["race_id"], cand["cand_key"])]
+    base_pick = cand.loc[cand.groupby("race_id")["win_prob"].idxmax()].set_index("race_id")["cand_key"]
+    fragile = set()
+    for label in ("R3", "D3"):
+        p2 = cand.loc[cand.groupby("race_id")[f"win_prob_{label}"].idxmax()].set_index("race_id")["cand_key"]
+        fragile |= set(base_pick.index[base_pick != p2.reindex(base_pick.index)])
+    cand["bias_fragile"] = cand["race_id"].isin(fragile).astype(int)
+    print(f"bias-fragile races (pick flips under a +/-3pt national poll shift): "
+          f"{len(fragile)} of {cand['race_id'].nunique()}")
     # within-race normalized probability (raw probs are per-candidate, not a race simplex)
     cand["win_prob_norm"] = (cand["win_prob"]
                              / cand.groupby("race_id")["win_prob"].transform("sum"))
 
     out_cols = ["race_id", "state", "office", "district", "candidate", "party",
                 "n_polls", "poll_avg", "poll_lead", "prior_margin_cand",
-                "is_incumbent", "win_prob", "win_prob_norm"]
+                "is_incumbent", "win_prob", "win_prob_norm",
+                "win_prob_R3", "win_prob_D3", "bias_fragile"]
     out = cand[out_cols].sort_values(["race_id", "win_prob"], ascending=[True, False])
     out_path = args.out or os.path.join(HERE, f"predictions_{args.cycle}.csv")
     out.to_csv(out_path, index=False)

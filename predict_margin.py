@@ -63,16 +63,30 @@ def main():
             print("WARNING: natl_env unavailable; feature will be NaN")
 
     funds = F.load_fundamentals()
-    cand = F.build_candidate_table(d, macro, ne, funds, house=house, fec=F.load_fec())
+    fec = F.load_fec()
+    cand = F.build_candidate_table(d, macro, ne, funds, house=house, fec=fec)
 
     missing = [f for f in meta["features"] if f not in cand.columns]
     assert not missing, f"artifact expects features absent from the built table: {missing[:8]}"
     X = cand.reindex(columns=meta["features"])
     cand["pred_margin"] = model.predict(X)
 
+    # poll-bias robustness sweep (see predict.py / HANDOFF.md): margins under a uniform
+    # 3-point national poll shift each way
+    for label, dem_shift in [("R3", -3.0), ("D3", +3.0)]:
+        ds = d.copy()
+        sgn = ds["party_std"].map({"DEM": 1, "REP": -1}).fillna(0)
+        ds["pct"] = ds["pct"] + sgn * dem_shift / 2
+        cs = F.build_candidate_table(ds, macro, ne, funds, house=house, fec=fec)
+        cs["p"] = model.predict(cs.reindex(columns=meta["features"]))
+        mm = cs.set_index(["race_id", "cand_key"])["p"]
+        cand[f"pred_margin_{label}"] = [mm.get((r, c)) for r, c in
+                                        zip(cand["race_id"], cand["cand_key"])]
+
     out_cols = ["race_id", "state", "office", "district", "candidate", "party",
                 "n_polls", "poll_avg", "poll_lead", "avg_margin_over_time",
-                "prior_margin_cand", "is_incumbent", "pred_margin"]
+                "prior_margin_cand", "is_incumbent", "pred_margin",
+                "pred_margin_R3", "pred_margin_D3"]
     out = cand[out_cols].sort_values(["race_id", "pred_margin"], ascending=[True, False])
     out_path = args.out or os.path.join(HERE, f"margin_predictions_{args.cycle}.csv")
     out.to_csv(out_path, index=False)
