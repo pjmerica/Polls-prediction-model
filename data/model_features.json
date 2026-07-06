@@ -32,6 +32,7 @@
   "undecided",
   "gap_x_recency",
   "natl_env_cand",
+  "bias_prior_cand",
   "poll_momentum",
   "poll_adj",
   "n_lead_changes",
@@ -350,12 +351,12 @@
  ],
  "xgb_params": {
   "max_depth": 2,
-  "learning_rate": 0.02,
-  "n_estimators": 300,
+  "learning_rate": 0.05,
+  "n_estimators": 150,
   "min_child_weight": 15,
-  "subsample": 0.8,
-  "colsample_bytree": 1.0,
-  "reg_lambda": 1,
+  "subsample": 0.6,
+  "colsample_bytree": 0.4,
+  "reg_lambda": 5,
   "reg_alpha": 0,
   "random_state": 42
  }
