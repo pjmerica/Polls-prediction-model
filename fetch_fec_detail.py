@@ -36,9 +36,13 @@ def fetch_cycle(cycle, key):
     for office in ("S", "H"):
         page = 1
         while True:
-            r = requests.get(BASE, params={
-                "api_key": key, "cycle": cycle, "office": office,
-                "election_full": "true", "per_page": 100, "page": page}, timeout=60)
+            try:
+                r = requests.get(BASE, params={
+                    "api_key": key, "cycle": cycle, "office": office,
+                    "election_full": "true", "per_page": 100, "page": page}, timeout=90)
+            except requests.exceptions.RequestException as e:
+                print(f"    {cycle}/{office} p{page}: {type(e).__name__}, retrying in 20s")
+                time.sleep(20); continue
             if r.status_code == 429:
                 time.sleep(30); continue
             r.raise_for_status()
@@ -73,14 +77,13 @@ def main():
     have = set(old["cycle"].unique()) if len(old) else set()
     todo = [c for c in CYCLES if args.all or c not in have or c == CYCLES[-1]]
 
-    frames = [old[~old["cycle"].isin(todo)]] if len(old) else []
+    kept = old[~old["cycle"].isin(todo)] if len(old) else pd.DataFrame()
     for cyc in todo:
         rows = fetch_cycle(cyc, key)
-        frames.append(pd.DataFrame(rows))
-        print(f"  {cyc}: {len(rows)} candidates")
-    df = pd.concat(frames, ignore_index=True)
-    df.to_csv(OUT, index=False)
-    print(f"saved -> {OUT}  ({len(df)} rows)")
+        kept = pd.concat([kept, pd.DataFrame(rows)], ignore_index=True)
+        kept.to_csv(OUT, index=False)          # checkpoint after every cycle
+        print(f"  {cyc}: {len(rows)} candidates (checkpointed, total {len(kept)})")
+    print(f"saved -> {OUT}  ({len(kept)} rows)")
 
 if __name__ == "__main__":
     main()

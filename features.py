@@ -128,12 +128,19 @@ def fec_cand_key(name):
     s = (parts[1] + " " + parts[0]) if len(parts) == 2 else s
     return norm_name(s)
 
-def load_fec(path=None):
+def load_fec(path=None, extended=False):
     """data/fec_summary.csv -> {(cycle,state,office,district,cand_key): {receipts,...}}.
 
     Senate district = ''; FEC House at-large '00' -> '1' (matches our race keys).
     NOTE the cutoff caveat in fetch_fec.py: historical totals run through Dec 31, so
     RATIO features (share/composition) are the trustworthy ones; raw totals are secondary.
+
+    extended=True (BATCH 5+ ONLY — changes feature values, so artifacts and predict must
+    flip together, then retrain) additionally merges:
+      - data/fec_detail.csv (API): itemized individual money -> small-dollar share
+        (unitemized = bulk total individual minus API itemized).
+      - data/governor_finance.csv (FollowTheMoney): governor receipts -> fund_receipts_ln
+        + fund_share finally exist for Governor rows (composition stays NaN).
     """
     path = path or os.path.join(DATA_DIR, "fec_summary.csv")
     f = pd.read_csv(path, dtype={"district": str})
@@ -143,13 +150,40 @@ def load_fec(path=None):
                      for o, di in zip(f["office"], f["district"])]
     f = f.sort_values("receipts", ascending=False).drop_duplicates(
         ["cycle", "state", "office", "district", "cand_key"])
-    return {(r.cycle, r.state, r.office, r.district, r.cand_key):
-            dict(receipts=r.receipts, indiv=r.indiv_contrib, pac=r.pac_contrib,
-                 party=r.party_contrib, self=r.self_fund)
-            for r in f.itertuples()}
+    out, by_id = {}, {}
+    for r in f.itertuples():
+        k = (r.cycle, r.state, r.office, r.district, r.cand_key)
+        out[k] = dict(receipts=r.receipts, indiv=r.indiv_contrib, pac=r.pac_contrib,
+                      party=r.party_contrib, self=r.self_fund, small=np.nan)
+        by_id[(r.cycle, r.cand_id)] = k
+    if not extended:
+        return out
+
+    det_path = os.path.join(DATA_DIR, "fec_detail.csv")
+    if os.path.exists(det_path):
+        det = pd.read_csv(det_path)
+        itemized = det.groupby(["cycle", "cand_id"])["indiv_itemized"].max()
+        for (cyc, cid), item in itemized.items():
+            k = by_id.get((cyc, cid))
+            if k and out[k]["indiv"] and out[k]["indiv"] > 0 and pd.notna(item):
+                out[k]["small"] = float(np.clip(1 - item / out[k]["indiv"], 0, 1))
+
+    gov_path = os.path.join(DATA_DIR, "governor_finance.csv")
+    if os.path.exists(gov_path):
+        g = pd.read_csv(gov_path)
+        g["cand_key"] = g["cand_name"].map(fec_cand_key)
+        g = g.sort_values("receipts", ascending=False).drop_duplicates(
+            ["cycle", "state", "cand_key"])
+        for r in g.itertuples():
+            if pd.notna(r.receipts):
+                out.setdefault((r.cycle, r.state, "Governor", "", r.cand_key),
+                               dict(receipts=float(r.receipts), indiv=np.nan, pac=np.nan,
+                                    party=np.nan, self=np.nan, small=np.nan))
+    return out
 
 FUND_FEATS = ["fund_receipts_ln", "fund_share", "fund_indiv_pct", "fund_pac_pct",
               "fund_party_pct", "fund_self_pct"]
+FUND_FEATS_EXT = FUND_FEATS + ["fund_smalldollar_pct"]   # batch 5+ (extended FEC)
 
 # ---------------------------------------------------------------- poll prep
 
@@ -334,6 +368,7 @@ def build_candidate_table(d, macro, natl_env_map, funds, house_train_years=None,
                 fund_pac_pct=(fe["pac"] / rec if fe and rec > 0 else np.nan),
                 fund_party_pct=(fe["party"] / rec if fe and rec > 0 else np.nan),
                 fund_self_pct=(fe["self"] / rec if fe and rec > 0 else np.nan),
+                fund_smalldollar_pct=(fe.get("small", np.nan) if fe else np.nan),
                 _fund_receipts=(rec if fe else np.nan),
             ) if fec is not None else {}
 

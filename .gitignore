@@ -40,6 +40,9 @@ data/*
 !data/approval_monthly.csv
 !data/generic_ballot_monthly.csv
 !data/fec_summary.csv
+!data/fec_detail.csv
+!data/governor_finance.csv
+!data/district_pvi_current.csv
 !data/redistricted_2026.csv
 
 # ...and the trained production model artifacts (predict.py / predict_margin.py load these)

@@ -1,0 +1,558 @@
+cycle,state,cand_name,party,incumbency,status,receipts
+1998,CA,"DAVIS, GRAY",Democratic,Open,Won-General,35084200.0
+1998,CA,"CHECCHI, ALFRED A",Democratic,Open,Lost-Primary,35027990.0
+1998,CA,"LUNGREN, DANIEL E",Republican,Open,Lost-General,29091427.0
+1998,TX,"BUSH, GEORGE W",Republican,Incumbent,Won-General,25035859.35
+1998,NY,"PATAKI, GEORGE E",Republican,Incumbent,Won-General,24556115.0
+1998,CA,"HARMAN, JANE",Democratic,Open,Lost-Primary,20517853.0
+1998,IL,"RYAN, GEORGE H",Republican,Open,Won-General,18878113.63
+1998,GA,"MILLNER, GUY WESLEY",Republican,Open,Lost-General,12557618.42
+1998,OH,"FISHER, LEE",Democratic,Open,Lost-General,11988480.69
+1998,OH,"TAFT, ROBERT",Republican,Open,Won-General,11886325.25
+1998,GA,"BARNES, ROY EUGENE",Democratic,Open,Won-General,11046890.02
+1998,FL,"BUSH, JOHN ELLIS (JEB)",Republican,Open,Won-General,8891016.98
+1998,MD,"GLENDENING, PARRIS N",Democratic,Incumbent,Won-General,7371857.03
+1998,WI,"THOMPSON, TOMMY G",Republican,Incumbent,Won-General,6941059.37
+1998,AL,"JAMES JR, FOB",Republican,Incumbent,Lost-General,6831113.63
+1998,FL,"MACKAY, BUDDY",Democratic,Open,Lost-General,6541061.28
+1998,MD,"SAUERBREY, ELLEN R",Republican,Challenger,Lost-General,6353911.35
+1998,AL,"SIEGELMAN, DON",Democratic,Challenger,Won-General,6150477.91
+1998,NV,"GUINN, KENNY",Republican,Unknown,Won-General,6102129.87
+1998,IL,"SCHMIDT, JOHN R",Democratic,Open,Lost-Primary,6029212.0
+1998,CT,"ROWLAND, JOHN G",Republican,Incumbent,Won-General,6028370.0
+1998,AL,"BLOUNT, WINTON M",Republican,Challenger,Lost-Primary,5794626.59
+1998,MI,"FIEGER, GEOFFREY N",Democratic,Challenger,Lost-General,5754906.0
+1998,MA,"CELLUCCI, A PAUL",Republican,Open,Won-General,5429472.0
+1998,TN,"SUNDQUIST, DONALD (DON)",Republican,Incumbent,Won-General,5405308.45
+1998,IL,"POSHARD, GLENN W",Democratic,Open,Lost-General,5024768.4
+1998,HI,"CAYETANO, BENJAMIN",Democratic,Incumbent,Won-General,4852768.96
+1998,SC,"BEASLEY, DAVID",Republican,Incumbent,Lost-General,4850415.13
+1998,MI,"ENGLER, JOHN M",Republican,Incumbent,Won-General,4612521.05
+1998,SC,"HODGES, JIM",Democratic,Challenger,Won-General,4580488.53
+1998,MA,"HARSHBARGER, SCOTT",Democratic,Open,Lost-General,3840035.0
+1998,HI,"LINGLE, LINDA",Republican,Challenger,Lost-General,3562254.75
+1998,TX,"MAURO, GARRY",Democratic,Challenger,Lost-General,3485205.25
+1998,MA,"MALONE, JOSEPH",Republican,Open,Lost-Primary,2954316.0
+1998,IA,"LIGHTFOOT, JAMES",Republican,Open,Lost-General,2950739.0
+1998,NM,"JOHNSON, GARY E",Republican,Incumbent,Won-General,2848686.07
+1998,GA,"MASSEY, LEWIS A",Democratic,Open,Lost-Primary,2848119.0
+1998,IA,"VILSACK, THOMAS JAMES (TOM)",Democratic,Open,Won-General,2687880.0
+1998,NM,"CHAVEZ, MARTIN J",Democratic,Challenger,Lost-General,2564777.88
+1998,MN,"HUMPHREY III, HUBERT H",Democratic,Open,Lost-General,2523770.76
+1998,GA,"BOWERS, MICHAEL",Republican,Open,Lost-Primary,2476731.93
+1998,CT,"KENNELLY, BARBARA",Democratic,Challenger,Lost-General,2299437.0
+1998,KS,"GRAVES, BILL",Republican,Incumbent,Won-General,2284729.72
+1998,AZ,"HULL, JANE DEE",Republican,Incumbent,Won-General,2185798.89
+1998,MN,"DAYTON, MARK",Democratic,Open,Lost-Primary,2159658.27
+1998,MN,"COLEMAN, NORM",Republican,Open,Lost-General,2130883.45
+1998,CO,"OWENS, BILL",Republican,Open,Won-General,1911296.75
+1998,MI,"OWEN, LARRY",Democratic,Open,Lost-Primary,1720751.65
+1998,AK,"LINDAUER, JOHN",Republican,Challenger,Lost-General,1653018.66
+1998,NH,"LUCAS, JAY",Republican,Challenger,Lost-General,1635343.0
+1998,CO,"SCHOETTLER, GAIL S",Democratic,Open,Lost-General,1621225.82
+1998,GA,"POYTHRESS, DAVID BRYAN",Democratic,Open,Lost-Primary,1554515.0
+1998,NV,"RUSSO, AARON",Republican,Unknown,Lost-Primary,1532545.09
+1998,NH,"SHAHEEN, JEANNE",Democratic,Incumbent,Won-General,1523251.59
+1998,MI,"ROSS, DOUG",Democratic,Open,Lost-Primary,1465704.68
+1998,AZ,"JOHNSON, PAUL EDWARD",Democratic,Challenger,Lost-General,1443662.69
+1998,MA,"MCGOVERN, PATRICIA",Democratic,Open,Lost-Primary,1431669.59
+1998,ID,"KEMPTHORNE, DIRK",Republican,Open,Won-General,1424361.75
+1998,OR,"KITZHABER, JOHN A",Democratic,Incumbent,Won-General,1294813.73
+1998,MD,"REHRMANN, EILEEN M",Democratic,Challenger,Lost-Primary,1217710.0
+1998,AK,"KNOWLES, TONY",Democratic,Incumbent,Won-General,1075432.09
+1998,HI,"HIRONO, MAZIE K",Democratic,Incumbent,Won-General,1060086.65
+1998,OR,"SIZEMORE, BILL",Republican,Challenger,Lost-General,1035607.85
+1998,MN,"VENTURA, JESSE",Third-Party,Open,Won-General,1030992.61
+1998,GA,"LANGFORD, STEVE",Democratic,Open,Lost-Primary,1021342.32
+1998,NM,"DENISH, DIANE D",Democratic,Challenger,Lost-General,824772.41
+1998,IL,"BURNS, JIM",Democratic,Open,Lost-Primary,822170.0
+1998,MN,"FREEMAN, MIKE",Democratic,Open,Lost-Primary,807345.45
+1998,MN,"MONDALE, TED",Democratic,Open,Lost-Primary,736955.44
+1998,ME,"KING JR, ANGUS STANLEY",Third-Party,Incumbent,Won-General,713414.9
+1998,NV,"JONES, JAN LAVERTY",Democratic,Unknown,Lost-General,650557.29
+1998,HI,"KOKI, STANLEY",Republican,Challenger,Lost-General,603351.25
+1998,WY,"GERINGER, JIM",Republican,Incumbent,Won-General,573307.42
+1998,HI,"FASI, FRANK",Republican,Open,Lost-Primary,544742.39
+1998,RI,"YORK, MYRTH B",Democratic,Challenger,Lost-General,533229.0
+1998,AL,"MCALLISTER, MAC",Republican,Challenger,Lost-Primary,456514.37
+1998,MN,"JOHNSON, DOUG",Democratic,Open,Lost-Primary,450546.0
+1998,MD,"ECKER, CHARLES I",Republican,Open,Lost-Primary,449653.44
+1998,IA,"MCCORMICK, MARK",Democratic,Open,Lost-Primary,427708.0
+1998,RI,"ALMOND, LINCOLN C",Republican,Incumbent,Won-General,418167.0
+1998,AL,"PATE, LENORA",Democratic,Open,Lost-Primary,389214.02
+1998,NH,"RUBENS, JAMES M (JIM)",Republican,Open,Lost-Primary,368397.0
+1998,CO,"NORTON, TOM",Republican,Open,Lost-Primary,352995.0
+1998,IA,"OMAN, DAVID A",Republican,Open,Lost-Primary,334705.0
+1998,KS,"MILLER, DAVID",Republican,Challenger,Lost-Primary,325350.59
+1998,IL,"BURRIS, ROLAND W",Democratic,Open,Lost-Primary,320322.0
+1998,VT,"DEAN III, HOWARD B",Democratic,Incumbent,Won-General,311069.0
+1998,NM,"FULLERTON, REESE P",Democratic,Open,Lost-Primary,299299.22
+1998,CO,"FEELEY, MIKE",Democratic,Open,Lost-Primary,264743.0
+1998,ID,"HUNTLEY JR, ROBERT CARSON (BOB)",Democratic,Open,Lost-General,261421.07
+1998,IL,"TOBIN, JAMES",Third-Party,Open,Lost-General,260151.0
+1998,AL,"HUNT, GUY",Republican,Challenger,Lost-Primary,246158.29
+1998,VT,"DWYER, RUTH",Republican,Challenger,Lost-General,245514.22
+1998,AZ,"HOWL, JAMES MONTGOMERY",Republican,Challenger,Lost-Primary,243813.0
+1998,NM,"APODACA, JERRY",Democratic,Open,Lost-Primary,241848.0
+1998,AK,"TAYLOR, ROBIN L",Republican,Open,Lost-Primary,239293.16
+1998,VT,"ROME, BERNIE",Republican,Open,Lost-Primary,219176.76
+1998,WI,"GEORGE, GARY A",Democratic,Open,Lost-Primary,205012.0
+1998,AZ,"RAWLES, TOM",Third-Party,Open,Lost-Primary,201870.88
+1998,GA,"SCHAEFER, NANCY",Republican,Open,Lost-Primary,197571.0
+1998,CA,"BROWN, KATHLEEN",Democratic,Open,Lost-Primary,180000.0
+1998,NM,"KING, GARY KENNETH",Democratic,Open,Lost-Primary,176738.52
+1998,AK,"ROSS, WAYNE A",Republican,Open,Lost-Primary,167744.3
+1998,WI,"MCCALLUM, SCOTT",Republican,Incumbent,Won-General,162691.92
+1998,NH,"BEAULIEU, EMILE D",Republican,Open,Lost-Primary,156109.54
+1998,HI,"LIU, MICHAEL",Republican,Open,Lost-Primary,153496.41
+1998,MA,"DONNELLY, BRIAN J",Democratic,Open,Lost-Primary,139325.0
+1998,MI,"ARTINIAN, GARY",Republican,Challenger,Lost-Primary,134569.98
+1998,AK,"WARD, JERRY",Republican,Challenger,Lost-General,123431.01
+1998,MD,"MCGUIRE, TERENCE",Democratic,Challenger,Lost-Primary,109750.0
+1998,IA,"PATE, PAUL D",Republican,Open,Lost-Primary,107045.0
+1998,WI,"GARVEY, ED",Democratic,Challenger,Lost-General,93095.42
+1998,IL,"KOPPIE, CHAD",Republican,Open,Lost-Primary,91700.0
+1998,ME,"CONNOLLY, THOMAS J",Democratic,Challenger,Lost-General,88453.55
+1998,NM,"CHAVEZ, BEN",Democratic,Open,Lost-Primary,87098.04
+1998,TN,"WHITAKER, MIKE",Democratic,Open,Lost-Primary,81436.0
+1998,NV,"HAMMARGREN, LONNIE LEE",Republican,Unknown,Lost-Primary,75100.29
+1998,KS,"SAWYER, TOM",Democratic,Challenger,Lost-General,71943.15
+1998,ME,"LONGLEY JR, JAMES B",Republican,Challenger,Lost-General,71677.0
+1998,NM,"BRADLEY, WALTER D",Republican,Incumbent,Won-General,70367.0
+1998,AL,"WILLIAMS, PHIL",Republican,Challenger,Lost-Primary,62281.31
+1998,NH,"BRAMANTE, FREDERICK",Republican,Open,Lost-Primary,59887.22
+1998,GA,"HAMRICK, BILL",Republican,Open,Lost-General,47252.93
+1998,CA,"KUBBY, STEVE W",Third-Party,Open,Lost-Primary,36610.0
+1998,NV,"NEAL, JOE",Democratic,Unknown,Lost-Primary,32144.0
+1998,GA,"HATFIELD, BRUCE",Republican,Open,Lost-Primary,30860.95
+1998,AZ,"BROWN, CHARLES A",Republican,Challenger,Lost-Primary,25351.0
+1998,WI,"LAWTON, BARBARA C",Democratic,Challenger,Lost-General,25309.41
+1998,CO,"LEONARD, TIM",Third-Party,Open,Lost-General,21353.0
+1998,AK,"COLLINS, VIRGINIA",Republican,Open,Lost-Primary,20010.33
+1998,MN,"PENTEL, KEN",Third-Party,Open,Lost-Primary,19010.23
+1998,NV,"CHAMPAGNE, JIM",Democratic,Unknown,Lost-Primary,17250.0
+1998,GA,"JAMES, MORRIS",Democratic,Open,Lost-Primary,17094.0
+1998,OH,"MITCHEL, JOHN",Third-Party,Open,Lost-General,16800.22
+1998,ME,"LAMARCHE, PATRICIA H",Third-Party,Challenger,Lost-General,16486.0
+1998,KS,"KING, DARREL",Third-Party,Challenger,Lost-General,16439.76
+1998,AK,"HOLMES, DOYLE E",Republican,Open,Lost-Primary,14872.3
+1998,SC,"MOULTRIE, TIMOTHY",Third-Party,Challenger,Lost-General,14754.6
+1998,NV,"SWINDLE, BURVLE (ED)",Democratic,Unknown,Lost-Primary,14220.0
+1998,MD,"KRAMER, SIDNEY",Democratic,Challenger,Lost-Primary,12100.0
+1998,MA,"COOK, DEAN",Third-Party,Open,Lost-General,12032.0
+1998,TN,"HOOKER, JOHN JAY",Democratic,Challenger,Lost-General,10475.0
+1998,AK,"METCALFE, RAY",Third-Party,Challenger,Lost-General,10417.0
+1998,CA,"PERON, DENNIS",Republican,Open,Lost-Primary,10110.0
+1998,ID,"TARNASKY, WILLIAM G",Democratic,Open,Lost-Primary,9548.66
+1998,GA,"MYERS, CARLTON",Democratic,Open,Lost-Primary,9500.0
+1998,ME,"CLARKE JR, WILLIAM P",Third-Party,Challenger,Lost-General,8640.0
+1998,HI,"DUDLEY, MICHAEL",Republican,Open,Lost-Primary,8125.0
+1998,GA,"CASHIN, JACK",Third-Party,Open,Lost-General,7966.62
+1998,OR,"SPIDAL, WILLIAM E",Republican,Open,Lost-Primary,7712.0
+1998,AZ,"GALLANT, KATHERINE",Third-Party,Challenger,Lost-General,7685.43
+1998,CT,"VARE, NED",Third-Party,Challenger,Lost-General,7316.0
+1998,AK,"ANDERSON JR, NELS",Democratic,Challenger,Lost-Primary,7064.44
+1998,SC,"EUBANKS, BOBBY",Third-Party,Challenger,Lost-General,6792.33
+1998,OR,"BURKE, RICHARD P",Third-Party,Challenger,Lost-General,6746.79
+1998,AK,"BEGICH, NICHOLAS J (NICK)",Third-Party,Challenger,Lost-General,6345.19
+1998,ID,"SHEPHERD, DAVID",Republican,Unknown,Lost-Primary,5915.39
+1998,OH,"FEITLER, ZANNA",Third-Party,Open,Lost-General,5465.49
+1998,AK,"JACOBSSON, ERICA LESLIE",Third-Party,Challenger,Lost-General,4979.5
+1998,KS,"POOVEY, KIRT",Third-Party,Challenger,Lost-General,4648.0
+1998,AK,"SMITH, DON",Republican,Open,Lost-Primary,4631.41
+1998,IL,"REDMOND, LAWRENCE",Third-Party,Open,Lost-General,4190.0
+1998,OR,"BOBIER, BLAIR",Third-Party,Challenger,Lost-General,4167.58
+1998,CO,"JOHNSON, SANDRA D",Third-Party,Open,Lost-General,3995.0
+1998,OR,"WEIDNER, ROGER",Third-Party,Challenger,Lost-General,3880.0
+1998,NM,"SMITH, GEORGE E",Third-Party,Challenger,Lost-General,3430.0
+1998,RI,"HEALEY JR, ROBERT J",Third-Party,Challenger,Lost-General,3329.0
+1998,WI,"MUELLER, JIM",Third-Party,Challenger,Lost-General,3134.72
+1998,MN,"GERMANN, FRANK",Third-Party,Open,Lost-Primary,3100.0
+1998,ME,"JOY, HENRY L",Republican,Open,Lost-Primary,3085.0
+1998,NV,"ADAMSON, CAESAR D",Democratic,Unknown,Lost-Primary,2700.0
+1998,OR,"HUSS, WALTER",Republican,Open,Lost-Primary,1990.0
+1998,IA,"HENNAGER, JIM",Third-Party,Open,Lost-General,1845.3
+1998,FL,"MCALEXANDER, L NELSON (MAC)",Third-Party,Open,Lost-General,1840.0
+1998,CA,"JENSEN, PIA",Democratic,Open,Lost-Primary,1768.0
+1998,CT,"ZDONCZYK, JOSEPH A",Third-Party,Challenger,Lost-General,1564.0
+1998,ID,"MCMURRIAN, DONALD D",Democratic,Open,Lost-Primary,1373.8
+1998,AZ,"MALCOMSON, SCOTT",Third-Party,Challenger,Lost-General,1045.0
+1998,ID,"RICKARDS, PETER",Third-Party,Open,Lost-General,842.55
+1998,MN,"DAHN, BILL",Republican,Open,Lost-Primary,820.0
+1998,OR,"FOLEY, DAVE",Democratic,Challenger,Lost-Primary,800.19
+1998,IA,"HUGHES SR, JEFFREY L",Third-Party,Open,Lost-Primary,692.0
+1998,ID,"CHAPPELL, JACK WAYNE",Democratic,Open,Lost-Primary,630.0
+1998,OR,"WELLS, PAUL DAMIAN",Democratic,Challenger,Lost-Primary,603.0
+1998,NV,"WESTCOTT, BRUCE",Republican,Unknown,Lost-Primary,575.0
+1998,OR,"SMITH, TREY",Third-Party,Challenger,Lost-General,479.8
+1998,ME,"MARTIN, LEO G",Republican,Open,Lost-Primary,350.0
+1998,WI,"FRAMI, EDWARD J",Third-Party,Challenger,Lost-General,332.4
+1998,OR,"STEURER, PATTI",Third-Party,Challenger,Lost-General,315.0
+1998,OR,"BRADY, JEFFREY",Republican,Open,Lost-Primary,300.0
+1998,HI,"BREWER JR, JIM",Democratic,Challenger,Lost-Primary,250.0
+1998,TX,"CRAWFORD, R C",Republican,Challenger,Lost-Primary,250.0
+1998,HI,"SHIRATORI, MILES F",Democratic,Challenger,Lost-Primary,200.0
+1998,CA,"CRAWFORD, JAMES D",Republican,Open,Lost-Primary,200.0
+1998,MD,"WINDSOR, BARBARA",Republican,Open,Lost-Primary,150.0
+1998,IA,"MOSES, EDWARD",Third-Party,Open,Lost-Primary,115.0
+1998,AK,"HARRISON, DAVID C",Third-Party,Open,Lost-Primary,100.0
+1998,MN,"WRIGHT, CHRIS",Third-Party,Open,Lost-Primary,100.0
+1998,CA,"RIVERA, EDUARDO M",Republican,Open,Lost-Primary,100.0
+1998,FL,"HERMAN, RAPHAEL",Democratic,Open,Withdrew-General,100.0
+1998,VT,"BERKEY, AMY",Third-Party,Challenger,Lost-General,95.2
+1998,NV,"SCOTT, BARBARA",Democratic,Unknown,Lost-Primary,50.0
+1998,VT,"PEARL, BRIAN",Democratic,Challenger,Lost-General,25.0
+1998,IL,"BURGESS, LARRY",Democratic,Open,Lost-Primary,10.0
+1998,MD,"FREEMAN, LAWRENCE K",Democratic,Challenger,Lost-Primary,0.0
+1998,AL,"LAMB, LEE",Democratic,Open,Lost-Primary,0.0
+1998,AL,"SOWELL, WAYNE",Democratic,Open,Lost-Primary,0.0
+1998,AK,"HALDANE, HAROLD",Third-Party,Open,Lost-Primary,0.0
+1998,AK,"SYKES, JAMES L",Third-Party,Open,Lost-Primary,0.0
+1998,AK,"WINN, DANIEL B",Third-Party,Open,Lost-Primary,0.0
+1998,AK,"WRIGHT, DONALD R",Democratic,Challenger,Lost-Primary,0.0
+1998,CA,"FEINLAND, MARSHA",Third-Party,Open,Lost-Primary,0.0
+1998,CA,"PALITZ, MICHAEL",Democratic,Open,Lost-Primary,0.0
+1998,CA,"PINEDA JR, CHARLES (CHUCK)",Democratic,Open,Lost-Primary,0.0
+1998,CA,"WILLIAMS, JEFF",Republican,Open,Lost-Primary,0.0
+1998,IL,"HORTON, MAURICE",Democratic,Open,Lost-Primary,0.0
+1998,KS,"PHELPS, FRED",Democratic,Open,Lost-Primary,0.0
+1998,MD,"DALTON, ROBERT J",Democratic,Challenger,Lost-Primary,0.0
+1998,MD,"NAFZIGER, MARK S",Democratic,Challenger,Lost-Primary,0.0
+1998,ME,"RICCI, JOSEPH J",Democratic,Open,Lost-Primary,0.0
+1998,MN,"SAVIOR, OLE",Democratic,Open,Lost-Primary,0.0
+1998,NH,"KROEPEL, ROBERT HOWARD",Republican,Open,Lost-Primary,0.0
+1998,NH,"ROCKWELL, S SHOSHANNA",Third-Party,Open,Lost-Primary,0.0
+1998,NV,"FITZPATRICK, PATRICK MATTHEW",Democratic,Unknown,Lost-Primary,0.0
+1998,NY,"HYNES, CHARLES J",Democratic,Open,Lost-Primary,0.0
+1998,NY,"KING, CHARLES G",Democratic,Open,Lost-Primary,0.0
+1998,NY,"LAROCCA, JAMES L",Democratic,Open,Lost-Primary,0.0
+1998,RI,"DIPIPPO, PETER T",Third-Party,Open,Lost-Primary,0.0
+1998,RI,"GIL, DON",Third-Party,Open,Lost-Primary,0.0
+1998,RI,"POTTER, JACK DENNISON",Democratic,Open,Lost-Primary,0.0
+1998,RI,"RAPOSA, GREGORY",Third-Party,Open,Lost-Primary,0.0
+1998,RI,"RICHARDSON, ERIC S",Third-Party,Open,Lost-Primary,0.0
+1998,WI,"HYSLOP, JEFFREY A",Republican,Challenger,Lost-Primary,0.0
+1998,AK,"SULLIVAN, SYLVIA",Third-Party,Challenger,Lost-General,0.0
+1998,CA,"BLOOMFIELD, HAROLD H",Third-Party,Open,Lost-General,0.0
+1998,CA,"HAMBURG, DAN",Third-Party,Open,Lost-General,0.0
+1998,CA,"JOHNSON, NATHAN E",Third-Party,Open,Lost-General,0.0
+1998,CA,"LA RIVA, GLORIA ESTELA",Third-Party,Open,Lost-General,0.0
+1998,CT,"SCAGLIONE, ROBERTA M",Third-Party,Challenger,Lost-General,0.0
+1998,IL,"FRIEDMAN, FRANCES",Third-Party,Open,Lost-General,0.0
+1998,IL,"JOHNSON, MARY",Third-Party,Open,Lost-General,0.0
+1998,IL,"KATZ, SARAH H",Third-Party,Open,Lost-General,0.0
+1998,IL,"LICHTENBERGER, LARRY",Third-Party,Open,Lost-General,0.0
+1998,IL,"STUDER, JOHN",Third-Party,Open,Lost-General,0.0
+1998,IL,"WEATHERS, BERNETA",Third-Party,Open,Lost-General,0.0
+1998,MI,"FOREBACK, VICKI",Third-Party,Challenger,Lost-General,0.0
+1998,MI,"HUMPHREY, CARL",Third-Party,Challenger,Lost-General,0.0
+1998,MI,"KATZ, MARC",Third-Party,Challenger,Lost-General,0.0
+1998,MI,"LINK, TERRY",Third-Party,Challenger,Lost-General,0.0
+1998,MI,"MAREK, ROBERT",Third-Party,Challenger,Lost-General,0.0
+1998,MI,"MATTHEW III, JOHNNI",Third-Party,Challenger,Lost-General,0.0
+1998,MI,"WAGONLANDER, MICHEAL",Third-Party,Challenger,Lost-General,0.0
+1998,NH,"BLEVENS, KENNETH E (KEN)",Third-Party,Challenger,Lost-General,0.0
+1998,NY,"GOLISANO, B THOMAS",Third-Party,Challenger,Lost-General,0.0
+1998,NY,"MCCAUGHEY, ELIZABETH (BETSY)",Third-Party,Challenger,Lost-General,0.0
+1998,NY,"REYNOLDS, MICHAEL J",Third-Party,Challenger,Lost-General,0.0
+1998,NY,"VALLONE, PETER F",Democratic,Challenger,Lost-General,0.0
+1998,RI,"DEVINE, JOHN PATRICK",Third-Party,Challenger,Lost-General,0.0
+1998,VT,"GOTTLIEB, RICHARD",Third-Party,Challenger,Lost-General,0.0
+1998,VT,"WILLIAMS, JOEL W",Third-Party,Challenger,Lost-General,0.0
+1998,WI,"BRIDGES, VIDA HARLEY",Third-Party,Challenger,Lost-General,0.0
+1998,WI,"DEAN, JAMES",Third-Party,Challenger,Lost-General,0.0
+1998,WI,"MANGAN, MIKE",Third-Party,Challenger,Lost-General,0.0
+1998,WI,"MUHAMMED, A-JA-MU",Third-Party,Challenger,Lost-General,0.0
+1998,WI,"RIVERS, THOMAS R",Republican,Challenger,Lost-General,0.0
+1998,WI,"SMITH, JEFFREY LANE",Third-Party,Challenger,Lost-General,0.0
+2000,NC,"EASLEY, MICHAEL F",Democratic,Open,Won-General,10546042.0
+2000,IN,"OBANNON, FRANK L",Democratic,Incumbent,Won-General,10366290.1
+2000,MO,"HOLDEN, BOB",Democratic,Open,Won-General,9421843.0
+2000,MO,"TALENT, JIM",Republican,Open,Lost-General,8288485.0
+2000,NC,"VINROOT, RICHARD A",Republican,Open,Lost-General,8136466.0
+2000,IN,"MCINTOSH, DAVID",Republican,Challenger,Lost-General,7930191.81
+2000,NC,"WICKER, DENNIS A",Democratic,Open,Lost-Primary,4784371.0
+2000,WA,"LOCKE, GARY F",Democratic,Incumbent,Won-General,3999150.0
+2000,MT,"OKEEFE, MARK D",Democratic,Open,Lost-General,3013448.0
+2000,WV,"WISE, BOB",Democratic,Challenger,Won-General,2849829.52
+2000,WA,"CARLSON, JOHN E",Republican,Challenger,Lost-General,2840053.0
+2000,NH,"SHAHEEN, JEANNE",Democratic,Incumbent,Won-General,2695945.04
+2000,NH,"HUMPHREY, GORDON J",Republican,Challenger,Lost-General,2627613.85
+2000,WV,"UNDERWOOD, CECIL H",Republican,Incumbent,Lost-General,2623279.34
+2000,UT,"LEAVITT, MICHAEL O",Republican,Incumbent,Won-General,1973067.49
+2000,ND,"HOEVEN III, JOHN HENRY",Republican,Open,Won-General,1789929.32
+2000,DE,"BURRIS, JOHN",Republican,Open,Lost-General,1522178.0
+2000,DE,"MINNER, RUTH ANN",Democratic,Open,Won-General,1497552.0
+2000,NC,"NEELY, CHARLES B JR",Republican,Open,Lost-Primary,1180723.0
+2000,ND,"HEITKAMP, HEIDI",Democratic,Open,Lost-General,983335.72
+2000,MT,"MARTZ, JUDY",Republican,Open,Won-General,979598.0
+2000,VT,"DWYER, RUTH",Republican,Challenger,Lost-General,878494.25
+2000,VT,"DEAN III, HOWARD B",Democratic,Incumbent,Won-General,674462.0
+2000,WV,"LEES, JIM",Democratic,Open,Lost-Primary,601064.22
+2000,NH,"SQUIRES, JAMES (JIM)",Republican,Open,Lost-Primary,371972.93
+2000,DE,"LEE, WILLIAM S (BILL)",Republican,Open,Lost-Primary,343480.0
+2000,VT,"POLLINA, ANTHONY",Third-Party,Challenger,Lost-General,299961.0
+2000,NH,"FERNALD, MARK",Democratic,Challenger,Lost-Primary,285319.0
+2000,MT,"MAZUREK, JOSEPH P",Democratic,Open,Lost-Primary,268651.0
+2000,NH,"HOWARD, JEFF",Republican,Open,Lost-Primary,225201.78
+2000,MT,"NATELSON, ROBERT G",Republican,Open,Lost-Primary,219854.0
+2000,UT,"ORTON, BILL",Democratic,Challenger,Lost-General,174190.65
+2000,NH,"BRAMANTE, FREDERICK",Republican,Open,Lost-Primary,159412.21
+2000,IN,"PRICE, JOHN RICHARD",Republican,Open,Lost-Primary,150214.45
+2000,MT,"COONEY, MIKE",Democratic,Open,Lost-Primary,141148.0
+2000,WA,"HOCHSTATTER, HAROLD J",Republican,Open,Lost-Primary,120960.0
+2000,UT,"DAVIS, GLEN P",Republican,Challenger,Lost-Primary,84135.77
+2000,VT,"MEUB, WILLIAM",Republican,Open,Lost-Primary,77530.94
+2000,WV,"OLIVERIO, JOSEPH (JOEY)",Republican,Challenger,Lost-Primary,63258.52
+2000,NC,"HOWE, BARBARA",Third-Party,Open,Lost-General,42375.0
+2000,MO,"RICE, LARRY",Third-Party,Open,Lost-General,38206.0
+2000,WV,"GIARDINA, DENISE",Third-Party,Challenger,Lost-General,37061.63
+2000,WA,"FOREMAN, DALE M",Republican,Open,Lost-Primary,28157.0
+2000,MO,"WHITAKER, TIM",Third-Party,Open,Lost-Primary,25515.0
+2000,WV,"MYERS, BOB",Third-Party,Challenger,Lost-General,19696.0
+2000,IN,"HORNING, ANDREW (ANDY)",Third-Party,Challenger,Lost-General,14083.53
+2000,NH,"BROWN, MARY E",Third-Party,Challenger,Lost-General,11394.62
+2000,WV,"ASHELMAN, RANDALL B",Third-Party,Challenger,Lost-General,10520.27
+2000,WA,"LEPAGE, STEVE W",Third-Party,Challenger,Lost-General,8245.0
+2000,WV,"MCCASE, DONNA H",Republican,Challenger,Lost-Primary,8201.78
+2000,VT,"STANNARD SR, PHIL",Third-Party,Challenger,Lost-General,8170.0
+2000,MO,"KLINE, RICHARD ALLEN",Third-Party,Open,Lost-General,7462.0
+2000,MO,"MACY, ELGAR",Republican,Open,Lost-Primary,7265.0
+2000,MT,"JONES, STANLEY R",Third-Party,Open,Lost-General,5746.0
+2000,NH,"BABIARZ, JOHN J",Third-Party,Challenger,Lost-General,5716.99
+2000,WA,"HELLER, META E",Democratic,Challenger,Lost-Primary,5681.0
+2000,WV,"DAVIS, LOUIS J",Third-Party,Challenger,Lost-General,3958.84
+2000,WV,"PAIGE III, JAMES H",Unknown,Open,Lost-Primary,3160.0
+2000,NC,"MANNING, ART",Republican,Open,Lost-Primary,2600.0
+2000,NC,"LITTLEJOHN, JONATHAN D",Third-Party,Open,Lost-Primary,1565.0
+2000,VT,"CHRISTIAN, MARILYNN VERNA (MOM)",Third-Party,Challenger,Lost-General,1275.0
+2000,VT,"PEARL, BRIAN",Democratic,Challenger,Lost-Primary,1100.0
+2000,WV,"BUTCHER, LARRY EUGENE",Republican,Challenger,Lost-Primary,935.0
+2000,MO,"KELLER, JOSEPH C",Third-Party,Open,Lost-Primary,915.0
+2000,DE,"MCDOWELL SR, FLOYD E",Third-Party,Open,Lost-General,750.0
+2000,NC,"SCHELL, DOUGLAS W",Third-Party,Open,Lost-General,100.0
+2000,UT,"FRIEDBAUM, JEREMY",Third-Party,Challenger,Lost-General,41.42
+2000,MO,"BENSON, KENT A",Third-Party,Open,Lost-Primary,0.0
+2000,MO,"ILLYES, DICK",Third-Party,Open,Lost-Primary,0.0
+2000,MO,"SIEVERS, JENNIE LEE SCHWARTZE (JEN)",Republican,Open,Lost-Primary,0.0
+2000,MO,"UKKTESM, DUC",Third-Party,Open,Lost-Primary,0.0
+2000,NC,"DAUGHTRY, NAMON LEO",Republican,Open,Lost-Primary,0.0
+2000,NH,"MARRON, JIM",Republican,Open,Lost-Primary,0.0
+2000,WV,"BOOHER, HUGHES",Republican,Challenger,Lost-Primary,0.0
+2000,MO,"SMITH, RICHARD L",Third-Party,Open,Lost-General,0.0
+2000,MO,"SWENSON, JOHN M",Third-Party,Open,Lost-General,0.0
+2000,ND,"ANDERSON, WAYNE JC",Third-Party,Open,Lost-General,0.0
+2000,ND,"ROSZKOWSKI, CHRISTINE",Third-Party,Open,Lost-General,0.0
+2000,UT,BELL,Third-Party,Challenger,Lost-General,0.0
+2000,UT,"MASON, JOHN",Third-Party,Challenger,Lost-General,0.0
+2002,NY,"GOLISANO, B THOMAS",Third-Party,Challenger,Lost-General,74882824.0
+2002,TX,"SANCHEZ JR, ANTONIO R (TONY)",Democratic,Challenger,Lost-General,66253516.36
+2002,CA,"DAVIS, GRAY",Democratic,Incumbent,Won-General,58183685.58
+2002,CA,"SIMON JR, WILLIAM E (BILL)",Republican,Challenger,Lost-General,45530544.01
+2002,PA,"RENDELL, EDWARD G (ED)",Democratic,Open,Won-General,43721239.08
+2002,NY,"PATAKI, GEORGE E",Republican,Incumbent,Won-General,43589765.59
+2002,IL,"BLAGOJEVICH, ROD R",Democratic,Open,Won-General,24785619.97
+2002,TX,"PERRY, JAMES RICHARD (RICK)",Republican,Incumbent,Won-General,24725965.63
+2002,GA,"BARNES, ROY EUGENE",Democratic,Incumbent,Lost-General,21681487.69
+2002,IL,"RYAN, JAMES E",Republican,Open,Lost-General,16368938.51
+2002,NY,"MCCALL, H CARL",Democratic,Challenger,Lost-General,15740737.34
+2002,AL,"RILEY JR, ROBERT R",Republican,Challenger,Won-General,15110613.39
+2002,PA,"CASEY JR, ROBERT P (BOB)",Democratic,Open,Lost-Primary,14150201.84
+2002,PA,"FISHER, MIKE",Republican,Open,Lost-General,13680230.3
+2002,OH,"TAFT, ROBERT",Republican,Incumbent,Won-General,12889727.11
+2002,NY,"CUOMO, ANDREW M",Third-Party,Challenger,Lost-General,12620461.71
+2002,CA,"RIORDAN, RICHARD J",Republican,Open,Lost-Primary,12085799.36
+2002,NH,"BENSON, CRAIG R",Republican,Open,Won-General,11440150.74
+2002,AL,"SIEGELMAN, DON",Democratic,Incumbent,Lost-General,10298913.51
+2002,FL,"BUSH, JOHN ELLIS (JEB)",Republican,Incumbent,Won-General,10266823.83
+2002,MD,"EHRLICH JR, ROBERT L",Republican,Open,Won-General,10015180.78
+2002,MI,"GRANHOLM, JENNIFER M",Democratic,Open,Won-General,9700769.52
+2002,MA,"ROMNEY, WILLARD MITT",Republican,Open,Won-General,9285464.4
+2002,IL,"WOOD, CORINNE J GIESEKI",Republican,Open,Lost-Primary,8703232.29
+2002,FL,"MCBRIDE, WILLIAM H",Democratic,Challenger,Lost-General,8573319.42
+2002,TN,"BREDESEN, PHILIP N (PHIL)",Democratic,Open,Won-General,8305575.55
+2002,NM,"RICHARDSON, WILLIAM B (BILL)",Democratic,Open,Won-General,8174645.24
+2002,MD,"TOWNSEND, KATHLEEN KENNEDY",Democratic,Open,Lost-General,7736158.22
+2002,WI,"MCCALLUM, SCOTT",Republican,Incumbent,Lost-General,7538778.54
+2002,IA,"VILSACK, THOMAS JAMES (TOM)",Democratic,Incumbent,Won-General,7456881.72
+2002,TN,"HILLEARY, VAN",Republican,Open,Lost-General,7453402.62
+2002,SC,"SANFORD JR, MARSHALL C (MARK)",Republican,Challenger,Won-General,6839250.13
+2002,IA,"GROSS, DOUG",Republican,Challenger,Lost-General,6264432.84
+2002,SC,"HODGES, JIM",Democratic,Incumbent,Lost-General,6190567.47
+2002,CT,"ROWLAND, JOHN G",Republican,Incumbent,Won-General,6171598.62
+2002,MA,"OBRIEN, SHANNON P",Democratic,Open,Lost-General,5793927.26
+2002,CO,"OWENS, BILL",Republican,Incumbent,Won-General,5512513.9
+2002,WI,"DOYLE, JIM",Democratic,Challenger,Won-General,5504347.59
+2002,HI,"LINGLE, LINDA",Republican,Open,Won-General,5325602.09
+2002,GA,"PERDUE, SONNY",Republican,Challenger,Won-General,5001612.86
+2002,CA,"JONES, BILL",Republican,Open,Lost-Primary,4960822.37
+2002,KS,"SEBELIUS, KATHLEEN GILLIGAN",Democratic,Open,Won-General,4809189.9
+2002,OR,"MANNIX, KEVIN L",Republican,Open,Lost-General,4633721.16
+2002,IL,"OMALLEY, PATRICK J",Republican,Open,Lost-Primary,4611886.11
+2002,MI,"POSTHUMUS, RICHARD E",Republican,Open,Lost-General,4482241.33
+2002,RI,"YORK, MYRTH B",Democratic,Open,Lost-General,4361423.14
+2002,OR,"KULONGOSKI, TED",Democratic,Open,Won-General,4139451.26
+2002,MA,"TOLMAN, WARREN E",Democratic,Open,Lost-Primary,4125803.79
+2002,NV,"GUINN, KENNY",Republican,Incumbent,Won-General,3832251.28
+2002,IL,"VALLAS, PAUL GUST",Democratic,Open,Lost-Primary,3616581.43
+2002,MA,"GROSSMAN, STEVEN",Democratic,Open,Lost-Primary,3443018.91
+2002,OK,"HENRY, BRAD",Democratic,Open,Won-General,3314051.75
+2002,MA,"BIRMINGHAM, THOMAS F",Democratic,Open,Lost-Primary,3202540.47
+2002,AL,"WINDOM, STEPHEN R",Republican,Open,Lost-Primary,3038469.67
+2002,SD,"KIRBY, STEVE T",Republican,Open,Lost-Primary,2938676.97
+2002,NM,"SANCHEZ, JOHN A",Republican,Open,Lost-General,2919528.96
+2002,FL,"RENO, JANET",Democratic,Open,Lost-Primary,2797126.18
+2002,OK,"LARGENT, STEPHEN MICHAEL",Republican,Open,Lost-General,2750251.7
+2002,OK,"RICHARDSON, GARY LOY",Third-Party,Open,Lost-General,2568392.85
+2002,AR,"HUCKABEE, MICHAEL D (MIKE)",Republican,Incumbent,Won-General,2525608.74
+2002,RI,"CARCIERI, DONALD L",Republican,Open,Won-General,2495151.14
+2002,NH,"KEOUGH, BRUCE W",Republican,Open,Lost-Primary,2466942.0
+2002,KS,"SHALLENBURGER, TIM",Republican,Open,Lost-General,2429592.28
+2002,MN,"PAWLENTY, TIMOTHY J (TIM)",Republican,Open,Won-General,2421438.48
+2002,AZ,"NAPOLITANO, JANET",Democratic,Open,Won-General,2390328.2
+2002,NE,"JOHANNS, MIKE",Republican,Incumbent,Won-General,2382948.85
+2002,CT,"CURRY, BILL",Democratic,Challenger,Lost-General,2350397.94
+2002,HI,"HIRONO, MAZIE K",Democratic,Open,Lost-General,2325789.79
+2002,MI,"BONIOR, DAVID E",Democratic,Open,Lost-Primary,2291997.18
+2002,AZ,"SALMON, MATT",Republican,Open,Lost-General,2182555.01
+2002,IL,"BURRIS, ROLAND W",Democratic,Open,Lost-Primary,2175066.15
+2002,SC,"PEELER, BOB",Republican,Open,Lost-Primary,2137142.45
+2002,MI,"BLANCHARD JR, JAMES J (JIM)",Democratic,Open,Lost-Primary,2129480.25
+2002,MA,"REICH, ROBERT",Democratic,Open,Lost-Primary,2128364.04
+2002,OR,"SAXTON, RON",Republican,Open,Lost-Primary,1925080.82
+2002,MN,"MOE, ROGER D",Democratic,Open,Lost-General,1915259.2
+2002,RI,"WHITEHOUSE II, SHELDON",Democratic,Open,Lost-Primary,1868657.26
+2002,SD,"ROUNDS, MARION MICHAEL (MIKE)",Republican,Open,Won-General,1851219.2
+2002,SD,"ABBOTT, JIM",Democratic,Open,Lost-General,1845277.17
+2002,AK,"MURKOWSKI, FRANK H",Republican,Open,Won-General,1842336.61
+2002,OR,"STEIN, BEVERLY",Democratic,Open,Lost-Primary,1771422.0
+2002,AZ,"MAHONEY, RICHARD D",Third-Party,Open,Lost-General,1708809.57
+2002,AK,"ULMER, FRAN",Democratic,Open,Lost-General,1697907.67
+2002,OH,"HAGAN, TIMOTHY",Democratic,Challenger,Lost-General,1696305.95
+2002,OR,"ROBERTS, JACK",Republican,Open,Lost-Primary,1683981.0
+2002,WI,"BARRETT, TOM",Democratic,Open,Lost-Primary,1666588.13
+2002,AR,"FISHER, JIMMIE LOU",Democratic,Challenger,Lost-General,1651099.87
+2002,ME,"BALDACCI, JOHN ELIAS",Democratic,Open,Won-General,1591951.95
+2002,AL,"JAMES, TIM",Republican,Open,Lost-Primary,1460145.14
+2002,OK,"ORZA JR, VINCENT F",Democratic,Open,Lost-Primary,1304587.21
+2002,KS,"KNIGHT, BOB",Republican,Open,Lost-Primary,1275270.93
+2002,SD,"BARNETT, MARK",Republican,Open,Lost-Primary,1229453.33
+2002,VT,"DOUGLAS, JAMES HOLLEY (JIM)",Republican,Open,Won-General,1145259.31
+2002,AZ,"SPRINGER, CAROL",Republican,Open,Lost-Primary,1126939.93
+2002,AZ,"BAYLESS, MARY E (BETSEY)",Republican,Open,Lost-Primary,1122901.87
+2002,ID,"KEMPTHORNE, DIRK",Republican,Incumbent,Won-General,1104707.45
+2002,WY,"BEBOUT, ELI D",Republican,Open,Lost-General,1095172.13
+2002,CO,"HEATH JR, STRATTON ROLLINS (ROLLIE)",Democratic,Challenger,Lost-General,1062231.28
+2002,MN,"PENNY, TIMOTHY J (TIM)",Third-Party,Open,Lost-Primary,1054300.63
+2002,ME,"CIANCHETTE, PETER E",Republican,Open,Lost-General,999703.0
+2002,ID,"BRADY, JERRY M",Democratic,Challenger,Lost-General,998306.35
+2002,KS,"KERR, DAVE",Republican,Open,Lost-Primary,984564.24
+2002,TN,"HENRY, JAMES M (JIM)",Republican,Open,Lost-Primary,976742.52
+2002,WI,"FALK, KATHLEEN M",Democratic,Open,Lost-Primary,971686.91
+2002,ME,"CARTER, JONATHAN K",Third-Party,Open,Lost-General,930246.0
+2002,IA,"SUKUP, STEVE",Republican,Open,Lost-Primary,929264.86
+2002,RI,"BENNETT, JAMES S",Republican,Open,Lost-Primary,916561.0
+2002,SC,"CONDON, CHARLIE",Republican,Open,Lost-Primary,883345.51
+2002,NH,"FERNALD, MARK",Democratic,Open,Lost-General,794178.25
+2002,WY,"FREUDENTHAL, DAVE",Democratic,Open,Won-General,780221.83
+2002,VT,"RACINE, DOUGLAS A",Democratic,Open,Lost-General,774738.27
+2002,GA,"SCHRENKO, LINDA",Republican,Open,Lost-Primary,707823.73
+2002,RI,"PIRES, ANTONIO J",Democratic,Open,Lost-Primary,607422.15
+2002,IA,"VANDER PLAATS, ROBERT",Republican,Open,Lost-Primary,536283.49
+2002,FL,"JONES, DARYL L",Democratic,Open,Lost-Primary,534896.75
+2002,OR,"HILL, JIM",Democratic,Open,Lost-Primary,504412.0
+2002,NM,"BRADLEY, WALTER D",Republican,Open,Lost-Primary,502433.74
+2002,AL,"BISHOP, CHARLES",Democratic,Challenger,Lost-Primary,484784.49
+2002,AZ,"GUTIERREZ, ALFREDO",Democratic,Open,Lost-Primary,447082.0
+2002,WI,"THOMPSON, ED",Third-Party,Challenger,Lost-General,433401.74
+2002,OK,"HANEY, ENOCH KELLY",Democratic,Open,Lost-Primary,419412.94
+2002,CA,"JESSON, NICK",Republican,Open,Lost-Primary,416106.59
+2002,AZ,"OSTERLOH, MARK",Democratic,Open,Lost-Primary,414858.8
+2002,NH,"HOLLINGWORTH, BEVERLY A",Democratic,Open,Lost-Primary,393532.97
+2002,MI,"SCHWARZ, JOHN",Republican,Open,Lost-Primary,390385.31
+2002,GA,"BYRNE, WILLIAM J (BILL)",Republican,Open,Lost-Primary,383391.13
+2002,MN,"PENTEL, KEN",Third-Party,Open,Lost-General,370945.29
+2002,ME,"LIBBY, JAMES DELMAS",Republican,Open,Lost-Primary,327497.0
+2002,TX,"MORALES, DAN",Democratic,Open,Lost-Primary,309769.62
+2002,WY,"HUNKINS, RAY",Republican,Open,Lost-Primary,305510.37
+2002,MA,"HOWELL, CARLA",Third-Party,Open,Lost-General,271464.85
+2002,VT,"HOGAN, CORNELIUS (CON)",Third-Party,Open,Lost-General,258028.25
+2002,SC,"BRANTON JR, WILLIAM STROBEL",Republican,Open,Lost-Primary,223225.0
+2002,SC,"WINGATE, KEN",Republican,Open,Lost-Primary,221454.59
+2002,IL,"SKINNER, CAL",Third-Party,Open,Lost-General,205734.57
+2002,NM,"BURPO, ROBERT M",Republican,Open,Lost-Primary,179856.12
+2002,TN,"SMITH, CHARLES E",Democratic,Open,Lost-Primary,178373.13
+2002,ME,"FLANAGAN, DAVID",Third-Party,Open,Withdrew-General,176784.0
+2002,WY,"HICKEY, PAUL J",Democratic,Open,Lost-Primary,175770.67
+2002,CA,"CAMEJO, PETER MIGUEL",Third-Party,Challenger,Lost-General,174997.3
+2002,WY,"SNIFFIN, BILL",Republican,Open,Lost-Primary,164594.0
+2002,NE,"DEAN, STORMY",Democratic,Challenger,Lost-General,163498.56
+2002,MA,"STEIN, JILL ELLEN",Third-Party,Open,Lost-General,162492.77
+2002,TN,"NICHOLS, RANDY",Democratic,Open,Lost-Primary,158406.75
+2002,OR,"CURTRIGHT, W AMES",Republican,Open,Lost-Primary,130940.0
+2002,ID,"ERHART, MILTON",Republican,Challenger,Lost-Primary,108949.23
+2002,SD,"HUTMACHER, JIM",Democratic,Open,Lost-Primary,106268.37
+2002,AK,"ROSS, WAYNE A",Republican,Open,Lost-Primary,104631.52
+2002,OK,"DUNEGAN, JAMES H",Democratic,Open,Lost-Primary,102490.73
+2002,HI,"CASE, EDWARD",Democratic,Open,Lost-Primary,97687.5
+2002,AL,"COOPER JR, JAMES L",Republican,Open,Lost-Primary,92895.0
+2002,NM,"BACON, DAVID E",Third-Party,Open,Lost-General,79184.68
+2002,NY,"ARONOWITZ, STANLEY",Third-Party,Challenger,Lost-General,76606.0
+2002,TN,"SANDERS, EDWIN C",Third-Party,Open,Lost-General,73808.0
+2002,OR,"COX, THOMAS B",Third-Party,Open,Lost-General,42278.0
+2002,AL,"RIDDLE, GLADYS",Democratic,Challenger,Lost-Primary,41191.0
+2002,PA,"KRAWCHUK, KEN V",Third-Party,Open,Lost-General,38866.22
+2002,IA,"CLEVELAND, CLYDE",Third-Party,Challenger,Lost-General,35554.0
+2002,PA,"MORRILL, MICHAEL",Third-Party,Open,Lost-General,32643.18
+2002,AR,"BILLIE, JIM",Democratic,Open,Lost-Primary,32419.0
+2002,NV,"NEAL, JOE",Democratic,Challenger,Lost-General,27391.05
+2002,AZ,"NEWCOMB, MIKE",Democratic,Open,Lost-Primary,26910.0
+2002,NM,"BACA, GILBERT S",Republican,Open,Lost-Primary,24143.92
+2002,CO,"SHNELVAR, RALPH",Third-Party,Challenger,Lost-General,22596.52
+2002,AR,"HOLMES, JOE",Democratic,Open,Lost-Primary,21710.82
+2002,MD,"LANCASTER, SPEAR",Third-Party,Open,Lost-General,20483.53
+2002,NE,"WICHT, ROBERT J",Republican,Open,Lost-Primary,18414.54
+2002,FL,"KUNST, ROBERT P",Third-Party,Challenger,Lost-General,17977.16
+2002,WI,"YOUNG, JIM",Third-Party,Challenger,Lost-General,16816.37
+2002,OH,"EASTMAN, JOHN",Third-Party,Challenger,Lost-General,16502.48
+2002,CO,"FORTHOFER, RONALD",Third-Party,Challenger,Lost-General,14204.34
+2002,CA,"BALL, DANNEY",Republican,Open,Lost-Primary,13500.0
+2002,WY,"SIMPSON, TOBY",Democratic,Open,Lost-Primary,13478.0
+2002,NY,"CRONIN, GERARD J",Third-Party,Challenger,Lost-General,13313.42
+2002,SC,"MILES, JIM",Republican,Open,Lost-Primary,12865.0
+2002,TX,"DAIELL, JEFF",Third-Party,Challenger,Lost-General,11653.94
+2002,TN,"TRIPP, BOB",Republican,Open,Lost-Primary,11550.0
+2002,GA,"GARRETT, NANNETTE D",Third-Party,Challenger,Lost-General,11469.69
+2002,HI,"RYAN, TRACY AHN",Third-Party,Open,Lost-General,11453.33
+2002,KS,"PETTIBONE, TED",Third-Party,Open,Lost-General,10518.91
+2002,NM,"NALLEY, BENJAMIN E",Third-Party,Open,Lost-Primary,10188.17
+2002,AK,"ANDERSON JR, NELS",Third-Party,Open,Lost-Primary,9952.24
+2002,NE,"ROSBERG, PAUL A",Third-Party,Challenger,Lost-General,9547.5
+2002,AK,"GLOTFELTY, JOHN WAYNE",Third-Party,Open,Lost-Primary,9319.11
+2002,OK,"DENNY, JAMES ROBERT",Republican,Open,Lost-Primary,9229.85
+2002,IA,"ROBINSON, JAY",Third-Party,Challenger,Lost-General,8097.93
+2002,ME,"MICHAEL, JOHN M",Third-Party,Open,Lost-General,7848.0
+2002,WI,"LORGE, WILLIAM D (BILL)",Republican,Challenger,Lost-Primary,7714.03
+2002,NV,"PETRELLA, CHRISTOPHER J",Democratic,Open,Lost-Primary,7368.0
+2002,AK,"BENSON, DIANE E",Third-Party,Open,Lost-General,6123.0
+2002,NY,"LEIGHTON, THOMAS K",Third-Party,Challenger,Lost-General,6020.0
+2002,WY,"WATT, STEPHEN",Republican,Open,Lost-Primary,5590.0
+2002,AZ,"HESS II, BARRY J",Third-Party,Open,Lost-General,5189.0
+2002,CA,"CHAVEZ, ANSELMO A",Democratic,Challenger,Lost-Primary,5000.0
+2002,NV,"GEYER, DICK",Third-Party,Challenger,Lost-General,4984.0
+2002,ID,"GEORGE, RAYNEELE J",Republican,Challenger,Lost-Primary,4813.39
+2002,KS,"BLOOM, DAN",Republican,Open,Lost-Primary,4673.45
+2002,ID,"STEARS, RUE T",Democratic,Open,Lost-Primary,4015.21
+2002,AK,"VINZANT SR, RAYMOND PHILLIP",Third-Party,Open,Lost-General,3954.05
+2002,OR,"SPANOVICH, GARY ALAN",Third-Party,Open,Lost-Primary,3861.0
+2002,ID,"BAYES, WALTER L (WALT)",Republican,Challenger,Lost-Primary,3713.79
+2002,VT,"BADAMO, MICHAEL J",Third-Party,Open,Lost-General,3648.45
+2002,CA,"BUKEWIHGE, EDIE",Republican,Open,Lost-Primary,3501.97
+2002,NV,"LAWS, CHARLES",Third-Party,Challenger,Lost-General,3398.02
+2002,NH,"BABIARZ, JOHN J",Third-Party,Open,Lost-General,3384.0
+2002,MI,"CAMPBELL, DOUGLAS",Third-Party,Open,Lost-General,3344.47
+2002,NY,"JEFFREY, SCOTT",Third-Party,Challenger,Lost-General,3288.0
+2002,ME,"NAPIER, PHILLIP MORRIS",Unknown,Open,Lost-General,2857.65
+2002,AL,"HARPER III, BLAKE W",Democratic,Challenger,Lost-Primary,2722.19
+2002,MN,"KLATTE, RICHARD A",Third-Party,Open,Lost-Primary,2175.0
+2002,WY,"DAWSON, DAVE",Third-Party,Open,Lost-General,2140.2
