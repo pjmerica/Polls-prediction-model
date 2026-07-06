@@ -116,6 +116,44 @@ After the 2026 elections, results must come from MEDSL/official returns (loader 
 written), then: add 2026 to `cycles.py`, extend macro/approval, re-run the whole pipeline
 (grid search included — the workflow rule).
 
+## New worries found in the 2026-07-06 post-change sweep
+
+### ⚠ Mid-decade redistricting breaks House fundamentals for 2026 (NEW, potentially big)
+Several states redrew congressional maps between 2024 and 2026 (e.g. the Texas/North
+Carolina-style mid-decade redraws). Our `prior_margin_cand` and incumbency joins key on
+**district numbers** — for a redrawn district, "TX-28's 2024 margin" describes an electorate
+that partially no longer exists, and the model can't tell. Polls of the new district are
+fine; the fundamentals are quietly wrong. **Mitigation ideas:** a `redistricted_2026` flag
+per state/district (small manual table, or scrape Ballotpedia's redistricting tracker) so
+the model can discount priors; longer-term, population-overlap-weighted prior margins.
+Until then: treat House edges in redrawn states with extra suspicion.
+
+### Model-vs-market tab staleness was masked (fixed same day)
+`generated_at` refreshed on every Action run even when the model predictions were weeks old.
+The payload now carries `predictions_as_of` (prediction file mtime) and the tab shows it.
+
+### Residual seams (accepted, documented)
+Approval Gallup→VoteHub methodology seam at 2025-01; natl_env 538-average→aggregator-mean
+seam at 2026; ~33% of 2026 feed poll rows are from pollsters with no house-effect history
+(they get zero adjustment — correct but weaker); Wikipedia/Kalshi-title regex fragility in
+fetch_generic_ballot.py and MOV_RX (soft-fail to missing values, never crash).
+
+## More data worth pulling in (beyond the roadmap)
+- **Special-election overperformance index**: 2025–26 special-election margins vs district
+  lean are a famously strong national-environment signal, fully public (Wikipedia/DDHQ),
+  and we have none of it.
+- **Expert race ratings** (Cook/Sabato/IE): Wikipedia's per-cycle election pages carry the
+  ratings tables — parseable like the generic-ballot table; a consensus-rating feature is
+  cheap and strong, especially for unpolled House races.
+- **FEC fundraising** (free API, quarterly): receipts ratio per race — the classic
+  candidate-quality proxy for thin-polled districts.
+- **MEDSL district-level presidential returns**: time-varying district partisan lean
+  (replaces the dead 538 lean properly, helps House + redistricting mitigation).
+- **UMich consumer sentiment** (DBnomics `UMICH/SOC`): one more macro series, arguably more
+  election-relevant than CPI level; trivial to add to fetch_macro.py SERIES.
+- **VoteHub generic-ballot polls** (532 already available via the same API we use for
+  approval): per-poll natl_env + monthly recency cuts, replacing the Wikipedia scrape.
+
 ## Improvement roadmap (2026-07-06 full review — ranked by expected value)
 ✅ Approval solved: VoteHub API continuation (all-pollster avg) after UCSB/Gallup ends 2025-01.
    VoteHub also has 532 generic-ballot polls (poll_type=generic-ballot) — see #3 below.
