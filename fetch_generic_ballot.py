@@ -64,7 +64,68 @@ def get_natl_env(cycle=2026, verbose=False):
         print("no aggregator table found on the page")
     return None
 
+# ---------------------------------------------------------------------------
+# Monthly generic-ballot series -> data/generic_ballot_monthly.csv
+#   1998-2022 : per-poll House-G-US rows in the frozen data/raw_polls_538.csv
+#   2024-12+  : VoteHub open API (poll_type=generic-ballot)
+#   2023 .. 2024-11 : NO machine-readable per-poll source survives (538's daily series died
+#   with the Internet Archive) -> those months are simply absent (NaN features downstream).
+# Value = monthly mean of per-poll (DEM% - REP%).
+# ---------------------------------------------------------------------------
+def build_monthly(out="data/generic_ballot_monthly.csv"):
+    # base layer: 538's DAILY estimates 1995-2016 (dense + smooth), monthly means
+    daily = pd.read_csv("data/generic_ballot_hist_538.csv", low_memory=False)
+    daily = daily[daily["subgroup"].astype(str).str.lower() == "all polls"].copy()
+    daily["date"] = pd.to_datetime(daily["modeldate"], errors="coerce")
+    daily["margin"] = (pd.to_numeric(daily["dem_estimate"], errors="coerce")
+                       - pd.to_numeric(daily["rep_estimate"], errors="coerce"))
+    base = (daily.dropna(subset=["date", "margin"])
+                 .set_index("date")["margin"].resample("MS").mean())
+
+    rp = pd.read_csv("data/raw_polls_538.csv", low_memory=False)
+    g = rp[rp["type_simple"] == "House-G-US"].copy()
+    dem = pd.to_numeric(g["cand1_pct"], errors="coerce").where(
+        g["cand1_party"].astype(str).str.upper().str.startswith("D"),
+        pd.to_numeric(g["cand2_pct"], errors="coerce"))
+    rep = pd.to_numeric(g["cand2_pct"], errors="coerce").where(
+        g["cand1_party"].astype(str).str.upper().str.startswith("D"),
+        pd.to_numeric(g["cand1_pct"], errors="coerce"))
+    hist = pd.DataFrame({"end": pd.to_datetime(g["polldate"], errors="coerce"),
+                         "margin": dem - rep}).dropna()
+
+    vh_rows = []
+    try:
+        r = requests.get("https://api.votehub.com/polls",
+                         params={"poll_type": "generic-ballot"}, timeout=60, headers=H)
+        r.raise_for_status()
+        for p in r.json():
+            ans = {str(a.get("choice", "")).lower()[:3]: a.get("pct") for a in p.get("answers", [])}
+            d_, r_ = ans.get("dem"), ans.get("rep")
+            end = pd.to_datetime(p.get("end_date"), errors="coerce")
+            if d_ is not None and r_ is not None and pd.notna(end):
+                vh_rows.append((end, float(d_) - float(r_)))
+        print(f"votehub generic-ballot polls: {len(vh_rows)}")
+    except Exception as e:
+        print(f"votehub fetch failed ({type(e).__name__}) - historical part only")
+    vh = pd.DataFrame(vh_rows, columns=["end", "margin"])
+    if len(vh):
+        vh = vh[vh["end"] > hist["end"].max()]     # no overlap with the frozen history
+
+    allp = pd.concat([hist, vh], ignore_index=True)
+    polled = allp.set_index("end")["margin"].resample("MS").mean()
+    # daily-estimate base (dense, 1995-2016) wins where present; per-poll months fill the rest
+    monthly = base.combine_first(polled).dropna().round(2)
+    outdf = monthly.reset_index()
+    outdf.columns = ["date", "value"]
+    outdf["metric"] = "generic_ballot"
+    outdf.to_csv(out, index=False)
+    print(f"saved -> {out}  ({len(outdf)} months, "
+          f"{outdf['date'].min().date()} .. {outdf['date'].max().date()})")
+
 if __name__ == "__main__":
-    cyc = int(sys.argv[1]) if len(sys.argv) > 1 else 2026
-    v = get_natl_env(cyc, verbose=True)
-    print(f"\nnatl_env({cyc}) = {v}  (DEM-REP, mean of aggregators)")
+    if "--monthly" in sys.argv:
+        build_monthly()
+    else:
+        cyc = int(sys.argv[1]) if len(sys.argv) > 1 and sys.argv[1].isdigit() else 2026
+        v = get_natl_env(cyc, verbose=True)
+        print(f"\nnatl_env({cyc}) = {v}  (DEM-REP, mean of aggregators)")

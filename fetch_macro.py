@@ -36,7 +36,13 @@ SERIES = {
     # --- additional series: kept if they resolve, skipped (with a note) if not ---
     "cpi_core":     ("BLS", "cu",  "CUSR0000SA0L1E", "M"), # core CPI (ex food & energy)
     "unemp_u6":     ("BLS", "ln",  "LNS13327709",   "M"),  # U-6 underemployment %
+    "sentiment":    ("SCSMICH", "MICS", "ICS",      "M"),  # UMich Index of Consumer Sentiment (1978+)
 }
+
+# Generic-ballot monthly D-R margin, produced by `python fetch_generic_ballot.py --monthly`
+# (raw_polls House-G-US polls 1998-2022 + VoteHub 2024-12+; the 2024 cycle window has no
+# machine-readable per-poll source -> those months are absent = NaN features, documented).
+GENERIC_CSV = "data/generic_ballot_monthly.csv"
 
 def fetch(provider, dataset, code, timeout=45):
     u = f"{BASE}/{provider}/{dataset}/{code}?observations=1"
@@ -113,6 +119,15 @@ def build():
         ap = ap[ap["date"] >= START]
     frames.append(ap); ok.append("approval")
     print(f"  OK   approval       {len(ap)} months  ({ap['date'].min().date()}..{ap['date'].max().date()})  <- {APPROVAL_CSV}")
+
+    if os.path.exists(GENERIC_CSV):
+        gb = pd.read_csv(GENERIC_CSV, parse_dates=["date"])
+        if START is not None:
+            gb = gb[gb["date"] >= START]
+        frames.append(gb); ok.append("generic_ballot")
+        print(f"  OK   generic_ballot {len(gb)} months  ({gb['date'].min().date()}..{gb['date'].max().date()})  <- {GENERIC_CSV}")
+    else:
+        print(f"  SKIP generic_ballot ({GENERIC_CSV} missing - run `python fetch_generic_ballot.py --monthly`)")
 
     allm = pd.concat(frames, ignore_index=True).sort_values(["metric", "date"])
     allm.to_csv(OUT, index=False)
