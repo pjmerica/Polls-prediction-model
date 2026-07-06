@@ -223,9 +223,11 @@ def margin_dynamics(g):
 
 # ---------------------------------------------------------------- house effect
 
-def compute_house_effect(d, train_years):
+def compute_house_effect(d, train_years, shrink_k=5.0):
     """Per-pollster DEM-REP margin deviation vs the race consensus, TRAIN years only.
-    Keyed by NORMALIZED pollster name (norm_pollster) so 2026-feed names match history."""
+    Keyed by NORMALIZED pollster name (norm_pollster) so 2026-feed names match history.
+    Empirical-Bayes shrunken toward 0 by n/(n+k): a 2-poll pollster's raw 'house effect'
+    is mostly noise and used to be applied at full strength."""
     mar = (d[d["party_std"].isin(["DEM", "REP"])]
            .pivot_table(index=["race_id", "poll_id", "pollster", "year"],
                         columns="party_std", values="pct", aggfunc="max").reset_index())
@@ -236,7 +238,36 @@ def compute_house_effect(d, train_years):
     tm = mar[mar["year"].isin(list(train_years))].copy()
     tm["dev"] = tm["m"] - tm.groupby("race_id")["m"].transform("mean")
     tm["pollster_key"] = tm["pollster"].map(norm_pollster)
-    return tm.groupby("pollster_key")["dev"].mean().to_dict()
+    g = tm.groupby("pollster_key")["dev"].agg(["mean", "count"])
+    return (g["mean"] * g["count"] / (g["count"] + shrink_k)).to_dict()
+
+def compute_bias_priors(d, shrink_k=8.0):
+    """{(cycle, state): shrunken PRIOR-cycles mean signed poll-margin error} + (cycle,'_nat').
+
+    e = polled(D−R) − actual(D−R) per race; positive = polls overstated Democrats there.
+    For target cycle Y only cycles < Y contribute (leak-free). State means are shrunk toward
+    the national prior mean by n/(n+k). Historically this shifts ±4-7 pts between cycles —
+    the single biggest correlated risk (HANDOFF.md). d must carry vote_pct (training frame)."""
+    dd = d[d["party_std"].isin(["DEM", "REP"])].dropna(subset=["vote_pct"])
+    g = (dd.groupby(["year", "race_id", "party_std"])
+           .agg(poll=("pct", "mean"), act=("vote_pct", "first")).reset_index())
+    p = g.pivot_table(index=["year", "race_id"], columns="party_std", values=["poll", "act"])
+    e = ((p[("poll", "DEM")] - p[("poll", "REP")])
+         - (p[("act", "DEM")] - p[("act", "REP")])).dropna()
+    err = e.rename("e").reset_index()
+    err["state"] = err["race_id"].str.split("_").str[1]
+    out = {}
+    years = sorted(err["year"].unique())
+    for y in years + [years[-1] + 2]:            # +2 covers the next (predict) cycle
+        past = err[err["year"] < y]
+        if past.empty:
+            continue
+        nat = float(past["e"].mean())
+        out[(y, "_nat")] = nat
+        for s, grp in past.groupby("state"):
+            n = len(grp)
+            out[(y, s)] = float((grp["e"].mean() * n + nat * shrink_k) / (n + shrink_k))
+    return out
 
 def candidate_poll_adj(d, house):
     """Per (race_id, cand_key) plain mean of house-effect-adjusted pct.
@@ -251,7 +282,7 @@ def candidate_poll_adj(d, house):
 # ---------------------------------------------------------------- main builder
 
 def build_candidate_table(d, macro, natl_env_map, funds, house_train_years=None, house=None,
-                          fec=None):
+                          fec=None, bias_priors=None):
     """Collapse prepared long polls `d` -> one row per candidate per race, with features.
 
     d must have: race_id, year, state, office, district, candidate, cand_key, party_std,
@@ -326,6 +357,12 @@ def build_candidate_table(d, macro, natl_env_map, funds, house_train_years=None,
                 is_incumbent=((1 if incp == party else 0) if incp in ("DEM", "REP") else np.nan),
                 is_inc_party_race=(1 if incp in ("DEM", "REP") else 0),
                 natl_env_cand=(sign * natl_env_map.get(yr, np.nan)),
+                # prior-cycles poll-bias prior for this state (leak-free), candidate-signed:
+                # positive = polls here historically overstated THIS candidate's party
+                bias_prior_cand=(sign * _bp if bias_priors is not None and sign != 0
+                                 and (_bp := bias_priors.get((yr, st),
+                                                             bias_priors.get((yr, "_nat"))))
+                                 is not None else np.nan),
                 poll_momentum=slope,
                 poll_adj=adj.mean(),
                 n_lead_changes=lead_change_map.get(race_id, 0),
@@ -381,7 +418,7 @@ def feature_list(macro_feats, fund=False):
         "is_dem", "is_rep", "is_senate", "is_gov",
         "prior_margin_cand", "is_incumbent", "is_inc_party_race",
         "twoparty_margin_cand", "abs_gap", "tossup", "undecided", "gap_x_recency",
-        "natl_env_cand", "poll_momentum", "poll_adj",
+        "natl_env_cand", "bias_prior_cand", "poll_momentum", "poll_adj",
         "n_lead_changes", "lead_changed",
         "avg_margin_over_time", "margin_volatility", "min_margin", "margin_trend",
         "is_president_party",

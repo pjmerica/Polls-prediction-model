@@ -48,6 +48,7 @@ def main():
     hist["race_id"] = (hist["year"].astype(str) + "_" + hist["state"] + "_" + hist["office"]
                        + hist["district"].radd("-").where(hist["district"] != "", ""))
     house = F.compute_house_effect(hist, sorted(hist["year"].unique()))
+    bias = F.compute_bias_priors(hist)   # prior-cycles poll-bias by state (2026 uses <=2024)
 
     macro = build_macro(cycles=[args.cycle])
     ne = dict(natl_env_hist())
@@ -65,7 +66,7 @@ def main():
     funds = F.load_fundamentals()
     fec = F.load_fec()
     cand = patch_redistricted_priors(
-        F.build_candidate_table(d, macro, ne, funds, house=house, fec=fec))
+        F.build_candidate_table(d, macro, ne, funds, house=house, fec=fec, bias_priors=bias))
 
     missing = [f for f in meta["features"] if f not in cand.columns]
     assert not missing, f"artifact expects features absent from the built table: {missing[:8]}"
@@ -79,7 +80,7 @@ def main():
         sgn = ds["party_std"].map({"DEM": 1, "REP": -1}).fillna(0)
         ds["pct"] = ds["pct"] + sgn * dem_shift / 2
         cs = patch_redistricted_priors(
-            F.build_candidate_table(ds, macro, ne, funds, house=house, fec=fec))
+            F.build_candidate_table(ds, macro, ne, funds, house=house, fec=fec, bias_priors=bias))
         cs["p"] = model.predict(cs.reindex(columns=meta["features"]))
         mm = cs.set_index(["race_id", "cand_key"])["p"]
         cand[f"pred_margin_{label}"] = [mm.get((r, c)) for r, c in
