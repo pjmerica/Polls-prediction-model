@@ -63,8 +63,10 @@ def main():
             print("WARNING: natl_env unavailable; feature will be NaN")
 
     funds = F.load_fundamentals()
-    cand = F.build_candidate_table(d, macro, ne, funds, house=house)
+    cand = F.build_candidate_table(d, macro, ne, funds, house=house, fec=F.load_fec())
 
+    missing = [f for f in meta["features"] if f not in cand.columns]
+    assert not missing, f"artifact expects features absent from the built table: {missing[:8]}"
     X = cand.reindex(columns=meta["features"])
     cand["pred_margin"] = model.predict(X)
 

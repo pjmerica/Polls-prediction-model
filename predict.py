@@ -183,8 +183,12 @@ def main():
                   "natl_env_cand will be missing (NaN)")
 
     funds = F.load_fundamentals()
-    cand = F.build_candidate_table(d, macro, ne, funds, house=house)
+    cand = F.build_candidate_table(d, macro, ne, funds, house=house, fec=F.load_fec())
 
+    # guard: every feature the artifact expects must exist in the built table — reindex
+    # would otherwise silently fill a whole missing block with NaN and predict garbage
+    missing = [f for f in meta["features"] if f not in cand.columns]
+    assert not missing, f"artifact expects features absent from the built table: {missing[:8]}"
     X = cand.reindex(columns=meta["features"])
     cand["win_prob"] = model.predict_proba(X)[:, 1]
     # within-race normalized probability (raw probs are per-candidate, not a race simplex)

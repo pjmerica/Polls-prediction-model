@@ -1,6 +1,6 @@
 # Instructions for a new agent (or developer) taking this over
 
-Read this first, then CONCERNS.md (ranked risks + improvement roadmap), then METHODOLOGY.md
+Read this first, then HANDOFF.md (in-flight state + breakdown risks + next steps), then CONCERNS.md (ranked risks + improvement roadmap), then METHODOLOGY.md
 (exact windows for every feature). Last full update: **2026-07-06**.
 
 ## What this project is (one paragraph)
