@@ -95,3 +95,18 @@ break, and what to do next, in order.
   model/poll-softmax blend that already wins the blend sweep.
 - **Uncertainty-aware market comparison**: scale edge by prediction uncertainty (poll count,
   model disagreement) → a proper Kelly-ish sizing signal instead of raw edge sorting.
+
+## Found in the 2026-07-06 late audit (numbers verified)
+- **Dual-seat race collisions.** Training: 9 races (43 candidate rows) merge two same-state
+  contests into one race_id (dual Senate seats: MN-2018, OK-2014/2022, NY-2010, MS/WY-2008,
+  SC-2014, NE-2024; House special NY-19-2022) — two `won=1` rows per "race", race-relative
+  features computed across candidates who never faced each other. Fix: add seat/special
+  disambiguation to the race key in build_dataset.ipynb (poll files carry seat_name; results
+  carry `special`), then retrain. Predict-time version FIXED same day (FL/OH 2026 specials
+  now keyed `..._Senate-S`).
+- **Cycle-correlated poll bias is large and unhedged.** Mean signed poll-margin error (D−R)
+  by cycle swings from −3.9 (1998, 2012) to +6.7 (2020): within a cycle, errors share a
+  common component of ±4-7 points. Per-race MAE (~6.5) understates PORTFOLIO risk for
+  betting: if 2026 polls share a bias, every model edge moves together. Mitigations to
+  build: cycle-bias prior feature (prior cycles' signed error by state/party, shrunken),
+  and report edge-portfolio exposure by party on the dashboard.

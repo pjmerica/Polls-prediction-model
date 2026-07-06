@@ -57,6 +57,8 @@ def parse_race_id(rid):
     district = ""
     if office == "House" and len(parts) > 3:
         district = F.pdist(parts[3])
+    elif len(parts) > 3 and parts[3].upper() == "S":
+        district = "S"   # SPECIAL election (e.g. 2026-SEN-FL-S) — its own race, never merged
     return year, office, state, district
 
 def load_agg_polls(paths, cycle):
