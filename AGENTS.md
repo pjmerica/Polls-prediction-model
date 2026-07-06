@@ -92,10 +92,11 @@ pip install pandas numpy requests xgboost scikit-learn jupyter matplotlib openpy
 ```
 Polls/results download on first `build_dataset.ipynb` run. `fetch_macro.py` pulls from DBnomics (no key). The macro CSV is already committed, so you usually don't need to re-run it.
 
-## Current honest performance (leave-one-cycle-out CV, 2018–2024)
-- XGBoost: AUC ~0.96, Brier ~0.08, race-winner accuracy ~0.86
-- Poll-only baseline: AUC ~0.965, Brier ~0.071, race-acc ~0.87  ← still ahead
-- Coverage floor is **2018** (no machine-readable downballot polls before then).
+## Current honest performance (LOCO on 2018–2024; tuned on 1998–2016 only)
+- XGBoost: AUC 0.969, Brier 0.069, race-winner accuracy 0.863
+- Poll-only baseline (softmax of poll_avg): AUC 0.966, Brier 0.071, race-acc 0.868
+- Model now edges the baseline on AUC/Brier (calibration); baseline still a hair ahead on
+  picking winners. Coverage floor is **1998** (frozen 538 raw_polls file).
 
 ## If you're extending this
 - **Most promising direction:** switch the target from win/lose to **margin** or
