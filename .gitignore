@@ -39,9 +39,14 @@ data/*
 !data/generic_ballot_hist_538.csv
 !data/approval_monthly.csv
 
-# ...and the trained production model artifact (what predict.py loads)
+# ...and the trained production model artifacts (predict.py / predict_margin.py load these)
 !data/model_xgb.json
 !data/model_features.json
+!data/margin_model_xgb.json
+!data/margin_model_features.json
+
+# ...and the margin model's importance table (small, diffable, like feature_importance.csv)
+!margin_feature_importance.csv
 
 # Python
 __pycache__/

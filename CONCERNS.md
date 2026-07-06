@@ -73,46 +73,52 @@ No more reporting the selection score as the performance estimate.
 - (Earlier same day) the House district `'1.0'`-vs-`'1'` key bug — fundamentals were dead for
   ALL House races; fixed with a normalizer (`features.dist_str`) + a hard assert.
 
+### ✅ (2nd pass, same day) Economic data current + generic ballot automated + margin model
+- **Econ fixed:** `fetch_macro.py` now overlays the **BLS public API** (no key) on the lagged
+  DBnomics mirror — unemployment/CPI/core/U-6 current through **May–June 2026**.
+- **Generic ballot automated:** RCP itself is Cloudflare-walled (403 to scripts), but
+  `fetch_generic_ballot.py` reads Wikipedia's aggregator table (DDHQ, RCP, Silver Bulletin,
+  VoteHub, …) and returns the mean D−R margin (2026 ≈ **D+5.8**). `predict.py` /
+  `predict_margin.py` auto-fetch it; `--natl-env` overrides. This is the project's ONE live
+  fetch, predict-time only (current-cycle info can't be frozen by definition).
+- **Margin model built** — `margin_model.ipynb` + `predict_margin.py` +
+  `data/margin_model_*.json`, **fully separate from the win/lose model** (user requirement).
+  Target = actual vote margin vs best opponent; same features.py pipeline, same nested
+  tune-old/eval-modern scheme; baselines = raw polled margin and a linear calibration of it.
+
 ## Still open, ranked
 
-### 1. Macro series staleness for 2026 predictions
-DBnomics' BLS series (unemployment, CPI, U-6) currently stop at **2025-01**, and approval
-stops at 2025-01 (UCSB gap). The 2026 macro window (2024-11 → 2026-11) is therefore half
-empty: `_eve`/recency stats reflect early-2025, not election-eve 2026. Before trusting 2026
-macro features: find updated DBnomics dataset codes (or another mirror) and re-run
-`fetch_macro.py` + `fetch_approval.py`.
+### 1. Approval series ends 2025-01
+UCSB has no Trump-2nd-term page yet (`fetch_approval.py` auto-tries the slugs — re-run it
+occasionally); Wikipedia's per-poll approval tables omit the year in date cells, so scraping
+them is too fragile. Until fixed, 2026-cycle approval features only see 2024-11→2025-01.
 
-### 2. Generic ballot for 2026 is manual
-`predict.py --natl-env` is a hand-entered number. Plan: small scraper for the
-RealClearPolling generic-ballot page (or compute from the polling-agg feed if it ever
-carries generic-ballot polls) → monthly CSV → recency cuts like the macro features.
-
-### 3. Cycle-constant features still can't be strongly validated
+### 2. Cycle-constant features still can't be strongly validated
 n went 4 → 14, which is real progress, but 112 macro features on 14 national observations
-still invites memorization; regularization has zeroed them so far. Long-term answer is the
-**margin model** (predict vote margin / poll overperformance instead of win/lose) — that's
-where macro/fundamentals get a fair test. Still the most promising research direction.
+still invites memorization; regularization has zeroed them in the win model so far. The
+margin model is where they get their fair test — check `margin_feature_importance.csv` after
+each run.
 
-### 4. raw_polls (1998–2016) quirks — known and accepted
+### 3. raw_polls (1998–2016) quirks — known and accepted
 - Only the **top two** candidates per poll → third-party candidates invisible pre-2018
   (`n_cands`, `undecided`, `poll_share` behave slightly differently there).
 - `polldate` is a single date (treated as end_date).
 - Special elections share a race_id with the regular same-state race in rare cases
   (pre-existing limitation for 2018+ too, e.g. dual Senate seats; affects a handful of races).
 
-### 5. polling-agg feed quality
+### 4. polling-agg feed quality
 The predict path is only as good as the scraper feed: the duplicate problem above, plus
 `implied_prob` rounding (2 decimals = 1pp poll resolution), and primary/general stage tags
 must stay accurate. Consider fixing dedup upstream in the polling-agg repo.
 
-### 6. 2026 labels
+### 5. 2026 labels
 After the 2026 elections, results must come from MEDSL/official returns (loader not yet
 written), then: add 2026 to `cycles.py`, extend macro/approval, re-run the whole pipeline
 (grid search included — the workflow rule).
 
 ## Improvement queue
-1. Refresh macro/approval sources for 2026 coverage (open #1).
-2. Generic-ballot scraper (open #2).
-3. **Margin / overperformance target** (open #3) — the big research direction.
-4. Fix dedup upstream in polling-agg (open #5).
-5. MEDSL results loader after Nov 2026 (open #6).
+1. Approval source for 2025+ (open #1) — re-try `fetch_approval.py` for the UCSB Trump-47 page.
+2. Fix dedup upstream in polling-agg (open #4).
+3. Iterate on the margin model (RCV/runoff races need thought; ~3.5% of races have
+   sign(margin) ≠ won because the first-round leader can lose those formats).
+4. MEDSL results loader after Nov 2026 (open #5).

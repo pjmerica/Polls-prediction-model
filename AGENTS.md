@@ -22,8 +22,11 @@ the infrastructure is the basis for a future *margin* model where features can h
                             (both committed; re-run only to EXTEND to new months)
 3. model.ipynb           -> features via features.py, tunes on 1998-2016, evaluates on
                             2018-2024, saves data/model_xgb.json + data/model_features.json
-4. predict.py            -> scores FUTURE races from the polling-agg repo's raw poll feed
-                            (..\Polling Agg\Polling agg and Prediction markets\data\raw\)
+4. predict.py            -> win probabilities for FUTURE races from the polling-agg repo's
+                            raw poll feed (..\Polling Agg\...\data\raw\)
+5. margin_model.ipynb    -> SEPARATE margin model (predicts victory margin in pct points);
+   predict_margin.py        own artifact data/margin_model_*.json. Keep it fully separate
+                            from the win/lose model (user requirement).
 ```
 Shared modules: **cycles.py** (all cycle constants — extend a cycle by editing ONE file),
 **features.py** (the feature builder used by BOTH model.ipynb and predict.py — never fork it),

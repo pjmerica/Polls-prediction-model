@@ -250,6 +250,9 @@ def build_candidate_table(d, macro, natl_env_map, funds, house_train_years=None,
                 race_id=race_id, year=yr, state=st, office=of, district=di,
                 cand_key=ck, candidate=gc["candidate"].iloc[0], party=party,
                 won=(int(gc["won"].iloc[0]) if has_won and pd.notna(gc["won"].iloc[0]) else np.nan),
+                # actual vote share — LABEL for the margin model, never a feature
+                vote_pct=(pd.to_numeric(gc["vote_pct"], errors="coerce").iloc[0]
+                          if "vote_pct" in gc.columns else np.nan),
                 poll_avg=gc["pct"].mean(),
                 poll_last=(dated["pct"].iloc[-1] if len(dated) else gc["pct"].mean()),
                 poll_last30=(last30["pct"].mean() if len(last30) else gc["pct"].mean()),
