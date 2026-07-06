@@ -51,6 +51,28 @@ def fetch_president(slugs):
             last = f"{type(e).__name__}: {e}"
     return None, last
 
+def fetch_votehub():
+    """Current-term approval polls from VoteHub's open API (all pollsters, per-poll).
+
+    Continuation source for months AFTER the UCSB/Gallup series ends (UCSB has no
+    Trump-2nd-term page yet). Methodology note: this is an all-pollster average rather
+    than Gallup-only — a small level shift is possible at the seam; the model consumes
+    windowed stats (means/trends), which are robust to that.
+    """
+    r = requests.get("https://api.votehub.com/polls",
+                     params={"poll_type": "approval", "subject": "Trump"},
+                     timeout=60, headers=H)
+    r.raise_for_status()
+    rows = []
+    for p in r.json():
+        app = next((a["pct"] for a in p.get("answers", [])
+                    if str(a.get("choice", "")).lower().startswith("approv")), None)
+        end = pd.to_datetime(p.get("end_date"), errors="coerce")
+        if app is not None and pd.notna(end):
+            rows.append((end, float(app)))
+    t = pd.DataFrame(rows, columns=["end", "value"])
+    return t[t["end"] >= "2025-01-20"]          # second-term polls only
+
 def build():
     frames = []
     for name, slugs in PRESIDENTS.items():
@@ -60,6 +82,15 @@ def build():
             continue
         print(f"  OK   {name:8} {len(t)} polls  {t['end'].min().date()} .. {t['end'].max().date()}  <- {info}")
         frames.append(t)
+    ucsb_end = max(f["end"].max() for f in frames)
+    try:
+        vh = fetch_votehub()
+        vh = vh[vh["end"] > ucsb_end]           # only the months UCSB doesn't cover
+        if len(vh):
+            print(f"  OK   votehub  {len(vh)} polls  {vh['end'].min().date()} .. {vh['end'].max().date()}  <- api.votehub.com")
+            frames.append(vh)
+    except Exception as e:
+        print(f"  SKIP votehub  ({type(e).__name__}: {e})")
     allp = pd.concat(frames, ignore_index=True).sort_values("end")
     # monthly = mean of all Gallup readings whose END date falls in that month
     monthly = (allp.set_index("end")["value"].resample("MS").mean().dropna().round(1))
