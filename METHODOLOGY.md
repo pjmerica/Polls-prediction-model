@@ -1,95 +1,82 @@
 # Methodology — exact time windows & how every feature is built
 
-This is the precise reference for **what time period each feature draws from**. The guiding
-rule: *every feature must use only information available before that race's election.* This
-doc spells out the exact cutoffs so there's no ambiguity.
+The precise reference for **what time period each feature draws from**. Guiding rule: *every
+feature must use only information available before that race's election.* Updated 2026-07-05
+(raw-poll averages, 14 cycles, nested tuning).
 
 ## Cycles modeled
-`2018, 2020, 2022, 2024` (even-year general elections). Earlier cycles can't be modeled —
-machine-readable polls only start in 2018.
+Even years **1998–2024** (14 cycles). 1998–2016 polls come from the frozen 538
+pollster-ratings `raw_polls.csv` (top-two candidates per poll); 2018–2024 from the frozen
+538 poll files. Odd-year races are excluded. General-election stage only (primaries filtered;
+hypothetical general-matchup polls kept).
 
 ## Election-eve cutoff
-We treat **Nov 1 of the election year** as the cutoff ("election eve") for window math.
-Actual election day is the first Tuesday after the first Monday in November; Nov 1 is a
-clean, conservative stand-in that never includes post-election information.
+**Nov 1 of the election year** is the cutoff for window math (conservative stand-in for
+election day). `predict.py` uses the true election date for `days_to_elec`.
 
 ---
 
 ## A. Poll-based features — per candidate, within the cycle
-Polls carry an `end_date`. Every poll used has `end_date` on/before its race's election.
-Features are built per candidate from **all of that candidate's polls in the cycle**:
+**All aggregates are PLAIN averages — no weighting of any kind** (recency/sample/pollster-grade
+weights were removed 2026-07-05; grades don't exist for future polls). Recency enters through
+explicit features instead.
 
 | feature | window |
 |---|---|
-| `poll_avg`, `poll_wavg`, `poll_std`, `n_polls`, `poll_share`, `poll_lead`, `n_polls_over50`, `frac_polls_over50`, `race_total_polls`, `avg_grade`, `avg_pollscore`, `avg_sample` | all polls in the cycle for that candidate/race |
-| `poll_last` | the single most recent poll |
-| `poll_last30` | polls within **30 days** of the candidate's last poll (`days_to_elec ≤ 30`) |
-| `poll_momentum` | linear slope of `pct` over polls within **60 days** (`days_to_elec ≤ 60`, needs ≥3 polls) |
+| `poll_avg`, `poll_std`, `n_polls`, `poll_share`, `poll_lead`, `n_polls_over50`, `frac_polls_over50`, `race_total_polls`, `avg_sample` | all general-election polls in the cycle for that candidate/race |
+| `poll_last` | the single most recent poll **with a known date** |
+| `poll_last30` | polls within **30 days** of election (`days_to_elec ≤ 30`) |
+| `poll_momentum` | slope of `pct` over polls within **60 days** (needs ≥3 polls) |
 | `min_days` | days-to-election of the candidate's latest poll |
-| `gap_x_recency` | `poll_lead` × recency weight (closer to election = higher) |
+| `gap_x_recency` | `poll_lead` × recency factor `1/(1+min_days/30)` |
+| `poll_adj` | plain mean of house-effect-adjusted pct (house effect from **train cycles only** per fold; from all history at predict time) |
 
-`days_to_elec = election_date − poll end_date`. Weighting in `poll_wavg`: recency × √sample × pollster grade.
-
-## B. Lead-dynamics features — the polling trajectory within the cycle
-Computed by walking the race's polls in date order (running averages):
-
-| feature | window |
-|---|---|
-| `avg_margin_over_time`, `min_margin`, `margin_trend`, `margin_volatility` | the candidate's lead-vs-best-opponent across **all poll dates in the cycle** |
-| `n_lead_changes`, `lead_changed` | how often the front-runner flipped across the cycle's polls |
+## B. Lead-dynamics features
+Running-mean margins over the race's poll dates (all in-cycle): `avg_margin_over_time`,
+`min_margin`, `margin_trend`, `margin_volatility`, `n_lead_changes`, `lead_changed`.
 
 ## C. National environment
-| feature | window |
-|---|---|
-| `natl_env_cand` | generic-ballot DEM−REP averaged over the **30 days before election** (`0 ≤ days_to_elec ≤ 30`), per cycle, signed to the candidate's party |
+`natl_env_cand` = generic-ballot DEM−REP margin over the **30 days before the election**,
+signed to the candidate's party. Source per cycle (see `cycles.py`): 1998–2016 computed from
+the committed daily history file; 2018–2024 frozen constants; 2026+ passed to
+`predict.py --natl-env` manually.
 
 ## D. Fundamentals
 | feature | window |
 |---|---|
-| `prior_margin_cand` | the **most recent *prior* election** for that exact seat (looks back 2/4/6/8 years; strictly before the current cycle) |
-| `is_incumbent`, `is_inc_party_race` | from `races.csv` incumbent_party (known before the election) |
-| `is_president_party` | candidate's party == sitting president's party (known before the election) |
-| `lean_cand` | 538 partisan-lean file. **⚠️ KNOWN CAVEAT:** this file is a single **2022 vintage**, so for 2018/2020 races it carries information from *after* those elections (mild look-ahead leakage). It is barely used by the tuned model (heavy regularization), and `prior_margin_cand` covers the same "structural lean" signal cleanly. Kept for now; flagged. |
+| `prior_margin_cand` | most recent **prior** same-office election for that seat (2/4/6/8 yrs back; strictly before the cycle) |
+| `is_incumbent`, `is_inc_party_race` | from frozen `races.csv` incumbent_party; **unknown = NaN**, never 0 |
+| `is_president_party` | candidate's party == sitting president's party |
 
-## E. Macro / economic features — **per-cycle windows (this is the key part)**
-Each economic series is condensed over **that cycle's own window = the day after the prior
-election eve, through this election eve**. So `max`/`min`/`std`/`trend` reflect *only that
-cycle's* conditions, never the all-time history.
+(The 538 partisan-lean file was removed entirely — single 2022 vintage = look-ahead leakage.)
 
-**Exact windows:**
-| cycle | window (exclusive start → inclusive end) |
-|---|---|
-| **2018** | 2016-11-01 → 2018-11-01 |
-| **2020** | 2018-11-01 → 2020-11-01 |
-| **2022** | 2020-11-01 → 2022-11-01 |
-| **2024** | 2022-11-01 → 2024-11-01 |
-
-Per metric, **7 stats** over that window: `_eve` (last reading), `_mean`, `_max`, `_min`,
-`_std`, `_trend` (slope), `_last12_delta` (value minus 12 months prior).
-
-**Worked example — why per-cycle matters:** inflation peaked at ~9% in mid-2022.
-- `inflation_max` for **2022** = **9.0** (the peak is inside 2020-11→2022-11)
-- `inflation_max` for **2024** = **6.4** (2022-11→2024-11 only; the 9% peak is *before* this window, so excluded)
-
-If we used an expanding-from-2016 window instead, 2024 would wrongly show 9.0. We don't.
-
-**Note on YoY inflation:** computed as CPI / CPI-12-months-prior on the *full* series first,
-then sliced to the window (so the first month of the window still has a valid YoY value).
-
-**Metrics** (from `data/macro_monthly.csv`): `unemployment`, `inflation` (from CPI),
-`cpi_core`, `gas`, `fed_funds`, `unemp_u6`, `approval` → 7 × 7 stats = 49 macro features/cycle.
+## E. Macro features — per-cycle windows
+Per metric, stats over **that cycle's own window** = prior even-year Nov 1 → this Nov 1
+(e.g. 2024: 2022-11-01 → 2024-11-01). 7 full-window stats (`_eve/_mean/_max/_min/_std/_trend/
+_last12_delta`) + 3/6/12-month recency cuts (`_avg/_max/_trend`). Metrics: unemployment,
+inflation (CPI YoY computed on the full series, then windowed), cpi_core, gas, fed_funds,
+unemp_u6, approval. Approval comes from `data/approval_monthly.csv` (Gallup via UCSB,
+1993–2025-01). Pre-cycle months missing ⇒ NaN (XGBoost routes missing).
 
 ---
 
-## Validation windows
-- **Leave-one-cycle-out CV:** train on 3 cycles, test the held-out 4th, rotate through all four.
-  The pollster house-effect adjustment (`poll_wavg_adj`) is recomputed from **training cycles
-  only** in each fold (no leakage).
-- **Single split (for the walkthrough):** train ≤ 2022, test 2024.
-- Never random splits — that would mix cycles and leak the future.
+## Validation (nested — no selection bias)
+- **Hyperparameter tuning:** leave-one-cycle-out CV over **1998–2016 only** (150 sampled
+  configs, live grid search every run).
+- **Honest evaluation:** leave-one-cycle-out over **2018–2024** — cycles the tuner never saw.
+  Each fold trains on the other 13 cycles; the fold's `poll_adj` house effect is recomputed
+  from its training cycles only.
+- The single-split walkthrough (train = all but 2024, test = 2024) is also honest under this
+  scheme.
+- Never random splits.
+
+## Production model (predict.py)
+Trained on **all 14 cycles** with the tuned params; saved to `data/model_xgb.json` +
+`data/model_features.json` by `model.ipynb`. `predict.py` builds identical features (same
+`features.py` code) from the polling-agg raw poll feed and outputs per-candidate win
+probabilities plus within-race normalized probabilities.
 
 ## Static-data principle
-Past months/results never change, so the macro CSV (`data/macro_monthly.csv`, full history
-back to 1947) and the result files are pulled **once and committed**. Changing a model
-*feature* does not require re-downloading data — only re-running `model.ipynb` (with its
-live grid search; see the workflow rule in README/AGENTS).
+Every input is pulled once and **committed**: polls (all vintages), results, races.csv, macro,
+approval, generic ballot. No model or predict run touches the network. Re-pull only to extend
+to new months/cycles.

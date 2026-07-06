@@ -15,13 +15,19 @@ the infrastructure is the basis for a future *margin* model where features can h
 
 ## The pipeline (run order)
 ```
-1. build_dataset.ipynb   -> downloads polls + results, joins them
-                            -> writes polls_long_with_results.csv  (one row per poll-candidate)
-2. fetch_macro.py        -> ONE-TIME pull of monthly economic data (DBnomics)
-                            -> writes data/macro_monthly.csv  (static, committed, never re-pull)
-3. model.ipynb           -> reads both files, builds features, tunes + trains XGBoost,
-                            cross-validates, benchmarks vs polls-only
+1. build_dataset.ipynb   -> joins polls (1998-2016 raw_polls + 2018-24 historical, all committed)
+                            with results -> polls_long_with_results.csv (one row per poll-candidate)
+2. fetch_approval.py     -> ONE-TIME Gallup approval pull (UCSB) -> data/approval_monthly.csv
+   fetch_macro.py        -> ONE-TIME econ pull (DBnomics) -> data/macro_monthly.csv
+                            (both committed; re-run only to EXTEND to new months)
+3. model.ipynb           -> features via features.py, tunes on 1998-2016, evaluates on
+                            2018-2024, saves data/model_xgb.json + data/model_features.json
+4. predict.py            -> scores FUTURE races from the polling-agg repo's raw poll feed
+                            (..\Polling Agg\Polling agg and Prediction markets\data\raw\)
 ```
+Shared modules: **cycles.py** (all cycle constants — extend a cycle by editing ONE file),
+**features.py** (the feature builder used by BOTH model.ipynb and predict.py — never fork it),
+**macro_features.py** (per-cycle macro stats).
 
 ## Files
 | file | what it does |
@@ -53,11 +59,16 @@ the infrastructure is the basis for a future *margin* model where features can h
    is `won`.
 
 4. **Validate by year, never randomly.** Train on whole cycles, test on a held-out cycle
-   (leave-one-cycle-out). Random splits leak the future and inflate scores.
+   (leave-one-cycle-out). Random splits leak the future and inflate scores. Hyperparameters
+   are tuned on the 1998-2016 cycles ONLY; 2018-2024 is the untouched honest eval set.
 
-5. **Static data is pulled once and committed.** Past months/results never change. `fetch_macro.py`
-   and the committed CSVs exist so we don't re-pull on every change. Only re-pull to *extend* to
-   a new cycle.
+5. **Static data is pulled once and committed.** Past months/results never change. ALL model
+   inputs are committed; no run touches the network. Re-pull only to *extend* to new months.
+
+6. **No 538-only inputs, no poll weighting.** Production future = raw polls + econ data only
+   (538 is dead). Pollster grades/pollscore/partisan-lean are banned; all poll aggregates are
+   plain averages (see features.py header + CONCERNS.md). Feature changes go in features.py so
+   model.ipynb and predict.py can never drift apart.
 
 ## TRAPS that have bitten us (don't repeat)
 - **Run nbconvert on `model.ipynb` ONE AT A TIME.** Launching several concurrent
