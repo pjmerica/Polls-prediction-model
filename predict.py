@@ -138,9 +138,18 @@ def main():
     ne = dict(natl_env_hist())
     if args.natl_env is not None:
         ne[args.cycle] = args.natl_env
+        print(f"natl_env({args.cycle}) = {args.natl_env:+.1f} (given via --natl-env)")
     else:
-        print("WARNING: --natl-env not given; natl_env_cand will be missing "
-              "(look up the generic-ballot DEM-REP average, e.g. RealClearPolling)")
+        # the one live fetch in the project: current-cycle info can't be frozen by definition
+        from fetch_generic_ballot import get_natl_env
+        v = get_natl_env(args.cycle)
+        if v is not None:
+            ne[args.cycle] = v
+            print(f"natl_env({args.cycle}) = {v:+.1f} (Wikipedia aggregator mean; "
+                  f"override with --natl-env)")
+        else:
+            print("WARNING: generic-ballot fetch failed and --natl-env not given; "
+                  "natl_env_cand will be missing (NaN)")
 
     funds = F.load_fundamentals()
     cand = F.build_candidate_table(d, macro, ne, funds, house=house)

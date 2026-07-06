@@ -49,6 +49,30 @@ def fetch(provider, dataset, code, timeout=45):
                   if len(d["period"][0]) == 7 else pd.to_datetime(d["period"]))
     return pd.to_numeric(s, errors="coerce").dropna()
 
+# DBnomics' BLS mirror lags (it stopped at 2025-01 as of 2026-07), so BLS series get an
+# overlay of the last ~10 years straight from the BLS public API (no key; 25 req/day cap,
+# one request covers all our BLS series). API data wins where the two overlap.
+def fetch_bls_recent(series_ids, years_back=9, timeout=60):
+    end = pd.Timestamp.now().year
+    r = requests.post("https://api.bls.gov/publicAPI/v2/timeseries/data/",
+                      json={"seriesid": list(series_ids),
+                            "startyear": str(end - years_back), "endyear": str(end)},
+                      headers={"Content-Type": "application/json", **H}, timeout=timeout)
+    j = r.json()
+    if j.get("status") != "REQUEST_SUCCEEDED":
+        raise RuntimeError(f"BLS API: {j.get('status')} {j.get('message')}")
+    out = {}
+    for s in j["Results"]["series"]:
+        rows = []
+        for d in s["data"]:
+            if not d["period"].startswith("M") or d["period"] == "M13":
+                continue
+            v = pd.to_numeric(d["value"], errors="coerce")   # '-' = BLS missing placeholder
+            if pd.notna(v):
+                rows.append((pd.Timestamp(int(d["year"]), int(d["period"][1:]), 1), float(v)))
+        out[s["seriesID"]] = pd.Series(dict(rows)).sort_index()
+    return out
+
 # Presidential approval now comes from data/approval_monthly.csv, produced by
 # fetch_approval.py (Gallup via UCSB American Presidency Project, 1993->present).
 # Run `python fetch_approval.py` first if that file is missing.
@@ -56,10 +80,21 @@ APPROVAL_CSV = "data/approval_monthly.csv"
 
 def build():
     os.makedirs("data", exist_ok=True)
+    bls_codes = [code for (prov, ds, code, f) in SERIES.values() if prov == "BLS"]
+    try:
+        bls_recent = fetch_bls_recent(bls_codes)
+        print(f"  BLS API overlay: {len(bls_recent)} series, latest "
+              f"{max(s.index.max() for s in bls_recent.values()).date()}")
+    except Exception as e:
+        bls_recent = {}
+        print(f"  BLS API overlay unavailable ({e}) - DBnomics only")
+
     frames, ok, skipped = [], [], []
     for metric, (prov, ds, code, freq) in SERIES.items():
         try:
             s = fetch(prov, ds, code)
+            if code in bls_recent:                     # fresh months win over the lagged mirror
+                s = bls_recent[code].combine_first(s)
             s = s.resample("MS").ffill() if freq in ("Q", "A") else s.resample("MS").mean()
             if START is not None:
                 s = s[s.index >= START]
