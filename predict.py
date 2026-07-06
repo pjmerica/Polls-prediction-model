@@ -225,7 +225,7 @@ def main():
                   "natl_env_cand will be missing (NaN)")
 
     funds = F.load_fundamentals()
-    fec = F.load_fec()
+    fec = F.load_fec(extended=True)
     cand = F.build_candidate_table(d, macro, ne, funds, house=house, fec=fec, bias_priors=bias)
     cand = patch_redistricted_priors(cand)
 

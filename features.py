@@ -445,7 +445,7 @@ def build_candidate_table(d, macro, natl_env_map, funds, house_train_years=None,
 def feature_list(macro_feats, fund=False):
     """The model's input columns. Everything here is available for future races.
     fund=True appends the FEC fundraising features (pass fec=load_fec() to the builder)."""
-    return ([] if not fund else list(FUND_FEATS)) + [
+    return ([] if not fund else list(FUND_FEATS_EXT)) + [
         "poll_avg", "poll_last", "poll_last30", "poll_std", "n_polls",
         "n_polls_over50", "frac_polls_over50", "race_total_polls",
         "avg_sample", "min_days",
