@@ -1,5 +1,11 @@
 {
  "features": [
+  "fund_receipts_ln",
+  "fund_share",
+  "fund_indiv_pct",
+  "fund_pac_pct",
+  "fund_party_pct",
+  "fund_self_pct",
   "poll_avg",
   "poll_last",
   "poll_last30",
@@ -344,14 +350,14 @@
   2024
  ],
  "xgb_params": {
-  "max_depth": 2,
-  "learning_rate": 0.02,
-  "n_estimators": 400,
-  "min_child_weight": 15,
-  "subsample": 0.6,
-  "colsample_bytree": 0.4,
+  "max_depth": 3,
+  "learning_rate": 0.03,
+  "n_estimators": 200,
+  "min_child_weight": 8,
+  "subsample": 0.8,
+  "colsample_bytree": 1.0,
   "reg_lambda": 1,
-  "reg_alpha": 0,
+  "reg_alpha": 1,
   "objective": "reg:squarederror",
   "random_state": 42
  }

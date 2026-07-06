@@ -155,6 +155,30 @@ def drop_stale_candidates(d, stale_days=14):
           f"(no polls within {stale_days}d of their race's latest; {len(reverted)} races left untouched by guards)")
     return out
 
+def patch_redistricted_priors(c):
+    """In 2025-26 REDRAWN districts, prior_margin_cand describes old boundaries. Replace it
+    with sign * 2 * current-map Cook PVI (data/district_pvi_current.csv) — a structural
+    estimate of the NEW district's margin. Applied at predict time only; training cycles'
+    districts always match their own results, so no train-side change is needed."""
+    rd_path = os.path.join(HERE, "data", "redistricted_2026.csv")
+    pvi_path = os.path.join(HERE, "data", "district_pvi_current.csv")
+    if not (os.path.exists(rd_path) and os.path.exists(pvi_path)):
+        print("WARNING: redistricting/PVI files missing — redrawn-district priors NOT patched")
+        return c
+    redrawn = set(pd.read_csv(rd_path)["state"])
+    pv = pd.read_csv(pvi_path, dtype={"district": str})
+    pv["district"] = pv["district"].fillna("")
+    pvi = {(r.state, r.district): r.pvi for r in pv.itertuples()}
+    mask = (c["office"] == "House") & c["state"].isin(redrawn)
+    sign = c["party"].map({"DEM": 1, "REP": -1}).fillna(0)
+    est = pd.Series([pvi.get((s, str(d))) for s, d in zip(c["state"], c["district"])],
+                    index=c.index, dtype=float)
+    patch = mask & est.notna() & (sign != 0)
+    c.loc[patch, "prior_margin_cand"] = (sign * 2.0 * est)[patch]
+    print(f"redistricting patch: prior_margin re-estimated from new-map PVI for "
+          f"{int(patch.sum())} candidate rows in {c.loc[patch, 'race_id'].nunique()} redrawn districts")
+    return c
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--cycle", type=int, default=2026)
@@ -202,6 +226,7 @@ def main():
     funds = F.load_fundamentals()
     fec = F.load_fec()
     cand = F.build_candidate_table(d, macro, ne, funds, house=house, fec=fec)
+    cand = patch_redistricted_priors(cand)
 
     # guard: every feature the artifact expects must exist in the built table — reindex
     # would otherwise silently fill a whole missing block with NaN and predict garbage
@@ -217,7 +242,8 @@ def main():
         ds = d.copy()
         sgn = ds["party_std"].map({"DEM": 1, "REP": -1}).fillna(0)
         ds["pct"] = ds["pct"] + sgn * dem_shift / 2
-        cs = F.build_candidate_table(ds, macro, ne, funds, house=house, fec=fec)
+        cs = patch_redistricted_priors(
+            F.build_candidate_table(ds, macro, ne, funds, house=house, fec=fec))
         cs["p"] = model.predict_proba(cs.reindex(columns=meta["features"]))[:, 1]
         m = cs.set_index(["race_id", "cand_key"])["p"]
         cand[f"win_prob_{label}"] = [m.get((r, c)) for r, c in

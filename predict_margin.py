@@ -20,7 +20,7 @@ import xgboost as xgb
 import features as F
 from cycles import natl_env as natl_env_hist
 from macro_features import build_macro
-from predict import DEFAULT_POLLS, load_agg_polls   # same feed, same dedup
+from predict import DEFAULT_POLLS, load_agg_polls, patch_redistricted_priors
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 
@@ -64,7 +64,8 @@ def main():
 
     funds = F.load_fundamentals()
     fec = F.load_fec()
-    cand = F.build_candidate_table(d, macro, ne, funds, house=house, fec=fec)
+    cand = patch_redistricted_priors(
+        F.build_candidate_table(d, macro, ne, funds, house=house, fec=fec))
 
     missing = [f for f in meta["features"] if f not in cand.columns]
     assert not missing, f"artifact expects features absent from the built table: {missing[:8]}"
@@ -77,7 +78,8 @@ def main():
         ds = d.copy()
         sgn = ds["party_std"].map({"DEM": 1, "REP": -1}).fillna(0)
         ds["pct"] = ds["pct"] + sgn * dem_shift / 2
-        cs = F.build_candidate_table(ds, macro, ne, funds, house=house, fec=fec)
+        cs = patch_redistricted_priors(
+            F.build_candidate_table(ds, macro, ne, funds, house=house, fec=fec))
         cs["p"] = model.predict(cs.reindex(columns=meta["features"]))
         mm = cs.set_index(["race_id", "cand_key"])["p"]
         cand[f"pred_margin_{label}"] = [mm.get((r, c)) for r, c in
