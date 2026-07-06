@@ -130,8 +130,22 @@ def prepare_polls(d):
     for c in ["pct", "sample_size", "days_to_elec"]:
         if c in d.columns:
             d[c] = pd.to_numeric(d[c], errors="coerce")
+    # harmonize instrument precision: the live 2026 feed carries ~1-decimal pcts while the
+    # 538-era training files carry more — round BOTH paths so train and serve match.
+    d["pct"] = d["pct"].round(1)
     d["district"] = d["district"].map(dist_str)
     return d
+
+def norm_pollster(p):
+    """Normalize pollster names so house effects match across feeds (538 vs NYT/Wikipedia):
+    casefold, drop partisan tags, '&'->'and', 'Co.'->'company', strip punctuation."""
+    s = str(p).casefold().strip()
+    s = re.sub(r"\(([dr]|dem|rep)\)", "", s)
+    s = s.replace("&", " and ")
+    s = re.sub(r"\bco\b\.?", "company", s)
+    s = re.sub(r"\binc\b\.?|,", "", s)
+    s = re.sub(r"[^a-z0-9/ ]", "", s)
+    return re.sub(r"\s+", " ", s).strip()
 
 # ---------------------------------------------------------------- race dynamics
 
@@ -178,7 +192,8 @@ def margin_dynamics(g):
 # ---------------------------------------------------------------- house effect
 
 def compute_house_effect(d, train_years):
-    """Per-pollster DEM-REP margin deviation vs the race consensus, TRAIN years only."""
+    """Per-pollster DEM-REP margin deviation vs the race consensus, TRAIN years only.
+    Keyed by NORMALIZED pollster name (norm_pollster) so 2026-feed names match history."""
     mar = (d[d["party_std"].isin(["DEM", "REP"])]
            .pivot_table(index=["race_id", "poll_id", "pollster", "year"],
                         columns="party_std", values="pct", aggfunc="max").reset_index())
@@ -188,7 +203,8 @@ def compute_house_effect(d, train_years):
     mar["m"] = mar["DEM"] - mar["REP"]
     tm = mar[mar["year"].isin(list(train_years))].copy()
     tm["dev"] = tm["m"] - tm.groupby("race_id")["m"].transform("mean")
-    return tm.groupby("pollster")["dev"].mean().to_dict()
+    tm["pollster_key"] = tm["pollster"].map(norm_pollster)
+    return tm.groupby("pollster_key")["dev"].mean().to_dict()
 
 def candidate_poll_adj(d, house):
     """Per (race_id, cand_key) plain mean of house-effect-adjusted pct.
@@ -197,7 +213,7 @@ def candidate_poll_adj(d, house):
     without rebuilding the whole candidate table."""
     dd = d[["race_id", "cand_key", "party_std", "pct", "pollster"]].copy()
     dd["sign"] = dd["party_std"].map({"DEM": 1, "REP": -1}).fillna(0)
-    dd["adj"] = dd["pct"] - dd["sign"] * dd["pollster"].map(house).fillna(0.0)
+    dd["adj"] = dd["pct"] - dd["sign"] * dd["pollster"].map(norm_pollster).map(house).fillna(0.0)
     return dd.groupby(["race_id", "cand_key"])["adj"].mean()
 
 # ---------------------------------------------------------------- main builder
@@ -243,7 +259,7 @@ def build_candidate_table(d, macro, natl_env_map, funds, house_train_years=None,
                 if np.ptp(x) > 0:
                     slope = np.polyfit(x, y, 1)[0]
 
-            adj = gc["pct"] - gc["pollster"].map(lambda p: sign * house.get(p, 0.0))
+            adj = gc["pct"] - gc["pollster"].map(lambda p: sign * house.get(norm_pollster(p), 0.0))
             md = dyn.get(ck, {})
 
             rows.append(dict(

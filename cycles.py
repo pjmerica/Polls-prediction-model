@@ -36,6 +36,15 @@ def prior_eve(cycle):
     """Start of the cycle's own macro window = the previous even-year election eve."""
     return pd.Timestamp(f"{cycle - 2}-11-01")
 
+def macro_cutoff(cycle):
+    """End of the cycle's MACRO window: Sep 30, not Nov 1.
+
+    October economic prints are published mid-November (CPI) or the Friday before/after the
+    election (jobs report) — real-time forecasters don't reliably have them on election eve.
+    Ending macro windows at Sep 30 keeps training features to data that is ALWAYS published
+    pre-election, removing the vintage look-ahead. Poll-based windows still use eve()."""
+    return pd.Timestamp(f"{cycle}-09-30")
+
 # ---- national environment: generic-ballot DEM-REP margin, last 30 days before election ----
 # 1996-2016: computed from the frozen 538 daily historical file (committed).
 # 2018-2024: frozen values computed earlier from a (now unreachable) Internet Archive snapshot

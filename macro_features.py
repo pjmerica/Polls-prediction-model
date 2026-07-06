@@ -19,7 +19,10 @@ import pandas as pd
 
 # Cycle constants live in cycles.py (single source of truth); PRES_PARTY is re-exported
 # here because model code historically imports it from this module.
-from cycles import CYCLES, PRES_PARTY, eve as _cycle_eve, prior_eve as _cycle_prior_eve
+# Macro windows end at macro_cutoff (Sep 30) — October prints aren't published by election
+# day, so including them would be vintage look-ahead (see cycles.macro_cutoff docstring).
+from cycles import (CYCLES, PRES_PARTY, prior_eve as _cycle_prior_eve,
+                    macro_cutoff as _cycle_eve)
 
 CSV_PATH = "data/macro_monthly.csv"
 
@@ -27,7 +30,7 @@ CSV_PATH = "data/macro_monthly.csv"
 YOY_METRICS = {"cpi"}   # cpi index -> inflation YoY%
 
 def _eve(cycle):
-    return _cycle_eve(cycle)   # election-eve cutoff (first of Nov of the cycle)
+    return _cycle_eve(cycle)   # Sep 30 of the cycle (data published before election day)
 
 def _stats(s, prefix):
     """eve / mean / max / min / std / trend / last12_delta for a monthly Series (date-indexed)."""

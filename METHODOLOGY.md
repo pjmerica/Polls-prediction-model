@@ -19,7 +19,10 @@ election day). `predict.py` uses the true election date for `days_to_elec`.
 ## A. Poll-based features — per candidate, within the cycle
 **All aggregates are PLAIN averages — no weighting of any kind** (recency/sample/pollster-grade
 weights were removed 2026-07-05; grades don't exist for future polls). Recency enters through
-explicit features instead.
+explicit features instead. Poll `pct` is rounded to 1 decimal in BOTH training and predict
+paths (the live feed's resolution — instrument harmonization, 2026-07-06). Pollster names are
+normalized (`features.norm_pollster`) before house-effect lookup so 2026-feed names match the
+538-era history (row match 63% → 67%).
 
 | feature | window |
 |---|---|
@@ -51,8 +54,10 @@ the committed daily history file; 2018–2024 frozen constants; 2026+ passed to
 (The 538 partisan-lean file was removed entirely — single 2022 vintage = look-ahead leakage.)
 
 ## E. Macro features — per-cycle windows
-Per metric, stats over **that cycle's own window** = prior even-year Nov 1 → this Nov 1
-(e.g. 2024: 2022-11-01 → 2024-11-01). 7 full-window stats (`_eve/_mean/_max/_min/_std/_trend/
+Per metric, stats over **that cycle's own window** = prior even-year Nov 1 → **this Sep 30**
+(e.g. 2024: 2022-11-01 → 2024-09-30). The window ends Sep 30 — not eve — because October
+economic prints (CPI mid-Nov, jobs report ±election day) are not reliably published before
+the election; using them would be vintage look-ahead (fixed 2026-07-06). 7 full-window stats (`_eve/_mean/_max/_min/_std/_trend/
 _last12_delta`) + 3/6/12-month recency cuts (`_avg/_max/_trend`). Metrics: unemployment,
 inflation (CPI YoY computed on the full series, then windowed), cpi_core, gas, fed_funds,
 unemp_u6, approval. Approval comes from `data/approval_monthly.csv` (Gallup via UCSB,
