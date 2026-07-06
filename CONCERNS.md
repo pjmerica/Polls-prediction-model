@@ -116,9 +116,39 @@ After the 2026 elections, results must come from MEDSL/official returns (loader 
 written), then: add 2026 to `cycles.py`, extend macro/approval, re-run the whole pipeline
 (grid search included — the workflow rule).
 
-## Improvement queue
-1. Approval source for 2025+ (open #1) — re-try `fetch_approval.py` for the UCSB Trump-47 page.
-2. Fix dedup upstream in polling-agg (open #4).
-3. Iterate on the margin model (RCV/runoff races need thought; ~3.5% of races have
-   sign(margin) ≠ won because the first-round leader can lose those formats).
-4. MEDSL results loader after Nov 2026 (open #5).
+## Improvement roadmap (2026-07-06 full review — ranked by expected value)
+✅ Approval solved: VoteHub API continuation (all-pollster avg) after UCSB/Gallup ends 2025-01.
+   VoteHub also has 532 generic-ballot polls (poll_type=generic-ballot) — see #3 below.
+
+**Model architecture**
+1. **Race-level two-party reframe** (one row per race, target = signed D−R margin, features =
+   D-minus-R differences). Kills the "both candidates predicted to win" inconsistency AND the
+   win/margin model split ambiguity; win prob becomes P(margin>0).
+2. **Distributional margin** (quantile XGBoost 10/50/90 or similar): win prob from the margin
+   distribution, and rung-by-rung pricing of Kalshi's margin-of-victory ladders (we already
+   parse them) — the direct betting payoff.
+3. **Snapshot training (fix the July-vs-eve mismatch)**: build features as-of T days out for
+   multiple T per historical race, add days_out as a feature. Makes mid-campaign predictions
+   honest — currently the single biggest train/serve gap.
+4. **Own pollster reliability scores** from raw_polls 1998+ (per-pollster error/bias vs actual,
+   prior cycles only) — future-proof replacement for the dead 538 grades.
+5. **Calibration layer** (isotonic per office on out-of-fold preds) + ship the α≈0.5
+   model/poll-softmax blend that already wins the sweep.
+
+**Features (cheap → expensive)**
+6. Partisan-poll handling: `partisan` col is ingested but UNUSED — frac_partisan, poll_avg
+   excluding partisan/internal polls (directly fixes TX-28-style mirages).
+7. Lead-significance: lead_se ≈ poll_std/√n_polls, lead_z = poll_lead/lead_se.
+8. is_midterm + is_midterm×is_president_party (explicit midterm penalty).
+9. RCV/runoff state flags (ME/AK; GA/LA) — tells the model where first-round margin ≠ winner.
+10. Generic-ballot monthly recency cuts from VoteHub + House-G-US polls (1998-2022 committed,
+    2024+2026 via VoteHub) — also automates natl_env, replacing the Wikipedia scrape.
+11. State partisan lean from prior PRESIDENTIAL results (time-varying, self-computed,
+    replaces the dropped 538 lean); district-level via MEDSL if wanted.
+12. FEC fundraising ratio per race (free API, quarterly) — classic House fundamental.
+
+**Ops**
+13. Schema guards in predict loaders (pct in [0,100], races count sanity, required cols).
+14. MEDSL results loader after Nov 2026; add 2026 to cycles.py; full retrain.
+15. Market-snapshot history already accrues in polling-agg git history — build an extractor
+    later to backtest model-vs-market edges against realized results.
