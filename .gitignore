@@ -35,6 +35,13 @@ data/*
 !data/races.csv
 !data/lean_states.csv
 !data/lean_districts.csv
+!data/raw_polls_538.csv
+!data/generic_ballot_hist_538.csv
+!data/approval_monthly.csv
+
+# ...and the trained production model artifact (what predict.py loads)
+!data/model_xgb.json
+!data/model_features.json
 
 # Python
 __pycache__/

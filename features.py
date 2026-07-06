@@ -60,7 +60,7 @@ def norm_name(s):
     return f"{last} {fi}".strip()
 
 JUNK_ANSWERS = {
-    "generic democrat", "generic republican", "generic ballot",
+    "generic democrat", "generic republican", "generic ballot", "generic candidate",
     "don't know", "dont know", "undecided", "someone else", "other",
     "would not vote", "neither", "no opinion", "refused", "none of these",
     "skipped", "will not vote", "not sure",
