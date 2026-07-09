@@ -81,6 +81,62 @@ FRIENDLY = {
     "fund_self_pct": "Self-funded share",
     "fund_smalldollar_pct": "Small-dollar donor share",
 }
+# one-line plain-English explanations, shown on hover in the dashboard modal
+DESC = {
+    "poll_avg": "Average of all the candidate's general-election polls this cycle.",
+    "poll_last": "The candidate's share in the most recent dated poll.",
+    "poll_last30": "Average over polls taken in the final 30 days before the election.",
+    "poll_std": "How much the candidate's poll numbers bounce around between surveys.",
+    "n_polls": "How many polls include this candidate.",
+    "n_polls_over50": "How many polls put the candidate above 50%.",
+    "frac_polls_over50": "Fraction of the candidate's polls that put them above 50%.",
+    "race_total_polls": "Total poll rows across all candidates in this race.",
+    "avg_sample": "Average sample size of the candidate's polls (bigger = more precise).",
+    "min_days": "Days between the candidate's latest poll and election day (staleness).",
+    "poll_lead": "Candidate's polling average minus the best opponent's.",
+    "poll_share": "Candidate's slice of all polling support in the race.",
+    "n_cands": "Number of polled candidates in the race.",
+    "is_dem": "1 if the candidate is a Democrat.",
+    "is_rep": "1 if the candidate is a Republican.",
+    "is_senate": "1 if this is a Senate race.",
+    "is_gov": "1 if this is a Governor race.",
+    "prior_margin_cand": "How much the candidate's party won/lost this seat by last time "
+                         "(redrawn districts use 2x the new map's Cook PVI instead).",
+    "is_incumbent": "1 if the candidate currently holds this seat.",
+    "is_inc_party_race": "1 if either candidate's party currently holds the seat.",
+    "twoparty_margin_cand": "Polled Dem-minus-Rep margin, signed toward this candidate.",
+    "abs_gap": "Size of the polled gap between the two parties, ignoring direction.",
+    "tossup": "1 if the polled gap is under 3 points.",
+    "undecided": "Share of voters not yet committed to any polled candidate.",
+    "gap_x_recency": "Polling lead discounted by how stale the latest poll is - "
+                     "a fresh lead counts more than an old one.",
+    "natl_env_cand": "National generic-ballot mood (last 30 days), signed toward the "
+                     "candidate's party.",
+    "bias_prior_cand": "How much polls in this state have historically over/under-stated "
+                       "the candidate's party (prior cycles only).",
+    "poll_momentum": "Slope of the candidate's polls over the final 60 days - "
+                     "rising or falling.",
+    "poll_adj": "Poll average after correcting each pollster's historical partisan lean.",
+    "n_lead_changes": "How many times the race's front-runner changed during the campaign.",
+    "lead_changed": "1 if the front-runner changed at least once.",
+    "avg_margin_over_time": "The candidate's average polled lead/deficit across the "
+                            "whole campaign.",
+    "margin_volatility": "How unstable the candidate's polled margin has been.",
+    "min_margin": "The candidate's worst polled margin at any point in the campaign.",
+    "margin_trend": "Whether the candidate's polled margin is improving or worsening.",
+    "is_president_party": "1 if the candidate's party holds the White House "
+                          "(midterms usually punish it).",
+    "fund_receipts_ln": "Total campaign money raised (log scale).",
+    "fund_share": "Candidate's share of ALL money raised in the race - "
+                  "donors are forecasters with skin in the game.",
+    "fund_indiv_pct": "Share of the candidate's money from individual donors.",
+    "fund_pac_pct": "Share from PACs/committees - PAC money tends to flow to "
+                    "likely winners.",
+    "fund_party_pct": "Share from party committees - parties triage toward "
+                      "winnable races.",
+    "fund_self_pct": "Share the candidate gave/loaned themselves.",
+    "fund_smalldollar_pct": "Share of individual money from small (<$200) donors.",
+}
 _METRIC = {"unemployment": "Unemployment", "inflation": "Inflation", "cpi_core": "Core CPI",
            "gas": "Gas price", "fed_funds": "Fed funds rate", "unemp_u6": "U-6 underemployment",
            "approval": "Presidential approval", "sentiment": "Consumer sentiment",
@@ -100,6 +156,16 @@ def friendly(f):
             return f"{mlabel} ({_SUFFIX.get(suf, suf)})"
     return f
 
+def describe(f):
+    if f in DESC:
+        return DESC[f]
+    for m, mlabel in sorted(_METRIC.items(), key=lambda kv: -len(kv[0])):
+        if f.startswith(m + "_"):
+            suf = f[len(m) + 1:]
+            return (f"{mlabel}, {_SUFFIX.get(suf, suf)}, over the ~2 years before the "
+                    f"election. National condition - same value for every race this cycle.")
+    return ""
+
 def top_shap(feats, values, shap_row, base, pred, k=10):
     """Top-k features by |SHAP| -> [{f, label, val, shap}] + base/pred."""
     order = np.argsort(-np.abs(shap_row))[:k]
@@ -107,7 +173,7 @@ def top_shap(feats, values, shap_row, base, pred, k=10):
     for i in order:
         v = values[i]
         out.append(dict(
-            f=feats[i], label=friendly(feats[i]),
+            f=feats[i], label=friendly(feats[i]), desc=describe(feats[i]),
             val=(None if (isinstance(v, float) and np.isnan(v)) else round(float(v), 3)),
             shap=round(float(shap_row[i]), 4)))
     return dict(base=round(float(base), 4), pred=round(float(pred), 4), feats=out)
