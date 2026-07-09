@@ -261,8 +261,15 @@ def main():
     cand["win_prob_norm"] = (cand["win_prob"]
                              / cand.groupby("race_id")["win_prob"].transform("sum"))
 
+    # distinct SURVEYS the model actually used per race (a poll = one pollster+end_date;
+    # n_polls is a per-CANDIDATE row count that sums to more than the survey count).
+    surveys = (d.groupby("race_id")
+                .apply(lambda g: g.groupby(["pollster", "end_date"]).ngroups,
+                       include_groups=False))
+    cand["n_surveys"] = cand["race_id"].map(surveys).fillna(0).astype(int)
+
     out_cols = ["race_id", "state", "office", "district", "candidate", "party",
-                "n_polls", "poll_avg", "poll_lead", "prior_margin_cand",
+                "n_polls", "n_surveys", "poll_avg", "poll_lead", "prior_margin_cand",
                 "is_incumbent", "win_prob", "win_prob_norm",
                 "win_prob_R3", "win_prob_D3", "bias_fragile"]
     out = cand[out_cols].sort_values(["race_id", "win_prob"], ascending=[True, False])
