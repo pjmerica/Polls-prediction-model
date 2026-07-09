@@ -38,6 +38,7 @@ STEPS_FEEDS = [
 STEPS_PREDICT = [
     ([sys.executable, "predict.py"], "win probabilities"),
     ([sys.executable, "predict_margin.py"], "margins"),
+    ([sys.executable, "explain_2026.py"], "SHAP explanations (writes polling-agg copy itself)"),
 ]
 
 def run(cmd, label, cwd=HERE):
