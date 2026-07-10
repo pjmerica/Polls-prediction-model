@@ -138,3 +138,17 @@ Then: run build_dataset → model.ipynb → margin_model.ipynb → refresh_dashb
 - refresh_dashboard.py runs a feed-freshness watchdog (approval/GB/unemployment ≤2mo lag,
   sentiment ≤13mo) — soft upstream deaths now print loud FEED STALE warnings.
 - predict loader schema guards: required columns, pct∈[0,100], date parse rate, min races.
+
+## Incident 2026-07-10: dashboard race collapse (41 -> 10) — resolved
+Breakdown risk #6 ("CI failures are swallowed") materialized, chained with a new one:
+data/raw/primaries.json is GITIGNORED, so CI market-refresh runs crashed the compare step
+(FileNotFoundError, silenced by `|| echo`); Daily-refresh runs scraped a fresh Ballotpedia
+calendar that only lists UPCOMING elections, so past primaries vanished and the
+primaries-decided filter collapsed (23 states -> 8 -> 10 races, no governors). Local runs
+looked fine (older, fuller primaries.json on disk) — classic works-on-my-machine.
+FIX (polling-agg commit 47431f1): primary dates accumulate in committed
+data/processed/primary_calendar_2026.json (max-date-per-state, merge-only, seeded with the
+June calendar); compare tolerates a missing raw file. Plus model_predictions_as_of.txt
+sidecar (CI checkouts reset mtimes — the staleness display was lying).
+LESSON: any CI-consumed input must be committed or the consumer must tolerate its absence;
+scraped "calendar" pages forget the past — accumulate, never replace.
