@@ -93,6 +93,11 @@ def main():
         shutil.copyfile(os.path.join(HERE, src),
                         os.path.join(AGG, "data", "processed", dst))
         print(f"copied {src} -> polling-agg/data/processed/{dst}")
+    # timestamp sidecar: CI checkouts reset file mtimes, so the dashboard's model-staleness
+    # display needs an explicit record of when predictions were actually generated
+    import datetime
+    with open(os.path.join(AGG, "data", "processed", "model_predictions_as_of.txt"), "w") as f:
+        f.write(datetime.datetime.now().isoformat(timespec="seconds"))
 
     run([sys.executable, os.path.join("analysis", "model_compare.py")],
         "model vs markets page data", cwd=AGG)
