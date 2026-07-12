@@ -375,6 +375,9 @@ def build_candidate_table(d, macro, natl_env_map, funds, house_train_years=None,
             rows.append(dict(
                 race_id=race_id, year=yr, state=st, office=of, district=di,
                 cand_key=ck, candidate=gc["candidate"].iloc[0], party=party,
+                # real affiliation for display (defaults to model party unless overridden)
+                display_party=(gc["display_party"].iloc[0] if "display_party" in gc.columns
+                               else party),
                 won=(int(gc["won"].iloc[0]) if has_won and pd.notna(gc["won"].iloc[0]) else np.nan),
                 # actual vote share — LABEL for the margin model, never a feature
                 vote_pct=(pd.to_numeric(gc["vote_pct"], errors="coerce").iloc[0]

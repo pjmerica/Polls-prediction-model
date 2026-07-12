@@ -101,21 +101,31 @@ def load_agg_polls(paths, cycle):
     d["cand_key"] = d["candidate"].map(F.norm_name)
     d = d.dropna(subset=["pct", "cand_key"])
 
-    # candidate-party corrections (audited feed errors, e.g. Dan Osborn is IND not DEM).
-    # Applied on the pre-race_id frame; keyed on (year_state_office[-district], cand_key).
+    # candidate-party corrections. Two distinct columns (see the CSV):
+    #   model_party   -> what the MODEL treats them as (party_std): fills the two-party slot
+    #                    so poll_lead / two-party margin / normalization work. An independent
+    #                    who is the de-facto main challenger (Dan Osborn vs Ricketts) is
+    #                    modeled DEM here.
+    #   display_party -> their REAL affiliation, shown on the dashboard (Osborn = IND).
+    # `display_party` rides through as a separate column; party_std stays the model party.
+    d["display_party"] = d["party_std"]
     ov_path = os.path.join(HERE, "data", "candidate_party_overrides.csv")
     if os.path.exists(ov_path):
         ov = pd.read_csv(ov_path)
         rid_pre = (d["year"].astype(str) + "_" + d["state"] + "_" + d["office"]
                    + d["district"].map(F.dist_str).radd("-").where(
                        d["district"].map(F.dist_str) != "", ""))
-        omap = {(r.race_id, r.cand_key): r.correct_party for r in ov.itertuples()}
+        mmap = {(r.race_id, r.cand_key): r.model_party for r in ov.itertuples()}
+        dmap = {(r.race_id, r.cand_key): r.display_party for r in ov.itertuples()}
         keys = list(zip(rid_pre, d["cand_key"]))
-        fixed = pd.Series([omap.get(k) for k in keys], index=d.index)
-        n_fixed = fixed.notna().sum()
-        d.loc[fixed.notna(), "party_std"] = fixed[fixed.notna()].map(F.npar)
-        if n_fixed:
-            print(f"candidate-party overrides applied: {n_fixed} poll rows")
+        m_fixed = pd.Series([mmap.get(k) for k in keys], index=d.index)
+        d_fixed = pd.Series([dmap.get(k) for k in keys], index=d.index)
+        d.loc[m_fixed.notna(), "party_std"] = m_fixed[m_fixed.notna()].map(F.npar)
+        # display_party keeps the raw affiliation string (IND/LIB/...) for a clean label,
+        # not npar's OTH bucket
+        d.loc[d_fixed.notna(), "display_party"] = d_fixed[d_fixed.notna()].str.upper().str[:3]
+        if m_fixed.notna().sum():
+            print(f"candidate-party overrides applied: {int(m_fixed.notna().sum())} poll rows")
 
     # dropped-out candidates: remove their (now-stale) poll rows so they don't linger as
     # phantom options. The 14-day stale filter usually catches them, but an explicit list
@@ -301,6 +311,7 @@ def main():
     cand["n_surveys"] = cand["race_id"].map(surveys).fillna(0).astype(int)
 
     out_cols = ["race_id", "state", "office", "district", "candidate", "party",
+                "display_party",
                 "n_polls", "n_surveys", "poll_avg", "poll_lead", "prior_margin_cand",
                 "is_incumbent", "win_prob", "win_prob_norm",
                 "win_prob_R3", "win_prob_D3", "bias_fragile"]

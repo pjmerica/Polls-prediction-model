@@ -1,3 +1,3 @@
-race_id,cand_key,correct_party,note
-2026_NE_Senate,osborn d,IND,"Dan Osborn runs as an independent; NYT mislabels DEM. High-profile 2024 IND near-miss."
-2026_GA_Senate,loeffler k,REP,"Kelly Loeffler is Republican; one feed tags IND in error."
+race_id,cand_key,model_party,display_party,note
+2026_NE_Senate,osborn d,DEM,IND,"Dan Osborn: independent, but the de-facto two-party challenger vs Ricketts. Model as DEM-slot so poll_lead/two-party margin work; display as IND (his real affiliation)."
+2026_GA_Senate,loeffler k,REP,REP,"Kelly Loeffler is Republican; one feed tags IND in error."

@@ -87,6 +87,7 @@ def main():
                                         zip(cand["race_id"], cand["cand_key"])]
 
     out_cols = ["race_id", "state", "office", "district", "candidate", "party",
+                "display_party",
                 "n_polls", "poll_avg", "poll_lead", "avg_margin_over_time",
                 "prior_margin_cand", "is_incumbent", "pred_margin",
                 "pred_margin_R3", "pred_margin_D3"]

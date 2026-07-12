@@ -1,2 +1,4 @@
 race_id,cand_key,note
 2026_MI_Governor,duggan m,"Mike Duggan ended his independent gubernatorial bid; exclude his (stale) poll rows."
+2026_NE_Senate,burbank c,"Cindy Burbank: fringe candidate in early multi-way ballot tests; NE Dems did not field a nominee vs Osborn. Exclude so Osborn is the clean 2-way challenger."
+2026_NE_Senate,forbes w,"William Forbes: fringe/also-ran in early NE-Sen ballot tests; not the general matchup."

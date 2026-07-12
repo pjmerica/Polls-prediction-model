@@ -240,7 +240,10 @@ def main():
         margin = top_shap(metas["margin"]["features"], Xm.iloc[i].values,
                           sv_m.values[i], sv_m.base_values[i],
                           row["pred_margin"])
-        out[rid] = dict(candidate=row["candidate"], party=row["party"],
+        # display_party = real affiliation (e.g. Osborn shows IND though modeled in the
+        # DEM two-party slot); fall back to model party if the column isn't present
+        disp = row["display_party"] if "display_party" in cand.columns else row["party"]
+        out[rid] = dict(candidate=row["candidate"], party=disp,
                         win=win, margin=margin)
 
     payload = dict(cycle=args.cycle,
