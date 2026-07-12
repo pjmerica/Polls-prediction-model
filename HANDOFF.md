@@ -152,3 +152,23 @@ June calendar); compare tolerates a missing raw file. Plus model_predictions_as_
 sidecar (CI checkouts reset mtimes — the staleness display was lying).
 LESSON: any CI-consumed input must be committed or the consumer must tolerate its absence;
 scraped "calendar" pages forget the past — accumulate, never replace.
+
+## 2026-07-12: poll-data audit, population labels, party overrides
+Full audit of the poll feeds + display + party handling. Details in the polling-agg repo's
+**POLL_DATA_AUDIT.md**; the model-repo pieces:
+- **Population labels (LV/RV/A/V)**: scrapers now capture surveyed population; the historical
+  `polls_long_with_results.csv` already has a `population` column, so making it a MODEL
+  feature later is a features.py change + retrain (not done yet — display-only for now).
+- **`data/candidate_party_overrides.csv`** (NEW, committed): `model_party` + `display_party`
+  columns. Osborn (NE-Sen) = model DEM / display IND — the "effective-party slot" pattern
+  (see AGENTS.md rule 9). Loeffler = REP/REP (plain correction). Applied in predict.py; flows
+  through features.py (`display_party` column) to predict/margin/explain output + the tab.
+- **`data/dropped_out_2026.csv`** (NEW, committed): Duggan (MI-Gov withdrew) + NE-Sen fringe
+  Dems (Burbank/Forbes) who diluted the Osborn two-way. predict.py drops their poll rows.
+- **explain_2026.py** now reports `display_party`; the Model-vs-Markets tab marks the Dem-slot
+  candidate's real affiliation, e.g. "Dan Osborn (I)".
+MAINTENANCE: both CSVs are hand-maintained 2026 lists. When a candidate drops out or a party
+label is wrong/independent-challenger, add a row and re-run refresh_dashboard.py. `cand_key`
+= features.norm_name output ("lastname firstinitial", e.g. `osborn d`).
+OPEN: population as a model feature (adult-poll downweight); the SHAP "leading Democrat"
+pick can still land on a fringe candidate if the real challenger is an unfixed independent.

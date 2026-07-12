@@ -55,8 +55,11 @@ feature builder used by training AND prediction — never fork feature logic out
 | `features.py` | Shared feature pipeline (train + predict). Plain raw-poll averages, NaN-not-zero missing, `norm_pollster`, `dist_str`. |
 | `cycles.py` | Cycle constants + natl_env (computed 1998-2016, frozen 2018-24, live-fetched 2026+). |
 | `model.ipynb` / `margin_model.ipynb` | The two models. SEPARATE by user requirement. |
-| `predict.py` / `predict_margin.py` | Score 2026 from the polling-agg feed. Stale-candidate filter lives in predict.py (imported by predict_margin). |
-| `refresh_dashboard.py` | One-command refresh (header documents every variable's feed). |
+| `predict.py` / `predict_margin.py` | Score 2026 from the polling-agg feed. Stale-candidate filter lives in predict.py (imported by predict_margin). Also applies the two override files below + emits `n_surveys`, `display_party`, bias-sweep cols. |
+| `explain_2026.py` | SHAP top-10 per race for BOTH models -> `model_explanations_2026.json` (dashboard Explain modal). Friendly names + hover descriptions. |
+| `data/candidate_party_overrides.csv` | Hand-maintained party fixes. **Two columns**: `model_party` (what the model treats them as — fills the two-party slot) and `display_party` (real affiliation shown on the dashboard). E.g. Dan Osborn: model_party=DEM (de-facto challenger vs Ricketts), display_party=IND. |
+| `data/dropped_out_2026.csv` | Candidates whose stale poll rows to remove (withdrew, or fringe also-rans diluting a race). E.g. Duggan (MI-Gov withdrew), NE-Sen fringe Dems. |
+| `refresh_dashboard.py` | One-command refresh (header documents every variable's feed). Runs predict + predict_margin + explain_2026. |
 | `fetch_macro.py` / `fetch_approval.py` / `fetch_generic_ballot.py` | Data feeds (BLS API+DBnomics / UCSB+VoteHub / Wikipedia aggregators). |
 | `build_dataset.ipynb` | Polls+results join. All inputs committed; offline. |
 | `CONCERNS.md` | **Ranked risks + improvement roadmap. The living audit doc.** |
@@ -81,6 +84,12 @@ feature builder used by training AND prediction — never fork feature logic out
    pollster house effects keyed by `norm_pollster`.
 8. **Margin model stays separate from the win model** (user requirement). Where they
    disagree on a winner, the dashboard flags ⚠ SPLIT = treat as no-edge.
+9. **Model party vs display party** (user decision 2026-07-12). An independent who is the
+   de-facto two-party challenger (Dan Osborn vs Ricketts) is MODELED in the DEM slot
+   (`party_std`=DEM, so poll_lead / two-party margin / normalization work) but DISPLAYED as
+   IND. Do NOT "correct" `party_std` back to his real party — it would collapse the
+   two-party framing and zero out his win prob. The split lives in
+   `candidate_party_overrides.csv` (model_party vs display_party) + predict.py.
 
 ## TRAPS (don't repeat)
 - **Run nbconvert executions ONE AT A TIME** — concurrent runs race and overwrite outputs.
