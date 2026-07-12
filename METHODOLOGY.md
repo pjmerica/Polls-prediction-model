@@ -32,7 +32,7 @@ normalized (`features.norm_pollster`) before house-effect lookup so 2026-feed na
 | `poll_momentum` | slope of `pct` over polls within **60 days** (needs ≥3 polls) |
 | `min_days` | days-to-election of the candidate's latest poll |
 | `gap_x_recency` | `poll_lead` × recency factor `1/(1+min_days/30)` |
-| `poll_adj` | plain mean of house-effect-adjusted pct (house effect from **train cycles only** per fold; from all history at predict time) |
+| ~~`poll_adj`~~ | **DROPPED as a feature 2026-07-12.** Was the plain mean of house-effect-adjusted pct. An ablation (honest LOCO eval) showed it added no out-of-sample value — win AUC/accuracy unchanged, margin MAE slightly *better* without it — because it was largely redundant with `poll_avg`. It also had a train/serve risk (the pollster house-effect table matches only ~67% of 2026-feed pollster names). The column is still computed but is no longer fed to either model. |
 
 ## B. Lead-dynamics features
 Running-mean margins over the race's poll dates (all in-cycle): `avg_margin_over_time`,
@@ -69,7 +69,7 @@ unemp_u6, approval. Approval comes from `data/approval_monthly.csv` (Gallup via 
 - **Hyperparameter tuning:** leave-one-cycle-out CV over **1998–2016 only** (150 sampled
   configs, live grid search every run).
 - **Honest evaluation:** leave-one-cycle-out over **2018–2024** — cycles the tuner never saw.
-  Each fold trains on the other 13 cycles; the fold's `poll_adj` house effect is recomputed
+  Each fold trains on the other 13 cycles; the fold's house effect is recomputed
   from its training cycles only.
 - The single-split walkthrough (train = all but 2024, test = 2024) is also honest under this
   scheme.

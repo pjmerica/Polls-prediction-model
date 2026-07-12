@@ -172,3 +172,21 @@ label is wrong/independent-challenger, add a row and re-run refresh_dashboard.py
 = features.norm_name output ("lastname firstinitial", e.g. `osborn d`).
 OPEN: population as a model feature (adult-poll downweight); the SHAP "leading Democrat"
 pick can still land on a fringe candidate if the real challenger is an unfixed independent.
+
+## 2026-07-12 (later): dropped poll_adj feature after ablation
+User asked how the model looks with/without the pollster house-effect adjustment. Ran an
+honest LOCO ablation (2018-2024). Findings (verified):
+- **poll_adj** ranked #4/187 importance in BOTH models but removing it: win AUC .9683->.9679
+  and race-acc .8623->.8620 (both noise), margin MAE 6.347->6.313 (slightly BETTER). It's
+  ~redundant with poll_avg (poll_adj = poll_avg minus a per-pollster house-effect shift), so
+  XGB re-routes the signal. Plus a train/serve hazard: house-effect table matches ~67% of
+  2026-feed pollster names, so poll_adj is computed on a different basis for a third of future
+  polls. **Decision (user): drop it.**
+- Also measured for reference: Group A minus {poll_adj,bias_prior_cand,avg_sample} and the
+  recency/dynamics block — see git history if you want fuller numbers. Only poll_adj was cut.
+IMPLEMENTATION: removed from `feature_list()` in features.py (the column is still built in
+build_candidate_table, harmless). Full re-tune of both models. compute_house_effect /
+candidate_poll_adj machinery left in place (unused by features, cheap to keep).
+LESSON: high XGB importance != marginal value when a feature is collinear with a kept one;
+always ablate before trusting importance, and prefer cutting features that behave differently
+on future data.

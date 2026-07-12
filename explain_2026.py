@@ -116,6 +116,8 @@ DESC = {
                        "the candidate's party (prior cycles only).",
     "poll_momentum": "Slope of the candidate's polls over the final 60 days - "
                      "rising or falling.",
+    # poll_adj dropped as a feature 2026-07-12 (see features.py); label kept harmlessly
+    # in case an older artifact is loaded.
     "poll_adj": "Poll average after correcting each pollster's historical partisan lean.",
     "n_lead_changes": "How many times the race's front-runner changed during the campaign.",
     "lead_changed": "1 if the front-runner changed at least once.",
