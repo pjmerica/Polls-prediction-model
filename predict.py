@@ -101,6 +101,38 @@ def load_agg_polls(paths, cycle):
     d["cand_key"] = d["candidate"].map(F.norm_name)
     d = d.dropna(subset=["pct", "cand_key"])
 
+    # candidate-party corrections (audited feed errors, e.g. Dan Osborn is IND not DEM).
+    # Applied on the pre-race_id frame; keyed on (year_state_office[-district], cand_key).
+    ov_path = os.path.join(HERE, "data", "candidate_party_overrides.csv")
+    if os.path.exists(ov_path):
+        ov = pd.read_csv(ov_path)
+        rid_pre = (d["year"].astype(str) + "_" + d["state"] + "_" + d["office"]
+                   + d["district"].map(F.dist_str).radd("-").where(
+                       d["district"].map(F.dist_str) != "", ""))
+        omap = {(r.race_id, r.cand_key): r.correct_party for r in ov.itertuples()}
+        keys = list(zip(rid_pre, d["cand_key"]))
+        fixed = pd.Series([omap.get(k) for k in keys], index=d.index)
+        n_fixed = fixed.notna().sum()
+        d.loc[fixed.notna(), "party_std"] = fixed[fixed.notna()].map(F.npar)
+        if n_fixed:
+            print(f"candidate-party overrides applied: {n_fixed} poll rows")
+
+    # dropped-out candidates: remove their (now-stale) poll rows so they don't linger as
+    # phantom options. The 14-day stale filter usually catches them, but an explicit list
+    # is unambiguous and self-documents (e.g. Mike Duggan ended his MI-GOV bid).
+    drop_path = os.path.join(HERE, "data", "dropped_out_2026.csv")
+    if os.path.exists(drop_path):
+        do = pd.read_csv(drop_path)
+        rid_pre = (d["year"].astype(str) + "_" + d["state"] + "_" + d["office"]
+                   + d["district"].map(F.dist_str).radd("-").where(
+                       d["district"].map(F.dist_str) != "", ""))
+        drop_keys = set(zip(do["race_id"], do["cand_key"]))
+        mask = pd.Series([(r, c) in drop_keys for r, c in zip(rid_pre, d["cand_key"])],
+                         index=d.index)
+        if mask.any():
+            print(f"dropped-out candidates removed: {int(mask.sum())} poll rows")
+            d = d[~mask]
+
     # dedup: internal repeats + NYT/Wikipedia cross-source duplicates
     before = len(d)
     d = (d.sort_values("_src_priority")
