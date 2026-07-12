@@ -35,7 +35,6 @@
   "natl_env_cand",
   "bias_prior_cand",
   "poll_momentum",
-  "poll_adj",
   "n_lead_changes",
   "lead_changed",
   "avg_margin_over_time",
