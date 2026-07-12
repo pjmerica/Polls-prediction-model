@@ -456,7 +456,13 @@ def feature_list(macro_feats, fund=False):
         "is_dem", "is_rep", "is_senate", "is_gov",
         "prior_margin_cand", "is_incumbent", "is_inc_party_race",
         "twoparty_margin_cand", "abs_gap", "tossup", "undecided", "gap_x_recency",
-        "natl_env_cand", "bias_prior_cand", "poll_momentum", "poll_adj",
+        # poll_adj (house-effect-adjusted poll avg) DROPPED 2026-07-12: ablation showed it
+        # added no out-of-sample value (win AUC/acc unchanged, margin MAE slightly BETTER
+        # without it - it was ~redundant with poll_avg) AND it had a train/serve risk (the
+        # pollster house-effect table matches only ~67% of 2026-feed pollsters, so it's
+        # computed on a different basis for future polls). The `poll_adj` column is still
+        # built in build_candidate_table (harmless) but is no longer a model feature.
+        "natl_env_cand", "bias_prior_cand", "poll_momentum",
         "n_lead_changes", "lead_changed",
         "avg_margin_over_time", "margin_volatility", "min_margin", "margin_trend",
         "is_president_party",
