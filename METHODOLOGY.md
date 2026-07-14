@@ -75,6 +75,13 @@ unemp_u6, approval. Approval comes from `data/approval_monthly.csv` (Gallup via 
   scheme.
 - Never random splits.
 
+**Win-model metrics reported (candidate level):** ROC-AUC, **AUC-PR** (average precision —
+sensitive to the ~37% win base rate; the honest positive-class number), **KS** (max
+separation between winners' and losers' predicted-prob CDFs = max(TPR−FPR)), Brier, LogLoss,
+plus race-winner accuracy vs the tuned poll-softmax baseline. AUC-PR + KS added 2026-07-12.
+The **margin model** reports MAE / R² only — AUC-PR and KS are classification metrics and
+don't apply to a regression target.
+
 ## Production model (predict.py)
 Trained on **all 14 cycles** with the tuned params; saved to `data/model_xgb.json` +
 `data/model_features.json` by `model.ipynb`. `predict.py` builds identical features (same
