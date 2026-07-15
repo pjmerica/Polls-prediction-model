@@ -40,6 +40,7 @@ STEPS_PREDICT = [
     ([sys.executable, "predict_margin.py"], "margins"),
     ([sys.executable, "predict_primary.py"], "primary nominee probabilities"),
     ([sys.executable, "explain_2026.py"], "SHAP explanations (writes polling-agg copy itself)"),
+    ([sys.executable, "explain_primary.py"], "primary SHAP explanations (writes polling-agg copy itself)"),
 ]
 
 def run(cmd, label, cwd=HERE):
