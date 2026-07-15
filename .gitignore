@@ -63,3 +63,12 @@ __pycache__/
 venv/
 .ipynb_checkpoints/
 .env
+
+# PRIMARY model static inputs + artifacts (2026-07-15): Wikipedia-scraped training polls
+# (pages get edited — a re-scrape is NOT reproducible), hand-entered dates, built dataset,
+# trained artifact. Same static-data principle as above.
+!data/primary_polls_wikipedia.csv
+!data/primary_polls_long.csv
+!data/primary_dates_hist.csv
+!data/primary_model_xgb.json
+!data/primary_model_features.json

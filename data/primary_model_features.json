@@ -1,0 +1,69 @@
+{
+ "features": [
+  "poll_avg",
+  "poll_last",
+  "poll_last30",
+  "poll_std",
+  "n_polls",
+  "avg_sample",
+  "min_days",
+  "poll_momentum",
+  "poll_lead",
+  "poll_share",
+  "n_cands",
+  "race_total_polls",
+  "undecided",
+  "gap_x_recency",
+  "n_lead_changes",
+  "avg_margin_over_time",
+  "margin_volatility",
+  "min_margin",
+  "margin_trend",
+  "is_dem_primary",
+  "is_senate",
+  "is_gov",
+  "is_defending_party",
+  "is_pres_party"
+ ],
+ "xgb_params": {
+  "max_depth": 2,
+  "learning_rate": 0.1,
+  "n_estimators": 200,
+  "min_child_weight": 8,
+  "subsample": 1.0,
+  "colsample_bytree": 1.0,
+  "reg_lambda": 1
+ },
+ "trained_on_cycles": [
+  2018,
+  2019,
+  2020,
+  2021,
+  2022,
+  2024
+ ],
+ "n_races": 214,
+ "target": "won = became the party's general-election nominee",
+ "eval_expanding_window": {
+  "2022": {
+   "n_races": 66.0,
+   "n_cand": 369.0,
+   "AUC": 0.9849,
+   "AUC_PR": 0.9344,
+   "KS": 0.8866,
+   "Brier": 0.0357,
+   "race_acc": 0.9242,
+   "pollleader_acc": 0.7424
+  },
+  "2024": {
+   "n_races": 37.0,
+   "n_cand": 170.0,
+   "AUC": 0.9566,
+   "AUC_PR": 0.9014,
+   "KS": 0.8437,
+   "Brier": 0.0558,
+   "race_acc": 0.8649,
+   "pollleader_acc": 0.7027
+  }
+ }
+}
