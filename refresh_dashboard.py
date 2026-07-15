@@ -38,6 +38,7 @@ STEPS_FEEDS = [
 STEPS_PREDICT = [
     ([sys.executable, "predict.py"], "win probabilities"),
     ([sys.executable, "predict_margin.py"], "margins"),
+    ([sys.executable, "predict_primary.py"], "primary nominee probabilities"),
     ([sys.executable, "explain_2026.py"], "SHAP explanations (writes polling-agg copy itself)"),
 ]
 
@@ -90,7 +91,9 @@ def main():
 
     for src, dst in [("predictions_2026.csv", "model_predictions_2026.csv"),
                      ("predictions_2026_meta.json", "model_predictions_meta.json"),
-                     ("margin_predictions_2026.csv", "model_margin_predictions_2026.csv")]:
+                     ("margin_predictions_2026.csv", "model_margin_predictions_2026.csv"),
+                     ("primary_predictions_2026.csv", "model_primary_predictions_2026.csv"),
+                     ("primary_predictions_2026_meta.json", "model_primary_predictions_meta.json")]:
         shutil.copyfile(os.path.join(HERE, src),
                         os.path.join(AGG, "data", "processed", dst))
         print(f"copied {src} -> polling-agg/data/processed/{dst}")
@@ -102,10 +105,13 @@ def main():
 
     run([sys.executable, os.path.join("analysis", "model_compare.py")],
         "model vs markets page data", cwd=AGG)
+    run([sys.executable, os.path.join("analysis", "model_compare_primary.py")],
+        "PRIMARY vs markets page data", cwd=AGG)
 
     print("\nDone. To publish the dashboard:")
     print(f'  cd "{os.path.abspath(AGG)}"')
-    print('  git add data/processed/model_*.csv docs/model_data.js')
+    print('  git add data/processed/model_*.csv data/processed/model_*.json'
+          ' docs/model_data.js docs/primary_model_data.js')
     print('  git commit -m "model predictions refresh" && git push')
 
 if __name__ == "__main__":

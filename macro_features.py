@@ -102,6 +102,41 @@ def build_macro(path=CSV_PATH, cycles=None):
         rows[cyc] = f
     return rows
 
+def build_macro_asof(anchor_date, path=CSV_PATH, publication_lag_months=2):
+    """Macro stats windowed to an ARBITRARY anchor date (e.g. a primary's election date),
+    not a general-election cycle. Same stats as build_macro.
+
+    Window = previous even-year election eve -> (anchor month - publication_lag_months),
+    the generalized Sep-30 rule: data for month M publishes mid-M+1 (CPI) or early M+1
+    (jobs), so a forecaster standing shortly before `anchor_date` reliably has data through
+    anchor month minus 2. Short windows produce NaNs (missing), never silent zeros.
+
+    Used by the primary model (per-race windows keyed to each primary's own date) and by
+    snapshot training (features as-of T days out). Returns {feature: value}.
+    """
+    anchor = pd.Timestamp(anchor_date)
+    end = (anchor.to_period("M") - publication_lag_months).to_timestamp("M")
+    # window start = the PREVIOUS cycle's election eve: most recent even-year Nov 1
+    # strictly before the anchor, from a DIFFERENT year (else a Nov-2024 anchor would get
+    # a window starting Nov-2024 -> empty; its cycle boundary is Nov-2022)
+    start = pd.Timestamp(f"{anchor.year}-11-01")
+    while start >= anchor or start.year % 2 != 0 or start.year == anchor.year:
+        start = pd.Timestamp(f"{start.year - 1}-11-01")
+
+    m = load_monthly(path)
+    f = {}
+    for metric in sorted(m["metric"].unique()):
+        full = m[m["metric"] == metric].set_index("date")["value"].sort_index()
+        if metric in YOY_METRICS:
+            full = (full / full.shift(12) - 1.0) * 100.0
+            name = "inflation"
+        else:
+            name = metric
+        s = full[(full.index > start) & (full.index <= end)]
+        f.update(_stats(s, name))
+        f.update(_recency_stats(s, name))
+    return f
+
 if __name__ == "__main__":
     try:
         macro = build_macro()

@@ -116,3 +116,49 @@ probabilities plus within-race normalized probabilities.
 Every input is pulled once and **committed**: polls (all vintages), results, races.csv, macro,
 approval, generic ballot. No model or predict run touches the network. Re-pull only to extend
 to new months/cycles.
+
+---
+
+# PRIMARY nominee model (added 2026-07-15)
+
+A third, separate model: P(candidate wins their party's nomination), for the dashboard's
+"Primary vs Markets" tab (Polymarket candidate primary markets; upcoming primaries only —
+the inverse of the general tab's decided-primaries filter).
+
+**Scope:** regular DEM/REP partisan primaries for Senate/Governor/House. Jungle/top-two/RCV
+states (CA, WA, LA, AK) excluded — "advance to the general" is a different target. Runoffs
+excluded from MVP (each round is its own contest; label = eventual nominee is future work).
+
+**Data:** historical (2018–2024) primary polls scraped from Wikipedia race pages'
+"Democratic/Republican primary" polling tables (`fetch_primary_polls_wikipedia.py`, driving
+the SAME parser the polling-agg 2026 scraper uses — one parsing implementation for train
+and serve). Negative finding, verified so nobody re-tries it: **538's downloadable poll
+CSVs never carried downballot regular-primary rows in any era** — in-season Wayback
+captures (Apr-2022, May/Aug-2020, Nov-2020/2024) all show general+jungle only.
+Primary DATES are extracted per race page (`fetch_primary_dates.py`, prose regex + mode,
+validated against hand-checked dates; last-poll+4d fallback flagged `approx`) — primaries
+move between cycles and states, so dates are per-(cycle,state,office), never assumed.
+
+**Labels:** won = candidate appears among that party's GENERAL-election candidates for the
+same seat (res_*.csv) — the nominee, by definition. No primary returns needed. Blind spots
+(counted at build time, accepted): nominees who withdrew post-primary, write-ins, fusion.
+
+**Features (features_primary.py):** within-FIELD poll structure (plain means, no weighting):
+poll_avg/last/last30/std, poll_share, poll_lead, momentum, undecided, n_cands, field
+dynamics (lead changes, margin trajectory), days-to-primary recency cuts; fund_receipts_ln +
+fund_share recomputed WITHIN the party field (FEC); is_defending_party (races.csv
+incumbent_party — true candidate incumbency is not derivable from committed data),
+is_pres_party, office/party dummies. NO natl_env / bias priors / house effects (no partisan
+channel within a party). Macro is available via `build_macro_asof(primary_date)` (windows
+end at the last month published before THAT primary — the generalized Sep-30 rule) but the
+artifact ships WITHOUT macro: the training set is a few hundred races and the with-macro
+ablation is re-measured on every training run (primary_model.py prints it).
+
+**Validation:** tune = small LOCO grid over cycles ≤2020; honest eval = EXPANDING-WINDOW on
+cycles ≥2022 (train strictly before the test cycle), vs the poll-leader baseline. Same
+scheme as the general model. Expect wider error bars than the general model: primary
+polling is structurally worse (late deciders, name recognition) and n is small — the page
+explainer says so.
+
+**Artifacts:** data/primary_model_xgb.json + primary_model_features.json (trained on all
+labeled cycles). primary_model.py is a SCRIPT (runs in minutes), not a notebook.

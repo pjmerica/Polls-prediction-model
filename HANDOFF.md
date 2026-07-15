@@ -244,6 +244,55 @@ LOCO 6.23 vs expanding 7.24 MAE, entirely the 2018 fold (10.2 with only 10 train
 2018-2024 as-they-happened", with the 2026-relevant fold (2024: 13 train cycles) at 5.87
 and gap-free. Quote the margin model accordingly — do NOT keep citing 6.23/6.24.
 
+## 2026-07-15: PRIMARY nominee model + "Primary vs Markets" page (built same-day)
+
+User asked how fast a primary model could be built; answer: same day. Third separate model
+(P(candidate becomes party nominee)); full design in METHODOLOGY.md "PRIMARY nominee model".
+
+DATA STORY (the hard part):
+- **NEGATIVE FINDING (do not re-attempt): 538's downloadable poll CSVs NEVER carried
+  downballot regular-primary rows in any era.** Verified against in-season Wayback captures
+  (Apr-2022 = generals+jungle only despite Oz/McCormick raging; May/Aug-2020 same) and
+  post-season ones. The committed *_historical.csv were never filtered — there was nothing
+  to filter.
+- Recovery: **Wikipedia race pages' primary polling tables**, scraped by driving the
+  polling-agg 2026 wikipedia scraper's OWN parser over 2018-2024 page titles
+  (fetch_primary_polls_wikipedia.py) → 11,466 primary poll rows, 324 party-races.
+  One parser for train AND serve.
+- **Primary DATES = hand-entered static table** (fetch_primary_dates.py) after THREE failed
+  iterations of Wikipedia prose-mining (filing deadlines/runoffs/news dates near 'primary'
+  kept winning; poll-anchored windows got dragged by contamination). Dates are verifiable
+  calendar facts — the hand-typed-data ban is about measurements. NY is per-office (2018/
+  2022 split primaries). Every date cross-checked against the poll record; warnings printed.
+- **Contamination guard**: some pages leak GENERAL polls into primary sections (NC-2022).
+  build_primary_dataset drops rows dated after their primary (+2d): 3,062 rows dropped.
+- Labels: nominee = the party's general-election candidate (res_*.csv join) — 96% of races
+  matched. Kept: 214 contested labeled races / 6,666 poll rows / 1,076 candidate rows.
+
+MODEL (primary_model.py — a SCRIPT, runs in minutes, not a notebook):
+- Tune LOCO on ≤2020, honest eval EXPANDING-WINDOW on 2022+2024 vs poll-leader baseline.
+- **Headline: AUC .971 / AUC-PR .918 / KS .865 / Brier .046 / race-acc .895 vs poll-leader
+  .723** (2022: .924/66 races; 2024: .865/37). The +17pt pick edge over the naive baseline
+  comes from recency features (poll-leader uses stale means; primaries break late).
+- **FUND FEATURES EXCLUDED from the artifact (leakage)**: FEC receipts are cycle-END totals
+  and nominees raise most money AFTER winning the primary → fund_share partially encodes
+  the training label, while a mid-2026 candidate has no such money (train/serve skew).
+  Measured: identical picks without fund (.895 = .895); only Brier differs (.035 vs .046 =
+  the leak-suspect juice). Revisit only with as-of-primary-date FEC reports.
+- Macro: available per-primary-date via build_macro_asof() (also the machinery snapshot
+  training needs) but ~noise on 214 races — artifact ships NO-macro; both ablations
+  re-measured and printed on every training run.
+
+SERVE: predict_primary.py (feed stage='primary', per-race dates from *_current.csv →
+primaries.json → calendar; same dedup/stale/junk filters; jungle states CA/WA/LA/AK
+excluded) → 183 races, 62 upcoming. polling-agg analysis/model_compare_primary.py prices
+vs POLYMARKET candidate primary markets (Kalshi has none downballot with usable ids;
+its 'nominee' markets are 2028-VP trivia) → docs/primary_model_data.js → new
+"Primary vs Markets" tab (upcoming primaries only — inverse of the general tab's filter).
+Thin-poll races (<3 polls) sort LAST regardless of edge size: a 90-pt "edge" off one stale
+survey (CT-Gov REP: 1 poll vs a 97% market favorite = Stewart presumably out) is the market
+knowing something the polls don't. Both CI workflows run + commit the primary compare.
+
 AUDIT ITEMS DEFERRED (user: "address after"): snapshot training (top priority — training
 races' freshest poll is median 6d pre-election vs ~112d for 2026 predictions, so honest-eval
 numbers do NOT describe July forecasts), race-level two-party reframe, shipping the α≈0.5

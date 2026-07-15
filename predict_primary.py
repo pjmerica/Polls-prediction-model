@@ -1,0 +1,186 @@
+# -*- coding: utf-8 -*-
+"""Predict 2026 PRIMARY nominee probabilities from the polling-agg raw feed.
+
+    py -X utf8 predict_primary.py [--cycle 2026] [--polls path.csv ...] [--out preds.csv]
+
+Same input discipline as predict.py (raw feed columns only, no network), same scope rules
+as training (build_primary_dataset.py): regular DEM/REP partisan primaries; jungle/top-two
+states (CA, WA, LA, AK) excluded.
+
+Primary DATES (for days-to-primary recency features), in priority order per (state,office):
+1. 538-format *_current.csv primary rows' per-race election_date (most precise),
+2. polling-agg data/raw/primaries.json per-state date (Ballotpedia),
+3. polling-agg data/processed/primary_calendar_2026.json (committed accumulator; dates are
+   per-state maxima so may include runoffs - fallback only).
+
+Output: primary_predictions_2026.csv (+ _meta.json sidecar) - one row per candidate per
+primary race, with win_prob (raw) and win_prob_norm (within-race simplex).
+"""
+import argparse
+import datetime
+import json
+import os
+
+import numpy as np
+import pandas as pd
+import xgboost as xgb
+
+import features as F
+import features_primary as FP
+from build_primary_dataset import EXCLUDE_STATES, to_abbr
+from predict import DEFAULT_POLLS, REQUIRED_FEED_COLS, parse_race_id, drop_stale_candidates
+
+HERE = os.path.dirname(os.path.abspath(__file__))
+AGG = os.path.join(HERE, "..", "Polling Agg", "Polling agg and Prediction markets")
+
+def primary_dates(cycle):
+    """{(state, office): Timestamp} + {state: Timestamp} fallbacks."""
+    per_race, per_state = {}, {}
+    for fn, office in [("senate_current.csv", "Senate"),
+                       ("governor_current.csv", "Governor"),
+                       ("house_current.csv", "House")]:
+        p = os.path.join(HERE, "data", fn)
+        if not os.path.exists(p):
+            continue
+        d = pd.read_csv(p, low_memory=False)
+        d = d[d["stage"].astype(str) == "primary"]
+        d = d[pd.to_numeric(d["cycle"], errors="coerce") == cycle]
+        d["st"] = d["state"].map(to_abbr)
+        for st, grp in d.groupby("st"):
+            ed = pd.to_datetime(grp["election_date"], errors="coerce").dropna()
+            if len(ed):
+                per_race[(st, office)] = ed.mode().iloc[0]
+    pj = os.path.join(AGG, "data", "raw", "primaries.json")
+    if os.path.exists(pj):
+        with open(pj, encoding="utf-8") as f:
+            for r in json.load(f).get("races", []):
+                st, dt = r.get("state_abbrev"), r.get("date_iso")
+                if st and dt and "runoff" not in str(r.get("description", "")).lower():
+                    ts = pd.Timestamp(dt)
+                    if st not in per_state or ts < per_state[st]:
+                        per_state[st] = ts       # earliest non-runoff = the primary
+    cal = os.path.join(AGG, "data", "processed", "primary_calendar_2026.json")
+    if os.path.exists(cal):
+        with open(cal, encoding="utf-8") as f:
+            for st, dt in json.load(f).items():
+                per_state.setdefault(st, pd.Timestamp(dt))
+    return per_race, per_state
+
+def load_primary_feed(paths, cycle):
+    frames = []
+    for i, p in enumerate(paths):
+        df = pd.read_csv(p, low_memory=False)
+        missing = REQUIRED_FEED_COLS - set(df.columns)
+        assert not missing, f"feed schema drift in {p}: missing {sorted(missing)}"
+        df["_src_priority"] = i
+        frames.append(df)
+    raw = pd.concat(frames, ignore_index=True)
+    parsed = raw["race_id"].map(parse_race_id)
+    ok = parsed.notna()
+    raw = raw[ok].copy()
+    raw[["year", "office", "state", "district"]] = pd.DataFrame(parsed[ok].tolist(),
+                                                                index=raw.index)
+    raw = raw[raw["year"] == cycle]
+    raw = raw[raw["stage"].astype(str).str.lower() == "primary"]   # no runoffs (own round)
+    raw = raw[~raw["candidate"].map(F.is_junk_answer)]
+    raw = raw[~raw["state"].isin(EXCLUDE_STATES)]
+
+    d = pd.DataFrame({
+        "year": raw["year"].astype(int), "state": raw["state"], "office": raw["office"],
+        "district": raw["district"].map(F.dist_str),
+        "candidate": raw["candidate"],
+        "party_std": raw["party"].map(F.npar),
+        "pct": pd.to_numeric(raw["implied_prob"], errors="coerce") * 100.0,
+        "end_date": raw["end_date"],
+        "sample_size": pd.to_numeric(raw["sample_size"], errors="coerce"),
+        "pollster": raw["pollster"], "_src_priority": raw["_src_priority"],
+    })
+    d = d[d["party_std"].isin(["DEM", "REP"])]
+    d["cand_key"] = d["candidate"].map(F.norm_name)
+    d = d.dropna(subset=["pct", "cand_key"])
+
+    drop_path = os.path.join(HERE, "data", "dropped_out_2026.csv")
+    if os.path.exists(drop_path):
+        do = pd.read_csv(drop_path)
+        dropped = set(do["cand_key"])
+        n = int(d["cand_key"].isin(dropped).sum())
+        if n:
+            print(f"dropped-out candidates removed: {n} poll rows")
+        d = d[~d["cand_key"].isin(dropped)]
+
+    d = (d.sort_values("_src_priority")
+           .drop_duplicates(subset=["pollster", "end_date", "year", "state", "office",
+                                    "district", "party_std", "cand_key"], keep="first")
+           .drop(columns="_src_priority"))
+
+    per_race, per_state = primary_dates(cycle)
+    d["election_date"] = [per_race.get((st, of), per_state.get(st))
+                          for st, of in zip(d["state"], d["office"])]
+    no_date = d["election_date"].isna()
+    if no_date.any():
+        print(f"WARNING: no primary date for "
+              f"{sorted(d.loc[no_date, 'state'].unique())} - recency features NaN there")
+
+    d["race_id"] = (d["year"].astype(str) + "_" + d["state"] + "_" + d["office"]
+                    + d["district"].radd("-").where(d["district"] != "", "")
+                    + "_" + d["party_std"])
+    d = drop_stale_candidates(F.prepare_polls(d))
+
+    bad_pct = ~d["pct"].between(0, 100)
+    assert bad_pct.mean() < 0.01, "feed pct out of [0,100] - implied_prob scale changed?"
+    assert d["race_id"].nunique() >= 10, "suspiciously few primary races parsed"
+    return d
+
+def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--cycle", type=int, default=2026)
+    ap.add_argument("--polls", nargs="*", default=DEFAULT_POLLS)
+    ap.add_argument("--out", default=None)
+    args = ap.parse_args()
+
+    with open(os.path.join(HERE, "data", "primary_model_features.json")) as f:
+        meta = json.load(f)
+    model = xgb.XGBClassifier()
+    model.load_model(os.path.join(HERE, "data", "primary_model_xgb.json"))
+    print(f"primary model: cycles {meta['trained_on_cycles']}, "
+          f"{len(meta['features'])} features, {meta['n_races']} training races")
+
+    d = load_primary_feed(args.polls, args.cycle)
+    print(f"primary races: {d['race_id'].nunique()} | poll rows {len(d)}")
+
+    funds = F.load_fundamentals()
+    fec = F.load_fec(extended=True)
+    cand = FP.build_primary_table(d, fec=fec, inc_map=funds["inc_map"])
+
+    missing = [f for f in meta["features"] if f not in cand.columns]
+    assert not missing, f"artifact expects features absent from the table: {missing[:8]}"
+    X = cand.reindex(columns=meta["features"])
+    cand["win_prob"] = model.predict_proba(X)[:, 1]
+    cand["win_prob_norm"] = (cand["win_prob"]
+                             / cand.groupby("race_id")["win_prob"].transform("sum"))
+    surveys = d.groupby("race_id").apply(
+        lambda g: g.groupby(["pollster", "end_date"]).ngroups, include_groups=False)
+    cand["n_surveys"] = cand["race_id"].map(surveys).fillna(0).astype(int)
+
+    out_cols = ["race_id", "state", "office", "district", "party", "candidate",
+                "election_date", "n_polls", "n_surveys", "poll_avg", "poll_lead",
+                "fund_share", "win_prob", "win_prob_norm"]
+    out = cand[out_cols].sort_values(["race_id", "win_prob"], ascending=[True, False])
+    out_path = args.out or os.path.join(HERE, f"primary_predictions_{args.cycle}.csv")
+    out.to_csv(out_path, index=False)
+
+    with open(os.path.splitext(out_path)[0] + "_meta.json", "w") as f:
+        json.dump(dict(generated_at=datetime.datetime.now().isoformat(timespec="seconds"),
+                       polls_max_end_date=str(d["end_date"].max().date()),
+                       n_poll_rows=int(len(d)),
+                       n_races=int(out["race_id"].nunique())), f, indent=1)
+
+    picks = out.loc[out.groupby("race_id")["win_prob"].idxmax()]
+    print(f"saved -> {out_path} ({out['race_id'].nunique()} races)")
+    print("\nclosest fields (leader's normalized prob < 60%):")
+    close = picks[picks["win_prob_norm"] < 0.60]
+    print(close[["race_id", "candidate", "poll_avg", "win_prob_norm"]]
+          .to_string(index=False))
+
+if __name__ == "__main__":
+    main()
