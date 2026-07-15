@@ -190,3 +190,62 @@ candidate_poll_adj machinery left in place (unused by features, cheap to keep).
 LESSON: high XGB importance != marginal value when a feature is collinear with a kept one;
 always ablate before trusting importance, and prefer cutting features that behave differently
 on future data.
+
+## 2026-07-14: full pipeline audit → Model-vs-Markets fixes + macro silent-zero retrain
+
+Full audit of model + polling-agg Model-vs-Markets chain. Training/eval side came back
+CLEAN (no label leakage: bias priors strictly past-cycle, Sep-30 macro windows, no
+post-election polls, dual-seat specials keyed, win_prob_norm sums to 1). The page side had
+two classes of FAKE edges, both fixed the same day:
+
+1. **model_dem summed ALTERNATIVE primary candidates.** model_compare.py summed
+   win_prob_norm over all Dem rows; races carrying leftover hypothetical-matchup polls
+   (6 Dems in ME-Sen) published nonsense (ME-Sen "87% Dem" vs Kalshi 51.5 = fake 35-pt
+   edge; NE-H-02 and two CA races showed 100%). FIX: model_dem = LEADING Dem's win_prob
+   renormalized vs LEADING Rep's (matches the market's D/(D+R) vig normalization), plus an
+   `unresolved_field` flag (page badge "? FIELD") when >1 same-party candidate survives the
+   stale filter. ME-Sen honest number: Jackson 78.7 vs market ~52 — a real disagreement now,
+   flagged. (User decision: leading matchup = Troy Jackson.)
+2. **Independent-slot races compared different events.** NE-Sen: model P(Osborn)=.221 was
+   compared to "Will the DEMOCRATIC party win" (.007) = fake 21-pt edge. Both venues list
+   independent-win markets (Kalshi .32 / Poly .295); model_compare now matches those when
+   dem_display != DEM (`slot_market='IND'`, page badge "I MKT"), normalized over the full
+   D+R+I book. Honest edge: ~-9 pts (market likes Osborn MORE than the model).
+
+Other fixes shipped with it:
+- **macro_features.py silent zeros**: _trend (<2 obs) and _last12_delta (<13 obs) returned
+  0.0, not NaN. 15 TRAINING values were wrong (2018/2020/2022 generic_ballot trends claimed
+  "flat" from single-point windows) and 2026 sentiment_last12_delta silently asserted "no
+  change" from year-old data. Feature-VALUE change ⇒ full re-tune+retrain of both models.
+- **Expanding-window eval cells** added to both notebooks (train strictly < test cycle;
+  the LOCO-minus-expanding gap measures LOCO's optimism from training on future cycles).
+- **predict.py meta sidecar** (predictions_2026_meta.json): newest poll end_date consumed +
+  natl_env used; dashboard meta line shows "newest poll used" so stale-poll edges are visible.
+- **market-refresh.yml never committed docs/model_data.js** (regenerated every 2h, thrown
+  away — model tab's market side actually updated only 2x/day). Fixed; both workflows also
+  now fail LOUDLY on a compare crash (after the data commit) instead of `|| echo` swallowing.
+- **Page bugs**: mv-meta line was rendering raw JS source (string concat inside the template
+  literal); vig-normalize single-sided/ladder anchors; margin symmetrization uses each
+  party's leading candidate.
+- **natl_env train/serve mismatch documented** (538 model avg @ eve vs Wikipedia aggregator
+  mean @ today) — METHODOLOGY.md section C.
+
+UPDATE (same day): the measured LOCO-vs-expanding gap came back ~zero for the WIN model
+(AUC +0.0015, AUC-PR +0.0003), so per user ("if it's negligible, let's do it the correct
+way") **EXPANDING-WINDOW IS NOW THE PRIMARY HONEST EVAL** in both notebooks; LOCO is
+demoted to a companion table that monitors the gap each retrain; the poll-baseline
+benchmark + blend sweep train expanding-window too. Tuning stays LOCO-inside-1998-2016
+(internal selection, no honesty issue, better use of the small old-cycle set — see
+METHODOLOGY.md). Headline win-model numbers under the new scheme: AUC .966 / AUC-PR .947 /
+KS .812 / Brier .072 / race-acc .864.
+CAVEAT found when the margin run landed: the MARGIN model's gap is NOT negligible —
+LOCO 6.23 vs expanding 7.24 MAE, entirely the 2018 fold (10.2 with only 10 train cycles;
+2020/2022/2024 = 6.7/6.2/5.9 converge). The honest headline is now "MAE 7.24 over
+2018-2024 as-they-happened", with the 2026-relevant fold (2024: 13 train cycles) at 5.87
+and gap-free. Quote the margin model accordingly — do NOT keep citing 6.23/6.24.
+
+AUDIT ITEMS DEFERRED (user: "address after"): snapshot training (top priority — training
+races' freshest poll is median 6d pre-election vs ~112d for 2026 predictions, so honest-eval
+numbers do NOT describe July forecasts), race-level two-party reframe, shipping the α≈0.5
+blend, has_result selection bias, is_incumbent still wrong-district in redrawn states,
+grid-search selects on AUC not Brier, edge/uncertainty weighting, backtest logging schema.

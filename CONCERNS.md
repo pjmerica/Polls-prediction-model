@@ -190,3 +190,19 @@ fetch_generic_ballot.py and MOV_RX (soft-fail to missing values, never crash).
 14. MEDSL results loader after Nov 2026; add 2026 to cycles.py; full retrain.
 15. Market-snapshot history already accrues in polling-agg git history — build an extractor
     later to backtest model-vs-market edges against realized results.
+
+## Added by the 2026-07-14 audit (deferred by user — "address after")
+Fixed same day: page fake edges (multi-Dem sum → leading matchup; IND-slot vs Dem-party
+market → independent-win markets), macro silent zeros (⇒ retrain), market-refresh not
+committing model_data.js, workflow crash-swallowing, expanding-window eval cells (now
+permanent in both notebooks). See HANDOFF.md 2026-07-14. Still open, NOT yet on the list
+above:
+16. **has_result selection bias**: training keeps only races whose results name-matched —
+    likely over-represents clean two-party races vs what the 2026 feed serves.
+17. **Tune/select on Brier (or logloss), not AUC** — the page's currency is probabilities.
+18. **Uncertainty-weighted edges** on the page (poll count, bias-sweep spread, win/margin
+    disagreement) so thin-poll mega-edges rank below well-supported small ones.
+19. **is_incumbent still wrong-district in redrawn states** (PVI patch fixes prior_margin
+    only); consider is_redistricted feature or NaN-ing incumbency there (⇒ retrain).
+20. Backtest logging schema NOW (pre-Nov-2026) so the edge backtest is a join, not
+    archaeology (extends #15).

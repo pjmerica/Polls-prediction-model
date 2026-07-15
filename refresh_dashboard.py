@@ -89,6 +89,7 @@ def main():
         run(cmd, label)
 
     for src, dst in [("predictions_2026.csv", "model_predictions_2026.csv"),
+                     ("predictions_2026_meta.json", "model_predictions_meta.json"),
                      ("margin_predictions_2026.csv", "model_margin_predictions_2026.csv")]:
         shutil.copyfile(os.path.join(HERE, src),
                         os.path.join(AGG, "data", "processed", dst))

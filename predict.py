@@ -319,6 +319,19 @@ def main():
     out_path = args.out or os.path.join(HERE, f"predictions_{args.cycle}.csv")
     out.to_csv(out_path, index=False)
 
+    # meta sidecar: what the model actually consumed. The dashboard shows polls_max_end_date
+    # next to predictions_as_of — a big market edge can be a stale-polls artifact, and the
+    # generation timestamp alone can't reveal that.
+    import datetime
+    meta_out = dict(
+        generated_at=datetime.datetime.now().isoformat(timespec="seconds"),
+        polls_max_end_date=str(d["end_date"].max().date()),
+        n_poll_rows=int(len(d)), n_races=int(out["race_id"].nunique()),
+        natl_env=ne.get(args.cycle),
+    )
+    with open(os.path.splitext(out_path)[0] + "_meta.json", "w") as f:
+        json.dump(meta_out, f, indent=1)
+
     picks = out.loc[out.groupby("race_id")["win_prob"].idxmax()]
     close = picks[np.isclose(picks["win_prob_norm"], 0.5, atol=0.10)]
     print(f"\nraces predicted: {out['race_id'].nunique()} "

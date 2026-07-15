@@ -39,8 +39,11 @@ def _stats(s, prefix):
         keys = ["eve", "mean", "max", "min", "std", "trend", "last12_delta"]
         return {f"{prefix}_{k}": np.nan for k in keys}
     x = np.arange(len(v))
-    trend = float(np.polyfit(x, v, 1)[0]) if len(v) >= 2 else 0.0
-    last12 = float(v[-1] - v[-13]) if len(v) >= 13 else 0.0
+    # insufficient data -> NaN (XGBoost routes missing), NEVER a silent 0: at predict time a
+    # lagging series (e.g. sentiment, ~1yr behind) can leave short windows, and 0.0 would
+    # silently assert "flat trend / no change" instead of "unknown"
+    trend = float(np.polyfit(x, v, 1)[0]) if len(v) >= 2 else np.nan
+    last12 = float(v[-1] - v[-13]) if len(v) >= 13 else np.nan
     return {f"{prefix}_eve": float(v[-1]), f"{prefix}_mean": float(v.mean()),
             f"{prefix}_max": float(v.max()), f"{prefix}_min": float(v.min()),
             f"{prefix}_std": float(v.std()), f"{prefix}_trend": trend,
@@ -62,7 +65,8 @@ def _recency_stats(s, prefix):
         x = np.arange(len(v))
         out[f"{prefix}_avg_{label}"] = float(v.mean())
         out[f"{prefix}_max_{label}"] = float(v.max())
-        out[f"{prefix}_trend_{label}"] = float(np.polyfit(x, v, 1)[0]) if len(v) >= 2 else 0.0
+        # single-point window: trend is unknown, not zero (see _stats)
+        out[f"{prefix}_trend_{label}"] = float(np.polyfit(x, v, 1)[0]) if len(v) >= 2 else np.nan
     return out
 
 def load_monthly(path=CSV_PATH):

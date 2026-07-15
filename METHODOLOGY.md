@@ -42,7 +42,14 @@ Running-mean margins over the race's poll dates (all in-cycle): `avg_margin_over
 `natl_env_cand` = generic-ballot DEM−REP margin over the **30 days before the election**,
 signed to the candidate's party. Source per cycle (see `cycles.py`): 1998–2016 computed from
 the committed daily history file; 2018–2024 frozen constants; 2026+ passed to
-`predict.py --natl-env` manually.
+`predict.py --natl-env` manually (default: fetched live from the Wikipedia aggregator table).
+
+**Known train/serve mismatch (2026-07-14 audit):** training values are 538's *model-based*
+generic-ballot average over the last 30 pre-election days; the 2026 value is a *different
+instrument* (Wikipedia aggregator mean) at a *different time anchor* (today, mid-campaign,
+not election eve). Both measure the same quantity but with different house-effect handling
+and smoothing — treat 2026 `natl_env_cand` as approximate. The value actually used is
+recorded in `predictions_2026_meta.json` per run.
 
 ## D. Fundamentals
 | feature | window |
@@ -63,16 +70,33 @@ inflation (CPI YoY computed on the full series, then windowed), cpi_core, gas, f
 unemp_u6, approval. Approval comes from `data/approval_monthly.csv` (Gallup via UCSB,
 1993–2025-01). Pre-cycle months missing ⇒ NaN (XGBoost routes missing).
 
+**Silent-zero fix (2026-07-14):** `_trend` with <2 observations and `_last12_delta` with <13
+used to return 0.0 ("flat"), violating the missing=NaN rule — 15 training values were wrong
+(2018/2022 generic_ballot trends claimed flat from single-point windows) and at predict time
+a lagging series (sentiment, ~1yr behind) got a silently stale "no change". Now NaN.
+Both models retrained (feature-value change ⇒ full re-tune per the standing rule).
+
 ---
 
 ## Validation (nested — no selection bias)
 - **Hyperparameter tuning:** leave-one-cycle-out CV over **1998–2016 only** (150 sampled
-  configs, live grid search every run).
-- **Honest evaluation:** leave-one-cycle-out over **2018–2024** — cycles the tuner never saw.
-  Each fold trains on the other 13 cycles; the fold's house effect is recomputed
-  from its training cycles only.
-- The single-split walkthrough (train = all but 2024, test = 2024) is also honest under this
-  scheme.
+  configs, live grid search every run). LOCO is fine *inside* the tune block: it's internal
+  selection on cycles the evaluation never touches (no honesty issue), and it uses the
+  small old-cycle set more efficiently than expanding folds would.
+- **Honest evaluation (PRIMARY, 2026-07-14): EXPANDING-WINDOW over 2018–2024** — each fold
+  trains strictly on cycles BEFORE the test cycle (2018 ← 1998–2016, …, 2024 ← 1998–2022),
+  exactly what a real forecaster could have done. The tuner never saw these cycles.
+- **Companion: LOCO over 2018–2024** (each fold trains on the other 13 cycles, future ones
+  included) is still printed to monitor the optimism gap each retrain. Measured 2026-07-14:
+  - **Win model: gap ≈ 0** (AUC +0.0015, AUC-PR +0.0003, KS +0.0034, race-acc −0.0016) —
+    the switch cost nothing.
+  - **Margin model: gap = 1.0 MAE pt** (LOCO 6.23 → expanding 7.24), **entirely the 2018
+    fold** (MAE 10.2 with only 10 training cycles; 2020/2022/2024 = 6.7/6.2/5.9 converge to
+    LOCO). Read the headline accordingly: the eval-mean is dragged by small-training-set
+    folds, while the 2026-relevant fold (2024, trained on 13 cycles) shows no gap at all.
+- The model-vs-poll-baseline benchmark and blend sweep also run expanding-window.
+- The single-split walkthrough (train = all but 2024, test = 2024) is expanding-window by
+  construction (2024 is the last cycle).
 - Never random splits.
 
 **Win-model metrics reported (candidate level):** ROC-AUC, **AUC-PR** (average precision —
