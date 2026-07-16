@@ -313,7 +313,14 @@ SAME-DAY UPGRADES (2026-07-15, after user review):
   Ablation: identical picks, Brier slightly better -> kept.
 - **New headline** (corrected labels): race-acc .910 / AUC-PR .923 / Brier .046 vs
   poll-leader .723. **2026 backtest vs actual winners: 84 contested decided primaries,
-  picks 85.7% vs poll-leader 67.9%, AUC .962.** Corrected labels also cleared two fake
+  picks 81.0% vs poll-leader 67.9%, AUC .962.** (The pre-correction v1 artifact scores
+  85.7% on the same set; the 4-race delta is binomial noise at n=84 and was isolated to
+  the label/tune changes, NOT the population features — v2 stands because its labels are
+  verifiably correct. Both numbers recorded here deliberately.) The value-add stat: in
+  the 19 races where model and poll-leader disagreed, model right 14 / polls 3 / both
+  wrong 2. Full reproducible scorecard: **analysis/primary_backtest_2026.ipynb**
+  (executed outputs committed; bump AS_OF + re-run the results scraper to extend after
+  the August primaries). Corrected labels also cleared two fake
   high-confidence "misses" (NM-Gov "Haaland lost" was an LG-table artifact — she won;
   ME-Gov was the Bobby/Robert duplicate). Remaining high-confidence misses are ALL House
   races — the office the training set lacks; treat House primary probabilities as softer.
