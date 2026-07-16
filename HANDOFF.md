@@ -64,6 +64,23 @@ break, and what to do next, in order.
 10. **polls_long_with_results.csv is gitignored** (12MB). Fresh clone → run
     build_dataset.ipynb FIRST (fully offline) or everything downstream fails.
 
+## 2026-07-16: model predictions now AUTO-REFRESH daily (GitHub Action)
+
+polling-agg .github/workflows/model-refresh.yml (daily 13:15 UTC + manual dispatch):
+clones THIS repo (public - no secrets), mirrors the local sibling directory layout,
+scrapes both market venues (market CSVs are gitignored - absent on fresh checkouts),
+runs refresh_dashboard.py --no-feeds (predict win/margin/primary + SHAP + compares),
+commits to polling-agg. Verified end-to-end (run 29529497733 -> commit c9b3652).
+CONSEQUENCES:
+- Local runs of refresh_dashboard.py are now only needed after RETRAINING (new
+  artifacts must be committed+pushed to THIS repo before 13:15 UTC to reach the site,
+  or run the refresh locally / dispatch the Action manually).
+- polls_long_with_results.csv is now COMMITTED (14MB; CI needs it for house
+  effects/bias priors) - build_dataset.ipynb is no longer a fresh-clone prerequisite
+  for predicting, only for regenerating that file.
+- The model tabs' "model as-of" should never trail the poll feed by more than ~1 day;
+  if it does, check the Model refresh workflow runs first.
+
 ## Next steps, in order
 
 1. Finish the in-flight sequence above (verify run 2 → wire FEC → run 3 → publish).
