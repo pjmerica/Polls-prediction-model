@@ -23,16 +23,34 @@
   "is_senate",
   "is_gov",
   "is_defending_party",
-  "is_pres_party"
+  "is_pres_party",
+  "poll_avg_lv",
+  "poll_last_lv",
+  "poll_last30_lv",
+  "poll_std_lv",
+  "n_polls_lv",
+  "poll_lead_lv",
+  "poll_avg_rv",
+  "poll_last_rv",
+  "poll_last30_rv",
+  "poll_std_rv",
+  "n_polls_rv",
+  "poll_lead_rv",
+  "poll_avg_a",
+  "poll_last_a",
+  "poll_last30_a",
+  "poll_std_a",
+  "n_polls_a",
+  "poll_lead_a"
  ],
  "xgb_params": {
   "max_depth": 2,
   "learning_rate": 0.1,
   "n_estimators": 200,
-  "min_child_weight": 8,
-  "subsample": 1.0,
-  "colsample_bytree": 1.0,
-  "reg_lambda": 1
+  "min_child_weight": 4,
+  "subsample": 0.7,
+  "colsample_bytree": 0.5,
+  "reg_lambda": 5
  },
  "trained_on_cycles": [
   2018,
@@ -42,26 +60,26 @@
   2022,
   2024
  ],
- "n_races": 214,
+ "n_races": 213,
  "target": "won = became the party's general-election nominee",
  "eval_expanding_window": {
   "2022": {
    "n_races": 66.0,
-   "n_cand": 369.0,
-   "AUC": 0.9849,
-   "AUC_PR": 0.9344,
-   "KS": 0.8866,
-   "Brier": 0.0357,
-   "race_acc": 0.9242,
+   "n_cand": 368.0,
+   "AUC": 0.9852,
+   "AUC_PR": 0.9395,
+   "KS": 0.8845,
+   "Brier": 0.0356,
+   "race_acc": 0.9545,
    "pollleader_acc": 0.7424
   },
   "2024": {
    "n_races": 37.0,
    "n_cand": 170.0,
-   "AUC": 0.9566,
-   "AUC_PR": 0.9014,
-   "KS": 0.8437,
-   "Brier": 0.0558,
+   "AUC": 0.9577,
+   "AUC_PR": 0.9072,
+   "KS": 0.8332,
+   "Brier": 0.0555,
    "race_acc": 0.8649,
    "pollleader_acc": 0.7027
   }

@@ -77,8 +77,8 @@ def main():
         prim = [r for r in rows if r.get("stage") in ("primary", "primary runoff")]
         df = pd.DataFrame(prim if prim else [],
                           columns=["race_id", "pollster", "candidate", "party", "stage",
-                                   "sample_size", "end_date", "implied_prob", "partisan",
-                                   "poll_id", "question_id"])
+                                   "sample_size", "population", "end_date", "implied_prob",
+                                   "partisan", "poll_id", "question_id"])
         df["src_page"] = rid
         df["year"] = year
         frames.append(df)

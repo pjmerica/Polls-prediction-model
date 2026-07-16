@@ -93,6 +93,7 @@ def load_primary_feed(paths, cycle):
         "pct": pd.to_numeric(raw["implied_prob"], errors="coerce") * 100.0,
         "end_date": raw["end_date"],
         "sample_size": pd.to_numeric(raw["sample_size"], errors="coerce"),
+        "population": (raw["population"] if "population" in raw.columns else None),
         "pollster": raw["pollster"], "_src_priority": raw["_src_priority"],
     })
     d = d[d["party_std"].isin(["DEM", "REP"])]
@@ -124,6 +125,9 @@ def load_primary_feed(paths, cycle):
     d["race_id"] = (d["year"].astype(str) + "_" + d["state"] + "_" + d["office"]
                     + d["district"].radd("-").where(d["district"] != "", "")
                     + "_" + d["party_std"])
+    d, n_merged = FP.merge_nickname_aliases(d)
+    if n_merged:
+        print(f"nickname-alias merges: {n_merged} candidate name variants unified")
     d = drop_stale_candidates(F.prepare_polls(d))
 
     bad_pct = ~d["pct"].between(0, 100)

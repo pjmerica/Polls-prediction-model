@@ -26,6 +26,112 @@ import pandas as pd
 import features as F
 from cycles import PRES_PARTY
 
+# common-nickname equivalence for WITHIN-RACE candidate merging: different sources name
+# the same person differently ('Bobby Charles' vs 'Robert Charles' split one ME-Gov-26
+# candidate into two, diluting his own poll support). Merging is gated on SAME LAST NAME
+# within ONE race, so mild ambiguity in the map is safe (a 'ted smith' and an
+# 'edward smith' in the same primary are the same person; Mayra vs Eric Flores are not
+# merged because first names are not nickname-equivalent).
+_NICK = {}
+for canon, nicks in {
+    "robert": ["bob", "bobby", "rob", "robbie", "bert"],
+    "william": ["bill", "billy", "will", "willie", "liam"],
+    "michael": ["mike", "mikey", "mick"],
+    "james": ["jim", "jimmy", "jamie"],
+    "john": ["jack", "johnny", "jon"],
+    "joseph": ["joe", "joey"],
+    "richard": ["rick", "ricky", "rich", "dick"],
+    "daniel": ["dan", "danny"],
+    "david": ["dave", "davey"],
+    "thomas": ["tom", "tommy"],
+    "christopher": ["chris", "kit"],
+    "matthew": ["matt"],
+    "anthony": ["tony"],
+    "andrew": ["andy", "drew"],
+    "steven": ["steve"], "stephen": ["steve"],
+    "kenneth": ["ken", "kenny"],
+    "edward": ["ed", "eddie", "ted", "teddy", "ned"],
+    "theodore": ["ted", "teddy", "theo"],
+    "gregory": ["greg"],
+    "jeffrey": ["jeff"],
+    "nicholas": ["nick"],
+    "samuel": ["sam", "sammy"],
+    "benjamin": ["ben", "benny"],
+    "alexander": ["alex"],
+    "timothy": ["tim", "timmy"],
+    "charles": ["charlie", "chuck"],
+    "ronald": ["ron", "ronnie"],
+    "donald": ["don", "donny"],
+    "lawrence": ["larry"],
+    "raymond": ["ray"],
+    "gerald": ["jerry"], "jerome": ["jerry"],
+    "katherine": ["kate", "katie", "kathy", "kay"], "kathleen": ["kate", "katie", "kathy"],
+    "elizabeth": ["liz", "beth", "betsy", "betty", "eliza"],
+    "margaret": ["peggy", "meg", "maggie"],
+    "deborah": ["debbie", "deb"],
+    "susan": ["sue", "susie"],
+    "jennifer": ["jen", "jenny"],
+    "patricia": ["pat", "patty", "trish"], "patrick": ["pat"],
+    "rebecca": ["becky"],
+    "abigail": ["abby"],
+    "victoria": ["vicky", "tori"],
+    "cynthia": ["cindy"],
+    "pamela": ["pam"],
+    "sandra": ["sandy"],
+    "barbara": ["barb"],
+    "frederick": ["fred", "freddie"],
+    "leonard": ["len", "lenny", "leo"],
+    "walter": ["walt"],
+    "harold": ["hal", "harry"], "henry": ["hank", "harry"],
+    "albert": ["al"], "alan": ["al"], "alfred": ["al"],
+    "eugene": ["gene"],
+    "vincent": ["vince", "vinny"],
+    "philip": ["phil"], "phillip": ["phil"],
+    "stanley": ["stan"],
+    "norman": ["norm"],
+    "arthur": ["art", "artie"],
+    "peter": ["pete"],
+    "francis": ["frank", "fran"], "franklin": ["frank"],
+}.items():
+    group = frozenset([canon] + nicks)
+    for n in [canon] + nicks:
+        _NICK.setdefault(n, set()).update(group)
+
+def _first_equiv(a, b):
+    a, b = a.lower(), b.lower()
+    if a == b or a.startswith(b) or b.startswith(a):
+        return True
+    return b in _NICK.get(a, set())
+
+def merge_nickname_aliases(d, name_col="candidate"):
+    """Within each race, merge candidates whose FULL names share a last name and have
+    nickname-equivalent (or prefix-equivalent) first names: they get one cand_key (the
+    variant with more poll rows keeps its name). Returns d with cand_key/candidate fixed
+    and the number of merges."""
+    d = d.copy()
+    merges = 0
+    for rid, g in d.groupby("race_id"):
+        names = g.groupby(name_col).size().sort_values(ascending=False)
+        canon = {}
+        seen = []          # [(full_name, first, last)]
+        for full in names.index:
+            parts = str(full).replace(".", " ").split()
+            if len(parts) < 2:
+                continue
+            first, last = parts[0], parts[-1]
+            hit = next((s for s in seen if s[2].lower() == last.lower()
+                        and _first_equiv(first, s[1])), None)
+            if hit:
+                canon[full] = hit[0]
+                merges += 1
+            else:
+                seen.append((full, first, last))
+        if canon:
+            m = d["race_id"] == rid
+            d.loc[m, name_col] = d.loc[m, name_col].replace(canon)
+    d["cand_key"] = d[name_col].map(F.norm_name)
+    return d, merges
+
 def build_primary_table(d, fec=None, inc_map=None, macro_asof=None):
     """d: prepared long frame (F.prepare_polls applied) with columns
     race_id, year, state, office, district, party_std, candidate, cand_key, pct, end_date,
@@ -46,6 +152,13 @@ def build_primary_table(d, fec=None, inc_map=None, macro_asof=None):
             macro_cache[k] = macro_asof(k)
         return macro_cache[k]
 
+    # surveyed-population splits (LV / RV / A): the same poll aggregates computed per
+    # population class. 'v' (unspecified voters) folds into RV; missing labels get no
+    # class (excluded from splits, still in the overall aggregates). A race rarely has
+    # all three classes - absent class = NaN (XGBoost routes missing).
+    has_pop = "population" in d.columns
+    POPS = {"lv": ("lv",), "rv": ("rv", "v"), "a": ("a",)}
+
     rows = []
     for race_id, g in d.groupby("race_id"):
         yr = int(g["year"].iloc[0]); st = g["state"].iloc[0]
@@ -58,6 +171,17 @@ def build_primary_table(d, fec=None, inc_map=None, macro_asof=None):
             gc = gc.sort_values("end_date")
             dated = gc.dropna(subset=["end_date"])
             last30 = gc[gc["days_to_elec"] <= 30]
+            pop_feats = {}
+            for tag, vals in POPS.items():
+                gp = (gc[gc["population"].astype(str).str.lower().isin(vals)]
+                      if has_pop else gc.iloc[0:0])
+                gp30 = gp[gp["days_to_elec"] <= 30]
+                gpd = gp.dropna(subset=["end_date"])
+                pop_feats[f"poll_avg_{tag}"] = gp["pct"].mean() if len(gp) else np.nan
+                pop_feats[f"poll_last_{tag}"] = (gpd["pct"].iloc[-1] if len(gpd) else np.nan)
+                pop_feats[f"poll_last30_{tag}"] = gp30["pct"].mean() if len(gp30) else np.nan
+                pop_feats[f"poll_std_{tag}"] = gp["pct"].std() if len(gp) > 1 else np.nan
+                pop_feats[f"n_polls_{tag}"] = len(gp)
             last60 = gc[gc["days_to_elec"] <= 60].dropna(subset=["pct", "days_to_elec"])
             slope = np.nan
             if len(last60) >= 3:
@@ -94,9 +218,17 @@ def build_primary_table(d, fec=None, inc_map=None, macro_asof=None):
                 is_pres_party=int(party == PRES_PARTY.get(yr)),
                 _fund_receipts=(rec if fe else np.nan),
                 fund_receipts_ln=(np.log1p(rec) if fe and rec and rec > 0 else np.nan),
+                **pop_feats,
                 **macro_for(ed),
             ))
     c = pd.DataFrame(rows)
+
+    # within-field lead per population class (same construction as poll_lead)
+    for tag in ("lv", "rv", "a"):
+        col = f"poll_avg_{tag}"
+        best = c.groupby("race_id")[col].transform(
+            lambda s: s.nlargest(2).min() if s.notna().sum() > 1 else s.max())
+        c[f"poll_lead_{tag}"] = c[col] - best
 
     # within-FIELD relatives (the field = this party's candidates = the race group)
     c["field_best"] = c.groupby("race_id")["poll_avg"].transform(
@@ -130,4 +262,10 @@ def feature_list_primary(macro_feats=(), fund=False):
         "n_lead_changes", "avg_margin_over_time", "margin_volatility", "min_margin",
         "margin_trend",
         "is_dem_primary", "is_senate", "is_gov", "is_defending_party", "is_pres_party",
+        # surveyed-population splits (2026-07-15, user request): the poll aggregates per
+        # LV / RV / A class. Deeper per-class variants (momentum, dynamics) are too sparse
+        # at ~200 training races - documented, not forgotten.
+        "poll_avg_lv", "poll_last_lv", "poll_last30_lv", "poll_std_lv", "n_polls_lv", "poll_lead_lv",
+        "poll_avg_rv", "poll_last_rv", "poll_last30_rv", "poll_std_rv", "n_polls_rv", "poll_lead_rv",
+        "poll_avg_a", "poll_last_a", "poll_last30_a", "poll_std_a", "n_polls_a", "poll_lead_a",
     ] + (["fund_receipts_ln", "fund_share"] if fund else []) + list(macro_feats)

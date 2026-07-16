@@ -78,6 +78,7 @@ def load_wiki_polls():
         "pct": pd.to_numeric(p["implied_prob"], errors="coerce") * 100.0,
         "pollster": p["pollster"],
         "sample_size": pd.to_numeric(p["sample_size"], errors="coerce"),
+        "population": (p["population"] if "population" in p.columns else None),
         "end_date": p["end_date"],
         "election_date": p["src_page"].map(dmap),
     }).dropna(subset=["pct", "cand_key", "year"])
@@ -127,9 +128,66 @@ def main():
                     + d["district"].radd("-").where(d["district"] != "", "")
                     + "_" + d["party_std"])
 
+    # merge nickname variants of the SAME candidate within a race ('Bobby' vs 'Robert
+    # Charles' split one person's polls across two keys - see features_primary._NICK)
+    from features_primary import merge_nickname_aliases
+    d, n_merged = merge_nickname_aliases(d)
+    print(f"nickname-alias merges: {n_merged} candidate name variants unified")
+
     noms = nominee_sets()
     key = list(zip(d["year"], d["state"], d["office"], d["district"], d["party_std"]))
     d["won"] = [int(ck in noms.get(k, set())) for ck, k in zip(d["cand_key"], key)]
+
+    # PREFER actual primary-results winners (fetch_primary_results_2026.py --hist) over the
+    # nominee-join: a primary winner who later dropped out appears nowhere in the general
+    # candidate lists and the REPLACEMENT gets mislabeled (Platner scenario). Results are
+    # the truth; the nominee-join stays as fallback for races without parsed results.
+    res_path = os.path.join(DATA, "primary_results_hist.csv")
+    if os.path.exists(res_path):
+        res = pd.read_csv(res_path)
+        winners = {r.race_id: set() for r in res.itertuples()}
+        for r in res[res["is_winner"]].itertuples():
+            winners.setdefault(r.race_id, set()).add(r.cand_key)
+        covered = d["race_id"].isin(winners.keys())
+
+        # nickname guard: 'Bobby Charles' (polls) vs 'Robert Charles' (results) share a
+        # last name but not a first initial. If the winner's exact key is absent from the
+        # race's polled field, fall back to a UNIQUE last-name match within that field.
+        def match_winner(rid, field_keys):
+            wset = winners.get(rid, set())
+            hit = wset & field_keys
+            if hit:
+                return hit
+            out = set()
+            for w in wset:
+                last = w.split(" ")[0]
+                same = {k for k in field_keys if k.split(" ")[0] == last}
+                if len(same) == 1:
+                    out |= same
+            return out
+        field_by_race = d.groupby("race_id")["cand_key"].agg(set).to_dict()
+        win_by_race = {rid: match_winner(rid, field_by_race[rid])
+                       for rid in d["race_id"].unique() if rid in winners}
+        d["won_res"] = [int(ck in win_by_race[rid]) if rid in win_by_race else None
+                        for ck, rid in zip(d["cand_key"], d["race_id"])]
+        both = d[covered].groupby("race_id").agg(
+            nom=("won", "max"), res_lbl=("won_res", "max"))
+        # races where results found a winner but the nominee-join disagreed on WHO
+        dis = 0
+        for rid, g in d[covered].groupby("race_id"):
+            a = set(g.loc[g["won"] == 1, "cand_key"])
+            b = set(g.loc[g["won_res"] == 1, "cand_key"])
+            if b and a != b:
+                dis += 1
+                print(f"  label disagreement {rid}: nominee-join={sorted(a) or '(none)'} "
+                      f"vs results={sorted(b)} -> using results")
+        use = covered & d["won_res"].notna()
+        d.loc[use, "won"] = d.loc[use, "won_res"].astype(int)
+        n_races_cov = d.loc[covered, "race_id"].nunique()
+        print(f"results-based labels: {n_races_cov} races covered "
+              f"({dis} disagreed with the nominee-join)")
+        d = d.drop(columns="won_res")
+
     d["race_has_label"] = d.groupby("race_id")["won"].transform("max")
 
     races = d.groupby("race_id").agg(n_cands=("cand_key", "nunique"),

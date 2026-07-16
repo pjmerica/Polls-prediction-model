@@ -206,3 +206,9 @@ above:
     only); consider is_redistricted feature or NaN-ing incumbency there (⇒ retrain).
 20. Backtest logging schema NOW (pre-Nov-2026) so the edge backtest is a join, not
     archaeology (extends #15).
+21. **Nickname-duplicate candidates in the GENERAL model's feed** (found 2026-07-15 via the
+    primary model): the same person can appear under name variants ('Bobby' vs 'Robert
+    Charles'), splitting their polls across two cand_keys. The primary pipeline merges
+    them (features_primary.merge_nickname_aliases, 36 merges in the feed); predict.py's
+    general path does NOT yet — leading candidates' poll_avg can be diluted. Port the
+    merge into load_agg_polls (feature-affecting ⇒ verify + full retrain).

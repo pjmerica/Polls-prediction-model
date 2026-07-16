@@ -293,6 +293,31 @@ Thin-poll races (<3 polls) sort LAST regardless of edge size: a 90-pt "edge" off
 survey (CT-Gov REP: 1 poll vs a 97% market favorite = Stewart presumably out) is the market
 knowing something the polls don't. Both CI workflows run + commit the primary compare.
 
+SAME-DAY UPGRADES (2026-07-15, after user review):
+- **Explain modal** on the Primary tab (explain_primary.py -> SHAP top-10 per predicted
+  nominee; reuses explain_2026's label machinery).
+- **RESULTS-BASED LABELS** (user: "the primary winner might not be the one in the general"
+  — Platner): fetch_primary_results_2026.py scrapes actual primary-results tables (2026 +
+  --hist 2018-24). THREE parser bugs caught by known-winner validation before they poisoned
+  anything: (1) Lt-Gov primary tables nested in gubernatorial primary sections crowned
+  running mates (Husted over DeWine, "Fetterman" as 2018-PA-gov); (2) joint-ticket cells
+  ("Richard Cordray and Betty Sutton" -> 'sutton r') — take the first wikilink; (3)
+  '(withdrawn)' annotations leaking into name keys. Also: NEVER trust `cmd | tail` exit
+  codes — a masked crash shipped an empty hist file once.
+- **Nickname-alias merging** (features_primary.merge_nickname_aliases, train+serve): same
+  person split across name variants ('Bobby'/'Robert Charles') diluted their own polls —
+  36 merges in the 2026 feed alone. Same-last-name + nickname-equivalence, within-race only
+  (Mayra vs Eric Flores stay distinct). The GENERAL model's feed likely has the same issue
+  — queued as roadmap item #21.
+- **Population splits** (user request): poll_avg/last/last30/std/n_polls/lead per LV/RV/A.
+  Ablation: identical picks, Brier slightly better -> kept.
+- **New headline** (corrected labels): race-acc .910 / AUC-PR .923 / Brier .046 vs
+  poll-leader .723. **2026 backtest vs actual winners: 84 contested decided primaries,
+  picks 85.7% vs poll-leader 67.9%, AUC .962.** Corrected labels also cleared two fake
+  high-confidence "misses" (NM-Gov "Haaland lost" was an LG-table artifact — she won;
+  ME-Gov was the Bobby/Robert duplicate). Remaining high-confidence misses are ALL House
+  races — the office the training set lacks; treat House primary probabilities as softer.
+
 AUDIT ITEMS DEFERRED (user: "address after"): snapshot training (top priority — training
 races' freshest poll is median 6d pre-election vs ~112d for 2026 predictions, so honest-eval
 numbers do NOT describe July forecasts), race-level two-party reframe, shipping the α≈0.5

@@ -139,9 +139,28 @@ Primary DATES are extracted per race page (`fetch_primary_dates.py`, prose regex
 validated against hand-checked dates; last-poll+4d fallback flagged `approx`) — primaries
 move between cycles and states, so dates are per-(cycle,state,office), never assumed.
 
-**Labels:** won = candidate appears among that party's GENERAL-election candidates for the
-same seat (res_*.csv) — the nominee, by definition. No primary returns needed. Blind spots
-(counted at build time, accepted): nominees who withdrew post-primary, write-ins, fusion.
+**Labels (upgraded 2026-07-15, same day):** won = the ACTUAL primary winner, scraped from
+the same Wikipedia race pages' results tables (fetch_primary_results_2026.py --hist; last
+table per party-race so runoffs supersede round 1). The original nominee-join (candidate
+appears among the party's general-election candidates) remains the fallback for races
+without parsed results — it mislabels primary winners who later withdrew (the Platner
+scenario) and misses nickname variants ('Bob' vs 'Robert Casey'). Results-scraper
+hardening, each caught by known-winner validation: down-ticket guard (Lt-Gov primary
+tables inside gubernatorial primary sections once crowned running mates), joint-ticket
+cells (take the first wikilink, not the merged cell text), parenthetical annotations
+stripped. Nickname-alias merging unifies same-person variants within a race at BOTH train
+and predict time ('Bobby'/'Robert Charles' split one ME-Gov-26 candidate's polls across
+two keys; 36 merges in the 2026 feed).
+
+**Population splits (2026-07-15, user request):** poll_avg/last/last30/std/n_polls/lead per
+LV / RV / A surveyed-population class ('v' folds into RV; absent class = NaN). Ablation:
+identical picks, Brier slightly better. Per-class momentum/dynamics: too sparse at ~200
+races, documented not forgotten.
+
+**Headline (expanding-window, results-based labels):** AUC .971 / AUC-PR .923 / Brier .046 /
+race-acc .910 vs poll-leader .723. **2026 out-of-sample backtest** (84 contested decided
+primaries vs scraped actual winners): picks 85.7% vs poll-leader 67.9%, AUC .962.
+High-confidence misses concentrate in HOUSE races — the office the training set lacks.
 
 **Features (features_primary.py):** within-FIELD poll structure (plain means, no weighting):
 poll_avg/last/last30/std, poll_share, poll_lead, momentum, undecided, n_cands, field
