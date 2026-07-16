@@ -72,3 +72,8 @@ venv/
 !data/primary_dates_hist.csv
 !data/primary_model_xgb.json
 !data/primary_model_features.json
+
+# committed 2026-07-16 for the model-refresh GitHub Action: CI clones this repo fresh and
+# predict*.py needs the historical polls (house effects + bias priors) without running
+# build_dataset.ipynb. 14MB, regenerable, but committing = static-data principle anyway.
+!polls_long_with_results.csv

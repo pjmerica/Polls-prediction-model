@@ -1,0 +1,10 @@
+# Runtime deps for the predict/refresh pipeline (predict*.py, explain*.py,
+# refresh_dashboard.py) - used locally and by polling-agg's model-refresh Action.
+# Training additionally uses scikit-learn + jupyter/matplotlib (notebooks).
+numpy
+pandas
+xgboost
+shap
+scikit-learn
+requests
+lxml
