@@ -157,10 +157,31 @@ LV / RV / A surveyed-population class ('v' folds into RV; absent class = NaN). A
 identical picks, Brier slightly better. Per-class momentum/dynamics: too sparse at ~200
 races, documented not forgotten.
 
-**Headline (expanding-window, results-based labels):** AUC .971 / AUC-PR .923 / Brier .046 /
-race-acc .910 vs poll-leader .723. **2026 out-of-sample backtest** (84 contested decided
-primaries vs scraped actual winners): picks 85.7% vs poll-leader 67.9%, AUC .962.
-High-confidence misses concentrate in HOUSE races — the office the training set lacks.
+**Candidate-history features (2026-07-17, user request, three fact-check iterations):**
+(a) electoral track record from the committed results archives (candidate_history.py,
+strictly-prior-cycle; fusion-voting ballot lines deduped): hist_prior_runs/wins/ever_won,
+best/last general vote pct, years-since-last-run, prior primary wins. Fact-checked against
+13 hand-verified public facts (check_candidate_history.py, exact-match asserts) +
+name-collision audit (0.09%, all legit perennial multi-filers). (b) officeholder bios
+scraped from the race pages' candidate bullets (fetch_candidate_bios.py):
+bio_office_level (4 federal / 3 statewide / 2 state-leg / 1 local / 0 none) +
+bio_prior_candidacy. Parser needed FOUR fix rounds, each caught by the known-truth
+battery (check_officeholder.py): candidacy mentions classified as offices held; US-title
+spelling variants; 'United States House' vs state houses; ENDORSEMENT lists scraped as
+candidates (3/4 of v1 rows!). Final: 7/7 known levels exact, 98% cross-source consistency.
+bio_in_office EXCLUDED (zero contribution + today-anchored 'present' semantics).
+ABLATION: the bios carry the gain (race-acc .895->.935, Brier .045->.024); the
+results-derived history adds ~nothing on top of polls (kept: leak-safe, near-free,
+explanatory). Out-of-sample: decided-2026 backtest 81.0% -> 83.3%.
+Known caveat: historical pages are read as they exist TODAY - post-election edits can
+tint descriptors; mitigated by dropping in_office and the negative observed
+in-office/win correlation.
+
+**Headline (expanding-window, results-based labels, candidate-history features):**
+AUC .980 / AUC-PR .965 / Brier .024 / race-acc .935 vs poll-leader .723. **2026
+out-of-sample backtest** (84 contested decided primaries vs scraped actual winners):
+picks 83.3%, AUC .965, Brier .050. High-confidence misses concentrate in HOUSE races —
+the office the training set lacks.
 
 **Features (features_primary.py):** within-FIELD poll structure (plain means, no weighting):
 poll_avg/last/last30/std, poll_share, poll_lead, momentum, undecided, n_cands, field

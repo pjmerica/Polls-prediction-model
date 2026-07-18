@@ -132,7 +132,29 @@ def merge_nickname_aliases(d, name_col="candidate"):
     d["cand_key"] = d[name_col].map(F.norm_name)
     return d, merges
 
-def build_primary_table(d, fec=None, inc_map=None, macro_asof=None):
+def load_candidate_bios(path=None):
+    """data/candidate_bios.csv -> {(year, office, state, district, party, ck): feats}.
+    Wikipedia race-page candidate descriptors classified into office levels
+    (fetch_candidate_bios.py). district = '' for statewide."""
+    import os
+    path = path or os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                                "data", "candidate_bios.csv")
+    if not os.path.exists(path):
+        return {}
+    b = pd.read_csv(path, low_memory=False)
+    out = {}
+    for r in b.itertuples():
+        di = "" if pd.isna(r.district) else str(int(r.district))
+        party = F.npar(r.party)
+        out[(int(r.year), r.office, r.state, di, party, r.cand_key)] = dict(
+            bio_office_level=int(r.office_level),
+            bio_in_office=int(r.bio_in_office),
+            bio_prior_candidacy=int(r.bio_prior_candidacy))
+    return out
+
+_BIO_NAN = dict(bio_office_level=np.nan, bio_in_office=np.nan, bio_prior_candidacy=np.nan)
+
+def build_primary_table(d, fec=None, inc_map=None, macro_asof=None, hist=None, bios=None):
     """d: prepared long frame (F.prepare_polls applied) with columns
     race_id, year, state, office, district, party_std, candidate, cand_key, pct, end_date,
     days_to_elec, sample_size, pollster [, won].
@@ -219,6 +241,12 @@ def build_primary_table(d, fec=None, inc_map=None, macro_asof=None):
                 _fund_receipts=(rec if fe else np.nan),
                 fund_receipts_ln=(np.log1p(rec) if fe and rec and rec > 0 else np.nan),
                 **pop_feats,
+                # candidate electoral history (candidate_history.CandidateHistory,
+                # strictly-prior-cycle; fact-checked - see check_candidate_history.py)
+                **(hist.history(yr, st, ck) if hist is not None else {}),
+                # officeholder bio (Wikipedia descriptors; NaN when no bio matched)
+                **(bios.get((yr, of, st, di, party, ck), _BIO_NAN)
+                   if bios is not None else {}),
                 **macro_for(ed),
             ))
     c = pd.DataFrame(rows)
@@ -268,4 +296,14 @@ def feature_list_primary(macro_feats=(), fund=False):
         "poll_avg_lv", "poll_last_lv", "poll_last30_lv", "poll_std_lv", "n_polls_lv", "poll_lead_lv",
         "poll_avg_rv", "poll_last_rv", "poll_last30_rv", "poll_std_rv", "n_polls_rv", "poll_lead_rv",
         "poll_avg_a", "poll_last_a", "poll_last30_a", "poll_std_a", "n_polls_a", "poll_lead_a",
+        # candidate history (2026-07-17, user request): has this candidate won before,
+        # how did their generals go, have they won primaries; + officeholder level from
+        # Wikipedia bios (the 'smaller offices' the results archives cannot see)
+        "hist_prior_runs", "hist_prior_wins", "hist_ever_won",
+        "hist_best_general_pct", "hist_last_general_pct",
+        "hist_years_since_last_run", "hist_prior_primary_wins",
+        # bio_in_office EXCLUDED (2026-07-17 leak review): zero eval contribution AND
+        # today-anchored semantics ('present' on historical pages reflects post-election
+        # careers). office_level + prior_candidacy carry the (large) bio signal.
+        "bio_office_level", "bio_prior_candidacy",
     ] + (["fund_receipts_ln", "fund_share"] if fund else []) + list(macro_feats)

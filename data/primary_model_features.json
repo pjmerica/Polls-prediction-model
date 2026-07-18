@@ -41,7 +41,16 @@
   "poll_last30_a",
   "poll_std_a",
   "n_polls_a",
-  "poll_lead_a"
+  "poll_lead_a",
+  "hist_prior_runs",
+  "hist_prior_wins",
+  "hist_ever_won",
+  "hist_best_general_pct",
+  "hist_last_general_pct",
+  "hist_years_since_last_run",
+  "hist_prior_primary_wins",
+  "bio_office_level",
+  "bio_prior_candidacy"
  ],
  "xgb_params": {
   "max_depth": 2,
@@ -66,21 +75,21 @@
   "2022": {
    "n_races": 66.0,
    "n_cand": 368.0,
-   "AUC": 0.9852,
-   "AUC_PR": 0.9395,
-   "KS": 0.8845,
-   "Brier": 0.0356,
-   "race_acc": 0.9545,
+   "AUC": 0.9932,
+   "AUC_PR": 0.9741,
+   "KS": 0.9115,
+   "Brier": 0.0226,
+   "race_acc": 0.9242,
    "pollleader_acc": 0.7424
   },
   "2024": {
    "n_races": 37.0,
    "n_cand": 170.0,
-   "AUC": 0.9577,
-   "AUC_PR": 0.9072,
-   "KS": 0.8332,
-   "Brier": 0.0555,
-   "race_acc": 0.8649,
+   "AUC": 0.9663,
+   "AUC_PR": 0.9553,
+   "KS": 0.9114,
+   "Brier": 0.026,
+   "race_acc": 0.9459,
    "pollleader_acc": 0.7027
   }
  }

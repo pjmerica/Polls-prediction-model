@@ -77,3 +77,4 @@ venv/
 # predict*.py needs the historical polls (house effects + bias priors) without running
 # build_dataset.ipynb. 14MB, regenerable, but committing = static-data principle anyway.
 !polls_long_with_results.csv
+!data/candidate_bios.csv

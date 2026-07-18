@@ -154,7 +154,9 @@ def main():
 
     funds = F.load_fundamentals()
     fec = F.load_fec(extended=True)
-    cand = FP.build_primary_table(d, fec=fec, inc_map=funds["inc_map"])
+    from candidate_history import CandidateHistory
+    cand = FP.build_primary_table(d, fec=fec, inc_map=funds["inc_map"],
+                                  hist=CandidateHistory(), bios=FP.load_candidate_bios())
 
     missing = [f for f in meta["features"] if f not in cand.columns]
     assert not missing, f"artifact expects features absent from the table: {missing[:8]}"

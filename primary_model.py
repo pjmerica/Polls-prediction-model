@@ -91,7 +91,10 @@ def main():
 
     funds = F.load_fundamentals()
     fec = F.load_fec(extended=True)
-    c = FP.build_primary_table(d, fec=fec, inc_map=funds["inc_map"])
+    from candidate_history import CandidateHistory
+    HIST = CandidateHistory()
+    BIOS = FP.load_candidate_bios()
+    c = FP.build_primary_table(d, fec=fec, inc_map=funds["inc_map"], hist=HIST, bios=BIOS)
     assert c["won"].notna().all(), "training rows must all have labels"
     FEATS = FP.feature_list_primary()
     print(f"candidate rows {len(c)} | features {len(FEATS)} | "
@@ -123,6 +126,14 @@ def main():
     ev = expanding_eval(c, FEATS, PARAMS, eval_years,
                         "no fund, no macro - PRIMARY headline")
 
+    # ---- candidate-history/bio ablation (2026-07-17 features): measure their value ----
+    NOHIST = [f for f in FEATS if not (f.startswith("hist_") or f.startswith("bio_"))]
+    evh = expanding_eval(c, NOHIST, PARAMS, eval_years,
+                         "WITHOUT candidate history/bio - ablation")
+    print(f"history/bio ablation: race-acc {ev['race_acc'].mean():.3f} vs "
+          f"{evh['race_acc'].mean():.3f} without, Brier {ev['Brier'].mean():.4f} vs "
+          f"{evh['Brier'].mean():.4f}")
+
     # ---- fund ablation (leakage evidence: cycle-END FEC totals include post-primary
     # money, so fund_share partly encodes the training label; see feature_list_primary) --
     evf = expanding_eval(c, FP.feature_list_primary(fund=True), PARAMS, eval_years,
@@ -132,8 +143,8 @@ def main():
           f"= the leak-suspect juice; artifact stays NO-fund")
 
     # ---- macro ablation (evidence for keeping macro out) ----
-    cm = FP.build_primary_table(d, fec=fec, inc_map=funds["inc_map"],
-                                macro_asof=build_macro_asof)
+    cm = FP.build_primary_table(d, fec=fec, inc_map=funds["inc_map"], hist=HIST,
+                                bios=BIOS, macro_asof=build_macro_asof)
     macro_feats = sorted(set(cm.columns) - set(c.columns))
     evm = expanding_eval(cm, FP.feature_list_primary(macro_feats), PARAMS, eval_years,
                          f"WITH macro ({len(macro_feats)} extra cols) - ablation only")

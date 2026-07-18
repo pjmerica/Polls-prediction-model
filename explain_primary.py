@@ -34,6 +34,32 @@ FRIENDLY.update({
     "n_cands": "Candidates in field",
     "race_total_polls": "Total polls in race",
 })
+FRIENDLY.update({
+    "hist_prior_runs": "Prior general-election runs",
+    "hist_prior_wins": "Prior general-election wins",
+    "hist_ever_won": "Has won a general before",
+    "hist_best_general_pct": "Best past general result (%)",
+    "hist_last_general_pct": "Last general result (%)",
+    "hist_years_since_last_run": "Years since last run",
+    "hist_prior_primary_wins": "Prior primary wins",
+    "bio_office_level": "Office experience level",
+    "bio_in_office": "Currently holds office",
+    "bio_prior_candidacy": "Past candidacies (bio)",
+})
+DESC.update({
+    "hist_prior_runs": "How many Senate/Governor/House general elections this candidate "
+                       "ran in before this cycle (results archives, 1998+).",
+    "hist_prior_wins": "How many of those prior generals they WON.",
+    "hist_ever_won": "1 if they have ever won a tracked general election.",
+    "hist_best_general_pct": "Their best vote share in any prior general.",
+    "hist_last_general_pct": "Vote share in their most recent prior general.",
+    "hist_years_since_last_run": "Years since their last general-election run.",
+    "hist_prior_primary_wins": "Prior primary victories (2018+ scraped results).",
+    "bio_office_level": "From their Wikipedia bio: 4=federal office, 3=statewide, "
+                        "2=state legislature, 1=local office, 0=none detected.",
+    "bio_in_office": "Bio says they currently hold the office ('present').",
+    "bio_prior_candidacy": "Bio mentions past candidacies our archives never tracked.",
+})
 DESC.update({
     "is_dem_primary": "1 = Democratic primary, 0 = Republican. Lets the model learn "
                       "party-specific primary dynamics.",
@@ -63,7 +89,9 @@ def main():
     d = load_primary_feed(args.polls, args.cycle)
     funds = F.load_fundamentals()
     fec = F.load_fec(extended=True)
-    cand = FP.build_primary_table(d, fec=fec, inc_map=funds["inc_map"])
+    from candidate_history import CandidateHistory
+    cand = FP.build_primary_table(d, fec=fec, inc_map=funds["inc_map"],
+                                  hist=CandidateHistory(), bios=FP.load_candidate_bios())
     X = cand.reindex(columns=meta["features"])
     cand["p"] = model.predict_proba(X)[:, 1]
 
