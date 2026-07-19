@@ -296,14 +296,15 @@ def feature_list_primary(macro_feats=(), fund=False):
         "poll_avg_lv", "poll_last_lv", "poll_last30_lv", "poll_std_lv", "n_polls_lv", "poll_lead_lv",
         "poll_avg_rv", "poll_last_rv", "poll_last30_rv", "poll_std_rv", "n_polls_rv", "poll_lead_rv",
         "poll_avg_a", "poll_last_a", "poll_last30_a", "poll_std_a", "n_polls_a", "poll_lead_a",
-        # candidate history (2026-07-17, user request): has this candidate won before,
-        # how did their generals go, have they won primaries; + officeholder level from
-        # Wikipedia bios (the 'smaller offices' the results archives cannot see)
-        "hist_prior_runs", "hist_prior_wins", "hist_ever_won",
-        "hist_best_general_pct", "hist_last_general_pct",
-        "hist_years_since_last_run", "hist_prior_primary_wins",
-        # bio_in_office EXCLUDED (2026-07-17 leak review): zero eval contribution AND
-        # today-anchored semantics ('present' on historical pages reflects post-election
-        # careers). office_level + prior_candidacy carry the (large) bio signal.
-        "bio_office_level", "bio_prior_candidacy",
+        # candidate officeholder experience (2026-07-18 overfit review): ONLY
+        # bio_office_level survives. A per-cycle 6-seed sweep showed the other 9
+        # history features (results-archive track record + bio_prior_candidacy) added
+        # nothing on top of this one and slightly WORSENED both eval cycles - classic
+        # thin-coverage overfitting on ~200 races. bio_office_level = highest office held
+        # (4 fed/3 statewide/2 state-leg/1 local/0), a real durable signal (name
+        # recognition, donor networks) with 35% coverage. It alone lifts 2024 AUC-PR
+        # .910->.958 and Brier .054->.025 with NO 2022 regression. The hist_*/results
+        # machinery + candidate_history.py stay in the repo (fact-checked, may return with
+        # more data) but are no longer model features.
+        "bio_office_level",
     ] + (["fund_receipts_ln", "fund_share"] if fund else []) + list(macro_feats)

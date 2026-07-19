@@ -157,31 +157,39 @@ LV / RV / A surveyed-population class ('v' folds into RV; absent class = NaN). A
 identical picks, Brier slightly better. Per-class momentum/dynamics: too sparse at ~200
 races, documented not forgotten.
 
-**Candidate-history features (2026-07-17, user request, three fact-check iterations):**
+**Candidate features (2026-07-17, user request; OVERFIT-TRIMMED 2026-07-18).**
+The build produced ten candidate-history features across two fact-checked sources —
 (a) electoral track record from the committed results archives (candidate_history.py,
-strictly-prior-cycle; fusion-voting ballot lines deduped): hist_prior_runs/wins/ever_won,
-best/last general vote pct, years-since-last-run, prior primary wins. Fact-checked against
-13 hand-verified public facts (check_candidate_history.py, exact-match asserts) +
-name-collision audit (0.09%, all legit perennial multi-filers). (b) officeholder bios
-scraped from the race pages' candidate bullets (fetch_candidate_bios.py):
-bio_office_level (4 federal / 3 statewide / 2 state-leg / 1 local / 0 none) +
-bio_prior_candidacy. Parser needed FOUR fix rounds, each caught by the known-truth
-battery (check_officeholder.py): candidacy mentions classified as offices held; US-title
-spelling variants; 'United States House' vs state houses; ENDORSEMENT lists scraped as
-candidates (3/4 of v1 rows!). Final: 7/7 known levels exact, 98% cross-source consistency.
-bio_in_office EXCLUDED (zero contribution + today-anchored 'present' semantics).
-ABLATION: the bios carry the gain (race-acc .895->.935, Brier .045->.024); the
-results-derived history adds ~nothing on top of polls (kept: leak-safe, near-free,
-explanatory). Out-of-sample: decided-2026 backtest 81.0% -> 83.3%.
-Known caveat: historical pages are read as they exist TODAY - post-election edits can
-tint descriptors; mitigated by dropping in_office and the negative observed
-in-office/win correlation.
+strictly-prior-cycle, fusion-lines deduped) and (b) officeholder bios scraped from the
+race-page candidate bullets (fetch_candidate_bios.py: office_level + prior_candidacy).
+Both passed heavy fact-checking (check_candidate_history.py: 13 exact known-truth asserts
++ 0.09% collision audit; check_officeholder.py: FOUR parser bugs each caught by
+known-truth asserts — candidacy-as-office, US-title variants, US-vs-state house,
+ENDORSEMENT-lists-as-candidates which were 3/4 of the first scrape; final 7/7 levels
+exact, 98% cross-source consistency).
 
-**Headline (expanding-window, results-based labels, candidate-history features):**
-AUC .980 / AUC-PR .965 / Brier .024 / race-acc .935 vs poll-leader .723. **2026
-out-of-sample backtest** (84 contested decided primaries vs scraped actual winners):
-picks 83.3%, AUC .965, Brier .050. High-confidence misses concentrate in HOUSE races —
-the office the training set lacks.
+**But an overfitting review (asked: "are we scared this is overfit?") showed the
+aggregate .935 race-acc was one-cycle luck** — the ten-feature set HURT 2022 (.955→.924)
+while helping 2024 (.865→.946). A per-cycle, 6-seed feature-subset sweep found that a
+SINGLE feature — `bio_office_level` (highest office held: 4 fed/3 statewide/2 state-leg/
+1 local/0; 35% coverage; a durable mechanism, not a quirk) — does ALL the honest work:
+best Brier and AUC-PR in BOTH cycles, no 2022 regression, and it RAISED the 2026
+out-of-sample backtest from 83.3% to **86.9%**. Dropping the other nine improved
+generalization. So the artifact keeps `bio_office_level` only. The hist_*/results
+machinery + candidate_history.py stay in the repo (fact-checked, may return with more
+training data) but are no longer model features. Lesson: 9 thin-coverage features on
+~200 races overfit; fact-checking data accuracy does NOT prevent feature-count overfit —
+a per-cycle seed sweep is the check that catches it.
+Known caveat on bios: race pages are read as they exist TODAY; post-election edits can
+tint descriptors — mitigated by using office LEVEL (rarely edited) and dropping in_office.
+
+**Headline (expanding-window, results labels, +bio_office_level).** Report the STABLE
+metrics first — they hold across both eval cycles: **AUC-PR .966, Brier .024** (vs
+polls-only .924/.045). Race-winner accuracy is .929 mean but is cycle-dependent by a few
+points on ~50 races/cycle (2022 .939, 2024 .919), so it's the secondary number, not the
+headline. **2026 out-of-sample backtest** (84 contested decided primaries vs scraped
+actual winners): **picks 86.9%, AUC .964, Brier .048** (poll-leader baseline 67.9%).
+High-confidence misses concentrate in HOUSE races — the office the training set lacks.
 
 **Features (features_primary.py):** within-FIELD poll structure (plain means, no weighting):
 poll_avg/last/last30/std, poll_share, poll_lead, momentum, undecided, n_cands, field
