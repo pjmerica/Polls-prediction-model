@@ -32,7 +32,7 @@ FRIENDLY.update({
     "is_pres_party": "President's party primary",
     "undecided": "Undecided share",
     "n_cands": "Candidates in field",
-    "race_total_polls": "Total polls in race",
+    "race_total_polls": "Poll-candidate rows in field",
 })
 FRIENDLY.update({
     "hist_prior_runs": "Prior general-election runs",
@@ -70,8 +70,9 @@ DESC.update({
     "undecided": "100 minus the field's combined polling average - big undecided shares "
                  "mean late movement is possible.",
     "n_cands": "Number of polled candidates in this party's field.",
-    "race_total_polls": "Total poll rows across the whole field - how well-measured the "
-                        "race is.",
+    "race_total_polls": "Sum of per-candidate poll rows across the field (one survey of N "
+                        "candidates = N rows, so this exceeds the survey count shown in "
+                        "the table). A proxy for how well-measured the race is.",
 })
 
 def main():

@@ -44,7 +44,7 @@ FRIENDLY = {
     "n_polls": "# of polls (candidate)",
     "n_polls_over50": "# of polls above 50%",
     "frac_polls_over50": "Share of polls above 50%",
-    "race_total_polls": "# of polls (race)",
+    "race_total_polls": "poll rows in race (field-summed)",
     "avg_sample": "Avg poll sample size",
     "min_days": "Days since last poll",
     "poll_lead": "Polling lead vs best opponent (pts)",
@@ -90,7 +90,9 @@ DESC = {
     "n_polls": "How many polls include this candidate.",
     "n_polls_over50": "How many polls put the candidate above 50%.",
     "frac_polls_over50": "Fraction of the candidate's polls that put them above 50%.",
-    "race_total_polls": "Total poll rows across all candidates in this race.",
+    "race_total_polls": "Sum of per-candidate poll rows across the race (one survey of N "
+                        "candidates counts as N rows, so this exceeds the survey count "
+                        "shown in the table).",
     "avg_sample": "Average sample size of the candidate's polls (bigger = more precise).",
     "min_days": "Days between the candidate's latest poll and election day (staleness).",
     "poll_lead": "Candidate's polling average minus the best opponent's.",
