@@ -48,10 +48,10 @@
   "max_depth": 2,
   "learning_rate": 0.1,
   "n_estimators": 200,
-  "min_child_weight": 4,
-  "subsample": 0.7,
-  "colsample_bytree": 0.5,
-  "reg_lambda": 5
+  "min_child_weight": 8,
+  "subsample": 1.0,
+  "colsample_bytree": 1.0,
+  "reg_lambda": 1
  },
  "trained_on_cycles": [
   2018,
@@ -67,20 +67,20 @@
   "2022": {
    "n_races": 66.0,
    "n_cand": 368.0,
-   "AUC": 0.9929,
-   "AUC_PR": 0.9739,
-   "KS": 0.9162,
-   "Brier": 0.0229,
+   "AUC": 0.9944,
+   "AUC_PR": 0.98,
+   "KS": 0.9281,
+   "Brier": 0.0215,
    "race_acc": 0.9394,
    "pollleader_acc": 0.7424
   },
   "2024": {
    "n_races": 37.0,
    "n_cand": 170.0,
-   "AUC": 0.9697,
-   "AUC_PR": 0.9586,
-   "KS": 0.9114,
-   "Brier": 0.0247,
+   "AUC": 0.9684,
+   "AUC_PR": 0.959,
+   "KS": 0.9189,
+   "Brier": 0.0237,
    "race_acc": 0.9189,
    "pollleader_acc": 0.7027
   }

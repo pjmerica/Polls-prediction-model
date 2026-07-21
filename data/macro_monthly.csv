@@ -1352,6 +1352,7 @@ date,value,metric
 2026-03-01,330.293,cpi
 2026-04-01,332.407,cpi
 2026-05-01,333.979,cpi
+2026-06-01,332.568,cpi
 1957-01-01,28.5,cpi_core
 1957-02-01,28.6,cpi_core
 1957-03-01,28.7,cpi_core
@@ -2185,6 +2186,7 @@ date,value,metric
 2026-03-01,334.165,cpi_core
 2026-04-01,335.423,cpi_core
 2026-05-01,336.121,cpi_core
+2026-06-01,336.065,cpi_core
 1954-07-01,0.8,fed_funds
 1954-08-01,1.22,fed_funds
 1954-09-01,1.07,fed_funds
@@ -3758,7 +3760,7 @@ date,value,metric
 2026-03-01,4.85,generic_ballot
 2026-04-01,5.05,generic_ballot
 2026-05-01,5.39,generic_ballot
-2026-06-01,4.98,generic_ballot
+2026-06-01,5.02,generic_ballot
 1952-11-01,86.2,sentiment
 1952-12-01,,sentiment
 1953-01-01,,sentiment

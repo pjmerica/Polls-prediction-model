@@ -1,7 +1,10 @@
 # Polls prediction model
 
-Predicts whether a U.S. candidate **wins their election** — Senate, House, and Governor
-races, 2018–present — using polling plus political and economic context.
+Predicts U.S. downballot elections — Senate, House, and Governor — from polls plus
+political/economic context. Three separate models: **win probability**, **margin of
+victory**, and (new) **primary nominee**. Trained on **14 cycles, 1998–2024** (~1,970
+races); 2026 predictions are published to a companion dashboard and compared against
+Kalshi/Polymarket prices.
 
 ---
 
@@ -9,46 +12,54 @@ races, 2018–present — using polling plus political and economic context.
 
 Every election, pollsters ask voters who they'll support. This project asks: **how well
 can you predict the actual winner from those polls, and does adding "context" (the economy,
-the president's approval, who's the incumbent) help?**
+the president's approval, who's the incumbent, campaign fundraising) help?**
 
-We gathered every poll we could find since 2018, matched each one to who actually won,
-and trained a machine-learning model. The honest headline result:
+We gathered every downballot poll we could find back to 1998, matched each one to who
+actually won, and trained machine-learning models. The honest headline result:
 
-> **Just betting on whoever is ahead in the polls is already about as good as it gets.**
-> Our fancier model ties it but doesn't beat it for calling winners. Where the model *does*
-> help is giving a trustworthy **probability** (e.g. "this candidate has a 72% chance"),
-> which a simple "who's ahead" rule can't.
+> **For calling the winner, just betting on whoever is ahead in the polls is already about
+> as good as it gets** — the model ties that baseline, it doesn't beat it. Where the model
+> *does* help is (a) giving a trustworthy **probability** (e.g. "72% chance") instead of a
+> flat coin-flip-vs-not read, and (b) **predicting the margin of victory**, where it
+> genuinely beats a poll-based baseline.
 
 That's a real, well-known fact about U.S. elections — the polls already contain most of
-the signal. We keep adding features (economy, incumbency, etc.) because they sharpen the
-probabilities and set up a future model that predicts *margin of victory*, where there's
-more room to add value.
+the win/lose signal. The separate margin model, and a third model that predicts **primary
+nominees**, are where the added features earn their keep.
 
 ---
 
 ## For a data scientist (how it works)
 
-**Task:** binary classification, `won ∈ {0,1}`, one row per candidate per race.
-**Model:** XGBoost, hyperparameters grid-searched live.
-**Validation:** leave-one-cycle-out CV (train on 3 election cycles, test the held-out 4th,
-rotate). Never random splits — that would leak the future.
+**Three models, all XGBoost, all sharing one feature pipeline (`features.py` /
+`features_primary.py`) so training and live prediction can never compute features
+differently:**
 
-**Why no single dataset exists:** there's no public file of "polls + who won," so we join two:
+| model | target | notebook/script | headline (honest, expanding-window) |
+|---|---|---|---|
+| **Win** | `won ∈ {0,1}` | `model.ipynb` | AUC .966 / AUC-PR .947 / Brier .072 / race-acc .864 (ties the poll baseline) |
+| **Margin** | signed vote margin vs. best opponent | `margin_model.ipynb` | MAE ~6.5–7.2 vs. ~7.5 calibrated-poll baseline (**beats polls**) |
+| **Primary nominee** | `won ∈ {0,1}` (becomes the party's nominee) | `primary_model.py` | AUC-PR .97 / Brier .02 / race-acc .93 vs. poll-leader .72 baseline |
 
-| layer | source | notes |
-|---|---|---|
-| **Polls** | NYT poll CSVs (current) + Internet Archive snapshot of FiveThirtyEight (historical) | 538 was dissolved 3/2025; NYT publishes the same schema. Polls start **2018**. |
-| **Results** (who won) | [FiveThirtyEight `election-results` repo](https://github.com/fivethirtyeight/election-results) | per-candidate `winner` flag, all races 1976–2024 |
-| **Partisan lean** | 538 `partisan-lean` (state + district) | CPVI-style; district file is 2022 vintage (~41% House coverage) |
-| **National environment** | 538 generic ballot (Internet Archive) | per-cycle DEM−REP |
-| **Macro / economy** | DBnomics monthly series (one-time pull, see below) | unemployment, inflation (CPI), core CPI, gas, fed funds, U-6, approval — condensed per cycle |
+(Numbers as of the most recent retrain — see `feature_importance.csv` /
+`margin_feature_importance.csv` / `data/primary_model_features.json` for the exact current
+run, and `HANDOFF.md` for the dated history of every retrain.)
 
-**Headline finding (cross-validated):** a one-variable "poll softmax" baseline
-(AUC ≈ 0.965, Brier ≈ 0.071) matches or beats the full 88-feature XGBoost
-(AUC ≈ 0.96, Brier ≈ 0.08) on win/lose. Polls are the ceiling. The features improve
-calibration and would matter more for a margin model.
+**Validation:** nested, never random. Hyperparameters are tuned by leave-one-cycle-out CV on
+**older cycles only** (1998–2016 general models; ≤2020 for the primary model); the headline
+numbers come from **expanding-window evaluation** on the modern cycles the tuner never saw
+(train strictly on cycles before the test cycle). See `METHODOLOGY.md` for exact windows.
 
-📄 **Deep docs:** [AGENTS.md](AGENTS.md) (start here if you're contributing) ·
+**Why no single dataset exists:** there's no public file of "polls + who won," so several
+sources are joined — see `DATA_SOURCES.md` for the full list (results, historical +
+current polls, macro/approval/generic-ballot feeds, FEC fundraising, candidate
+bios/history for the primary model). The **future-proofing rule**: production inputs are
+raw polls + economic data only — nothing that only exists inside a defunct 538 file, since
+2026+ can't get it. See `AGENTS.md` rule 6.
+
+📄 **Deep docs:** [AGENTS.md](AGENTS.md) (start here if you're contributing — architecture +
+the rules learned the hard way) · [HANDOFF.md](HANDOFF.md) (in-flight state + dated history)
+· [CONCERNS.md](CONCERNS.md) (the living risk register + improvement roadmap) ·
 [METHODOLOGY.md](METHODOLOGY.md) (**exact time windows for every feature**) ·
 [DATA_SOURCES.md](DATA_SOURCES.md) (every URL + how found) ·
 [DATA_DICTIONARY.md](DATA_DICTIONARY.md) (every variable) ·
@@ -59,40 +70,49 @@ calibration and would matter more for a margin model.
 ## Pipeline (run order)
 
 ```
-1. build_dataset.ipynb   → downloads polls + results, joins them
-                           → polls_long_with_results.csv  (one row per poll-candidate)
-2. fetch_macro.py        → ONE-TIME pull of monthly economic data (DBnomics)
-                           → data/macro_monthly.csv  (static; committed; never re-pull)
-3. model.ipynb           → features + tuning + cross-validation + poll-only benchmark
+1. build_dataset.ipynb      → polls (1998-2016 raw_polls_538 + 2018-24 historical, all
+                               committed) joined with results → polls_long_with_results.csv
+                               (14MB, committed for CI; regenerate via this notebook if missing)
+2. fetch_approval.py        → approval feed (Gallup/UCSB 1993-2025 + VoteHub API 2025+)
+   fetch_macro.py           → economy: DBnomics history + BLS-API overlay (current)
+   fetch_generic_ballot.py  → generic-ballot monthly (re-run to EXTEND; committed, static otherwise)
+3. model.ipynb              → WIN model: nested tune/eval, final fit on all 14 cycles
+   margin_model.ipynb       → MARGIN model (separate artifact, same scheme)
+   primary_model.py         → PRIMARY nominee model (script, runs in minutes)
+4. predict.py / predict_margin.py / predict_primary.py
+                             → score the live 2026 poll feed for each model
+5. refresh_dashboard.py     → one command: feeds → predict all three → copy CSVs to the
+                               companion dashboard repo → regenerate its compare pages
 ```
 
-### Macro data is pulled once and committed
-Economic history doesn't change retroactively (2018's inflation is fixed forever), so we
-pull it **once** and save `data/macro_monthly.csv` — monthly readings back to 1947 for the
-core series (CPI, unemployment), kept in full in case older polls surface. The
-model then uses, for each election, **that cycle's own window (prior election eve → this
-election eve)** — 2018 ← Nov 2016–Nov 2018, 2020 ← Nov 2018–Nov 2020, etc. — and condenses
-each indicator into trajectory stats (eve level, mean, max, min, std, trend, 12-month change),
-so e.g. `inflation_max` is *that cycle's* peak, not the all-time peak. XGBoost decides which matter.
+### All static data is pulled once and committed
+Nothing in this pipeline re-downloads on a normal run. Historical polls, results, macro,
+approval, generic ballot, FEC, candidate bios — all committed once, re-pulled only to
+*extend* to a new month/cycle. The one exception is `predict*.py`'s live generic-ballot
+fetch (current-cycle info can't be frozen by definition).
 
 ## Run
 
 ```bash
-pip install pandas numpy requests xgboost scikit-learn jupyter matplotlib openpyxl shap
+pip install -r requirements.txt
 ```
 
-1. **`build_dataset.ipynb`** — run top to bottom (downloads polls + results, caches to `data/`).
-2. **`python fetch_macro.py`** — run **once** on a machine with internet (pulls from DBnomics; creates
-   `data/macro_monthly.csv`; commit it). Skip if the CSV is already committed.
-3. **`model.ipynb`** — run top to bottom.
+1. **`build_dataset.ipynb`** — only needed if `polls_long_with_results.csv` is missing
+   (it's committed for CI, so a normal clone doesn't need this step).
+2. **`model.ipynb`**, then **`margin_model.ipynb`**, then **`python primary_model.py`** — run
+   top to bottom. **Run notebooks one at a time**, never concurrently (nbconvert races and
+   overwrites outputs on parallel runs).
+3. **`python refresh_dashboard.py`** — re-predict 2026 and refresh the companion dashboard.
 
 > ⚠️ **Workflow rule:** whenever you change the model's feature set, **re-run the entire
-> `model.ipynb` end-to-end including the grid search** — never reuse old hyperparameters.
-> Params tuned for one feature set can make a new set look worse than it is. Let regularization
-> drop non-predictive features rather than hand-curating. (More rules + traps in [AGENTS.md](AGENTS.md).)
+> notebook end-to-end including the grid search** — never reuse old hyperparameters.
+> Params tuned for one feature set can make a new set look worse than it is. Let
+> regularization drop non-predictive features rather than hand-curating. Applies to all
+> three models. (More rules + traps in [AGENTS.md](AGENTS.md).)
 
-## Next steps
-- Predict **margin / overperformance vs polls** instead of win/lose — where features can
-  actually beat the polls.
-- A time-varying **district PVI** to strengthen House (the weakest office).
-- Probability **calibration** (isotonic/Platt) for even tighter Brier.
+## Where to look next
+
+`CONCERNS.md` "Improvement roadmap" is the ranked, actively-maintained backlog. Recurring
+themes: a race-level two-party reframe (kills the win/margin split-model ambiguity),
+snapshot training (mid-campaign honesty — training races' freshest poll skews much closer
+to election day than a July forecast), and redistricting-aware House fundamentals.

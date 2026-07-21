@@ -69,6 +69,28 @@ JUNK_ANSWERS = {
 def is_junk_answer(name):
     return str(name).strip().lower() in JUNK_ANSWERS
 
+def best_other(s):
+    """Per-row 'best OTHER value in the group' (NaN-safe): for the top value, the runner-up's
+    value; for everyone else, the top value. Ties broken by position (first occurrence of the
+    max is treated as "the leader"). Used for poll_lead: each candidate's gap to the best
+    candidate who ISN'T them, never a single race-wide constant.
+
+    BUGFIX (2026-07-21): the old poll_lead used one constant per race (the runner-up's value)
+    subtracted from EVERY candidate, including the runner-up themself -> poll_lead was exactly
+    0.0 for 100% of 2nd-place candidates (verified on 2024 training data) and used the WRONG
+    comparison point for 3rd place and below. Only the true leader's value was ever correct.
+    """
+    ok = s.notna()
+    if ok.sum() <= 1:
+        return pd.Series(np.where(ok, s.fillna(0.0), 0.0), index=s.index)
+    vals = s[ok]
+    top_idx = vals.idxmax()
+    top = vals.loc[top_idx]
+    second = vals.drop(top_idx).max()
+    out = pd.Series(top, index=s.index)
+    out.loc[top_idx] = second
+    return out.where(ok)
+
 # ---------------------------------------------------------------- fundamentals
 
 def load_fundamentals():
@@ -422,8 +444,14 @@ def build_candidate_table(d, macro, natl_env_map, funds, house_train_years=None,
         c = c.drop(columns="_fund_receipts")
 
     # race-relative features (all based on the plain poll average)
-    c["field_best"] = c.groupby("race_id")["poll_avg"].transform(
-        lambda s: s.nlargest(2).min() if len(s) > 1 else s.max())
+    # BUGFIX (2026-07-21): field_best used to be one race-wide constant (the runner-up's
+    # poll_avg), subtracted from EVERY candidate including the runner-up themself -> every
+    # 2nd-place candidate got poll_lead exactly 0.0 (100% of them, verified on 2024 training
+    # data), and 3rd-place-and-below got a poll_lead compared against the WRONG opponent
+    # (2nd place, not the leader). Only the true front-runner's value was ever correct.
+    # Fix: best-OTHER-candidate per row (same pattern already used correctly in
+    # margin_model.ipynb's add_margin_target). Feature-value change -> full retrain (rule 1).
+    c["field_best"] = c.groupby("race_id")["poll_avg"].transform(best_other)
     c["poll_lead"] = c["poll_avg"] - c["field_best"]
     c["poll_share"] = c["poll_avg"] / c.groupby("race_id")["poll_avg"].transform("sum")
     c["n_cands"] = c.groupby("race_id")["cand_key"].transform("count")

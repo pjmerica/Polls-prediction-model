@@ -3,14 +3,25 @@
 Two datasets are documented here:
 
 1. **`polls_long_with_results.csv`** — the master long file from `build_dataset.ipynb`
-   (one row per poll-candidate, with the race result joined on). 22,546 rows, 2018–2026.
+   (one row per poll-candidate, with the race result joined on). **35,059 rows, 1998–2026**
+   (updated 2026-07-21; was 22,546 rows / 2018–2026 before the 1998-2016 expansion —
+   `raw_polls_538.csv` added 8,529 pre-2018 downballot polls, reshaped into this long format).
 2. **The model feature table** — the collapsed candidate-level table built inside
    `model.ipynb` (one row per candidate per race, with engineered + macro features).
-   1,859 candidate-races, 2018–2024.
+   **4,426 candidate-rows across 1,979 races, 1998–2024** (14 cycles; was 1,859 rows /
+   2018–2024 before the expansion).
 
 Missingness percentages were computed from the committed run. **Missingness here is almost
 always structural and meaningful** (e.g. a poll with one entry has no std; a future race has
 no result yet), not data corruption — and XGBoost handles NaN natively, so columns are not imputed.
+
+**Pre-2018 rows have a different shape.** The 1998–2016 slice comes from 538's
+`raw_polls.csv` (top-two candidates per poll only), which doesn't carry the API-era metadata
+columns at all — `stage`, `pollster_rating_id`, `population`, `office_type`, `answer`,
+`candidate_id`, etc. read as ~46% missing in the combined file, but that's **100% missing on
+the pre-2018 slice and ~0% on 2018+**, not real per-row uncertainty. Pre-2018 rows are always
+general-election by construction (the source only ever contained downballot generals), so a
+missing `stage` there doesn't mean "unknown."
 
 ---
 
@@ -102,38 +113,39 @@ no result yet), not data corruption — and XGBoost handles NaN natively, so col
 
 ## 2. Model feature table (collapsed, in `model.ipynb`)
 
-One row per candidate per race. Built from the long file (filtered to `has_result==1`,
-general, 2018–2024). All features below are **leak-free** (no use of `vote_pct`/result).
+One row per candidate per race — **4,426 candidate-rows across 1,979 races, 1998–2024**
+(updated 2026-07-21; was 1,859 rows / 2018–2024 before the 14-cycle expansion). Built from
+the long file (filtered to `has_result==1`, general). All features below are **leak-free**
+(no use of `vote_pct`/result). **No poll weighting of any kind** — every poll aggregate is a
+plain mean; the old weighted-average features (`poll_wavg`, `avg_grade`, `avg_pollscore`,
+`poll_wavg_adj`) were removed in the 2026-07-05 future-proofing overhaul (538 pollster
+grades don't exist for future polls) and no longer appear in the model.
 
 ### 2a. Poll-derived features
 | feature | missing | meaning |
 |---|---|---|
-| `poll_avg` | 0% | Simple mean of the candidate's polls. |
-| `poll_wavg` | 0% | **Weighted poll average** (recency × √sample × pollster grade). The single strongest feature. |
+| `poll_avg` | 0% | Simple mean of the candidate's polls. **Current #1 feature by gain** (39%). |
 | `poll_last` | 0% | The candidate's most recent poll value. |
 | `poll_last30` | 0% | Mean of polls in the final 30 days (falls back to all if none). |
-| `poll_std` | **27.4%** | Std of the candidate's polls. **NaN when only 1 poll exists** (std undefined). |
+| `poll_std` | ~25% | Std of the candidate's polls. **NaN when only 1 poll exists** (std undefined). |
 | `n_polls` | 0% | How many polls this candidate had. |
 | `n_polls_over50` | 0% | Count of the candidate's polls above 50%. |
 | `frac_polls_over50` | 0% | That as a fraction. |
-| `race_total_polls` | 0% | Total polls in the race (all candidates). |
-| `avg_grade` | 5.3% | Mean `numeric_grade` of the candidate's polls. NaN if all unrated. |
-| `avg_pollscore` | 4.6% | Mean pollscore. NaN if all unrated. |
-| `avg_sample` | 0.2% | Mean sample size. |
+| `race_total_polls` | 0% | Total polls in the race (all candidates; a per-CANDIDATE row count — sums to more than the distinct-survey count `n_surveys` used at predict time). |
+| `avg_sample` | ~0% | Mean sample size. |
 | `min_days` | 0% | Days-to-election of the candidate's latest poll. |
-| `poll_wavg_adj` | 0% | Weighted average **after pollster house-effect adjustment** (train-cycles-only). |
 
 ### 2b. Race-relative / gap features
 | feature | missing | meaning |
 |---|---|---|
-| `poll_lead` | 0% | `poll_wavg` minus the best opponent's. **Top feature.** |
+| `poll_lead` | 0% | `poll_avg` minus the best OTHER candidate's `poll_avg` (per-candidate, not a race-wide constant — **fixed 2026-07-21**: previously used one constant subtracted from every candidate, so 2nd place always read exactly 0.0). Current #3 feature by gain. |
 | `poll_share` | 0% | Candidate's share of the summed polled support in the race. |
 | `n_cands` | 0% | Number of candidates in the race. |
-| `twoparty_margin_cand` | 0% | DEM−REP race margin, signed toward this candidate's party. |
+| `twoparty_margin_cand` | 0% | DEM−REP race margin, signed toward this candidate's party. Current #4 feature. |
 | `abs_gap` | 0% | Absolute two-party gap (race closeness). |
 | `tossup` | 0% | 1 if `abs_gap < 3`. |
 | `undecided` | 0% | 100 − sum of polled support (undecided share). |
-| `gap_x_recency` | 0% | `poll_lead` × closeness-to-election. **Top-2 feature.** |
+| `gap_x_recency` | 0% | `poll_lead` × closeness-to-election. Current #2 feature (was #1 pre-fix, at 58% of gain — largely an artifact of `poll_lead`'s old bug; dropped to 13% post-fix as `poll_avg` took over the signal it should have carried). |
 
 ### 2c. Lead dynamics over time
 | feature | missing | meaning |
@@ -148,9 +160,8 @@ general, 2018–2024). All features below are **leak-free** (no use of `vote_pct
 ### 2d. Fundamentals
 | feature | missing | meaning |
 |---|---|---|
-| `lean_cand` | ~59% | 538 partisan lean (state for Sen/Gov, district for House), signed to party. **NaN where the 2022-vintage lean file lacks the district** (post-redistricting). |
-| `prior_margin_cand` | ~59% | Prior same-office election margin for the seat, signed to party. NaN when no prior contest. |
-| `is_incumbent` | 0% | 1 if this candidate's party holds the seat and they're running. |
+| `prior_margin_cand` | **4.4%** (updated 2026-07-21; was ~59% before the 14-cycle expansion — most seats now have a matchable prior contest somewhere in 1998–2024) | Prior same-office election margin for the seat, signed to party. NaN when no prior contest anywhere in the 14-cycle window. |
+| `is_incumbent` | 3.3% | 1 if this candidate's party holds the seat and they're running; NaN (not 0) when incumbency is unknown. |
 | `is_inc_party_race` | 0% | 1 if the race has a known incumbent party. |
 
 ### 2e. Identity flags
@@ -165,38 +176,44 @@ that lets XGBoost learn the *direction* of each macro effect (e.g. high inflatio
 in-party candidate).
 
 Each macro metric is condensed from **monthly** data (from `data/macro_monthly.csv`) over
-**that cycle's own window = prior election eve → this election eve** (2018 ← 2016-11→2018-11,
-2020 ← 2018-11→2020-11, 2022 ← 2020-11→2022-11, 2024 ← 2022-11→2024-11). So `max` is *that
-cycle's* peak, not the all-time max since 2016. Per metric there are **7 features**:
+**that cycle's own window = prior election eve → this election eve** (e.g. 2024 ←
+2022-11-01→2024-09-30 — the window ends **Sep 30**, not eve, since October economic prints
+publish after the election; fixed 2026-07-06). So `max` is *that cycle's* peak, not the
+all-time max. Per metric there are **16 features, updated 2026-07-21** (was 7 before macro
+recency cuts were added):
 
 | naming pattern | meaning (layman) |
 |---|---|
-| `<metric>_eve` | the value right before the election (the latest reading) |
-| `<metric>_mean` | average level over the whole 2016→eve window |
-| `<metric>_max` | the highest it ever got (e.g. the inflation/gas peak) |
-| `<metric>_min` | the lowest it got |
+| `<metric>_eve` | the value right before the Sep-30 cutoff (the latest reading) |
+| `<metric>_mean` | average level over the whole cycle window |
+| `<metric>_max` / `_min` | the highest / lowest it got that cycle |
 | `<metric>_std` | how much it bounced around (variance/spread) |
-| `<metric>_trend` | slope — rising or falling into the election |
-| `<metric>_last12_delta` | change vs 12 months earlier (the *change* voters feel) |
+| `<metric>_trend` | slope — rising or falling into the election (NaN, not 0, if <2 observations — fixed 2026-07-14) |
+| `<metric>_last12_delta` | change vs 12 months earlier (NaN, not 0, if <13 observations — fixed 2026-07-14) |
+| `<metric>_avg_3mo` / `_6mo` / `_12mo` | average over the last 3/6/12 months of the window |
+| `<metric>_max_3mo` / `_6mo` / `_12mo` | peak over the last 3/6/12 months |
+| `<metric>_trend_3mo` / `_6mo` / `_12mo` | short-window slope over the last 3/6/12 months |
 
-**Metrics** (`<metric>` ∈, **7 total**, as actually pulled): `unemployment`, `inflation`
-(from CPI YoY), `cpi_core`, `gas`, `fed_funds`, `unemp_u6`, `approval` → **49 macro
-features/cycle** (7 metrics × 7 stats). Plus `natl_env_cand` (538 generic-ballot DEM−REP,
-signed to the candidate's party; a single value).
-
-Exact per-cycle windows: 2018 ← 2016-11→2018-11 · 2020 ← 2018-11→2020-11 ·
-2022 ← 2020-11→2022-11 · 2024 ← 2022-11→2024-11. (Full detail in [METHODOLOGY.md](METHODOLOGY.md).)
+**Metrics** (`<metric>` ∈, **9 total, updated 2026-07-21** — was 7; `generic_ballot` and
+`sentiment` added): `unemployment`, `inflation` (from CPI YoY), `cpi_core`, `gas`,
+`fed_funds`, `unemp_u6`, `approval`, `generic_ballot`, `sentiment` → **144 macro
+features/cycle** (9 metrics × 16 stats). Plus `natl_env_cand` (generic-ballot DEM−REP,
+signed to the candidate's party; a single value, computed separately from the
+`generic_ballot` macro metric above — see METHODOLOGY.md section C for the distinction).
 
 Sources: economic metrics from **DBnomics** (BLS/EIA/Federal Reserve — see DATA_SOURCES.md §5
-and `fetch_macro.py`); `approval` from a documented monthly table; `natl_env_cand` from the
-538 generic ballot. (`fetch_macro.py` lists more candidate series, e.g. GDP/sentiment/S&P, but
-only the 7 above resolved cleanly via DBnomics; others skip gracefully.)
+and `fetch_macro.py`); `approval` from Gallup/UCSB (1993–2025-01) + VoteHub API continuation
+(2025-01+, verified current through 2026-06); `sentiment` from DBnomics UMich series (lags
+~11-13 months, watchdog-monitored); `generic_ballot` from 538's historical file (1996-2016) +
+VoteHub (2024+); `natl_env_cand` from the same generic-ballot lineage, last-30-days window.
 
-> **Macro caveat:** these are national values *constant within a cycle*, so with only 4 cycles
-> (2018/2020/2022/2024) they carry little independent signal for **win/lose** and are heavily
-> regularized away by the grid search (low `colsample_bytree` + high `reg_lambda`). They are kept
-> for calibration and as the foundation for a future **margin** model. Data is static (pulled
-> once into `data/macro_monthly.csv`); it is **not** re-downloaded on every model run.
+> **Macro caveat:** these are national values *constant within a cycle*. n went from 4 cycles
+> (2018-2024) to **14** (1998-2024) in the 2026-07-05 expansion — real progress, but 144 macro
+> features on 14 national observations still invites memorization; regularization has zeroed
+> most of them in the win model (heavy `colsample_bytree`/`reg_lambda`). They're kept for
+> calibration and because the **margin model** is where they get a fairer test — check
+> `margin_feature_importance.csv` after each retrain. Data is static (pulled once into
+> `data/macro_monthly.csv`); it is **not** re-downloaded on every model run.
 
 ### 2g. Outcome (label / excluded-from-features)
 | column | meaning |

@@ -88,10 +88,12 @@ No more reporting the selection score as the performance estimate.
 
 ## Still open, ranked
 
-### 1. Approval series ends 2025-01
-UCSB has no Trump-2nd-term page yet (`fetch_approval.py` auto-tries the slugs — re-run it
-occasionally); Wikipedia's per-poll approval tables omit the year in date cells, so scraping
-them is too fragile. Until fixed, 2026-cycle approval features only see 2024-11→2025-01.
+### 1. ~~Approval series ends 2025-01~~ RESOLVED (verified 2026-07-21)
+This was fixed by the VoteHub API continuation (line "✅ Approval solved" above) but this
+entry was never removed from the open list, contradicting that line. Verified 2026-07-21:
+`data/approval_monthly.csv` is current through **2026-06** — the UCSB→VoteHub handoff is
+live and working, not stalled at 2025-01. No action needed; entry kept (struck through) so
+the next reader doesn't re-investigate a non-problem.
 
 ### 2. Cycle-constant features still can't be strongly validated
 n went 4 → 14, which is real progress, but 112 macro features on 14 national observations

@@ -111,16 +111,26 @@ feature builder used by training AND prediction — never fork feature logic out
 - The polls dataset (`polls_long_with_results.csv`) is gitignored (12MB) — regenerate via
   build_dataset.ipynb (offline) on a fresh clone BEFORE running models/predict.
 
-## Current state (2026-07-06)
-- A **full retrain of both models is/was running** (Sep-30 macro windows + pct rounding +
-  pollster normalization = feature change ⇒ rule 1). Pre-fix honest-eval baselines to
-  compare against: WIN AUC .969 / Brier .069 / race-acc .863 (poll baseline .868);
-  MARGIN MAE 6.46 vs calibrated-poll 7.52 / raw-poll 7.90. Small shifts expected; margin
-  MAE materially worse ⇒ investigate, don't auto-revert.
+## Current state
+See HANDOFF.md for the dated log of every retrain and its numbers — this section is
+intentionally NOT kept current move-by-move (it went stale after 2026-07-06 the first time);
+HANDOFF.md's dated entries are the source of truth for "what changed when."
 - After any retrain: `py refresh_dashboard.py --no-feeds`, commit this repo, commit+push
   polling-agg (`data/processed/model_*.csv`, `docs/model_data.js`).
-- Coverage floor 1998. 2026: 108 general races predicted; dashboard compares 39
-  (primaries-decided states with markets).
+- Coverage floor 1998, 14 cycles.
+
+### Two staleness facts worth knowing (neither is a bug)
+- **This repo's own `predictions_2026*.csv` / `margin_predictions_2026.csv` /
+  `primary_predictions_2026.csv` are NOT kept live.** The daily GitHub Action refreshes
+  polling-agg's copies (`data/processed/model_*.csv`) directly; the copies checked into
+  *this* repo only update when someone runs `refresh_dashboard.py` locally (normally after
+  a retrain). Seeing a multi-day-old `generated_at` in this repo's own CSV does not mean the
+  live dashboard is stale — check polling-agg's `model_predictions_as_of.txt` for that.
+- **`refresh_dashboard.py`'s `AGG` path** (`predict.py`'s `POLLING_AGG_RAW` too) is a
+  hardcoded two-level-up relative path assuming the sibling directory layout
+  `Documents/Polling prediction model` + `Documents/Polling Agg/Polling agg and Prediction
+  markets`. If either directory is ever renamed or the repos are moved, both paths need a
+  manual fix — there's no config layer, by design (see "THE TWO REPOS" above).
 
 ## Where to take it next
 CONCERNS.md "Improvement roadmap" is the ranked list. Top of it: race-level two-party

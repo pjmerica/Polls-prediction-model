@@ -251,16 +251,16 @@ def build_primary_table(d, fec=None, inc_map=None, macro_asof=None, hist=None, b
             ))
     c = pd.DataFrame(rows)
 
-    # within-field lead per population class (same construction as poll_lead)
+    # within-field lead per population class (BUGFIX 2026-07-21, see features.best_other:
+    # this used to be one race-wide constant subtracted from every candidate, so 2nd place
+    # always read poll_lead(_tag) == 0.0 exactly - now per-row best-OTHER-candidate)
     for tag in ("lv", "rv", "a"):
         col = f"poll_avg_{tag}"
-        best = c.groupby("race_id")[col].transform(
-            lambda s: s.nlargest(2).min() if s.notna().sum() > 1 else s.max())
+        best = c.groupby("race_id")[col].transform(F.best_other)
         c[f"poll_lead_{tag}"] = c[col] - best
 
     # within-FIELD relatives (the field = this party's candidates = the race group)
-    c["field_best"] = c.groupby("race_id")["poll_avg"].transform(
-        lambda s: s.nlargest(2).min() if len(s) > 1 else s.max())
+    c["field_best"] = c.groupby("race_id")["poll_avg"].transform(F.best_other)
     c["poll_lead"] = c["poll_avg"] - c["field_best"]
     c["poll_share"] = c["poll_avg"] / c.groupby("race_id")["poll_avg"].transform("sum")
     c["n_cands"] = c.groupby("race_id")["cand_key"].transform("count")
