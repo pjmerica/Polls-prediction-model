@@ -109,6 +109,18 @@ def load_primary_feed(paths, cycle):
             print(f"dropped-out candidates removed: {n} poll rows")
         d = d[~d["cand_key"].isin(dropped)]
 
+    # race_id built BEFORE merge/dedup (both need it) - merge runs before dedup so a
+    # cross-source name variant (e.g. NYT "Thomas (Jay) Feely" vs Wikipedia "Jay Feely" for
+    # the SAME poll) collapses to one cand_key first; only then can dedup recognize the two
+    # rows as the same survey and drop the duplicate, instead of silently double-counting it
+    # under one merged name (found 2026-07-22 auditing AZ-01's primary predictions).
+    d["race_id"] = (d["year"].astype(str) + "_" + d["state"] + "_" + d["office"]
+                    + d["district"].radd("-").where(d["district"] != "", "")
+                    + "_" + d["party_std"])
+    d, n_merged = FP.merge_nickname_aliases(d)
+    if n_merged:
+        print(f"nickname-alias merges: {n_merged} candidate name variants unified")
+
     d = (d.sort_values("_src_priority")
            .drop_duplicates(subset=["pollster", "end_date", "year", "state", "office",
                                     "district", "party_std", "cand_key"], keep="first")
@@ -122,12 +134,6 @@ def load_primary_feed(paths, cycle):
         print(f"WARNING: no primary date for "
               f"{sorted(d.loc[no_date, 'state'].unique())} - recency features NaN there")
 
-    d["race_id"] = (d["year"].astype(str) + "_" + d["state"] + "_" + d["office"]
-                    + d["district"].radd("-").where(d["district"] != "", "")
-                    + "_" + d["party_std"])
-    d, n_merged = FP.merge_nickname_aliases(d)
-    if n_merged:
-        print(f"nickname-alias merges: {n_merged} candidate name variants unified")
     d = drop_stale_candidates(F.prepare_polls(d))
 
     bad_pct = ~d["pct"].between(0, 100)

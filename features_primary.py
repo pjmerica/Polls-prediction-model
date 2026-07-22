@@ -103,29 +103,55 @@ def _first_equiv(a, b):
         return True
     return b in _NICK.get(a, set())
 
+def _middle_names(parts):
+    """Middle tokens of a parsed name, stripped of a trailing parenthetical wrapper and
+    punctuation (['Thomas','(Jay)','Feely'] -> ['jay']; ['David','Madison','Cawthorn'] ->
+    ['madison']). Single-letter/initial tokens ('A.', 'J') are dropped - they're not a
+    usable alternate first name."""
+    mids = []
+    for p in parts[1:-1]:
+        p = p.strip("().").lower()
+        if len(p) > 1:
+            mids.append(p)
+    return mids
+
+def _cross_name_equiv(first_a, mids_a, first_b, mids_b):
+    """True if either full name's FIRST name matches a MIDDLE name the other source used as
+    the publicly-known first name (NYT tends to print legal first-middle-last; Wikipedia/
+    race pages print the name the candidate actually goes by, often their middle name -
+    verified 2026-07-22 on real cross-source poll pairs: Thomas (Jay) Feely / Jay Feely,
+    David Madison Cawthorn / Madison Cawthorn). Does NOT merge on a shared middle name alone
+    when the two first names are otherwise unrelated words - that would be too permissive."""
+    fa, fb = first_a.lower(), first_b.lower()
+    return fa in mids_b or fb in mids_a
+
 def merge_nickname_aliases(d, name_col="candidate"):
     """Within each race, merge candidates whose FULL names share a last name and have
-    nickname-equivalent (or prefix-equivalent) first names: they get one cand_key (the
-    variant with more poll rows keeps its name). Returns d with cand_key/candidate fixed
-    and the number of merges."""
+    nickname-equivalent (or prefix-equivalent) first names, OR where one source's first name
+    is the other source's middle name / parenthetical nickname used as their public first name
+    (added 2026-07-22 - see _cross_name_equiv). They get one cand_key (the variant with more
+    poll rows keeps its name). Returns d with cand_key/candidate fixed and the number of
+    merges."""
     d = d.copy()
     merges = 0
     for rid, g in d.groupby("race_id"):
         names = g.groupby(name_col).size().sort_values(ascending=False)
         canon = {}
-        seen = []          # [(full_name, first, last)]
+        seen = []          # [(full_name, first, last, mids)]
         for full in names.index:
             parts = str(full).replace(".", " ").split()
             if len(parts) < 2:
                 continue
             first, last = parts[0], parts[-1]
+            mids = _middle_names(parts)
             hit = next((s for s in seen if s[2].lower() == last.lower()
-                        and _first_equiv(first, s[1])), None)
+                        and (_first_equiv(first, s[1])
+                             or _cross_name_equiv(first, mids, s[1], s[3]))), None)
             if hit:
                 canon[full] = hit[0]
                 merges += 1
             else:
-                seen.append((full, first, last))
+                seen.append((full, first, last, mids))
         if canon:
             m = d["race_id"] == rid
             d.loc[m, name_col] = d.loc[m, name_col].replace(canon)
