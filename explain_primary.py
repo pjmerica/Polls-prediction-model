@@ -95,6 +95,12 @@ def main():
                                   hist=CandidateHistory(), bios=FP.load_candidate_bios())
     X = cand.reindex(columns=meta["features"])
     cand["p"] = model.predict_proba(X)[:, 1]
+    # raw-probability sum across the field: how much signal the model found overall (see
+    # predict_primary.py's field_confidence for the full explanation). A weak-signal field
+    # (sum well under 1) still gets renormalized to a 100%-summing win_prob_norm on the
+    # dashboard table - surfacing this here lets the Explain modal show WHY a race's "pred"
+    # (raw, e.g. 3%) looks so much smaller than the table's normalized number (e.g. 52%).
+    field_conf = cand.groupby("race_id")["p"].transform("sum")
 
     explainer = shap.TreeExplainer(model)
     sv = explainer(X)
@@ -106,7 +112,8 @@ def main():
         row = cand.loc[i]
         blk = top_shap(meta["features"], X.loc[i].values, sv.values[cand.index.get_loc(i)],
                        sigmoid(base), float(row["p"]))
-        out[rid] = dict(candidate=row["candidate"], party=row["party"], win=blk)
+        out[rid] = dict(candidate=row["candidate"], party=row["party"], win=blk,
+                        field_confidence=round(float(field_conf.loc[i]), 4))
 
     payload = dict(cycle=args.cycle,
                    note="SHAP top-10 for the PRIMARY nominee model, explaining the "

@@ -15,6 +15,18 @@ Primary DATES (for days-to-primary recency features), in priority order per (sta
 
 Output: primary_predictions_2026.csv (+ _meta.json sidecar) - one row per candidate per
 primary race, with win_prob (raw) and win_prob_norm (within-race simplex).
+
+field_confidence / low_confidence_field (added 2026-07-22): win_prob_norm rescales the raw
+per-candidate probabilities to sum to 1 within a race. In a crowded, weak-signal field the
+RAW probabilities can sum to well under 1 (found auditing SD-Governor-REP: Doeden/Rhoden/
+Johnson/Hansen raw win_prob summed to 0.064) - normalizing then manufactures a confident-
+looking leader (Doeden 3.3% raw -> 51.8% normalized) out of a field the model has no strong
+opinion about. field_confidence = that raw sum (how much real signal the model found across
+the WHOLE field); low_confidence_field = 1 when it's below 0.30 (rough cross-check: a
+well-behaved field should sum close to 1). The RANKING win_prob_norm implies is still honest
+(it's the same ordering the raw probabilities gave); the FLAG is what's missing without this
+- treat a normalized leader in a low_confidence_field race as "best guess among weak options,"
+not "the model is confident."
 """
 import argparse
 import datetime
@@ -168,15 +180,23 @@ def main():
     assert not missing, f"artifact expects features absent from the table: {missing[:8]}"
     X = cand.reindex(columns=meta["features"])
     cand["win_prob"] = model.predict_proba(X)[:, 1]
-    cand["win_prob_norm"] = (cand["win_prob"]
-                             / cand.groupby("race_id")["win_prob"].transform("sum"))
+    cand["field_confidence"] = cand.groupby("race_id")["win_prob"].transform("sum")
+    cand["win_prob_norm"] = cand["win_prob"] / cand["field_confidence"]
+    cand["low_confidence_field"] = (cand["field_confidence"] < 0.30).astype(int)
     surveys = d.groupby("race_id").apply(
         lambda g: g.groupby(["pollster", "end_date"]).ngroups, include_groups=False)
     cand["n_surveys"] = cand["race_id"].map(surveys).fillna(0).astype(int)
 
+    n_low_conf = cand.drop_duplicates("race_id")["low_confidence_field"].sum()
+    if n_low_conf:
+        print(f"low-confidence fields (raw win_prob sums < 0.30 across the field): "
+              f"{int(n_low_conf)} races - win_prob_norm's leader there is a best-guess "
+              f"ranking, not a confident pick (see field_confidence column)")
+
     out_cols = ["race_id", "state", "office", "district", "party", "candidate",
                 "election_date", "n_polls", "n_surveys", "poll_avg", "poll_lead",
-                "fund_share", "win_prob", "win_prob_norm"]
+                "fund_share", "win_prob", "win_prob_norm",
+                "field_confidence", "low_confidence_field"]
     out = cand[out_cols].sort_values(["race_id", "win_prob"], ascending=[True, False])
     out_path = args.out or os.path.join(HERE, f"primary_predictions_{args.cycle}.csv")
     out.to_csv(out_path, index=False)
