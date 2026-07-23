@@ -44,7 +44,13 @@ LEVELS = [
     # US-form variants: 'U.S.', 'US', 'U.S' (missing periods happen: 'U.S representative')
     (4, r"(u\.?s\.?|united states) (senator|representative|secretary)|"
         r"member of (the )?(u\.?s\.?|united states) house|member of congress|"
-        r"white house|congress(wo)?man"),
+        r"white house|congress(wo)?man|"
+        # leadership titles imply U.S. House/Senate membership on their own (found
+        # 2026-07-23: 'former Majority Leader of the United States House of
+        # Representatives' (Eric Cantor) didn't match 'member of ... house' - the phrase
+        # doesn't contain 'member of')
+        r"(majority|minority) (leader|whip) of the .{0,10}(u\.?s\.?|united states) house|"
+        r"speaker of the (u\.?s\.?|united states) house"),
     (3, r"\bgovernor\b|lieutenant governor|attorney general|secretary of state|"
         r"state treasurer|state auditor|state comptroller|commissioner of|"
         r"superintendent of public"),
@@ -58,11 +64,26 @@ LEVELS = [
 ]
 PRIOR_CAND_RX = re.compile(r"candidate for|nominee for", re.I)
 
-def classify(desc):
+# BULLET FORMAT AMBIGUITY (found 2026-07-23, fact-check on the combined bio file: 107 of
+# 2848 "incumbent"-descriptor rows misclassified as level 0): Wikipedia race-page bullets
+# routinely say bare "incumbent senator" / "incumbent Representative [from X] since Y" with
+# NO "U.S."/"member of Congress" qualifier - unambiguous IN CONTEXT (a Senate-page bullet
+# saying "incumbent senator" means U.S. Senator; a House-page "incumbent Representative"
+# means U.S. Representative) but invisible to a page-blind regex. classify() now takes the
+# page's OFFICE so these context-dependent phrases resolve correctly; office=None keeps the
+# old page-blind behavior (used nowhere in this repo, kept for safety/back-compat only).
+INCUMBENT_BY_OFFICE_RX = {
+    "Senate": re.compile(r"incumbent senator\b"),
+    "House": re.compile(r"incumbent representative\b"),
+}
+
+def classify(desc, office=None):
     d = str(desc).lower()
     # candidacy mentions are NOT offices held: 'candidate for governor in 2018' must not
     # classify as governor (caught by the El-Sayed known-truth check)
     d = re.sub(r"(candidate|nominee) for [^,;]+", " ", d)
+    if office in INCUMBENT_BY_OFFICE_RX and INCUMBENT_BY_OFFICE_RX[office].search(d):
+        return 4
     for lvl, rx in LEVELS:
         if re.search(rx, d):
             return lvl
@@ -106,11 +127,27 @@ def parse_page(html, house=False):
             t = re.sub(r"\[\s*\d+\s*\]", "", t)          # strip cite brackets
             if not (8 < len(t) < 400) or "," not in t:
                 continue
-            a = li.find("a")
+            # NAME-LINK BUG (found 2026-07-23, fact-check on real historical pages):
+            # a citation footnote link ('<a href="#cite_note-...">[8]</a>') can be the
+            # FIRST <a> tag in a bullet whose candidate name is plain (unlinked) text -
+            # li.find("a") then grabbed the footnote marker as the "name" and desc's
+            # t[len(name):] slice cut the wrong number of characters off the real text
+            # ('Matthew W. Morgan' -> 'ew W. Morgan'). Verified against the ALREADY-
+            # COMMITTED candidate_bios.csv: 640 of 4441 rows (14.4%) had a bracket-only or
+            # truncated-lowercase name from this exact bug - affects the live 2026 primary
+            # model too, not just historical data. Fix: skip cite-note links when hunting
+            # for the name link; only a wikilink that ISN'T a footnote counts as the name.
+            a = next((x for x in li.find_all("a")
+                      if not str(x.get("href", "")).startswith("#cite_note")), None)
             name = (a.get_text(" ", strip=True) if a else t.split(",")[0]).strip()
             if not name or len(name.split()) > 5:
                 continue
-            desc = t[len(name):].lstrip(" ,").strip()
+            # match by content, not by position: 'name' may come from a wikilink whose
+            # exact text differs from t's whitespace-normalized form (rare, but the old
+            # code's t[len(name):] slice assumed name is a literal prefix of t - true only
+            # when name came from t.split(',')[0]; when name came from a link, find it).
+            idx = t.find(name)
+            desc = (t[idx + len(name):] if idx >= 0 else t[len(name):]).lstrip(" ,").strip()
             if not desc:
                 continue
             out.append((district if house else None, party, name, desc))
@@ -153,7 +190,7 @@ def main():
         df = pd.DataFrame(rows, columns=["district", "party", "name", "descriptor"])
         df["year"], df["office"], df["state"] = year, office, st
         df["cand_key"] = df["name"].map(F.norm_name)
-        df["office_level"] = df["descriptor"].map(classify)
+        df["office_level"] = df["descriptor"].map(lambda d: classify(d, office=office))
         df["bio_in_office"] = df["descriptor"].astype(str).str.contains(
             "present", case=False).astype(int)
         df["bio_prior_candidacy"] = df["descriptor"].astype(str).str.contains(

@@ -183,6 +183,42 @@ a per-cycle seed sweep is the check that catches it.
 Known caveat on bios: race pages are read as they exist TODAY; post-election edits can
 tint descriptors — mitigated by using office LEVEL (rarely edited) and dropping in_office.
 
+**Two more bio-scraper parser bugs found 2026-07-23** (user asked to bring `bio_office_level`
+to the GENERAL model too — see HANDOFF.md's 2026-07-23 entry for the full in-flight state;
+this note is the permanent methodology record). Both affect the ALREADY-LIVE primary model's
+`candidate_bios.csv`, not just the new general-model extension work:
+  a. **Citation-link name mangling**: `parse_page()`'s `li.find("a")` could grab a footnote
+     link (`<a href="#cite_note-...">[8]</a>`) instead of the candidate's actual (unlinked)
+     name text, corrupting **640 of 4,441 rows (14.4%)** of the then-committed bio data
+     (e.g. "Matthew W. Morgan" → "ew W. Morgan"). Fixed by skipping `#cite_note`-href links
+     when hunting for the name link.
+  b. **Incumbent-context ambiguity**: bare "incumbent senator" / "incumbent Representative
+     [from X] since Y" (Wikipedia omits "U.S." when the page itself makes the office
+     obvious) matched none of `classify()`'s office_level regexes, misclassifying **107 of
+     2,848 "incumbent"-descriptor rows** as level 0/unknown; also missed leadership-title
+     phrasing ("Majority Leader of the United States House of Representatives" — Eric
+     Cantor). Fixed by giving `classify()` the page's office as context.
+Both fixed in `fetch_candidate_bios.py`; the already-committed Senate/Governor/2026 data was
+re-scraped with both fixes (old version archived per the project's archive-don't-delete
+convention: `archive/candidate_bios_<timestamp>_pre-<fix>.csv`). **Re-run
+`check_officeholder.py` after any future change to this scraper and read the printed
+DISAGREEMENT list, not just the pass/fail line — that's how both of these bugs were found
+even though the battery numerically "passed" (96%/consistency ≥85%) both times.**
+
+**General-model extension (in progress 2026-07-23, see HANDOFF.md for exact status):** the
+existing bio scrape only covered Senate/Governor 2018-2024 (+ House 2026 only) because its
+historical page-target list derived from `primary_polls_wikipedia.csv`, itself deliberately
+Senate/Governor-only. `fetch_house_candidate_bios_hist.py` (new) extends House coverage to
+1998-2024 using the same page-target machinery built earlier the same session for a House
+primary-RESULTS scrape (`fetch_house_primary_results_hist.py` — that effort produced
+`primary_margin`/`primary_uncontested` features which were ABLATED OUT of both the win and
+margin models, honest null result on both — see HANDOFF.md; not documented as a permanent
+methodology section here since it isn't a shipped feature). Do not assume this bio extension
+is complete or wired into any model without checking
+HANDOFF.md's in-flight state first — as of this note, the ablation step (mandatory before
+adding it to the win or margin model, per the poll_adj/primary_results precedent) had not
+yet run.
+
 **Headline (expanding-window, results labels, +bio_office_level).** Report the STABLE
 metrics first — they hold across both eval cycles: **AUC-PR .966, Brier .024** (vs
 polls-only .924/.045). Race-winner accuracy is .929 mean but is cycle-dependent by a few

@@ -141,6 +141,63 @@ def prior_margin(margin_map, year, state, office, district):
             return v
     return np.nan
 
+# ---------------------------------------------------------------- primary results (2026-07-22)
+
+def load_primary_results():
+    """data/{house,primary}_results_hist.csv -> {(year,state,office,district,party,cand_key):
+    dict(is_primary_nominee, primary_margin, primary_uncontested)} for the GENERAL model's
+    candidate-quality features (does this candidate's party field show they won a contested
+    or lopsided primary?). Sourced from fetch_house_primary_results_hist.py (House, 1998-2024,
+    fact-checked - see that script's docstring) + fetch_primary_results_2026.py --hist
+    (Senate/Governor). Real coverage ~49% of general-model candidate rows (all races that HAD
+    a matched primary-results page; the rest is NaN, not 0 - a candidate with no primary-
+    results match is UNKNOWN, not "ran unopposed").
+
+    primary_margin: winner's pct minus runner-up's pct (>=0 by construction, a property of
+    HOW they won their primary, same value for every candidate who WAS that nominee - this
+    is a fact about the nominee's primary, not about the current candidate's own vote share
+    in some other race). NaN for a single-candidate (no real contest to measure) race - see
+    primary_uncontested for that case instead.
+    primary_uncontested: 1 if the primary had one candidate, or a runner-up with <5% (the
+    write-in/token-challenger case - verified: 112 of 1735 two-candidate races fit this,
+    median genuine 2-candidate runner-up share is ~30%, so 5% cleanly separates real
+    contests from non-contests); 0 if genuinely contested; NaN if no primary-results match.
+    Only the WINNER of each primary is attributed a value (only nominees reach the general
+    election, which is the only place this feature is consumed)."""
+    frames = []
+    for fn in ("data/house_primary_results_hist.csv", "data/primary_results_hist.csv"):
+        p = os.path.join(os.path.dirname(DATA_DIR), fn)
+        if os.path.exists(p):
+            frames.append(pd.read_csv(p, low_memory=False))
+    if not frames:
+        return {}
+    pr = pd.concat(frames, ignore_index=True)
+    parts = pr["race_id"].str.split("_", n=3, expand=True)
+    pr["year"] = parts[0].astype(int)
+    pr["state"] = parts[1]
+    of_di = parts[2].str.split("-", n=1, expand=True)
+    pr["office"] = of_di[0]
+    pr["district"] = of_di[1].fillna("") if of_di.shape[1] > 1 else ""
+    pr["party"] = parts[3]
+
+    out = {}
+    for (yr, st, of, di, pty), g in pr.groupby(["year", "state", "office", "district", "party"]):
+        if not (g["is_winner"] == True).any():   # noqa: E712 (explicit bool match)
+            continue
+        winner = g.loc[g["is_winner"] == True].iloc[0]
+        n = len(g)
+        if n == 1:
+            margin, uncontested = np.nan, 1
+        else:
+            runner_up_pct = g.loc[g.index != winner.name, "pct"].max()
+            margin = winner["pct"] - runner_up_pct
+            uncontested = int(runner_up_pct < 5)
+        out[(yr, st, of, di, pty, winner["cand_key"])] = dict(
+            primary_margin=(float(margin) if margin == margin else np.nan),
+            primary_uncontested=uncontested,
+        )
+    return out
+
 # ---------------------------------------------------------------- FEC fundraising
 
 def fec_cand_key(name):
@@ -338,7 +395,7 @@ def candidate_poll_adj(d, house):
 # ---------------------------------------------------------------- main builder
 
 def build_candidate_table(d, macro, natl_env_map, funds, house_train_years=None, house=None,
-                          fec=None, bias_priors=None):
+                          fec=None, bias_priors=None, primary_results=None):
     """Collapse prepared long polls `d` -> one row per candidate per race, with features.
 
     d must have: race_id, year, state, office, district, candidate, cand_key, party_std,
@@ -348,6 +405,10 @@ def build_candidate_table(d, macro, natl_env_map, funds, house_train_years=None,
     House effect: pass `house_train_years` to compute it from those cycles of `d`, or pass a
     precomputed `house` dict directly (predict time: computed from historical polls, applied
     to the new cycle's polls).
+
+    primary_results: pass load_primary_results() to add primary_margin/primary_uncontested
+    (2026-07-22) - how contested/lopsided this candidate's own primary was, ~49% coverage
+    (real matches only; NaN elsewhere, never a silent 0/uncontested guess).
     """
     if house is None:
         house = compute_house_effect(d, house_train_years or [])
@@ -381,6 +442,9 @@ def build_candidate_table(d, macro, natl_env_map, funds, house_train_years=None,
 
             adj = gc["pct"] - gc["pollster"].map(lambda p: sign * house.get(norm_pollster(p), 0.0))
             md = dyn.get(ck, {})
+
+            pr = (primary_results.get((yr, st, of, di, party, ck))
+                 if primary_results is not None else None)
 
             fe = fec.get((yr, st, of, di, ck)) if fec is not None else None
             rec = fe["receipts"] if fe else np.nan
@@ -432,6 +496,10 @@ def build_candidate_table(d, macro, natl_env_map, funds, house_train_years=None,
                 min_margin=md.get("min_margin", np.nan),
                 margin_trend=md.get("margin_trend", np.nan),
                 is_president_party=int(party == PRES_PARTY.get(yr)),
+                # how contested/lopsided THIS candidate's own primary was (NaN = no matched
+                # primary-results page, not "ran unopposed" - see load_primary_results)
+                primary_margin=(pr["primary_margin"] if pr else np.nan),
+                primary_uncontested=(pr["primary_uncontested"] if pr else np.nan),
                 **fund,
                 **macro.get(yr, {}),
             ))
@@ -473,10 +541,14 @@ def build_candidate_table(d, macro, natl_env_map, funds, house_train_years=None,
     c["gap_x_recency"] = c["poll_lead"] * (1.0 / (1.0 + c["min_days"].clip(lower=0) / 30.0))
     return c
 
-def feature_list(macro_feats, fund=False):
+def feature_list(macro_feats, fund=False, primary_results=False):
     """The model's input columns. Everything here is available for future races.
-    fund=True appends the FEC fundraising features (pass fec=load_fec() to the builder)."""
-    return ([] if not fund else list(FUND_FEATS_EXT)) + [
+    fund=True appends the FEC fundraising features (pass fec=load_fec() to the builder).
+    primary_results=True appends primary_margin/primary_uncontested (2026-07-22; pass
+    primary_results=load_primary_results() to the builder) - ablate before trusting, same
+    discipline as poll_adj (dropped 2026-07-12 despite high raw importance)."""
+    return (([] if not fund else list(FUND_FEATS_EXT))
+           + ([] if not primary_results else ["primary_margin", "primary_uncontested"])) + [
         "poll_avg", "poll_last", "poll_last30", "poll_std", "n_polls",
         "n_polls_over50", "frac_polls_over50", "race_total_polls",
         "avg_sample", "min_days",

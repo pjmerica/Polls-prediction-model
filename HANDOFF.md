@@ -1,29 +1,145 @@
-# Handoff: in-flight state, breakdown risks, next steps (2026-07-06)
+# Handoff: in-flight state, breakdown risks, next steps (2026-07-23)
 
 For the next agent. Read AGENTS.md first (architecture + rules), CONCERNS.md second
 (risk register + roadmap). This file: what's mid-flight RIGHT NOW, what's most likely to
 break, and what to do next, in order.
 
-## ⚠ IN-FLIGHT STATE (check this before touching anything)
+## ⚠ IN-FLIGHT STATE 2026-07-23 (check this before touching anything — session ended on
+## usage limit, not a natural stopping point)
 
-1. **Retrain "run 2" (144 features: +sentiment, +generic_ballot) was executing in the
-   background**: model.ipynb finished, margin_model.ipynb possibly still running.
-   **The artifacts in data/ may be MIXED GENERATIONS** (win model from run 2, margin model
-   from run 1) until the chain completes. Do NOT run refresh_dashboard.py or trust
-   predictions until both notebooks show fresh outputs from the same feature set.
-2. **FEC features are built but NOT wired in** (commit df15f97): data/fec_summary.csv +
-   features.load_fec() + feature_list(fund=True) exist; the notebooks and predict scripts
-   still run WITHOUT them. Wiring steps (= "run 3", the final planned retrain):
-   - model.ipynb + margin_model.ipynb: `FEC = F.load_fec()` where FUNDS is loaded; pass
-     `fec=FEC` to every `build_candidate_table` call (BASE build); change
-     `FEATURES = F.feature_list(MACRO_FEATS)` → `F.feature_list(MACRO_FEATS, fund=True)`.
-   - predict.py + predict_margin.py: same two changes where cand is built (predict_margin
-     imports predict's loader but builds its own cand table — check both).
-   - Run model.ipynb THEN margin_model.ipynb (never parallel), verify, then
-     `py refresh_dashboard.py --no-feeds`, commit this repo, commit+push polling-agg.
-3. Baselines to compare run 2/3 against — run 1 (vintage fixes, 112 features):
-   WIN AUC .969 / Brier .069 / race-acc .859 (poll baseline .868);
-   MARGIN MAE 6.47 vs calibrated-poll 7.52 / raw 7.90.
+**A ~700-page House candidate-bio scrape (`fetch_house_candidate_bios_hist.py`) may still
+be running or may have died mid-run** when this session ended. Check first:
+```
+py -X utf8 -c "import pandas as pd; b=pd.read_csv('data/candidate_bios.csv'); print(b['office'].value_counts()); print(sorted(b[b.office=='House']['year'].unique()))"
+```
+If House rows only cover 2026 (not 1998-2024), the re-scrape didn't finish — re-run
+`py -X utf8 -u fetch_house_candidate_bios_hist.py 2>&1 | tee house_candidate_bios_scrape_log3.txt`
+(safe to re-run: it appends/dedupes against the existing file, doesn't need a clean slate
+this time — only the FIRST re-scrape after the classify() fix needed the old file archived
+first, and that already happened, see below).
+
+### What happened this session, in order
+
+**1. Primary-result features for the general model (user request) — DONE, ABLATED, DROPPED.**
+Built `fetch_house_primary_results_hist.py` (new: House primary RESULTS 1998-2024, one
+Wikipedia page per state per cycle, "X United States House of Representatives elections in
+Y") to complement the existing Senate/Governor `fetch_primary_results_2026.py --hist`.
+Combined: 4,900 House party-races + Senate/Governor, fact-checked (0/4900 races have other
+than exactly one winner; 5 hard historical spot-checks pass incl. two sitting-incumbent
+LOSSES — Cantor 2014, Meijer 2022). Found + fixed a real bug in the process: 11 Texas-2012
+races had first-round + runoff results merged into one table (no separate "Runoff" heading
+for the parser to key off) — pct columns summed to ~200%; two-pass guard added (see that
+script's docstring for the exact logic and why a naive "top-2 sum to 100%" version would
+have corrupted 69 OTHER, legitimate 3+ candidate races).
+
+Added `features.load_primary_results()` + `primary_margin`/`primary_uncontested` columns to
+`build_candidate_table` + `feature_list(primary_results=True)` (opt-in, same pattern as
+`fund=True`). **Ablated on BOTH win and margin models (fixed hyperparameters, expanding-
+window eval) — dropped from production**: every metric moved flat-to-worse in both models
+(win: AUC -0.0001, race-acc -0.0031; margin: MAE +0.019, race-acc -0.0046),
+`primary_uncontested` had near-zero feature importance in both. Matches the `poll_adj`
+precedent exactly (real-looking feature, no honest out-of-sample value — polls already
+price in primary-contest weakness by general-election time). **The loader/columns stay in
+features.py** (harmless, committed data, may earn its keep on a future feature) but
+`primary_results=True` is NOT the production default — do not flip it on without a fresh
+ablation if this comes up again.
+
+Files from this: `fetch_house_primary_results_hist.py`, `data/house_primary_results_hist.csv`
+(11,218 rows), `data/primary_results_hist.csv` (found this was NEVER actually committed
+despite being static-data-principle output — fixed the `.gitignore` gap same day), both
+committed + pushed already (commit `0ddc88f`). The `features.py` load_primary_results()
+addition is NOT yet committed (see below).
+
+**2. General-election office-level feature (user request) — SCRAPING IN PROGRESS, TWO
+REAL BUGS FOUND AND FIXED, NOT YET FACT-CHECK-CONFIRMED ON THE FULL FILE, NOT WIRED IN.**
+
+The existing `candidate_bios.csv` (built for the PRIMARY model) only covers Senate/
+Governor for 2018-2024 + House for 2026 only — because its historical target-page list
+derives from `primary_polls_wikipedia.csv`, which was deliberately scoped Senate/Governor-
+only (same root cause as the primary-results gap above). Built
+`fetch_house_candidate_bios_hist.py` reusing the proven House-page-target machinery from
+step 1, driving the EXISTING `fetch_candidate_bios.py` parser (`parse_page`/`classify`,
+imported not reimplemented) over 1998-2024 House pages.
+
+**Two real parser bugs found while fact-checking, BOTH ALREADY AFFECTING THE LIVE PRIMARY
+MODEL, not just this new work — fixed in `fetch_candidate_bios.py` this session:**
+  a. **Citation-link name mangling** (`li.find("a")` grabbed a footnote link `<a href=
+     "#cite_note-...">[8]</a>` instead of skipping it when the candidate's real name was
+     plain unlinked text, then the description-slicing logic cut the wrong number of
+     characters — "Matthew W. Morgan" became "ew W. Morgan"). Affected **640 of 4,441 rows
+     (14.4%) of the already-committed, already-in-production bio data.** Fixed by skipping
+     `#cite_note` links when hunting for the name link, and finding the name's position in
+     the text by content instead of assuming it's a literal prefix.
+  b. **Incumbent-context ambiguity**: bare "incumbent senator" / "incumbent Representative
+     [from X] since Y" (no "U.S." qualifier — Wikipedia relies on the reader knowing which
+     page they're on) matched NONE of the office_level regexes, misclassifying 107 of 2,848
+     "incumbent"-descriptor rows as level 0. Also missed "Majority Leader of the United
+     States House of Representatives" (Eric Cantor) — a leadership-title phrase with no
+     "member of" in it. Fixed: `classify()` now takes an `office` parameter and resolves
+     these context-dependent phrases correctly per page (with a verified safety check that
+     a Senate-page phrase does NOT get credited on a House page).
+
+**Both fixes required RE-SCRAPING the already-committed Senate/Governor/2026 data** (the
+old `candidate_bios.csv` was archived, not deleted, per user instruction — see
+`archive/candidate_bios_20260723_102524_pre-namefix.csv` and
+`archive/candidate_bios_20260723_191417_pre-incumbent-context-fix.csv`). The Senate/
+Governor/2026 re-scrape with BOTH fixes is done (`py -X utf8 fetch_candidate_bios.py`,
+log: `candidate_bios_rescrape_log2.txt`) — verified the 3 "incumbent senator" rows in that
+slice now correctly classify as level 4. **The House historical re-scrape with both fixes
+was STILL RUNNING when this session ended** (see the check command at the top of this
+section).
+
+### Next steps, in order
+
+1. **Confirm/finish the House bio re-scrape** (see check command above).
+2. **Run `check_officeholder.py`** (existing fact-check battery, no changes needed) on the
+   full combined `data/candidate_bios.csv`. Expect it to pass (7/7 known-truth, consistency
+   ≥85%) but LOOK AT THE DISAGREEMENTS PRINTED, not just the pass/fail line — that's how
+   both bugs above were found even though the battery "passed" both times. Known small
+   residual NOT yet fixed: ~88 rows (1.8%) where a bullet with no wikilinked name and an
+   unusual comma structure produces an obviously-garbage name ("prison officer" instead of
+   a person) — low priority, each is clearly wrong not silently wrong, but worth a look if
+   there's time.
+3. **Measure real coverage** against the general model's full candidate table (all offices,
+   all 14 cycles) the same way it was measured for primary_results in step 1 — expect
+   something in the 30-50% range based on the pre-House-fix Senate/Governor-only number
+   (39.1% within Senate/Governor alone once the name-mangling bug was accounted for).
+4. **Wire `bio_office_level` into `features.py`** (a `build_candidate_table` parameter +
+   `feature_list()` flag, same opt-in pattern as `primary_results`/`fund` — do NOT make it
+   default-on without ablating first).
+5. **Ablate on the WIN model AND the margin model separately** (fixed hyperparameters,
+   expanding-window eval) — do not skip either; primary_results' ablation this session only
+   became trustworthy once BOTH were checked (win-only looked like a clean "drop it," but
+   the user correctly asked to check margin too before finalizing). Use the ablation script
+   pattern in this session's transcript (or reconstruct from `model.ipynb` cells 11/13/29 +
+   `margin_model.ipynb`'s equivalent) — do NOT edit the notebooks directly until the
+   ablation result is known.
+6. **If it earns its keep**: also run a per-cycle overfitting check (seed sweep) before
+   trusting it — this is the exact lesson from the PRIMARY model's own `bio_office_level`
+   feature (METHODOLOGY.md: a 10-feature set looked good in aggregate but was "one-cycle
+   luck," a per-cycle 6-seed sweep found only ONE of the ten features — office level itself
+   — actually generalized). Don't skip this step even if the aggregate ablation looks good.
+7. **Retrain both notebooks for real** (model.ipynb then margin_model.ipynb, never
+   parallel) only after 4-6 confirm the feature is worth keeping.
+8. **Commit + push.** Nothing from this session is pushed except the primary-results work
+   (commit `0ddc88f`). Still uncommitted as of session end: `features.py`'s
+   `load_primary_results()` addition, `fetch_candidate_bios.py`'s two bug fixes, the
+   re-scraped `data/candidate_bios.csv`, `fetch_house_candidate_bios_hist.py`, and all the
+   scrape log files. Write the commit message covering BOTH bugs found (cite the exact
+   numbers above — 14.4% and 107/2848) since they affect the ALREADY-LIVE primary model,
+   not just new work — this alone is worth a standalone commit even before the office-level
+   feature is fully wired in and ablated, so the bugfix benefit reaches production sooner.
+9. **Update METHODOLOGY.md's "PRIMARY nominee model" section** to note the bio-scraper
+   bugfixes (it documents the ORIGINAL 3 fact-check iterations for this exact scraper —
+   this session's 2 more bugs are a direct continuation of that story and belong in the
+   same place, not a new section).
+
+## Retrain "run 2/3" baselines (2026-07-06, STALE — superseded many times since; kept for
+## historical reference only, see the 2026-07-21/22 entries below the "Found in the
+## 2026-07-06 late audit" section for anything current)
+Baselines to compare against from that era — run 1 (vintage fixes, 112 features):
+WIN AUC .969 / Brier .069 / race-acc .859 (poll baseline .868);
+MARGIN MAE 6.47 vs calibrated-poll 7.52 / raw 7.90.
 
 ## Breakdowns I can see happening (ranked by likelihood × damage)
 
