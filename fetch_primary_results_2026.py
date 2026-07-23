@@ -44,12 +44,20 @@ URL_HOUSE = ("https://en.wikipedia.org/wiki/{year}_United_States_House_of_Repres
 
 PARTY_ROW = {"republican": "REP", "democratic": "DEM"}
 
-def parse_results_tables(html, base_race_id, house=False):
+def parse_results_tables(html, base_race_id, house=False, at_large=False):
     """[{race_id(+party), party, candidate, votes, pct, table_seq}] for every
-    primary-context results table. race_id gets '-<district>' inserted for House."""
+    primary-context results table. race_id gets '-<district>' inserted for House.
+
+    at_large=True (added 2026-07-22, historical House scrape): the page has ONE district
+    for the whole state (AK/DE/MT/ND/SD/VT/WY, cycle-dependent - some regained/lost a seat
+    across redistricting, e.g. SD 2-seat pre-1982, MT 2-seat 2020+) and carries no
+    "District N" heading to detect, so seed district=1 up front instead of requiring one to
+    appear (matches res_house.csv's own at-large convention, verified: office_seat_name=
+    'District 1'). Without this, at-large-year House pages parsed zero rows (the
+    `house and district is None` guard below dropped everything)."""
     soup = BeautifulSoup(html, "html.parser")
     rows, seq = [], 0
-    stage, district, other_office = "general", None, False
+    stage, district, other_office = "general", (1 if at_large else None), False
     OTHER_OFFICE_RX = re.compile(
         r"lieutenant|attorney general|secretary of state|treasurer|auditor|"
         r"comptroller|agriculture|superintendent|land commissioner|railroad",

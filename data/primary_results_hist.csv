@@ -1,0 +1,1175 @@
+race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
+2018_AK_Governor_DEM,DEM,Mark Begich,33451,85.3,1,True,begich m
+2018_AK_Governor_REP,REP,Mike Dunleavy,43802,61.5,2,True,dunleavy m
+2018_AK_Governor_REP,REP,Mead Treadwell,22780,32.0,2,False,treadwell m
+2018_AK_Governor_REP,REP,Michael Sheldon,1640,2.3,2,False,sheldon m
+2018_AK_Governor_REP,REP,Merica Hlatcu,1064,1.5,2,False,hlatcu m
+2018_AK_Governor_REP,REP,Thomas Gordon,884,1.4,2,False,gordon t
+2018_AK_Governor_REP,REP,Gerald Heikes,499,0.7,2,False,heikes g
+2018_AK_Governor_REP,REP,Darin Colbry,416,0.6,2,False,colbry d
+2018_AL_Governor_REP,REP,Kay Ivey,330743,56.1,1,True,ivey k
+2018_AL_Governor_REP,REP,Tommy Battle,146887,24.92,1,False,battle t
+2018_AL_Governor_REP,REP,Scott Dawson,79302,13.45,1,False,dawson s
+2018_AL_Governor_REP,REP,Bill Hightower,29275,4.97,1,False,hightower b
+2018_AL_Governor_REP,REP,Michael McAllister,3326,0.56,1,False,mcallister m
+2018_AL_Governor_DEM,DEM,Walt Maddox,154559,54.6,2,True,maddox w
+2018_AL_Governor_DEM,DEM,Sue Bell Cobb,82043,28.98,2,False,cobb s
+2018_AL_Governor_DEM,DEM,James Fields,22635,8.0,2,False,fields j
+2018_AL_Governor_DEM,DEM,Anthony White,9677,3.42,2,False,white a
+2018_AL_Governor_DEM,DEM,"Doug ""New Blue"" Smith",9244,3.27,2,False,smith d
+2018_AL_Governor_DEM,DEM,Christopher Countryman,4923,1.74,2,False,countryman c
+2018_AR_Governor_REP,REP,Asa Hutchinson,145251,69.7,1,True,hutchinson a
+2018_AR_Governor_REP,REP,Jan Morgan,63009,30.3,1,False,morgan j
+2018_AR_Governor_DEM,DEM,Jared Henderson,68340,63.4,2,True,henderson j
+2018_AR_Governor_DEM,DEM,Leticia Sanders,39382,36.6,2,False,sanders l
+2018_AZ_Governor_REP,REP,Doug Ducey,463672,70.7,1,True,ducey d
+2018_AZ_Governor_REP,REP,Ken Bennett,191775,29.3,1,False,bennett k
+2018_AZ_Governor_REP,REP,Robert Weber,91,0.0,1,False,weber r
+2018_AZ_Governor_DEM,DEM,David Garcia,255555,50.6,2,True,garcia d
+2018_AZ_Governor_DEM,DEM,Steve Farley,163072,32.3,2,False,farley s
+2018_AZ_Governor_DEM,DEM,Kelly Fryer,86810,17.2,2,False,fryer k
+2018_AZ_Governor_DEM,DEM,Mirza Fareed Baig,44,0.0,2,False,baig m
+2018_AZ_Senate_REP,REP,Martha McSally,357626,54.57,1,True,mcsally m
+2018_AZ_Senate_REP,REP,Kelli Ward,180926,27.61,1,False,ward k
+2018_AZ_Senate_REP,REP,Joe Arpaio,116555,17.79,1,False,arpaio j
+2018_AZ_Senate_DEM,DEM,Kyrsten Sinema,404170,79.25,2,True,sinema k
+2018_AZ_Senate_DEM,DEM,Deedra Abboud,105800,20.75,2,False,abboud d
+2018_CO_Governor_DEM,DEM,Jared Polis,282725,44.46,1,True,polis j
+2018_CO_Governor_DEM,DEM,Cary Kennedy,157098,24.71,1,False,kennedy c
+2018_CO_Governor_DEM,DEM,Mike Johnston,149717,23.55,1,False,johnston m
+2018_CO_Governor_DEM,DEM,Donna Lynne,46316,7.28,1,False,lynne d
+2018_CO_Governor_REP,REP,Walker Stapleton,239415,47.66,2,True,stapleton w
+2018_CO_Governor_REP,REP,Victor Mitchell,151365,30.13,2,False,mitchell v
+2018_CO_Governor_REP,REP,Greg Lopez,66330,13.2,2,False,lopez g
+2018_CO_Governor_REP,REP,Doug Robinson,45245,9.01,2,False,robinson d
+2018_CT_Governor_DEM,DEM,Susan Bysiewicz,129928,62.2,2,True,bysiewicz s
+2018_CT_Governor_DEM,DEM,Eva Bermúdez Zimmerman,79021,37.8,2,False,zimmerman e
+2018_CT_Governor_REP,REP,Joe Markley,65702,47.6,4,True,markley j
+2018_CT_Governor_REP,REP,Erin Stewart,45262,32.8,4,False,stewart e
+2018_CT_Governor_REP,REP,Jayme Stevenson,27139,19.7,4,False,stevenson j
+2018_DE_Senate_DEM,DEM,Tom Carper,53633,64.59,1,True,carper t
+2018_DE_Senate_DEM,DEM,Kerri Evelyn Harris,29406,35.41,1,False,harris k
+2018_DE_Senate_REP,REP,Rob Arlett,25284,66.77,2,True,arlett r
+2018_DE_Senate_REP,REP,Gene Truono,10587,27.96,2,False,truono g
+2018_DE_Senate_REP,REP,Rocky De La Fuente,1998,5.28,2,False,fuente r
+2018_FL_Governor_REP,REP,Ron DeSantis,916298,56.5,1,True,desantis r
+2018_FL_Governor_REP,REP,Adam Putnam,592518,36.5,1,False,putnam a
+2018_FL_Governor_REP,REP,Bob White,32710,2.0,1,False,white b
+2018_FL_Governor_REP,REP,Timothy M. Devine,21380,1.3,1,False,devine t
+2018_FL_Governor_REP,REP,Bob Langford,19842,1.2,1,False,langford b
+2018_FL_Governor_REP,REP,Bruce Nathan,14556,0.9,1,False,nathan b
+2018_FL_Governor_REP,REP,Don Baldauf,13173,0.8,1,False,baldauf d
+2018_FL_Governor_REP,REP,John Joseph Mercadante,11647,0.7,1,False,mercadante j
+2018_FL_Governor_DEM,DEM,Andrew Gillum,517417,34.3,2,True,gillum a
+2018_FL_Governor_DEM,DEM,Gwen Graham,472735,31.3,2,False,graham g
+2018_FL_Governor_DEM,DEM,Philip Levine,306450,20.3,2,False,levine p
+2018_FL_Governor_DEM,DEM,Jeff Greene,151935,10.1,2,False,greene j
+2018_FL_Governor_DEM,DEM,Chris King,37464,2.5,2,False,king c
+2018_FL_Governor_DEM,DEM,John Wetherbee,14355,1.0,2,False,wetherbee j
+2018_FL_Governor_DEM,DEM,"Alex ""Lundy"" Lundmark",8628,0.6,2,False,lundmark a
+2018_FL_Senate_REP,REP,Rick Scott,1456187,88.61,1,True,scott r
+2018_FL_Senate_REP,REP,Rocky De La Fuente,187209,11.39,1,False,fuente r
+2018_GA_Governor_REP,REP,Brian Kemp,408595,69.45,2,True,kemp b
+2018_GA_Governor_REP,REP,Casey Cagle,179712,30.55,2,False,cagle c
+2018_GA_Governor_DEM,DEM,Stacey Abrams,424305,76.44,3,True,abrams s
+2018_GA_Governor_DEM,DEM,Stacey Evans,130784,23.56,3,False,evans s
+2018_HI_Governor_DEM,DEM,David Ige,124572,51.4,1,True,ige d
+2018_HI_Governor_DEM,DEM,Colleen Hanabusa,107631,44.4,1,False,hanabusa c
+2018_HI_Governor_DEM,DEM,Ernest Caravalho,5662,2.3,1,False,caravalho e
+2018_HI_Governor_DEM,DEM,Wendell Ka'ehu'ae'a,2298,0.9,1,False,a w
+2018_HI_Governor_DEM,DEM,Richard Kim,1576,0.6,1,False,kim r
+2018_HI_Governor_DEM,DEM,Van Tanabe,775,0.3,1,False,tanabe v
+2018_HI_Governor_REP,REP,Andria Tupola,17297,55.5,2,True,tupola a
+2018_HI_Governor_REP,REP,John Carroll,10974,35.2,2,False,carroll j
+2018_HI_Governor_REP,REP,Ray L'Heureux,2885,9.3,2,False,heureux r
+2018_IA_Governor_REP,REP,Kim Reynolds,94118,98.63,1,True,reynolds k
+2018_IA_Governor_REP,REP,Write-ins,1307,1.37,1,False,ins w
+2018_IA_Governor_DEM,DEM,Fred Hubbell,99245,55.41,2,True,hubbell f
+2018_IA_Governor_DEM,DEM,Cathy Glasson,36815,20.55,2,False,glasson c
+2018_IA_Governor_DEM,DEM,John Norris,20498,11.44,2,False,norris j
+2018_IA_Governor_DEM,DEM,Andy McGuire,9404,5.25,2,False,mcguire a
+2018_IA_Governor_DEM,DEM,Nate Boulton,9082,5.07,2,False,boulton n
+2018_IA_Governor_DEM,DEM,Ross Wilburn,3880,2.17,2,False,wilburn r
+2018_IA_Governor_DEM,DEM,Write-ins,200,0.01,2,False,ins w
+2018_ID_Governor_REP,REP,Brad Little,72518,37.3,1,True,little b
+2018_ID_Governor_REP,REP,Raúl Labrador,63460,32.6,1,False,labrador r
+2018_ID_Governor_REP,REP,Tommy Ahlquist,50977,26.2,1,False,ahlquist t
+2018_ID_Governor_REP,REP,Lisa Marie,3390,1.7,1,False,marie l
+2018_ID_Governor_REP,REP,Steve Pankey,2701,1.4,1,False,pankey s
+2018_ID_Governor_REP,REP,Harley Brown,874,0.4,1,False,brown h
+2018_ID_Governor_REP,REP,Dalton Cannady,528,0.3,1,False,cannady d
+2018_ID_Governor_DEM,DEM,Paulette Jordan,38483,58.4,2,True,jordan p
+2018_ID_Governor_DEM,DEM,A.J. Balukoff,26403,40.1,2,False,balukoff a
+2018_ID_Governor_DEM,DEM,Peter Dill,964,1.5,2,False,dill p
+2018_IL_Governor_REP,REP,Bruce Rauner,372124,51.53,1,True,rauner b
+2018_IL_Governor_REP,REP,Jeanne Ives,350038,48.47,1,False,ives j
+2018_IL_Governor_DEM,DEM,JB Pritzker,597756,45.13,2,True,pritzker j
+2018_IL_Governor_DEM,DEM,Daniel Biss,353625,26.7,2,False,biss d
+2018_IL_Governor_DEM,DEM,Chris Kennedy,322730,24.37,2,False,kennedy c
+2018_IL_Governor_DEM,DEM,Tio Hardiman,21075,1.59,2,False,hardiman t
+2018_IL_Governor_DEM,DEM,Bob Daiber,15009,1.13,2,False,daiber b
+2018_IL_Governor_DEM,DEM,Robert Marshall,14353,1.08,2,False,marshall r
+2018_IN_Senate_DEM,DEM,Joe Donnelly,284621,100.0,1,True,donnelly j
+2018_IN_Senate_REP,REP,Mike Braun,208602,41.17,2,True,braun m
+2018_IN_Senate_REP,REP,Todd Rokita,151967,29.99,2,False,rokita t
+2018_IN_Senate_REP,REP,Luke Messer,146131,28.84,2,False,messer l
+2018_KS_Governor_REP,REP,Kris Kobach,128838,40.62,1,True,kobach k
+2018_KS_Governor_REP,REP,Jeff Colyer,128488,40.51,1,False,colyer j
+2018_KS_Governor_REP,REP,Jim Barnett,27993,8.83,1,False,barnett j
+2018_KS_Governor_REP,REP,Ken Selzer,24807,7.82,1,False,selzer k
+2018_KS_Governor_REP,REP,Patrick Kucera,3212,1.01,1,False,kucera p
+2018_KS_Governor_REP,REP,Tyler Ruzich,2276,0.72,1,False,ruzich t
+2018_KS_Governor_REP,REP,Joseph Tutera Jr.,1559,0.49,1,False,tutera j
+2018_KS_Governor_DEM,DEM,Laura Kelly,78746,51.5,2,True,kelly l
+2018_KS_Governor_DEM,DEM,Carl Brewer,30693,20.1,2,False,brewer c
+2018_KS_Governor_DEM,DEM,Josh Svaty,26722,17.5,2,False,svaty j
+2018_KS_Governor_DEM,DEM,Arden Andersen,12845,8.4,2,False,andersen a
+2018_KS_Governor_DEM,DEM,Jack Bergeson,3850,2.5,2,False,bergeson j
+2018_MA_Governor_REP,REP,Charlie Baker,174126,63.78,2,True,baker c
+2018_MA_Governor_REP,REP,Scott Lively,98421,36.05,2,False,lively s
+2018_MA_Governor_REP,REP,All others,464,0.17,2,False,others a
+2018_MA_Governor_DEM,DEM,Jay Gonzalez,348434,63.17,3,True,gonzalez j
+2018_MA_Governor_DEM,DEM,Bob Massie,192404,34.88,3,False,massie b
+2018_MA_Senate_DEM,DEM,Elizabeth Warren,590835,98.08,1,True,warren e
+2018_MA_Senate_REP,REP,Geoff Diehl,144043,55.15,2,True,diehl g
+2018_MA_Senate_REP,REP,John Kingston,69636,26.66,2,False,kingston j
+2018_MA_Senate_REP,REP,Beth Lindstrom,46693,17.88,2,False,lindstrom b
+2018_MD_Governor_REP,REP,Larry Hogan,210935,100.0,1,True,hogan l
+2018_MD_Governor_DEM,DEM,Ben Jealous,231895,39.6,2,True,jealous b
+2018_MD_Governor_DEM,DEM,Rushern Baker,171696,29.3,2,False,baker r
+2018_MD_Governor_DEM,DEM,Jim Shea,48647,8.3,2,False,shea j
+2018_MD_Governor_DEM,DEM,Krish O'Mara Vignarajah,48041,8.2,2,False,vignarajah k
+2018_MD_Governor_DEM,DEM,Richard Madaleno,34184,5.8,2,False,madaleno r
+2018_MD_Governor_DEM,DEM,Kevin Kamenetz,18851,3.2,2,False,kamenetz k
+2018_MD_Governor_DEM,DEM,Alec Ross,13780,2.4,2,False,ross a
+2018_MD_Governor_DEM,DEM,Ralph Jaffe,9405,1.6,2,False,jaffe r
+2018_MD_Governor_DEM,DEM,James Jones,9188,1.6,2,False,jones j
+2018_MD_Senate_DEM,DEM,Ben Cardin,447441,79.24,1,True,cardin b
+2018_MD_Senate_DEM,DEM,Chelsea Manning,34611,6.13,1,False,manning c
+2018_MD_Senate_DEM,DEM,Jerome Segal,20027,3.55,1,False,segal j
+2018_MD_Senate_DEM,DEM,Debbie Wilson,18953,3.36,1,False,wilson d
+2018_MD_Senate_DEM,DEM,Marcia H. Morgan,16047,2.84,1,False,morgan m
+2018_MD_Senate_DEM,DEM,Lih Young,9874,1.75,1,False,young l
+2018_MD_Senate_DEM,DEM,Richard Vaughn,9480,1.68,1,False,vaughn r
+2018_MD_Senate_DEM,DEM,Erik Jetmir,8259,1.46,1,False,jetmir e
+2018_MD_Senate_REP,REP,Tony Campbell,51426,29.22,2,True,campbell t
+2018_MD_Senate_REP,REP,Chris Chaffee,42328,24.05,2,False,chaffee c
+2018_MD_Senate_REP,REP,Christina J. Grigorian,30786,17.49,2,False,grigorian c
+2018_MD_Senate_REP,REP,John Graziani,15435,8.77,2,False,graziani j
+2018_MD_Senate_REP,REP,Blaine Taylor,8848,5.03,2,False,taylor b
+2018_MD_Senate_REP,REP,"Gerald I. Smith, Jr.",7564,4.3,2,False,smith g
+2018_MD_Senate_REP,REP,Brian Vaeth,5411,3.08,2,False,vaeth b
+2018_MD_Senate_REP,REP,Evan M. Cronhardt,4445,2.53,2,False,cronhardt e
+2018_MD_Senate_REP,REP,Bill Krehnbrink,3606,2.05,2,False,krehnbrink b
+2018_MD_Senate_REP,REP,Nnabu Eze,3442,1.96,2,False,eze n
+2018_MD_Senate_REP,REP,Albert Howard,2720,1.55,2,False,howard a
+2018_ME_Governor_REP,REP,Shawn Moody,53436,52.6,1,True,moody s
+2018_ME_Governor_REP,REP,Garrett Mason,21571,21.2,1,False,mason g
+2018_ME_Governor_REP,REP,Mary Mayhew,14034,13.8,1,False,mayhew m
+2018_ME_Governor_REP,REP,Blank ballots,7203,7.1,1,False,ballots b
+2018_ME_Governor_REP,REP,Ken Fredette,5341,5.3,1,False,fredette k
+2018_ME_Governor_DEM,DEM,Janet Mills,41735,33.1,2,True,mills j
+2018_ME_Governor_DEM,DEM,Adam Cote,35478,28.1,2,False,cote a
+2018_ME_Governor_DEM,DEM,Betsy Sweet,20767,16.5,2,False,sweet b
+2018_ME_Governor_DEM,DEM,Mark Eves,17887,14.2,2,False,eves m
+2018_ME_Governor_DEM,DEM,Mark Dion,5200,4.1,2,False,dion m
+2018_ME_Governor_DEM,DEM,Diane Russell,2728,2.2,2,False,russell d
+2018_ME_Governor_DEM,DEM,Donna Dion,1596,1.3,2,False,dion d
+2018_ME_Governor_DEM,DEM,Write-ins,748,0.6,2,False,ins w
+2018_MI_Governor_REP,REP,Bill Schuette,501959,50.7,1,True,schuette b
+2018_MI_Governor_REP,REP,Brian Calley,249185,25.2,1,False,calley b
+2018_MI_Governor_REP,REP,Patrick Colbeck,129646,13.1,1,False,colbeck p
+2018_MI_Governor_REP,REP,Jim Hines,108735,11.0,1,False,hines j
+2018_MI_Governor_DEM,DEM,Gretchen Whitmer,588436,52.0,2,True,whitmer g
+2018_MI_Governor_DEM,DEM,Abdul El-Sayed,342179,30.2,2,False,sayed a
+2018_MI_Governor_DEM,DEM,Shri Thanedar,200645,17.7,2,False,thanedar s
+2018_MI_Senate_DEM,DEM,Debbie Stabenow,1045450,100.0,1,True,stabenow d
+2018_MI_Senate_REP,REP,John James,518564,54.67,2,True,james j
+2018_MI_Senate_REP,REP,Sandy Pensler,429885,45.32,2,False,pensler s
+2018_MN_Governor_REP,REP,Jeff Johnson,168841,52.61,2,True,johnson j
+2018_MN_Governor_REP,REP,Tim Pawlenty,140743,43.86,2,False,pawlenty t
+2018_MN_Governor_REP,REP,Mathew Kruse,11330,3.53,2,False,kruse m
+2018_MO_Senate_DEM,DEM,Claire McCaskill,501872,82.6,1,True,mccaskill c
+2018_MO_Senate_DEM,DEM,Carla Wright,41126,6.77,1,False,wright c
+2018_MO_Senate_DEM,DEM,John Hogan,15984,2.63,1,False,hogan j
+2018_MO_Senate_DEM,DEM,David Faust,15958,2.63,1,False,faust d
+2018_MO_Senate_DEM,DEM,Angelica Earl,15500,2.55,1,False,earl a
+2018_MO_Senate_DEM,DEM,Travis Gonzalez,9480,1.56,1,False,gonzalez t
+2018_MO_Senate_DEM,DEM,Leonard Steinman,7657,1.26,1,False,steinman l
+2018_MO_Senate_REP,REP,Josh Hawley,389878,58.64,2,True,hawley j
+2018_MO_Senate_REP,REP,Tony Monetti,64834,9.75,2,False,monetti t
+2018_MO_Senate_REP,REP,Austin Petersen,54916,8.26,2,False,petersen a
+2018_MO_Senate_REP,REP,Kristi Nichols,49640,7.47,2,False,nichols k
+2018_MO_Senate_REP,REP,Christina Smith,35024,5.27,2,False,smith c
+2018_MO_Senate_REP,REP,Ken Patterson,19579,2.95,2,False,patterson k
+2018_MO_Senate_REP,REP,Peter Pfeifer,16594,2.5,2,False,pfeifer p
+2018_MO_Senate_REP,REP,Courtland Sykes,13870,2.09,2,False,sykes c
+2018_MO_Senate_REP,REP,Fred Ryman,8781,1.32,2,False,ryman f
+2018_MO_Senate_REP,REP,Brian Hagg,6871,1.03,2,False,hagg b
+2018_MO_Senate_REP,REP,Bradley Krembs,4902,0.74,2,False,krembs b
+2018_MS_Senate_REP,REP,Roger Wicker,130118,82.79,1,True,wicker r
+2018_MS_Senate_REP,REP,Richard Boyanton,27052,17.21,1,False,boyanton r
+2018_MS_Senate_DEM,DEM,David Baria,44156,58.64,3,True,baria d
+2018_MS_Senate_DEM,DEM,Howard Sherman,31149,41.36,3,False,sherman h
+2018_MT_Senate_DEM,DEM,Jon Tester,114948,100.0,1,True,tester j
+2018_MT_Senate_REP,REP,Matt Rosendale,51859,33.82,2,True,rosendale m
+2018_MT_Senate_REP,REP,Russ Fagg,43465,28.34,2,False,fagg r
+2018_MT_Senate_REP,REP,Troy Downing,29341,19.13,2,False,downing t
+2018_MT_Senate_REP,REP,Al Olszewski,28681,18.7,2,False,olszewski a
+2018_ND_Senate_REP,REP,Kevin Cramer,61529,87.73,2,True,cramer k
+2018_ND_Senate_REP,REP,Thomas O'Neill,8509,12.13,2,False,neill t
+2018_ND_Senate_REP,REP,Write-ins,95,0.14,2,False,ins w
+2018_NM_Governor_REP,REP,Steve Pearce,75162,100.0,1,True,pearce s
+2018_NM_Governor_DEM,DEM,Michelle Lujan Grisham,116754,66.38,2,True,grisham m
+2018_NM_Governor_DEM,DEM,Jeff Apodaca,38975,22.16,2,False,apodaca j
+2018_NM_Governor_DEM,DEM,Joe Cervantes,20169,11.47,2,False,cervantes j
+2018_NV_Governor_REP,REP,Adam Laxalt,101651,71.49,1,True,laxalt a
+2018_NV_Governor_REP,REP,Dan Schwartz,12919,9.09,1,False,schwartz d
+2018_NV_Governor_REP,REP,Jared Fisher,6696,4.71,1,False,fisher j
+2018_NV_Governor_REP,REP,Stephanie Carlisle,6401,4.5,1,False,carlisle s
+2018_NV_Governor_REP,REP,William Boyd,6028,4.24,1,False,boyd w
+2018_NV_Governor_REP,REP,Stan Lusak,1011,0.71,1,False,lusak s
+2018_NV_Governor_REP,REP,Frederick Conquest,766,0.54,1,False,conquest f
+2018_NV_Governor_REP,REP,Edward Dundas,576,0.41,1,False,dundas e
+2018_NV_Governor_DEM,DEM,Steve Sisolak,72749,50.03,2,True,sisolak s
+2018_NV_Governor_DEM,DEM,Chris Giunchigliani,56511,38.86,2,False,giunchigliani c
+2018_NV_Governor_DEM,DEM,John Bonaventura,4351,2.99,2,False,bonaventura j
+2018_NV_Governor_DEM,DEM,Henry Thorns,2761,1.9,2,False,thorns h
+2018_NV_Governor_DEM,DEM,David Jones,2511,1.73,2,False,jones d
+2018_NV_Governor_DEM,DEM,Asheesh Dewan,1468,1.01,2,False,dewan a
+2018_NV_Senate_REP,REP,Dean Heller,99509,69.97,1,True,heller d
+2018_NV_Senate_REP,REP,Tom Heck,26296,18.49,1,False,heck t
+2018_NV_Senate_REP,REP,None of These Candidates,5978,4.2,1,False,candidates n
+2018_NV_Senate_REP,REP,Sherry Brooks,5145,3.62,1,False,brooks s
+2018_NV_Senate_REP,REP,Sarah Gazala,4011,2.82,1,False,gazala s
+2018_NV_Senate_REP,REP,Vic Harrell,1282,0.9,1,False,harrell v
+2018_NV_Senate_DEM,DEM,Jacky Rosen,110567,77.11,2,True,rosen j
+2018_NV_Senate_DEM,DEM,None of These Candidates,10078,7.03,2,False,candidates n
+2018_NV_Senate_DEM,DEM,David Knight,6346,4.43,2,False,knight d
+2018_NV_Senate_DEM,DEM,Allen Rheinhart,4782,3.33,2,False,rheinhart a
+2018_NV_Senate_DEM,DEM,Jesse Sbaih,4540,3.17,2,False,sbaih j
+2018_NV_Senate_DEM,DEM,Bobby Mahendra,3835,2.67,2,False,mahendra b
+2018_NV_Senate_DEM,DEM,Danny Burleigh,3244,2.26,2,False,burleigh d
+2018_NY_Governor_DEM,DEM,Kathy Hochul,733591,53.3,2,True,hochul k
+2018_NY_Governor_DEM,DEM,Jumaane Williams,641633,46.7,2,False,williams j
+2018_OH_Governor_REP,REP,Mike DeWine,499639,59.84,1,True,dewine m
+2018_OH_Governor_REP,REP,Mary Taylor,335328,40.16,1,False,taylor m
+2018_OH_Governor_DEM,DEM,Richard Cordray,428159,62.16,2,True,cordray r
+2018_OH_Governor_DEM,DEM,Dennis Kucinich,158284,22.98,2,False,kucinich d
+2018_OH_Governor_DEM,DEM,Joe Schiavoni,63131,9.17,2,False,schiavoni j
+2018_OH_Governor_DEM,DEM,Bill O'Neill,22667,3.29,2,False,neill b
+2018_OH_Governor_DEM,DEM,Paul Ray Jerry Schroeder,9536,1.38,2,False,schroeder p
+2018_OH_Governor_DEM,DEM,Larry Ealy Jeffrey Lynn,7011,1.02,2,False,lynn l
+2018_OH_Senate_DEM,DEM,Sherrod Brown,613373,100.0,1,True,brown s
+2018_OH_Senate_REP,REP,Jim Renacci,363622,47.34,2,True,renacci j
+2018_OH_Senate_REP,REP,Mike Gibbons,243426,31.69,2,False,gibbons m
+2018_OH_Senate_REP,REP,Melissa Ackison,100543,13.09,2,False,ackison m
+2018_OH_Senate_REP,REP,Dan Kiley,30684,3.99,2,False,kiley d
+2018_OH_Senate_REP,REP,Don Eckhart,29796,3.88,2,False,eckhart d
+2018_OK_Governor_REP,REP,Kevin Stitt,164892,54.56,2,True,stitt k
+2018_OK_Governor_REP,REP,Mick Cornett,137316,45.44,2,False,cornett m
+2018_OK_Governor_DEM,DEM,Drew Edmondson,242764,61.4,3,True,edmondson d
+2018_OK_Governor_DEM,DEM,Connie Johnson,152730,38.6,3,False,johnson c
+2018_OR_Governor_DEM,DEM,Kate Brown,324541,81.9,1,True,brown k
+2018_OR_Governor_DEM,DEM,Ed Jones,33464,8.4,1,False,jones e
+2018_OR_Governor_DEM,DEM,Candace Neville,29110,7.4,1,False,neville c
+2018_OR_Governor_DEM,DEM,Write-ins,8912,2.3,1,False,ins w
+2018_OR_Governor_REP,REP,Knute Buehler,144103,45.9,2,True,buehler k
+2018_OR_Governor_REP,REP,Sam Carpenter,90572,28.8,2,False,carpenter s
+2018_OR_Governor_REP,REP,Greg C. Wooldridge,63049,20.1,2,False,wooldridge g
+2018_OR_Governor_REP,REP,Bruce Cuff,4857,1.5,2,False,cuff b
+2018_OR_Governor_REP,REP,Jeff Smith,4691,1.5,2,False,smith j
+2018_OR_Governor_REP,REP,David Stauffer,2096,0.7,2,False,stauffer d
+2018_OR_Governor_REP,REP,Write-ins,1701,0.5,2,False,ins w
+2018_OR_Governor_REP,REP,Jonathan Edwards III,861,0.3,2,False,edwards j
+2018_OR_Governor_REP,REP,Keenan Bohach,787,0.3,2,False,bohach k
+2018_OR_Governor_REP,REP,Brett Hyland,755,0.2,2,False,hyland b
+2018_OR_Governor_REP,REP,Jack W. Tacy,512,0.2,2,False,tacy j
+2018_PA_Governor_DEM,DEM,John Fetterman,288229,38.0,2,True,fetterman j
+2018_PA_Governor_DEM,DEM,Nina Ahmad,182309,23.8,2,False,ahmad n
+2018_PA_Governor_DEM,DEM,Kathi Cozzone,142410,18.6,2,False,cozzone k
+2018_PA_Governor_DEM,DEM,Mike Stack,127259,16.6,2,False,stack m
+2018_PA_Governor_DEM,DEM,Ray Sosa,27427,3.6,2,False,sosa r
+2018_PA_Governor_REP,REP,Jeff Bartos,317619,46.8,4,True,bartos j
+2018_PA_Governor_REP,REP,Kathy Coder,147805,21.8,4,False,coder k
+2018_PA_Governor_REP,REP,Diana Irey Vaughan,119400,17.6,4,False,vaughan d
+2018_PA_Governor_REP,REP,Peg Luksik,93667,13.8,4,False,luksik p
+2018_PA_Senate_REP,REP,Lou Barletta,433312,63.03,2,True,barletta l
+2018_PA_Senate_REP,REP,Jim Christiana,254118,36.97,2,False,christiana j
+2018_RI_Governor_DEM,DEM,Gina Raimondo,66978,57.1,1,True,raimondo g
+2018_RI_Governor_DEM,DEM,Matt Brown,39300,33.5,1,False,brown m
+2018_RI_Governor_DEM,DEM,Spencer Dickinson,10926,9.3,1,False,dickinson s
+2018_RI_Governor_REP,REP,Allan Fung,18577,56.4,2,True,fung a
+2018_RI_Governor_REP,REP,Patricia Morgan,13208,40.1,2,False,morgan p
+2018_RI_Governor_REP,REP,Giovanni Feroce,1147,3.5,2,False,feroce g
+2018_RI_Senate_DEM,DEM,Sheldon Whitehouse,89140,76.79,1,True,whitehouse s
+2018_RI_Senate_DEM,DEM,Patricia J. Fontes,26947,23.21,1,False,fontes p
+2018_RI_Senate_REP,REP,Robert G. Flanders Jr.,26543,87.7,2,True,flanders r
+2018_RI_Senate_REP,REP,"Roque ""Rocky"" De La Fuente",3722,12.3,2,False,fuente r
+2018_SC_Governor_REP,REP,Henry McMaster,184286,53.63,2,True,mcmaster h
+2018_SC_Governor_REP,REP,John Warren,159349,46.37,2,False,warren j
+2018_SC_Governor_DEM,DEM,James Smith,148633,61.81,3,True,smith j
+2018_SC_Governor_DEM,DEM,Marguerite Willis,66248,27.55,3,False,willis m
+2018_SC_Governor_DEM,DEM,Phil Noble,25587,10.64,3,False,noble p
+2018_SD_Governor_REP,REP,Kristi Noem,57437,56.0,1,True,noem k
+2018_SD_Governor_REP,REP,Marty Jackley,45069,44.0,1,False,jackley m
+2018_TN_Governor_REP,REP,Bill Lee,291414,36.75,1,True,lee b
+2018_TN_Governor_REP,REP,Randy Boyd,193054,24.35,1,False,boyd r
+2018_TN_Governor_REP,REP,Diane Black,182457,23.01,1,False,black d
+2018_TN_Governor_REP,REP,Beth Harwell,121484,15.32,1,False,harwell b
+2018_TN_Governor_REP,REP,Kay White,3215,0.41,1,False,white k
+2018_TN_Governor_REP,REP,Basil Marceaux,1264,0.16,1,False,marceaux b
+2018_TN_Governor_DEM,DEM,Karl Dean,280553,75.14,2,True,dean k
+2018_TN_Governor_DEM,DEM,Craig Fitzhugh,72553,23.42,2,False,fitzhugh c
+2018_TN_Governor_DEM,DEM,Mezianne Vale Payne,20284,5.44,2,False,payne m
+2018_TN_Senate_REP,REP,Marsha Blackburn,613513,84.48,1,True,blackburn m
+2018_TN_Senate_REP,REP,Aaron Pettigrew,112705,15.52,1,False,pettigrew a
+2018_TN_Senate_DEM,DEM,Phil Bredesen,349718,91.51,2,True,bredesen p
+2018_TN_Senate_DEM,DEM,Gary Davis,20170,5.28,2,False,davis g
+2018_TN_Senate_DEM,DEM,John Wolfe Jr.,12269,3.21,2,False,wolfe j
+2018_TX_Governor_REP,REP,Greg Abbott,1392310,90.38,1,True,abbott g
+2018_TX_Governor_REP,REP,Barbara Krueger,127549,8.28,1,False,krueger b
+2018_TX_Governor_REP,REP,Larry Kilgore,20504,1.33,1,False,kilgore l
+2018_TX_Governor_DEM,DEM,Lupe Valdez,227577,53.1,3,True,valdez l
+2018_TX_Governor_DEM,DEM,Andrew White,201356,46.9,3,False,white a
+2018_TX_Senate_REP,REP,Ted Cruz,1322724,85.36,1,True,cruz t
+2018_TX_Senate_REP,REP,Mary Miller,94715,6.11,1,False,miller m
+2018_TX_Senate_REP,REP,Bruce Jacobson Jr.,64791,4.18,1,False,jacobson b
+2018_TX_Senate_REP,REP,Stefano de Stefano,44456,2.87,1,False,stefano
+2018_TX_Senate_REP,REP,Geraldine Sam,22887,1.48,1,False,sam g
+2018_TX_Senate_DEM,DEM,Beto O'Rourke,644632,61.81,2,True,rourke b
+2018_TX_Senate_DEM,DEM,Sema Hernandez,247424,23.72,2,False,hernandez s
+2018_TX_Senate_DEM,DEM,Edward Kimbrough,150858,14.47,2,False,kimbrough e
+2018_UT_Senate_REP,REP,Mitt Romney,240021,71.27,1,True,romney m
+2018_UT_Senate_REP,REP,Mike Kennedy,96771,28.73,1,False,kennedy m
+2018_VA_Senate_REP,REP,Corey Stewart,136610,44.87,1,True,stewart c
+2018_VA_Senate_REP,REP,Nick Freitas,131321,43.14,1,False,freitas n
+2018_VA_Senate_REP,REP,"Earl Jackson, Sr.",36508,11.99,1,False,jackson e
+2018_WI_Governor_REP,REP,Scott Walker,417276,91.54,1,True,walker s
+2018_WI_Governor_REP,REP,Robert Meyer,38269,8.4,1,False,meyer r
+2018_WI_Governor_REP,REP,Ryan Carson,11,0.0,1,False,carson r
+2018_WI_Governor_REP,REP,Adams Nicholas Paul,7,0.0,1,False,paul a
+2018_WI_Governor_REP,REP,Scattering,267,0.06,1,False,scattering
+2018_WI_Governor_DEM,DEM,Tony Evers,225082,41.77,2,True,evers t
+2018_WI_Governor_DEM,DEM,Mahlon Mitchell,87926,16.32,2,False,mitchell m
+2018_WI_Governor_DEM,DEM,Kelda Helen Roys,69086,12.82,2,False,roys k
+2018_WI_Governor_DEM,DEM,Kathleen Vinehout,44168,8.2,2,False,vinehout k
+2018_WI_Governor_DEM,DEM,Mike McCabe,39885,7.4,2,False,mccabe m
+2018_WI_Governor_DEM,DEM,Matt Flynn,31580,5.86,2,False,flynn m
+2018_WI_Governor_DEM,DEM,Paul Soglin,28158,5.23,2,False,soglin p
+2018_WI_Governor_DEM,DEM,Andy Gronik,6627,1.23,2,False,gronik a
+2018_WI_Governor_DEM,DEM,Dana Wachs,4216,0.78,2,False,wachs d
+2018_WI_Governor_DEM,DEM,Josh Pade,1908,0.35,2,False,pade j
+2018_WI_Governor_DEM,DEM,Paul Boucher,10,0.0,2,False,boucher p
+2018_WI_Governor_DEM,DEM,Scattering,211,0.11,2,False,scattering
+2018_WI_Senate_DEM,DEM,Tammy Baldwin,510812,99.64,1,True,baldwin t
+2018_WI_Senate_REP,REP,Leah Vukmir,217230,48.9,2,True,vukmir l
+2018_WI_Senate_REP,REP,Kevin Nicholson,191276,43.06,2,False,nicholson k
+2018_WI_Senate_REP,REP,George Lucia,18786,4.23,2,False,lucia g
+2018_WI_Senate_REP,REP,Griffin Jones,8699,1.96,2,False,jones g
+2018_WI_Senate_REP,REP,Charles Barman,7959,1.79,2,False,barman c
+2018_WV_Senate_DEM,DEM,Joe Manchin,112658,69.86,1,True,manchin j
+2018_WV_Senate_DEM,DEM,Paula Jean Swearengin,48594,30.14,1,False,swearengin p
+2018_WV_Senate_REP,REP,Patrick Morrisey,48007,34.9,2,True,morrisey p
+2018_WV_Senate_REP,REP,Evan Jenkins,40185,29.21,2,False,jenkins e
+2018_WV_Senate_REP,REP,Don Blankenship,27478,19.97,2,False,blankenship d
+2018_WV_Senate_REP,REP,Tom Willis,13540,9.84,2,False,willis t
+2018_WV_Senate_REP,REP,Bo Copley,4248,3.09,2,False,copley b
+2018_WV_Senate_REP,REP,Jack Newbrough,4115,2.99,2,False,newbrough j
+2018_WY_Governor_REP,REP,Mark Gordon,38951,33.0,1,True,gordon m
+2018_WY_Governor_REP,REP,Foster Friess,29842,25.3,1,False,friess f
+2018_WY_Governor_REP,REP,Harriet Hageman,25052,21.2,1,False,hageman h
+2018_WY_Governor_REP,REP,Sam Galeotos,14554,12.3,1,False,galeotos s
+2018_WY_Governor_REP,REP,Taylor Haynes,6511,5.5,1,False,haynes t
+2018_WY_Governor_REP,REP,Bill Dahlin,1763,1.5,1,False,dahlin b
+2018_WY_Governor_REP,REP,Write-ins,113,0.0,1,False,ins w
+2018_WY_Governor_DEM,DEM,Mary Throne,12948,66.5,2,True,throne m
+2018_WY_Governor_DEM,DEM,Michael Green,2391,12.3,2,False,green m
+2018_WY_Governor_DEM,DEM,Kenneth Casner,1213,6.2,2,False,casner k
+2018_WY_Governor_DEM,DEM,Rex Wilde,1201,6.2,2,False,wilde r
+2018_WY_Governor_DEM,DEM,Write-ins,323,1.7,2,False,ins w
+2019_KY_Governor_REP,REP,Matt Bevin,136060,52.4,1,True,bevin m
+2019_KY_Governor_REP,REP,Robert Goforth,101343,39.0,1,False,goforth r
+2019_KY_Governor_REP,REP,William Woods,14004,5.4,1,False,woods w
+2019_KY_Governor_REP,REP,Ike Lawrence,8447,3.3,1,False,lawrence i
+2019_KY_Governor_DEM,DEM,Andy Beshear,149438,37.9,2,True,beshear a
+2019_KY_Governor_DEM,DEM,Rocky Adkins,125970,31.9,2,False,adkins r
+2019_KY_Governor_DEM,DEM,Adam Edelen,110159,27.9,2,False,edelen a
+2019_KY_Governor_DEM,DEM,Geoff Young,8923,2.3,2,False,young g
+2019_MS_Governor_REP,REP,Tate Reeves,179623,54.1,2,True,reeves t
+2019_MS_Governor_REP,REP,Bill Waller Jr.,152201,45.9,2,False,waller b
+2019_MS_Governor_DEM,DEM,Jim Hood,208634,69.0,3,True,hood j
+2019_MS_Governor_DEM,DEM,Michael Brown,33247,11.0,3,False,brown m
+2019_MS_Governor_DEM,DEM,Velesha Williams,20844,6.9,3,False,williams v
+2019_MS_Governor_DEM,DEM,Robert Shuler Smith,20395,6.7,3,False,smith r
+2019_MS_Governor_DEM,DEM,Robert Ray,5609,1.8,3,False,ray r
+2019_MS_Governor_DEM,DEM,William Bond Compton Jr.,5321,1.8,3,False,compton w
+2019_MS_Governor_DEM,DEM,Albert Wilson,5122,1.7,3,False,wilson a
+2019_MS_Governor_DEM,DEM,Gregory Wash,3218,1.1,3,False,wash g
+2020_AL_Senate_REP,REP,Tommy Tuberville,334675,60.73,2,True,tuberville t
+2020_AL_Senate_REP,REP,Jeff Sessions,216452,39.27,2,False,sessions j
+2020_CO_Senate_REP,REP,Cory Gardner,554806,100.0,1,True,gardner c
+2020_CO_Senate_DEM,DEM,John Hickenlooper,585826,58.65,3,True,hickenlooper j
+2020_CO_Senate_DEM,DEM,Andrew Romanoff,412955,41.35,3,False,romanoff a
+2020_DE_Senate_DEM,DEM,Chris Coons,87332,72.85,1,True,coons c
+2020_DE_Senate_DEM,DEM,Jessica Scarane,32547,27.15,1,False,scarane j
+2020_DE_Senate_REP,REP,Lauren Witzke,30702,56.89,2,True,witzke l
+2020_DE_Senate_REP,REP,James DeMartino,23266,43.11,2,False,demartino j
+2020_GA_Senate_REP,REP,David Perdue,992555,100.0,1,True,perdue d
+2020_GA_Senate_DEM,DEM,Jon Ossoff,626819,52.82,2,True,ossoff j
+2020_GA_Senate_DEM,DEM,Teresa Tomlinson,187416,15.79,2,False,tomlinson t
+2020_GA_Senate_DEM,DEM,Sarah Riggs Amico,139574,11.76,2,False,amico s
+2020_GA_Senate_DEM,DEM,Maya Dillard-Smith,105000,8.85,2,False,smith m
+2020_GA_Senate_DEM,DEM,James Knox,49452,4.17,2,False,knox j
+2020_GA_Senate_DEM,DEM,Marckeith DeJesus,45936,3.87,2,False,dejesus m
+2020_GA_Senate_DEM,DEM,Tricia Carpenter McCracken,32463,2.74,2,False,mccracken t
+2020_KS_Senate_REP,REP,Roger Marshall,167800,40.28,1,True,marshall r
+2020_KS_Senate_REP,REP,Kris Kobach,108726,26.1,1,False,kobach k
+2020_KS_Senate_REP,REP,Bob Hamilton,77952,18.71,1,False,hamilton b
+2020_KS_Senate_REP,REP,Dave Lindstrom,27451,6.59,1,False,lindstrom d
+2020_KS_Senate_REP,REP,Steve Roberts,8141,1.95,1,False,roberts s
+2020_KS_Senate_REP,REP,Brian Matlock,7083,1.7,1,False,matlock b
+2020_KS_Senate_REP,REP,Lance Berland,6404,1.54,1,False,berland l
+2020_KS_Senate_REP,REP,John Miller,4431,1.06,1,False,miller j
+2020_KS_Senate_REP,REP,Derek Ellis,3970,0.95,1,False,ellis d
+2020_KS_Senate_REP,REP,Gabriel Robles,3744,0.9,1,False,robles g
+2020_KS_Senate_REP,REP,John Berman,861,0.21,1,False,berman j
+2020_KS_Senate_DEM,DEM,Barbara Bollier,168759,85.34,2,True,bollier b
+2020_KS_Senate_DEM,DEM,Robert Tillman,28997,14.66,2,False,tillman r
+2020_KY_Senate_REP,REP,Mitch McConnell,342660,82.8,1,True,mcconnell m
+2020_KY_Senate_REP,REP,C. Wesley Morgan,25588,6.18,1,False,morgan c
+2020_KY_Senate_REP,REP,Louis Grider,13771,3.33,1,False,grider l
+2020_KY_Senate_REP,REP,Paul John Frangedakis,11957,2.89,1,False,frangedakis p
+2020_KY_Senate_REP,REP,Neren James,10693,2.58,1,False,james n
+2020_KY_Senate_REP,REP,Kenneth Lowndes,5548,1.34,1,False,lowndes k
+2020_KY_Senate_REP,REP,Nicholas Alsager,3603,0.87,1,False,alsager n
+2020_KY_Senate_DEM,DEM,Amy McGrath,247037,45.41,2,True,mcgrath a
+2020_KY_Senate_DEM,DEM,Charles Booker,231888,42.62,2,False,booker c
+2020_KY_Senate_DEM,DEM,Mike Broihier,27175,4.99,2,False,broihier m
+2020_KY_Senate_DEM,DEM,Mary Ann Tobin,11108,2.04,2,False,tobin m
+2020_KY_Senate_DEM,DEM,Maggie Joe Hilliard,6224,1.14,2,False,hilliard m
+2020_KY_Senate_DEM,DEM,Andrew Maynard,5974,1.1,2,False,maynard a
+2020_KY_Senate_DEM,DEM,Bennie J. Smith,5040,0.93,2,False,smith b
+2020_KY_Senate_DEM,DEM,Jimmy Ausbrooks,3629,0.67,2,False,ausbrooks j
+2020_KY_Senate_DEM,DEM,Eric Rothmuller,2995,0.55,2,False,rothmuller e
+2020_KY_Senate_DEM,DEM,John R. Sharpensteen,2992,0.55,2,False,sharpensteen j
+2020_MA_Senate_DEM,DEM,Ed Markey,782694,55.35,1,True,markey e
+2020_MA_Senate_DEM,DEM,Joe Kennedy III,629359,44.51,1,False,kennedy j
+2020_MA_Senate_DEM,DEM,Write-ins,1935,0.14,1,False,ins w
+2020_MA_Senate_REP,REP,Kevin O'Connor,158590,59.71,2,True,connor k
+2020_MA_Senate_REP,REP,Shiva Ayyadurai,104782,39.45,2,False,ayyadurai s
+2020_MA_Senate_REP,REP,Write-ins,2245,0.84,2,False,ins w
+2020_ME_Senate_REP,REP,Susan Collins,87375,98.79,1,True,collins s
+2020_ME_Senate_REP,REP,Amy Colter,1073,1.21,1,False,colter a
+2020_ME_Senate_DEM,DEM,Sara Gideon,116264,71.47,2,True,gideon s
+2020_ME_Senate_DEM,DEM,Betsy Sweet,37327,22.94,2,False,sweet b
+2020_ME_Senate_DEM,DEM,Bre Kidman,9090,5.59,2,False,kidman b
+2020_MI_Senate_DEM,DEM,Gary Peters,1180780,100.0,1,True,peters g
+2020_MI_Senate_REP,REP,John James,1005315,100.0,2,True,james j
+2020_MT_Governor_DEM,DEM,Mike Cooney,81527,54.86,1,True,cooney m
+2020_MT_Governor_DEM,DEM,Whitney Williams,67066,45.14,1,False,williams w
+2020_MT_Governor_REP,REP,Greg Gianforte,119247,53.44,2,True,gianforte g
+2020_MT_Governor_REP,REP,Tim Fox,60823,27.26,2,False,fox t
+2020_MT_Governor_REP,REP,Albert Olszewski,43080,19.3,2,False,olszewski a
+2020_NC_Governor_DEM,DEM,Roy Cooper,1128829,87.19,1,True,cooper r
+2020_NC_Governor_DEM,DEM,Ernest T. Reeves,165804,12.81,1,False,reeves e
+2020_NC_Governor_REP,REP,Dan Forest,698077,88.95,2,True,forest d
+2020_NC_Governor_REP,REP,Holly Grange,86714,11.05,2,False,grange h
+2020_NC_Senate_REP,REP,Thom Tillis,608943,78.08,1,True,tillis t
+2020_NC_Senate_REP,REP,Paul Wright,58908,7.55,1,False,wright p
+2020_NC_Senate_REP,REP,Larry Holmquist,57356,7.35,1,False,holmquist l
+2020_NC_Senate_REP,REP,Sharon Y. Hudson,54651,7.01,1,False,hudson s
+2020_NC_Senate_DEM,DEM,Cal Cunningham,717941,56.93,2,True,cunningham c
+2020_NC_Senate_DEM,DEM,Erica D. Smith,438969,34.81,2,False,smith e
+2020_NC_Senate_DEM,DEM,Trevor M. Fuller,48168,3.82,2,False,fuller t
+2020_NC_Senate_DEM,DEM,Steve Swenson,33741,2.68,2,False,swenson s
+2020_NC_Senate_DEM,DEM,Atul Goel,22226,1.76,2,False,goel a
+2020_NE_Senate_REP,REP,Ben Sasse,215207,75.21,1,True,sasse b
+2020_NE_Senate_REP,REP,Matt Innis,70921,24.79,1,False,innis m
+2020_NE_Senate_DEM,DEM,Chris Janicek,46247,30.69,2,True,janicek c
+2020_NE_Senate_DEM,DEM,Angie Philips,35929,23.84,2,False,philips a
+2020_NE_Senate_DEM,DEM,Alisha Shelton,34284,22.75,2,False,shelton a
+2020_NE_Senate_DEM,DEM,Andy Stock,17156,11.38,2,False,stock a
+2020_NE_Senate_DEM,DEM,Larry Marvin,6868,4.56,2,False,marvin l
+2020_NE_Senate_DEM,DEM,Daniel Wik,5765,3.83,2,False,wik d
+2020_NE_Senate_DEM,DEM,Dennis Macek,4453,2.95,2,False,macek d
+2020_NM_Senate_DEM,DEM,Ben Ray Luján,225082,100.0,1,True,lujan b
+2020_NM_Senate_REP,REP,Mark Ronchetti,89216,56.49,2,True,ronchetti m
+2020_NM_Senate_REP,REP,Elisa Martinez,41240,26.11,2,False,martinez e
+2020_NM_Senate_REP,REP,Gavin Clarkson,27471,17.39,2,False,clarkson g
+2020_SC_Senate_REP,REP,Lindsey Graham,317512,67.69,1,True,graham l
+2020_SC_Senate_REP,REP,Michael LaPierre,79932,17.04,1,False,lapierre m
+2020_SC_Senate_REP,REP,Joe Reynolds,43029,9.17,1,False,reynolds j
+2020_SC_Senate_REP,REP,"Dwayne ""Duke"" Buckner",28570,6.09,1,False,buckner d
+2020_TN_Senate_REP,REP,Bill Hagerty,331267,50.75,1,True,hagerty b
+2020_TN_Senate_REP,REP,Manny Sethi,257223,39.41,1,False,sethi m
+2020_TN_Senate_REP,REP,"George Flinn, Jr.",22454,3.44,1,False,flinn g
+2020_TN_Senate_REP,REP,Jon Henry,8104,1.24,1,False,henry j
+2020_TN_Senate_REP,REP,Natisha Brooks,8072,1.24,1,False,brooks n
+2020_TN_Senate_REP,REP,Byron Bush,5420,0.83,1,False,bush b
+2020_TN_Senate_REP,REP,Clifford Adkins,5316,0.81,1,False,adkins c
+2020_TN_Senate_REP,REP,Terry Dicus,2279,0.35,1,False,dicus t
+2020_TN_Senate_REP,REP,"Tom Emerson, Jr.",2252,0.35,1,False,emerson t
+2020_TN_Senate_REP,REP,David Schuster,2045,0.31,1,False,schuster d
+2020_TN_Senate_REP,REP,John Osborne,1877,0.29,1,False,osborne j
+2020_TN_Senate_REP,REP,Roy Dale Cope,1791,0.27,1,False,cope r
+2020_TN_Senate_REP,REP,Kent Morrell,1769,0.27,1,False,morrell k
+2020_TN_Senate_REP,REP,Aaron Pettigrew,1622,0.25,1,False,pettigrew a
+2020_TN_Senate_REP,REP,"Glen Neal, Jr.",1233,0.19,1,False,neal g
+2020_TN_Senate_DEM,DEM,Marquita Bradshaw,117962,35.51,2,True,bradshaw m
+2020_TN_Senate_DEM,DEM,Robin Kimbrough Hayes,88492,26.64,2,False,hayes r
+2020_TN_Senate_DEM,DEM,James Mackler,78966,23.77,2,False,mackler j
+2020_TN_Senate_DEM,DEM,Gary G. Davis,30758,9.26,2,False,davis g
+2020_TN_Senate_DEM,DEM,Mark Pickrell,16045,4.83,2,False,pickrell m
+2020_TX_Senate_REP,REP,John Cornyn,1470669,76.04,1,True,cornyn j
+2020_TX_Senate_REP,REP,Dwayne Stovall,231104,11.95,1,False,stovall d
+2020_TX_Senate_REP,REP,Mark Yancey,124864,6.46,1,False,yancey m
+2020_TX_Senate_REP,REP,John Anthony Castro,86916,4.49,1,False,castro j
+2020_TX_Senate_REP,REP,Virgil Bierschwale,20494,1.06,1,False,bierschwale v
+2020_TX_Senate_DEM,DEM,MJ Hegar,502516,52.24,3,True,hegar m
+2020_TX_Senate_DEM,DEM,Royce West,459457,47.76,3,False,west r
+2020_UT_Governor_REP,REP,Spencer Cox,190565,36.15,2,True,cox s
+2020_UT_Governor_REP,REP,Jon Huntsman Jr.,184246,34.95,2,False,huntsman j
+2020_UT_Governor_REP,REP,Greg Hughes,110835,21.02,2,False,hughes g
+2020_UT_Governor_REP,REP,Thomas Wright,41532,7.88,2,False,wright t
+2020_VA_Senate_REP,REP,Daniel Gade,208754,67.4,1,True,gade d
+2020_VA_Senate_REP,REP,Alissa Baldwin,56165,18.13,1,False,baldwin a
+2020_VA_Senate_REP,REP,Thomas Speciale,44795,14.46,1,False,speciale t
+2020_WV_Governor_REP,REP,Jim Justice,133258,62.7,1,True,justice j
+2020_WV_Governor_REP,REP,Woody Thrasher,38898,18.3,1,False,thrasher w
+2020_WV_Governor_REP,REP,Michael Folk,26735,12.58,1,False,folk m
+2020_WV_Governor_REP,REP,Doug Six,4429,2.08,1,False,six d
+2020_WV_Governor_REP,REP,Brooke Lunsford,3849,1.81,1,False,lunsford b
+2020_WV_Governor_REP,REP,Shelly Jean Fitzhugh,2799,1.32,1,False,fitzhugh s
+2020_WV_Governor_REP,REP,Chuck Sheedy,2552,1.2,1,False,sheedy c
+2020_WV_Governor_DEM,DEM,Ben Salango,74805,38.68,2,True,salango b
+2020_WV_Governor_DEM,DEM,Stephen Smith,65544,33.89,2,False,smith s
+2020_WV_Governor_DEM,DEM,Ron Stollings,25782,13.33,2,False,stollings r
+2020_WV_Governor_DEM,DEM,Jody Murphy,18039,9.33,2,False,murphy j
+2020_WV_Governor_DEM,DEM,Douglas Hughes,9231,4.77,2,False,hughes d
+2020_WY_Senate_REP,REP,Cynthia Lummis,63511,59.67,1,True,lummis c
+2020_WY_Senate_REP,REP,Robert Short,13473,12.66,1,False,short r
+2020_WY_Senate_REP,REP,Bryan Miller,10946,10.28,1,False,miller b
+2020_WY_Senate_REP,REP,Donna Rice,5881,5.53,1,False,rice d
+2020_WY_Senate_REP,REP,R. Mark Armstrong,3904,3.67,1,False,armstrong r
+2020_WY_Senate_REP,REP,Joshua Wheeler,3763,3.53,1,False,wheeler j
+2020_WY_Senate_REP,REP,John Holtz,1820,1.71,1,False,holtz j
+2020_WY_Senate_REP,REP,Devon Cade,1027,0.96,1,False,cade d
+2020_WY_Senate_REP,REP,Michael Kemler,985,0.93,1,False,kemler m
+2020_WY_Senate_REP,REP,Star Roselli,627,0.59,1,False,roselli s
+2020_WY_Senate_REP,REP,Write-ins,501,0.47,1,False,ins w
+2020_WY_Senate_DEM,DEM,Merav Ben-David,9584,40.28,2,True,david m
+2020_WY_Senate_DEM,DEM,Yana Ludwig,4931,20.73,2,False,ludwig y
+2020_WY_Senate_DEM,DEM,Nathan Wendt,4212,17.7,2,False,wendt n
+2020_WY_Senate_DEM,DEM,Kenneth Casner,2139,8.99,2,False,casner k
+2020_WY_Senate_DEM,DEM,Rex Wilde,1888,7.93,2,False,wilde r
+2020_WY_Senate_DEM,DEM,James DeBrine,865,3.64,2,False,debrine j
+2020_WY_Senate_DEM,DEM,Write-ins,173,0.73,2,False,ins w
+2021_VA_Governor_DEM,DEM,Terry McAuliffe,307367,62.1,1,True,mcauliffe t
+2021_VA_Governor_DEM,DEM,Jennifer Carroll Foy,98052,19.81,1,False,foy j
+2021_VA_Governor_DEM,DEM,Jennifer McClellan,58213,11.76,1,False,mcclellan j
+2021_VA_Governor_DEM,DEM,Justin Fairfax,17606,3.56,1,False,fairfax j
+2021_VA_Governor_DEM,DEM,Lee J. Carter,13694,2.77,1,False,carter l
+2022_AL_Governor_REP,REP,Kay Ivey,357069,54.45,1,True,ivey k
+2022_AL_Governor_REP,REP,Lynda Blanchard,126202,19.25,1,False,blanchard l
+2022_AL_Governor_REP,REP,Tim James,106181,16.19,1,False,james t
+2022_AL_Governor_REP,REP,Lew Burdette,42924,6.55,1,False,burdette l
+2022_AL_Governor_REP,REP,Dean Odle,11767,1.79,1,False,odle d
+2022_AL_Governor_REP,REP,Donald Trent Jones,3821,0.58,1,False,jones d
+2022_AL_Governor_REP,REP,Dave Thomas,2886,0.44,1,False,thomas d
+2022_AL_Governor_REP,REP,Stacy Lee George,2546,0.39,1,False,george s
+2022_AL_Governor_REP,REP,Dean Young,2356,0.36,1,False,young d
+2022_AL_Governor_DEM,DEM,Yolanda Rochelle Flowers,32529,55.14,3,True,flowers y
+2022_AL_Governor_DEM,DEM,Malika Sanders-Fortier,26469,44.86,3,False,fortier m
+2022_AL_Senate_REP,REP,Katie Britt,253251,63.02,2,True,britt k
+2022_AL_Senate_REP,REP,Mo Brooks,148636,36.98,2,False,brooks m
+2022_AL_Senate_DEM,DEM,Will Boyd,107588,63.72,3,True,boyd w
+2022_AL_Senate_DEM,DEM,Brandaun Dean,32863,19.46,3,False,dean b
+2022_AL_Senate_DEM,DEM,Lanny Jackson,28402,16.82,3,False,jackson l
+2022_AR_Governor_REP,REP,Sarah Huckabee Sanders,289249,83.14,1,True,sanders s
+2022_AR_Governor_REP,REP,"Francis ""Doc"" Washburn",58638,16.86,1,False,washburn f
+2022_AR_Governor_DEM,DEM,Chris Jones,66540,70.43,2,True,jones c
+2022_AR_Governor_DEM,DEM,Anthony Bland,9055,9.58,2,False,bland a
+2022_AR_Governor_DEM,DEM,Jay Martin,7731,8.18,2,False,martin j
+2022_AR_Governor_DEM,DEM,"James ""Rus"" Russell",6421,6.8,2,False,russell j
+2022_AR_Governor_DEM,DEM,Supha Xayprasith-Mays,4725,5.0,2,False,mays s
+2022_AR_Senate_REP,REP,John Boozman,201677,58.03,1,True,boozman j
+2022_AR_Senate_REP,REP,Jake Bequette,71809,20.66,1,False,bequette j
+2022_AR_Senate_REP,REP,Jan Morgan,65958,18.98,1,False,morgan j
+2022_AR_Senate_REP,REP,Heath Loftis,8112,2.33,1,False,loftis h
+2022_AR_Senate_DEM,DEM,Natalie James,49722,54.09,2,True,james n
+2022_AR_Senate_DEM,DEM,Dan Whitfield,28319,30.8,2,False,whitfield d
+2022_AR_Senate_DEM,DEM,Jack Foster,13891,15.11,2,False,foster j
+2022_AZ_Governor_REP,REP,Kari Lake,398860,47.97,1,True,lake k
+2022_AZ_Governor_REP,REP,Karrin Taylor Robson,358662,43.13,1,False,robson k
+2022_AZ_Governor_REP,REP,Matt Salmon,30704,3.69,1,False,salmon m
+2022_AZ_Governor_REP,REP,Scott Neely,25876,3.11,1,False,neely s
+2022_AZ_Governor_REP,REP,Paola Tulliani-Zen,17281,2.08,1,False,zen p
+2022_AZ_Governor_DEM,DEM,Katie Hobbs,431059,72.32,2,True,hobbs k
+2022_AZ_Governor_DEM,DEM,Marco A. López Jr.,136090,22.83,2,False,lopez m
+2022_AZ_Governor_DEM,DEM,Aaron Lieberman,28878,4.85,2,False,lieberman a
+2022_AZ_Senate_DEM,DEM,Mark Kelly,589400,100.0,1,True,kelly m
+2022_AZ_Senate_REP,REP,Blake Masters,327198,40.24,2,True,masters b
+2022_AZ_Senate_REP,REP,Jim Lamon,228467,28.1,2,False,lamon j
+2022_AZ_Senate_REP,REP,Mark Brnovich,144092,17.72,2,False,brnovich m
+2022_AZ_Senate_REP,REP,Michael McGuire,71100,8.75,2,False,mcguire m
+2022_AZ_Senate_REP,REP,Justin Olson,41985,5.16,2,False,olson j
+2022_CO_Senate_DEM,DEM,Michael Bennet,516985,100.0,1,True,bennet m
+2022_CO_Senate_REP,REP,Joe O'Dea,345060,54.44,2,True,dea j
+2022_CO_Senate_REP,REP,Ron Hanks,288483,45.51,2,False,hanks r
+2022_CO_Senate_REP,REP,Daniel Hendricks,302,0.05,2,False,hendricks d
+2022_CT_Senate_REP,REP,Leora Levy,46774,50.6,1,True,levy l
+2022_CT_Senate_REP,REP,Themis Klarides,37003,40.03,1,False,klarides t
+2022_CT_Senate_REP,REP,Peter Lumaj,8665,9.37,1,False,lumaj p
+2022_FL_Governor_DEM,DEM,Charlie Crist,904524,59.71,1,True,crist c
+2022_FL_Governor_DEM,DEM,"Nicole ""Nikki"" Fried",535480,35.35,1,False,fried n
+2022_FL_Governor_DEM,DEM,Cadance Daniel,38198,2.52,1,False,daniel c
+2022_FL_Governor_DEM,DEM,Robert L. Willis,36786,2.43,1,False,willis r
+2022_FL_Senate_DEM,DEM,Val Demings,1263706,84.3,1,True,demings v
+2022_FL_Senate_DEM,DEM,Brian Rush,94185,6.3,1,False,rush b
+2022_FL_Senate_DEM,DEM,William Sanchez,84576,5.6,1,False,sanchez w
+2022_FL_Senate_DEM,DEM,Ricardo De La Fuente,56749,3.8,1,False,fuente r
+2022_GA_Governor_REP,REP,Brian Kemp,888078,73.72,1,True,kemp b
+2022_GA_Governor_REP,REP,David Perdue,262389,21.78,1,False,perdue d
+2022_GA_Governor_REP,REP,Kandiss Taylor,41232,3.42,1,False,taylor k
+2022_GA_Governor_REP,REP,Catherine Davis,9778,0.81,1,False,davis c
+2022_GA_Governor_REP,REP,Tom Williams,3255,0.27,1,False,williams t
+2022_GA_Governor_DEM,DEM,Stacey Abrams,727168,100.0,2,True,abrams s
+2022_GA_Senate_DEM,DEM,Raphael Warnock,702610,96.04,1,True,warnock r
+2022_GA_Senate_DEM,DEM,Tamara Johnson-Shealey,28984,3.96,1,False,shealey t
+2022_GA_Senate_REP,REP,Herschel Walker,803560,68.18,2,True,walker h
+2022_GA_Senate_REP,REP,Gary Black,157370,13.35,2,False,black g
+2022_GA_Senate_REP,REP,Latham Saddler,104471,8.86,2,False,saddler l
+2022_GA_Senate_REP,REP,Josh Clark,46693,3.96,2,False,clark j
+2022_GA_Senate_REP,REP,Kelvin King,37930,3.22,2,False,king k
+2022_GA_Senate_REP,REP,Jonathan McColumn,28601,2.43,2,False,mccolumn j
+2022_HI_Governor_DEM,DEM,Josh Green,158161,62.91,1,True,green j
+2022_HI_Governor_DEM,DEM,Vicky Cayetano,52447,20.86,1,False,cayetano v
+2022_HI_Governor_DEM,DEM,Kai Kahele,37738,15.01,1,False,kahele k
+2022_HI_Governor_DEM,DEM,Van Tanabe,1236,0.49,1,False,tanabe v
+2022_HI_Governor_DEM,DEM,Richard Kim,991,0.39,1,False,kim r
+2022_HI_Governor_DEM,DEM,David Bourgoin,590,0.23,1,False,bourgoin d
+2022_HI_Governor_DEM,DEM,Clyde Lewman,249,0.1,1,False,lewman c
+2022_HI_Governor_REP,REP,Duke Aiona,37608,49.57,2,True,aiona d
+2022_HI_Governor_REP,REP,B.J. Penn,19817,26.12,2,False,penn b
+2022_HI_Governor_REP,REP,Gary Cordery,8258,10.88,2,False,cordery g
+2022_HI_Governor_REP,REP,Heidi Haunani Tsuneyoshi,7255,9.56,2,False,tsuneyoshi h
+2022_HI_Governor_REP,REP,Lynn Barry Mariano,903,1.19,2,False,mariano l
+2022_HI_Governor_REP,REP,Paul Morgan,796,1.05,2,False,morgan p
+2022_HI_Governor_REP,REP,Keline Kahau,469,0.62,2,False,kahau k
+2022_HI_Governor_REP,REP,Walter Woods,438,0.58,2,False,woods w
+2022_HI_Governor_REP,REP,Moses Paskowitz,189,0.25,2,False,paskowitz m
+2022_HI_Governor_REP,REP,George Hawat,140,0.18,2,False,hawat g
+2022_IA_Senate_REP,REP,Chuck Grassley,143634,73.34,1,True,grassley c
+2022_IA_Senate_REP,REP,Jim Carlin,51891,26.5,1,False,carlin j
+2022_IA_Senate_DEM,DEM,Michael Franken,86527,55.17,2,True,franken m
+2022_IA_Senate_DEM,DEM,Abby Finkenauer,62581,39.9,2,False,finkenauer a
+2022_IA_Senate_DEM,DEM,Glenn Hurst,7571,4.83,2,False,hurst g
+2022_ID_Governor_REP,REP,Brad Little,148831,52.8,1,True,little b
+2022_ID_Governor_REP,REP,Janice McGeachin,90854,32.2,1,False,mcgeachin j
+2022_ID_Governor_REP,REP,Ed Humphreys,30877,11.0,1,False,humphreys e
+2022_ID_Governor_REP,REP,Steve Bradshaw,5470,1.9,1,False,bradshaw s
+2022_ID_Governor_REP,REP,Ashley Jackson,3172,1.1,1,False,jackson a
+2022_ID_Governor_REP,REP,Lisa Marie,1119,0.4,1,False,marie l
+2022_ID_Governor_REP,REP,Ben Cannady,804,0.3,1,False,cannady b
+2022_ID_Governor_REP,REP,Cody Usabel,680,0.2,1,False,usabel c
+2022_ID_Governor_DEM,DEM,Stephen Heidt,25088,78.8,2,True,heidt s
+2022_ID_Governor_DEM,DEM,Write-ins,6757,21.2,2,False,ins w
+2022_IL_Governor_DEM,DEM,JB Pritzker,810989,91.88,1,True,pritzker j
+2022_IL_Governor_DEM,DEM,Beverly Miles Karla Shaw,71704,8.12,1,False,shaw b
+2022_IL_Governor_REP,REP,Darren Bailey,458102,57.48,2,True,bailey d
+2022_IL_Governor_REP,REP,Jesse Sullivan Kathleen Murphy,125094,15.7,2,False,murphy j
+2022_IL_Governor_REP,REP,Richard Irvin,119592,15.0,2,False,irvin r
+2022_IL_Governor_REP,REP,Gary Rabine Aaron Del Mar,52194,6.55,2,False,mar g
+2022_IL_Governor_REP,REP,Paul Schimpf,34676,4.35,2,False,schimpf p
+2022_IL_Governor_REP,REP,Max Solomon Latasha H. Fields,7371,0.92,2,False,fields m
+2022_IL_Senate_DEM,DEM,Tammy Duckworth,856720,100.0,1,True,duckworth t
+2022_IL_Senate_REP,REP,Kathy Salvi,216007,30.23,2,True,salvi k
+2022_IL_Senate_REP,REP,Peggy Hubbard,177180,24.79,2,False,hubbard p
+2022_IL_Senate_REP,REP,"Matthew ""Matt"" Dubiel",90538,12.67,2,False,dubiel m
+2022_IL_Senate_REP,REP,Casey Chlebek,76213,10.66,2,False,chlebek c
+2022_IL_Senate_REP,REP,"Robert ""Bobby"" Piton",65461,9.16,2,False,piton r
+2022_IL_Senate_REP,REP,Anthony W. Williams,52890,7.4,2,False,williams a
+2022_IL_Senate_REP,REP,Jimmy Lee Tillman II,36342,5.09,2,False,tillman j
+2022_KS_Governor_DEM,DEM,Laura Kelly,270968,93.84,1,True,kelly l
+2022_KS_Governor_DEM,DEM,Richard Karnowski Barry Franco,17802,6.16,1,False,franco r
+2022_KS_Governor_REP,REP,Derek Schmidt,373524,80.6,2,True,schmidt d
+2022_KS_Governor_REP,REP,Arlyn Briggs Lance Berland,89898,19.4,2,False,berland a
+2022_KS_Senate_REP,REP,Jerry Moran,383332,80.5,1,True,moran j
+2022_KS_Senate_REP,REP,Joan Farr,93016,19.5,1,False,farr j
+2022_KS_Senate_DEM,DEM,Mark Holland,101429,38.1,2,True,holland m
+2022_KS_Senate_DEM,DEM,Paul Buskirk,53750,20.2,2,False,buskirk p
+2022_KS_Senate_DEM,DEM,Patrick Wiesner,47034,17.6,2,False,wiesner p
+2022_KS_Senate_DEM,DEM,Mike Andra,33464,12.6,2,False,andra m
+2022_KS_Senate_DEM,DEM,Robert Klingenberg,21413,8.0,2,False,klingenberg r
+2022_KS_Senate_DEM,DEM,Michael Soetaert,9464,3.6,2,False,soetaert m
+2022_MA_Governor_REP,REP,Geoff Diehl,149800,55.44,1,True,diehl g
+2022_MA_Governor_REP,REP,Chris Doughty,120418,44.56,1,False,doughty c
+2022_MA_Governor_DEM,DEM,Maura Healey,642092,85.54,3,True,healey m
+2022_MA_Governor_DEM,DEM,Sonia Chang-Díaz,108574,14.46,3,False,diaz s
+2022_MD_Governor_REP,REP,Dan Cox,153423,52.0,1,True,cox d
+2022_MD_Governor_REP,REP,Kelly Schulz,128302,43.48,1,False,schulz k
+2022_MD_Governor_REP,REP,Robin Ficker,8268,2.8,1,False,ficker r
+2022_MD_Governor_REP,REP,Joe Werner Minh Thanh Luong,5075,1.72,1,False,luong j
+2022_MD_Governor_DEM,DEM,Wes Moore,217524,32.41,2,True,moore w
+2022_MD_Governor_DEM,DEM,Tom Perez,202175,30.12,2,False,perez t
+2022_MD_Governor_DEM,DEM,Peter Franchot,141586,21.1,2,False,franchot p
+2022_MD_Governor_DEM,DEM,Rushern Baker,26594,3.96,2,False,baker r
+2022_MD_Governor_DEM,DEM,Doug Gansler,25481,3.8,2,False,gansler d
+2022_MD_Governor_DEM,DEM,John King Jr.,24882,3.71,2,False,king j
+2022_MD_Governor_DEM,DEM,Ashwani Jain LaTrece Hawkins Lytes,13784,2.05,2,False,lytes a
+2022_MD_Governor_DEM,DEM,Jon Baron Natalie Williams,11880,1.77,2,False,williams j
+2022_MD_Governor_DEM,DEM,Jerome Segal,4276,0.64,2,False,segal j
+2022_MD_Governor_DEM,DEM,Ralph Jaffe Mark Greben,2978,0.44,2,False,greben r
+2022_MD_Senate_DEM,DEM,Chris Van Hollen,535014,80.81,1,True,hollen c
+2022_MD_Senate_DEM,DEM,Michelle Laurence Smith,127089,19.19,1,False,smith m
+2022_MD_Senate_REP,REP,Chris Chaffee,50514,20.78,2,True,chaffee c
+2022_MD_Senate_REP,REP,Lorie Friend,35714,14.69,2,False,friend l
+2022_MD_Senate_REP,REP,John Thormann,33290,13.69,2,False,thormann j
+2022_MD_Senate_REP,REP,Joseph Perez,26359,10.84,2,False,perez j
+2022_MD_Senate_REP,REP,George Davis,21095,8.68,2,False,davis g
+2022_MD_Senate_REP,REP,James Tarantin,20514,8.44,2,False,tarantin j
+2022_MD_Senate_REP,REP,Reba Hawkins,18057,7.43,2,False,hawkins r
+2022_MD_Senate_REP,REP,Jon McGreevey,14128,5.81,2,False,mcgreevey j
+2022_MD_Senate_REP,REP,Todd Puglisi,13550,5.57,2,False,puglisi t
+2022_MD_Senate_REP,REP,Nnabu Eze,9917,4.08,2,False,eze n
+2022_ME_Governor_DEM,DEM,Janet Mills,69422,93.42,1,True,mills j
+2022_ME_Governor_DEM,DEM,Blank ballots,4889,6.58,1,False,ballots b
+2022_ME_Governor_REP,REP,Paul LePage,59713,90.91,2,True,lepage p
+2022_ME_Governor_REP,REP,Blank ballots,5971,9.09,2,False,ballots b
+2022_MI_Governor_DEM,DEM,Gretchen Whitmer,938382,100.0,1,True,whitmer g
+2022_MI_Governor_REP,REP,Tudor Dixon,436350,39.69,2,True,dixon t
+2022_MI_Governor_REP,REP,Kevin Rinke,236306,21.5,2,False,rinke k
+2022_MI_Governor_REP,REP,Garrett Soldano,192442,17.51,2,False,soldano g
+2022_MI_Governor_REP,REP,Ryan Kelley,165587,15.06,2,False,kelley r
+2022_MI_Governor_REP,REP,Ralph Rebandt,45046,4.1,2,False,rebandt r
+2022_MO_Senate_REP,REP,Eric Schmitt,299282,45.6,1,True,schmitt e
+2022_MO_Senate_REP,REP,Vicky Hartzler,144903,22.1,1,False,hartzler v
+2022_MO_Senate_REP,REP,Eric Greitens,124155,18.9,1,False,greitens e
+2022_MO_Senate_REP,REP,Billy Long,32603,5.0,1,False,long b
+2022_MO_Senate_REP,REP,Mark McCloskey,19540,3.0,1,False,mccloskey m
+2022_MO_Senate_REP,REP,Dave Schatz,7509,1.1,1,False,schatz d
+2022_MO_Senate_REP,REP,Patrick A. Lewis,6085,0.9,1,False,lewis p
+2022_MO_Senate_REP,REP,Curtis D. Vaughn,3451,0.5,1,False,vaughn c
+2022_MO_Senate_REP,REP,Eric McElroy,2805,0.4,1,False,mcelroy e
+2022_MO_Senate_REP,REP,Robert Allen,2111,0.3,1,False,allen r
+2022_MO_Senate_REP,REP,C. W. Gardner,2044,0.3,1,False,gardner c
+2022_MO_Senate_REP,REP,Dave Sims,1949,0.3,1,False,sims d
+2022_MO_Senate_REP,REP,Bernie Mowinski,1602,0.2,1,False,mowinski b
+2022_MO_Senate_REP,REP,Deshon Porter,1574,0.2,1,False,porter d
+2022_MO_Senate_REP,REP,Darrell Leon McClanahan III,1139,0.2,1,False,mcclanahan d
+2022_MO_Senate_REP,REP,Rickey Joiner,1084,0.2,1,False,joiner r
+2022_MO_Senate_REP,REP,Robert Olson,1081,0.2,1,False,olson r
+2022_MO_Senate_REP,REP,Dennis Lee Chilton,755,0.1,1,False,chilton d
+2022_MO_Senate_REP,REP,Russel Pealer Breyfogle Jr.,685,0.1,1,False,breyfogle r
+2022_MO_Senate_REP,REP,Kevin C. Schepers,681,0.1,1,False,schepers k
+2022_MO_Senate_REP,REP,Hartford Tunnell,637,0.1,1,False,tunnell h
+2022_MO_Senate_DEM,DEM,Trudy Busch Valentine,158957,43.2,2,True,valentine t
+2022_MO_Senate_DEM,DEM,Lucas Kunce,141203,38.3,2,False,kunce l
+2022_MO_Senate_DEM,DEM,Spencer Toder,17465,4.7,2,False,toder s
+2022_MO_Senate_DEM,DEM,Carla Coffee Wright,14438,3.9,2,False,wright c
+2022_MO_Senate_DEM,DEM,Gena Ross,8749,2.4,2,False,ross g
+2022_MO_Senate_DEM,DEM,Jewel Kelly,6464,1.8,2,False,kelly j
+2022_MO_Senate_DEM,DEM,Lewis Rolen,5247,1.4,2,False,rolen l
+2022_MO_Senate_DEM,DEM,Pat Kelly,5002,1.4,2,False,kelly p
+2022_MO_Senate_DEM,DEM,Ronald William Harris,4074,1.1,2,False,harris r
+2022_MO_Senate_DEM,DEM,Josh Shipp,3334,0.9,2,False,shipp j
+2022_MO_Senate_DEM,DEM,Clarence Taylor,3322,0.9,2,False,taylor c
+2022_NC_Senate_REP,REP,Ted Budd,448128,58.61,1,True,budd t
+2022_NC_Senate_REP,REP,Pat McCrory,188135,24.6,1,False,mccrory p
+2022_NC_Senate_REP,REP,Mark Walker,70486,9.22,1,False,walker m
+2022_NC_Senate_REP,REP,Marjorie Eastman,22535,2.95,1,False,eastman m
+2022_NC_Senate_REP,REP,David Flaherty,7265,0.95,1,False,flaherty d
+2022_NC_Senate_REP,REP,Kenneth Harper Jr.,7129,0.93,1,False,harper k
+2022_NC_Senate_REP,REP,Jen Banwart,3088,0.4,1,False,banwart j
+2022_NC_Senate_REP,REP,Charles Kenneth Moss,2920,0.38,1,False,moss c
+2022_NC_Senate_REP,REP,Leonard Bryant,2906,0.38,1,False,bryant l
+2022_NC_Senate_REP,REP,Benjamin E. Griffiths,2870,0.38,1,False,griffiths b
+2022_NC_Senate_REP,REP,Debora Tshiovo,2741,0.36,1,False,tshiovo d
+2022_NC_Senate_REP,REP,Lee A. Brian,2232,0.29,1,False,brian l
+2022_NC_Senate_REP,REP,Lichia Sibhatu,2191,0.29,1,False,sibhatu l
+2022_NC_Senate_REP,REP,Drew Bulecza,2022,0.26,1,False,bulecza d
+2022_NC_Senate_DEM,DEM,Cheri Beasley,501766,81.09,2,True,beasley c
+2022_NC_Senate_DEM,DEM,James L. Carr Jr.,21903,3.54,2,False,carr j
+2022_NC_Senate_DEM,DEM,Alyssia Rose-Katherine Hammond,21005,3.39,2,False,hammond a
+2022_NC_Senate_DEM,DEM,Marcus W. Williams,17446,2.82,2,False,williams m
+2022_NC_Senate_DEM,DEM,Constance Johnson,12500,2.02,2,False,johnson c
+2022_NC_Senate_DEM,DEM,Rett Newton,10043,1.62,2,False,newton r
+2022_NC_Senate_DEM,DEM,Chrelle Booker,9937,1.61,2,False,booker c
+2022_NC_Senate_DEM,DEM,B. K. Maginnis,7044,1.14,2,False,maginnis b
+2022_NC_Senate_DEM,DEM,Robert Colon,6904,1.12,2,False,colon r
+2022_NC_Senate_DEM,DEM,Greg Antoine,5179,0.84,2,False,antoine g
+2022_NC_Senate_DEM,DEM,Tobias LaGrone,5048,0.82,2,False,lagrone t
+2022_NE_Governor_REP,REP,Jim Pillen,91555,33.88,1,True,pillen j
+2022_NE_Governor_REP,REP,Charles Herbster,80771,29.91,1,False,herbster c
+2022_NE_Governor_REP,REP,Brett Lindstrom,70554,26.14,1,False,lindstrom b
+2022_NE_Governor_REP,REP,Theresa Thibodeau,16432,6.07,1,False,thibodeau t
+2022_NE_Governor_REP,REP,Breland Ridenour,4685,1.73,1,False,ridenour b
+2022_NE_Governor_REP,REP,Michael Connely,2838,1.05,1,False,connely m
+2022_NE_Governor_REP,REP,Donna Nicole Carpenter,1536,0.57,1,False,carpenter d
+2022_NE_Governor_REP,REP,Lela McNinch,1192,0.44,1,False,mcninch l
+2022_NE_Governor_REP,REP,Troy Wentz,708,0.26,1,False,wentz t
+2022_NE_Governor_DEM,DEM,Carol Blood,88859,88.75,2,True,blood c
+2022_NE_Governor_DEM,DEM,Roy A. Harris,11267,11.25,2,False,harris r
+2022_NH_Governor_REP,REP,Chris Sununu,113443,78.66,1,True,sununu c
+2022_NH_Governor_REP,REP,Karen Testerman,14473,10.04,1,False,testerman k
+2022_NH_Governor_REP,REP,Thaddeus Riley,11107,7.7,1,False,riley t
+2022_NH_Governor_REP,REP,Julian Acciard,2906,2.01,1,False,acciard j
+2022_NH_Governor_REP,REP,Jay Lewis,1318,0.91,1,False,lewis j
+2022_NH_Governor_REP,REP,Richard McMenamon II,817,0.57,1,False,mcmenamon r
+2022_NH_Senate_DEM,DEM,Maggie Hassan,88146,93.77,1,True,hassan m
+2022_NH_Senate_DEM,DEM,Paul Krautmann,3629,3.86,1,False,krautmann p
+2022_NH_Senate_DEM,DEM,John Riggieri,1680,1.79,1,False,riggieri j
+2022_NM_Governor_DEM,DEM,Michelle Lujan Grisham,125238,100.0,1,True,grisham m
+2022_NM_Governor_REP,REP,Mark Ronchetti,68658,58.41,2,True,ronchetti m
+2022_NM_Governor_REP,REP,Rebecca Dow,18185,15.47,2,False,dow r
+2022_NM_Governor_REP,REP,Gregory Zanetti,16394,13.95,2,False,zanetti g
+2022_NM_Governor_REP,REP,Jay Block,12469,10.61,2,False,block j
+2022_NM_Governor_REP,REP,Ethel Maharg,1845,1.57,2,False,maharg e
+2022_NV_Senate_DEM,DEM,Catherine Cortez Masto,159694,90.87,1,True,masto c
+2022_NV_Senate_DEM,DEM,Corey Reid,4491,2.56,1,False,reid c
+2022_NV_Senate_DEM,DEM,Allen Rheinhart,3852,2.19,1,False,rheinhart a
+2022_NV_Senate_DEM,DEM,Stephanie Kasheta,3487,1.98,1,False,kasheta s
+2022_NV_Senate_REP,REP,Adam Laxalt,127757,55.91,2,True,laxalt a
+2022_NV_Senate_REP,REP,Sam Brown,78206,34.23,2,False,brown s
+2022_NV_Senate_REP,REP,Sharelle Mendenhall,6946,3.04,2,False,mendenhall s
+2022_NV_Senate_REP,REP,"William ""Bill"" Conrad",3440,1.51,2,False,conrad w
+2022_NV_Senate_REP,REP,"William ""Bill"" Hockstedler",2836,1.24,2,False,hockstedler w
+2022_NV_Senate_REP,REP,Paul Rodriguez,1844,0.81,2,False,rodriguez p
+2022_NV_Senate_REP,REP,Tyler Perkins,850,0.37,2,False,perkins t
+2022_NV_Senate_REP,REP,Carlo Poliak,332,0.15,2,False,poliak c
+2022_NY_Governor_DEM,DEM,Kathy Hochul,607928,67.64,1,True,hochul k
+2022_NY_Governor_DEM,DEM,Jumaane Williams,173872,19.35,1,False,williams j
+2022_NY_Governor_DEM,DEM,Tom Suozzi,116972,13.01,1,False,suozzi t
+2022_NY_Governor_REP,REP,Lee Zeldin,196874,43.62,2,True,zeldin l
+2022_NY_Governor_REP,REP,Andrew Giuliani,103267,22.88,2,False,giuliani a
+2022_NY_Governor_REP,REP,Rob Astorino,84464,18.71,2,False,astorino r
+2022_NY_Governor_REP,REP,Harry Wilson,66736,14.79,2,False,wilson h
+2022_OH_Governor_REP,REP,Mike DeWine,519594,48.11,1,True,dewine m
+2022_OH_Governor_REP,REP,Jim Renacci,302494,28.01,1,False,renacci j
+2022_OH_Governor_REP,REP,Joe Blystone Jeremiah Workman,235584,21.81,1,False,workman j
+2022_OH_Governor_REP,REP,Ron Hood,22411,2.07,1,False,hood r
+2022_OH_Governor_DEM,DEM,Nan Whaley,331014,65.01,2,True,whaley n
+2022_OH_Governor_DEM,DEM,John Cranley,178132,34.99,2,False,cranley j
+2022_OH_Senate_REP,REP,JD Vance,344736,32.22,1,True,vance j
+2022_OH_Senate_REP,REP,Josh Mandel,255854,23.92,1,False,mandel j
+2022_OH_Senate_REP,REP,Matt Dolan,249239,23.3,1,False,dolan m
+2022_OH_Senate_REP,REP,Mike Gibbons,124653,11.65,1,False,gibbons m
+2022_OH_Senate_REP,REP,Jane Timken,62779,5.87,1,False,timken j
+2022_OH_Senate_REP,REP,Mark Pukita,22692,2.12,1,False,pukita m
+2022_OH_Senate_REP,REP,Neil Patel,9873,0.92,1,False,patel n
+2022_OH_Senate_DEM,DEM,Tim Ryan,359941,69.55,2,True,ryan t
+2022_OH_Senate_DEM,DEM,Morgan Harper,92347,17.84,2,False,harper m
+2022_OH_Senate_DEM,DEM,Traci Johnson,65209,12.6,2,False,johnson t
+2022_OK_Governor_REP,REP,Kevin Stitt,248525,69.06,1,True,stitt k
+2022_OK_Governor_REP,REP,Joel Kintsel,51587,14.33,1,False,kintsel j
+2022_OK_Governor_REP,REP,Mark Sherwood,47713,13.26,1,False,sherwood m
+2022_OK_Governor_REP,REP,Moira McCabe,12046,3.35,1,False,mccabe m
+2022_OK_Governor_DEM,DEM,Joy Hofmeister,101913,60.73,2,True,hofmeister j
+2022_OK_Governor_DEM,DEM,Connie Johnson,65894,39.27,2,False,johnson c
+2022_OK_Senate_REP,REP,James Lankford,243132,67.83,1,True,lankford j
+2022_OK_Senate_REP,REP,Jackson Lahmeyer,94572,26.38,1,False,lahmeyer j
+2022_OK_Senate_REP,REP,Joan Farr,20761,5.79,1,False,farr j
+2022_OK_Senate_DEM,DEM,Madison Horn,60929,65.48,3,True,horn m
+2022_OK_Senate_DEM,DEM,Jason Bollinger,32121,34.52,3,False,bollinger j
+2022_OR_Governor_DEM,DEM,Tina Kotek,275301,57.63,1,True,kotek t
+2022_OR_Governor_DEM,DEM,Tobias Read,156017,32.66,1,False,read t
+2022_OR_Governor_DEM,DEM,Patrick Starnes,10524,2.2,1,False,starnes p
+2022_OR_Governor_DEM,DEM,George Carrillo,9365,1.96,1,False,carrillo g
+2022_OR_Governor_DEM,DEM,Michael Trimble,5000,1.05,1,False,trimble m
+2022_OR_Governor_DEM,DEM,John Sweeney,4193,0.88,1,False,sweeney j
+2022_OR_Governor_DEM,DEM,Julian Bell,3926,0.82,1,False,bell j
+2022_OR_Governor_DEM,DEM,Wilson Bright,2316,0.48,1,False,bright w
+2022_OR_Governor_DEM,DEM,Dave Stauffer,2302,0.48,1,False,stauffer d
+2022_OR_Governor_DEM,DEM,Ifeanyichukwu Diru,1780,0.37,1,False,diru i
+2022_OR_Governor_DEM,DEM,Keisha Marchant,1755,0.37,1,False,marchant k
+2022_OR_Governor_DEM,DEM,Genevieve Wilson,1588,0.33,1,False,wilson g
+2022_OR_Governor_DEM,DEM,Michael Cross,1342,0.28,1,False,cross m
+2022_OR_Governor_DEM,DEM,David Beem,1308,0.27,1,False,beem d
+2022_OR_Governor_DEM,DEM,Peter Hall,982,0.21,1,False,hall p
+2022_OR_Governor_REP,REP,Christine Drazan,85255,22.99,2,True,drazan c
+2022_OR_Governor_REP,REP,Bob Tiernan,66089,17.82,2,False,tiernan b
+2022_OR_Governor_REP,REP,Stan Pulliam,41123,11.09,2,False,pulliam s
+2022_OR_Governor_REP,REP,Bridget Barton,40886,11.02,2,False,barton b
+2022_OR_Governor_REP,REP,Bud Pierce,32965,8.89,2,False,pierce b
+2022_OR_Governor_REP,REP,Marc Thielman,30076,8.12,2,False,thielman m
+2022_OR_Governor_REP,REP,Kerry McQuisten,28727,7.74,2,False,mcquisten k
+2022_OR_Governor_REP,REP,Bill Sizemore,13261,3.57,2,False,sizemore b
+2022_OR_Governor_REP,REP,Jessica Gomez,9970,2.69,2,False,gomez j
+2022_OR_Governor_REP,REP,Tim McCloud,4400,1.19,2,False,mccloud t
+2022_OR_Governor_REP,REP,Nick Hess,4287,1.15,2,False,hess n
+2022_OR_Governor_REP,REP,Court Boice,4040,1.09,2,False,boice c
+2022_OR_Governor_REP,REP,Brandon Merritt,3615,0.97,2,False,merritt b
+2022_OR_Governor_REP,REP,Reed Christensen,3042,0.82,2,False,christensen r
+2022_OR_Governor_REP,REP,Amber Richardson,1924,0.52,2,False,richardson a
+2022_OR_Governor_REP,REP,Raymond Baldwin,459,0.12,2,False,baldwin r
+2022_OR_Governor_REP,REP,David Burch,406,0.11,2,False,burch d
+2022_OR_Governor_REP,REP,John Presco,174,0.05,2,False,presco j
+2022_OR_Governor_REP,REP,Stefan Strek,171,0.05,2,False,strek s
+2022_OR_Senate_DEM,DEM,Ron Wyden,439665,89.38,1,True,wyden r
+2022_OR_Senate_DEM,DEM,William E. Barlow III,35025,7.12,1,False,barlow w
+2022_OR_Senate_DEM,DEM,Brent Thompson,17197,3.5,1,False,thompson b
+2022_OR_Senate_REP,REP,Jo Rae Perkins,115701,33.32,2,True,perkins j
+2022_OR_Senate_REP,REP,Darin Harbick,107506,30.96,2,False,harbick d
+2022_OR_Senate_REP,REP,Sam Palmer,42703,12.3,2,False,palmer s
+2022_OR_Senate_REP,REP,Jason Beebe,39456,11.36,2,False,beebe j
+2022_OR_Senate_REP,REP,Christopher C. Christensen,28433,8.19,2,False,christensen c
+2022_OR_Senate_REP,REP,Robert M. Fleming,6821,1.96,2,False,fleming r
+2022_OR_Senate_REP,REP,Ibra A. Taher,6659,1.92,2,False,taher i
+2022_PA_Governor_REP,REP,Doug Mastriano,591240,43.81,2,True,mastriano d
+2022_PA_Governor_REP,REP,Lou Barletta,273252,20.25,2,False,barletta l
+2022_PA_Governor_REP,REP,William McSwain,212886,15.78,2,False,mcswain w
+2022_PA_Governor_REP,REP,Dave White,129058,9.56,2,False,white d
+2022_PA_Governor_REP,REP,Melissa Hart,54752,4.06,2,False,hart m
+2022_PA_Governor_REP,REP,Joe Gale,27920,2.07,2,False,gale j
+2022_PA_Governor_REP,REP,Jake Corman,26091,1.93,2,False,corman j
+2022_PA_Governor_REP,REP,Charlie Gerow,17922,1.33,2,False,gerow c
+2022_PA_Governor_REP,REP,Nche Zama,16238,1.2,2,False,zama n
+2022_PA_Senate_REP,REP,Mehmet Oz,420168,31.21,1,True,oz m
+2022_PA_Senate_REP,REP,Dave McCormick,419218,31.14,1,False,mccormick d
+2022_PA_Senate_REP,REP,Kathy Barnette,331903,24.66,1,False,barnette k
+2022_PA_Senate_REP,REP,Carla Sands,73360,5.45,1,False,sands c
+2022_PA_Senate_REP,REP,Jeff Bartos,66684,4.95,1,False,bartos j
+2022_PA_Senate_REP,REP,Sean Gale,20266,1.51,1,False,gale s
+2022_PA_Senate_REP,REP,George Bochetto,14492,1.08,1,False,bochetto g
+2022_PA_Senate_DEM,DEM,John Fetterman,753557,58.65,2,True,fetterman j
+2022_PA_Senate_DEM,DEM,Conor Lamb,337498,26.27,2,False,lamb c
+2022_PA_Senate_DEM,DEM,Malcolm Kenyatta,139393,10.85,2,False,kenyatta m
+2022_PA_Senate_DEM,DEM,Alexandria Khalil,54460,4.24,2,False,khalil a
+2022_RI_Governor_DEM,DEM,Dan McKee,37288,32.82,1,True,mckee d
+2022_RI_Governor_DEM,DEM,Helena Foulkes,33931,29.87,1,False,foulkes h
+2022_RI_Governor_DEM,DEM,Nellie Gorbea,29811,26.24,1,False,gorbea n
+2022_RI_Governor_DEM,DEM,Matt Brown,9021,7.94,1,False,brown m
+2022_RI_Governor_DEM,DEM,Luis Daniel Muñoz,3547,3.12,1,False,munoz l
+2022_RI_Governor_REP,REP,Ashley Kalus,17188,83.68,2,True,kalus a
+2022_RI_Governor_REP,REP,Jonathan Riccitelli,3351,16.32,2,False,riccitelli j
+2022_SC_Governor_REP,REP,Henry McMaster,306555,83.0,1,True,mcmaster h
+2022_SC_Governor_REP,REP,Harrison Musselwhite,61545,16.7,1,False,musselwhite h
+2022_SC_Governor_DEM,DEM,Joe Cunningham,102315,56.5,2,True,cunningham j
+2022_SC_Governor_DEM,DEM,Mia McLeod,56084,31.0,2,False,mcleod m
+2022_SC_Governor_DEM,DEM,Carlton Boyd,9526,5.3,2,False,boyd c
+2022_SC_Governor_DEM,DEM,William Williams,6746,3.7,2,False,williams w
+2022_SC_Governor_DEM,DEM,Calvin McMillan,6260,3.5,2,False,mcmillan c
+2022_SD_Governor_REP,REP,Kristi Noem,91661,76.4,1,True,noem k
+2022_SD_Governor_REP,REP,Steven Haugaard,28315,23.6,1,False,haugaard s
+2022_SD_Senate_REP,REP,John Thune,85613,72.24,1,True,thune j
+2022_SD_Senate_REP,REP,Bruce Whalen,24071,20.31,1,False,whalen b
+2022_SD_Senate_REP,REP,Mark Mowry,8827,7.45,1,False,mowry m
+2022_TN_Governor_REP,REP,Bill Lee,494362,100.0,1,True,lee b
+2022_TN_Governor_DEM,DEM,Jason Martin,101552,39.39,2,True,martin j
+2022_TN_Governor_DEM,DEM,J.B. Smiley Jr.,100062,38.81,2,False,smiley j
+2022_TN_Governor_DEM,DEM,Carnita Atwater,56227,21.81,2,False,atwater c
+2022_TX_Governor_REP,REP,Greg Abbott,1299059,66.48,1,True,abbott g
+2022_TX_Governor_REP,REP,Allen West,239557,12.26,1,False,west a
+2022_TX_Governor_REP,REP,Don Huffines,234138,11.98,1,False,huffines d
+2022_TX_Governor_REP,REP,Chad Prather,74173,3.8,1,False,prather c
+2022_TX_Governor_REP,REP,Ricky Lynn Perry,61424,3.14,1,False,perry r
+2022_TX_Governor_REP,REP,Kandy Kaye Horn,23605,1.21,1,False,horn k
+2022_TX_Governor_REP,REP,Paul Belew,11387,0.58,1,False,belew p
+2022_TX_Governor_REP,REP,Danny Harrison,10829,0.55,1,False,harrison d
+2022_TX_Governor_DEM,DEM,Beto O'Rourke,983182,91.41,2,True,rourke b
+2022_TX_Governor_DEM,DEM,Joy Diaz,33622,3.13,2,False,diaz j
+2022_TX_Governor_DEM,DEM,Michael Cooper,32673,3.04,2,False,cooper m
+2022_TX_Governor_DEM,DEM,Rich Wakeland,13237,1.23,2,False,wakeland r
+2022_TX_Governor_DEM,DEM,Inocencio Barrientez,12887,1.2,2,False,barrientez i
+2022_UT_Senate_REP,REP,Mike Lee,258089,61.94,1,True,lee m
+2022_UT_Senate_REP,REP,Becky Edwards,123617,29.67,1,False,edwards b
+2022_UT_Senate_REP,REP,Ally Isom,34997,8.4,1,False,isom a
+2022_VT_Senate_DEM,DEM,Peter Welch,86603,87.01,1,True,welch p
+2022_VT_Senate_DEM,DEM,Isaac Evans-Frantz,7230,7.26,1,False,frantz i
+2022_VT_Senate_DEM,DEM,Niki Thran,5104,5.13,1,False,thran n
+2022_VT_Senate_REP,REP,Gerald Malloy,12169,42.39,2,True,malloy g
+2022_VT_Senate_REP,REP,Christina Nolan,10825,37.7,2,False,nolan c
+2022_VT_Senate_REP,REP,Myers Mermel,5227,18.21,2,False,mermel m
+2022_WI_Governor_DEM,DEM,Tony Evers,491656,100.0,1,True,evers t
+2022_WI_Governor_REP,REP,Tim Michels,326969,47.18,2,True,michels t
+2022_WI_Governor_REP,REP,Rebecca Kleefisch,291384,42.05,2,False,kleefisch r
+2022_WI_Governor_REP,REP,Timothy Ramthun,41639,6.01,2,False,ramthun t
+2022_WI_Governor_REP,REP,Kevin Nicholson,24884,3.59,2,False,nicholson k
+2022_WI_Governor_REP,REP,Adam Fischer,8139,1.17,2,False,fischer a
+2022_WI_Senate_REP,REP,Ron Johnson,563871,83.7,1,True,johnson r
+2022_WI_Senate_REP,REP,David Schroeder,109917,16.3,1,False,schroeder d
+2022_WI_Senate_DEM,DEM,Mandela Barnes,390279,77.8,2,True,barnes m
+2022_WI_Senate_DEM,DEM,Alex Lasry,44609,8.9,2,False,lasry a
+2022_WI_Senate_DEM,DEM,Sarah Godlewski,40555,8.1,2,False,godlewski s
+2022_WI_Senate_DEM,DEM,Tom Nelson,10995,2.2,2,False,nelson t
+2022_WI_Senate_DEM,DEM,Steven Olikara,5619,1.1,2,False,olikara s
+2022_WI_Senate_DEM,DEM,Darrell Williams,3646,0.7,2,False,williams d
+2022_WI_Senate_DEM,DEM,Kou Lee,3434,0.7,2,False,lee k
+2022_WI_Senate_DEM,DEM,Peter Peckarsky,2446,0.5,2,False,peckarsky p
+2024_AZ_Senate_DEM,DEM,Ruben Gallego,498927,100.0,1,True,gallego r
+2024_AZ_Senate_REP,REP,Kari Lake,409339,55.28,2,True,lake k
+2024_AZ_Senate_REP,REP,Mark Lamb,292888,39.56,2,False,lamb m
+2024_AZ_Senate_REP,REP,Elizabeth Jean Reye,38208,5.16,2,False,reye e
+2024_DE_Governor_DEM,DEM,Matt Meyer,40518,46.98,1,True,meyer m
+2024_DE_Governor_DEM,DEM,Bethany Hall-Long,31588,36.62,1,False,long b
+2024_DE_Governor_DEM,DEM,Collin O'Mara,14142,16.4,1,False,mara c
+2024_DE_Governor_REP,REP,Mike Ramone,26414,72.29,2,True,ramone m
+2024_DE_Governor_REP,REP,Jerry Price,5971,16.34,2,False,price j
+2024_DE_Governor_REP,REP,Bobby Williamson,4153,11.37,2,False,williamson b
+2024_FL_Senate_REP,REP,Rick Scott,1283904,84.38,1,True,scott r
+2024_FL_Senate_REP,REP,Keith Gross,142392,9.36,1,False,gross k
+2024_FL_Senate_REP,REP,John Columbus,95342,6.26,1,False,columbus j
+2024_FL_Senate_DEM,DEM,Debbie Mucarsel-Powell,747397,68.5,2,True,powell d
+2024_FL_Senate_DEM,DEM,Stanley Campbell,213777,19.59,2,False,campbell s
+2024_FL_Senate_DEM,DEM,Brian Rush,73013,6.69,2,False,rush b
+2024_FL_Senate_DEM,DEM,Rod Joseph,56961,5.22,2,False,joseph r
+2024_IN_Governor_REP,REP,Mike Braun,236641,39.6,1,True,braun m
+2024_IN_Governor_REP,REP,Suzanne Crouch,130146,21.8,1,False,crouch s
+2024_IN_Governor_REP,REP,Brad Chambers,104653,17.5,1,False,chambers b
+2024_IN_Governor_REP,REP,Eric Doden,71135,11.9,1,False,doden e
+2024_IN_Governor_REP,REP,Jamie Reitenour,28757,4.8,1,False,reitenour j
+2024_IN_Governor_REP,REP,Curtis Hill,26837,4.5,1,False,hill c
+2024_IN_Governor_DEM,DEM,Jennifer McCormick,180404,100.0,2,True,mccormick j
+2024_IN_Senate_REP,REP,Jim Banks,475729,100.0,1,True,banks j
+2024_IN_Senate_DEM,DEM,Valerie McCray,121734,68.01,2,True,mccray v
+2024_IN_Senate_DEM,DEM,Marc Carmichael,57256,31.99,2,False,carmichael m
+2024_MA_Senate_DEM,DEM,Elizabeth Warren,562709,98.58,1,True,warren e
+2024_MA_Senate_REP,REP,John Deaton,136773,64.51,2,True,deaton j
+2024_MA_Senate_REP,REP,Robert Antonellis,54940,25.91,2,False,antonellis r
+2024_MA_Senate_REP,REP,Ian Cain,19374,9.14,2,False,cain i
+2024_MD_Senate_DEM,DEM,Angela Alsobrooks,357052,53.37,1,True,alsobrooks a
+2024_MD_Senate_DEM,DEM,David Trone,286381,42.8,1,False,trone d
+2024_MD_Senate_DEM,DEM,Joseph Perez,4688,0.7,1,False,perez j
+2024_MD_Senate_DEM,DEM,Michael Cobb,4524,0.68,1,False,cobb m
+2024_MD_Senate_DEM,DEM,Brian Frydenborg,3635,0.54,1,False,frydenborg b
+2024_MD_Senate_DEM,DEM,Scottie Griffin,3579,0.53,1,False,griffin s
+2024_MD_Senate_DEM,DEM,Marcellus Crews,3379,0.51,1,False,crews m
+2024_MD_Senate_DEM,DEM,Andrew Wildman,2198,0.33,1,False,wildman a
+2024_MD_Senate_DEM,DEM,Robert Houton,1946,0.29,1,False,houton r
+2024_MD_Senate_DEM,DEM,Steve Seuferer,1664,0.25,1,False,seuferer s
+2024_MD_Senate_REP,REP,Larry Hogan,183661,64.18,2,True,hogan l
+2024_MD_Senate_REP,REP,Robin Ficker,79517,27.79,2,False,ficker r
+2024_MD_Senate_REP,REP,Chris Chaffee,9134,3.19,2,False,chaffee c
+2024_MD_Senate_REP,REP,Lorie Friend,5867,2.05,2,False,friend l
+2024_MD_Senate_REP,REP,John A. Myrick,4987,1.74,2,False,myrick j
+2024_MD_Senate_REP,REP,Moe Barakat,2203,0.77,2,False,barakat m
+2024_MD_Senate_REP,REP,Laban Seyoum,782,0.27,2,False,seyoum l
+2024_MI_Senate_DEM,DEM,Elissa Slotkin,712791,76.33,1,True,slotkin e
+2024_MI_Senate_DEM,DEM,Hill Harper,221053,23.67,1,False,harper h
+2024_MI_Senate_REP,REP,Mike Rogers,555766,63.19,2,True,rogers m
+2024_MI_Senate_REP,REP,Justin Amash,137565,15.64,2,False,amash j
+2024_MI_Senate_REP,REP,Sherry O'Donnell,106466,12.1,2,False,donnell s
+2024_MI_Senate_REP,REP,Sandy Pensler,79772,9.07,2,False,pensler s
+2024_MO_Governor_REP,REP,Mike Kehoe,274840,39.4,1,True,kehoe m
+2024_MO_Governor_REP,REP,Bill Eigel,227012,32.6,1,False,eigel b
+2024_MO_Governor_REP,REP,Jay Ashcroft,162086,23.2,1,False,ashcroft j
+2024_MO_Governor_REP,REP,Amber Thomsen,10627,1.5,1,False,thomsen a
+2024_MO_Governor_REP,REP,Chris Wright,9358,1.3,1,False,wright c
+2024_MO_Governor_REP,REP,Darrell McClanahan,5637,0.8,1,False,mcclanahan d
+2024_MO_Governor_REP,REP,Robert Olson,2975,0.4,1,False,olson r
+2024_MO_Governor_REP,REP,Jeremy Gundel,2946,0.4,1,False,gundel j
+2024_MO_Governor_REP,REP,Darren Grant,1866,0.3,1,False,grant d
+2024_MO_Governor_DEM,DEM,Crystal Quade,189822,50.2,2,True,quade c
+2024_MO_Governor_DEM,DEM,Mike Hamra,119702,31.7,2,False,hamra m
+2024_MO_Governor_DEM,DEM,Eric Morrison,36985,9.8,2,False,morrison e
+2024_MO_Governor_DEM,DEM,Sheryl Gladney,25287,6.7,2,False,gladney s
+2024_MO_Governor_DEM,DEM,Hollis Laster,5973,1.6,2,False,laster h
+2024_MO_Senate_REP,REP,Josh Hawley,607602,100.0,1,True,hawley j
+2024_MO_Senate_DEM,DEM,Lucas Kunce,255775,67.64,2,True,kunce l
+2024_MO_Senate_DEM,DEM,Karla May,87908,23.25,2,False,may k
+2024_MO_Senate_DEM,DEM,December Harmon,26804,7.09,2,False,harmon d
+2024_MO_Senate_DEM,DEM,Mita Biswas,7647,2.02,2,False,biswas m
+2024_MT_Senate_DEM,DEM,Jon Tester,104279,96.96,1,True,tester j
+2024_MT_Senate_DEM,DEM,Michael Hummert,3272,3.04,1,False,hummert m
+2024_MT_Senate_REP,REP,Tim Sheehy,139857,73.6,2,True,sheehy t
+2024_MT_Senate_REP,REP,Brad Johnson,36926,19.43,2,False,johnson b
+2024_MT_Senate_REP,REP,Charles Walkingchild Sr.,13229,6.96,2,False,walkingchild c
+2024_NC_Governor_DEM,DEM,Josh Stein,479026,69.6,1,True,stein j
+2024_NC_Governor_DEM,DEM,Michael R. Morgan,98627,14.33,1,False,morgan m
+2024_NC_Governor_DEM,DEM,Chrelle Booker,46045,6.69,1,False,booker c
+2024_NC_Governor_DEM,DEM,Marcus Williams,39257,5.7,1,False,williams m
+2024_NC_Governor_DEM,DEM,Gary Foxx,25283,3.67,1,False,foxx g
+2024_NC_Governor_REP,REP,Mark Robinson,666504,64.83,2,True,robinson m
+2024_NC_Governor_REP,REP,Dale Folwell,196955,19.16,2,False,folwell d
+2024_NC_Governor_REP,REP,Bill Graham,164572,16.01,2,False,graham b
+2024_ND_Governor_REP,REP,Kelly Armstrong,247056,68.26,3,True,armstrong k
+2024_NH_Governor_REP,REP,Kelly Ayotte,88117,63.12,1,True,ayotte k
+2024_NH_Governor_REP,REP,Chuck Morse,47567,34.07,1,False,morse c
+2024_NH_Governor_REP,REP,Shaun Fife,876,0.63,1,False,fife s
+2024_NH_Governor_REP,REP,Robert McClory,839,0.6,1,False,mcclory r
+2024_NH_Governor_REP,REP,Frank Staples,809,0.58,1,False,staples f
+2024_NH_Governor_REP,REP,Richard McMenamon,527,0.38,1,False,mcmenamon r
+2024_NH_Governor_DEM,DEM,Joyce Craig,59976,47.88,2,True,craig j
+2024_NH_Governor_DEM,DEM,Cinde Warmington,52420,41.85,2,False,warmington c
+2024_NH_Governor_DEM,DEM,Jon Kiper,11789,9.41,2,False,kiper j
+2024_NJ_Senate_DEM,DEM,Andy Kim,392602,74.83,14,True,kim a
+2024_NJ_Senate_DEM,DEM,Patricia Campos-Medina,84286,16.06,14,False,medina p
+2024_NJ_Senate_DEM,DEM,Lawrence Hamm,47796,9.11,14,False,hamm l
+2024_NJ_Senate_REP,REP,Curtis Bashaw,144869,45.57,29,True,bashaw c
+2024_NJ_Senate_REP,REP,Christine Serrano Glassner,121986,38.38,29,False,glassner c
+2024_NJ_Senate_REP,REP,Justin Murphy,35954,11.31,29,False,murphy j
+2024_NJ_Senate_REP,REP,Albert Harshaw,15064,4.74,29,False,harshaw a
+2024_NV_Senate_DEM,DEM,Jacky Rosen,144090,91.51,1,True,rosen j
+2024_NV_Senate_DEM,DEM,Troy Zakari Walker,5899,3.75,1,False,walker t
+2024_NV_Senate_DEM,DEM,None of These Candidates,3951,2.51,1,False,candidates n
+2024_NV_Senate_DEM,DEM,Mike Schaefer,3521,2.24,1,False,schaefer m
+2024_NV_Senate_REP,REP,Sam Brown,103102,60.17,2,True,brown s
+2024_NV_Senate_REP,REP,Jeffrey Ross Gunter,24987,14.58,2,False,gunter j
+2024_NV_Senate_REP,REP,Jim Marchant,11190,6.53,2,False,marchant j
+2024_NV_Senate_REP,REP,Tony Grady Jr.,9565,5.58,2,False,grady t
+2024_NV_Senate_REP,REP,None of These Candidates,7164,4.18,2,False,candidates n
+2024_NV_Senate_REP,REP,William Conrad,6038,3.52,2,False,conrad w
+2024_NV_Senate_REP,REP,Stephanie Phillips,3828,2.23,2,False,phillips s
+2024_NV_Senate_REP,REP,Garn Mabey,1818,1.06,2,False,mabey g
+2024_NV_Senate_REP,REP,Ronda Kennedy,1786,1.04,2,False,kennedy r
+2024_NV_Senate_REP,REP,Barry Lindemann,852,0.5,2,False,lindemann b
+2024_NV_Senate_REP,REP,Edward Hamilton,478,0.28,2,False,hamilton e
+2024_NV_Senate_REP,REP,Vincent Rego,311,0.18,2,False,rego v
+2024_NV_Senate_REP,REP,Gary Marinch,231,0.13,2,False,marinch g
+2024_OH_Senate_DEM,DEM,Sherrod Brown,535305,100.0,1,True,brown s
+2024_OH_Senate_REP,REP,Bernie Moreno,557626,50.48,2,True,moreno b
+2024_OH_Senate_REP,REP,Matt Dolan,363013,32.86,2,False,dolan m
+2024_OH_Senate_REP,REP,Frank LaRose,184111,16.67,2,False,larose f
+2024_PA_Senate_DEM,DEM,Bob Casey Jr.,1024545,100.0,1,True,casey b
+2024_PA_Senate_REP,REP,Dave McCormick,878320,100.0,2,True,mccormick d
+2024_TN_Senate_REP,REP,Marsha Blackburn,367799,89.48,1,True,blackburn m
+2024_TN_Senate_REP,REP,Tres Wittum,43244,10.52,1,False,wittum t
+2024_TN_Senate_DEM,DEM,Gloria Johnson,143962,70.2,2,True,johnson g
+2024_TN_Senate_DEM,DEM,Marquita Bradshaw,44657,21.78,2,False,bradshaw m
+2024_TN_Senate_DEM,DEM,Lola Brown,10027,4.89,2,False,brown l
+2024_TN_Senate_DEM,DEM,Civil Miller-Watkins,6420,3.13,2,False,watkins c
+2024_TX_Senate_REP,REP,Ted Cruz,1977961,88.3,1,True,cruz t
+2024_TX_Senate_REP,REP,Holland Gibson,134011,5.98,1,False,gibson h
+2024_TX_Senate_REP,REP,Rufus Lopez,127986,5.71,1,False,lopez r
+2024_TX_Senate_DEM,DEM,Colin Allred,569585,58.87,2,True,allred c
+2024_TX_Senate_DEM,DEM,Roland Gutierrez,160978,16.64,2,False,gutierrez r
+2024_TX_Senate_DEM,DEM,Mark Gonzalez,85228,8.81,2,False,gonzalez m
+2024_TX_Senate_DEM,DEM,Meri Gomez,44166,4.56,2,False,gomez m
+2024_TX_Senate_DEM,DEM,Carl Sherman,31694,3.28,2,False,sherman c
+2024_TX_Senate_DEM,DEM,Robert Hassan,21855,2.26,2,False,hassan r
+2024_TX_Senate_DEM,DEM,Steven Keough,21801,2.25,2,False,keough s
+2024_TX_Senate_DEM,DEM,Heli Rodriguez-Prilliman,18801,1.94,2,False,prilliman h
+2024_TX_Senate_DEM,DEM,Thierry Tchenko,13395,1.38,2,False,tchenko t
+2024_UT_Governor_REP,REP,Spencer Cox,232164,54.4,2,True,cox s
+2024_UT_Governor_REP,REP,Phil Lyman,194639,45.6,2,False,lyman p
+2024_UT_Senate_REP,REP,John Curtis,206094,48.73,2,True,curtis j
+2024_UT_Senate_REP,REP,Trent Staggs,138143,32.66,2,False,staggs t
+2024_UT_Senate_REP,REP,Brad Wilson,53134,12.56,2,False,wilson b
+2024_UT_Senate_REP,REP,Jason Walton,25604,6.05,2,False,walton j
+2024_VA_Senate_REP,REP,Hung Cao,168868,61.79,1,True,cao h
+2024_VA_Senate_REP,REP,Scott Parkinson,29940,10.95,1,False,parkinson s
+2024_VA_Senate_REP,REP,Eddie Garcia,26777,9.8,1,False,garcia e
+2024_VA_Senate_REP,REP,Chuck Smith,24108,8.82,1,False,smith c
+2024_VA_Senate_REP,REP,Jonathan Emord,23614,8.64,1,False,emord j
+2024_WI_Senate_DEM,DEM,Tammy Baldwin,639049,99.81,1,True,baldwin t
+2024_WI_Senate_REP,REP,Eric Hovde,477197,86.21,2,True,hovde e
+2024_WI_Senate_REP,REP,Charles Barman,40990,7.4,2,False,barman c
+2024_WI_Senate_REP,REP,Rejani Raveendran,34612,6.25,2,False,raveendran r
+2024_WV_Governor_REP,REP,Patrick Morrisey,75111,33.28,1,True,morrisey p
+2024_WV_Governor_REP,REP,Moore Capito,62181,27.55,1,False,capito m
+2024_WV_Governor_REP,REP,Chris Miller,46010,20.39,1,False,miller c
+2024_WV_Governor_REP,REP,Mac Warner,36170,16.03,1,False,warner m
+2024_WV_Governor_REP,REP,Mitch Roberts,3138,1.39,1,False,roberts m
+2024_WV_Governor_REP,REP,Kevin Christian,3088,1.37,1,False,christian k
+2024_WV_Governor_DEM,DEM,Steve Williams,89545,100.0,2,True,williams s
+2024_WV_Senate_DEM,DEM,Glenn Elliott,46176,45.4,1,True,elliott g
+2024_WV_Senate_DEM,DEM,Zach Shrewsbury,36754,36.14,1,False,shrewsbury z
+2024_WV_Senate_DEM,DEM,Don Blankenship,18778,18.46,1,False,blankenship d
+2024_WV_Senate_REP,REP,Jim Justice,138307,61.84,2,True,justice j
+2024_WV_Senate_REP,REP,Alex Mooney,59348,26.54,2,False,mooney a
+2024_WV_Senate_REP,REP,Bryan Bird,7001,3.13,2,False,bird b
+2024_WV_Senate_REP,REP,Bryan McKinney,6573,2.94,2,False,mckinney b
+2024_WV_Senate_REP,REP,Zane Lawhorn,4517,2.02,2,False,lawhorn z
+2024_WV_Senate_REP,REP,Janet McNulty,4404,1.97,2,False,mcnulty j
+2024_WV_Senate_REP,REP,Don Lindsay,3503,1.57,2,False,lindsay d

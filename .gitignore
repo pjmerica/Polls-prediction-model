@@ -73,6 +73,16 @@ venv/
 !data/primary_model_xgb.json
 !data/primary_model_features.json
 
+# Senate/Governor primary RESULTS (fetch_primary_results_2026.py --hist) - was never
+# actually un-ignored despite being static-data-principle scraped output; found + fixed
+# 2026-07-22 while building the House equivalent below (it was living local-only).
+!data/primary_results_hist.csv
+
+# House primary RESULTS, 1998-2024 (fetch_house_primary_results_hist.py, 2026-07-22):
+# Wikipedia per-state "House elections in X" summary pages - not reproducible on re-scrape
+# (pages get edited), fact-checked (see that script's docstring), committed once.
+!data/house_primary_results_hist.csv
+
 # committed 2026-07-16 for the model-refresh GitHub Action: CI clones this repo fresh and
 # predict*.py needs the historical polls (house effects + bias priors) without running
 # build_dataset.ipynb. 14MB, regenerable, but committing = static-data principle anyway.
