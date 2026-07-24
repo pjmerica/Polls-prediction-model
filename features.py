@@ -149,9 +149,14 @@ def load_primary_results():
     candidate-quality features (does this candidate's party field show they won a contested
     or lopsided primary?). Sourced from fetch_house_primary_results_hist.py (House, 1998-2024,
     fact-checked - see that script's docstring) + fetch_primary_results_2026.py --hist
-    (Senate/Governor). Real coverage ~49% of general-model candidate rows (all races that HAD
-    a matched primary-results page; the rest is NaN, not 0 - a candidate with no primary-
-    results match is UNKNOWN, not "ran unopposed").
+    (Senate/Governor). Real coverage 33.5% of the general model's full 14-cycle candidate
+    table (measured 2026-07-23 against the true production BASE table - an earlier ~49%
+    estimate here was wrong, measured against only the 2018-2024 slice by mistake). The
+    rest is NaN, not 0 - a candidate with no primary-results match is UNKNOWN, not "ran
+    unopposed". NOTE: this feature was built, ablated on both the win and margin models,
+    and DROPPED from production (2026-07-23, honest null result on both - see HANDOFF.md)
+    - this loader stays in the codebase but feature_list(primary_results=True) is NOT the
+    production default.
 
     primary_margin: winner's pct minus runner-up's pct (>=0 by construction, a property of
     HOW they won their primary, same value for every candidate who WAS that nominee - this
@@ -196,6 +201,48 @@ def load_primary_results():
             primary_margin=(float(margin) if margin == margin else np.nan),
             primary_uncontested=uncontested,
         )
+    return out
+
+# ---------------------------------------------------------------- candidate bios (2026-07-23)
+
+def load_candidate_bios():
+    """data/candidate_bios.csv -> {(year,office,state,district,party,cand_key):
+    dict(bio_office_level)} for the GENERAL model. Same source the PRIMARY model already
+    uses (features_primary.load_candidate_bios) - not imported from there to avoid a
+    circular import (features_primary imports features); this is a standalone re-read of
+    the same committed file, GENERAL-model party/office keying (district='' for
+    Senate/Governor vs primary's within-party-field keying).
+
+    bio_office_level: 4 federal / 3 statewide / 2 state-leg / 1 local / 0 none-detected
+    (fetch_candidate_bios.py). Real coverage 57.3% of the general model's full 14-cycle
+    candidate table, 66.4% among WINNERS (measured 2026-07-24, AFTER the unbiased-target-
+    list fix - an earlier 32.7% figure here predated that fix; the old target list was
+    derived from primary-POLL pages and systematically excluded uncontested/safe-seat
+    incumbent races, i.e. exactly the highest-office-level candidates). Remaining known
+    gaps: a few House pages missing from transient fetch failures (CA 2024, LA/WA several
+    cycles - re-running fetch_house_candidate_bios_hist.py retries only missing pages),
+    genuinely thin pre-2012 Wikipedia editing depth, and independents filed under an
+    "Independents" section the parser's stage tracker doesn't classify as primary
+    (Bernie Sanders - open item). 2026 predict-time coverage will likely trail training
+    coverage (race pages accrue bio detail in the YEARS AFTER an election) - a real
+    train/serve mismatch to weigh against whatever an ablation shows. ABLATION STATUS
+    (2026-07-24, post-coverage-fix): win model - calibration metrics (AUC/AUC-PR/KS/Brier)
+    all flipped positive vs the pre-fix null, but race-acc still -0.0048 (2020/2024 folds
+    regress, confirmed NOT a NaN-dilution artifact via a matched-races-only split); margin
+    model - uniformly worse MAE in all 4 eval cycles. NOT wired into production. Only
+    office_level is exposed here (not bio_in_office/bio_prior_candidacy) - the PRIMARY
+    model's own overfit review found those added nothing once tested per-cycle
+    (METHODOLOGY.md)."""
+    path = os.path.join(DATA_DIR, "candidate_bios.csv")
+    if not os.path.exists(path):
+        return {}
+    b = pd.read_csv(path, low_memory=False)
+    out = {}
+    for r in b.itertuples():
+        di = "" if pd.isna(r.district) else str(int(r.district))
+        party = npar(r.party)
+        out[(int(r.year), r.office, r.state, di, party, r.cand_key)] = dict(
+            bio_office_level=int(r.office_level))
     return out
 
 # ---------------------------------------------------------------- FEC fundraising
@@ -395,7 +442,8 @@ def candidate_poll_adj(d, house):
 # ---------------------------------------------------------------- main builder
 
 def build_candidate_table(d, macro, natl_env_map, funds, house_train_years=None, house=None,
-                          fec=None, bias_priors=None, primary_results=None):
+                          fec=None, bias_priors=None, primary_results=None,
+                          candidate_bios=None):
     """Collapse prepared long polls `d` -> one row per candidate per race, with features.
 
     d must have: race_id, year, state, office, district, candidate, cand_key, party_std,
@@ -407,8 +455,16 @@ def build_candidate_table(d, macro, natl_env_map, funds, house_train_years=None,
     to the new cycle's polls).
 
     primary_results: pass load_primary_results() to add primary_margin/primary_uncontested
-    (2026-07-22) - how contested/lopsided this candidate's own primary was, ~49% coverage
-    (real matches only; NaN elsewhere, never a silent 0/uncontested guess).
+    (2026-07-22) - how contested/lopsided this candidate's own primary was, 33.5% coverage
+    (real matches only; NaN elsewhere, never a silent 0/uncontested guess). ABLATED OUT of
+    production 2026-07-23 (honest null result on both win and margin models) - kept in the
+    codebase, not the default.
+
+    candidate_bios: pass load_candidate_bios() to add bio_office_level (2026-07-23) - the
+    candidate's highest office held (4 fed/3 statewide/2 state-leg/1 local/0 none), 57.3%
+    coverage post-target-list-fix (see load_candidate_bios's docstring for the full
+    coverage + ablation story; ablated 2026-07-24: NOT production - better calibration on
+    the win model but worse pick-accuracy in recent folds, uniformly worse margin MAE).
     """
     if house is None:
         house = compute_house_effect(d, house_train_years or [])
@@ -445,6 +501,8 @@ def build_candidate_table(d, macro, natl_env_map, funds, house_train_years=None,
 
             pr = (primary_results.get((yr, st, of, di, party, ck))
                  if primary_results is not None else None)
+            bio = (candidate_bios.get((yr, of, st, di, party, ck))
+                  if candidate_bios is not None else None)
 
             fe = fec.get((yr, st, of, di, ck)) if fec is not None else None
             rec = fe["receipts"] if fe else np.nan
@@ -500,6 +558,9 @@ def build_candidate_table(d, macro, natl_env_map, funds, house_train_years=None,
                 # primary-results page, not "ran unopposed" - see load_primary_results)
                 primary_margin=(pr["primary_margin"] if pr else np.nan),
                 primary_uncontested=(pr["primary_uncontested"] if pr else np.nan),
+                # highest office ever held (NaN = no matched bio, not "no experience" -
+                # see load_candidate_bios)
+                bio_office_level=(bio["bio_office_level"] if bio else np.nan),
                 **fund,
                 **macro.get(yr, {}),
             ))
@@ -541,14 +602,18 @@ def build_candidate_table(d, macro, natl_env_map, funds, house_train_years=None,
     c["gap_x_recency"] = c["poll_lead"] * (1.0 / (1.0 + c["min_days"].clip(lower=0) / 30.0))
     return c
 
-def feature_list(macro_feats, fund=False, primary_results=False):
+def feature_list(macro_feats, fund=False, primary_results=False, candidate_bios=False):
     """The model's input columns. Everything here is available for future races.
     fund=True appends the FEC fundraising features (pass fec=load_fec() to the builder).
     primary_results=True appends primary_margin/primary_uncontested (2026-07-22; pass
     primary_results=load_primary_results() to the builder) - ablate before trusting, same
-    discipline as poll_adj (dropped 2026-07-12 despite high raw importance)."""
+    discipline as poll_adj (dropped 2026-07-12 despite high raw importance). DROPPED from
+    production 2026-07-23 (honest null result on both win and margin models).
+    candidate_bios=True appends bio_office_level (2026-07-23; pass
+    candidate_bios=load_candidate_bios() to the builder) - ablate before trusting."""
     return (([] if not fund else list(FUND_FEATS_EXT))
-           + ([] if not primary_results else ["primary_margin", "primary_uncontested"])) + [
+           + ([] if not primary_results else ["primary_margin", "primary_uncontested"])
+           + ([] if not candidate_bios else ["bio_office_level"])) + [
         "poll_avg", "poll_last", "poll_last30", "poll_std", "n_polls",
         "n_polls_over50", "frac_polls_over50", "race_total_polls",
         "avg_sample", "min_days",

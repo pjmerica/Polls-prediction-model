@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """Scrape HISTORICAL (1998-2024) House candidate BIO descriptors from the same Wikipedia
 per-state "House elections in X" pages fetch_house_primary_results_hist.py already reads
--> appends to data/candidate_bios.csv.
+-> data/candidate_bios_house.csv (its OWN file - see the note below on why).
 
 WHY THIS WAS MISSING: fetch_candidate_bios.py's historical target list derives from
 primary_polls_wikipedia.csv (Senate/Governor only by design - see that file's own
@@ -13,6 +13,18 @@ parse_page()/classify() functions (imported, not reimplemented) over an independ
 House page-target list - same page set as fetch_house_primary_results_hist.py, and shares
 that script's at-large-state title pattern + fix.
 
+SEPARATE OUTPUT FILE (changed 2026-07-24, user instruction after a real incident): this
+script used to append to the SAME data/candidate_bios.csv that fetch_candidate_bios.py
+writes. Running the two in sequence, with fetch_candidate_bios.py's own resume logic
+reading whatever candidate_bios.csv happened to contain at that moment, silently discarded
+~9,500 already-scraped House rows when fetch_candidate_bios.py ran AFTER this script but
+started its "existing data" read from a version of the file that predated this script's
+House rows. Fix: Senate, Governor, and House each get their OWN output file
+(candidate_bios_senate.csv / _governor.csv / _house.csv), written ONLY by the script(s)
+that scrape that office. combine_candidate_bios.py concatenates all three into
+candidate_bios.csv (what every consumer actually reads) as an explicit, separate, manual
+step - no script ever overwrites another's output again.
+
 COVERAGE: within Senate/Governor candidates specifically, the existing bios already matched
 39.1% of general-model candidate rows (2018-2024) - real signal, not the ~15% that looked
 thin when House's zero coverage was averaged in. This should bring House up to a similar
@@ -20,9 +32,9 @@ order of magnitude, not fix pre-2010 sparsity (Wikipedia editing-depth pattern i
 one found scraping House primary RESULTS - see that script's docstring; expect it here too).
 
     py -X utf8 fetch_house_candidate_bios_hist.py
-Appends to data/candidate_bios.csv (existing 2018-2026 Senate/Governor/2026-House rows are
-preserved; this only adds 1998-2024 House rows, deduped by (year,office,state,district,
-party,cand_key) same as the existing script does).
+Writes data/candidate_bios_house.csv (safe to re-run - resumes from THIS file only, deduped
+by (year,office,state,district,party,cand_key)). Run combine_candidate_bios.py afterward to
+rebuild the merged candidate_bios.csv every consumer reads.
 """
 import os
 import re
@@ -35,15 +47,27 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.join(HERE, "..", "Polling Agg", "Polling agg and Prediction markets"))
 from scrapers.wikipedia_polls import fetch_page, STATES  # noqa: E402
 
-from fetch_candidate_bios import parse_page, classify, PRIOR_CAND_RX, OUT  # noqa: E402
+from fetch_candidate_bios import parse_page, classify, PRIOR_CAND_RX  # noqa: E402
 import features as F  # noqa: E402
 from cycles import CYCLES  # noqa: E402
+
+OUT = os.path.join(HERE, "data", "candidate_bios_house.csv")
 
 URL_HOUSE_MULTI = ("https://en.wikipedia.org/wiki/{year}_United_States_House_of"
                    "_Representatives_elections_in_{state}")
 URL_HOUSE_ATLARGE = ("https://en.wikipedia.org/wiki/{year}_United_States_House_of"
                      "_Representatives_election_in_{state}")   # singular "election"
 TERRITORIES = {"GU", "PR", "VI", "AS", "MP", "DC"}
+
+# INVESTIGATED 2026-07-24 (why is WA missing from House bios 2020/2022/2024?): NOT a URL
+# bug - both "Washington" plain and "Washington_(state)" fetch the House-elections page
+# fine (verified directly with fetch_page after an initial wrong assumption here). The
+# real cause is still open - likely a transient fetch failure or rate-limit during the
+# original ~700-page scrape run (California's 2024 page separately confirmed to fetch fine
+# now too, suggesting the same transient-failure explanation, not a systematic URL issue).
+# No code fix here; the actual remedy is re-running the scrape for the specific missing
+# (year, state) pairs, which naturally retries the fetch.
+HOUSE_TITLE_OVERRIDE = {}
 
 def _at_large_states_by_cycle():
     """Same ground-truth logic as fetch_house_primary_results_hist.py - not duplicated
@@ -74,13 +98,17 @@ def main():
     if len(existing):
         h_existing = existing[existing["office"] == "House"]
         already = set(zip(h_existing["year"], h_existing["state"]))
-        print(f"{len(already)} (year, state) House pages already in candidate_bios.csv "
-              f"(2026 predict-time scrape) - will still re-check, dedup happens at the end")
+        print(f"{len(already)} (year, state) House pages already in "
+              f"{os.path.basename(OUT)} - will skip those, dedup happens at the end")
 
     frames = [existing] if len(existing) else []
     n_with_bios = 0
     for i, (year, st) in enumerate(pages):
-        state = STATES[st]
+        # skip pages already in OUR OWN output file (2026-07-24: `already` was computed
+        # but never consulted before - every re-run re-fetched all ~700 pages)
+        if (year, st) in already:
+            continue
+        state = HOUSE_TITLE_OVERRIDE.get(st, STATES[st])
         s = state.replace(" ", "_")
         at_large = st in at_large_by_cycle.get(year, set())
         url = (URL_HOUSE_ATLARGE if at_large else URL_HOUSE_MULTI).format(year=year, state=s)

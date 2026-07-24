@@ -34,7 +34,22 @@ from scrapers.wikipedia_polls import fetch_page, infer_section_context, STATES  
 
 import features as F  # noqa: E402
 
-OUT = os.path.join(HERE, "data", "candidate_bios.csv")
+# SEPARATE per-office output files (changed 2026-07-24, user instruction after a real
+# incident: fetch_house_candidate_bios_hist.py's own resume logic read the OLD
+# candidate_bios.csv, but this script's main() had already overwritten it with
+# Senate/Governor-only data (no House rows) in between two runs, silently discarding
+# ~9,500 already-scraped House rows. Root cause: multiple scripts writing to ONE shared
+# file, each with its own "resume from what's there" logic that assumes it's the only
+# writer. Fix: each office gets its OWN file, written only by the script(s) that scrape
+# that office; combine_candidate_bios.py concatenates them into candidate_bios.csv (the
+# file every consumer - features.py, features_primary.py, check_officeholder.py - reads)
+# as an explicit, separate, manual step. No script ever silently overwrites another's
+# output again.
+OUT_SENATE = os.path.join(HERE, "data", "candidate_bios_senate.csv")
+OUT_GOVERNOR = os.path.join(HERE, "data", "candidate_bios_governor.csv")
+# (a back-compat `OUT` alias briefly lived here pointing at OUT_SENATE - removed 2026-07-24:
+# nothing imports it, and an alias named like the old COMBINED file but pointing at ONE
+# office's file is exactly the silent-wrong-file trap this refactor exists to eliminate)
 URL_SEN = "https://en.wikipedia.org/wiki/{year}_United_States_Senate_election_in_{state}"
 URL_GOV = "https://en.wikipedia.org/wiki/{year}_{state}_gubernatorial_election"
 URL_HOUSE = ("https://en.wikipedia.org/wiki/{year}_United_States_House_of_Representatives"
@@ -97,7 +112,18 @@ def parse_page(html, house=False):
     in_candidates = False
     SKIP_SUB_RX = re.compile(r"endorse|polling|results|debate|see also|references|"
                              r"fundrais|predictions|notes", re.I)
-    CAND_SUB_RX = re.compile(r"candidate|declared|potential|withdr|declined|filed", re.I)
+    # "Nominee" / "advanced to general" added 2026-07-23 (user pushed back on a "redundant
+    # with polls" ablation conclusion for bio_office_level - investigating found the REAL
+    # cause was partly coverage: Wikipedia uses subheadings the old regex never matched for
+    # a clear front-runner/incumbent - "Nominee" (Sheldon Whitehouse, 2024 RI Senate) and
+    # "Advanced to general" (Maria Cantwell, 2024 WA Senate - a top-two/jungle-primary
+    # state's terminology) - both verified on live pages. These subheadings matched NONE of
+    # the old patterns, so uncontested/dominant incumbents - exactly the highest-
+    # office_level candidates - were being silently skipped. This was very likely
+    # suppressing real signal in the ablation (see HANDOFF.md 2026-07-23 for the numbers).
+    CAND_SUB_RX = re.compile(
+        r"candidate|declared|potential|withdr|declined|filed|nominee|advanced to general",
+        re.I)
     for el in soup.find_all(["h2", "h3", "h4", "h5", "ul"]):
         if el.name != "ul":
             text = el.get_text(" ", strip=True)
@@ -106,6 +132,14 @@ def parse_page(html, house=False):
                 if m:
                     district = int(m.group(1)); stage, party = "general", ""
             s, p = infer_section_context(text)
+            # OVERRIDE (2026-07-23): "Advanced to general" is a top-two/jungle-primary
+            # subheading (WA/CA-style) that infer_section_context (the SHARED polling-agg
+            # parser) correctly reads as stage='general' in its own sense - but here it's
+            # still a bio bullet for a candidate who WAS in that party's primary field, just
+            # the one who won it (verified: Maria Cantwell, 2024 WA Senate). Don't let it
+            # flip `stage` away from 'primary', or this bio-only parser drops it entirely.
+            if re.search(r"advanced to general", text, re.I):
+                s = None
             if s:
                 stage = s
                 in_candidates = False
@@ -153,40 +187,27 @@ def parse_page(html, house=False):
             out.append((district if house else None, party, name, desc))
     return out
 
-def main():
-    # target pages = every page the primary polls came from + the 2026 predict set
-    polls = pd.read_csv(os.path.join(HERE, "data", "primary_polls_wikipedia.csv"),
-                        low_memory=False)
-    targets = set()
-    for page in polls.loc[polls["stage"] == "primary", "src_page"].unique():
-        y, off, st = page.split("-")
-        targets.add((int(y), {"SEN": "Senate", "GOV": "Governor"}[off], st))
-    preds = pd.read_csv(os.path.join(HERE, "primary_predictions_2026.csv"))
-    for r in preds.drop_duplicates(["state", "office"]).itertuples():
-        targets.add((2026, r.office, r.state))
-    targets = sorted(targets)
-    print(f"{len(targets)} pages to scrape")
-
+def _scrape_office(office, targets, out_path):
+    """Scrape one office's pages -> its OWN output file (never shared with another
+    office's scraper - see the file-header note on why this changed 2026-07-24)."""
     done = set()
     frames = []
-    if os.path.exists(OUT):
-        old = pd.read_csv(OUT, low_memory=False)
+    if os.path.exists(out_path):
+        old = pd.read_csv(out_path, low_memory=False)
         frames.append(old)
-        done = set(zip(old["year"], old["office"], old["state"]))
-        print(f"resuming: {len(done)} pages already fetched")
+        done = set(zip(old["year"], old["state"]))
+        print(f"resuming {office}: {len(done)} pages already in {os.path.basename(out_path)}")
 
-    for i, (year, office, st) in enumerate(targets):
-        if (year, office, st) in done:
+    for i, (year, st) in enumerate(targets):
+        if (year, st) in done:
             continue
         state = STATES.get(st)
         if not state:
             continue
         s = state.replace(" ", "_")
-        house = office == "House"
-        url = (URL_SEN if office == "Senate" else
-               URL_GOV if office == "Governor" else URL_HOUSE).format(year=year, state=s)
+        url = (URL_SEN if office == "Senate" else URL_GOV).format(year=year, state=s)
         html = fetch_page(url)
-        rows = parse_page(html, house=house) if html else []
+        rows = parse_page(html, house=False) if html else []
         df = pd.DataFrame(rows, columns=["district", "party", "name", "descriptor"])
         df["year"], df["office"], df["state"] = year, office, st
         df["cand_key"] = df["name"].map(F.norm_name)
@@ -199,15 +220,53 @@ def main():
         if rows:
             print(f"  {year} {office} {st}: {len(rows)} candidate bios")
         if (i + 1) % 15 == 0:
-            pd.concat(frames, ignore_index=True).to_csv(OUT, index=False)
+            pd.concat(frames, ignore_index=True).to_csv(out_path, index=False)
         time.sleep(0.8)
 
     allb = pd.concat(frames, ignore_index=True)
     allb = allb.drop_duplicates(subset=["year", "office", "state", "district",
                                         "party", "cand_key"], keep="first")
-    allb.to_csv(OUT, index=False)
-    print(f"\nsaved -> {OUT}: {len(allb)} bios")
+    allb.to_csv(out_path, index=False)
+    print(f"\nsaved -> {out_path}: {len(allb)} {office} bios")
     print("office_level distribution:", allb["office_level"].value_counts().to_dict())
+    return allb
+
+def main():
+    # target pages: Senate/Governor 1998-2024 from the RESULTS files (complete, unbiased),
+    # + the 2026 predict set (Senate/Governor rows only here - 2026 House is scraped by
+    # fetch_house_candidate_bios_hist.py, one script per office family, one output file
+    # per office family - see the header note above OUT_SENATE/OUT_GOVERNOR).
+    #
+    # FIXED 2026-07-23 (user pushed back on an ablation "redundant with polls" conclusion,
+    # asked to check what's actually missing in 2024 first): the OLD target list came from
+    # primary_polls_wikipedia.csv, which only has a page wherever a primary was interesting
+    # enough to POLL. That's a SYSTEMATIC bias, not random sparsity: uncontested/safe-seat
+    # incumbent races (exactly where bio_office_level should matter most - a well-known
+    # high-office incumbent running essentially unopposed) never got polled and so never
+    # got a bio-scrape target either. Measured on 2024 Senate alone: 12 of 33 races (36%)
+    # had NO target page under the old list - Sheldon Whitehouse (RI), Maria Cantwell (WA),
+    # Amy Klobuchar (MN), Bernie Sanders (VT) and other safe incumbents were structurally
+    # unreachable no matter how good parse_page's parsing was. Results files cover EVERY
+    # race regardless of how contested the primary was, so they're the right source for a
+    # feature meant to describe office-holding history, not primary competitiveness.
+    sen_targets, gov_targets = set(), set()
+    for fn, office, bucket in [("res_senate.csv", "Senate", sen_targets),
+                               ("res_governor.csv", "Governor", gov_targets)]:
+        r = pd.read_csv(os.path.join(HERE, "data", fn), low_memory=False)
+        r = r[(r["stage"].astype(str).str.lower() == "general")
+             & (r["cycle"] >= 1998) & (r["cycle"] % 2 == 0)]   # even-year cycles only
+        for cyc, st in zip(r["cycle"], r["state_abbrev"]):
+            bucket.add((int(cyc), st))
+    preds = pd.read_csv(os.path.join(HERE, "primary_predictions_2026.csv"))
+    for r in preds.drop_duplicates(["state", "office"]).itertuples():
+        if r.office == "Senate":
+            sen_targets.add((2026, r.state))
+        elif r.office == "Governor":
+            gov_targets.add((2026, r.state))
+    print(f"{len(sen_targets)} Senate pages, {len(gov_targets)} Governor pages to scrape")
+
+    _scrape_office("Senate", sorted(sen_targets), OUT_SENATE)
+    _scrape_office("Governor", sorted(gov_targets), OUT_GOVERNOR)
 
 if __name__ == "__main__":
     main()

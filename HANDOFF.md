@@ -1,20 +1,76 @@
-# Handoff: in-flight state, breakdown risks, next steps (2026-07-23)
+# Handoff: in-flight state, breakdown risks, next steps (2026-07-24)
 
 For the next agent. Read AGENTS.md first (architecture + rules), CONCERNS.md second
 (risk register + roadmap). This file: what's mid-flight RIGHT NOW, what's most likely to
 break, and what to do next, in order.
 
-## ⚠ IN-FLIGHT STATE 2026-07-23 (updated after session end — the House bio scrape below
-## DID finish and IS committed; resume point is now step 3 of "Next steps, in order")
+## CURRENT STATE 2026-07-24 — bio_office_level fully investigated, FINAL VERDICT: not
+## production. Coverage story + save-discipline refactor below; older entries follow.
+
+**The whole bio_office_level arc, condensed (full detail in the dated sections below):**
+
+1. First ablation (32.7% coverage): null on both models. User pushed back — "I think the
+   issue is coverage. Let's start with 2024 who you are missing." **User was right.**
+2. Investigating the missing-2024-winners list found the old scrape target list came from
+   primary-POLL pages, systematically excluding uncontested/safe-seat incumbent races
+   (36% of 2024 Senate races had NO page target; Whitehouse/Cantwell/Klobuchar/Sanders all
+   unreachable). Also found + fixed two subsection-heading parser gaps ("Nominee",
+   "Advanced to general") that dropped dominant incumbents even on scraped pages.
+3. Rebuilt the target list from the RESULTS files (complete, unbiased): coverage
+   **32.7% → 57.3% overall, 66.4% among winners**. `check_officeholder.py` still passes
+   (7/7, 99% consistency, 20,969 total bios).
+4. **Re-ablation with fixed coverage — the honest final result is MIXED, not binary:**
+   - WIN model: calibration metrics ALL flipped positive (AUC +0.0003, AUC-PR +0.0002,
+     KS +0.0019, Brier −0.0005) but race-acc still −0.0048, driven by the 2020 (−0.0132)
+     and 2024 (−0.0149) folds. A matched-races-only split confirmed this is NOT a
+     NaN-dilution artifact — the mixed result persists on races with real bio data.
+   - MARGIN model: uniformly worse, MAE +0.0296 with regressions in ALL 4 eval cycles.
+   - **VERDICT: not wired into production** (feature_list(candidate_bios=True) exists,
+     opt-in, off by default). Better calibration doesn't outweigh worse pick-accuracy in
+     the two most 2026-relevant folds + a uniformly worse margin model.
+5. **Save-discipline refactor (user instruction, after a real data-loss incident):** the
+   two bio scrapers both wrote to ONE shared candidate_bios.csv with independent resume
+   logic; a re-run sequence silently discarded ~9,500 House rows once (recovered by
+   re-scraping). Now: candidate_bios_senate.csv / _governor.csv / _house.csv are each
+   written ONLY by their own scraper; **combine_candidate_bios.py is the ONLY writer of
+   the merged candidate_bios.csv** every consumer reads. Old files archived (never
+   deleted) under archive/ with timestamps — that's the standing rule for ALL data files.
+6. **Verification sweep (user asked to re-check the session's work):** found + fixed —
+   .gitignore missing the three per-office files (they'd have been uncommittable),
+   a dead misleading `OUT` alias in fetch_candidate_bios.py, a resume-skip that was
+   printed but never implemented in the House bio scraper (now real, which also makes
+   re-runs fetch ONLY missing pages), stale coverage figures in features.py docstrings.
+   Also self-caught and reverted: a false "Washington needs URL disambiguation" fix —
+   plain "Washington" fetches fine; the WA/CA/LA House gaps are transient fetch failures,
+   not URL bugs (HOUSE_TITLE_OVERRIDE mechanism kept but empty).
+
+**OPEN ITEMS (next agent, in order):**
+- **Targeted re-fetch of missing House pages** (CA 2024 — that's 52 districts; LA + WA
+  several cycles; sparse pre-2012 pages): just re-run
+  `py -X utf8 -u fetch_house_candidate_bios_hist.py` — the resume-skip fix means it now
+  fetches ONLY missing (year, state) pairs. Then `py -X utf8 combine_candidate_bios.py`,
+  then `py -X utf8 check_officeholder.py`, then re-measure coverage. If coverage moves
+  materially (CA alone is ~12% of House seats), a THIRD ablation round may be justified.
+- **Independents section gap**: Bernie Sanders (and any independent) is filed under an
+  "Independents" heading that infer_section_context doesn't classify as primary-stage, so
+  parse_page drops the bullet. Root-cause fix belongs in this repo's parse_page (a local
+  stage override like the "Advanced to general" one), NOT in the shared polling-agg
+  infer_section_context. User explicitly chose root-cause fix over a manual override file.
+- Small classifier tail (documented, low priority): "Kansas Insurance Commissioner",
+  "Land Commissioner" (4 rows), bare "representative from X's Nth congressional district"
+  without a U.S. qualifier, ~200 comma-parse garbage names (1.4%).
+- The same OFFICE-scoped question for fetch_house_primary_results_hist.py: it shares the
+  transient-miss pattern (WA/LA/CA gaps) — re-run it too if primary-result features are
+  ever revisited; its data is committed but has the same holes.
+
+## OLDER: IN-FLIGHT STATE 2026-07-23 (superseded by the 2026-07-24 section above)
 
 **RESOLVED since first written**: the House candidate-bio re-scrape finished cleanly
 (14,309 total bios, 9,496 net new House rows 1998-2024) and is committed + pushed
 (`2ae97a9`). `check_officeholder.py` re-run on the full combined file: 7/7 known-truth
 checks pass, cross-source consistency **improved 96% → 99%** (the incumbent-context fix
 resolved the Whitehouse/Cantwell/Cantor misclassifications — none of them appear in the
-disagreement list anymore). Citation-link corruption down to 1.4% (was 14.4%). **Steps 1-2
-of "Next steps" below are DONE — start at step 3 (measure coverage against the full
-general-model candidate table).**
+disagreement list anymore). Citation-link corruption down to 1.4% (was 14.4%).
 
 ### What happened this session, in order
 

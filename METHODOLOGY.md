@@ -205,19 +205,26 @@ convention: `archive/candidate_bios_<timestamp>_pre-<fix>.csv`). **Re-run
 DISAGREEMENT list, not just the pass/fail line — that's how both of these bugs were found
 even though the battery numerically "passed" (96%/consistency ≥85%) both times.**
 
-**General-model extension (in progress 2026-07-23, see HANDOFF.md for exact status):** the
-existing bio scrape only covered Senate/Governor 2018-2024 (+ House 2026 only) because its
-historical page-target list derived from `primary_polls_wikipedia.csv`, itself deliberately
-Senate/Governor-only. `fetch_house_candidate_bios_hist.py` (new) extends House coverage to
-1998-2024 using the same page-target machinery built earlier the same session for a House
-primary-RESULTS scrape (`fetch_house_primary_results_hist.py` — that effort produced
-`primary_margin`/`primary_uncontested` features which were ABLATED OUT of both the win and
-margin models, honest null result on both — see HANDOFF.md; not documented as a permanent
-methodology section here since it isn't a shipped feature). Do not assume this bio extension
-is complete or wired into any model without checking
-HANDOFF.md's in-flight state first — as of this note, the ablation step (mandatory before
-adding it to the win or margin model, per the poll_adj/primary_results precedent) had not
-yet run.
+**General-model extension (CONCLUDED 2026-07-24 — not shipped; full arc in HANDOFF.md):**
+the existing bio scrape only covered Senate/Governor 2018-2024 (+ House 2026 only), and —
+found after the user challenged a premature "redundant with polls" ablation conclusion —
+its target list was SYSTEMATICALLY biased: derived from primary-POLL pages, it excluded
+uncontested/safe-seat incumbent races entirely (36% of 2024 Senate races had no target;
+Whitehouse/Cantwell/Klobuchar were unreachable). After rebuilding targets from the results
+files + House extension (`fetch_house_candidate_bios_hist.py`) + two more subsection-
+heading parser fixes ("Nominee", "Advanced to general"), coverage reached **57.3% of the
+general model's 14-cycle candidate table (66.4% among winners)**. The re-ablation on fixed
+coverage was MIXED, and the feature was NOT shipped: win-model calibration flipped positive
+(AUC/AUC-PR/KS/Brier) but race-acc stayed −0.005 with the 2020/2024 folds regressing (a
+matched-races-only split ruled out NaN dilution); the margin model was uniformly worse in
+all four eval cycles. `feature_list(candidate_bios=True)` + `load_candidate_bios()` remain
+in features.py as opt-in machinery. Same conclusion shape as poll_adj and
+primary_margin/primary_uncontested (also built + ablated out, 2026-07-22/23): for the
+GENERAL election, poll-based features already carry nearly all of this signal — in the
+PRIMARY model, where polling is weak, the same feature earns its keep (see the overfit-trim
+section above). METHODOLOGICAL NOTE worth keeping: the first (null) ablation was run on
+biased coverage and nearly closed the question wrongly — measure a feature's COVERAGE
+STRUCTURE (who's missing and why), not just its coverage rate, before trusting an ablation.
 
 **Headline (expanding-window, results labels, +bio_office_level).** Report the STABLE
 metrics first — they hold across both eval cycles: **AUC-PR .966, Brier .024** (vs

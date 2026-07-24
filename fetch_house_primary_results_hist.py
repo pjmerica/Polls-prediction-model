@@ -88,6 +88,13 @@ URL_HOUSE_ATLARGE = ("https://en.wikipedia.org/wiki/{year}_United_States_House_o
 # seat in the sense the results files track for the model) - excluded outright.
 TERRITORIES = {"GU", "PR", "VI", "AS", "MP", "DC"}
 
+# INVESTIGATED 2026-07-24 (see fetch_house_candidate_bios_hist.py for the full note): WA's
+# missing House rows turned out NOT to be a URL bug - plain "Washington" fetches the House
+# page fine. Transient fetch failures during long scrape runs are the live hypothesis; the
+# remedy is re-running the missing (year, state) pairs, not a URL override. Kept as an
+# empty dict so the override MECHANISM exists if a real title exception ever appears.
+HOUSE_TITLE_OVERRIDE = {}
+
 def _at_large_states_by_cycle():
     """{cycle: set(state_abbrev)} - states with exactly one House district that cycle,
     from the committed results archive (ground truth, not a hardcoded guess: SD lost its
@@ -116,7 +123,7 @@ def main():
     allrows = []
     n_with_primaries = 0
     for i, (year, st) in enumerate(pages):
-        state = STATES[st]
+        state = HOUSE_TITLE_OVERRIDE.get(st, STATES[st])
         s = state.replace(" ", "_")
         at_large = st in at_large_by_cycle.get(year, set())
         url = (URL_HOUSE_ATLARGE if at_large else URL_HOUSE_MULTI).format(year=year, state=s)

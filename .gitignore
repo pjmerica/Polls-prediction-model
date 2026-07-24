@@ -88,3 +88,10 @@ venv/
 # build_dataset.ipynb. 14MB, regenerable, but committing = static-data principle anyway.
 !polls_long_with_results.csv
 !data/candidate_bios.csv
+
+# per-office bio SOURCE files (2026-07-24 save-discipline change: each office scrapes to
+# its own file, combine_candidate_bios.py builds the merged candidate_bios.csv above -
+# commit the sources too or the layout only exists on one machine)
+!data/candidate_bios_senate.csv
+!data/candidate_bios_governor.csv
+!data/candidate_bios_house.csv
