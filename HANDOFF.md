@@ -4,19 +4,17 @@ For the next agent. Read AGENTS.md first (architecture + rules), CONCERNS.md sec
 (risk register + roadmap). This file: what's mid-flight RIGHT NOW, what's most likely to
 break, and what to do next, in order.
 
-## ⚠ IN-FLIGHT STATE 2026-07-23 (check this before touching anything — session ended on
-## usage limit, not a natural stopping point)
+## ⚠ IN-FLIGHT STATE 2026-07-23 (updated after session end — the House bio scrape below
+## DID finish and IS committed; resume point is now step 3 of "Next steps, in order")
 
-**A ~700-page House candidate-bio scrape (`fetch_house_candidate_bios_hist.py`) may still
-be running or may have died mid-run** when this session ended. Check first:
-```
-py -X utf8 -c "import pandas as pd; b=pd.read_csv('data/candidate_bios.csv'); print(b['office'].value_counts()); print(sorted(b[b.office=='House']['year'].unique()))"
-```
-If House rows only cover 2026 (not 1998-2024), the re-scrape didn't finish — re-run
-`py -X utf8 -u fetch_house_candidate_bios_hist.py 2>&1 | tee house_candidate_bios_scrape_log3.txt`
-(safe to re-run: it appends/dedupes against the existing file, doesn't need a clean slate
-this time — only the FIRST re-scrape after the classify() fix needed the old file archived
-first, and that already happened, see below).
+**RESOLVED since first written**: the House candidate-bio re-scrape finished cleanly
+(14,309 total bios, 9,496 net new House rows 1998-2024) and is committed + pushed
+(`2ae97a9`). `check_officeholder.py` re-run on the full combined file: 7/7 known-truth
+checks pass, cross-source consistency **improved 96% → 99%** (the incumbent-context fix
+resolved the Whitehouse/Cantwell/Cantor misclassifications — none of them appear in the
+disagreement list anymore). Citation-link corruption down to 1.4% (was 14.4%). **Steps 1-2
+of "Next steps" below are DONE — start at step 3 (measure coverage against the full
+general-model candidate table).**
 
 ### What happened this session, in order
 
