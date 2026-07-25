@@ -214,8 +214,8 @@ def load_candidate_bios():
     Senate/Governor vs primary's within-party-field keying).
 
     bio_office_level: 4 federal / 3 statewide / 2 state-leg / 1 local / 0 none-detected
-    (fetch_candidate_bios.py). Real coverage 57.3% of the general model's full 14-cycle
-    candidate table, 66.4% among WINNERS (measured 2026-07-24, AFTER the unbiased-target-
+    (fetch_candidate_bios.py). Real coverage 58.1% of the general model's full 14-cycle
+    candidate table, 67.7% among WINNERS (measured 2026-07-24, AFTER the unbiased-target-
     list fix - an earlier 32.7% figure here predated that fix; the old target list was
     derived from primary-POLL pages and systematically excluded uncontested/safe-seat
     incumbent races, i.e. exactly the highest-office-level candidates). Remaining known
@@ -461,7 +461,7 @@ def build_candidate_table(d, macro, natl_env_map, funds, house_train_years=None,
     codebase, not the default.
 
     candidate_bios: pass load_candidate_bios() to add bio_office_level (2026-07-23) - the
-    candidate's highest office held (4 fed/3 statewide/2 state-leg/1 local/0 none), 57.3%
+    candidate's highest office held (4 fed/3 statewide/2 state-leg/1 local/0 none), 58.1%
     coverage post-target-list-fix (see load_candidate_bios's docstring for the full
     coverage + ablation story; ablated 2026-07-24: NOT production - better calibration on
     the win model but worse pick-accuracy in recent folds, uniformly worse margin MAE).

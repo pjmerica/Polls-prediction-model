@@ -212,8 +212,8 @@ its target list was SYSTEMATICALLY biased: derived from primary-POLL pages, it e
 uncontested/safe-seat incumbent races entirely (36% of 2024 Senate races had no target;
 Whitehouse/Cantwell/Klobuchar were unreachable). After rebuilding targets from the results
 files + House extension (`fetch_house_candidate_bios_hist.py`) + two more subsection-
-heading parser fixes ("Nominee", "Advanced to general"), coverage reached **57.3% of the
-general model's 14-cycle candidate table (66.4% among winners)**. The re-ablation on fixed
+heading parser fixes ("Nominee", "Advanced to general"), coverage reached **58.1% of the
+general model's 14-cycle candidate table (67.7% among winners)**. The re-ablation on fixed
 coverage was MIXED, and the feature was NOT shipped: win-model calibration flipped positive
 (AUC/AUC-PR/KS/Brier) but race-acc stayed −0.005 with the 2020/2024 folds regressing (a
 matched-races-only split ruled out NaN dilution); the margin model was uniformly worse in

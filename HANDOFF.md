@@ -17,7 +17,8 @@ break, and what to do next, in order.
    unreachable). Also found + fixed two subsection-heading parser gaps ("Nominee",
    "Advanced to general") that dropped dominant incumbents even on scraped pages.
 3. Rebuilt the target list from the RESULTS files (complete, unbiased): coverage
-   **32.7% → 57.3% overall, 66.4% among winners**. `check_officeholder.py` still passes
+   **32.7% → 58.1% overall, 67.7% among winners** (57.3%/66.4% before a further
+   jungle-primary parser fix; see the 2026-07-24 jungle-mode commit). `check_officeholder.py` still passes
    (7/7, 99% consistency, 20,969 total bios).
 4. **Re-ablation with fixed coverage — the honest final result is MIXED, not binary:**
    - WIN model: calibration metrics ALL flipped positive (AUC +0.0003, AUC-PR +0.0002,
@@ -40,17 +41,23 @@ break, and what to do next, in order.
    a dead misleading `OUT` alias in fetch_candidate_bios.py, a resume-skip that was
    printed but never implemented in the House bio scraper (now real, which also makes
    re-runs fetch ONLY missing pages), stale coverage figures in features.py docstrings.
-   Also self-caught and reverted: a false "Washington needs URL disambiguation" fix —
-   plain "Washington" fetches fine; the WA/CA/LA House gaps are transient fetch failures,
-   not URL bugs (HOUSE_TITLE_OVERRIDE mechanism kept but empty).
+   Also self-caught and reverted TWO wrong diagnoses of the CA/WA/LA-House-empty problem:
+   a "Washington needs URL disambiguation" theory (plain "Washington" fetches fine) and a
+   "transient fetch failure" theory. **Real root cause (fixed 2026-07-24 jungle-mode
+   commit):** CA/WA/LA are JUNGLE/top-two states — their House pages have NO party-primary
+   headings; candidates sit under one "Candidates" list with party inline as "(Democratic),
+   ...". parse_page required a party heading, so it collected nothing. Jungle-mode branch
+   added (reads party per-bullet); CA now covered all cycles 2012-2024. Coverage nudged
+   57.3%→58.1% total, 66.4%→67.7% winners (modest — most CA candidates already matched via
+   other paths; the fix filled genuinely-absent ones). Lesson: inspect the page DOM before
+   theorizing about the failure — two wrong guesses cost real time here.
 
 **OPEN ITEMS (next agent, in order):**
-- **Targeted re-fetch of missing House pages** (CA 2024 — that's 52 districts; LA + WA
-  several cycles; sparse pre-2012 pages): just re-run
-  `py -X utf8 -u fetch_house_candidate_bios_hist.py` — the resume-skip fix means it now
-  fetches ONLY missing (year, state) pairs. Then `py -X utf8 combine_candidate_bios.py`,
-  then `py -X utf8 check_officeholder.py`, then re-measure coverage. If coverage moves
-  materially (CA alone is ~12% of House seats), a THIRD ablation round may be justified.
+- **Third ablation round — PROBABLY NOT WORTH IT, but the call is open**: coverage is now
+  58.1%/67.7%-winners (was 66.4% at the last ablation). +1.3pt on winners is small enough
+  that it's unlikely to flip the mixed verdict (win-model race-acc −0.0048, margin
+  uniformly worse). Re-run the two ablation scripts in
+  scratchpad if you want certainty, but don't expect a different answer.
 - **Independents section gap**: Bernie Sanders (and any independent) is filed under an
   "Independents" heading that infer_section_context doesn't classify as primary-stage, so
   parse_page drops the bullet. Root-cause fix belongs in this repo's parse_page (a local
