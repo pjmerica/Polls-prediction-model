@@ -154,7 +154,19 @@ def parse_page(html, house=False):
             elif CAND_SUB_RX.search(text):
                 in_candidates = True
             continue
-        if stage != "primary" or not party or not in_candidates:
+        # TWO collection modes (jungle mode added 2026-07-24):
+        # - PARTISAN pages: party comes from a "Democratic/Republican primary" heading;
+        #   collect only inside stage=primary + party context (the original path).
+        # - JUNGLE/TOP-TWO pages (CA/WA/LA House): there ARE no party-primary headings at
+        #   all - structure is District N -> "Candidates" -> bullets with the party inline
+        #   as a leading parenthetical ("Lateefah Simon (Democratic), president of...").
+        #   These states parsed to ZERO for every cycle and were misdiagnosed twice
+        #   (URL bug: wrong; transient fetch failure: wrong) before inspecting the actual
+        #   page structure. Gate: house page, a district is set, candidate-ish subheading,
+        #   and NO party heading context - then party is read per-bullet instead.
+        jungle_mode = (house and district is not None and in_candidates
+                       and not party and stage != "primary")
+        if not jungle_mode and (stage != "primary" or not party or not in_candidates):
             continue
         for li in el.find_all("li", recursive=False):
             t = li.get_text(" ", strip=True)
@@ -184,7 +196,20 @@ def parse_page(html, house=False):
             desc = (t[idx + len(name):] if idx >= 0 else t[len(name):]).lstrip(" ,").strip()
             if not desc:
                 continue
-            out.append((district if house else None, party, name, desc))
+            if jungle_mode:
+                # party must come from the bullet itself: "(Democratic), descriptor..."
+                # No leading party parenthetical = not a candidate bullet (nav/see-also
+                # debris) - skip rather than guess.
+                m = re.match(r"^\(\s*([^)]{1,40})\s*\)\s*,?\s*", desc)
+                if not m:
+                    continue
+                bullet_party = F.npar(m.group(1))
+                desc = desc[m.end():].strip()
+                if not desc:
+                    continue
+                out.append((district, bullet_party, name, desc))
+            else:
+                out.append((district if house else None, party, name, desc))
     return out
 
 def _scrape_office(office, targets, out_path):

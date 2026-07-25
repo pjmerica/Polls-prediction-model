@@ -1,0 +1,27 @@
+700 (cycle, state) House pages to scrape
+439 (year, state) House pages already in candidate_bios_house.csv - will skip those, dedup happens at the end
+  2004 NY: 7 candidate bios
+  2020 LA: 7 candidate bios
+  2022 CA: 60 candidate bios
+  2022 LA: 6 candidate bios
+  2024 CA: 92 candidate bios
+  2024 LA: 15 candidate bios
+  2024 WA: 13 candidate bios
+
+saved -> C:\Users\pjmer\Documents\Polling prediction model\data\candidate_bios_house.csv: 12763 total bios (200 net new)
+office_level distribution (House only, this run's new rows):
+year
+1998      78
+2000     124
+2002     136
+2004     163
+2006     247
+2008     269
+2010     262
+2012    1493
+2014    1391
+2016    1243
+2018    1249
+2020    1735
+2022    1381
+2024    1289

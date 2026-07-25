@@ -12562,3 +12562,203 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 8.0,REP,Alex Bruesewitz,political consultant (endorsed Wied),2024,House,WI,bruesewitz a,0,0,0
 8.0,REP,John Macco,state representative from the 88th district (2015–2025),2024,House,WI,macco j,2,1,0
 1.0,REP,Harriet Hageman,incumbent U.S. representative,2024,House,WY,hageman h,4,1,0
+4,DEM,Carolyn McCarthy,incumbent U.S. Representative,2004,House,NY,mccarthy c,4,1,0
+4,REP,James Garner,Mayor of Hempstead Village,2004,House,NY,garner j,1,0,0
+6,DEM,Greg Meeks,incumbent U.S. Representative,2004,House,NY,meeks g,4,1,0
+9,DEM,Anthony Weiner,incumbent U.S. Representative,2004,House,NY,weiner a,4,1,0
+10,DEM,Edolphus Towns,incumbent U.S. Representative,2004,House,NY,towns e,4,1,0
+11,DEM,Major Owens,incumbent U.S. Representative,2004,House,NY,owens m,4,1,0
+29,REP,Randy Kuhl,state senator,2004,House,NY,kuhl r,2,0,0
+1,REP,Steve Scalise,incumbent U.S. representative,2020,House,LA,scalise s,4,1,0
+2,DEM,Cedric Richmond,incumbent U.S. representative,2020,House,LA,richmond c,4,1,0
+3,REP,Clay Higgins,incumbent U.S. representative,2020,House,LA,higgins c,4,1,0
+4,REP,Mike Johnson,incumbent U.S. representative,2020,House,LA,johnson m,4,1,0
+5,REP,Lance Harris,state representative,2020,House,LA,harris l,2,1,0
+5,REP,Luke Letlow,former Chief of Staff to U.S. Representative Ralph Abraham,2020,House,LA,letlow l,4,1,0
+6,REP,Garret Graves,incumbent U.S. representative,2020,House,LA,graves g,4,1,0
+1,REP,Doug LaMalfa,incumbent U.S. representative,2022,House,CA,lamalfa d,4,1,0
+2,DEM,Jared Huffman,incumbent U.S. representative,2022,House,CA,huffman j,4,1,0
+3,REP,Kevin Kiley,state assemblyman and candidate for governor of California in 2021,2022,House,CA,kiley k,2,0,1
+4,DEM,Mike Thompson,incumbent U.S. representative,2022,House,CA,thompson m,4,1,0
+5,REP,Tom McClintock,incumbent U.S. representative,2022,House,CA,mcclintock t,4,1,0
+6,DEM,Ami Bera,incumbent U.S. representative,2022,House,CA,bera a,4,1,0
+7,DEM,Doris Matsui,incumbent U.S. representative,2022,House,CA,matsui d,4,1,0
+8,DEM,John Garamendi,incumbent U.S. representative,2022,House,CA,garamendi j,4,1,0
+9,DEM,Josh Harder,incumbent U.S. representative,2022,House,CA,harder j,4,1,0
+9,REP,Tom Patti,chair of the San Joaquin County Board of Supervisors,2022,House,CA,patti t,0,0,0
+10,DEM,Mark DeSaulnier,incumbent U.S. representative,2022,House,CA,desaulnier m,4,1,0
+11,DEM,Nancy Pelosi,incumbent U.S. representative and former Speaker of the House,2022,House,CA,pelosi n,4,1,0
+12,DEM,Barbara Lee,incumbent U.S. representative,2022,House,CA,lee b,4,1,0
+13,REP,John Duarte,pistachio farmer and businessman,2022,House,CA,duarte j,0,0,0
+13,DEM,Adam Gray,state assemblyman,2022,House,CA,gray a,2,0,0
+14,DEM,Eric Swalwell,incumbent U.S. representative,2022,House,CA,swalwell e,4,1,0
+15,DEM,Kevin Mullin,speaker pro tempore of the California State Assembly,2022,House,CA,mullin k,2,0,0
+16,DEM,Anna Eshoo,incumbent U.S. representative,2022,House,CA,eshoo a,4,1,0
+17,DEM,Ro Khanna,incumbent U.S. representative,2022,House,CA,khanna r,4,1,0
+18,DEM,Zoe Lofgren,incumbent U.S. representative,2022,House,CA,lofgren z,4,1,0
+19,DEM,Jimmy Panetta,incumbent U.S. representative,2022,House,CA,panetta j,4,1,0
+20,REP,Kevin McCarthy,incumbent U.S. representative and House Minority Leader,2022,House,CA,mccarthy k,4,1,0
+21,DEM,Jim Costa,incumbent U.S. representative,2022,House,CA,costa j,4,1,0
+22,DEM,Rudy Salas,state assemblyman,2022,House,CA,salas r,2,0,0
+22,REP,David Valadao,incumbent U.S. representative,2022,House,CA,valadao d,4,1,0
+23,REP,Jay Obernolte,incumbent U.S. representative,2022,House,CA,obernolte j,4,1,0
+24,DEM,Salud Carbajal,incumbent U.S. representative,2022,House,CA,carbajal s,4,1,0
+25,DEM,Raul Ruiz,incumbent U.S. representative,2022,House,CA,ruiz r,4,1,0
+26,DEM,Julia Brownley,incumbent U.S. representative,2022,House,CA,brownley j,4,1,0
+27,REP,Mike Garcia,incumbent U.S. representative,2022,House,CA,garcia m,4,1,0
+27,DEM,Christy Smith,former state assemblywoman and runner-up for this district in 2020,2022,House,CA,smith c,2,0,0
+28,DEM,Judy Chu,incumbent U.S. representative,2022,House,CA,chu j,4,1,0
+29,DEM,Tony Cárdenas,incumbent U.S. representative,2022,House,CA,cardenas t,4,1,0
+30,DEM,Maebe A. Girl,"Silver Lake neighborhood council board member, drag queen, and candidate for this district in 2020",2022,House,CA,girl m,0,0,1
+30,DEM,Adam Schiff,incumbent U.S. representative,2022,House,CA,schiff a,4,1,0
+31,DEM,Grace Napolitano,incumbent U.S. representative,2022,House,CA,napolitano g,4,1,0
+32,DEM,Brad Sherman,incumbent U.S. representative,2022,House,CA,sherman b,4,1,0
+33,DEM,Pete Aguilar,incumbent U.S. representative and vice chair of the House Democratic Caucus,2022,House,CA,aguilar p,4,1,0
+34,DEM,Jimmy Gomez,incumbent U.S. representative,2022,House,CA,gomez j,4,1,0
+35,DEM,Norma Torres,incumbent U.S. representative,2022,House,CA,torres n,4,1,0
+36,DEM,Ted Lieu,incumbent U.S. representative,2022,House,CA,lieu t,4,1,0
+37,DEM,Sydney Kamlager-Dove,state senator,2022,House,CA,dove s,2,0,0
+37,DEM,Jan Perry,"former Los Angeles City Councillor , candidate for mayor of Los Angeles in 2013 , and candidate for District 2 of the Los Angeles County Board of Supervisors in 2020",2022,House,CA,perry j,1,0,1
+38,DEM,Linda Sánchez,incumbent U.S. representative,2022,House,CA,sanchez l,4,1,0
+39,DEM,Mark Takano,incumbent U.S. representative,2022,House,CA,takano m,4,1,0
+40,REP,Young Kim,incumbent U.S. representative,2022,House,CA,kim y,4,1,0
+41,REP,Ken Calvert,incumbent U.S. representative,2022,House,CA,calvert k,4,1,0
+42,DEM,Robert Garcia,mayor of Long Beach,2022,House,CA,garcia r,1,0,0
+43,REP,Omar Navarro,"small business owner, and perennial candidate",2022,House,CA,navarro o,0,0,0
+43,DEM,Maxine Waters,incumbent U.S. representative,2022,House,CA,waters m,4,1,0
+44,DEM,Nanette Barragán,incumbent U.S. representative,2022,House,CA,barragan n,4,1,0
+45,REP,Michelle Steel,incumbent U.S. representative,2022,House,CA,steel m,4,1,0
+46,DEM,Lou Correa,incumbent U.S. representative,2022,House,CA,correa l,4,1,0
+47,REP,Scott Baugh,"former state assemblyman , former chair of the Orange County Republican Party, and candidate for the 48th district in 2018",2022,House,CA,baugh s,2,0,1
+47,DEM,Katie Porter,incumbent U.S. representative,2022,House,CA,porter k,4,1,0
+48,REP,Darrell Issa,incumbent U.S. representative and technology entrepreneur,2022,House,CA,issa d,4,1,0
+49,DEM,Mike Levin,incumbent U.S. representative,2022,House,CA,levin m,4,1,0
+50,DEM,Scott Peters,incumbent U.S. representative,2022,House,CA,peters s,4,1,0
+51,DEM,Sara Jacobs,incumbent U.S. representative,2022,House,CA,jacobs s,4,1,0
+52,DEM,Juan Vargas,incumbent U.S. representative,2022,House,CA,vargas j,4,1,0
+1,REP,Steve Scalise,incumbent U.S. Representative and House Minority Whip,2022,House,LA,scalise s,4,1,0
+2,DEM,Troy Carter,incumbent U.S. Representative,2022,House,LA,carter t,4,1,0
+3,REP,Clay Higgins,incumbent U.S. Representative,2022,House,LA,higgins c,4,1,0
+4,REP,Mike Johnson,incumbent U.S. Representative and Vice Chair of the House Republican Conference,2022,House,LA,johnson m,4,1,0
+5,REP,Julia Letlow,incumbent U.S. Representative,2022,House,LA,letlow j,4,1,0
+6,REP,Garret Graves,incumbent U.S. Representative,2022,House,LA,graves g,4,1,0
+1,REP,Doug LaMalfa,incumbent U.S. representative,2024,House,CA,lamalfa d,4,1,0
+2,DEM,Jared Huffman,incumbent U.S. representative,2024,House,CA,huffman j,4,1,0
+3,REP,Kevin Kiley,incumbent U.S. representative,2024,House,CA,kiley k,4,1,0
+3,DEM,Jessica Morse,former deputy secretary of the California Natural Resources Agency and runner-up for the 5th district [ b ] in 2018,2024,House,CA,morse j,0,0,0
+4,DEM,Mike Thompson,incumbent U.S. representative,2024,House,CA,thompson m,4,1,0
+5,REP,Tom McClintock,incumbent U.S. representative,2024,House,CA,mcclintock t,4,1,0
+6,DEM,Ami Bera,incumbent U.S. representative,2024,House,CA,bera a,4,1,0
+7,DEM,Doris Matsui,incumbent U.S. representative,2024,House,CA,matsui d,4,1,0
+8,DEM,John Garamendi,incumbent U.S. representative,2024,House,CA,garamendi j,4,1,0
+9,DEM,Josh Harder,incumbent U.S. representative,2024,House,CA,harder j,4,1,0
+9,REP,Kevin Lincoln,mayor of Stockton (2021–present),2024,House,CA,lincoln k,1,1,0
+10,DEM,Mark DeSaulnier,incumbent U.S. representative,2024,House,CA,desaulnier m,4,1,0
+11,DEM,Nancy Pelosi,incumbent U.S. representative and former Speaker of the House,2024,House,CA,pelosi n,4,1,0
+12,DEM,Lateefah Simon,president of the Bay Area Rapid Transit Board of Directors and California State University trustee,2024,House,CA,simon l,0,0,0
+12,DEM,Nikki Fortunato Bas,president of the Oakland City Council,2024,House,CA,bas n,1,0,0
+12,DEM,Mia Bonta,state assemblywoman from the 18th district (2021–present) (endorsed Simon),2024,House,CA,bonta m,2,1,0
+12,DEM,Dan Kalb,Oakland city councilor from the 1st district (2013–present)  ( ran for state senate ),2024,House,CA,kalb d,2,1,0
+12,DEM,Barbara Lee,incumbent U.S. representative ( ran for U.S. Senate ),2024,House,CA,lee b,4,1,0
+12,DEM,Libby Schaaf,former mayor of Oakland (2015–2023)  (endorsed Simon),2024,House,CA,schaaf l,1,0,0
+12,DEM,Buffy Wicks,state assemblywoman from the 14th district (2019–present)  (endorsed Simon),2024,House,CA,wicks b,2,1,0
+13,REP,John Duarte,incumbent U.S. representative,2024,House,CA,duarte j,4,1,0
+13,DEM,Adam Gray,former state assemblyman from the 21st district (2012–2022) and runner-up for this district in 2022,2024,House,CA,gray a,2,0,0
+14,DEM,Eric Swalwell,incumbent U.S. representative,2024,House,CA,swalwell e,4,1,0
+15,DEM,Kevin Mullin,incumbent U.S. representative,2024,House,CA,mullin k,4,1,0
+16,DEM,Sam Liccardo,former mayor of San Jose (2015–2023),2024,House,CA,liccardo s,1,0,0
+16,DEM,Evan Low,state assemblyman from the 26th district (2014–present),2024,House,CA,low e,2,1,0
+16,DEM,Joe Simitian,"Santa Clara County supervisor from the 5th district (1996–2000, 2013–present) and former state senator from the 11th district (2004–2012)",2024,House,CA,simitian j,2,1,0
+16,DEM,Julie Lythcott-Haims,Palo Alto city councilor,2024,House,CA,haims j,1,0,0
+16,DEM,Josh Becker,state senator from the 13th district (2020–present),2024,House,CA,becker j,2,1,0
+16,DEM,Marc Berman,state assemblyman from the 23rd district (2016–present),2024,House,CA,berman m,2,1,0
+16,DEM,Anna Eshoo,incumbent U.S. representative  (endorsed Simitian),2024,House,CA,eshoo a,4,1,0
+17,DEM,Ro Khanna,incumbent U.S. representative,2024,House,CA,khanna r,4,1,0
+18,DEM,Zoe Lofgren,incumbent U.S. representative,2024,House,CA,lofgren z,4,1,0
+18,DEM,Sam Liccardo,former mayor of San Jose   (running in the 16th district),2024,House,CA,liccardo s,1,0,0
+19,DEM,Jimmy Panetta,incumbent U.S. representative,2024,House,CA,panetta j,4,1,0
+20,REP,Vince Fong,incumbent U.S. representative,2024,House,CA,fong v,4,1,0
+20,REP,Stan Ellis,farmer,2024,House,CA,ellis s,0,0,0
+20,REP,Shannon Grove,state senator for the 12th district (2018–present) and former senate minority leader (2019–2021),2024,House,CA,grove s,2,1,0
+20,REP,Devon Mathis,state assemblyman for the 33rd district (2014–present),2024,House,CA,mathis d,2,1,0
+20,REP,Jim Patterson,"state assemblyman for the 32nd district (2016–present), former mayor of Fresno (1993–2001), and candidate for this district [ ai ] in 2002 and the 9th district [ aj ] in 2010",2024,House,CA,patterson j,2,1,1
+21,DEM,Jim Costa,incumbent U.S. representative,2024,House,CA,costa j,4,1,0
+22,DEM,Rudy Salas,former state assemblyman from the 32nd district (2012–2022) and runner-up for this district in 2022,2024,House,CA,salas r,2,0,0
+22,REP,David Valadao,incumbent U.S. representative,2024,House,CA,valadao d,4,1,0
+22,DEM,Melissa Hurtado,state senator from the 16th district (2018–present),2024,House,CA,hurtado m,2,1,0
+23,REP,Jay Obernolte,incumbent U.S. representative,2024,House,CA,obernolte j,4,1,0
+24,DEM,Salud Carbajal,incumbent U.S. representative,2024,House,CA,carbajal s,4,1,0
+25,DEM,Raul Ruiz,incumbent U.S. representative,2024,House,CA,ruiz r,4,1,0
+26,DEM,Julia Brownley,incumbent U.S. representative,2024,House,CA,brownley j,4,1,0
+27,REP,Mike Garcia,incumbent U.S. representative,2024,House,CA,garcia m,4,1,0
+27,DEM,George Whitesides,former NASA chief of staff and former CEO of Virgin Galactic,2024,House,CA,whitesides g,0,0,0
+27,DEM,Franky Carrillo,"member of the Los Angeles County Probation Oversight Commission ( ran for state assembly , endorsed Whitesides)",2024,House,CA,carrillo f,2,0,0
+28,DEM,Judy Chu,incumbent U.S. representative,2024,House,CA,chu j,4,1,0
+29,DEM,Luz Rivas,state assemblywoman from the 43rd district (2018–present),2024,House,CA,rivas l,2,1,0
+29,DEM,Tony Cárdenas,incumbent U.S. representative (endorsed Rivas),2024,House,CA,cardenas t,4,1,0
+30,DEM,Laura Friedman,state assemblywoman from the 43rd district,2024,House,CA,friedman l,2,0,0
+30,DEM,Mike Feuer,former Los Angeles City Attorney,2024,House,CA,feuer m,0,0,0
+30,DEM,Maebe A. Girl,Silver Lake neighborhood council board member and runner-up for this district in 2022,2024,House,CA,girl m,0,0,0
+30,DEM,Nick Melvoin,member of the Los Angeles Board of Education,2024,House,CA,melvoin n,0,0,0
+30,DEM,Anthony Portantino,state senator from the 25th district,2024,House,CA,portantino a,2,0,0
+30,DEM,Jirair Ratevosian,former senior advisor at the U.S. Department of State and former legislative director for U.S. Representative Barbara Lee,2024,House,CA,ratevosian j,4,1,0
+30,DEM,Ben Savage,actor known for Boy Meets World,2024,House,CA,savage b,0,0,0
+30,DEM,Sepi Shyne,mayor of West Hollywood,2024,House,CA,shyne s,1,0,0
+31,DEM,Gil Cisneros,former U.S. Under Secretary of Defense for Personnel and Readiness (2021–2023) and former U.S. Representative from the 39th district (2019–2021),2024,House,CA,cisneros g,4,1,0
+31,DEM,Bob Archuleta,state senator from the 30th district (2018–present),2024,House,CA,archuleta b,2,1,0
+31,DEM,Susan Rubio,state senator from the 22nd district (2018–present),2024,House,CA,rubio s,2,1,0
+31,DEM,Grace Napolitano,incumbent U.S. representative (endorsed Archuleta),2024,House,CA,napolitano g,4,1,0
+32,DEM,Brad Sherman,incumbent U.S. representative,2024,House,CA,sherman b,4,1,0
+32,REP,Larry Thompson,attorney and independent candidate for the 37th district in 2020,2024,House,CA,thompson l,0,0,1
+33,DEM,Pete Aguilar,incumbent U.S. representative,2024,House,CA,aguilar p,4,1,0
+34,DEM,Jimmy Gomez,incumbent U.S. representative,2024,House,CA,gomez j,4,1,0
+35,DEM,Norma Torres,incumbent U.S. representative,2024,House,CA,torres n,4,1,0
+36,DEM,Ted Lieu,incumbent U.S. representative,2024,House,CA,lieu t,4,1,0
+37,DEM,Sydney Kamlager-Dove,incumbent U.S. representative,2024,House,CA,dove s,4,1,0
+38,DEM,Linda Sánchez,incumbent U.S. representative,2024,House,CA,sanchez l,4,1,0
+39,DEM,Mark Takano,incumbent U.S. representative,2024,House,CA,takano m,4,1,0
+40,REP,Young Kim,incumbent U.S. representative,2024,House,CA,kim y,4,1,0
+41,REP,Ken Calvert,incumbent U.S. representative,2024,House,CA,calvert k,4,1,0
+42,DEM,Robert Garcia,incumbent U.S. representative,2024,House,CA,garcia r,4,1,0
+43,DEM,Maxine Waters,incumbent U.S. representative,2024,House,CA,waters m,4,1,0
+43,DEM,Gregory Cheadle,attorney and perennial candidate,2024,House,CA,cheadle g,0,0,0
+44,DEM,Nanette Barragán,incumbent U.S. representative,2024,House,CA,barragan n,4,1,0
+45,REP,Michelle Steel,incumbent U.S. representative,2024,House,CA,steel m,4,1,0
+45,DEM,Derek Tran,Consumer Attorneys of California board member,2024,House,CA,tran d,0,0,0
+46,DEM,Lou Correa,incumbent U.S. representative,2024,House,CA,correa l,4,1,0
+46,REP,David Pan,"University of California, Irvine professor",2024,House,CA,pan d,0,0,0
+47,REP,Scott Baugh,"former minority leader of the California state assembly, former chair of the Orange County Republican Party, and runner-up for this district in 2022",2024,House,CA,baugh s,2,0,0
+47,DEM,Dave Min,state senator and candidate for this district [ bt ] in 2018,2024,House,CA,min d,2,0,1
+48,REP,Darrell Issa,incumbent U.S. representative,2024,House,CA,issa d,4,1,0
+49,DEM,Mike Levin,incumbent U.S. representative,2024,House,CA,levin m,4,1,0
+50,DEM,Scott Peters,incumbent U.S. representative,2024,House,CA,peters s,4,1,0
+51,DEM,Sara Jacobs,incumbent U.S. representative,2024,House,CA,jacobs s,4,1,0
+52,DEM,Juan Vargas,incumbent U.S. representative,2024,House,CA,vargas j,4,1,0
+1,REP,Steve Scalise,incumbent U.S. representative and House majority leader,2024,House,LA,scalise s,4,1,0
+2,DEM,Troy Carter,incumbent U.S. representative,2024,House,LA,carter t,4,1,0
+3,REP,Clay Higgins,incumbent U.S. representative,2024,House,LA,higgins c,4,1,0
+3,REP,Garret Graves,U.S. representative from the 6th district,2024,House,LA,graves g,4,1,0
+4,REP,Mike Johnson,incumbent U.S. representative and Speaker of the House,2024,House,LA,johnson m,4,1,0
+5,REP,Julia Letlow,incumbent U.S. representative,2024,House,LA,letlow j,4,1,0
+5,REP,Garret Graves,U.S. representative from the 6th district,2024,House,LA,graves g,4,1,0
+6,DEM,Cleo Fields,"state senator from the 14th district (2020–present), [ c ] former U.S. representative from the 4th district (1993–1997), and runner-up for governor in 1995",2024,House,LA,fields c,4,1,0
+6,REP,Elbert Guillory,"former state senator from the 24th district (2009–2016), candidate for lieutenant governor in 2015 and 2023 , and candidate for the 4th district in 2016",2024,House,LA,guillory e,2,0,1
+6,REP,Garret Graves,incumbent U.S. representative,2024,House,LA,graves g,4,1,0
+6,DEM,Sharon Weston Broome,mayor-president of Baton Rouge (2017–present) ( ran for re-election ),2024,House,LA,broome s,1,1,0
+6,DEM,Jeff Hall,former mayor of Alexandria (2018–2022) and former state representative from the 26th district (2015–2018),2024,House,LA,hall j,2,1,0
+6,DEM,Ted James,former regional administrator for the U.S. Small Business Administration (2022–2024) and former state representative from the 101st district (2011–2022)  ( ran for mayor of Baton Rouge ),2024,House,LA,james t,2,1,0
+6,DEM,Sam Jenkins,state senator from the 39th district (2024–present),2024,House,LA,jenkins s,2,1,0
+6,DEM,Gregory Tarver,"former state senator from the 39th district (1984–2004, 2012–2024) and runner-up for mayor of Shreveport in 2022",2024,House,LA,tarver g,2,0,0
+1,DEM,Suzan DelBene,incumbent U.S. representative,2024,House,WA,delbene s,4,1,0
+2,DEM,Rick Larsen,incumbent U.S. representative,2024,House,WA,larsen r,4,1,0
+3,REP,Joe Kent,technology project manager and runner-up for this district in 2022,2024,House,WA,kent j,0,0,0
+3,DEM,Marie Gluesenkamp Perez,incumbent U.S. representative,2024,House,WA,perez m,4,1,0
+4,REP,Dan Newhouse,incumbent U.S. representative,2024,House,WA,newhouse d,4,1,0
+4,REP,Jerrod Sessler,"home repair business founder, former NASCAR driver, and candidate for this district in 2022",2024,House,WA,sessler j,0,0,1
+5,REP,Michael Baumgartner,"Spokane County Treasurer (2019–present), former state senator from the 6th district (2011–2019), and runner-up for U.S. Senate in 2012",2024,House,WA,baumgartner m,2,1,0
+6,REP,Drew MacEwen,state senator (2023–present),2024,House,WA,macewen d,2,1,0
+6,DEM,Emily Randall,state senator (2019–present),2024,House,WA,randall e,2,1,0
+7,DEM,Pramila Jayapal,incumbent U.S. representative,2024,House,WA,jayapal p,4,1,0
+8,DEM,Kim Schrier,incumbent U.S. representative,2024,House,WA,schrier k,4,1,0
+9,DEM,Adam Smith,incumbent U.S. representative,2024,House,WA,smith a,4,1,0
+10,DEM,Marilyn Strickland,incumbent U.S. representative,2024,House,WA,strickland m,4,1,0
