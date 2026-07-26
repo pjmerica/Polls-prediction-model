@@ -34,10 +34,16 @@ looks wrong, check it against the strictly-before rule there BEFORE changing any
 - Two fixes shipped with this: build_office_level_table.py normalizes the uncovered-list's
   "S" statewide district → "" for Senate/Gov; features.load_candidate_bios uses crash-safe
   `dist_str()` instead of raw `int(district)` (was crashing on non-numeric district values).
-- **STATUS UNCHANGED: bio_office_level is still opt-in, NOT shipped to the general model.**
-  The mixed ablation (2026-07-24 below) still stands. This pass only made the DATA correct
-  (leak-free) + higher-coverage. **Re-ablate on this corrected table before shipping** — do
-  not assume the earlier verdict transfers to the fixed data.
+- **RE-ABLATED on this corrected table 2026-07-26 — DEFINITIVE: still NOT shipped.** The
+  mixed pattern REPLICATED on the clean leak-free data (expanding-window, fixed shared
+  hyperparameters): calibration nudges positive (AUC +0.0006, Brier -0.0011) but race-acc
+  goes DOWN -0.0028, same 2020-fold regression (-0.0199) as before. So it's not a leak
+  artifact — poll features already carry this signal for the general election. bio_office_level
+  stays opt-in (`feature_list(candidate_bios=True)`, OFF by default) in BOTH win + margin
+  models; earns its keep only in the PRIMARY model. User confirmed "don't ship, just document"
+  after seeing the numbers. Full table in METHODOLOGY.md. Do NOT re-open without a materially
+  different input (e.g. coverage pushed past the pre-2012 wall). Production is UNCHANGED — no
+  retrain/redeploy needed from this work.
 
 ## CURRENT STATE 2026-07-24 — bio_office_level fully investigated, FINAL VERDICT: not
 ## production. Coverage story + save-discipline refactor below; older entries follow.

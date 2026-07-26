@@ -256,19 +256,39 @@ Two source kinds, both contributing an as-of-year level:
     the as-of-year level = max office-level among offices whose tenure STARTED before `year`.
     This is what makes even Ballotpedia rows time-varying and leak-free instead of a frozen peak.
 Coverage after this pass: **68.8% of winner-rows** (1,357/1,971), up from 67.7%. It is
-very uneven by era — **2012–2024 ≈ 88–100%**, **1998–2010 ≈ 32–48%** (older Wikipedia race
-pages are far sparser). The Ballotpedia scrape captured 21 of 91 targeted 2012+ uncovered
-winners before hitting a persistent multi-hour IP block; **59 winners remain uncovered** and
-the scrape is resumable (`py -X utf8 fetch_candidate_bios_ballotpedia.py --winners-only`
-skips done rows; progress is saved and not poisoned). Two crash/schema fixes shipped with
-this: (1) `build_office_level_table.py` now normalizes the uncovered-list's `"S"` statewide
+very uneven by era — winners **2012–2024 ≈ 88–100%**, **1998–2010 ≈ 32–48%** (older
+Wikipedia race pages are far sparser); all-rows 56.9% (69.0% among winners). The Ballotpedia
+scrape captured 21 of 91 targeted 2012+ uncovered winners before hitting a persistent
+multi-hour IP block; **59 winners remain uncovered** and the scrape is resumable
+(`py -X utf8 fetch_candidate_bios_ballotpedia.py --winners-only` skips done rows; progress
+is saved and not poisoned). Two crash/schema fixes shipped with this:
+(1) `build_office_level_table.py` now normalizes the uncovered-list's `"S"` statewide
 district placeholder to `""` for Senate/Governor (matches Wikipedia + production key);
 (2) `features.load_candidate_bios` now uses the crash-safe `dist_str()` helper instead of a
-raw `int(district)` that blew up on any non-numeric district value. **Status unchanged:
-bio_office_level is still opt-in machinery, NOT shipped to the general model** (the mixed
-ablation above still stands); this pass improved the data's correctness (leak-free) and
-coverage so a future re-ablation runs on clean inputs. Re-ablate on this table BEFORE
-shipping — do not assume the earlier verdict transfers to the corrected data.
+raw `int(district)` that blew up on any non-numeric district value.
+
+**RE-ABLATION ON THE CORRECTED LEAK-FREE TABLE (2026-07-26) — DEFINITIVE, STILL NOT SHIPPED.**
+The whole point of the leak-free rebuild was to re-run the ablation on clean data so the
+earlier mixed verdict couldn't be dismissed as a leak/data-quality artifact. It was re-run
+with the exact model.ipynb harness (nested-tuned hyperparameters FIXED on 1998-2016 with the
+BASE feature set, shared by both arms; expanding-window honest eval 2018-2024). Result — the
+mixed pattern REPLICATES on the corrected data:
+    metric      BASE      +bio      delta
+    AUC        0.9685    0.9691    +0.0006
+    AUC-PR     0.9491    0.9497    +0.0006
+    KS         0.8223    0.8227    +0.0003
+    Brier      0.0688    0.0677    -0.0011  (lower better)
+    race_acc   0.8756    0.8729    -0.0028  (WORSE — driven by 2020 fold -0.0199; 2022/2024 flat)
+Calibration nudges positive but PICK ACCURACY (what decides races) goes DOWN, same shape and
+same culprit fold (2020) as the pre-leak-fix run. This CLOSES the question: for the GENERAL
+election, poll-based features already carry this signal (bio_office_level ~0.48 correlated
+with poll_avg). **bio_office_level is NOT shipped to the general win OR margin model** — it
+stays opt-in machinery (`feature_list(candidate_bios=True)`, off by default) and continues to
+earn its keep only in the PRIMARY model, where polling is weak. Same conclusion shape as
+poll_adj and primary_margin/primary_uncontested. (User confirmed "don't ship, just document"
+2026-07-26 after seeing these numbers.) Do NOT re-open this without a materially different
+input (e.g. coverage pushed well past the pre-2012 wall) — the corrected-data run is the
+honest final word.
 
 **Headline (expanding-window, results labels, +bio_office_level).** Report the STABLE
 metrics first — they hold across both eval cycles: **AUC-PR .966, Brier .024** (vs
