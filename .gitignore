@@ -56,6 +56,9 @@ data/*
 # ...and the margin model's importance table (small, diffable, like feature_importance.csv)
 !margin_feature_importance.csv
 
+# transient scraper run-logs (progress traces via `tee`; not source data — the CSVs are)
+ballotpedia_scrape*.txt
+
 # Python
 __pycache__/
 *.py[cod]
@@ -95,3 +98,7 @@ venv/
 !data/candidate_bios_senate.csv
 !data/candidate_bios_governor.csv
 !data/candidate_bios_house.csv
+# Ballotpedia gap-filler (person-level; combine_candidate_bios.py expands + merges it,
+# Wikipedia preferred) + the uncovered-candidates list it targets
+!data/candidate_bios_ballotpedia.csv
+!data/uncovered_candidates.csv

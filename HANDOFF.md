@@ -1,8 +1,43 @@
-# Handoff: in-flight state, breakdown risks, next steps (2026-07-24)
+# Handoff: in-flight state, breakdown risks, next steps (2026-07-26)
 
 For the next agent. Read AGENTS.md first (architecture + rules), CONCERNS.md second
 (risk register + roadmap). This file: what's mid-flight RIGHT NOW, what's most likely to
 break, and what to do next, in order.
+
+## CURRENT STATE 2026-07-26 — office_level table rebuilt LEAK-FREE (as-of-year); committed.
+
+**DO NOT "fix" a candidate whose office_level differs across years — that is BY DESIGN.**
+`bio_office_level` is now the highest office held **strictly before that election year**
+(no look-ahead), so the same person legitimately reads different levels in different cycles
+(Spanberger 2018→0 then 2020+→4; Lankford 2010→0 then 2012+→4). Full rule + verified
+spot-checks are in METHODOLOGY.md ("Leak-free as-of-year office-level table"). If a value
+looks wrong, check it against the strictly-before rule there BEFORE changing anything.
+
+- **Authoritative builder is now `build_office_level_table.py`** (run after ANY bio-source
+  change → rebuilds `data/candidate_bios.csv` fresh). It SUPERSEDES `combine_candidate_bios.py`,
+  which is now DEPRECATED (it did a frozen-peak merge = a real look-ahead leak; kept per the
+  archive rule, docstring says so). Where item 5 in the older 2026-07-24 entry below calls
+  combine_candidate_bios.py "the ONLY writer of candidate_bios.csv" — that is now STALE;
+  build_office_level_table.py is the writer.
+- Sources: Wikipedia per-office files (contemporaneous, used as-is, PREFERRED on overlap) +
+  Ballotpedia gap-filler (`candidate_bios_ballotpedia.csv`, person-level but carries per-office
+  TENURE DATES in `offices_json`; builder computes as-of-year level from tenure starts).
+- **Coverage: 68.8% of winner-rows** (1,357/1,971), up from 67.7%. VERY uneven by era:
+  2012–2024 ≈ 88–100%, 1998–2010 ≈ 32–48% (older Wikipedia race pages are sparse).
+- **Ballotpedia scrape is PARTIAL + RESUMABLE:** got 21 of 91 targeted 2012+ uncovered winners,
+  then hit a persistent multi-hour IP block (tried 20-min cycles ×2 + a 60-min cooldown; block
+  held). **59 winners still uncovered.** Resume later with
+  `py -X utf8 fetch_candidate_bios_ballotpedia.py --winners-only` (skips done rows; progress
+  saved, misses NOT poisoned). Then re-run build_office_level_table.py + check_officeholder.py.
+  NOTE: don't do a probe/CLEAR-test fetch before resuming — it consumes the freshly-reset
+  quota and re-triggers the block on the first real lookup.
+- Two fixes shipped with this: build_office_level_table.py normalizes the uncovered-list's
+  "S" statewide district → "" for Senate/Gov; features.load_candidate_bios uses crash-safe
+  `dist_str()` instead of raw `int(district)` (was crashing on non-numeric district values).
+- **STATUS UNCHANGED: bio_office_level is still opt-in, NOT shipped to the general model.**
+  The mixed ablation (2026-07-24 below) still stands. This pass only made the DATA correct
+  (leak-free) + higher-coverage. **Re-ablate on this corrected table before shipping** — do
+  not assume the earlier verdict transfers to the fixed data.
 
 ## CURRENT STATE 2026-07-24 — bio_office_level fully investigated, FINAL VERDICT: not
 ## production. Coverage story + save-discipline refactor below; older entries follow.

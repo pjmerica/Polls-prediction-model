@@ -226,6 +226,50 @@ section above). METHODOLOGICAL NOTE worth keeping: the first (null) ablation was
 biased coverage and nearly closed the question wrongly — measure a feature's COVERAGE
 STRUCTURE (who's missing and why), not just its coverage rate, before trusting an ablation.
 
+**Leak-free as-of-year office-level table (2026-07-25/26, user request).**
+IMPORTANT FOR ANY FUTURE AGENT — READ THIS BEFORE "FIXING" A CANDIDATE'S office_level:
+**`bio_office_level` is INTENTIONALLY year-varying. The same candidate SHOULD read
+different levels in different election years. That is not a bug — it is the whole design.**
+The rule is: `office_level` = the highest office the candidate held **STRICTLY BEFORE that
+election year** (no look-ahead). So a first-time 2018 candidate reads 0 in 2018 even if they
+later became a Senator, and reads 4 only from the cycle after they took federal office.
+Verified spot-checks (these are the CORRECT, expected values — do not "correct" them):
+  - Abigail Spanberger: 2018 → 0 (newcomer), 2020/2022/2024 → 4 (was a US Rep by then)
+  - James Lankford: 2010 House → 0 (first run), 2012+ House/Senate/Gov → 4
+  - Aaron Bean: 2016 → 2 (state senator then); 2024 → 4 (US Rep by then)
+
+This replaced the old `combine_candidate_bios.py` merge, which stamped each person's FROZEN
+peak office_level onto ALL their rows — a genuine look-ahead leak (a 2010 first-timer who
+later reached the Senate would have wrongly read 4 in 2010). `combine_candidate_bios.py` is
+DEPRECATED (docstring says so; kept, not deleted, per the archive rule). The authoritative
+builder is now **`build_office_level_table.py`** — run it after ANY bio-source change:
+    py -X utf8 build_office_level_table.py     # -> data/candidate_bios.csv (rebuilt fresh)
+Two source kinds, both contributing an as-of-year level:
+  - WIKIPEDIA (`candidate_bios_{senate,governor,house}.csv`): already contemporaneous — each
+    row was scraped from THAT YEAR's own race page, so its office_level is used as-is and is
+    PREFERRED on any key overlap. (Caveat: a race page occasionally omits a candidate's prior
+    office — e.g. Bean's 2022 page reads 0 despite 2016 reading 2. That's a Wikipedia
+    source-completeness gap, not a builder bug; flagged for later cleanup, not overridden.)
+  - BALLOTPEDIA (`candidate_bios_ballotpedia.csv`, gap-filler only): person-level but carries
+    per-office TENURE DATES in an `offices_json` column (e.g.
+    `[["U.S. House VA 7",2019,2025],["Governor of Virginia",2026,null]]`). The builder computes
+    the as-of-year level = max office-level among offices whose tenure STARTED before `year`.
+    This is what makes even Ballotpedia rows time-varying and leak-free instead of a frozen peak.
+Coverage after this pass: **68.8% of winner-rows** (1,357/1,971), up from 67.7%. It is
+very uneven by era — **2012–2024 ≈ 88–100%**, **1998–2010 ≈ 32–48%** (older Wikipedia race
+pages are far sparser). The Ballotpedia scrape captured 21 of 91 targeted 2012+ uncovered
+winners before hitting a persistent multi-hour IP block; **59 winners remain uncovered** and
+the scrape is resumable (`py -X utf8 fetch_candidate_bios_ballotpedia.py --winners-only`
+skips done rows; progress is saved and not poisoned). Two crash/schema fixes shipped with
+this: (1) `build_office_level_table.py` now normalizes the uncovered-list's `"S"` statewide
+district placeholder to `""` for Senate/Governor (matches Wikipedia + production key);
+(2) `features.load_candidate_bios` now uses the crash-safe `dist_str()` helper instead of a
+raw `int(district)` that blew up on any non-numeric district value. **Status unchanged:
+bio_office_level is still opt-in machinery, NOT shipped to the general model** (the mixed
+ablation above still stands); this pass improved the data's correctness (leak-free) and
+coverage so a future re-ablation runs on clean inputs. Re-ablate on this table BEFORE
+shipping — do not assume the earlier verdict transfers to the corrected data.
+
 **Headline (expanding-window, results labels, +bio_office_level).** Report the STABLE
 metrics first — they hold across both eval cycles: **AUC-PR .966, Brier .024** (vs
 polls-only .924/.045). Race-winner accuracy is .929 mean but is cycle-dependent by a few
