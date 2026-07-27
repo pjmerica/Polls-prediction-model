@@ -47,7 +47,8 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.join(HERE, "..", "Polling Agg", "Polling agg and Prediction markets"))
 from scrapers.wikipedia_polls import fetch_page, STATES  # noqa: E402
 
-from fetch_candidate_bios import parse_page, classify, PRIOR_CAND_RX  # noqa: E402
+from fetch_candidate_bios import (parse_page, parse_results_tables, classify,  # noqa: E402
+                                  PRIOR_CAND_RX)
 import features as F  # noqa: E402
 from cycles import CYCLES  # noqa: E402
 
@@ -116,6 +117,15 @@ def main():
         if html is None:
             continue
         rows = parse_page(html, house=True)
+        # SUPPLEMENT with results-table rows (2026-07-27): most pre-2012 multi-district House
+        # pages have NO candidate bullets, only "Party|Candidate|Votes|%" results tables
+        # (verified: 2008 WA, 2010 FL, 2004 TX). Bullets carry real descriptors so they WIN;
+        # only add a table candidate the bullets didn't find (matched per district on
+        # party + normalized name). Incumbents come through with a synthesized descriptor.
+        have = {(d, F.npar(p), F.norm_name(n)) for d, p, n, _ in rows}
+        for tr in parse_results_tables(html, house=True, office="House"):
+            if (tr[0], F.npar(tr[1]), F.norm_name(tr[2])) not in have:
+                rows.append(tr)
         if at_large:
             # at-large pages have no "District N" heading for parse_page's own detector to
             # find, so district stays None there - same gap fixed in the results scraper's

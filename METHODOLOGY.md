@@ -267,6 +267,36 @@ district placeholder to `""` for Senate/Governor (matches Wikipedia + production
 (2) `features.load_candidate_bios` now uses the crash-safe `dist_str()` helper instead of a
 raw `int(district)` that blew up on any non-numeric district value.
 
+**PRE-2012 COVERAGE BACKFILL (2026-07-27, user asked for true 100% — historical, one-time).**
+The as-of-year table above topped out ~54.5% overall / 68.8% winners because Wikipedia
+REWROTE its election-page template around 2011-2012: pre-~2012 race pages present candidates
+either as flat bullets under a "Candidates -> Democrats/Republicans" section (no
+"Democratic primary" stage heading) OR, for big multi-district House states, ONLY in a
+"Party | Candidate | Votes | %" results TABLE with no descriptor prose. The bullet parser
+(`parse_page`) recognized neither, so it returned ZERO rows on those pages (root-caused via
+Earl Pomeroy: polled House ND-1 five times 1998-2010, bio existed only for his 2012 Senate
+run; verified 2010 ND & 2008 WA fetched fine but parsed empty). TWO parser additions fixed it:
+  1. `parse_page` OLD-FORMAT mode: a `cand_section` flag that survives a party-only subheading,
+     so bullets under "Candidates -> Democrats" collect even with no primary stage. Recovers
+     real descriptors -> real levels (Pomeroy->4, Dorgan->4, Heitkamp->3, Gray Davis->3).
+     Modern partisan pages unaffected (2024 OH regression-checked identical).
+  2. `parse_results_tables` (NEW): extracts NAME + PARTY from results wikitables for the
+     table-only big states (2008 WA, 2010 FL, 2004 TX all had 0 bullets). No descriptor in a
+     table, so office_level defaults to 0 EXCEPT a "(Incumbent)" tag -> synthesized
+     "incumbent U.S. Representative/Senator/Governor" descriptor -> correct level 4/4/3 for
+     free (Lampson->4, Bobby Rush->4). Both wired into the Senate/Gov (`_scrape_office`) and
+     House scrapers as a bullet-first, table-supplement merge (bullets win on overlap).
+Result: pre-2012 re-scraped (+5,343 House bios, Senate/Gov rebuilt from archived pre-2012
+copies per the archive rule). Coverage **54.5%->71.1% overall, 68.8%->87.3% winners**; the
+pre-2012 era went from 32-48% to 69-85% (now BETTER-covered than 2018-2024). check_officeholder
+still passes (7/7, 96% consistency). KNOWN residual: table-only NON-incumbent officeholders
+read level 0 (a results table doesn't say what a challenger was before) - e.g. Schumer 1998,
+Carper 2000 surface as level-0 in the fact-check DISAGREE list. These + modern-era
+losing-challenger gaps are the Ballotpedia (person-level) backfill's job; the still-uncovered
+target roster is regenerated into data/office_level_backfill_targets.csv (1,398 rows, 249
+winners) after each stage. This does NOT change the ablation verdict below (feature still not
+shipped) - it's a data-completeness pass so any FUTURE re-ablation runs on maximal coverage.
+
 **RE-ABLATION ON THE CORRECTED LEAK-FREE TABLE (2026-07-26) — DEFINITIVE, STILL NOT SHIPPED.**
 The whole point of the leak-free rebuild was to re-run the ablation on clean data so the
 earlier mixed verdict couldn't be dismissed as a leak/data-quality artifact. It was re-run

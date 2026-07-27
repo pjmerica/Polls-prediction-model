@@ -110,6 +110,7 @@ def parse_page(html, house=False):
     out = []
     stage, party, district = "general", "", None
     in_candidates = False
+    cand_section = False    # inside a "Candidates" section (survives a party-only subheading)
     SKIP_SUB_RX = re.compile(r"endorse|polling|results|debate|see also|references|"
                              r"fundrais|predictions|notes", re.I)
     # "Nominee" / "advanced to general" added 2026-07-23 (user pushed back on a "redundant
@@ -143,16 +144,24 @@ def parse_page(html, house=False):
             if s:
                 stage = s
                 in_candidates = False
+                cand_section = False          # a new stage ends any old-format Candidates run
             if p:
                 party = p
                 in_candidates = False
+                # NOTE: do NOT clear cand_section here. On pre-2012 flat pages a plain party
+                # subheading ("Democrats"/"Republicans") sits UNDER a "Candidates" section
+                # and carries only a party (no stage) - clearing the candidate context on it
+                # is exactly what dropped those pages to zero. cand_section survives a
+                # party-only heading so old_format below can still collect the bullets.
             # subsection tracking: ENDORSEMENT lists live INSIDE primary sections and
             # once scraped Russ Feingold as a Wisconsin "candidate" - only collect
             # bullets under candidate-ish subheadings
             if SKIP_SUB_RX.search(text):
                 in_candidates = False
+                cand_section = False
             elif CAND_SUB_RX.search(text):
                 in_candidates = True
+                cand_section = True
             continue
         # TWO collection modes (jungle mode added 2026-07-24):
         # - PARTISAN pages: party comes from a "Democratic/Republican primary" heading;
@@ -166,7 +175,20 @@ def parse_page(html, house=False):
         #   and NO party heading context - then party is read per-bullet instead.
         jungle_mode = (house and district is not None and in_candidates
                        and not party and stage != "primary")
-        if not jungle_mode and (stage != "primary" or not party or not in_candidates):
+        # OLD-FORMAT mode (added 2026-07-27 for the pre-2012 backfill): Wikipedia's
+        # pre-~2012 race pages don't use "Democratic primary"/"Republican primary" stage
+        # headings. They list candidates flat under a "Candidates" section split by plain
+        # party subheadings ("Democrats", "Republicans"), so infer_section_context returns
+        # a PARTY but no stage='primary' - the original gate (which requires stage=='primary')
+        # dropped every such page to ZERO rows (verified: 2010 ND, 2008 WA fetched fine but
+        # parsed empty; "Earl Pomeroy, incumbent U.S. Representative" was sitting right there
+        # under Candidates->Democrats). in_candidates is already guarded by CAND_SUB_RX +
+        # SKIP_SUB_RX, so "have a party AND we're under a candidate-ish subheading" is a safe
+        # collection signal even without a primary stage. Doesn't affect modern partisan
+        # pages: those reach the bullets via stage=='primary' first, and dedup drops repeats.
+        old_format = (cand_section and party and stage != "primary" and not jungle_mode)
+        if not jungle_mode and not old_format and (
+                stage != "primary" or not party or not in_candidates):
             continue
         for li in el.find_all("li", recursive=False):
             t = li.get_text(" ", strip=True)
@@ -212,6 +234,94 @@ def parse_page(html, house=False):
                 out.append((district if house else None, party, name, desc))
     return out
 
+# Party-name -> our 3-way code, for results-table cells ("Democratic"/"Republican"/etc.)
+_TABLE_SKIP_NAME_RX = re.compile(
+    r"^(total|majority|turnout|write-?in|others?|blank|void|scattering|n/a|—|-|hold|gain|"
+    r"swing|registered|voter)", re.I)
+
+def parse_results_tables(html, house=False, office=None):
+    """[(district_or_None, party, name, descriptor)] from election-RESULTS wikitables.
+
+    Added 2026-07-27 for the pre-2012 backfill. Most big-state pre-~2012 House pages (and
+    some Senate/Gov) present candidates ONLY in a "Party | Candidate | Votes | %" results
+    table with NO descriptor prose - parse_page (which reads candidate bullets) returns zero
+    on them (verified: 2008 WA, 2010 FL/CA/TX/NY). This recovers the NAME + PARTY from the
+    table. A results table has no descriptor prose, so descriptor is "" (office_level -> 0)
+    EXCEPT one free, correct signal it DOES carry: a "(Incumbent)" tag means the candidate
+    already held this very seat, so for a Senate/House/Governor page that's office_level 4/4/3
+    respectively - we synthesize a descriptor ("incumbent U.S. Representative" etc.) so
+    classify() levels them correctly. Non-incumbents keep descriptor "" and are leveled later
+    (Ballotpedia / manual). Its job is roster + party completion (+ incumbents for free).
+
+    District: taken from the nearest preceding "District N" heading (house pages). Rows whose
+    candidate cell is a summary line (Total votes / Majority / Write-in / etc.) are skipped.
+    """
+    INC_DESC = {"Senate": "incumbent U.S. Senator",
+                "House": "incumbent U.S. Representative",
+                "Governor": "incumbent Governor"}
+    soup = BeautifulSoup(html, "html.parser")
+    out = []
+    district = None
+    for el in soup.find_all(["h2", "h3", "h4", "h5", "table"]):
+        if el.name != "table":
+            if house:
+                m = re.search(r"District\s+(\d+)", el.get_text(" ", strip=True))
+                if m:
+                    district = int(m.group(1))
+            continue
+        if "wikitable" not in (el.get("class") or []):
+            continue
+        # locate the Party and Candidate columns from the header row
+        header = el.find("tr")
+        if not header:
+            continue
+        hcells = [c.get_text(" ", strip=True).lower() for c in header.find_all(["th", "td"])]
+        if not ("candidate" in hcells and any("part" in h for h in hcells)):
+            continue          # not a candidate-results table (skip predictions/turnout/etc.)
+        for tr in el.find_all("tr")[1:]:
+            cells = tr.find_all(["th", "td"])
+            texts = [c.get_text(" ", strip=True) for c in cells]
+            joined = " ".join(texts)
+            # results rows carry a color-swatch th (empty) then Party, Candidate, Votes, %.
+            # Find the party word + the candidate name among the cells robustly.
+            party = ""
+            for t in texts:
+                p = F.npar(t)
+                if p != "OTH" or re.match(r"^(democrat|republic)", t, re.I):
+                    party = p
+                    break
+                if re.match(r"^(independent|libertarian|green|constitution|reform)", t, re.I):
+                    party = F.npar(t)
+                    break
+            # candidate name = first cell that looks like a person (2-4 words, not a summary,
+            # not the party word, not a number)
+            name = ""
+            for t in texts:
+                ts = re.sub(r"\[\s*\d+\s*\]", "", t).strip()
+                if (2 <= len(ts.split()) <= 4 and not _TABLE_SKIP_NAME_RX.match(ts)
+                        and not re.search(r"\d", ts)
+                        and not re.match(r"^(democrat|republic|independ|libertar|green|"
+                                         r"constitution|reform)", ts, re.I)):
+                    name = ts
+                    break
+            if not name or _TABLE_SKIP_NAME_RX.match(joined):
+                continue
+            # "(Incumbent)" / "(incumbent)" suffix -> strip from name, but use it: an
+            # incumbent held this exact seat, so synthesize the right-level descriptor.
+            is_inc = bool(re.search(r"\(\s*incumbent\s*\)", name, re.I))
+            name = re.sub(r"\s*\(\s*incumbent\s*\)\s*", "", name, flags=re.I).strip()
+            if not name:
+                continue
+            desc = INC_DESC.get(office, "") if is_inc else ""
+            out.append((district if house else None, party, name, desc))
+    # dedup within page (a candidate can appear in both a primary and a general table)
+    seen, uniq = set(), []
+    for row in out:
+        k = (row[0], row[1], F.norm_name(row[2]))
+        if k not in seen:
+            seen.add(k); uniq.append(row)
+    return uniq
+
 def _scrape_office(office, targets, out_path):
     """Scrape one office's pages -> its OWN output file (never shared with another
     office's scraper - see the file-header note on why this changed 2026-07-24)."""
@@ -233,6 +343,14 @@ def _scrape_office(office, targets, out_path):
         url = (URL_SEN if office == "Senate" else URL_GOV).format(year=year, state=s)
         html = fetch_page(url)
         rows = parse_page(html, house=False) if html else []
+        # SUPPLEMENT with results-table rows (pre-2012 pages often have no candidate bullets;
+        # 2026-07-27). Bullets carry real descriptors so they WIN - only add a table candidate
+        # the bullets didn't already find (matched on party + normalized name).
+        if html:
+            have = {(F.npar(p), F.norm_name(n)) for _, p, n, _ in rows}
+            for tr in parse_results_tables(html, house=False, office=office):
+                if (F.npar(tr[1]), F.norm_name(tr[2])) not in have:
+                    rows.append(tr)
         df = pd.DataFrame(rows, columns=["district", "party", "name", "descriptor"])
         df["year"], df["office"], df["state"] = year, office, st
         df["cand_key"] = df["name"].map(F.norm_name)

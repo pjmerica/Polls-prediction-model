@@ -4,6 +4,31 @@ For the next agent. Read AGENTS.md first (architecture + rules), CONCERNS.md sec
 (risk register + roadmap). This file: what's mid-flight RIGHT NOW, what's most likely to
 break, and what to do next, in order.
 
+## CURRENT STATE 2026-07-27 — pre-2012 coverage backfill (Stage 1 of 3); committed.
+
+**User asked for TRUE 100% office_level coverage (historical, one-time — "hardcoding and
+finding answers online is fine").** Three-stage plan; Stage 1 done + committed:
+- **Stage 1 (DONE):** root-caused the pre-2012 gap = Wikipedia rewrote its election-page
+  template ~2012. Two parser additions in fetch_candidate_bios.py: (1) `parse_page`
+  OLD-FORMAT mode (`cand_section` flag survives a party-only subheading → flat
+  "Candidates→Democrats" bullets collect, real descriptors → real levels); (2)
+  `parse_results_tables` (NEW) pulls NAME+PARTY from results wikitables for table-only big
+  states, with "(Incumbent)" → synthesized descriptor → free level 4/4/3. Both wired into
+  Senate/Gov + House scrapers (bullet-first, table-supplement). Pre-2012 re-scraped
+  (+5,343 House bios; Sen/Gov rebuilt, pre-2012 originals archived per the rule).
+  **Coverage 54.5%→71.1% overall, 68.8%→87.3% winners; pre-2012 era 32-48%→69-85%.**
+  check_officeholder passes (7/7, 96%). Modern pages regression-checked unchanged.
+- **Stage 2 (NEXT — user chose to commit Stage 1 first):** Ballotpedia person-level backfill
+  for the 1,398 still-uncovered (data/office_level_backfill_targets.csv, regenerated;
+  1,248 people, 249 winners; 1,009 are 2012+ losing challengers, 389 pre-2012 table-only).
+  This fills table-only NON-incumbents that read level 0 (Schumer 1998, Carper 2000 — they
+  show in the fact-check DISAGREE list, correctly flagged as needing person-level data).
+  Ballotpedia hard-blocks ~every 25 reqs → many cooldown cycles. SCOPE STILL TO BE CHOSEN
+  (winners+repeats-first vs full drip) — ASK the user before launching a multi-hour scrape.
+- **Stage 3:** manual/hardcode the final stragglers with no page anywhere → true 100%.
+NOTE: the ablation verdict is UNCHANGED by this — it's a data-completeness pass so a future
+re-ablation runs on maximal coverage. Feature still opt-in / not shipped.
+
 ## CURRENT STATE 2026-07-26 — office_level table rebuilt LEAK-FREE (as-of-year); committed.
 
 **DO NOT "fix" a candidate whose office_level differs across years — that is BY DESIGN.**

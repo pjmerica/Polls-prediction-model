@@ -58,6 +58,7 @@ data/*
 
 # transient scraper run-logs (progress traces via `tee`; not source data — the CSVs are)
 ballotpedia_scrape*.txt
+backfill_*_scrape_log.txt
 
 # Python
 __pycache__/
@@ -102,3 +103,11 @@ venv/
 # Wikipedia preferred) + the uncovered-candidates list it targets
 !data/candidate_bios_ballotpedia.csv
 !data/uncovered_candidates.csv
+# the still-uncovered office_level target roster (regenerated after each backfill stage;
+# drives the Ballotpedia/manual passes) — small, diffable, reference-able
+!data/office_level_backfill_targets.csv
+
+# local archive of pre-change data copies (archive-don't-delete rule is a LOCAL backup
+# discipline — these are point-in-time snapshots, not repo content; never committed, same
+# as the earlier archive/candidate_bios_<timestamp> files documented in METHODOLOGY)
+archive/
