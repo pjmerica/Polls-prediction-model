@@ -63,6 +63,13 @@ def main():
     KEY = ["year", "office", "state", "district", "party", "cand_key"]
     wiki["district"] = wiki["district"].fillna("").astype(str).str.replace(r"\.0$", "", regex=True)
     wiki_keys = set(map(tuple, wiki[KEY].astype(str).values))
+    # Wikipedia level per key - needed so a Ballotpedia row with a REAL level can override a
+    # Wikipedia row that reads 0 ONLY because it came from a results TABLE (blank descriptor,
+    # no prior-office info). Found 2026-07-27: Schumer 1998 / Carper 2000 had level-0 Wikipedia
+    # table rows outranking their correct Ballotpedia levels. Wikipedia still wins whenever it
+    # has a real (>0) level; it only yields when its own value is an uninformative 0.
+    wiki_level = {tuple(str(x) for x in k): lvl for k, lvl in
+                  zip(wiki[KEY].values, wiki["office_level"].values)}
 
     # ---- Ballotpedia: expand person-rows to the uncovered per-race rows, as-of-year level ----
     bp_path = os.path.join(DATA, "candidate_bios_ballotpedia.csv")
@@ -90,11 +97,15 @@ def main():
             if key not in off_map:
                 continue
             rowkey = tuple(str(x) for x in (r.year, r.office, r.state, r.district, r.party, r.cand_key))
-            if rowkey in wiki_keys:            # Wikipedia already covers it - it wins
-                continue
             lvl = _bp_asof_level(off_map[key], int(r.year))
             if lvl is None:
                 continue
+            if rowkey in wiki_keys:
+                # Wikipedia covers it. It wins UNLESS its level is an uninformative 0 (a
+                # results-table row with no descriptor) and Ballotpedia has a real higher
+                # level - then let the BP row through to override in the dedup below.
+                if not (wiki_level.get(rowkey, 0) == 0 and lvl > 0):
+                    continue
             bp_rows.append(dict(
                 year=r.year, office=r.office, state=r.state, district=r.district,
                 party=r.party, name=r.candidate, cand_key=r.cand_key,
@@ -104,8 +115,13 @@ def main():
               f"leak-free as-of-year rows (gap-filling; Wikipedia preferred)")
 
     combined = pd.concat([wiki, pd.DataFrame(bp_rows)], ignore_index=True) if bp_rows else wiki
-    # final dedup guard (Wikipedia first, so it wins any residual collision)
-    combined = combined.drop_duplicates(subset=KEY, keep="first")
+    # final dedup: on a key collision keep the HIGHER office_level. This lets a Ballotpedia
+    # real-level row override a Wikipedia table-zero row (the only case a BP row is emitted for
+    # an already-covered key - see the override gate above), while still keeping Wikipedia's
+    # value in every normal case (equal or higher wiki level -> a stable sort keeps wiki, which
+    # is concatenated first). Ties (both same level) keep Wikipedia via the stable sort.
+    combined = (combined.sort_values("office_level", ascending=False, kind="stable")
+                        .drop_duplicates(subset=KEY, keep="first"))
     combined.to_csv(OUT, index=False)
     print(f"\nsaved -> {OUT}: {len(combined)} rows "
           f"({(combined['src']=='wikipedia').sum()} wiki, {(combined['src']=='ballotpedia').sum()} ballotpedia)")

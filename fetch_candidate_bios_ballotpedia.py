@@ -142,6 +142,27 @@ OFFICE_TITLE_RX = re.compile(
     r"\bmayor\b|county|city council|\bjudge\b|district attorney|state treasurer|"
     r"state auditor|land commissioner|insurance commissioner", re.I)
 DATE_RANGE_RX = re.compile(r"(\d{4})\s*[-–]\s*(\d{4}|present)", re.I)
+# Broadened date formats (2026-07-27, prompted by Baron Hill's dateless infobox): Ballotpedia
+# isn't consistent - besides "2007–2011" it uses "Assumed office January 3, 2019",
+# "In office 2007 - 2011", or a lone "Successor:"/"Predecessor:" row with the year only in a
+# nearby "Elections" line. We try these IN ORDER; only a real 4-digit START year is ever
+# accepted (never guessed). An office with NO recoverable start stays start=None -> the
+# builder skips it (leak-safe) and it routes to the Stage-3 manual list with the office known.
+DATE_ASSUMED_RX = re.compile(r"assumed office\D*(\d{4})", re.I)      # start only, end=present
+DATE_INOFFICE_RX = re.compile(r"in office\D*(\d{4})\s*[-–]\s*(\d{4}|present)", re.I)
+DATE_SINGLE_RX = re.compile(r"\b(19|20)\d{2}\b")                     # last-resort lone year
+
+def _parse_office_dates(t):
+    """(start, end_or_None) from a fragment, trying several Ballotpedia layouts, or None if
+    no real START year is present. end None = present/ongoing."""
+    m = DATE_RANGE_RX.search(t) or DATE_INOFFICE_RX.search(t)
+    if m:
+        end = None if m.group(2).lower() == "present" else int(m.group(2))
+        return int(m.group(1)), end
+    m = DATE_ASSUMED_RX.search(t)
+    if m:
+        return int(m.group(1)), None
+    return None
 
 def extract_offices(html):
     """[(office_phrase, start_year, end_year_or_None)] for each office in the person infobox,
@@ -168,14 +189,21 @@ def extract_offices(html):
         if low.startswith("candidate,") or low.startswith("candidate for"):
             pending = None
             continue
-        if OFFICE_TITLE_RX.search(t) and not DATE_RANGE_RX.search(t):
-            pending = t                      # an office title awaiting its date row
-        m = DATE_RANGE_RX.search(t)
-        if m and pending:
-            start = int(m.group(1))
-            end = None if m.group(2).lower() == "present" else int(m.group(2))
-            offices.append((pending, start, end))
+        has_dates = _parse_office_dates(t) is not None
+        if OFFICE_TITLE_RX.search(t) and not has_dates:
+            # a new office title arrives before the previous one's dates were found ->
+            # the previous office is genuinely dateless in this infobox: record it with
+            # start=None (leak-safe: builder skips it; Stage-3 will supply the year).
+            if pending is not None:
+                offices.append((pending, None, None))
+            pending = t                      # this office title now awaits its date row
+            continue
+        dr = _parse_office_dates(t)
+        if dr and pending:
+            offices.append((pending, dr[0], dr[1]))
             pending = None
+    if pending is not None:                  # trailing office title with no date row after it
+        offices.append((pending, None, None))
     return offices
 
 def _is_disambig(html):

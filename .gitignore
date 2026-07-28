@@ -59,6 +59,7 @@ data/*
 # transient scraper run-logs (progress traces via `tee`; not source data — the CSVs are)
 ballotpedia_scrape*.txt
 backfill_*_scrape_log.txt
+backfill_*_log.txt
 
 # Python
 __pycache__/

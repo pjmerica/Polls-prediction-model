@@ -4,6 +4,35 @@ For the next agent. Read AGENTS.md first (architecture + rules), CONCERNS.md sec
 (risk register + roadmap). This file: what's mid-flight RIGHT NOW, what's most likely to
 break, and what to do next, in order.
 
+## CURRENT STATE 2026-07-28 — Stage 2 (Ballotpedia) done + coverage DEFINITION corrected.
+
+**Two things landed since Stage 1:**
+1. **Stage 2 Ballotpedia backfill (winners+repeats):** drip-scraped 251/267 targeted people
+   over ~11 cooldown cycles, 149 hits. Merged 161 leak-free rows. Also: `extract_offices`
+   hardened (Assumed-office/In-office/dateless formats; dateless offices emitted with
+   start=None so the builder skips them leak-safely instead of dropping them silently -
+   found via Baron Hill's dateless infobox). And a builder PRECEDENCE fix: a Ballotpedia
+   real-level row now overrides a Wikipedia "table-zero" row (level 0 from a blank
+   results-table descriptor) - verified Schumer 1998 -> 4.
+2. **COVERAGE DEFINITION CORRECTED (user decision "treat table-zeros as UNCOVERED"):** a
+   level-0 bio row with a BLANK descriptor came from a results-table scrape that never said
+   what office the person held - its level is UNKNOWN, not a confirmed 0. Counting it as
+   "covered" hid real prior-officeholders (Tom Carper, DE Governor 2000, had only a
+   blank-descriptor table row -> never queued for Ballotpedia). The authoritative measure is
+   now `measure_office_coverage.py` (NEW, committed): covered = level>0 OR level-0-with-real-
+   descriptor; table-zeros are uncovered. **Honest coverage: 62.7% overall / 82.7% winners**
+   (the earlier 71-74%/87-93% figures counted table-zeros as covered). Regenerates
+   data/office_level_backfill_targets.csv (1,808 uncovered: 1,270 no_bio + 538 table_zero;
+   340 winners; winners-first). Run `py -X utf8 measure_office_coverage.py --write` after any
+   bio change to refresh both the numbers and the roster.
+
+**NEXT (Stage 2 round 2 + Stage 3):** the regenerated roster now INCLUDES the 538 table-zeros
+(Carper-class). Re-run the Ballotpedia scraper against the fresh winners-first roster to
+resolve the newly-surfaced uncovered winners, then Stage 3 manual/hardcode the remainder.
+Ballotpedia scraper reads data/uncovered_candidates.csv - regenerate that from the new
+targets (winners+table-zero-winners) before the next drip. Feature still opt-in / not shipped;
+this is a data-completeness pass (ablation verdict unchanged).
+
 ## CURRENT STATE 2026-07-27 — pre-2012 coverage backfill (Stage 1 of 3); committed.
 
 **User asked for TRUE 100% office_level coverage (historical, one-time — "hardcoding and
