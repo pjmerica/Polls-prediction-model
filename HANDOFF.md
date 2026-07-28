@@ -26,12 +26,23 @@ break, and what to do next, in order.
    340 winners; winners-first). Run `py -X utf8 measure_office_coverage.py --write` after any
    bio change to refresh both the numbers and the roster.
 
-**NEXT (Stage 2 round 2 + Stage 3):** the regenerated roster now INCLUDES the 538 table-zeros
-(Carper-class). Re-run the Ballotpedia scraper against the fresh winners-first roster to
-resolve the newly-surfaced uncovered winners, then Stage 3 manual/hardcode the remainder.
-Ballotpedia scraper reads data/uncovered_candidates.csv - regenerate that from the new
-targets (winners+table-zero-winners) before the next drip. Feature still opt-in / not shipped;
-this is a data-completeness pass (ablation verdict unchanged).
+**Stage 2 ROUND 2 (DONE):** re-ran Ballotpedia against the honest winners roster (292 people
+incl. table-zero winners like Gray Davis->3, Carper-class). Coverage **62.7%/82.7% ->
+64.2%/86.0%**. Also fixed a BUILDER MAPPING BUG: build_office_level_table.py used to map BP
+hits against a transient file (uncovered_candidates.csv rewritten winners-only each round, or
+the regenerated roster which excludes now-covered people) - both dropped BP hits for anyone
+not in that particular file (BP rows swung 161->100->123). Now it maps against the POLL-FEED
+GROUND TRUTH (every candidate-race in polls_long_with_results.csv, keyed candidate+state), so
+a BP-resolved person's as-of-year level lands on ALL their races regardless of scrape round or
+coverage status (BP rows -> 250, stable). Schumer 1998->4 + fact-check still clean.
+
+**NEXT = Stage 3 (winners):** 276 uncovered WINNERS remain (down from 340); the rest of the
+Ballotpedia misses increasingly have NO BP profile (60% hit rate = 40% genuinely absent), so
+they need manual online lookup + hardcode. User chose (2026-07-28) to hardcode the 276
+uncovered winners to reach ~100% winners. The full roster (1,732 uncovered: 1,226 no_bio +
+506 table_zero) is in data/office_level_backfill_targets.csv; run
+`py -X utf8 measure_office_coverage.py --write` to refresh it. Losing-challenger / no-bio
+non-winners are lower-value and deferred. Feature still opt-in / not shipped (data pass only).
 
 ## CURRENT STATE 2026-07-27 — pre-2012 coverage backfill (Stage 1 of 3); committed.
 

@@ -73,9 +73,15 @@ def main():
 
     # ---- Ballotpedia: expand person-rows to the uncovered per-race rows, as-of-year level ----
     bp_path = os.path.join(DATA, "candidate_bios_ballotpedia.csv")
-    unc_path = os.path.join(DATA, "uncovered_candidates.csv")
+    # Map BP hits against the FULL uncovered roster (office_level_backfill_targets.csv, written
+    # by measure_office_coverage.py), NOT the transient uncovered_candidates.csv scraper-scope
+    # file. Fixed 2026-07-28: uncovered_candidates.csv gets rewritten each scrape round to a
+    # narrow subset (e.g. winners-only), so mapping against it dropped BP hits for anyone not
+    # in the current round's scope (161 -> 100 BP rows between rounds). The full roster covers
+    # every uncovered race a BP-resolved person appears in. Falls back to the scope file if the
+    # roster is absent.
     bp_rows = []
-    if os.path.exists(bp_path) and os.path.exists(unc_path):
+    if os.path.exists(bp_path):
         bp = pd.read_csv(bp_path, low_memory=False)
         bp = bp[bp["office_level"].notna()]
         off_map = {}
@@ -85,13 +91,20 @@ def main():
             except (json.JSONDecodeError, TypeError):
                 off_map[(r.candidate, r.state)] = []
         prior_map = {(r.candidate, r.state): getattr(r, "bio_prior_candidacy", 0) for r in bp.itertuples()}
-        unc = pd.read_csv(unc_path, low_memory=False)
+        # GROUND TRUTH for where a BP hit maps: every candidate-race in the poll feed, keyed by
+        # (candidate,state). NOT a transient "uncovered" list - fixed 2026-07-28 after two bugs
+        # where per-round scope files (uncovered_candidates.csv rewritten winners-only) and the
+        # regenerated roster (excludes now-covered people) each dropped BP hits for anyone not
+        # in that particular file. The poll feed is stable and contains every race a person ran,
+        # so a BP-resolved person's as-of-year level lands on ALL their races. `won` carried for
+        # the mapping only (name matched below on candidate+state, same as before).
+        import features as _F
+        _d = _F.prepare_polls(pd.read_csv(os.path.join(HERE, "polls_long_with_results.csv"),
+                                          low_memory=False))
+        unc = _d.drop_duplicates(subset=["year", "office", "state", "district", "cand_key",
+                                         "party_std"]).copy()
+        unc = unc.rename(columns={"candidate": "candidate", "party_std": "party"})
         unc["district"] = unc["district"].fillna("").astype(str).str.replace(r"\.0$", "", regex=True)
-        # uncovered_candidates.csv encodes statewide Senate/Governor districts as "S"; the
-        # Wikipedia bio schema (and the production candidate-table key) use "" there. Normalize
-        # so the gap-fill rows match on key AND stay numeric-district-safe downstream
-        # (features.load_candidate_bios does int(district) on House rows only when non-empty).
-        unc.loc[unc["office"].isin(["Senate", "Governor"]), "district"] = ""
         for r in unc.itertuples():
             key = (r.candidate, r.state)
             if key not in off_map:

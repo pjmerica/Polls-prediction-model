@@ -6697,6 +6697,53 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 8,DEM,Kim Schrier,incumbent U.S. Representative,2022,House,WA,schrier k,4,1,0,wikipedia
 9,DEM,Adam Smith,incumbent U.S. Representative,2022,House,WA,smith a,4,1,0,wikipedia
 10,DEM,Marilyn Strickland,incumbent U.S. Representative,2022,House,WA,strickland m,4,1,0,wikipedia
+,REP,John Cornyn,,2026,Senate,TX,cornyn j,4,0,0,ballotpedia
+,DEM,Robert P. Casey Jr.,,2024,Senate,PA,casey r,4,0,0,ballotpedia
+,OTH,Angus S. King Jr.,,2024,Senate,ME,king a,4,0,0,ballotpedia
+,OTH,Bernie Sanders,,2024,Senate,VT,sanders b,4,0,0,ballotpedia
+,OTH,"Joe Manchin, III",,2024,Senate,WV,manchin j,4,0,0,ballotpedia
+,DEM,Richard J. Durbin,,2020,Senate,IL,durbin r,4,0,0,ballotpedia
+,REP,Kris W. Kobach,,2020,Senate,KS,kobach k,4,0,0,ballotpedia
+,DEM,Robert P. Casey Jr.,,2018,Senate,PA,casey r,4,0,0,ballotpedia
+,DEM,Dianne Feinstein,,2018,Senate,CA,feinstein d,4,0,0,ballotpedia
+,OTH,Bernie Sanders,,2018,Senate,VT,sanders b,4,0,0,ballotpedia
+,OTH,Angus S. King Jr.,,2018,Senate,ME,king a,4,0,0,ballotpedia
+40,REP,Young Kim,,2026,House,CA,kim y,4,0,0,ballotpedia
+40,REP,Ken Calvert,,2026,House,CA,calvert k,4,0,0,ballotpedia
+22,REP,David G. Valadao,,2026,House,CA,valadao d,4,0,0,ballotpedia
+2,DEM,Joe Courtney,,2022,House,CT,courtney j,4,0,0,ballotpedia
+4,DEM,Jim Himes,,2022,House,CT,himes j,4,0,0,ballotpedia
+2,DEM,C.A. Dutch Ruppersberger,,2022,House,MD,ruppersberger c,4,0,0,ballotpedia
+50,REP,Darrell E. Issa,,2020,House,CA,issa d,4,0,0,ballotpedia
+49,DEM,Mike Levin,,2020,House,CA,levin m,4,0,0,ballotpedia
+1,REP,Doug LaMalfa,,2020,House,CA,lamalfa d,4,0,0,ballotpedia
+22,REP,Devin Nunes,,2020,House,CA,nunes d,4,0,0,ballotpedia
+21,REP,David G. Valadao,,2020,House,CA,valadao d,4,0,0,ballotpedia
+2,REP,Bill Huizenga,,2018,House,MI,huizenga b,4,0,0,ballotpedia
+9,REP,H. Morgan Griffith,,2018,House,VA,griffith h,4,0,0,ballotpedia
+,OTH,Amy Klobuchar,,2026,Governor,MN,klobuchar a,4,0,0,ballotpedia
+,OTH,"Joe Manchin, III",,2024,Governor,WV,manchin j,4,0,0,ballotpedia
+,DEM,Jay Robert Inslee,,2020,Governor,WA,inslee j,4,0,0,ballotpedia
+,DEM,Richard J. Durbin,,2014,Senate,IL,durbin r,4,0,0,ballotpedia
+S,DEM,Brian Schatz,,2014,Senate,HI,schatz b,4,0,0,ballotpedia
+S,DEM,Kate Brown,,2016,Governor,OR,brown k,4,0,0,ballotpedia
+,DEM,Rolf Parker Griffith,,2014,Governor,AL,griffith r,4,0,0,ballotpedia
+,DEM,Neil Abercrombie,,2010,Governor,HI,abercrombie n,4,0,0,ballotpedia
+,DEM,Mary L. Landrieu,,2014,Senate,LA,landrieu m,4,0,0,ballotpedia
+,DEM,Debbie Stabenow,,2012,Senate,MI,stabenow d,4,0,0,ballotpedia
+,DEM,Amy Klobuchar,,2012,Senate,MN,klobuchar a,4,0,0,ballotpedia
+,DEM,Sherrod Brown,,2012,Senate,OH,brown s,4,0,0,ballotpedia
+,DEM,Robert P. Casey Jr.,,2012,Senate,PA,casey r,4,0,0,ballotpedia
+,DEM,Maria Cantwell,,2012,Senate,WA,cantwell m,4,0,0,ballotpedia
+S,DEM,"Joe Manchin, III",,2010,Senate,WV,manchin j,4,0,0,ballotpedia
+,DEM,Richard J. Durbin,,2008,Senate,IL,durbin r,4,0,0,ballotpedia
+S,REP,Roger F. Wicker,,2008,Senate,MS,wicker r,4,0,0,ballotpedia
+,OTH,Bernard Sanders,,2006,Senate,VT,sanders b,4,0,0,ballotpedia
+,DEM,Richard J. Durbin,,2002,Senate,IL,durbin r,4,0,0,ballotpedia
+,DEM,Mary L. Landrieu,,2002,Senate,LA,landrieu m,4,0,0,ballotpedia
+,DEM,Frank R. Lautenberg,,2002,Senate,NJ,lautenberg f,4,0,0,ballotpedia
+,DEM,Debbie Stabenow,,2000,Senate,MI,stabenow d,4,0,0,ballotpedia
+,DEM,Maria Cantwell,,2000,Senate,WA,cantwell m,4,0,0,ballotpedia
 24,DEM,Brad Sherman,,1998,House,CA,sherman b,4,0,0,ballotpedia
 46,DEM,Loretta Sanchez,,1998,House,CA,sanchez l,4,0,0,ballotpedia
 1,DEM,Neil Abercrombie,,1998,House,HI,abercrombie n,4,0,0,ballotpedia
@@ -6706,91 +6753,101 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 1,DEM,Earl Pomeroy,,1998,House,ND,pomeroy e,4,0,0,ballotpedia
 6,DEM,Ted Strickland,,1998,House,OH,strickland t,4,0,0,ballotpedia
 1,DEM,Jay Robert Inslee,,1998,House,WA,inslee j,4,0,0,ballotpedia
-4,REP,Robert Aderholt,,2000,House,AL,aderholt r,4,0,0,ballotpedia
 1,DEM,Shelley Berkley,,2000,House,NV,berkley s,4,0,0,ballotpedia
 2,DEM,Jim Langevin,,2000,House,RI,langevin j,4,0,0,ballotpedia
 1,DEM,Jay Robert Inslee,,2000,House,WA,inslee j,4,0,0,ballotpedia
-7,REP,John L. Mica,,2002,House,FL,mica j,4,0,0,ballotpedia
 3,DEM,Leonard L. Boswell,,2002,House,IA,boswell l,4,0,0,ballotpedia
-4,REP,Tom Latham,,2002,House,IA,latham t,4,0,0,ballotpedia
 3,DEM,Dennis Moore,,2002,House,KS,moore d,4,0,0,ballotpedia
-,DEM,Mary L. Landrieu,,2002,Senate,LA,landrieu m,4,0,0,ballotpedia
-1,REP,Denny Rehberg,,2002,House,MT,rehberg d,4,0,0,ballotpedia
-2,REP,Charles Bass,,2002,House,NH,bass c,4,0,0,ballotpedia
 1,DEM,Shelley Berkley,,2002,House,NV,berkley s,4,0,0,ballotpedia
-4,REP,Tom Cole,,2002,House,OK,cole t,4,0,0,ballotpedia
 2,DEM,Jim Matheson,,2002,House,UT,matheson j,4,0,0,ballotpedia
 2,DEM,Rick Larsen,,2002,House,WA,larsen r,4,0,0,ballotpedia
-1,REP,Michael N. Castle,,2004,House,DE,castle m,4,0,0,ballotpedia
 3,DEM,Dennis Moore,,2004,House,KS,moore d,4,0,0,ballotpedia
 2,DEM,Michael H. Michaud,,2004,House,ME,michaud m,4,0,0,ballotpedia
-1,REP,Denny Rehberg,,2004,House,MT,rehberg d,4,0,0,ballotpedia
-1,REP,Jeb E. Bradley,,2004,House,NH,bradley j,4,0,0,ballotpedia
-2,REP,Charles Bass,,2004,House,NH,bass c,4,0,0,ballotpedia
-1,REP,John A. Sullivan,,2004,House,OK,sullivan j,4,0,0,ballotpedia
-1,REP,Michael N. Castle,,2006,House,DE,castle m,4,0,0,ballotpedia
-3,REP,Peter King,,2006,House,NY,king p,4,0,0,ballotpedia
-12,REP,Patrick J. Tiberi,,2006,House,OH,tiberi p,4,0,0,ballotpedia
 5,DEM,John M. Spratt,,2006,House,SC,spratt j,4,0,0,ballotpedia
 1,DEM,Stephanie Herseth Sandlin,,2006,House,SD,sandlin s,4,0,0,ballotpedia
 2,DEM,Rick Larsen,,2006,House,WA,larsen r,4,0,0,ballotpedia
-5,REP,Cathy McMorris Rodgers,,2006,House,WA,rodgers c,4,0,0,ballotpedia
-8,REP,David G. Reichert,,2006,House,WA,reichert d,4,0,0,ballotpedia
 11,DEM,Jerry McNerney,,2008,House,CA,mcnerney j,4,0,0,ballotpedia
-50,REP,Brian P. Bilbray,,2008,House,CA,bilbray b,4,0,0,ballotpedia
 2,DEM,Joe Courtney,,2008,House,CT,courtney j,4,0,0,ballotpedia
-13,REP,Vern Buchanan,,2008,House,FL,buchanan v,4,0,0,ballotpedia
-18,REP,Ileana Ros-Lehtinen,,2008,House,FL,lehtinen i,4,0,0,ballotpedia
-21,REP,Lincoln Diaz-Balart,,2008,House,FL,balart l,4,0,0,ballotpedia
-25,REP,Mario Diaz-Balart,,2008,House,FL,balart m,4,0,0,ballotpedia
-9,REP,Gus Michael Bilirakis,,2008,House,FL,bilirakis g,4,0,0,ballotpedia
 8,DEM,James Marshall,,2008,House,GA,marshall j,4,0,0,ballotpedia
-4,REP,Tom Latham,,2008,House,IA,latham t,4,0,0,ballotpedia
 3,DEM,John Yarmuth,,2008,House,KY,yarmuth j,4,0,0,ballotpedia
-4,REP,Geoff Davis,,2008,House,KY,davis g,4,0,0,ballotpedia
 2,DEM,Michael H. Michaud,,2008,House,ME,michaud m,4,0,0,ballotpedia
-6,REP,Sam Graves,,2008,House,MO,graves s,4,0,0,ballotpedia
-,REP,Roger F. Wicker,,2008,Senate,MS,wicker r,4,0,0,ballotpedia
-2,REP,Lee Terry,,2008,House,NE,terry l,4,0,0,ballotpedia
 2,DEM,Jim Matheson,,2008,House,UT,matheson j,4,0,0,ballotpedia
-,REP,John Barrasso,,2008,Senate,WY,barrasso j,4,0,0,ballotpedia
+2,DEM,Bobby N. Bright,,2010,House,AL,bright b,4,0,0,ballotpedia
 11,DEM,Jerry McNerney,,2010,House,CA,mcnerney j,4,0,0,ballotpedia
 15,DEM,Michael M. Honda,,2010,House,CA,honda m,4,0,0,ballotpedia
 18,DEM,Dennis A. Cardoza,,2010,House,CA,cardoza d,4,0,0,ballotpedia
 20,DEM,Jim Costa,,2010,House,CA,costa j,4,0,0,ballotpedia
-3,REP,Dan Lungren,,2010,House,CA,lungren d,4,0,0,ballotpedia
-44,REP,Ken Calvert,,2010,House,CA,calvert k,4,0,0,ballotpedia
 47,DEM,Loretta Sanchez,,2010,House,CA,sanchez l,4,0,0,ballotpedia
+1,DEM,John B. Larson,,2010,House,CT,larson j,4,0,0,ballotpedia
+2,DEM,Joe Courtney,,2010,House,CT,courtney j,4,0,0,ballotpedia
+4,DEM,Jim Himes,,2010,House,CT,himes j,4,0,0,ballotpedia
+22,DEM,Ron Klein,,2010,House,FL,klein r,4,0,0,ballotpedia
 3,DEM,Leonard L. Boswell,,2010,House,IA,boswell l,4,0,0,ballotpedia
 6,DEM,Albert Ben Chandler,,2010,House,KY,chandler a,4,0,0,ballotpedia
 6,DEM,John F. Tierney,,2010,House,MA,tierney j,4,0,0,ballotpedia
+5,DEM,"Emanuel Cleaver, II",,2010,House,MO,cleaver e,4,0,0,ballotpedia
+1,DEM,Timothy H. Bishop,,2010,House,NY,bishop t,4,0,0,ballotpedia
+23,DEM,William L. Owens,,2010,House,NY,owens w,4,0,0,ballotpedia
+24,DEM,Michael A. Arcuri,,2010,House,NY,arcuri m,4,0,0,ballotpedia
+25,DEM,Daniel B. Maffei,,2010,House,NY,maffei d,4,0,0,ballotpedia
 11,DEM,Joseph Heath Shuler,,2010,House,NC,shuler j,4,0,0,ballotpedia
-2,REP,Lee Terry,,2010,House,NE,terry l,4,0,0,ballotpedia
-2,REP,Frank A. LoBiondo,,2010,House,NJ,lobiondo f,4,0,0,ballotpedia
 2,DEM,Jim Langevin,,2010,House,RI,langevin j,4,0,0,ballotpedia
-2,REP,Joe Wilson,,2010,House,SC,wilson j,4,0,0,ballotpedia
 5,DEM,John M. Spratt,,2010,House,SC,spratt j,4,0,0,ballotpedia
+1,DEM,Stephanie Herseth Sandlin,,2010,House,SD,sandlin s,4,0,0,ballotpedia
 6,DEM,Albert Ben Chandler,,2012,House,KY,chandler a,4,0,0,ballotpedia
-,DEM,Rolf Parker Griffith,,2014,Governor,AL,griffith r,4,0,0,ballotpedia
-,DEM,Mary L. Landrieu,,2014,Senate,LA,landrieu m,4,0,0,ballotpedia
+21,DEM,William L. Owens,,2012,House,NY,owens w,4,0,0,ballotpedia
+,REP,Thad Cochran,,2014,Senate,MS,cochran t,4,0,0,ballotpedia
+S,REP,James Lankford,,2014,Senate,OK,lankford j,4,0,0,ballotpedia
+,REP,J. Nathan Deal,,2014,Governor,GA,deal j,4,0,0,ballotpedia
+,REP,Mike Pence,,2012,Governor,IN,pence m,4,0,0,ballotpedia
+,REP,J. Nathan Deal,,2010,Governor,GA,deal j,4,0,0,ballotpedia
+,REP,Dan Lungren,,1998,Governor,CA,lungren d,4,0,0,ballotpedia
 ,REP,Bill Cassidy,,2014,Senate,LA,cassidy b,4,0,0,ballotpedia
-,REP,James Lankford,,2014,Senate,OK,lankford j,4,0,0,ballotpedia
-,OTH,Angus S. King Jr.,,2018,Senate,ME,king a,4,0,0,ballotpedia
-2,REP,Bill Huizenga,,2018,House,MI,huizenga b,4,0,0,ballotpedia
-9,REP,H. Morgan Griffith,,2018,House,VA,griffith h,4,0,0,ballotpedia
-,OTH,Bernie Sanders,,2018,Senate,VT,sanders b,4,0,0,ballotpedia
-1,REP,Doug LaMalfa,,2020,House,CA,lamalfa d,4,0,0,ballotpedia
-21,REP,David G. Valadao,,2020,House,CA,valadao d,4,0,0,ballotpedia
-22,REP,Devin Nunes,,2020,House,CA,nunes d,4,0,0,ballotpedia
-49,DEM,Mike Levin,,2020,House,CA,levin m,4,0,0,ballotpedia
-50,REP,Darrell E. Issa,,2020,House,CA,issa d,4,0,0,ballotpedia
-,REP,Kris W. Kobach,,2020,Senate,KS,kobach k,4,0,0,ballotpedia
-,DEM,Jay Robert Inslee,,2020,Governor,WA,inslee j,4,0,0,ballotpedia
-2,DEM,Joe Courtney,,2022,House,CT,courtney j,4,0,0,ballotpedia
-4,DEM,Jim Himes,,2022,House,CT,himes j,4,0,0,ballotpedia
-2,DEM,C.A. Dutch Ruppersberger,,2022,House,MD,ruppersberger c,4,0,0,ballotpedia
-,OTH,Angus S. King Jr.,,2024,Senate,ME,king a,4,0,0,ballotpedia
-,OTH,Bernie Sanders,,2024,Senate,VT,sanders b,4,0,0,ballotpedia
+S,REP,John Barrasso,,2008,Senate,WY,barrasso j,4,0,0,ballotpedia
+,REP,Saxby Chambliss,,2002,Senate,GA,chambliss s,4,0,0,ballotpedia
+,REP,Lindsey Graham,,2002,Senate,SC,graham l,4,0,0,ballotpedia
+4,REP,Robert Aderholt,,2000,House,AL,aderholt r,4,0,0,ballotpedia
+7,REP,John L. Mica,,2002,House,FL,mica j,4,0,0,ballotpedia
+4,REP,Tom Latham,,2002,House,IA,latham t,4,0,0,ballotpedia
+1,REP,Denny Rehberg,,2002,House,MT,rehberg d,4,0,0,ballotpedia
+2,REP,Charles Bass,,2002,House,NH,bass c,4,0,0,ballotpedia
+4,REP,Tom Cole,,2002,House,OK,cole t,4,0,0,ballotpedia
+1,REP,Michael N. Castle,,2004,House,DE,castle m,4,0,0,ballotpedia
+1,REP,Denny Rehberg,,2004,House,MT,rehberg d,4,0,0,ballotpedia
+1,REP,Jeb E. Bradley,,2004,House,NH,bradley j,4,0,0,ballotpedia
+2,REP,Charles Bass,,2004,House,NH,bass c,4,0,0,ballotpedia
+2,REP,Stevan Pearce,,2004,House,NM,pearce s,4,0,0,ballotpedia
+1,REP,John A. Sullivan,,2004,House,OK,sullivan j,4,0,0,ballotpedia
+1,REP,Michael N. Castle,,2006,House,DE,castle m,4,0,0,ballotpedia
+3,REP,Peter King,,2006,House,NY,king p,4,0,0,ballotpedia
+12,REP,Patrick J. Tiberi,,2006,House,OH,tiberi p,4,0,0,ballotpedia
+5,REP,Cathy McMorris Rodgers,,2006,House,WA,rodgers c,4,0,0,ballotpedia
+8,REP,David G. Reichert,,2006,House,WA,reichert d,4,0,0,ballotpedia
+50,REP,Brian P. Bilbray,,2008,House,CA,bilbray b,4,0,0,ballotpedia
+9,REP,Gus Michael Bilirakis,,2008,House,FL,bilirakis g,4,0,0,ballotpedia
+13,REP,Vern Buchanan,,2008,House,FL,buchanan v,4,0,0,ballotpedia
+18,REP,Ileana Ros-Lehtinen,,2008,House,FL,lehtinen i,4,0,0,ballotpedia
+21,REP,Lincoln Diaz-Balart,,2008,House,FL,balart l,4,0,0,ballotpedia
+25,REP,Mario Diaz-Balart,,2008,House,FL,balart m,4,0,0,ballotpedia
+4,REP,Tom Latham,,2008,House,IA,latham t,4,0,0,ballotpedia
+4,REP,Geoff Davis,,2008,House,KY,davis g,4,0,0,ballotpedia
+7,REP,Tim Walberg,,2008,House,MI,walberg t,4,0,0,ballotpedia
+6,REP,Sam Graves,,2008,House,MO,graves s,4,0,0,ballotpedia
+2,REP,Lee Terry,,2008,House,NE,terry l,4,0,0,ballotpedia
+1,REP,Jeb E. Bradley,,2008,House,NH,bradley j,4,0,0,ballotpedia
+8,REP,David G. Reichert,,2008,House,WA,reichert d,4,0,0,ballotpedia
+3,REP,Dan Lungren,,2010,House,CA,lungren d,4,0,0,ballotpedia
+44,REP,Ken Calvert,,2010,House,CA,calvert k,4,0,0,ballotpedia
+7,REP,Tim Walberg,,2010,House,MI,walberg t,4,0,0,ballotpedia
+2,REP,Lee Terry,,2010,House,NE,terry l,4,0,0,ballotpedia
+2,REP,Charles Bass,,2010,House,NH,bass c,4,0,0,ballotpedia
+2,REP,Frank A. LoBiondo,,2010,House,NJ,lobiondo f,4,0,0,ballotpedia
+2,REP,Stevan Pearce,,2010,House,NM,pearce s,4,0,0,ballotpedia
+2,REP,Joe Wilson,,2010,House,SC,wilson j,4,0,0,ballotpedia
+10,REP,Robert Dold,,2012,House,IL,dold r,4,0,0,ballotpedia
+2,REP,E. Scott Rigell,,2012,House,VA,rigell e,4,0,0,ballotpedia
+10,REP,Robert Dold,,2014,House,IL,dold r,4,0,0,ballotpedia
+10,REP,Robert Dold,,2016,House,IL,dold r,4,0,0,ballotpedia
 ,REP,Jan Brewer,Arizona governor,2012,Senate,AZ,brewer j,3,0,0,wikipedia
 ,REP,Sarah Palin,former governor of Alaska (2006–2009) and nominee for vice president of the United States in 2008,2012,Senate,AZ,palin s,3,0,1,wikipedia
 ,REP,Fife Symington III,former Arizona governor,2012,Senate,AZ,symington f,3,0,0,wikipedia
@@ -8522,12 +8579,23 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 2,REP,Patrick Morrisey,West Virginia attorney general (2013–present) and nominee for U.S. Senate in 2018  ( ran for governor ),2024,House,WV,morrisey p,3,1,1,wikipedia
 6,REP,Garret Graves,former adviser to Governor Bobby Jindal,2014,House,LA,graves g,3,0,0,wikipedia
 3,REP,Scott Angelle,"Public Service Commissioner , former Lieutenant Governor of Louisiana and candidate for governor in 2015",2016,House,LA,angelle s,3,0,1,wikipedia
-,DEM,Jeanne Shaheen,,1998,Governor,NH,shaheen j,3,0,0,ballotpedia
-3,DEM,Tom Udall,,1998,House,NM,udall t,3,0,0,ballotpedia
-6,DEM,Albert Ben Chandler,,2004,House,KY,chandler a,3,0,0,ballotpedia
-,REP,M. Jodi Rell,,2006,Governor,CT,rell m,3,0,0,ballotpedia
+S,DEM,Tina Smith,,2018,Senate,MN,smith t,3,0,0,ballotpedia
+,OTH,Bill Walker,,2022,Governor,AK,walker b,3,0,0,ballotpedia
 ,OTH,Bill Walker,,2018,Governor,AK,walker b,3,0,0,ballotpedia
-,DEM,Tina Smith,,2018,Senate,MN,smith t,3,0,0,ballotpedia
+,DEM,Christine Gregoire,,2008,Governor,WA,gregoire c,3,0,0,ballotpedia
+,DEM,Claire McCaskill,,2004,Governor,MO,mccaskill c,3,0,0,ballotpedia
+,DEM,Christine Gregoire,,2004,Governor,WA,gregoire c,3,0,0,ballotpedia
+,DEM,Jeanne Shaheen,,1998,Governor,NH,shaheen j,3,0,0,ballotpedia
+,DEM,Tim Kaine,,2012,Senate,VA,kaine t,3,0,0,ballotpedia
+,DEM,Claire McCaskill,,2006,Senate,MO,mccaskill c,3,0,0,ballotpedia
+,DEM,Jeanne Shaheen,,2002,Senate,NH,shaheen j,3,0,0,ballotpedia
+,DEM,Thomas R. Carper,,2000,Senate,DE,carper t,3,0,0,ballotpedia
+6,DEM,Albert Ben Chandler,,2004,House,KY,chandler a,3,0,0,ballotpedia
+3,DEM,Tom Udall,,1998,House,NM,udall t,3,0,0,ballotpedia
+S,REP,Gary Richard Herbert,,2010,Governor,UT,herbert g,3,0,0,ballotpedia
+,REP,M. Jodi Rell,,2006,Governor,CT,rell m,3,0,0,ballotpedia
+,REP,John Cornyn,,2002,Senate,TX,cornyn j,3,0,0,ballotpedia
+1,REP,Denny Rehberg,,2000,House,MT,rehberg d,3,0,0,ballotpedia
 ,DEM,William Tong,State Representative (running for re-election; endorsed Murphy),2012,Senate,CT,tong w,2,1,0,wikipedia
 ,REP,Ron Rushing,businessman (running for state senate),2012,Senate,FL,rushing r,2,0,0,wikipedia
 ,REP,Allan Bense,former Speaker of the Florida House of Representatives,2012,Senate,FL,bense a,2,1,0,wikipedia
@@ -11869,17 +11937,24 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 4,REP,Alan Seabaugh,state representative,2016,House,LA,seabaugh a,2,1,0,wikipedia
 4,DEM,Cedric Glover,state representative and former Mayor of Shreveport,2016,House,LA,glover c,2,1,0,wikipedia
 4,DEM,Patrick Jefferson,state representative,2016,House,LA,jefferson p,2,1,0,wikipedia
+39,REP,Young Kim,,2020,House,CA,kim y,2,0,0,ballotpedia
+,REP,Mike Dunleavy,,2018,Governor,AK,dunleavy m,2,0,0,ballotpedia
 1,DEM,John B. Larson,,1998,House,CT,larson j,2,0,0,ballotpedia
-8,REP,Mike Rogers,,2000,House,MI,rogers m,2,0,0,ballotpedia
+49,DEM,Susan A. Davis,,2000,House,CA,davis s,2,0,0,ballotpedia
 2,DEM,Michael H. Michaud,,2002,House,ME,michaud m,2,0,0,ballotpedia
+8,DEM,Chris Van Hollen,,2002,House,MD,hollen c,2,0,0,ballotpedia
+17,DEM,Tim Ryan,,2002,House,OH,ryan t,2,0,0,ballotpedia
 27,DEM,Brian Higgins,,2004,House,NY,higgins b,2,0,0,ballotpedia
+8,REP,Mike Rogers,,2000,House,MI,rogers m,2,0,0,ballotpedia
+11,REP,Phil Gingrey,,2002,House,GA,gingrey p,2,0,0,ballotpedia
+11,REP,Thaddeus McCotter,,2002,House,MI,mccotter t,2,0,0,ballotpedia
+4,REP,Tom McClintock,,2008,House,CA,mcclintock t,2,0,0,ballotpedia
 2,REP,S. Brett Guthrie,,2008,House,KY,guthrie s,2,0,0,ballotpedia
 1,REP,Steve Scalise,,2008,House,LA,scalise s,2,0,0,ballotpedia
 6,REP,Bill Cassidy,,2008,House,LA,cassidy b,2,0,0,ballotpedia
 5,REP,Robert Hurt,,2010,House,VA,hurt r,2,0,0,ballotpedia
+1,REP,"Earl L. ""Buddy"" Carter",,2014,House,GA,carter e,2,0,0,ballotpedia
 5,REP,Thomas A. Garrett,,2016,House,VA,garrett t,2,0,0,ballotpedia
-,REP,Mike Dunleavy,,2018,Governor,AK,dunleavy m,2,0,0,ballotpedia
-39,REP,Young Kim,,2020,House,CA,kim y,2,0,0,ballotpedia
 ,REP,Joe Arpaio,Maricopa County sheriff  (running for re-election as sheriff),2012,Senate,AZ,arpaio j,1,0,0,wikipedia
 ,DEM,Phil Gordon,mayor of Phoenix,2012,Senate,AZ,gordon p,1,0,0,wikipedia
 ,DEM,Mufi Hannemann,former mayor of Honolulu (ran for Congress),2012,Senate,HI,hannemann m,1,0,0,wikipedia
@@ -13223,12 +13298,17 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 4,REP,Oliver Jenkins,Shreveport City Councilman,2016,House,LA,jenkins o,1,0,0,wikipedia
 4,DEM,Caddo Parish,District Attorney in 2015,2016,House,LA,parish c,1,0,0,wikipedia
 4,DEM,Keith Hightower,former mayor of Shreveport,2016,House,LA,hightower k,1,0,0,wikipedia
-49,REP,Brian P. Bilbray,,2000,House,CA,bilbray b,1,0,0,ballotpedia
+,OTH,Bill Walker,,2014,Governor,AK,walker b,1,0,0,ballotpedia
+S,DEM,Christopher A. Coons,,2010,Senate,DE,coons c,1,0,0,ballotpedia
+,DEM,Mark Begich,,2008,Senate,AK,begich m,1,0,0,ballotpedia
+2,DEM,Rick Larsen,,2000,House,WA,larsen r,1,0,0,ballotpedia
 2,DEM,C.A. Dutch Ruppersberger,,2002,House,MD,ruppersberger c,1,0,0,ballotpedia
 5,DEM,"Emanuel Cleaver, II",,2004,House,MO,cleaver e,1,0,0,ballotpedia
 13,DEM,Betty Sutton,,2006,House,OH,sutton b,1,0,0,ballotpedia
-,DEM,Christopher A. Coons,,2010,Senate,DE,coons c,1,0,0,ballotpedia
-,OTH,Bill Walker,,2014,Governor,AK,walker b,1,0,0,ballotpedia
+2,DEM,Bobby N. Bright,,2008,House,AL,bright b,1,0,0,ballotpedia
+49,REP,Brian P. Bilbray,,2000,House,CA,bilbray b,1,0,0,ballotpedia
+2,REP,Ted Poe,,2004,House,TX,poe t,1,0,0,ballotpedia
+8,REP,David G. Reichert,,2004,House,WA,reichert d,1,0,0,ballotpedia
 ,REP,Wil Cardon,CEO of a real estate investment firm,2012,Senate,AZ,cardon w,0,0,0,wikipedia
 ,REP,Clair Van Steenwyk,conservative radio host,2012,Senate,AZ,steenwyk c,0,0,0,wikipedia
 ,REP,Doug McKee,businessman,2012,Senate,AZ,mckee d,0,0,0,wikipedia
@@ -14981,7 +15061,6 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,REP,Philip Giordano,,2000,Senate,CT,giordano p,0,0,0,wikipedia
 ,,Concerned Citizens,,2000,Senate,CT,citizens c,0,0,0,wikipedia
 ,OTH,Wildey J. Moore,,2000,Senate,CT,moore w,0,0,0,wikipedia
-,DEM,Tom Carper,,2000,Senate,DE,carper t,0,0,0,wikipedia
 ,OTH,J. Burke Morrison,,2000,Senate,DE,morrison j,0,0,0,wikipedia
 ,OTH,Mark E. Dankof,,2000,Senate,DE,dankof m,0,0,0,wikipedia
 ,,Natural Law,,2000,Senate,DE,law n,0,0,0,wikipedia
@@ -15010,7 +15089,6 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,REP,Paul Rappaport,,2000,Senate,MD,rappaport p,0,0,0,wikipedia
 ,,Write Ins,,2000,Senate,MD,ins w,0,0,0,wikipedia
 ,DEM,Mark W. Lawrence,,2000,Senate,ME,lawrence m,0,0,0,wikipedia
-,DEM,Debbie Stabenow,,2000,Senate,MI,stabenow d,0,0,0,wikipedia
 ,OTH,Matthew Abel,,2000,Senate,MI,abel m,0,0,0,wikipedia
 ,OTH,Michael Corliss,,2000,Senate,MI,corliss m,0,0,0,wikipedia
 ,OTH,Mark Forton,,2000,Senate,MI,forton m,0,0,0,wikipedia
@@ -15134,7 +15212,6 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,,Billy Greer,,2000,Senate,VT,greer b,0,0,0,wikipedia
 ,OTH,Hugh Douglas,,2000,Senate,VT,douglas h,0,0,0,wikipedia
 ,,Liberty Union,,2000,Senate,VT,union l,0,0,0,wikipedia
-,DEM,Maria Cantwell,,2000,Senate,WA,cantwell m,0,0,0,wikipedia
 ,DEM,Deborah Senn,,2000,Senate,WA,senn d,0,0,0,wikipedia
 ,REP,Warren E. Hanson,,2000,Senate,WA,hanson w,0,0,0,wikipedia
 ,OTH,Jeff Jared,,2000,Senate,WA,jared j,0,0,0,wikipedia
@@ -15235,14 +15312,12 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,OTH,John J. Graziano,,2002,Senate,NE,graziano j,0,0,0,wikipedia
 ,REP,Chuck Hagel (inc.),,2002,Senate,NE,inc c,0,0,0,wikipedia
 ,OTH,Phil Chase,,2002,Senate,NE,chase p,0,0,0,wikipedia
-,DEM,Jeanne Shaheen,,2002,Senate,NH,shaheen j,0,0,0,wikipedia
 ,OTH,Ken Blevens,,2002,Senate,NH,blevens k,0,0,0,wikipedia
 ,REP,Robert W. Ray,former Whitewater controversy special counsel ( withdrew April 8 ),2002,Senate,NJ,ray r,0,0,0,wikipedia
 ,REP,Lewis Eisenberg,former chairman of the Port Authority of New York and New Jersey,2002,Senate,NJ,eisenberg l,0,0,0,wikipedia
 ,REP,Steve Forbes,publisher of Forbes magazine and candidate for president in 1996 and 2000,2002,Senate,NJ,forbes s,0,0,1,wikipedia
 ,REP,Greg Pason,national secretary of the Socialist Party USA and perennial candidate (Socialist),2002,Senate,NJ,pason g,0,0,0,wikipedia
 ,REP,Complete video of debate,"September 5, 2002",2002,Senate,NJ,debate c,0,0,0,wikipedia
-,DEM,Frank Lautenberg,,2002,Senate,NJ,lautenberg f,0,0,0,wikipedia
 ,OTH,Ted Glick,,2002,Senate,NJ,glick t,0,0,0,wikipedia
 ,OTH,Elizabeth Macron,,2002,Senate,NJ,macron e,0,0,0,wikipedia
 ,,Norman E. Wahner,,2002,Senate,NJ,wahner n,0,0,0,wikipedia
@@ -15258,7 +15333,6 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,REP,RI-02,in 2000,2002,Senate,RI,ri,0,0,0,wikipedia
 ,REP,Robert Tingle,,2002,Senate,RI,tingle r,0,0,0,wikipedia
 ,REP,Alex Sanders (D),former President of the College of Charleston,2002,Senate,SC,d a,0,0,0,wikipedia
-,REP,Lindsey Graham,,2002,Senate,SC,graham l,0,0,0,wikipedia
 ,DEM,Alex Sanders,,2002,Senate,SC,sanders a,0,0,0,wikipedia
 ,OTH,Ted Adams,,2002,Senate,SC,adams t,0,0,0,wikipedia
 ,OTH,Victor Kocher,,2002,Senate,SC,kocher v,0,0,0,wikipedia
@@ -15283,7 +15357,6 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,DEM,Victor Morales,"Teacher, Navy Veteran, 1996 Senate nominee",2002,Senate,TX,morales v,0,0,0,wikipedia
 ,DEM,Gene Kelly,perennial candidate and 2000 Democratic nominee for U.S. Senate,2002,Senate,TX,kelly g,0,0,1,wikipedia
 ,DEM,Ed Cunningham,"former football player for the Texas Longhorns (1985-87, 1989)",2002,Senate,TX,cunningham e,0,0,0,wikipedia
-,REP,John Cornyn,,2002,Senate,TX,cornyn j,0,0,0,wikipedia
 ,REP,Bruce Rusty Lang,,2002,Senate,TX,lang b,0,0,0,wikipedia
 ,REP,Douglas Deffenbaugh,,2002,Senate,TX,deffenbaugh d,0,0,0,wikipedia
 ,REP,Dudley F. Mooney,,2002,Senate,TX,mooney d,0,0,0,wikipedia
@@ -15607,7 +15680,6 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,,Stephen Williams,,2006,Senate,MN,williams s,0,0,0,wikipedia
 ,OTH,Michael Cavlan,,2006,Senate,MN,cavlan m,0,0,0,wikipedia
 ,OTH,Ben Powers,,2006,Senate,MN,powers b,0,0,0,wikipedia
-,DEM,Claire McCaskill,,2006,Senate,MO,mccaskill c,0,0,0,wikipedia
 ,OTH,Frank Gilmour,,2006,Senate,MO,gilmour f,0,0,0,wikipedia
 ,,Progressive Party,,2006,Senate,MO,party p,0,0,0,wikipedia
 ,DEM,MS-01,in 1990,2006,Senate,MS,ms,0,0,0,wikipedia
@@ -15718,7 +15790,6 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,DEM,Craig Hill,,2006,Senate,VT,hill c,0,0,0,wikipedia
 ,DEM,Larry Drown,,2006,Senate,VT,drown l,0,0,0,wikipedia
 ,DEM,Peter Moss,,2006,Senate,VT,moss p,0,0,0,wikipedia
-,OTH,Bernie Sanders,,2006,Senate,VT,sanders b,0,0,0,wikipedia
 ,OTH,Cris Ericson,,2006,Senate,VT,ericson c,0,0,0,wikipedia
 ,OTH,Craig Hill,,2006,Senate,VT,hill c,0,0,0,wikipedia
 ,OTH,Peter D. Moss,,2006,Senate,VT,moss p,0,0,0,wikipedia
@@ -15762,7 +15833,6 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,DEM,Dale Groutage,engineer,2006,Senate,WY,groutage d,0,0,0,wikipedia
 ,REP,Gerald Heikes,minister,2008,Senate,AK,heikes g,0,0,0,wikipedia
 ,REP,Rick Sikma,pastor,2008,Senate,AK,sikma r,0,0,0,wikipedia
-,DEM,Mark Begich,,2008,Senate,AK,begich m,0,0,0,wikipedia
 ,DEM,Ray Metcalfe,,2008,Senate,AK,metcalfe r,0,0,0,wikipedia
 ,,Bob Bird,,2008,Senate,AK,bird b,0,0,0,wikipedia
 ,OTH,Fredrick Haase,,2008,Senate,AK,haase f,0,0,0,wikipedia
@@ -16010,6 +16080,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,OTH,Warren B. Mosler,,2010,Senate,CT,mosler w,0,0,0,wikipedia
 ,,Connecticut for Lieberman,,2010,Senate,CT,lieberman c,0,0,0,wikipedia
 ,REP,Christine O'Donnell,political commentator and perennial candidate,2010,Senate,DE,donnell c,0,0,0,wikipedia
+,DEM,Chris Coons,,2010,Senate,DE,coons c,0,0,0,wikipedia
 ,OTH,Glenn Miller,,2010,Senate,DE,miller g,0,0,0,wikipedia
 ,OTH,James Rash,,2010,Senate,DE,rash j,0,0,0,wikipedia
 ,REP,William Escoffery,physician & attorney,2010,Senate,FL,escoffery w,0,0,0,wikipedia
@@ -16332,7 +16403,6 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,DEM,Wesley Clark,"retired general, former Supreme Allied Commander of NATO , and 2004 Democratic presidential candidate",2020,Senate,AR,clark w,0,0,0,wikipedia
 ,IND,COVID-19 pandemic,. Whitfield filed an appeal with the United States Court of Appeals for the Eighth Circuit in an attempt to overturn this ruling. He officially suspended his campaign on October 1.,2020,Senate,AR,pandemic c,0,0,0,wikipedia
 ,OTH,Ricky Dale Harrington Jr.,,2020,Senate,AR,harrington r,0,0,0,wikipedia
-,REP,Saxby Chambliss,,2002,Senate,GA,chambliss s,0,0,0,wikipedia
 ,REP,Bob Irvin,,2002,Senate,GA,irvin b,0,0,0,wikipedia
 ,REP,Robert Brown,,2002,Senate,GA,brown r,0,0,0,wikipedia
 ,OTH,Claude Thomas,,2002,Senate,GA,thomas c,0,0,0,wikipedia
@@ -17565,7 +17635,6 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,DEM,"Charles ""Chuck"" Pineda Jr.",,1998,Governor,CA,pineda c,0,0,0,wikipedia
 ,DEM,Pia Jensen,,1998,Governor,CA,jensen p,0,0,0,wikipedia
 ,DEM,Michael Palitz,,1998,Governor,CA,palitz m,0,0,0,wikipedia
-,REP,Dan Lungren,,1998,Governor,CA,lungren d,0,0,0,wikipedia
 ,REP,Dennis Peron,,1998,Governor,CA,peron d,0,0,0,wikipedia
 ,REP,James D. Crawford,,1998,Governor,CA,crawford j,0,0,0,wikipedia
 ,REP,Eduardo M. Rivera,,1998,Governor,CA,rivera e,0,0,0,wikipedia
@@ -18156,7 +18225,6 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,REP,Jeff Killian,,2004,Governor,MO,killian j,0,0,0,wikipedia
 ,REP,Roy W. Lang,,2004,Governor,MO,lang r,0,0,0,wikipedia
 ,REP,Martin Lindstedt,,2004,Governor,MO,lindstedt m,0,0,0,wikipedia
-,DEM,Claire McCaskill,,2004,Governor,MO,mccaskill c,0,0,0,wikipedia
 ,DEM,Jim LePage,,2004,Governor,MO,lepage j,0,0,0,wikipedia
 ,DEM,Jeffery A. Emrick,,2004,Governor,MO,emrick j,0,0,0,wikipedia
 ,OTH,John Swenson,,2004,Governor,MO,swenson j,0,0,0,wikipedia
@@ -18197,7 +18265,6 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,OTH,Patricia Hejny,,2004,Governor,VT,hejny p,0,0,0,wikipedia
 ,OTH,Hardy Machia,,2004,Governor,VT,machia h,0,0,0,wikipedia
 ,,Liberty Union,,2004,Governor,VT,union l,0,0,0,wikipedia
-,DEM,Christine Gregoire,,2004,Governor,WA,gregoire c,0,0,0,wikipedia
 ,OTH,Ruth Bennett,,2004,Governor,WA,bennett r,0,0,0,wikipedia
 ,DEM,Louis J. Davis,candidate in 1996,2004,Governor,WV,davis l,0,0,0,wikipedia
 ,DEM,1996,and 2000,2004,Governor,WV,,0,0,0,wikipedia
@@ -18521,7 +18588,6 @@ additional terms may apply. By using this site, you agree to the Terms of Use an
 ,,Javier O. Lopez,,2008,Governor,WA,lopez j,0,0,0,wikipedia
 ,,Mohammad Hasan Said,,2008,Governor,WA,said m,0,0,0,wikipedia
 ,,James White,,2008,Governor,WA,white j,0,0,0,wikipedia
-,DEM,Christine Gregoire,,2008,Governor,WA,gregoire c,0,0,0,wikipedia
 ,REP,Dino Rossi,,2008,Governor,WA,rossi d,0,0,0,wikipedia
 ,REP,John W. Aiken Jr.,,2008,Governor,WA,aiken j,0,0,0,wikipedia
 ,DEM,Christian Pierre Joubert,,2008,Governor,WA,joubert c,0,0,0,wikipedia
@@ -18627,7 +18693,6 @@ additional terms may apply. By using this site, you agree to the Terms of Use an
 ,DEM,Carl Camon,,2010,Governor,GA,camon c,0,0,0,wikipedia
 ,DEM,Bill Bolton,,2010,Governor,GA,bolton b,0,0,0,wikipedia
 ,OTH,John Monds,,2010,Governor,GA,monds j,0,0,0,wikipedia
-,DEM,Neil Abercrombie,,2010,Governor,HI,abercrombie n,0,0,0,wikipedia
 ,DEM,Mufi Hannemann,,2010,Governor,HI,hannemann m,0,0,0,wikipedia
 ,DEM,Arturo P. Reyes,,2010,Governor,HI,reyes a,0,0,0,wikipedia
 ,DEM,Van K. Tanabe,,2010,Governor,HI,tanabe v,0,0,0,wikipedia
@@ -20595,7 +20660,6 @@ additional terms may apply. By using this site, you agree to the Terms of Use an
 12,REP,Tim Burns,businessman and Republican nominee in the special election,2010,House,PA,burns t,0,0,0,wikipedia
 16,DEM,Lois Herr,political activist,2010,House,PA,herr l,0,0,0,wikipedia
 4,REP,Trey Gowdy,7th Circuit Solicitor,2010,House,SC,gowdy t,0,0,0,wikipedia
-1,DEM,Stephanie Herseth Sandlin,incumbent,2010,House,SD,sandlin s,0,0,0,wikipedia
 1,REP,Kristi Noem,Assistant Majority Leader of the South Dakota House of Representatives,2010,House,SD,noem k,0,1,0,wikipedia
 1,REP,Thad Wasson,technician,2010,House,SD,wasson t,0,0,0,wikipedia
 1,REP,Shantel Krebs,member of the South Dakota House of Representatives (2015-2019),2010,House,SD,krebs s,0,1,0,wikipedia
@@ -25371,7 +25435,6 @@ additional terms may apply. By using this site, you agree to the Terms of Use an
 48,,Natural Law,,2000,House,CA,law n,0,0,0,wikipedia
 48,OTH,Joe Michael Cobb,,2000,House,CA,cobb j,0,0,0,wikipedia
 48,,Invalid or blank votes,,2000,House,CA,votes i,0,0,0,wikipedia
-49,DEM,Susan Davis,,2000,House,CA,davis s,0,0,0,wikipedia
 49,OTH,Doris Ball,,2000,House,CA,ball d,0,0,0,wikipedia
 49,,Natural Law,,2000,House,CA,law n,0,0,0,wikipedia
 49,,Invalid or blank votes,,2000,House,CA,votes i,0,0,0,wikipedia
@@ -25457,7 +25520,6 @@ additional terms may apply. By using this site, you agree to the Terms of Use an
 7,REP,Kenneth Kondner,,2000,House,MD,kondner k,0,0,0,wikipedia
 8,DEM,Terry Lierman,,2000,House,MD,lierman t,0,0,0,wikipedia
 8,OTH,Brian Saunders,,2000,House,MD,saunders b,0,0,0,wikipedia
-1,REP,Denny Rehberg,,2000,House,MT,rehberg d,0,0,0,wikipedia
 1,DEM,Nancy Keenan,,2000,House,MT,keenan n,0,0,0,wikipedia
 1,OTH,James J. Tikalsky,,2000,House,MT,tikalsky j,0,0,0,wikipedia
 1,REP,"Duane E. Kratzer, Jr.",,2000,House,NC,kratzer d,0,0,0,wikipedia
@@ -25668,7 +25730,6 @@ additional terms may apply. By using this site, you agree to the Terms of Use an
 11,OTH,C.W. Levy,,2000,House,VA,levy c,0,0,0,wikipedia
 1,REP,Dan McDonald,,2000,House,WA,mcdonald d,0,0,0,wikipedia
 1,OTH,Bruce Newman,,2000,House,WA,newman b,0,0,0,wikipedia
-2,DEM,Rick Larsen,,2000,House,WA,larsen r,0,0,0,wikipedia
 2,REP,John Koster,,2000,House,WA,koster j,0,0,0,wikipedia
 2,OTH,Stuart Andrews,,2000,House,WA,andrews s,0,0,0,wikipedia
 2,,Natural Law,,2000,House,WA,law n,0,0,0,wikipedia
@@ -25934,7 +25995,6 @@ additional terms may apply. By using this site, you agree to the Terms of Use an
 7,DEM,Michael Berlon,,2002,House,GA,berlon m,0,0,0,wikipedia
 8,DEM,Angelos Petrakopoulos,,2002,House,GA,petrakopoulos a,0,0,0,wikipedia
 9,DEM,Barry Irwin,,2002,House,GA,irwin b,0,0,0,wikipedia
-11,REP,Phil Gingrey,,2002,House,GA,gingrey p,0,0,0,wikipedia
 11,DEM,Roger Kahn,,2002,House,GA,kahn r,0,0,0,wikipedia
 12,REP,Max Burns,,2002,House,GA,burns m,0,0,0,wikipedia
 12,DEM,"Charles Walker, Jr.",,2002,House,GA,walker c,0,0,0,wikipedia
@@ -25988,7 +26048,6 @@ additional terms may apply. By using this site, you agree to the Terms of Use an
 5,OTH,Bob S. Auerbach (write-in),,2002,House,MD,in b,0,0,0,wikipedia
 6,DEM,Donald M. DeArmon,,2002,House,MD,dearmon d,0,0,0,wikipedia
 7,REP,Joseph E. Ward,,2002,House,MD,ward j,0,0,0,wikipedia
-8,DEM,Chris Van Hollen,,2002,House,MD,hollen c,0,0,0,wikipedia
 1,REP,Don Hooper,,2002,House,MI,hooper d,0,0,0,wikipedia
 1,OTH,John Loosemore,,2002,House,MI,loosemore j,0,0,0,wikipedia
 2,DEM,Jeffrey Wrisley,,2002,House,MI,wrisley j,0,0,0,wikipedia
@@ -26013,7 +26072,6 @@ additional terms may apply. By using this site, you agree to the Terms of Use an
 10,REP,Candice Miller,,2002,House,MI,miller c,0,0,0,wikipedia
 10,DEM,Carl Marlinga,,2002,House,MI,marlinga c,0,0,0,wikipedia
 10,OTH,Renae Coon,,2002,House,MI,coon r,0,0,0,wikipedia
-11,REP,Thaddeus McCotter,,2002,House,MI,mccotter t,0,0,0,wikipedia
 11,DEM,Kevin Kelley,,2002,House,MI,kelley k,0,0,0,wikipedia
 11,OTH,William Boyd,,2002,House,MI,boyd w,0,0,0,wikipedia
 11,OTH,Dan Malone,,2002,House,MI,malone d,0,0,0,wikipedia
@@ -26074,7 +26132,6 @@ additional terms may apply. By using this site, you agree to the Terms of Use an
 14,OTH,Sid Stone (Write-in),,2002,House,OH,in s,0,0,0,wikipedia
 15,DEM,Mark P. Brown,,2002,House,OH,brown m,0,0,0,wikipedia
 16,DEM,Jim Rice,,2002,House,OH,rice j,0,0,0,wikipedia
-17,DEM,Tim Ryan,,2002,House,OH,ryan t,0,0,0,wikipedia
 17,REP,Ann Womer Benjamin,,2002,House,OH,benjamin a,0,0,0,wikipedia
 17,OTH,James Traficant,,2002,House,OH,traficant j,0,0,0,wikipedia
 1,REP,Jim Greenfield,,2002,House,OR,greenfield j,0,0,0,wikipedia
@@ -26416,7 +26473,6 @@ additional terms may apply. By using this site, you agree to the Terms of Use an
 1,DEM,Miles Jay Nelson,,2004,House,NM,nelson m,0,0,0,wikipedia
 2,DEM,Gary King,,2004,House,NM,king g,0,0,0,wikipedia
 2,DEM,Jeff Steinborn,,2004,House,NM,steinborn j,0,0,0,wikipedia
-2,REP,Steve Pearce,,2004,House,NM,pearce s,0,0,0,wikipedia
 3,REP,Gregory M. Tucker,,2004,House,NM,tucker g,0,0,0,wikipedia
 1,REP,Greg Dority,,2004,House,NC,dority g,0,0,0,wikipedia
 2,REP,Billy Creech,,2004,House,NC,creech b,0,0,0,wikipedia
@@ -26528,7 +26584,6 @@ additional terms may apply. By using this site, you agree to the Terms of Use an
 9,,Jim Maynard,,2004,House,TN,maynard j,0,0,0,wikipedia
 1,REP,Louie Gohmert,,2004,House,TX,gohmert l,0,0,0,wikipedia
 1,OTH,Dean Tucker,,2004,House,TX,tucker d,0,0,0,wikipedia
-2,REP,Ted Poe,,2004,House,TX,poe t,0,0,0,wikipedia
 2,OTH,Sandra Leigh Saulsbury,,2004,House,TX,saulsbury s,0,0,0,wikipedia
 3,OTH,Paul Jenkins,,2004,House,TX,jenkins p,0,0,0,wikipedia
 3,OTH,James Vessels,,2004,House,TX,vessels j,0,0,0,wikipedia
@@ -26603,7 +26658,6 @@ additional terms may apply. By using this site, you agree to the Terms of Use an
 5,DEM,Don Barbieri,,2004,House,WA,barbieri d,0,0,0,wikipedia
 6,REP,Doug Cloud,,2004,House,WA,cloud d,0,0,0,wikipedia
 7,REP,Carol Cassady,,2004,House,WA,cassady c,0,0,0,wikipedia
-8,REP,Dave Reichert,,2004,House,WA,reichert d,0,0,0,wikipedia
 8,DEM,Dave Ross,,2004,House,WA,ross d,0,0,0,wikipedia
 8,OTH,Spencer Garrett,,2004,House,WA,garrett s,0,0,0,wikipedia
 9,REP,Paul J. Lord,,2004,House,WA,lord p,0,0,0,wikipedia
@@ -27127,7 +27181,6 @@ additional terms may apply. By using this site, you agree to the Terms of Use an
 7,OTH,Mike Miles,,2006,House,WI,miles m,0,0,0,wikipedia
 8,DEM,Steve Kagen,,2006,House,WI,kagen s,0,0,0,wikipedia
 8,REP,John Gard,,2006,House,WI,gard j,0,0,0,wikipedia
-2,DEM,Bobby Bright,,2008,House,AL,bright b,0,0,0,wikipedia
 2,REP,Jay Love,,2008,House,AL,love j,0,0,0,wikipedia
 3,DEM,Joshua Segall,,2008,House,AL,segall j,0,0,0,wikipedia
 4,DEM,Nick Sparks,,2008,House,AL,sparks n,0,0,0,wikipedia
@@ -27142,7 +27195,6 @@ additional terms may apply. By using this site, you agree to the Terms of Use an
 3,DEM,Bill Durston,,2008,House,CA,durston b,0,0,0,wikipedia
 3,,Peace and Freedom,,2008,House,CA,freedom p,0,0,0,wikipedia
 3,OTH,Douglas Tuma,,2008,House,CA,tuma d,0,0,0,wikipedia
-4,REP,Tom McClintock,,2008,House,CA,mcclintock t,0,0,0,wikipedia
 4,DEM,Charles Brown,,2008,House,CA,brown c,0,0,0,wikipedia
 5,REP,Paul Smith,,2008,House,CA,smith p,0,0,0,wikipedia
 5,,Peace and Freedom,,2008,House,CA,freedom p,0,0,0,wikipedia
@@ -27460,7 +27512,6 @@ additional terms may apply. By using this site, you agree to the Terms of Use an
 1,DEM,Max Yashirin,,2008,House,NE,yashirin m,0,0,0,wikipedia
 2,DEM,Jim Esch,,2008,House,NE,esch j,0,0,0,wikipedia
 3,DEM,Jay C. Stoddard,,2008,House,NE,stoddard j,0,0,0,wikipedia
-1,REP,Jeb Bradley,,2008,House,NH,bradley j,0,0,0,wikipedia
 1,REP,John Stephen,,2008,House,NH,stephen j,0,0,0,wikipedia
 1,REP,Geoff Michael,,2008,House,NH,michael g,0,0,0,wikipedia
 1,REP,Dave Jarvis,,2008,House,NH,jarvis d,0,0,0,wikipedia
@@ -27686,7 +27737,6 @@ additional terms may apply. By using this site, you agree to the Terms of Use an
 7,OTH,Mark A. Goldman,,2008,House,WA,goldman m,0,0,0,wikipedia
 7,DEM,Goodspaceguy Nelson,,2008,House,WA,nelson g,0,0,0,wikipedia
 7,OTH,Al Schaefer,,2008,House,WA,schaefer a,0,0,0,wikipedia
-8,REP,Dave Reichert,,2008,House,WA,reichert d,0,0,0,wikipedia
 8,DEM,Darcy Burner,,2008,House,WA,burner d,0,0,0,wikipedia
 8,DEM,James E. Vaughn,,2008,House,WA,vaughn j,0,0,0,wikipedia
 8,OTH,Richard Todd,,2008,House,WA,todd r,0,0,0,wikipedia
@@ -27816,12 +27866,10 @@ additional terms may apply. By using this site, you agree to the Terms of Use an
 53,REP,Michael Peter Crimmins,,2010,House,CA,crimmins m,0,0,0,wikipedia
 53,OTH,Paul Michael-Dekker,,2010,House,CA,dekker p,0,0,0,wikipedia
 1,REP,Ann Brickley,,2010,House,CT,brickley a,0,0,0,wikipedia
-1,DEM,John B. Larson,,2010,House,CT,larson j,0,0,0,wikipedia
 1,OTH,Kenneth J. Krayeske,,2010,House,CT,krayeske k,0,0,0,wikipedia
 1,,Socialist Action,,2010,House,CT,action s,0,0,0,wikipedia
 1,,Daniel J. Stepanek,,2010,House,CT,stepanek d,0,0,0,wikipedia
 2,REP,Janet Peckinpaugh,,2010,House,CT,peckinpaugh j,0,0,0,wikipedia
-2,DEM,Joe Courtney,,2010,House,CT,courtney j,0,0,0,wikipedia
 2,OTH,G. Scott Deshefy,,2010,House,CT,deshefy g,0,0,0,wikipedia
 2,,Daniel Reale,,2010,House,CT,reale d,0,0,0,wikipedia
 2,,Muriel P. Bianchi,,2010,House,CT,bianchi m,0,0,0,wikipedia
@@ -27830,7 +27878,6 @@ additional terms may apply. By using this site, you agree to the Terms of Use an
 3,OTH,Charles A. Pillsbury,,2010,House,CT,pillsbury c,0,0,0,wikipedia
 3,,Boaz Itshaky,,2010,House,CT,itshaky b,0,0,0,wikipedia
 4,REP,Dan Debicella,,2010,House,CT,debicella d,0,0,0,wikipedia
-4,DEM,Jim Himes,,2010,House,CT,himes j,0,0,0,wikipedia
 4,,Eugene Flanagan,,2010,House,CT,flanagan e,0,0,0,wikipedia
 5,REP,Sam S. F. Caligiuri,,2010,House,CT,caligiuri s,0,0,0,wikipedia
 5,DEM,Chris Murphy,,2010,House,CT,murphy c,0,0,0,wikipedia
@@ -28173,7 +28220,6 @@ additional terms may apply. By using this site, you agree to the Terms of Use an
 6,,U.S. Taxpayers,,2010,House,MI,taxpayers u,0,0,0,wikipedia
 6,OTH,Fred Strand,,2010,House,MI,strand f,0,0,0,wikipedia
 6,OTH,Pat Foster,,2010,House,MI,foster p,0,0,0,wikipedia
-7,REP,Tim Walberg,,2010,House,MI,walberg t,0,0,0,wikipedia
 7,REP,Brian Rooney,,2010,House,MI,rooney b,0,0,0,wikipedia
 7,REP,Marvin Carlson,,2010,House,MI,carlson m,0,0,0,wikipedia
 7,,U.S. Taxpayers,,2010,House,MI,taxpayers u,0,0,0,wikipedia
@@ -28284,7 +28330,6 @@ additional terms may apply. By using this site, you agree to the Terms of Use an
 5,REP,Patrick Haake,,2010,House,MO,haake p,0,0,0,wikipedia
 5,REP,Ralph Sheffield,,2010,House,MO,sheffield r,0,0,0,wikipedia
 5,REP,Ron Shawd,,2010,House,MO,shawd r,0,0,0,wikipedia
-5,DEM,Emanuel Cleaver,,2010,House,MO,cleaver e,0,0,0,wikipedia
 5,OTH,Randall D. Langkraehr,,2010,House,MO,langkraehr r,0,0,0,wikipedia
 5,OTH,Dave Lay,,2010,House,MO,lay d,0,0,0,wikipedia
 6,REP,Christopher Ryan,,2010,House,MO,ryan c,0,0,0,wikipedia
@@ -28317,15 +28362,12 @@ additional terms may apply. By using this site, you agree to the Terms of Use an
 3,OTH,Dan Hill,,2010,House,NE,hill d,0,0,0,wikipedia
 1,REP,Frank Guinta,,2010,House,NH,guinta f,0,0,0,wikipedia
 1,OTH,Philip Hodson,,2010,House,NH,hodson p,0,0,0,wikipedia
-2,REP,Charles Bass,,2010,House,NH,bass c,0,0,0,wikipedia
 2,DEM,Ann McLane Kuster,,2010,House,NH,kuster a,0,0,0,wikipedia
 2,OTH,Tim vanBlommesteyn,,2010,House,NH,vanblommesteyn t,0,0,0,wikipedia
 2,OTH,Howard L. Wilson,,2010,House,NH,wilson h,0,0,0,wikipedia
 1,REP,Jon Barela,,2010,House,NM,barela j,0,0,0,wikipedia
-2,REP,Steve Pearce,,2010,House,NM,pearce s,0,0,0,wikipedia
 3,REP,Thomas E. Mullins,,2010,House,NM,mullins t,0,0,0,wikipedia
 3,REP,Adam Kokesh,,2010,House,NM,kokesh a,0,0,0,wikipedia
-1,DEM,Tim Bishop,,2010,House,NY,bishop t,0,0,0,wikipedia
 1,,Working Families,,2010,House,NY,families w,0,0,0,wikipedia
 1,,Tim Bishop,,2010,House,NY,bishop t,0,0,0,wikipedia
 1,REP,Randy Altschuler,,2010,House,NY,altschuler r,0,0,0,wikipedia
@@ -28429,11 +28471,9 @@ additional terms may apply. By using this site, you agree to the Terms of Use an
 23,REP,Matt Doheny,,2010,House,NY,doheny m,0,0,0,wikipedia
 23,,Matt Doheny,,2010,House,NY,doheny m,0,0,0,wikipedia
 23,,Doug Hoffman,,2010,House,NY,hoffman d,0,0,0,wikipedia
-24,DEM,Michael Arcuri,,2010,House,NY,arcuri m,0,0,0,wikipedia
 24,,Working Families,,2010,House,NY,families w,0,0,0,wikipedia
 24,REP,Richard L. Hanna,,2010,House,NY,hanna r,0,0,0,wikipedia
 24,,Richard L. Hanna,,2010,House,NY,hanna r,0,0,0,wikipedia
-25,DEM,Dan Maffei,,2010,House,NY,maffei d,0,0,0,wikipedia
 25,,Working Families,,2010,House,NY,families w,0,0,0,wikipedia
 25,REP,Ann Marie Buerkle,,2010,House,NY,buerkle a,0,0,0,wikipedia
 25,,Ann Marie Buerkle,,2010,House,NY,buerkle a,0,0,0,wikipedia
@@ -29301,47 +29341,56 @@ additional terms may apply. By using this site, you agree to the Terms of Use an
 10,REP,Dan Gordon,,2022,House,WA,gordon d,0,0,0,wikipedia
 10,DEM,Eric Mahaffy,,2022,House,WA,mahaffy e,0,0,0,wikipedia
 10,OTH,Richard Boyce,,2022,House,WA,boyce r,0,0,0,wikipedia
+S,DEM,Mark Kelly,,2020,Senate,AZ,kelly m,0,0,0,ballotpedia
+,DEM,Chris Bell,,2020,Senate,TX,bell c,0,0,0,ballotpedia
+53,DEM,Sara Jacobs,,2020,House,CA,jacobs s,0,0,0,ballotpedia
+11,REP,David Madison Cawthorn,,2020,House,NC,cawthorn d,0,0,0,ballotpedia
+25,REP,Mike Garcia,,2020,House,CA,garcia m,0,0,0,ballotpedia
+48,REP,Michelle Steel,,2020,House,CA,steel m,0,0,0,ballotpedia
+2,DEM,Elaine G. Luria,,2018,House,VA,luria e,0,0,0,ballotpedia
+5,REP,Denver Riggleman,,2018,House,VA,riggleman d,0,0,0,ballotpedia
+,DEM,Chris Bell,,2026,Governor,TX,bell c,0,0,0,ballotpedia
+,OTH,Mark Tippetts,,2022,Governor,TX,tippetts m,0,0,0,ballotpedia
+,OTH,Mark Tippetts,,2018,Governor,TX,tippetts m,0,0,0,ballotpedia
+,DEM,Robert Menendez,,2012,Senate,NJ,menendez r,0,0,0,ballotpedia
+,DEM,Edward M. Kennedy,,2006,Senate,MA,kennedy e,0,0,0,ballotpedia
+,DEM,Robert Menendez,,2006,Senate,NJ,menendez r,0,0,0,ballotpedia
+,DEM,Robert P. Casey Jr.,,2006,Senate,PA,casey r,0,0,0,ballotpedia
+,DEM,Edward M. Kennedy,,2000,Senate,MA,kennedy e,0,0,0,ballotpedia
+1,DEM,Travis W. Childers,,2008,House,MS,childers t,0,0,0,ballotpedia
+1,DEM,Stephanie Herseth Sandlin,,2004,House,SD,sandlin s,0,0,0,ballotpedia
 2,DEM,Mark Udall,,1998,House,CO,udall m,0,0,0,ballotpedia
 1,DEM,Shelley Berkley,,1998,House,NV,berkley s,0,0,0,ballotpedia
 1,DEM,David Wu,,1998,House,OR,wu d,0,0,0,ballotpedia
-2,REP,Merrill Cook,,1998,House,UT,cook m,0,0,0,ballotpedia
-1,REP,Paul Ryan,,1998,House,WI,ryan p,0,0,0,ballotpedia
-10,REP,Mark Kirk,,2000,House,IL,kirk m,0,0,0,ballotpedia
-,DEM,Edward M. Kennedy,,2000,Senate,MA,kennedy e,0,0,0,ballotpedia
 4,DEM,Betty McCollum,,2000,House,MN,mccollum b,0,0,0,ballotpedia
-2,REP,Todd Akin,,2000,House,MO,akin t,0,0,0,ballotpedia
 2,DEM,Joe Courtney,,2002,House,CT,courtney j,0,0,0,ballotpedia
-4,REP,Todd Tiahrt,,2002,House,KS,tiahrt t,0,0,0,ballotpedia
-13,DEM,Ralph Bradley Miller,,2002,House,NC,miller r,0,0,0,ballotpedia
-1,REP,Jeb E. Bradley,,2002,House,NH,bradley j,0,0,0,ballotpedia
-1,REP,Heather A. Wilson,,2002,House,NM,wilson h,0,0,0,ballotpedia
-2,REP,Stevan Pearce,,2002,House,NM,pearce s,0,0,0,ballotpedia
 1,DEM,Timothy H. Bishop,,2002,House,NY,bishop t,0,0,0,ballotpedia
-1,REP,John A. Sullivan,,2002,House,OK,sullivan j,0,0,0,ballotpedia
+13,DEM,Ralph Bradley Miller,,2002,House,NC,miller r,0,0,0,ballotpedia
 1,DEM,Stephanie Herseth Sandlin,,2002,House,SD,sandlin s,0,0,0,ballotpedia
 3,DEM,James Marshall,,2004,House,GA,marshall j,0,0,0,ballotpedia
-3,REP,Kris W. Kobach,,2004,House,KS,kobach k,0,0,0,ballotpedia
-4,REP,Todd Tiahrt,,2004,House,KS,tiahrt t,0,0,0,ballotpedia
-1,DEM,Stephanie Herseth Sandlin,,2004,House,SD,sandlin s,0,0,0,ballotpedia
-,DEM,Edward M. Kennedy,,2006,Senate,MA,kennedy e,0,0,0,ballotpedia
-11,DEM,Joseph Heath Shuler,,2006,House,NC,shuler j,0,0,0,ballotpedia
-,DEM,Robert Menendez,,2006,Senate,NJ,menendez r,0,0,0,ballotpedia
 24,DEM,Michael A. Arcuri,,2006,House,NY,arcuri m,0,0,0,ballotpedia
 25,DEM,Daniel B. Maffei,,2006,House,NY,maffei d,0,0,0,ballotpedia
 29,DEM,Eric J. Massa,,2006,House,NY,massa e,0,0,0,ballotpedia
+11,DEM,Joseph Heath Shuler,,2006,House,NC,shuler j,0,0,0,ballotpedia
 5,DEM,Rolf Parker Griffith,,2008,House,AL,griffith r,0,0,0,ballotpedia
 4,DEM,Jim Himes,,2008,House,CT,himes j,0,0,0,ballotpedia
 1,DEM,Frank M. Kratovil,,2008,House,MD,kratovil f,0,0,0,ballotpedia
-1,DEM,Travis W. Childers,,2008,House,MS,childers t,0,0,0,ballotpedia
 25,DEM,Daniel B. Maffei,,2008,House,NY,maffei d,0,0,0,ballotpedia
 29,DEM,Eric J. Massa,,2008,House,NY,massa e,0,0,0,ballotpedia
+1,DEM,Carol Shea-Porter,,2010,House,NH,porter c,0,0,0,ballotpedia
+12,DEM,William L. Enyart,,2012,House,IL,enyart w,0,0,0,ballotpedia
+1,DEM,K. Mark Takai,,2014,House,HI,takai k,0,0,0,ballotpedia
+2,REP,Merrill Cook,,1998,House,UT,cook m,0,0,0,ballotpedia
+1,REP,Paul Ryan,,1998,House,WI,ryan p,0,0,0,ballotpedia
+10,REP,Mark Kirk,,2000,House,IL,kirk m,0,0,0,ballotpedia
+2,REP,Todd Akin,,2000,House,MO,akin t,0,0,0,ballotpedia
+4,REP,Todd Tiahrt,,2002,House,KS,tiahrt t,0,0,0,ballotpedia
+1,REP,Jeb E. Bradley,,2002,House,NH,bradley j,0,0,0,ballotpedia
+1,REP,Heather A. Wilson,,2002,House,NM,wilson h,0,0,0,ballotpedia
+2,REP,Stevan Pearce,,2002,House,NM,pearce s,0,0,0,ballotpedia
+1,REP,John A. Sullivan,,2002,House,OK,sullivan j,0,0,0,ballotpedia
+3,REP,Kris W. Kobach,,2004,House,KS,kobach k,0,0,0,ballotpedia
+4,REP,Todd Tiahrt,,2004,House,KS,tiahrt t,0,0,0,ballotpedia
+10,REP,Robert Dold,,2010,House,IL,dold r,0,0,0,ballotpedia
+2,REP,E. Scott Rigell,,2010,House,VA,rigell e,0,0,0,ballotpedia
 9,REP,H. Morgan Griffith,,2010,House,VA,griffith h,0,0,0,ballotpedia
-,DEM,Robert Menendez,,2012,Senate,NJ,menendez r,0,0,0,ballotpedia
-,OTH,Mark Tippetts,,2018,Governor,TX,tippetts m,0,0,0,ballotpedia
-2,DEM,Elaine G. Luria,,2018,House,VA,luria e,0,0,0,ballotpedia
-5,REP,Denver Riggleman,,2018,House,VA,riggleman d,0,0,0,ballotpedia
-25,REP,Mike Garcia,,2020,House,CA,garcia m,0,0,0,ballotpedia
-48,REP,Michelle Steel,,2020,House,CA,steel m,0,0,0,ballotpedia
-53,DEM,Sara Jacobs,,2020,House,CA,jacobs s,0,0,0,ballotpedia
-11,REP,David Madison Cawthorn,,2020,House,NC,cawthorn d,0,0,0,ballotpedia
-,OTH,Mark Tippetts,,2022,Governor,TX,tippetts m,0,0,0,ballotpedia
