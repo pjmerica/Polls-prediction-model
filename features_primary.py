@@ -170,7 +170,7 @@ def load_candidate_bios(path=None):
     b = pd.read_csv(path, low_memory=False)
     out = {}
     for r in b.itertuples():
-        di = "" if pd.isna(r.district) else str(int(r.district))
+        di = F.dist_str(r.district)   # crash-safe: handles "S" special-election district + float round-trip
         party = F.npar(r.party)
         out[(int(r.year), r.office, r.state, di, party, r.cand_key)] = dict(
             bio_office_level=int(r.office_level),
