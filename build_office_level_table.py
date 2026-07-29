@@ -91,6 +91,23 @@ def main():
             except (json.JSONDecodeError, TypeError):
                 off_map[(r.candidate, r.state)] = []
         prior_map = {(r.candidate, r.state): getattr(r, "bio_prior_candidacy", 0) for r in bp.itertuples()}
+        # MANUAL hardcode (Stage 3, 2026-07-27): data/candidate_bios_manual.csv carries the same
+        # person-level offices_json (tenure dates) for winners that neither Wikipedia nor
+        # Ballotpedia covered - researched by hand with source_note. Merged into off_map so the
+        # SAME leak-free as-of-year computation applies. Manual OVERRIDES Ballotpedia on overlap
+        # (it's the hand-verified source). An empty [] here means "verified: no prior office"
+        # (level 0), which is real data - distinct from a missing key (unknown).
+        manual_path = os.path.join(DATA, "candidate_bios_manual.csv")
+        manual_keys = set()
+        if os.path.exists(manual_path):
+            man = pd.read_csv(manual_path, low_memory=False)
+            for r in man.itertuples():
+                try:
+                    off_map[(r.candidate, r.state)] = json.loads(getattr(r, "offices_json", "[]") or "[]")
+                    manual_keys.add((r.candidate, r.state))
+                except (json.JSONDecodeError, TypeError):
+                    pass
+            print(f"candidate_bios_manual.csv: {len(manual_keys)} hand-coded people merged")
         # GROUND TRUTH for where a BP hit maps: every candidate-race in the poll feed, keyed by
         # (candidate,state). NOT a transient "uncovered" list - fixed 2026-07-28 after two bugs
         # where per-round scope files (uncovered_candidates.csv rewritten winners-only) and the
@@ -110,20 +127,29 @@ def main():
             if key not in off_map:
                 continue
             rowkey = tuple(str(x) for x in (r.year, r.office, r.state, r.district, r.party, r.cand_key))
+            is_manual = key in manual_keys
             lvl = _bp_asof_level(off_map[key], int(r.year))
             if lvl is None:
-                continue
+                # empty offices: for a MANUAL entry this means "verified: no prior office" ->
+                # a real level 0. For Ballotpedia it means unknown -> skip (leak-safe).
+                if is_manual:
+                    lvl = 0
+                else:
+                    continue
             if rowkey in wiki_keys:
                 # Wikipedia covers it. It wins UNLESS its level is an uninformative 0 (a
-                # results-table row with no descriptor) and Ballotpedia has a real higher
-                # level - then let the BP row through to override in the dedup below.
-                if not (wiki_level.get(rowkey, 0) == 0 and lvl > 0):
+                # results-table row with no descriptor) and this source has a real higher
+                # level - then let this row through to override in the dedup below. A manual
+                # entry overrides a wiki table-zero at level 0 too (hand-verified 0 beats an
+                # unknown table 0 - same key, dedup keeps either; harmless).
+                if not (wiki_level.get(rowkey, 0) == 0 and (lvl > 0 or is_manual)):
                     continue
             bp_rows.append(dict(
                 year=r.year, office=r.office, state=r.state, district=r.district,
                 party=r.party, name=r.candidate, cand_key=r.cand_key,
                 office_level=int(lvl), bio_in_office=0,
-                bio_prior_candidacy=int(prior_map.get(key, 0)), src="ballotpedia"))
+                bio_prior_candidacy=int(prior_map.get(key, 0)),
+                src=("manual" if is_manual else "ballotpedia")))
         print(f"candidate_bios_ballotpedia.csv: {len(bp)} profiles -> {len(bp_rows)} "
               f"leak-free as-of-year rows (gap-filling; Wikipedia preferred)")
 
@@ -133,8 +159,18 @@ def main():
     # an already-covered key - see the override gate above), while still keeping Wikipedia's
     # value in every normal case (equal or higher wiki level -> a stable sort keeps wiki, which
     # is concatenated first). Ties (both same level) keep Wikipedia via the stable sort.
-    combined = (combined.sort_values("office_level", ascending=False, kind="stable")
-                        .drop_duplicates(subset=KEY, keep="first"))
+    # On a key collision keep the higher office_level; on EQUAL level prefer the more-
+    # authoritative source (manual > ballotpedia > wikipedia). The src tiebreak matters for
+    # VERIFIED ZEROS: a hand-coded manual level-0 (candidate truly held no prior office) must
+    # win over a Wikipedia table-zero level-0 (unknown) at the same key, so the surviving row
+    # carries src="manual" and measure_office_coverage.py counts it as covered, not table_zero
+    # (fixed 2026-07-27: Renzi/Ellmers-type verified first-timers were being read as uncovered).
+    _src_rank = {"manual": 0, "ballotpedia": 1, "wikipedia": 2}
+    combined["_sr"] = combined["src"].map(_src_rank).fillna(3)
+    combined = (combined.sort_values(["office_level", "_sr"], ascending=[False, True],
+                                     kind="stable")
+                        .drop_duplicates(subset=KEY, keep="first")
+                        .drop(columns="_sr"))
     combined.to_csv(OUT, index=False)
     print(f"\nsaved -> {OUT}: {len(combined)} rows "
           f"({(combined['src']=='wikipedia').sum()} wiki, {(combined['src']=='ballotpedia').sum()} ballotpedia)")

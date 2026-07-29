@@ -41,10 +41,16 @@ def covered_keys_and_tablezeros():
     b = pd.read_csv(os.path.join(DATA, "candidate_bios.csv"), low_memory=False)
     b["district"] = b["district"].fillna("").astype(str).str.replace(r"\.0$", "", regex=True)
     desc_col = b["descriptor"] if "descriptor" in b.columns else pd.Series([""] * len(b))
+    src_col = b["src"] if "src" in b.columns else pd.Series([""] * len(b))
     covered, tablezero = set(), set()
-    for r, desc in zip(b.itertuples(), desc_col):
+    for r, desc, src in zip(b.itertuples(), desc_col, src_col):
         k = (str(int(r.year)), r.office, r.state, r.district, F.npar(r.party), r.cand_key)
-        if r.office_level > 0 or _real_descriptor(desc):
+        # covered iff: a real office (level>0), OR a level-0 that is VERIFIED - either a
+        # Wikipedia descriptor stating no office, or a hand-coded/Ballotpedia-resolved row
+        # (src manual/ballotpedia is verified data, so its level-0 is a real "no prior office",
+        # not a blank results-table unknown). Only a blank-descriptor Wikipedia level-0 is a
+        # table-zero (unknown).
+        if r.office_level > 0 or _real_descriptor(desc) or src in ("manual", "ballotpedia"):
             covered.add(k)
         else:
             tablezero.add(k)

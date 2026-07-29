@@ -56,13 +56,37 @@ import features as F  # noqa: E402
 _BP_LEVELS = [
     (4, re.compile(r"u\.?s\.?\s+(senate|house|senator|representative)|"
                    r"united states\s+(senate|house|senator|representative)|"
-                   r"member of congress|u\.?s\.?\s+cabinet|secretary of", re.I)),
+                   r"member of congress|u\.?s\.?\s+cabinet|"
+                   # U.S. cabinet secretaries ONLY. Fixed 2026-07-27: bare "secretary of" was
+                   # matching "Indiana Secretary of State" (a STATEWIDE office = level 3) as
+                   # level 4 - Evan Bayh's prior office read 4 instead of his real max Governor=3.
+                   # A federal cabinet secretary is named either "U.S. Secretary of X" or
+                   # "Secretary of <the-Federal-Department>"; "Secretary of State" WITHOUT a U.S.
+                   # qualifier is treated as the STATE office (level 3, below) since in this data
+                   # state secretaries of state vastly outnumber the lone federal one.
+                   r"(u\.?s\.?|united states)\s+secretary of\b|"
+                   r"secretary of (the treasury|defense|labor|commerce|energy|"
+                   r"education|transportation|agriculture|homeland security|"
+                   r"veterans affairs|the interior|housing)\b", re.I)),
     (3, re.compile(r"\bgovernor of\b|lieutenant governor|attorney general|"
                    r"secretary of state|state treasurer|state auditor|state comptroller|"
                    r"land commissioner|superintendent of public|insurance commissioner", re.I)),
     (2, re.compile(r"state senate|state house|state assembly|state legislature|"
                    r"house of delegates|general assembly|state senator|state representative|"
-                   r"state delegate", re.I)),
+                   r"state delegate|"
+                   # STATE-NAME legislature phrasing (added 2026-07-27 for the Stage-3 manual
+                   # hardcode + Ballotpedia infoboxes that name the state, not the word "state":
+                   # "Idaho House of Representatives", "Connecticut Senate", "Ohio Assembly",
+                   # "Maryland House of Delegates"). The 50 state names + DC, then the chamber.
+                   r"(?:alabama|alaska|arizona|arkansas|california|colorado|connecticut|"
+                   r"delaware|florida|georgia|hawaii|idaho|illinois|indiana|iowa|kansas|"
+                   r"kentucky|louisiana|maine|maryland|massachusetts|michigan|minnesota|"
+                   r"mississippi|missouri|montana|nebraska|nevada|new hampshire|new jersey|"
+                   r"new mexico|new york|north carolina|north dakota|ohio|oklahoma|oregon|"
+                   r"pennsylvania|rhode island|south carolina|south dakota|tennessee|texas|"
+                   r"utah|vermont|virginia|washington|west virginia|wisconsin|wyoming)\s+"
+                   r"(?:state\s+)?(?:senate|house|assembly|house of representatives|"
+                   r"house of delegates|general assembly)\b", re.I)),
     (1, re.compile(r"\bmayor\b|county (executive|commissioner|clerk|treasurer|sheriff)|"
                    r"city council|county council|school board|city commission|"
                    r"district attorney|\bjudge\b|alderman|selectman", re.I)),

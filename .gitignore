@@ -107,6 +107,9 @@ venv/
 # the still-uncovered office_level target roster (regenerated after each backfill stage;
 # drives the Ballotpedia/manual passes) — small, diffable, reference-able
 !data/office_level_backfill_targets.csv
+# Stage-3 HAND-CODED office histories (offices_json tenure dates + source_note) for winners
+# no scraper could reach - static, reviewable, the authoritative manual source for the builder
+!data/candidate_bios_manual.csv
 
 # local archive of pre-change data copies (archive-don't-delete rule is a LOCAL backup
 # discipline — these are point-in-time snapshots, not repo content; never committed, same

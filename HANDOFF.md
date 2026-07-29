@@ -4,6 +4,35 @@ For the next agent. Read AGENTS.md first (architecture + rules), CONCERNS.md sec
 (risk register + roadmap). This file: what's mid-flight RIGHT NOW, what's most likely to
 break, and what to do next, in order.
 
+## CURRENT STATE 2026-07-28 — Stage 3 done: WINNERS office_level coverage = 100%.
+
+Hand-coded office histories for all 248 uncovered winners no scraper could reach ->
+**winners 100.0% (1,967/1,967), overall 70.8%** (honest measure, table-zeros=uncovered).
+- data/candidate_bios_manual.csv (NEW, committed): per-person offices_json tenure dates
+  (same leak-free format as Ballotpedia) + source_note, researched from public bio record.
+  Merged into build_office_level_table.py's off_map; manual OVERRIDES Ballotpedia; an empty
+  offices_json [] = "verified: no prior office" -> a real level 0 (distinct from unknown).
+- THREE classifier/builder bugs found + fixed while wiring this in (all also affected real
+  Ballotpedia data, not just manual):
+  1. "Secretary of State" (a STATEWIDE office = 3) was matching the level-4 "secretary of"
+     pattern -> Evan Bayh read 4 instead of his real max Governor=3. Level-4 now only matches
+     U.S./cabinet secretaries.
+  2. STATE-NAME legislature phrasing ("Idaho House of Representatives", "Connecticut Senate")
+     didn't match the level-2 regex (which wanted the literal word "state") -> 43 hardcoded
+     people read 0. Added a 50-state-name alternation to the level-2 pattern.
+  3. A VERIFIED level-0 (manual/ballotpedia, candidate truly held no prior office) was
+     indistinguishable from a Wikipedia table-zero (unknown) -> Renzi/Ellmers-type first-time
+     winners counted as uncovered. Fixed in BOTH places: builder dedup now prefers
+     src manual>ballotpedia>wikipedia on equal level (so the verified row survives), and
+     measure_office_coverage.py counts any manual/ballotpedia row as covered regardless of level.
+- Leak-free verified: Renzi 2002->0, Labrador 2010->2 (state house), Mark Sanford 2002->4
+  (ex-US Rep), Bayh 1998->3 (ex-Gov), Klobuchar 2006->1 (county attorney). check_officeholder
+  passes. Feature STILL opt-in / not shipped - this whole arc is data completeness; a future
+  re-ablation now has winners at 100% coverage to run on.
+- REMAINING (optional, lower value): 1,413 uncovered are all NON-winners (1,102 no_bio +
+  311 table_zero) - losing challengers, many genuinely level 0. Roster in
+  office_level_backfill_targets.csv; regenerate with measure_office_coverage.py --write.
+
 ## CURRENT STATE 2026-07-28 — Stage 2 (Ballotpedia) done + coverage DEFINITION corrected.
 
 **Two things landed since Stage 1:**
