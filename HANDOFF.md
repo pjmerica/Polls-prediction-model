@@ -4,6 +4,27 @@ For the next agent. Read AGENTS.md first (architecture + rules), CONCERNS.md sec
 (risk register + roadmap). This file: what's mid-flight RIGHT NOW, what's most likely to
 break, and what to do next, in order.
 
+## CURRENT STATE 2026-07-29 (latest) — PRIMARY model: classifier -> RANKER (multi-candidate fix).
+
+User flagged MI Senate DEM primary reading El-Sayed ~50% despite a real polling lead, and the
+Explain modal (95%) disagreeing with the dashboard (51%). Root cause: the primary nominee model
+was an XGBClassifier scoring each candidate INDEPENDENTLY + divide-by-sum normalization - so 2+
+credible candidates each scored ~0.98 and got mushed to ~50/50, and the explainer's raw number
+never matched the dashboard's normalized one. Affected 12 of the 2026 primary races.
+FIX (user chose "retrain with within-race features", goal = handle >2 candidates + explainer==dashboard):
+- primary_model.py: XGBClassifier -> **XGBRanker** (objective=rank:pairwise, qid=race_id), tuned
+  by LOCO called-winner accuracy. Retrained: race-acc 0.902, AUC 0.987, Brier 0.045 (2022+2024).
+- Raw ranker scores -> ONE within-race **softmax** probability (temp in artifact meta). This is
+  the single number used everywhere. predict_primary.py: win_prob = win_prob_norm = softmax;
+  field_confidence redefined = leader prob above uniform 1/n. explain_primary.py: SHAP explains
+  the rank score, headline "pred" = the same softmax prob. VERIFIED explainer == dashboard
+  (El-Sayed 0.576 both; ME-SEN 9-way field coherent + summing to 1).
+- Artifact meta carries model_type=xgbranker + softmax_temp so predict/explain load XGBRanker.
+- Also fixed en route: the "S"-district crash in features_primary.load_candidate_bios (committed
+  256bcd1) that had been keeping primary_predictions stale.
+NOTE: predict_primary.py / explain_primary.py outputs are CI-regenerated (gitignored); the
+dashboard updates on the next model-refresh Action (13:15 UTC) which pulls this code.
+
 ## CURRENT STATE 2026-07-29 (later) — 2026 fully covered + frozen dataset; models re-retrained.
 
 Two follow-ups after shipping bio_office_level:

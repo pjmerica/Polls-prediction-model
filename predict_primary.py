@@ -162,9 +162,15 @@ def main():
 
     with open(os.path.join(HERE, "data", "primary_model_features.json")) as f:
         meta = json.load(f)
-    model = xgb.XGBClassifier()
+    # RANKER (2026-07-29): the primary model is a learning-to-rank model, not a classifier -
+    # it scores candidates so the nominee ranks highest WITHIN a race; a within-race softmax
+    # turns those scores into ONE coherent probability used by both the dashboard and the
+    # Explain modal (the old independent-classifier + divide-by-sum gave 2+ strong candidates
+    # ~50/50 and made the explainer's raw number disagree with the dashboard's normalized one).
+    model = xgb.XGBRanker()
     model.load_model(os.path.join(HERE, "data", "primary_model_xgb.json"))
-    print(f"primary model: cycles {meta['trained_on_cycles']}, "
+    SOFTMAX_TEMP = float(meta.get("softmax_temp", 1.0))
+    print(f"primary model: XGBRanker, cycles {meta['trained_on_cycles']}, "
           f"{len(meta['features'])} features, {meta['n_races']} training races")
 
     d = load_primary_feed(args.polls, args.cycle)
@@ -179,25 +185,40 @@ def main():
     missing = [f for f in meta["features"] if f not in cand.columns]
     assert not missing, f"artifact expects features absent from the table: {missing[:8]}"
     X = cand.reindex(columns=meta["features"])
-    cand["win_prob"] = model.predict_proba(X)[:, 1]
-    cand["field_confidence"] = cand.groupby("race_id")["win_prob"].transform("sum")
-    cand["win_prob_norm"] = cand["win_prob"] / cand["field_confidence"]
-    cand["low_confidence_field"] = (cand["field_confidence"] < 0.30).astype(int)
+    cand["rank_score"] = model.predict(X)          # raw ranker score (unbounded, per-race)
+    # within-race softmax -> ONE coherent probability. win_prob and win_prob_norm are now the
+    # SAME thing (kept both column names for downstream/dashboard back-compat).
+    import numpy as np
+    def _softmax(s):
+        v = np.asarray(s, dtype=float) / SOFTMAX_TEMP
+        e = np.exp(v - np.nanmax(v))
+        return e / e.sum()
+    cand["win_prob_norm"] = cand.groupby("race_id", group_keys=False)["rank_score"].transform(_softmax)
+    cand["win_prob"] = cand["win_prob_norm"]
+    # field confidence, redefined for the ranker: how much the leader's softmax prob exceeds a
+    # uniform field (1/n). ~0 => the model can't separate the field (best-guess ranking);
+    # high => a clear front-runner. Replaces the old "raw prob sum" heuristic.
+    def _field_conf(g):
+        n = len(g)
+        return float(g["win_prob_norm"].max() - 1.0 / n) if n else 0.0
+    fc = cand.groupby("race_id").apply(_field_conf, include_groups=False)
+    cand["field_confidence"] = cand["race_id"].map(fc)
+    cand["low_confidence_field"] = (cand["field_confidence"] < 0.10).astype(int)
     surveys = d.groupby("race_id").apply(
         lambda g: g.groupby(["pollster", "end_date"]).ngroups, include_groups=False)
     cand["n_surveys"] = cand["race_id"].map(surveys).fillna(0).astype(int)
 
     n_low_conf = cand.drop_duplicates("race_id")["low_confidence_field"].sum()
     if n_low_conf:
-        print(f"low-confidence fields (raw win_prob sums < 0.30 across the field): "
-              f"{int(n_low_conf)} races - win_prob_norm's leader there is a best-guess "
+        print(f"low-confidence fields (leader barely above a uniform 1/n split): "
+              f"{int(n_low_conf)} races - the win_prob_norm leader there is a best-guess "
               f"ranking, not a confident pick (see field_confidence column)")
 
     out_cols = ["race_id", "state", "office", "district", "party", "candidate",
                 "election_date", "n_polls", "n_surveys", "poll_avg", "poll_lead",
-                "fund_share", "win_prob", "win_prob_norm",
+                "fund_share", "rank_score", "win_prob", "win_prob_norm",
                 "field_confidence", "low_confidence_field"]
-    out = cand[out_cols].sort_values(["race_id", "win_prob"], ascending=[True, False])
+    out = cand[out_cols].sort_values(["race_id", "win_prob_norm"], ascending=[True, False])
     out_path = args.out or os.path.join(HERE, f"primary_predictions_{args.cycle}.csv")
     out.to_csv(out_path, index=False)
 

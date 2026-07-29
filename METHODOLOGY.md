@@ -139,6 +139,27 @@ Primary DATES are extracted per race page (`fetch_primary_dates.py`, prose regex
 validated against hand-checked dates; last-poll+4d fallback flagged `approx`) — primaries
 move between cycles and states, so dates are per-(cycle,state,office), never assumed.
 
+**Model type: learning-to-RANK, not independent classification (changed 2026-07-29).** The
+nominee model was originally an XGBClassifier scoring each candidate INDEPENDENTLY (binary
+"is this the nominee?"), then normalized within a race by divide-by-sum. That has a structural
+flaw that only shows up with 2+ credible candidates: the classifier happily scores BOTH ~0.98
+(each looks like a nominee on absolute features), so divide-by-sum splits them to ~50/50 and
+DESTROYS the head-to-head ordering — and the Explain modal (showing the raw independent 0.95)
+disagreed with the dashboard table (showing the normalized 0.51). Found 2026-07-29 via the MI
+Senate DEM primary (El-Sayed vs Stevens both ~0.98 raw). Fix: the model is now an **XGBRanker**
+(`objective=rank:pairwise`, qid = race_id) — it learns to ORDER candidates within a race, and
+raw ranker scores are converted to ONE probability by a **within-race softmax** (temperature in
+the artifact meta). That single number is what BOTH the dashboard and the Explain modal show
+(explain_primary.py softmaxes the same scores; verified equal to the cent). This also makes an
+N-candidate field coherent (Maine's 9-way DEM Senate primary sums to 1 across all nine, ranked)
+instead of the classifier's independent scores. Tuned by LOCO called-winner accuracy (Brier is
+not meaningful for a ranker's raw scores); expanding-window eval held up: race-acc 0.902 / AUC
+0.987 / Brier 0.045 (2022+2024), vs the poll-leader baseline 0.723. `predict_primary.py` and
+`explain_primary.py` load XGBRanker; the artifact meta carries `model_type=xgbranker` +
+`softmax_temp`. field_confidence is redefined as the leader's softmax prob above a uniform 1/n
+(replaces the old "raw prob sum < 0.30" heuristic). User note that drove this: "we need to do
+this so we can consider more than 2 candidates in a primary" + explainer must match dashboard.
+
 **Labels (upgraded 2026-07-15, same day):** won = the ACTUAL primary winner, scraped from
 the same Wikipedia race pages' results tables (fetch_primary_results_2026.py --hist; last
 table per party-race so runoffs supersede round 1). The original nominee-join (candidate

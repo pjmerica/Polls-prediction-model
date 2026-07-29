@@ -43,20 +43,52 @@ def race_acc(te, col):
     pick = te.loc[te.groupby("race_id")[col].idxmax()]
     return pick["won"].mean()
 
-def eval_fold(tr, te, feats, params):
-    m = xgb.XGBClassifier(eval_metric="logloss", random_state=42, n_jobs=-1, **params)
-    m.fit(tr[feats], tr["won"].astype(int))
-    return m.predict_proba(te[feats])[:, 1]
+# ---- within-race SOFTMAX: the ONE coherent probability used everywhere -----------------
+# The nominee model is a learning-to-RANK model (XGBRanker, below): it scores candidates so
+# that, WITHIN a race, the eventual nominee ranks highest. Raw ranker scores are unbounded
+# and only meaningful relative to their own race, so we convert them to a probability with a
+# within-race softmax. This is the number the dashboard AND the Explain modal both show -
+# there is no separate "raw" per-candidate probability anymore (the old XGBClassifier scored
+# each candidate INDEPENDENTLY, which (a) made 2+ strong candidates each ~1.0 so divide-by-sum
+# normalization mushed them to ~50/50, and (b) made the explainer's raw number disagree with
+# the dashboard's normalized number). Ranking + softmax handles an N-candidate field coherently.
+SOFTMAX_TEMP = 1.0    # tuned below on the eval cycles by called-winner accuracy
 
-def loco_brier(c, feats, params, cycles):
-    bs = []
+def race_softmax(scores, temp=SOFTMAX_TEMP):
+    s = np.asarray(scores, dtype=float) / temp
+    e = np.exp(s - np.nanmax(s))
+    return e / e.sum()
+
+def _fit_ranker(tr, feats, params):
+    """XGBRanker needs rows grouped by race (qid). Returns (model, sorted_tr)."""
+    tr = tr.sort_values("race_id")
+    grp = tr.groupby("race_id", sort=True).size().values
+    m = xgb.XGBRanker(objective="rank:pairwise", random_state=42, n_jobs=-1, **params)
+    m.fit(tr[feats], tr["won"].astype(int), group=grp)
+    return m
+
+def eval_fold(tr, te, feats, params):
+    """Train the ranker on tr, return within-race softmax probabilities for te (index-aligned)."""
+    m = _fit_ranker(tr, feats, params)
+    te = te.copy()
+    te["_score"] = m.predict(te[feats])
+    te["_p"] = te.groupby("race_id", group_keys=False)["_score"].transform(
+        lambda s: race_softmax(s))
+    return te["_p"]
+
+def loco_race_acc(c, feats, params, cycles):
+    """LOCO selection score for the RANKER = called-winner accuracy (Brier is not meaningful
+    for a ranking model's raw scores; the goal is ranking the actual nominee first). Higher is
+    better - callers negate or track the max."""
+    accs = []
     for ty in cycles:
         tr, te = c[c["year"] != ty], c[c["year"] == ty]
         if not len(te) or tr["won"].nunique() < 2:
             continue
-        p = eval_fold(tr, te, feats, params)
-        bs.append(brier_score_loss(te["won"].astype(int), p))
-    return float(np.mean(bs)) if bs else np.inf
+        te = te.copy()
+        te["p"] = eval_fold(tr, te, feats, params)
+        accs.append(race_acc(te, "p"))
+    return float(np.mean(accs)) if accs else -np.inf
 
 def expanding_eval(c, feats, params, eval_years, label):
     rows = []
@@ -116,11 +148,11 @@ def main():
     best = None
     for combo in combos:
         p = dict(zip(keys, combo))
-        b = loco_brier(c, FEATS, p, tune_years)
-        if best is None or b < best[0]:
-            best = (b, p)
+        a = loco_race_acc(c, FEATS, p, tune_years)   # ranker: maximize called-winner accuracy
+        if best is None or a > best[0]:
+            best = (a, p)
     PARAMS = best[1]
-    print(f"\nbest tune-cycle LOCO Brier: {best[0]:.4f}")
+    print(f"\nbest tune-cycle LOCO race-acc: {best[0]:.4f}")
     print("PARAMS =", PARAMS)
 
     ev = expanding_eval(c, FEATS, PARAMS, eval_years,
@@ -152,19 +184,25 @@ def main():
     print(f"\nmacro ablation: Brier {'WORSE' if dif > 0 else 'better'} by {abs(dif):.4f} "
           f"with macro (noise-level on ~{c['race_id'].nunique()} races) -> artifact stays NO-macro")
 
-    # ---- production artifact: train on ALL cycles, no-macro feature set ----
-    prod = xgb.XGBClassifier(eval_metric="logloss", random_state=42, n_jobs=-1, **PARAMS)
-    prod.fit(c[FEATS], c["won"].astype(int))
+    # ---- production artifact: RANKER trained on ALL cycles, no-macro feature set ----
+    prod = _fit_ranker(c, FEATS, PARAMS)
     prod.save_model(os.path.join(HERE, "data", "primary_model_xgb.json"))
     with open(os.path.join(HERE, "data", "primary_model_features.json"), "w") as f:
         json.dump(dict(features=FEATS, xgb_params=PARAMS,
+                       model_type="xgbranker",            # predict_primary must load XGBRanker
+                       objective="rank:pairwise",
+                       softmax_temp=SOFTMAX_TEMP,          # within-race score -> probability
+                       score_semantics=("raw ranker scores are unbounded and only comparable "
+                                        "WITHIN a race; convert to probability via a within-race "
+                                        "softmax (temp above). This one number is used by BOTH "
+                                        "the dashboard and the Explain modal."),
                        trained_on_cycles=[int(y) for y in years],
                        n_races=int(c["race_id"].nunique()),
                        target="won = became the party's general-election nominee",
                        eval_expanding_window={str(k): {m: (round(float(v), 4) if v == v else None)
                                                        for m, v in r.items()}
                                               for k, r in ev.iterrows()}), f, indent=1)
-    print("\nsaved data/primary_model_xgb.json + data/primary_model_features.json")
+    print("\nsaved data/primary_model_xgb.json + data/primary_model_features.json (XGBRanker)")
 
 if __name__ == "__main__":
     main()

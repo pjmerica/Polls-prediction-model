@@ -46,13 +46,17 @@
  ],
  "xgb_params": {
   "max_depth": 2,
-  "learning_rate": 0.1,
+  "learning_rate": 0.03,
   "n_estimators": 200,
-  "min_child_weight": 8,
+  "min_child_weight": 15,
   "subsample": 1.0,
-  "colsample_bytree": 1.0,
-  "reg_lambda": 1
+  "colsample_bytree": 0.5,
+  "reg_lambda": 20
  },
+ "model_type": "xgbranker",
+ "objective": "rank:pairwise",
+ "softmax_temp": 1.0,
+ "score_semantics": "raw ranker scores are unbounded and only comparable WITHIN a race; convert to probability via a within-race softmax (temp above). This one number is used by BOTH the dashboard and the Explain modal.",
  "trained_on_cycles": [
   2018,
   2019,
@@ -68,20 +72,20 @@
    "n_races": 66.0,
    "n_cand": 368.0,
    "AUC": 0.9944,
-   "AUC_PR": 0.98,
-   "KS": 0.9281,
-   "Brier": 0.0215,
+   "AUC_PR": 0.9757,
+   "KS": 0.9503,
+   "Brier": 0.0396,
    "race_acc": 0.9394,
    "pollleader_acc": 0.7424
   },
   "2024": {
    "n_races": 37.0,
    "n_cand": 170.0,
-   "AUC": 0.9684,
-   "AUC_PR": 0.959,
-   "KS": 0.9189,
-   "Brier": 0.0237,
-   "race_acc": 0.9189,
+   "AUC": 0.9791,
+   "AUC_PR": 0.9547,
+   "KS": 0.8858,
+   "Brier": 0.0497,
+   "race_acc": 0.8649,
    "pollleader_acc": 0.7027
   }
  }

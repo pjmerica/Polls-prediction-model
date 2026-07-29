@@ -84,8 +84,15 @@ def main():
     import shap
     with open(os.path.join(HERE, "data", "primary_model_features.json")) as f:
         meta = json.load(f)
-    model = xgb.XGBClassifier()
+    # RANKER (2026-07-29): the primary model is now a learning-to-rank model. SHAP explains the
+    # raw rank SCORE (its bars' direction + relative size are what matter - unchanged framing).
+    # The headline "pred" shown is the WITHIN-RACE SOFTMAX probability - the SAME number the
+    # dashboard's win_prob_norm shows, so the Explain modal and the table now AGREE (they used
+    # to disagree: the old classifier's raw independent prob, e.g. 95%, vs the table's
+    # divide-by-sum normalized prob, e.g. 51%).
+    model = xgb.XGBRanker()
     model.load_model(os.path.join(HERE, "data", "primary_model_xgb.json"))
+    temp = float(meta.get("softmax_temp", 1.0))
 
     d = load_primary_feed(args.polls, args.cycle)
     funds = F.load_fundamentals()
@@ -94,24 +101,29 @@ def main():
     cand = FP.build_primary_table(d, fec=fec, inc_map=funds["inc_map"],
                                   hist=CandidateHistory(), bios=FP.load_candidate_bios())
     X = cand.reindex(columns=meta["features"])
-    cand["p"] = model.predict_proba(X)[:, 1]
-    # raw-probability sum across the field: how much signal the model found overall (see
-    # predict_primary.py's field_confidence for the full explanation). A weak-signal field
-    # (sum well under 1) still gets renormalized to a 100%-summing win_prob_norm on the
-    # dashboard table - surfacing this here lets the Explain modal show WHY a race's "pred"
-    # (raw, e.g. 3%) looks so much smaller than the table's normalized number (e.g. 52%).
-    field_conf = cand.groupby("race_id")["p"].transform("sum")
+    cand["score"] = model.predict(X)
+    # within-race softmax = the dashboard's win_prob_norm (identical formula to predict_primary)
+    def _softmax(s):
+        v = np.asarray(s, dtype=float) / temp
+        e = np.exp(v - np.nanmax(v))
+        return e / e.sum()
+    cand["p"] = cand.groupby("race_id", group_keys=False)["score"].transform(_softmax)
+    # field confidence, ranker-consistent: leader's softmax prob above a uniform 1/n split
+    field_conf = cand.groupby("race_id")["p"].transform(lambda s: s.max() - 1.0 / len(s))
 
     explainer = shap.TreeExplainer(model)
     sv = explainer(X)
-    base = float(np.ravel(sv.base_values)[0])
 
     out = {}
     for rid, g in cand.groupby("race_id"):
-        i = g["p"].idxmax()          # explain the predicted nominee
+        i = g["p"].idxmax()          # explain the predicted nominee (top softmax prob)
         row = cand.loc[i]
+        # SHAP bars are in score space; base = mean score -> shown as the field-average share
+        # (softmax of a flat field = 1/n) so base->pred reads as "generic candidate -> this
+        # candidate's within-race probability". pred is the dashboard's win_prob_norm.
+        n = len(g)
         blk = top_shap(meta["features"], X.loc[i].values, sv.values[cand.index.get_loc(i)],
-                       sigmoid(base), float(row["p"]))
+                       1.0 / n, float(row["p"]))
         out[rid] = dict(candidate=row["candidate"], party=row["party"], win=blk,
                         field_confidence=round(float(field_conf.loc[i]), 4))
 
