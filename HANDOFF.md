@@ -4,6 +4,37 @@ For the next agent. Read AGENTS.md first (architecture + rules), CONCERNS.md sec
 (risk register + roadmap). This file: what's mid-flight RIGHT NOW, what's most likely to
 break, and what to do next, in order.
 
+## CURRENT STATE 2026-07-29 (later) — 2026 fully covered + frozen dataset; models re-retrained.
+
+Two follow-ups after shipping bio_office_level:
+1. **2026 serve coverage 65.9% -> 95.9%** (100% of REAL distinct candidates; the 13 NaN are
+   poll placeholders + 4 party-suffix duplicates like "Klobuchar (DFL)" already covered under
+   the clean name). Three fixes:
+   - `"S"` SPECIAL-ELECTION SENATE district: predict.py keys FL/OH 2026 specials (and 45
+     HISTORICAL special Senate/Gov races - Schiff, Ricketts, Mullin, Katie Porter...) with
+     district "S", but bios store statewide Senate as "". The bio lookup in features.py now
+     collapses Senate/Governor district to "" - so those 40 historical training rows ALSO
+     gained their correct bio (were silently NaN before). This is why a retrain was warranted
+     even though 2026 isn't trained on. Minor (40/~4400 rows); models essentially unchanged
+     (win AUC .970/race_acc .869, no regression).
+   - PERSON-LEVEL as-of-year FALLBACK (load_candidate_bios + build_candidate_table): the
+     exact-key bio map only has rows for candidates in the TRAINING poll file; live
+     predict-time candidates (e.g. a 2026 race absent from polls_long_with_results.csv) missed
+     even when their office history is known. Now load_candidate_bios also returns a
+     person-level tenure map (from candidate_bios_manual.csv + candidate_bios_ballotpedia.csv
+     offices_json, keyed cand_key+state) and the bio lookup falls back to computing the
+     as-of-year level from it. STRUCTURAL fix - resolves hand-coded/BP people for ANY race,
+     train or serve, every future cycle. Leak-free (offices started strictly before race year).
+   - Hand-coded 90 real 2026 candidates in candidate_bios_manual.csv (leak-free as-of-2026):
+     Risch->4, Balint->4, Sheehy->4, Pillen->3, Wahab->2, newcomers->0.
+2. **FROZEN 2026 DATASET** (freeze_2026_dataset.py, user request "build out the 2026 dataset
+   for our records"): data/polls_2026_long.csv (1,328 raw poll rows, append-ready to the
+   training set once results land), data/candidate_table_2026.csv (317 cand-rows x 202 cols,
+   the exact model input), data/dataset_2026_meta.json (provenance; natl_env used=5.57), +
+   DATED prediction snapshots data/{,margin_}predictions_2026_snapshot_2026-07-29.csv. The
+   live predictions_2026.csv stays CI-regenerated/gitignored. Reuses predict.py's own
+   feed-load + table-build so the frozen data is exactly what the model scored.
+
 ## CURRENT STATE 2026-07-29 — bio_office_level SHIPPED to production (both models retrained).
 
 After coverage hit 100%, the re-ablation FLIPPED the long-standing "don't ship" verdict:

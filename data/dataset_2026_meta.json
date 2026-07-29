@@ -1,0 +1,12 @@
+{
+ "cycle": 2026,
+ "frozen_at": "2026-07-29T14:52:54",
+ "raw_polls": "polls_2026_long.csv",
+ "feature_table": "candidate_table_2026.csv",
+ "predictions": "predictions_2026.csv",
+ "n_poll_rows": 1328,
+ "n_races": 114,
+ "n_candidate_rows": 317,
+ "natl_env_used": 5.57,
+ "note": "raw polls are append-ready to polls_long_with_results.csv once results land (add vote_pct/won, has_result=1). natl_env is the live value used, not reproducible offline - recorded here for the record."
+}

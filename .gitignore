@@ -111,6 +111,17 @@ venv/
 # no scraper could reach - static, reviewable, the authoritative manual source for the builder
 !data/candidate_bios_manual.csv
 
+# FROZEN 2026-cycle dataset (freeze_2026_dataset.py, 2026-07-29): a self-contained record of
+# the cycle - raw polls (append-ready to the training set once results land), the built feature
+# table (the exact model input), meta/provenance, and DATED prediction snapshots (point-in-time
+# forecasts; the LIVE predictions_2026.csv stays CI-regenerated + gitignored). Same static-data
+# principle as the frozen historical snapshots.
+!data/polls_2026_long.csv
+!data/candidate_table_2026.csv
+!data/dataset_2026_meta.json
+!data/predictions_2026_snapshot_*.csv
+!data/margin_predictions_2026_snapshot_*.csv
+
 # local archive of pre-change data copies (archive-don't-delete rule is a LOCAL backup
 # discipline — these are point-in-time snapshots, not repo content; never committed, same
 # as the earlier archive/candidate_bios_<timestamp> files documented in METHODOLOGY)

@@ -12,6 +12,7 @@ Design rules (see CONCERNS.md):
   party, pollster, end_date, pct, sample_size (+ election_date to compute days_to_elec).
 - Missing fundamentals are NaN (XGBoost routes missing natively) - never silently 0.
 """
+import json
 import os
 import re
 import unicodedata
@@ -243,7 +244,46 @@ def load_candidate_bios():
         party = npar(r.party)
         out[(int(r.year), r.office, r.state, di, party, r.cand_key)] = dict(
             bio_office_level=int(r.office_level))
+
+    # PERSON-LEVEL as-of-year fallback (2026-07-29): the exact-key map above is built from
+    # candidate_bios.csv, whose rows exist only for races in the TRAINING poll file. Live
+    # predict-time candidates (e.g. a 2026 race present in the polling-agg feed but not yet in
+    # polls_long_with_results.csv) would miss even when we KNOW their office history. So also
+    # build a person-level tenure map from the hand-coded + Ballotpedia sources
+    # (offices_json = [[office, start, end_or_null]]) keyed (cand_key, state); build_candidate_
+    # table falls back to computing the as-of-year level from it when the exact key misses.
+    # Leak-free: only offices whose tenure STARTED strictly before the race year count.
+    person = {}
+    for fn in ("candidate_bios_manual.csv", "candidate_bios_ballotpedia.csv"):
+        p = os.path.join(DATA_DIR, fn)
+        if not os.path.exists(p):
+            continue
+        src = pd.read_csv(p, low_memory=False)
+        for r in src.itertuples():
+            raw = getattr(r, "offices_json", None)
+            try:
+                offices = json.loads(raw) if isinstance(raw, str) and raw.strip() else []
+            except (json.JSONDecodeError, TypeError):
+                offices = []
+            key = (norm_name(r.candidate), r.state)
+            # manual overrides ballotpedia (manual file read first); [] = verified no office
+            if key not in person:
+                person[key] = offices
+    out["__person_offices__"] = person
     return out
+
+def _person_asof_level(offices, year):
+    """Highest office-level among a person's offices whose tenure STARTED strictly before
+    `year` (leak-free). offices = [[office_phrase, start, end_or_None], ...]. Returns an int
+    level (0 if they held no office before that year) or None if offices is unknown/empty-
+    and-therefore-not-a-verified-zero. An EMPTY list here means a hand-verified "no prior
+    office" -> level 0 (the manual/ballotpedia sources only store [] when that's confirmed)."""
+    from fetch_candidate_bios_ballotpedia import classify_ballotpedia  # lazy: circular import
+    if offices is None:
+        return None
+    levels = [classify_ballotpedia(o[0]) for o in offices
+              if len(o) >= 2 and o[1] is not None and int(o[1]) < year]
+    return max(levels) if levels else 0
 
 # ---------------------------------------------------------------- FEC fundraising
 
@@ -501,8 +541,24 @@ def build_candidate_table(d, macro, natl_env_map, funds, house_train_years=None,
 
             pr = (primary_results.get((yr, st, of, di, party, ck))
                  if primary_results is not None else None)
-            bio = (candidate_bios.get((yr, of, st, di, party, ck))
+            # bio_office_level is a candidate PROPERTY, keyed statewide for Senate/Governor.
+            # The race district can be "S" for a special election (predict.py keeps
+            # 2026-SEN-FL-S / -OH-S as their own races) while the bio table stores statewide
+            # Senate as "" - so look bios up with a statewide-collapsed district for those
+            # offices (fixed 2026-07-29: FL/OH 2026 special-election Senate candidates - Moody,
+            # Brown, Husted, Vindman, Nixon - were missing bio purely on this "S" vs "" mismatch).
+            bio_di = "" if of in ("Senate", "Governor") else di
+            bio = (candidate_bios.get((yr, of, st, bio_di, party, ck))
                   if candidate_bios is not None else None)
+            # PERSON-LEVEL fallback: exact-key miss (common for live predict-time candidates
+            # absent from the training poll file) -> compute the as-of-year level from the
+            # hand-coded/Ballotpedia tenure map, keyed (cand_key, state), leak-free (2026-07-29).
+            if bio is None and candidate_bios is not None:
+                poff = candidate_bios.get("__person_offices__", {})
+                if (ck, st) in poff:
+                    lvl = _person_asof_level(poff[(ck, st)], yr)
+                    if lvl is not None:
+                        bio = dict(bio_office_level=lvl)
 
             fe = fec.get((yr, st, of, di, ck)) if fec is not None else None
             rec = fe["receipts"] if fe else np.nan
