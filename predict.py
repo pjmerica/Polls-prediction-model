@@ -268,7 +268,13 @@ def main():
 
     funds = F.load_fundamentals()
     fec = F.load_fec(extended=True)
-    cand = F.build_candidate_table(d, macro, ne, funds, house=house, fec=fec, bias_priors=bias)
+    # bio_office_level shipped 2026-07-29: load candidate bios at SERVE time too, or the feature
+    # is all-NaN for live races (train/serve skew). load_candidate_bios reads the same committed
+    # data/candidate_bios.csv the training run used. (The feature-presence assert below would
+    # otherwise fire, since the artifact now expects bio_office_level.)
+    bios = F.load_candidate_bios()
+    cand = F.build_candidate_table(d, macro, ne, funds, house=house, fec=fec, bias_priors=bias,
+                                   candidate_bios=bios)
     cand = patch_redistricted_priors(cand)
 
     # guard: every feature the artifact expects must exist in the built table — reindex
@@ -286,7 +292,8 @@ def main():
         sgn = ds["party_std"].map({"DEM": 1, "REP": -1}).fillna(0)
         ds["pct"] = ds["pct"] + sgn * dem_shift / 2
         cs = patch_redistricted_priors(
-            F.build_candidate_table(ds, macro, ne, funds, house=house, fec=fec, bias_priors=bias))
+            F.build_candidate_table(ds, macro, ne, funds, house=house, fec=fec, bias_priors=bias,
+                                    candidate_bios=bios))
         cs["p"] = model.predict_proba(cs.reindex(columns=meta["features"]))[:, 1]
         m = cs.set_index(["race_id", "cand_key"])["p"]
         cand[f"win_prob_{label}"] = [m.get((r, c)) for r, c in

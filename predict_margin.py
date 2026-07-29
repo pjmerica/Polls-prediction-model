@@ -65,8 +65,12 @@ def main():
 
     funds = F.load_fundamentals()
     fec = F.load_fec(extended=True)
+    # bio_office_level shipped 2026-07-29: load bios at serve time or the feature is all-NaN for
+    # live races (train/serve skew); the artifact now expects it (assert below would fire).
+    bios = F.load_candidate_bios()
     cand = patch_redistricted_priors(
-        F.build_candidate_table(d, macro, ne, funds, house=house, fec=fec, bias_priors=bias))
+        F.build_candidate_table(d, macro, ne, funds, house=house, fec=fec, bias_priors=bias,
+                                candidate_bios=bios))
 
     missing = [f for f in meta["features"] if f not in cand.columns]
     assert not missing, f"artifact expects features absent from the built table: {missing[:8]}"
@@ -80,7 +84,8 @@ def main():
         sgn = ds["party_std"].map({"DEM": 1, "REP": -1}).fillna(0)
         ds["pct"] = ds["pct"] + sgn * dem_shift / 2
         cs = patch_redistricted_priors(
-            F.build_candidate_table(ds, macro, ne, funds, house=house, fec=fec, bias_priors=bias))
+            F.build_candidate_table(ds, macro, ne, funds, house=house, fec=fec, bias_priors=bias,
+                                    candidate_bios=bios))
         cs["p"] = model.predict(cs.reindex(columns=meta["features"]))
         mm = cs.set_index(["race_id", "cand_key"])["p"]
         cand[f"pred_margin_{label}"] = [mm.get((r, c)) for r, c in

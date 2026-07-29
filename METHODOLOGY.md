@@ -320,6 +320,28 @@ poll_adj and primary_margin/primary_uncontested. (User confirmed "don't ship, ju
 input (e.g. coverage pushed well past the pre-2012 wall) — the corrected-data run is the
 honest final word.
 
+**VERDICT REVERSED AND SHIPPED (2026-07-29) — the "materially different input" arrived.**
+The 2026-07-26 entry above named its own reopening condition: "coverage pushed well past the
+pre-2012 wall." That is exactly what happened. A four-stage backfill took bio_office_level
+coverage from 56.9% → **100%** (leak-free, fact-checked, every level-0 VERIFIED against
+race-wins + Wikipedia descriptors + Ballotpedia — see the coverage sections above and
+HANDOFF.md). Re-running the SAME ablation harness on the 100%-covered data FLIPPED both models:
+    WIN (expanding-window 2018-2024):  race_acc +0.0043 (was -0.0028), AUC +0.0007,
+                                        AUC-PR +0.0007, Brier -0.0014. 3 of 4 folds improve;
+                                        only 2020 still regresses (-0.0132) but is outweighed.
+    MARGIN (expanding-window MAE):      MAE -0.071 (was uniformly WORSE in all 4 folds),
+                                        R2 +0.0026. Improves in 3 of 4 folds.
+So the earlier negative verdict WAS a coverage artifact - it did not survive complete data.
+bio_office_level is now SHIPPED to BOTH the general win and margin models
+(`feature_list(candidate_bios=True)` is the production default; build_candidate_table AND the
+serve path predict.py/predict_margin.py all pass candidate_bios - serve loads the same
+committed data/candidate_bios.csv, verified 65.9% live-2026 coverage, no train/serve skew).
+Both models retrained fresh-tuned (all 14 cycles); bio_office_level ranks 8/187 (win) and
+12/187 (margin) by gain - a genuine top-tier feature. LESSON worth keeping: a feature that
+looks null can be a COVERAGE artifact, not a true null - the honest move when an ablation is
+mixed-but-plausible is to complete the data and re-test, not to close the question. (User
+approved shipping 2026-07-29 after seeing the flipped numbers.)
+
 **Headline (expanding-window, results labels, +bio_office_level).** Report the STABLE
 metrics first — they hold across both eval cycles: **AUC-PR .966, Brier .024** (vs
 polls-only .924/.045). Race-winner accuracy is .929 mean but is cycle-dependent by a few

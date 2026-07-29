@@ -4,6 +4,25 @@ For the next agent. Read AGENTS.md first (architecture + rules), CONCERNS.md sec
 (risk register + roadmap). This file: what's mid-flight RIGHT NOW, what's most likely to
 break, and what to do next, in order.
 
+## CURRENT STATE 2026-07-29 — bio_office_level SHIPPED to production (both models retrained).
+
+After coverage hit 100%, the re-ablation FLIPPED the long-standing "don't ship" verdict:
+bio_office_level now HELPS both models on 100%-covered leak-free data.
+- WIN model: race_acc +0.0043 (was -0.0028 at 56.9% cov), AUC +0.0007, Brier -0.0014.
+- MARGIN model: MAE -0.071 (was uniformly WORSE), R2 +0.0026.
+The earlier verdict was a COVERAGE ARTIFACT - completing + verifying the data changed the
+answer (exactly what the backfill was meant to test). User approved shipping to both.
+- Wired bio into TRAIN (model.ipynb + margin_model.ipynb: feature_list(candidate_bios=True) +
+  build_candidate_table(candidate_bios=BIOS)) AND SERVE (predict.py + predict_margin.py load
+  candidate_bios and pass it - or the feature is all-NaN for live races = train/serve skew).
+- Both retrained fresh-tuned, all 14 cycles. 187 features now. bio_office_level importance:
+  WIN rank 8/187 (gain .036), MARGIN rank 12/187 - a real, top-tier feature, not marginal.
+- Serve-time verified: predict.py --cycle 2026 populates bio at 65.9% (209/317 live cands);
+  missing = obscure challengers, XGBoost routes NaN natively (same as training). No skew.
+- Artifacts updated: data/model_xgb.json, model_features.json, margin_model_xgb.json,
+  margin_model_features.json, feature_importance.csv, margin_feature_importance.csv,
+  predictions_2026*. Daily model-refresh Action (13:15 UTC) will refresh the dashboard.
+
 ## CURRENT STATE 2026-07-29 — office_level coverage = 100% OVERALL and WINNERS.
 
 Every one of the 4,844 candidate-races now has a leak-free, defensible office_level.

@@ -7,6 +7,7 @@
   "fund_party_pct",
   "fund_self_pct",
   "fund_smalldollar_pct",
+  "bio_office_level",
   "poll_avg",
   "poll_last",
   "poll_last30",
@@ -351,11 +352,11 @@
  ],
  "xgb_params": {
   "max_depth": 2,
-  "learning_rate": 0.05,
+  "learning_rate": 0.03,
   "n_estimators": 150,
   "min_child_weight": 15,
-  "subsample": 0.6,
-  "colsample_bytree": 0.6,
+  "subsample": 0.8,
+  "colsample_bytree": 1.0,
   "reg_lambda": 1,
   "reg_alpha": 0,
   "random_state": 42
