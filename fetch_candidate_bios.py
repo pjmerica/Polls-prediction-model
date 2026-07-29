@@ -59,6 +59,9 @@ LEVELS = [
     # US-form variants: 'U.S.', 'US', 'U.S' (missing periods happen: 'U.S representative')
     (4, r"(u\.?s\.?|united states) (senator|representative|secretary)|"
         r"member of (the )?(u\.?s\.?|united states) house|member of congress|"
+        # institution phrasing "U.S. House <state>" / "U.S. Senate <state>" (Ballotpedia-style,
+        # also appears in some Wikipedia rows) - added 2026-07-29 ("U.S. House Washington" read 0)
+        r"(u\.?s\.?|united states)\s+(house|senate)\b|"
         r"white house|congress(wo)?man|"
         # leadership titles imply U.S. House/Senate membership on their own (found
         # 2026-07-23: 'former Majority Leader of the United States House of
@@ -71,7 +74,22 @@ LEVELS = [
         r"superintendent of public"),
     (2, r"state senator|state representative|state assembly|state house|"
         r"speaker of the .{0,30}house|state senate|general assembly|state delegate|"
-        r"house of delegates"),
+        r"house of delegates|"
+        # STATE-NAME legislature phrasing (added 2026-07-29): "Minnesota Senate", "Oregon
+        # State Senator", "Ohio House of Representatives" etc. - Wikipedia often names the
+        # state, not the literal word "state". Same fix already in classify_ballotpedia; found
+        # here via Roger Moe ("Minnesota Senate Majority Leader" was reading 0). Also catch
+        # legislative-leadership "(majority|minority) leader ... of the <State> Senate/House".
+        r"(?:alabama|alaska|arizona|arkansas|california|colorado|connecticut|delaware|"
+        r"florida|georgia|hawaii|idaho|illinois|indiana|iowa|kansas|kentucky|louisiana|"
+        r"maine|maryland|massachusetts|michigan|minnesota|mississippi|missouri|montana|"
+        r"nebraska|nevada|new hampshire|new jersey|new mexico|new york|north carolina|"
+        r"north dakota|ohio|oklahoma|oregon|pennsylvania|rhode island|south carolina|"
+        r"south dakota|tennessee|texas|utah|vermont|virginia|washington|west virginia|"
+        r"wisconsin|wyoming)\s+(?:state\s+)?"
+        r"(?:senate|house|assembly|senator|representative|house of representatives|"
+        r"house of delegates|general assembly)|"
+        r"(?:majority|minority) leader of the .{0,30}(?:senate|house|assembly)"),
     (1, r"\bmayor\b|county (executive|commissioner|supervisor|clerk|judge|attorney|"
         r"treasurer|health director)|city council|county council|sheriff|"
         r"school board|city commissioner|selectman|alderman|district attorney|"
@@ -95,8 +113,12 @@ INCUMBENT_BY_OFFICE_RX = {
 def classify(desc, office=None):
     d = str(desc).lower()
     # candidacy mentions are NOT offices held: 'candidate for governor in 2018' must not
-    # classify as governor (caught by the El-Sayed known-truth check)
-    d = re.sub(r"(candidate|nominee) for [^,;]+", " ", d)
+    # classify as governor (caught by the El-Sayed known-truth check). Broadened 2026-07-29 to
+    # also strip "ran for / running for / unsuccessful candidate for / nominee for X" - the
+    # institution-phrasing level-4 pattern ("U.S. House/Senate") was matching a "( ran for U.S.
+    # House )" parenthetical and mislabeling e.g. "school board member (ran for U.S. House)" as 4.
+    d = re.sub(r"(unsuccessful\s+)?(candidate|nominee)\s+for\s+[^,;.()]+", " ", d)
+    d = re.sub(r"\b(ran|running)\s+for\s+[^,;.()]+", " ", d)
     if office in INCUMBENT_BY_OFFICE_RX and INCUMBENT_BY_OFFICE_RX[office].search(d):
         return 4
     for lvl, rx in LEVELS:

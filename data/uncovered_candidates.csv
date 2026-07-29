@@ -1,1414 +1,253 @@
-year,office,state,district,party,candidate,cand_key,won,reason
-1998,Senate,AL,,DEM,Clayton Suddith,suddith c,0,table_zero
-1998,House,AR,2,REP,Phil Wyrick,wyrick p,0,no_bio
-1998,Senate,AZ,,DEM,Edward Ranger,ranger e,0,table_zero
-1998,House,CA,36,DEM,Janice Hahn,hahn j,0,table_zero
-1998,House,CA,24,REP,Randy Hoffman,hoffman r,0,table_zero
-1998,House,CA,46,REP,Robert K. Dornan,dornan r,0,no_bio
-1998,House,CO,2,REP,Bob Greenlee,greenlee b,0,no_bio
-1998,House,CT,1,REP,Kevin James O'Connor,connor k,0,no_bio
-1998,House,HI,1,REP,Gene Ward,ward g,0,no_bio
-1998,House,ID,1,DEM,Dan Williams,williams d,0,no_bio
-1998,House,IN,9,REP,Jean Leising,leising j,0,no_bio
-1998,House,IN,10,REP,Gary Anthony Hofmeister,hofmeister g,0,no_bio
-1998,Senate,IN,,REP,Paul Helmke,helmke p,0,table_zero
-1998,House,KS,4,DEM,Jim Lawing,lawing j,0,table_zero
-1998,Senate,KS,,DEM,Paul Feleciano,feleciano p,0,table_zero
-1998,House,KY,6,DEM,Ernesto Scorsone,scorsone e,0,no_bio
-1998,House,MA,6,REP,Peter G. Torkildsen,torkildsen p,0,no_bio
-1998,Governor,MN,,DEM,Hubert Humphrey III,humphrey h,0,no_bio
-1998,House,MS,4,REP,Delbert Hosemann,hosemann d,0,no_bio
-1998,House,MT,1,DEM,Dusty Deschamps,deschamps d,0,table_zero
-1998,House,NC,8,DEM,Mike Taylor,taylor m,0,no_bio
-1998,House,NC,2,REP,Dan Page,page d,0,no_bio
-1998,House,NC,4,REP,Thomas H. Roberg,roberg t,0,no_bio
-1998,House,ND,1,REP,Kevin Cramer,cramer k,0,no_bio
-1998,Governor,NE,,DEM,Bill Hoppner,hoppner b,0,table_zero
-1998,Governor,NH,,REP,Jay Lucas,lucas j,0,table_zero
-1998,House,NH,2,DEM,Mary Rauh,rauh m,0,table_zero
-1998,Senate,NH,,DEM,George Condodemetraky,condodemetraky g,0,table_zero
-1998,House,NM,3,REP,Bill Redmond,redmond b,0,no_bio
-1998,House,NV,1,REP,Don Chairez,chairez d,0,no_bio
-1998,House,OH,6,REP,Nancy P. Hollister,hollister n,0,no_bio
-1998,Senate,OH,,DEM,Mary Boyle,boyle m,0,table_zero
-1998,House,OR,1,REP,Molly Bordonaro,bordonaro m,0,no_bio
-1998,Senate,OR,,REP,John Lim,lim j,0,table_zero
-1998,Governor,PA,,DEM,Ivan Itkin,itkin i,0,table_zero
-1998,House,PA,10,DEM,Patrick R. Casey,casey p,0,no_bio
-1998,Senate,PA,,DEM,Bill Lloyd,lloyd b,0,no_bio
-1998,Governor,TX,,DEM,Garry Mauro,mauro g,0,table_zero
-1998,House,UT,2,DEM,Lily Eskelsen,eskelsen l,0,no_bio
-1998,Governor,VT,,REP,Ruth Dwyer,dwyer r,0,table_zero
-1998,House,WA,1,REP,Richard Alan White,white r,0,no_bio
-1998,House,WI,1,DEM,Lydia Carol Spottswood,spottswood l,0,no_bio
-1998,Senate,WI,,REP,Mark W. Neumann,neumann m,0,table_zero
-2000,House,AL,4,DEM,Marsha Guthrie Folsom,folsom m,0,no_bio
-2000,House,AR,4,REP,Jay Woodson Dickey,dickey j,0,no_bio
-2000,Senate,AZ,,OTH,William Toel,toel w,0,table_zero
-2000,House,CA,20,REP,Rich Rodriguez,rodriguez r,0,table_zero
-2000,House,CT,2,DEM,Sam Gejdenson,gejdenson s,0,no_bio
-2000,Senate,CT,,REP,Phil Giordano,giordano p,0,table_zero
-2000,Governor,DE,,REP,John Burris,burris j,0,table_zero
-2000,House,FL,8,DEM,Linda Welch Chapin,chapin l,0,table_zero
-2000,House,FL,15,DEM,Patsy Ann Kurth,kurth p,0,no_bio
-2000,House,FL,22,DEM,Elaine Bloom,bloom e,0,no_bio
-2000,House,IL,10,DEM,Lauren Beth Gash,gash l,0,no_bio
-2000,Governor,IN,,REP,David McIntosh,mcintosh d,0,table_zero
-2000,House,IN,9,REP,Michael E. Bailey,bailey m,0,no_bio
-2000,Senate,IN,,DEM,David L. Johnson,johnson d,0,table_zero
-2000,House,KY,4,REP,Don Bell,bell d,0,no_bio
-2000,Senate,MA,,REP,Jack E. Robinson,robinson j,0,table_zero
-2000,Senate,MD,,REP,Paul H. Rappaport,rappaport p,0,table_zero
-2000,Senate,ME,,DEM,Mark W. Lawrence,lawrence m,0,table_zero
-2000,House,MI,8,DEM,Dianne Byrum,byrum d,0,no_bio
-2000,House,MO,2,DEM,Ted House,house t,0,no_bio
-2000,House,MT,1,DEM,Nancy Keenan,keenan n,0,table_zero
-2000,Senate,NY,,REP,Rick Lazio,lazio r,0,table_zero
-2000,House,OH,1,DEM,John Cranley,cranley j,0,table_zero
-2000,House,OH,12,DEM,Maryellen O'Shaughnessy,shaughnessy m,0,table_zero
-2000,House,OK,2,REP,Andy Ewing,ewing a,0,table_zero
-2000,House,RI,1,REP,Stephen Cabral,cabral s,0,no_bio
-2000,House,RI,2,REP,Robert G. Tingle,tingle r,0,no_bio
-2000,Senate,TN,,DEM,Jeff Clark,clark j,0,table_zero
-2000,House,TX,25,REP,Phil Sudan,sudan p,0,table_zero
-2000,Governor,UT,,DEM,Bill Orton,orton b,0,table_zero
-2000,Governor,VT,,REP,Ruth Dwyer,dwyer r,0,table_zero
-2000,House,WA,8,DEM,Heidi Behrens-Benedict,benedict h,0,table_zero
-2000,House,WA,1,REP,Dan McDonald,mcdonald d,0,table_zero
-2000,House,WA,2,REP,John Koster,koster j,0,table_zero
-2000,Senate,WI,,REP,John Gillespie,gillespie j,0,table_zero
-2000,House,WV,2,DEM,Jim Humphreys,humphreys j,0,table_zero
-2002,Governor,AK,,DEM,Fran Ulmer,ulmer f,0,table_zero
-2002,House,AR,4,REP,Jay Woodson Dickey,dickey j,0,no_bio
-2002,House,AZ,1,DEM,George Cordova,cordova g,0,table_zero
-2002,House,CT,5,DEM,James H. Maloney,maloney j,0,no_bio
-2002,House,FL,5,DEM,Karen L. Thurman,thurman k,0,no_bio
-2002,House,FL,7,DEM,Wayne Hogan,hogan w,0,no_bio
-2002,House,FL,8,DEM,Eddie Diaz,diaz e,0,no_bio
-2002,House,FL,22,DEM,Carol A. Roberts,roberts c,0,no_bio
-2002,House,FL,24,DEM,Harry Jacobs,jacobs h,0,no_bio
-2002,House,GA,11,DEM,Roger Kahn,kahn r,0,table_zero
-2002,House,GA,12,DEM,Charles Walker,walker c,0,table_zero
-2002,House,GA,3,REP,Calder B. Clay,clay c,0,table_zero
-2002,Governor,IA,,REP,Doug Gross,gross d,0,table_zero
-2002,House,IA,4,DEM,John Norris,norris j,0,no_bio
-2002,House,IA,3,REP,Stanley J. Thompson,thompson s,0,no_bio
-2002,House,IN,2,DEM,Jill Long Thompson,thompson j,0,table_zero
-2002,House,IN,8,DEM,Bryan Hartke,hartke b,0,table_zero
-2002,House,IN,7,REP,Ambrose A. McVey,mcvey a,0,no_bio
-2002,House,KS,4,DEM,Carlos J. Nolla,nolla c,0,table_zero
-2002,House,KS,3,REP,Adam Taff,taff a,0,table_zero
-2002,House,KY,3,DEM,Jack Conway,conway j,0,table_zero
-2002,House,KY,4,REP,Geoff Davis,davis g,0,table_zero
-2002,House,LA,5,DEM,Rodney M. Alexander,alexander r,0,no_bio
-2002,House,LA,5,REP,Lee Fletcher,fletcher l,0,no_bio
-2002,Senate,LA,,REP,Suzanne Haik Terrell,terrell s,0,no_bio
-2002,House,MD,2,REP,Helen Delich Bentley,bentley h,0,table_zero
-2002,House,MD,8,REP,Constance A. Morella,morella c,0,no_bio
-2002,House,ME,2,REP,Kevin L. Raye,raye k,0,no_bio
-2002,House,MI,11,DEM,Kevin Kelley,kelley k,0,table_zero
-2002,Senate,MI,,REP,Andrew Rocky Raczkowski,raczkowski a,0,no_bio
-2002,Governor,MN,,DEM,Roger Moe,moe r,0,table_zero
-2002,Senate,MN,,DEM,Walter F. Mondale,mondale w,0,table_zero
-2002,Senate,MO,S,DEM,Jean Carnahan,carnahan j,0,no_bio
-2002,House,MT,1,DEM,Steve Kelly,kelly s,0,no_bio
-2002,House,NC,8,DEM,Chris Kouri,kouri c,0,table_zero
-2002,House,NC,13,REP,Carolyn W. Grant,grant c,0,table_zero
-2002,House,ND,1,REP,Rick Clayburgh,clayburgh r,0,table_zero
-2002,House,NH,1,DEM,Martha Fuller Clark,clark m,0,no_bio
-2002,House,NH,2,DEM,Katrina Swett,swett k,0,no_bio
-2002,House,NJ,5,DEM,Anne Ricks Sumers,sumers a,0,no_bio
-2002,House,NM,1,DEM,Richard M. Romero,romero r,0,no_bio
-2002,House,NM,2,DEM,John Arthur Smith,smith j,0,no_bio
-2002,House,NV,3,DEM,Dario Herrera,herrera d,0,no_bio
-2002,House,NV,1,REP,Lynette Maria Boggs-McDonald,mcdonald l,0,no_bio
-2002,House,NY,1,REP,Felix J. Grucci,grucci f,0,no_bio
-2002,House,OH,17,REP,Ann Womer Benjamin,benjamin a,0,table_zero
-2002,Governor,OK,,REP,Steve Largent,largent s,0,table_zero
-2002,House,OK,1,DEM,Doug Dodd,dodd d,0,no_bio
-2002,House,OK,4,DEM,Darryl Roberts,roberts d,0,no_bio
-2002,House,OK,2,REP,H. Kent Pharaoh,pharaoh h,0,no_bio
-2002,Governor,PA,,REP,Mike Fisher,fisher m,0,table_zero
-2002,House,PA,6,DEM,Dan Wofford,wofford d,0,no_bio
-2002,House,RI,1,REP,David W. Rogers,rogers d,0,no_bio
-2002,Senate,RI,,REP,Robert G. Tingle,tingle r,0,table_zero
-2002,Senate,SC,,DEM,Alex Sanders,sanders a,0,table_zero
-2002,Governor,TX,,DEM,Tony Sanchez,sanchez t,0,table_zero
-2002,House,TX,5,DEM,Ron Chapman,chapman r,0,table_zero
-2002,House,TX,11,REP,Ramsey Farley,farley r,0,table_zero
-2002,House,TX,25,REP,Thomas Reiser,reiser t,0,table_zero
-2002,House,UT,2,REP,John Swallow,swallow j,0,no_bio
-2002,Senate,VA,,OTH,Nancy B. Spannaus,spannaus n,0,table_zero
-2002,Governor,VT,,DEM,Doug Racine,racine d,0,table_zero
-2002,House,WA,2,REP,Norma Smith,smith n,0,table_zero
-2002,House,WV,2,DEM,Jim Humphreys,humphreys j,0,table_zero
-2002,Senate,WV,,REP,Jay Wolfe,wolfe j,0,table_zero
-2004,House,AR,2,REP,Marvin Parks,parks m,0,no_bio
-2004,House,AZ,1,DEM,Paul Babbitt,babbitt p,0,no_bio
-2004,House,CO,7,DEM,David J. Thomas,thomas d,0,no_bio
-2004,House,CO,3,REP,Greg Walcher,walcher g,0,no_bio
-2004,House,CT,2,DEM,Jim Sullivan,sullivan j,0,table_zero
-2004,House,CT,4,DEM,Diane Farrell,farrell d,0,table_zero
-2004,Governor,DE,,REP,William S. Lee,lee w,0,no_bio
-2004,House,DE,1,DEM,Paul Donnelly,donnelly p,0,no_bio
-2004,House,FL,13,DEM,Jan Schneider,schneider j,0,table_zero
-2004,House,GA,3,REP,Calder B. Clay,clay c,0,table_zero
-2004,Senate,GA,,DEM,Denise Majette,majette d,0,table_zero
-2004,House,IL,11,DEM,Tari Renner,renner t,0,table_zero
-2004,Senate,IL,,REP,Alan Keyes,keyes a,0,table_zero
-2004,House,KS,4,DEM,Michael Kinard,kinard m,0,no_bio
-2004,House,KY,3,DEM,Tony Miller,miller t,0,table_zero
-2004,House,KY,6,REP,Alice Forgy Kerr,kerr a,0,no_bio
-2004,House,LA,3,DEM,Charlie Melancon,melancon c,0,no_bio
-2004,House,LA,7,DEM,Willie L. Mount,mount w,0,no_bio
-2004,House,LA,3,REP,William Tauzin,tauzin w,0,no_bio
-2004,House,LA,7,REP,Charles W. Boustany Jr.,boustany c,0,no_bio
-2004,House,ME,1,REP,Charlie Summers,summers c,0,no_bio
-2004,House,ME,2,REP,Brian N. Hamel,hamel b,0,no_bio
-2004,House,MN,6,DEM,Patty Wetterling,wetterling p,0,no_bio
-2004,House,MO,5,REP,Jeanne Patterson,patterson j,0,no_bio
-2004,Senate,MO,,DEM,Nancy Farmer,farmer n,0,table_zero
-2004,House,MT,1,DEM,Tracy Velazquez,velazquez t,0,table_zero
-2004,House,NC,11,DEM,Patricia R. Keever,keever p,0,table_zero
-2004,Senate,NC,,DEM,Erskine Bowles,bowles e,0,table_zero
-2004,Governor,ND,,DEM,Joseph A Satrom,satrom j,0,table_zero
-2004,House,ND,1,REP,Duane Sand,sand d,0,table_zero
-2004,House,NE,3,DEM,Donna J. Anderson,anderson d,0,no_bio
-2004,House,NH,1,DEM,Justin Nadeau,nadeau j,0,no_bio
-2004,House,NM,1,DEM,Richard M. Romero,romero r,0,table_zero
-2004,House,NM,2,DEM,Gary K. King,king g,0,table_zero
-2004,House,NM,3,REP,Gregory M. Tucker,tucker g,0,table_zero
-2004,House,NY,13,DEM,Frank J. Barbaro,barbaro f,0,no_bio
-2004,House,NY,27,REP,Nancy A. Naples,naples n,0,no_bio
-2004,House,OK,1,DEM,Doug Dodd,dodd d,0,no_bio
-2004,House,PA,15,DEM,Joe Driscoll,driscoll j,0,no_bio
-2004,House,PA,17,REP,Scott G. Paterno,paterno s,0,no_bio
-2004,Senate,PA,,DEM,Joe Hoeffel,hoeffel j,0,table_zero
-2004,House,SD,1,REP,Larry Diedrich,diedrich l,0,table_zero
-2004,House,TX,32,DEM,Jonas Frost,frost j,0,no_bio
-2004,House,TX,17,REP,Arlene Reid Wohlgemuth,wohlgemuth a,0,table_zero
-2004,Governor,UT,,DEM,"Scott M. Matheson, Jr.",matheson s,0,table_zero
-2004,Senate,UT,,DEM,R. Paul Van Dam,dam r,0,no_bio
-2004,House,WA,5,DEM,Donald K. Barbieri,barbieri d,0,table_zero
-2004,House,WA,8,DEM,Dave Ross,ross d,0,table_zero
-2006,House,AK,1,DEM,Diane Benson,benson d,0,no_bio
-2006,House,AR,2,REP,Andy Mayberry,mayberry a,0,table_zero
-2006,Governor,CA,,DEM,Phil Angelides,angelides p,0,table_zero
-2006,House,CA,50,DEM,Francine P. Busby,busby f,0,table_zero
-2006,House,CA,4,DEM,Charles Duane Brown,brown c,0,table_zero
-2006,House,CA,26,DEM,Cynthia Rodriguez Matthews,matthews c,0,table_zero
-2006,House,CO,5,DEM,Jay Fawcett,fawcett j,0,no_bio
-2006,House,CT,4,DEM,Diane Farrell,farrell d,0,table_zero
-2006,Senate,CT,,REP,Alan Schlesinger,schlesinger a,0,table_zero
-2006,House,FL,5,DEM,John T. Russell,russell j,0,table_zero
-2006,House,FL,8,DEM,Charlie Stuart,stuart c,0,table_zero
-2006,House,FL,9,DEM,Phyllis Busansky,busansky p,0,table_zero
-2006,House,FL,13,DEM,Christine L. Jennings,jennings c,0,table_zero
-2006,House,FL,24,DEM,Clint Curtis,curtis c,0,table_zero
-2006,House,FL,16,REP,Joe Negron,negron j,0,table_zero
-2006,House,GA,8,REP,Michael Allen Collins,collins m,0,table_zero
-2006,House,IA,4,DEM,Selden E. Spencer,spencer s,0,table_zero
-2006,House,IA,1,REP,Mike Whalen,whalen m,0,table_zero
-2006,House,IA,3,REP,Jeff Lamberti,lamberti j,0,table_zero
-2006,House,ID,1,DEM,Larry Grant,grant l,0,no_bio
-2006,House,IL,6,DEM,Tammy Duckworth,duckworth t,0,table_zero
-2006,House,IL,10,DEM,Daniel J. Seals,seals d,0,table_zero
-2006,House,IL,14,DEM,Jonathan Laesch,laesch j,0,table_zero
-2006,House,IL,19,DEM,Danny L. Stover,stover d,0,table_zero
-2006,House,IL,8,REP,David McSweeney,mcsweeney d,0,table_zero
-2006,House,IN,7,REP,Eric Dickerson,dickerson e,0,table_zero
-2006,House,KS,4,DEM,Garth McGinn,mcginn g,0,table_zero
-2006,House,KY,2,DEM,John Michael Weaver,weaver j,0,no_bio
-2006,House,ME,1,REP,Darlene J. Curley,curley d,0,table_zero
-2006,House,ME,2,REP,Laurence Scott D'Amboise,amboise l,0,table_zero
-2006,Senate,ME,,DEM,Jean M. Hay Bright,bright j,0,table_zero
-2006,House,MI,7,DEM,Sharon Marie Renier,renier s,0,table_zero
-2006,Senate,MI,,REP,Mike Bouchard,bouchard m,0,table_zero
-2006,Governor,MN,,DEM,Mike Hatch,hatch m,0,table_zero
-2006,House,MN,5,REP,Alan Fine,fine a,0,no_bio
-2006,House,NM,1,DEM,Patricia A. Madrid,madrid p,0,table_zero
-2006,House,NM,2,DEM,Albert D. Kissling,kissling a,0,table_zero
-2006,House,NM,3,REP,Ronald M. Dolin,dolin r,0,no_bio
-2006,Senate,NM,,REP,Allen W. McCulloch MD,md a,0,no_bio
-2006,House,NV,3,DEM,Tessa M. Hafen,hafen t,0,no_bio
-2006,House,NY,3,DEM,David L. Mejias,mejias d,0,no_bio
-2006,House,NY,26,DEM,Jack Davis,davis j,0,no_bio
-2006,House,NY,19,REP,Sue W. Kelly,kelly s,0,no_bio
-2006,House,NY,20,REP,John E. Sweeney,sweeney j,0,table_zero
-2006,House,NY,24,REP,Raymond A. Meier,meier r,0,no_bio
-2006,Governor,OH,,REP,J. Kenneth Blackwell,blackwell j,0,no_bio
-2006,House,OH,12,DEM,Robert Shamansky,shamansky r,0,no_bio
-2006,House,OH,13,REP,L. Craig Foltin,foltin l,0,no_bio
-2006,House,OH,18,REP,Joy Padgett,padgett j,0,no_bio
-2006,House,PA,6,DEM,Lois Murphy,murphy l,0,no_bio
-2006,House,PA,7,REP,W. Curtis Weldon,weldon w,0,no_bio
-2006,House,PA,12,REP,Diana Irey Vaughan,vaughan d,0,no_bio
-2006,Governor,SC,,DEM,Tommy Moore,moore t,0,table_zero
-2006,House,SC,5,REP,Ralph Norman,norman r,0,table_zero
-2006,House,SD,1,REP,Bruce W. Whalen,whalen b,0,table_zero
-2006,House,TX,23,DEM,Ciro D. Rodriguez,rodriguez c,0,table_zero
-2006,House,TX,17,REP,Van Taylor,taylor v,0,table_zero
-2006,House,TX,22,OTH,Shelley Sekula Gibbs,gibbs s,0,no_bio
-2006,House,TX,23,REP,Henry Bonilla,bonilla h,0,no_bio
-2006,House,UT,1,DEM,Steve Olsen,olsen s,0,table_zero
-2006,House,UT,3,DEM,Christian Burridge,burridge c,0,table_zero
-2006,House,UT,2,REP,LaVar Christensen,christensen l,0,table_zero
-2006,Senate,UT,,DEM,Pete Ashdown,ashdown p,0,table_zero
-2006,House,VA,5,DEM,Albert C. Weed,weed a,0,no_bio
-2006,House,WA,5,DEM,Peter J. Goldmark,goldmark p,0,table_zero
-2006,House,WA,8,DEM,Darcy Burner,burner d,0,table_zero
-2006,House,WA,2,REP,Douglas R. Roulstone,roulstone d,0,table_zero
-2006,Senate,WA,,REP,Mike McGavick,mcgavick m,0,table_zero
-2006,House,WI,8,REP,John G. Gard,gard j,0,table_zero
-2008,House,AK,1,DEM,Ethan Berkowitz,berkowitz e,0,no_bio
-2008,House,AL,2,REP,Jay Love,love j,0,table_zero
-2008,House,AL,5,REP,Wayne Parker,parker w,0,table_zero
-2008,Senate,AR,,OTH,Rebekah J. Kennedy,kennedy r,0,table_zero
-2008,House,AZ,3,DEM,Bob Lord,lord b,0,no_bio
-2008,House,CA,4,DEM,Charles Duane Brown,brown c,0,table_zero
-2008,House,CA,50,DEM,Nicholas Leibham,leibham n,0,table_zero
-2008,House,CA,11,REP,Dean Andal,andal d,0,table_zero
-2008,House,CT,2,REP,Sean P. Sullivan,sullivan s,0,table_zero
-2008,Governor,DE,,REP,William S. Lee,lee w,0,no_bio
-2008,House,DE,1,DEM,Karen M. Hartley-Nagle,nagle k,0,table_zero
-2008,Senate,DE,,REP,Christine O'Donnell,donnell c,0,table_zero
-2008,House,FL,9,DEM,Bill Mitchell,mitchell b,0,table_zero
-2008,House,FL,10,DEM,Bob Hackworth,hackworth b,0,table_zero
-2008,House,FL,13,DEM,Christine L. Jennings,jennings c,0,table_zero
-2008,House,FL,18,DEM,Annette Taddeo,taddeo a,0,table_zero
-2008,House,FL,21,DEM,Raul L. Martinez,martinez r,0,table_zero
-2008,House,FL,25,DEM,Joe Garcia,garcia j,0,table_zero
-2008,House,FL,10,REP,Charles William Young,young c,0,no_bio
-2008,House,GA,8,REP,Richard N. Goddard,goddard r,0,no_bio
-2008,House,IA,4,DEM,Becky Greenwald,greenwald b,0,table_zero
-2008,House,ID,2,DEM,Deborah Holmes,holmes d,0,table_zero
-2008,House,IL,10,DEM,Daniel J. Seals,seals d,0,table_zero
-2008,House,IL,14,REP,James D. Oberweis,oberweis j,0,table_zero
-2008,House,IL,11,REP,Marty Ozinga,ozinga m,0,table_zero
-2008,Governor,IN,,DEM,Jill Long Thompson,thompson j,0,table_zero
-2008,House,IN,3,DEM,Michael A. Montagano,montagano m,0,table_zero
-2008,House,IN,7,REP,Jonathan R. Elrod,elrod j,0,no_bio
-2008,House,IN,9,REP,Mike Sodrel,sodrel m,0,table_zero
-2008,House,KS,4,DEM,Donald Betts,betts d,0,table_zero
-2008,House,KS,3,REP,Nick Jordan,jordan n,0,table_zero
-2008,House,KY,2,DEM,David E. Boswell,boswell d,0,no_bio
-2008,House,KY,4,DEM,Michael Kelley,kelley m,0,no_bio
-2008,House,LA,6,DEM,Donald J. Cazayoux,cazayoux d,0,no_bio
-2008,House,LA,6,REP,Woody Jenkins,jenkins w,0,no_bio
-2008,Senate,MA,,REP,Jeffrey K. Beatty,beatty j,0,table_zero
-2008,House,ME,1,REP,Charlie Summers,summers c,0,table_zero
-2008,House,ME,2,REP,John N. Frary,frary j,0,table_zero
-2008,House,MI,9,REP,Joseph K. Knollenberg,knollenberg j,0,no_bio
-2008,Senate,MI,,REP,Jacob W. Hoogendyk Jr.,hoogendyk j,0,table_zero
-2008,House,MN,3,DEM,Ashwin Madia,madia a,0,no_bio
-2008,Governor,MO,,REP,Kenny Hulshof,hulshof k,0,table_zero
-2008,House,MO,6,DEM,Kay Waldo Barnes,barnes k,0,table_zero
-2008,House,MO,9,DEM,Judy Baker,baker j,0,table_zero
-2008,House,MS,1,REP,Greg Davis,davis g,0,table_zero
-2008,Senate,MS,S,OTH,Ronnie Musgrove,musgrove r,0,no_bio
-2008,House,ND,1,REP,Duane Sand,sand d,0,table_zero
-2008,House,NE,2,DEM,James D. Esch,esch j,0,table_zero
-2008,House,NH,2,REP,Jennifer M. Horn,horn j,0,table_zero
-2008,House,NJ,2,DEM,David Kurkowski,kurkowski d,0,no_bio
-2008,House,NM,1,REP,Darren White,white d,0,table_zero
-2008,House,NM,2,REP,Edward R. Tinsley,tinsley e,0,table_zero
-2008,House,NM,3,REP,Daniel K. East,east d,0,table_zero
-2008,House,NY,26,DEM,Alice Kryzan,kryzan a,0,no_bio
-2008,House,NY,25,REP,Dale A. Sweetland,sweetland d,0,no_bio
-2008,House,OH,2,DEM,Victoria Wells Wulsin,wulsin v,0,table_zero
-2008,House,OH,7,DEM,Sharen Swartz Neuhardt,neuhardt s,0,table_zero
-2008,House,OH,16,REP,Kirk J. Schuring,schuring k,0,table_zero
-2008,House,OR,5,REP,Mike Erickson,erickson m,0,table_zero
-2008,House,PA,12,REP,William Russell,russell w,0,no_bio
-2008,Senate,RI,,REP,Robert G. Tingle,tingle r,0,no_bio
-2008,House,SC,1,DEM,Linda Ketner,ketner l,0,table_zero
-2008,Senate,TN,,DEM,Robert D. Tuke,tuke r,0,no_bio
-2008,House,TX,7,DEM,Michael Peter Skelly,skelly m,0,table_zero
-2008,House,UT,1,DEM,Morgan E. Bowen,bowen m,0,table_zero
-2008,House,UT,3,DEM,Bennion L. Spencer,spencer b,0,table_zero
-2008,House,UT,2,REP,Bill Dew,dew b,0,table_zero
-2008,Governor,VT,,DEM,Gaye Symington,symington g,0,table_zero
-2008,Governor,WA,,REP,Dino Rossi,rossi d,0,table_zero
-2008,House,WA,4,DEM,George B. Fearing,fearing g,0,table_zero
-2008,House,WA,8,DEM,Darcy Burner,burner d,0,table_zero
-2008,House,WI,8,REP,John G. Gard,gard j,0,table_zero
-2008,Governor,WV,,REP,Russ Weeks,weeks r,0,table_zero
-2008,Senate,WY,S,DEM,Nicholas H. Carter,carter n,0,no_bio
-2010,Governor,AK,,DEM,Ethan Berkowitz,berkowitz e,0,table_zero
-2010,House,AK,1,DEM,Harry T. Crawford,crawford h,0,table_zero
-2010,Senate,AK,,DEM,Scott T. McAdams,mcadams s,0,table_zero
-2010,House,AR,1,DEM,Chad Causey,causey c,0,table_zero
-2010,House,AR,2,DEM,Joyce Ann Elliott,elliott j,0,table_zero
-2010,House,AR,3,DEM,David Whitaker,whitaker d,0,table_zero
-2010,House,AR,4,REP,Beth Anne Rankin,rankin b,0,table_zero
-2010,Governor,AZ,,DEM,Samuel Pearson Goddard,goddard s,0,table_zero
-2010,House,AZ,7,REP,Ruth McClung,mcclung r,0,no_bio
-2010,House,AZ,8,REP,Jesse Kelly,kelly j,0,no_bio
-2010,Senate,AZ,,DEM,Rodney Britz Glassman,glassman r,0,table_zero
-2010,House,CA,3,DEM,Ami Bera,bera a,0,table_zero
-2010,House,CA,19,DEM,Loraine Goodwin,goodwin l,0,table_zero
-2010,House,CA,44,DEM,William E. Hedrick,hedrick w,0,no_bio
-2010,House,CA,11,REP,David Harmer,harmer d,0,table_zero
-2010,House,CA,15,REP,Scott Kirkland,kirkland s,0,table_zero
-2010,House,CA,18,REP,Michael C. Berryhill,berryhill m,0,table_zero
-2010,House,CA,20,REP,Andy Vidak,vidak a,0,table_zero
-2010,House,CA,47,REP,Van Tran,tran v,0,table_zero
-2010,House,CO,7,REP,Ryan Frazier,frazier r,0,no_bio
-2010,House,CT,1,REP,Ann Brickley,brickley a,0,table_zero
-2010,House,CT,2,REP,Janet Peckinpaugh,peckinpaugh j,0,table_zero
-2010,House,CT,3,REP,Gerald Labriola,labriola g,0,no_bio
-2010,House,CT,4,REP,Dan Debicella,debicella d,0,table_zero
-2010,House,CT,5,REP,Sam S.F. Caligiuri,caligiuri s,0,table_zero
-2010,Senate,DE,S,REP,Christine O'Donnell,donnell c,0,no_bio
-2010,House,FL,25,DEM,Joe Garcia,garcia j,0,table_zero
-2010,House,FL,3,REP,Michael F. Yost,yost m,0,table_zero
-2010,House,GA,7,DEM,Douglass S. Heckman,heckman d,0,table_zero
-2010,House,GA,2,REP,Mike Keown,keown m,0,table_zero
-2010,Governor,HI,,REP,Duke Aiona,aiona d,0,table_zero
-2010,House,HI,2,REP,John W. Willoughby,willoughby j,0,table_zero
-2010,House,IA,2,REP,Mariannette Miller-Meeks,meeks m,0,table_zero
-2010,House,IA,3,REP,Brad Zaun,zaun b,0,table_zero
-2010,House,ID,2,DEM,Mike Crawford,crawford m,0,table_zero
-2010,Governor,IL,,REP,William E. Brady,brady w,0,no_bio
-2010,House,IL,10,DEM,Daniel J. Seals,seals d,0,table_zero
-2010,House,IL,9,REP,Joel B. Pollak,pollak j,0,table_zero
-2010,House,IN,3,DEM,Thomas E. Hayhurst,hayhurst t,0,table_zero
-2010,House,IN,8,DEM,William Trent Van Haaften,haaften w,0,no_bio
-2010,House,IN,2,REP,Jackie Walorski,walorski j,0,table_zero
-2010,House,IN,7,REP,Marvin Bailey Scott,scott m,0,table_zero
-2010,House,KS,1,DEM,Alan E. Jilka,jilka a,0,table_zero
-2010,House,KS,4,DEM,Raj Goyle,goyle r,0,table_zero
-2010,Senate,KS,,DEM,Lisa Johnston,johnston l,0,table_zero
-2010,House,KY,3,REP,Todd Lally,lally t,0,table_zero
-2010,House,KY,6,REP,Andy Barr,barr a,0,table_zero
-2010,House,MA,4,REP,Sean Bielat,bielat s,0,table_zero
-2010,House,MA,6,REP,Bill Hudak,hudak b,0,table_zero
-2010,House,MA,10,REP,Jeffrey Davis Perry,perry j,0,table_zero
-2010,Senate,MA,S,DEM,Martha Coakley,coakley m,0,no_bio
-2010,Senate,MD,,REP,Eric Wargotz,wargotz e,0,table_zero
-2010,House,ME,1,REP,C. Peter Scontras,scontras c,0,no_bio
-2010,House,ME,2,REP,Jason J. Levesque,levesque j,0,table_zero
-2010,House,MI,1,DEM,Gary McDowell,mcdowell g,0,table_zero
-2010,House,MI,3,DEM,Patrick A. Miles,miles p,0,table_zero
-2010,House,MI,9,REP,Andrew Rocky Raczkowski,raczkowski a,0,no_bio
-2010,House,MI,15,REP,Rob Steele,steele r,0,table_zero
-2010,House,MO,7,DEM,Scott Eckersley,eckersley s,0,table_zero
-2010,House,MO,5,REP,Jacob Turk,turk j,0,table_zero
-2010,House,MS,2,REP,William Marcy,marcy w,0,no_bio
-2010,House,NC,7,REP,Ilario Gregory Pantano,pantano i,0,table_zero
-2010,House,NC,8,REP,Harold Johnson,johnson h,0,table_zero
-2010,House,NC,11,REP,Jeff Miller,miller j,0,table_zero
-2010,Governor,NE,,DEM,Mike Meister,meister m,0,table_zero
-2010,House,NE,2,DEM,Tom White,white t,0,table_zero
-2010,House,NH,2,DEM,Ann McLane Kuster,kuster a,0,table_zero
-2010,House,NJ,2,DEM,Gary S. Stein,stein g,0,no_bio
-2010,House,NJ,1,REP,Dale Mark Glading,glading d,0,no_bio
-2010,House,NJ,6,REP,Anna C. Little,little a,0,no_bio
-2010,House,NM,1,REP,Jonathan L. Barela,barela j,0,table_zero
-2010,House,NM,3,REP,Thomas E. Mullins,mullins t,0,table_zero
-2010,House,NY,13,DEM,Michael E. McMahon,mcmahon m,0,table_zero
-2010,House,NY,20,DEM,Scott Murphy,murphy s,0,table_zero
-2010,House,NY,29,DEM,Matthew Zeller,zeller m,0,table_zero
-2010,House,NY,1,REP,Randolph Altschuler,altschuler r,0,table_zero
-2010,House,NY,4,REP,Francis X. Becker,becker f,0,table_zero
-2010,House,NY,22,REP,George K. Phillips,phillips g,0,table_zero
-2010,House,NY,23,REP,Matthew A. Doheny,doheny m,0,table_zero
-2010,Senate,NY,S,REP,Joseph J. DioGuardi,dioguardi j,0,no_bio
-2010,House,OH,13,REP,Tom Ganley,ganley t,0,table_zero
-2010,House,OR,5,REP,L. Scott Bruun,bruun l,0,no_bio
-2010,House,PA,13,REP,Carson Dee Adcock,adcock c,0,no_bio
-2010,House,RI,1,REP,John J. Loughlin,loughlin j,0,table_zero
-2010,House,RI,2,REP,Mark S. Zaccaria,zaccaria m,0,table_zero
-2010,House,SC,2,DEM,Rob Miller,miller r,0,no_bio
-2010,House,TN,3,DEM,John Wolfe,wolfe j,0,no_bio
-2010,House,TN,4,DEM,Lincoln Davis,davis l,0,no_bio
-2010,House,TN,8,DEM,Roy Brasfield Herron,herron r,0,no_bio
-2010,Governor,UT,S,DEM,Peter Corroon,corroon p,0,no_bio
-2010,House,UT,1,DEM,Morgan E. Bowen,bowen m,0,table_zero
-2010,House,UT,3,DEM,Karen E. Hyer,hyer k,0,table_zero
-2010,House,UT,2,REP,Morgan J. Philpot,philpot m,0,table_zero
-2010,House,VA,5,DEM,Tom S. Perriello,perriello t,0,no_bio
-2010,House,VA,9,DEM,Frederick C. Boucher,boucher f,0,no_bio
-2010,Senate,VT,,REP,Leonard Wheeler Britton,britton l,0,table_zero
-2010,House,WA,3,DEM,Denny Heck,heck d,0,table_zero
-2010,House,WA,8,DEM,Suzan DelBene,delbene s,0,table_zero
-2010,House,WA,2,REP,John Koster,koster j,0,table_zero
-2010,House,WA,6,REP,Doug R. Cloud,cloud d,0,table_zero
-2010,House,WA,9,REP,Richard Muri,muri r,0,no_bio
-2010,House,WV,1,DEM,Michael Angelo Oliverio,oliverio m,0,table_zero
-2010,House,WV,3,REP,Elliott E. Maynard,maynard e,0,no_bio
-2010,Senate,WV,S,REP,John Raese,raese j,0,no_bio
-2010,Governor,WY,,DEM,Leslie Petersen,petersen l,0,table_zero
-2012,House,AR,1,DEM,Scott Ellington,ellington s,0,no_bio
-2012,House,AR,4,DEM,Harmon Jeffress,jeffress h,0,no_bio
-2012,House,AR,3,OTH,Rebekah J. Kennedy,kennedy r,0,no_bio
-2012,House,AZ,8,DEM,Ron Barber,barber r,0,no_bio
-2012,House,AZ,8,REP,Jesse Kelly,kelly j,0,no_bio
-2012,House,AZ,9,REP,Vernon B. Parker,parker v,0,no_bio
-2012,House,CA,21,DEM,John S. Hernandez,hernandez j,0,no_bio
-2012,House,CA,9,REP,Ricky Gill,gill r,0,no_bio
-2012,Senate,CA,,REP,Elizabeth Emken,emken e,0,table_zero
-2012,House,FL,9,REP,William Todd Long,long w,0,no_bio
-2012,House,FL,13,REP,Charles William Young,young c,0,no_bio
-2012,House,FL,23,REP,Karen Harrington,harrington k,0,no_bio
-2012,House,IA,1,REP,Benjamin M. Lange,lange b,0,no_bio
-2012,House,IL,13,DEM,David M. Gill,gill d,0,no_bio
-2012,House,IL,2,REP,Brian Woodworth,woodworth b,0,no_bio
-2012,House,MI,6,DEM,Mike O'Brien,brien m,0,no_bio
-2012,House,MI,11,DEM,Syed Taj,taj s,0,no_bio
-2012,House,MI,9,REP,Don Volaric,volaric d,0,no_bio
-2012,Governor,ND,,DEM,Ryan M. Taylor,taylor r,0,table_zero
-2012,House,NE,3,DEM,Roger Mark Sullivan,sullivan r,0,no_bio
-2012,House,NM,2,DEM,Evelyn Madrid Erhard,erhard e,0,no_bio
-2012,House,NY,11,DEM,Mark S. Murphy,murphy m,0,no_bio
-2012,House,NY,20,REP,Bob Dieterich,dieterich b,0,no_bio
-2012,House,NY,21,REP,Matthew A. Doheny,doheny m,0,no_bio
-2012,House,OK,2,DEM,Rob Wallace,wallace r,0,no_bio
-2012,House,OR,1,REP,Robert Y. Cornilles,cornilles r,0,no_bio
-2012,House,PA,4,DEM,Harry Perkinson,perkinson h,0,no_bio
-2012,House,SD,1,DEM,Matt Varilek,varilek m,0,no_bio
-2012,Senate,TN,,DEM,Mark E. Clayton,clayton m,0,no_bio
-2012,House,UT,2,DEM,F. Jay Seegmiller,seegmiller f,0,no_bio
-2012,Senate,WA,,REP,Michael Baumgartner,baumgartner m,0,no_bio
-2012,Governor,WI,S,DEM,Thomas M. Barrett,barrett t,0,no_bio
-2012,Governor,WI,S,REP,Scott Walker,walker s,0,no_bio
-2012,House,WI,1,DEM,Rob T. Zerban,zerban r,0,no_bio
-2014,House,AR,1,DEM,Jackie McPherson,mcpherson j,0,no_bio
-2014,House,AR,3,OTH,Grant Brand,brand g,0,no_bio
-2014,House,CA,10,DEM,Michael Eggman,eggman m,0,no_bio
-2014,House,CA,31,REP,Paul Chabot,chabot p,0,no_bio
-2014,House,CT,5,REP,Mark Greenberg,greenberg m,0,no_bio
-2014,House,DE,1,REP,Rose Izzo,izzo r,0,table_zero
-2014,Senate,DE,,REP,Kevin Wade,wade k,0,no_bio
-2014,House,GA,10,DEM,I. Kenneth Dious,dious i,0,no_bio
-2014,Senate,HI,S,REP,Cam Cavasso,cavasso c,0,no_bio
-2014,House,IA,4,DEM,Jim Mowrer,mowrer j,0,no_bio
-2014,Governor,ID,,DEM,AJ Balukoff,balukoff a,0,no_bio
-2014,House,KS,2,DEM,Margie Wakefield,wakefield m,0,no_bio
-2014,Senate,MA,,REP,Brian J. Herr,herr b,0,no_bio
-2014,House,ME,1,REP,Isaac J. Misiuk,misiuk i,0,no_bio
-2014,House,MT,1,DEM,John Lewis,lewis j,0,no_bio
-2014,Governor,NE,,DEM,Chuck Hassebrook,hassebrook c,0,no_bio
-2014,House,NJ,2,DEM,William Hughes,hughes w,0,no_bio
-2014,Governor,NV,,DEM,Robert E. Goodman,goodman r,0,no_bio
-2014,Senate,OK,S,DEM,Constance N. Johnson,johnson c,0,no_bio
-2014,House,PA,3,DEM,Dan Lavallee,lavallee d,0,no_bio
-2014,Senate,RI,,REP,Mark S. Zaccaria,zaccaria m,0,no_bio
-2014,Senate,SC,,DEM,Charles Bradley Hutto,hutto c,0,no_bio
-2014,Senate,SC,S,DEM,Joyce Dickerson,dickerson j,0,no_bio
-2014,Governor,TN,,DEM,Charles V. Brown,brown c,0,no_bio
-2014,Senate,TN,,DEM,William Gordon Ball,ball w,0,no_bio
-2014,Senate,TX,,DEM,David M. Alameel,alameel d,0,no_bio
-2014,House,UT,1,DEM,Donna M. McAleer,mcaleer d,0,table_zero
-2016,House,AK,1,DEM,Steve Lindbeck,lindbeck s,0,no_bio
-2016,House,CA,10,DEM,Michael Eggman,eggman m,0,no_bio
-2016,House,CA,49,DEM,Doug Applegate,applegate d,0,no_bio
-2016,House,CA,24,REP,Justin Donald Fareed,fareed j,0,no_bio
-2016,House,CA,31,REP,Paul Chabot,chabot p,0,no_bio
-2016,Senate,CO,,REP,Darryl Glenn,glenn d,0,no_bio
-2016,House,DE,1,REP,Hans Reigle,reigle h,0,no_bio
-2016,House,FL,18,DEM,Randy Perkins,perkins r,0,no_bio
-2016,House,FL,10,REP,Thuy Lowe,lowe t,0,no_bio
-2016,House,GA,3,DEM,Angela Pendley,pendley a,0,no_bio
-2016,House,GA,8,DEM,James Neal Harris,harris j,0,no_bio
-2016,House,GA,11,DEM,Don E. Wilson,wilson d,0,no_bio
-2016,House,GA,12,DEM,Patricia Carpenter McCracken,mccracken p,0,no_bio
-2016,House,IA,3,DEM,Jim Mowrer,mowrer j,0,no_bio
-2016,House,ID,1,DEM,James Piotrowski,piotrowski j,0,table_zero
-2016,House,ID,2,DEM,Jennifer Martinez,martinez j,0,table_zero
-2016,Senate,KS,,DEM,Patrick Wiesner,wiesner p,0,no_bio
-2016,Senate,LA,,DEM,Foster L. Campbell,campbell f,0,no_bio
-2016,Senate,LA,,REP,John Kennedy,kennedy j,0,no_bio
-2016,Governor,ND,,DEM,Marvin E. Nelson,nelson m,0,no_bio
-2016,House,NJ,2,DEM,David H. Cole,cole d,0,no_bio
-2016,House,NM,2,DEM,Merrie Lee Soules,soules m,0,no_bio
-2016,House,NM,1,REP,Richard Priem,priem r,0,no_bio
-2016,House,NY,1,DEM,Anna Throne-Holst,holst a,0,no_bio
-2016,House,NY,24,DEM,Colleen Deacon,deacon c,0,no_bio
-2016,Senate,OK,,DEM,Mike Workman,workman m,0,no_bio
-2016,Governor,OR,S,REP,William C. Pierce,pierce w,0,no_bio
-2016,House,SC,5,DEM,Francis Person,person f,0,no_bio
-2016,Senate,SD,,DEM,Jay H. Williams,williams j,0,no_bio
-2016,Governor,UT,,DEM,Mike Weinholtz,weinholtz m,0,table_zero
-2016,House,VA,5,DEM,Jane DeSimone Dittmar,dittmar j,0,no_bio
-2016,House,VA,10,DEM,LuAnn L. Bennett,bennett l,0,no_bio
-2016,House,WI,1,DEM,Ryan A. Solen,solen r,0,no_bio
-2016,Governor,WV,,REP,William Paul Cole,cole w,0,no_bio
-2018,Governor,AK,,OTH,Billy Toien,toien b,0,no_bio
-2018,Governor,AR,,DEM,Jared K. Henderson,henderson j,0,no_bio
-2018,Governor,AR,,OTH,Mark A. West,west m,0,no_bio
-2018,House,AR,2,OTH,Joe Swafford,swafford j,0,no_bio
-2018,House,AR,1,DEM,Chintan Desai,desai c,0,no_bio
-2018,House,AR,1,OTH,Elvis Presley,presley e,0,no_bio
-2018,House,AR,3,OTH,Michael J. Kalagias,kalagias m,0,no_bio
-2018,House,AR,4,OTH,Tom Canada,canada t,0,no_bio
-2018,Governor,AZ,,OTH,Angel A. Torres,torres a,0,no_bio
-2018,Governor,AZ,,OTH,Barry Hess,hess b,0,no_bio
-2018,House,AZ,4,OTH,Haryaksha Gregor Knauer,knauer h,0,no_bio
-2018,House,AZ,2,DEM,Matthew G. Heinz,heinz m,0,no_bio
-2018,Senate,AZ,,OTH,Angela Green,green a,0,no_bio
-2018,Senate,AZ,,OTH,Adam C. Kokesh,kokesh a,0,no_bio
-2018,House,CA,22,DEM,Andrew Janz,janz a,0,no_bio
-2018,House,CA,7,REP,Andrew Grant,grant a,0,no_bio
-2018,Senate,CA,,DEM,Kevin de León,leon k,0,no_bio
-2018,Governor,CO,,OTH,Scott Helker,helker s,0,no_bio
-2018,Governor,CO,,OTH,William Robert Hammons,hammons w,0,no_bio
-2018,House,CO,3,OTH,Gaylon Kent,kent g,0,no_bio
-2018,House,CO,3,OTH,Mary Malarsie,malarsie m,0,no_bio
-2018,House,CO,6,OTH,Kat Martin,martin k,0,no_bio
-2018,Governor,CT,,REP,Robert Stefanowski,stefanowski r,0,no_bio
-2018,Governor,CT,,OTH,Rod Hanscomb,hanscomb r,0,no_bio
-2018,House,DE,1,REP,Scott Walker,walker s,0,no_bio
-2018,House,DE,1,REP,Lee Murphy,murphy l,0,no_bio
-2018,Senate,DE,,REP,Rob Arlett,arlett r,0,no_bio
-2018,Senate,DE,,OTH,Nadine M. Frost,frost n,0,no_bio
-2018,Senate,DE,,OTH,Demitri G. Theodoropoulos,theodoropoulos d,0,no_bio
-2018,Governor,FL,,OTH,Darcy G. Richardson,richardson d,0,no_bio
-2018,House,FL,27,OTH,Mayra Joli,joli m,0,no_bio
-2018,House,FL,9,REP,Wayne Liebnitzky,liebnitzky w,0,no_bio
-2018,Governor,GA,,OTH,Ted Metz,metz t,0,no_bio
-2018,Governor,IA,,OTH,Jacob Daniel Porter,porter j,0,no_bio
-2018,House,IA,1,OTH,Troy Hageman,hageman t,0,no_bio
-2018,House,IA,2,REP,Christopher Peters,peters c,0,no_bio
-2018,House,IA,4,OTH,Charles A. Aldrich,aldrich c,0,no_bio
-2018,House,IA,4,OTH,Edward Peterson,peterson e,0,no_bio
-2018,House,IA,2,OTH,Daniel F. Clark,clark d,0,no_bio
-2018,House,IA,2,OTH,Mark David Strauss,strauss m,0,no_bio
-2018,Governor,ID,,OTH,Bev Boeck,boeck b,0,no_bio
-2018,Governor,ID,,OTH,Walter L. Bayes,bayes w,0,no_bio
-2018,House,ID,1,DEM,Cristina McNeil,mcneil c,0,table_zero
-2018,House,ID,1,OTH,W. Scott Howard,howard w,0,table_zero
-2018,House,ID,1,OTH,Marvin Richardson,richardson m,0,table_zero
-2018,House,ID,2,DEM,Aaron Swisher,swisher a,0,table_zero
-2018,Governor,IL,,OTH,William Sam McCann,mccann w,0,no_bio
-2018,Governor,IL,,OTH,Grayson Jackson,jackson g,0,no_bio
-2018,House,IL,12,DEM,Brendan Kelly,kelly b,0,no_bio
-2018,House,IL,12,OTH,Randall Auxier,auxier r,0,no_bio
-2018,Senate,IN,,OTH,Lucy M. Brenton,brenton l,0,no_bio
-2018,House,KS,1,DEM,Alan LaPolice,lapolice a,0,no_bio
-2018,House,KS,2,OTH,Kelly Standley,standley k,0,no_bio
-2018,House,KS,3,OTH,Christopher Kelly Clemmons,clemmons c,0,no_bio
-2018,House,KS,4,DEM,James A. Thompson,thompson j,0,no_bio
-2018,Governor,MD,,OTH,Shawn P. Quinn,quinn s,0,no_bio
-2018,Governor,MD,,OTH,Ian Schlakman,schlakman i,0,no_bio
-2018,Senate,MD,,REP,Tony Campbell,campbell t,0,no_bio
-2018,Senate,MD,,OTH,Arvin Vohra,vohra a,0,no_bio
-2018,Governor,ME,,REP,Shawn H. Moody,moody s,0,no_bio
-2018,Governor,MI,,OTH,Bill Gelineau,gelineau b,0,no_bio
-2018,Governor,MI,,OTH,Todd Schleiger,schleiger t,0,no_bio
-2018,Governor,MI,,OTH,Jennifer V. Kurland,kurland j,0,no_bio
-2018,Governor,MI,,OTH,Keith Butkovich,butkovich k,0,no_bio
-2018,House,MI,6,OTH,Stephen J. Young,young s,0,no_bio
-2018,House,MI,8,OTH,Brian Ellison,ellison b,0,no_bio
-2018,House,MI,8,OTH,David Jay Lillis,lillis d,0,no_bio
-2018,House,MI,11,OTH,Leonard C. Schwartz,schwartz l,0,no_bio
-2018,House,MI,11,OTH,Cooper Nye,nye c,0,no_bio
-2018,Senate,MI,,OTH,George E. Huffman,huffman g,0,no_bio
-2018,Senate,MI,,OTH,Marcia Squier,squier m,0,no_bio
-2018,Senate,MI,,OTH,John Howard Wilhelm,wilhelm j,0,no_bio
-2018,Governor,MN,,OTH,Thomas Christopher Wright,wright t,0,no_bio
-2018,Governor,MN,,OTH,Josh Welter,welter j,0,no_bio
-2018,House,MN,7,REP,Dave Hughes,hughes d,0,no_bio
-2018,Senate,MN,,OTH,Dennis Schuller,schuller d,0,no_bio
-2018,Senate,MN,,OTH,Paula M. Overby,overby p,0,no_bio
-2018,Senate,MN,S,REP,Karin Housley,housley k,0,no_bio
-2018,Senate,MN,S,OTH,Sarah Wellington,wellington s,0,no_bio
-2018,Senate,MN,S,OTH,Jerry Trooien,trooien j,0,no_bio
-2018,House,MO,2,OTH,Tony Kirk,kirk t,0,no_bio
-2018,House,MO,2,OTH,David Justus Arnold,arnold d,0,no_bio
-2018,Senate,MO,,OTH,Japheth R. Campbell,campbell j,0,no_bio
-2018,Senate,MO,,OTH,Jo Crain,crain j,0,no_bio
-2018,House,MS,1,DEM,Randy Wadkins,wadkins r,0,table_zero
-2018,House,MS,2,OTH,Irving Harris,harris i,0,table_zero
-2018,House,MS,3,DEM,Mary Brannon,brannon m,0,no_bio
-2018,House,MS,4,DEM,Jeramey Anderson,anderson j,0,table_zero
-2018,Senate,MS,,OTH,Danny Bedwell,bedwell d,0,no_bio
-2018,Senate,MS,,OTH,Shawn R. O'Hara,hara s,0,no_bio
-2018,House,MT,1,OTH,Elinor Swanson,swanson e,0,no_bio
-2018,Senate,MT,,OTH,Rick Breckenridge,breckenridge r,0,no_bio
-2018,House,NC,13,OTH,Thomas Aaron Bailey,bailey t,0,no_bio
-2018,House,NC,13,OTH,Robert Corriher,corriher r,0,no_bio
-2018,House,NC,2,OTH,Japheth Nthautha Matemu,matemu j,0,no_bio
-2018,House,NC,9,OTH,Jeffery Scott,scott j,0,no_bio
-2018,House,ND,1,DEM,Mac Schneider,schneider m,0,no_bio
-2018,House,NE,1,DEM,Jessica McClure,mcclure j,0,table_zero
-2018,House,NE,2,DEM,Kara Eastman,eastman k,0,table_zero
-2018,Governor,NH,,OTH,Jilletta Jarvis,jarvis j,0,no_bio
-2018,House,NH,1,REP,Eddie Edwards,edwards e,0,no_bio
-2018,House,NH,1,OTH,Dan Belforti,belforti d,0,no_bio
-2018,House,NH,2,OTH,Justin F. O'Donnell,donnell j,0,no_bio
-2018,House,NJ,2,REP,Seth Grossman,grossman s,0,no_bio
-2018,House,NJ,5,REP,John McCann,mccann j,0,no_bio
-2018,House,NJ,5,OTH,Wendy W. Goetz,goetz w,0,no_bio
-2018,House,NJ,5,OTH,James Tosone,tosone j,0,no_bio
-2018,House,NJ,2,OTH,John Ordille,ordille j,0,no_bio
-2018,House,NJ,2,OTH,William R. Benfer,benfer w,0,no_bio
-2018,House,NJ,2,OTH,Steven F. Fenichel,fenichel s,0,no_bio
-2018,House,NJ,2,OTH,Anthony Parisi Sanchez,sanchez a,0,no_bio
-2018,Senate,NJ,,OTH,Murray Sabrin,sabrin m,0,no_bio
-2018,Senate,NJ,,OTH,Madelyn R. Hoffman,hoffman m,0,no_bio
-2018,Governor,NM,,OTH,Bob Walsh,walsh b,0,no_bio
-2018,House,NM,1,OTH,Lloyd J. Princeton,princeton l,0,no_bio
-2018,House,NM,3,OTH,Christopher Manning,manning c,0,no_bio
-2018,Senate,NM,,OTH,Gary Johnson,johnson g,0,no_bio
-2018,Senate,NM,,OTH,Aubrey Dunn,dunn a,0,no_bio
-2018,Governor,NV,,OTH,Jared Lord,lord j,0,no_bio
-2018,Governor,NV,,OTH,Russell Best,best r,0,no_bio
-2018,House,NV,4,OTH,Gregg Luckner,luckner g,0,no_bio
-2018,House,NV,4,OTH,Warren Ross Markowitz,markowitz w,0,no_bio
-2018,House,NV,4,OTH,Dean McGonigle,mcgonigle d,0,no_bio
-2018,House,NV,4,OTH,Rodney Smith,smith r,0,no_bio
-2018,Senate,NV,,OTH,Timothy Rex Hagan,hagan t,0,no_bio
-2018,Senate,NV,,OTH,Kamau Akil Bakari,bakari k,0,no_bio
-2018,Governor,NY,,OTH,Cynthia E. Nixon,nixon c,0,no_bio
-2018,House,NY,19,REP,John J. Faso,faso j,0,no_bio
-2018,House,NY,27,DEM,Nate McMurray,mcmurray n,0,no_bio
-2018,House,NY,19,OTH,Steven Greenfield,greenfield s,0,no_bio
-2018,House,NY,27,OTH,Larry Piegza,piegza l,0,no_bio
-2018,House,NY,23,DEM,Tracy Mitrano,mitrano t,0,no_bio
-2018,House,NY,24,DEM,Dana Balter,balter d,0,no_bio
-2018,House,NY,27,REP,Patrick M. Gallivan,gallivan p,0,no_bio
-2018,House,NY,27,REP,Stefan Mychajliw,mychajliw s,0,no_bio
-2018,House,NY,27,REP,Carl P. Paladino,paladino c,0,no_bio
-2018,House,NY,27,REP,Christopher L. Jacobs,jacobs c,0,no_bio
-2018,House,NY,27,REP,Michael H. Ranzenhofer,ranzenhofer m,0,no_bio
-2018,House,NY,27,REP,David G. Bellavia,bellavia d,0,no_bio
-2018,House,NY,27,REP,Robert G. Ortt,ortt r,0,no_bio
-2018,House,NY,27,REP,Nicholas A. Langworthy,langworthy n,0,no_bio
-2018,Governor,OH,,OTH,Travis M. Irvine,irvine t,0,no_bio
-2018,Governor,OH,,OTH,Constance A. Gadell Newton,newton c,0,no_bio
-2018,Governor,OH,,OTH,Rebecca Ayers,ayers r,0,no_bio
-2018,Governor,OH,,OTH,Richard Austing Duncan,duncan r,0,no_bio
-2018,Governor,OH,,OTH,Renea Turner,turner r,0,no_bio
-2018,Governor,OH,,OTH,Collin Hill,hill c,0,no_bio
-2018,House,OH,4,DEM,Janet Garrett,garrett j,0,no_bio
-2018,House,OH,1,OTH,Dirk Kubala,kubala d,0,no_bio
-2018,House,OH,2,DEM,Jill Schiller,schiller j,0,no_bio
-2018,House,OH,12,OTH,Joe Manchik,manchik j,0,no_bio
-2018,Senate,OH,,OTH,Stephen Faris,faris s,0,no_bio
-2018,Senate,OH,,OTH,Bruce Jaynes,jaynes b,0,no_bio
-2018,Senate,OH,,OTH,Philena Irene Farley,farley p,0,no_bio
-2018,Governor,OK,,OTH,Christopher S. Powell,powell c,0,no_bio
-2018,House,OK,4,OTH,Ruby Peters,peters r,0,no_bio
-2018,House,OK,2,DEM,Jason Nichols,nichols j,0,no_bio
-2018,House,OK,2,OTH,Richard M. Castaldo,castaldo r,0,no_bio
-2018,House,OK,2,OTH,John Foreman,foreman j,0,no_bio
-2018,House,OK,1,DEM,Tim Gilpin,gilpin t,0,no_bio
-2018,Governor,OR,,OTH,Patrick E. Starnes,starnes p,0,no_bio
-2018,Governor,OR,,OTH,Nick Chen,chen n,0,no_bio
-2018,Governor,OR,,OTH,Aaron Donald Auer,auer a,0,no_bio
-2018,Governor,OR,,OTH,Chris Henry,henry c,0,no_bio
-2018,House,OR,2,DEM,Jamie McLeod-Skinner,skinner j,0,table_zero
-2018,House,OR,2,OTH,Mark R. Roberts,roberts m,0,table_zero
-2018,House,OR,5,REP,Mark Callahan,callahan m,0,table_zero
-2018,Governor,PA,,OTH,Ken Krawchuk,krawchuk k,0,no_bio
-2018,Governor,PA,,OTH,Paul A. Glover,glover p,0,no_bio
-2018,House,PA,16,DEM,Ronald A. DiNicola,dinicola r,0,no_bio
-2018,House,PA,1,DEM,Scott Wallace,wallace s,0,no_bio
-2018,House,PA,7,OTH,Tim Silfies,silfies t,0,no_bio
-2018,House,PA,13,DEM,Brent Ottaway,ottaway b,0,no_bio
-2018,House,PA,18,DEM,Conor Lamb,lamb c,0,no_bio
-2018,House,PA,18,REP,Richard Saccone,saccone r,0,no_bio
-2018,House,PA,18,OTH,Drew Gray Miller,miller d,0,no_bio
-2018,Senate,PA,,OTH,Neal Taylor Gale,gale n,0,no_bio
-2018,Senate,PA,,OTH,Dale R. Kerns,kerns d,0,no_bio
-2018,Governor,RI,,OTH,Anne Armstrong,armstrong a,0,no_bio
-2018,Governor,RI,,OTH,William H. Gilbert,gilbert w,0,no_bio
-2018,Senate,RI,,REP,Bob Flanders,flanders b,0,no_bio
-2018,House,SC,1,REP,Katie Arrington,arrington k,0,table_zero
-2018,Governor,SD,,OTH,Kurt Evans,evans k,0,no_bio
-2018,House,SD,1,OTH,Ronald Wieczorek,wieczorek r,0,no_bio
-2018,House,SD,1,OTH,George D. Hendrickson,hendrickson g,0,no_bio
-2018,House,TX,21,OTH,Lee Santos,santos l,0,no_bio
-2018,House,TX,23,OTH,Ruben Corvalan,corvalan r,0,no_bio
-2018,House,TX,32,OTH,Melina Baker,baker m,0,no_bio
-2018,Senate,TX,,OTH,Neal M. Dikeman,dikeman n,0,no_bio
-2018,House,UT,2,OTH,Jeffrey Whipple,whipple j,0,no_bio
-2018,House,UT,1,OTH,Eric Eliason,eliason e,0,no_bio
-2018,House,UT,1,OTH,Adam Davis,davis a,0,no_bio
-2018,House,UT,3,OTH,Timothy L. Zeidner,zeidner t,0,no_bio
-2018,House,UT,3,OTH,Gregory C. Duerden,duerden g,0,no_bio
-2018,Senate,UT,,OTH,Reed C. McCandless,mccandless r,0,no_bio
-2018,Senate,UT,,OTH,Craig R. Bowden,bowden c,0,no_bio
-2018,Senate,UT,,OTH,Timothy Noel Aalders,aalders t,0,no_bio
-2018,House,VA,7,OTH,Joseph Buckler Walton,walton j,0,no_bio
-2018,House,VA,5,DEM,Leslie Cockburn,cockburn l,0,no_bio
-2018,House,VA,9,DEM,Anthony Flaccavento,flaccavento a,0,no_bio
-2018,Senate,VA,,OTH,Matt J. Waters,waters m,0,no_bio
-2018,Governor,VT,,OTH,Charles Laramie,laramie c,0,no_bio
-2018,Governor,VT,,OTH,Emily Peyton,peyton e,0,no_bio
-2018,House,VT,1,REP,Anya Tynio,tynio a,0,no_bio
-2018,House,VT,1,OTH,Cris Ericson,ericson c,0,no_bio
-2018,House,VT,1,OTH,Laura S. Potter,potter l,0,no_bio
-2018,Senate,VT,,OTH,Russell Beste,beste r,0,no_bio
-2018,Senate,VT,,OTH,Bruce Busa,busa b,0,no_bio
-2018,Senate,VT,,OTH,Brad J. Peacock,peacock b,0,no_bio
-2018,Senate,VT,,OTH,Edward S. Gilbert,gilbert e,0,no_bio
-2018,Senate,VT,,OTH,Reid Kane,kane r,0,no_bio
-2018,House,WA,8,REP,Dino Rossi,rossi d,0,table_zero
-2018,House,WA,3,DEM,Carolyn Long,long c,0,table_zero
-2018,House,WA,5,DEM,Lisa Brown,brown l,0,table_zero
-2018,Governor,WI,,OTH,Phil Anderson,anderson p,0,no_bio
-2018,Governor,WI,,OTH,Michael J. White,white m,0,no_bio
-2018,Governor,WI,,OTH,Arnie Enz,enz a,0,no_bio
-2018,House,WI,6,DEM,Dan Kohl,kohl d,0,no_bio
-2018,House,WI,1,OTH,Ken Yorgan,yorgan k,0,no_bio
-2018,House,WV,1,DEM,Kendra Fershee,fershee k,0,table_zero
-2018,House,WV,2,DEM,Talley Sergent,sergent t,0,table_zero
-2018,House,WV,2,OTH,Daniel P. Lutz,lutz d,0,table_zero
-2018,House,WV,3,DEM,Richard Neece Ojeda,ojeda r,0,table_zero
-2018,Senate,WV,,OTH,Rusty Hollen,hollen r,0,no_bio
-2018,Senate,WV,,OTH,Don Blankenship,blankenship d,0,no_bio
-2018,Governor,WY,,OTH,Lawrence Gerard Struempf,struempf l,0,no_bio
-2018,House,WY,1,OTH,Richard Brubaker,brubaker r,0,no_bio
-2018,House,WY,1,OTH,Daniel Clyde Cummings,cummings d,0,no_bio
-2018,Senate,WY,,OTH,Joseph Porambo,porambo j,0,no_bio
-2020,House,AK,1,DEM,Alyse S. Galvin,galvin a,0,no_bio
-2020,Senate,AK,,OTH,John Wayne Howe,howe j,0,no_bio
-2020,Senate,AK,,OTH,Forrest Dunbar,dunbar f,0,no_bio
-2020,Senate,AK,,DEM,Forrest Dunbar,dunbar f,0,no_bio
-2020,Senate,AL,,DEM,Gordon Douglas Jones,jones g,0,no_bio
-2020,Senate,AL,,REP,Jeff Sessions,sessions j,0,no_bio
-2020,Senate,AL,,OTH,Michael Parrish,parrish m,0,no_bio
-2020,Senate,AL,,REP,Bradley Byrne,byrne b,0,no_bio
-2020,Senate,AL,,REP,Roy S. Moore,moore r,0,no_bio
-2020,Senate,AL,,REP,Arnold Mooney,mooney a,0,no_bio
-2020,Senate,AR,,OTH,Ricky Dale Harrington Jr.,harrington r,0,table_zero
-2020,Senate,AZ,S,REP,Martha McSally,mcsally m,0,no_bio
-2020,Senate,AZ,S,REP,Daniel McCarthy,mccarthy d,0,no_bio
-2020,Senate,AZ,S,DEM,Ruben Gallego,gallego r,0,no_bio
-2020,House,CA,50,DEM,Ammar Campa-Najjar,najjar a,0,no_bio
-2020,House,CA,53,DEM,Georgette Gómez,gomez g,0,no_bio
-2020,House,CA,39,DEM,Gil Cisneros,cisneros g,0,no_bio
-2020,House,CA,49,REP,Brian Maryott,maryott b,0,no_bio
-2020,House,CA,25,DEM,Christy Smith,smith c,0,no_bio
-2020,House,CA,22,DEM,Phil Arballo,arballo p,0,no_bio
-2020,House,CA,21,DEM,TJ Cox,cox t,0,no_bio
-2020,House,CA,48,DEM,Harley Rouda,rouda h,0,no_bio
-2020,House,CA,48,REP,Brian Burley,burley b,0,no_bio
-2020,House,CA,50,REP,Carl DeMaio,demaio c,0,no_bio
-2020,House,CO,3,OTH,John Ryan Keil,keil j,0,no_bio
-2020,House,CO,3,OTH,Critter Milton,milton c,0,no_bio
-2020,Senate,CO,,OTH,Stephen Dale Evans,evans s,0,no_bio
-2020,Senate,CO,,OTH,Raymon Anthony Doane,doane r,0,no_bio
-2020,Senate,CO,,OTH,Daniel Doyle,doyle d,0,no_bio
-2020,Governor,DE,,OTH,John Machurek,machurek j,0,no_bio
-2020,Governor,DE,,OTH,Kathy S. Dematteis,dematteis k,0,no_bio
-2020,House,DE,1,REP,Lee Murphy,murphy l,0,no_bio
-2020,House,DE,1,OTH,David Rogers,rogers d,0,no_bio
-2020,House,DE,1,OTH,Catherine Stonestreet Purcell,purcell c,0,no_bio
-2020,Senate,DE,,OTH,Nadine M. Frost,frost n,0,no_bio
-2020,House,FL,18,DEM,Pamela Michele Keith,keith p,0,no_bio
-2020,House,FL,21,OTH,Charleston Malkemus,malkemus c,0,no_bio
-2020,House,FL,7,REP,Joel Greenberg,greenberg j,0,no_bio
-2020,Senate,GA,,OTH,Shane Hazel,hazel s,0,no_bio
-2020,Senate,GA,,DEM,Sarah Riggs Amico,amico s,0,no_bio
-2020,Senate,GA,,DEM,Teresa Tomlinson,tomlinson t,0,no_bio
-2020,House,IA,3,OTH,Bryan Jack Holder,holder b,0,no_bio
-2020,House,IA,4,REP,Steve King,king s,0,no_bio
-2020,Senate,IA,,OTH,Rick Stewart,stewart r,0,no_bio
-2020,Senate,IA,,DEM,Eddie Mauro,mauro e,0,no_bio
-2020,House,IL,3,REP,Mike Fricilone,fricilone m,0,no_bio
-2020,House,IL,6,OTH,Bill Redpath,redpath b,0,no_bio
-2020,House,IL,13,DEM,Betsy Dirksen Londrigan,londrigan b,0,no_bio
-2020,Senate,IL,,OTH,David F. Black,black d,0,no_bio
-2020,Senate,IL,,OTH,Danny Malouf,malouf d,0,no_bio
-2020,Governor,IN,,OTH,Donald G. Rainwater,rainwater d,0,no_bio
-2020,House,IN,5,OTH,Kenneth Tucker,tucker k,0,no_bio
-2020,House,KS,4,DEM,Laura Lombard,lombard l,0,no_bio
-2020,Senate,KS,,OTH,Jason Buckley,buckley j,0,no_bio
-2020,Senate,KS,,REP,Bob Hamilton,hamilton b,0,no_bio
-2020,House,KY,6,OTH,Frank Harris,harris f,0,no_bio
-2020,Senate,KY,,OTH,Brad Barron,barron b,0,no_bio
-2020,Senate,MA,,DEM,Joseph Kennedy III,kennedy j,0,no_bio
-2020,House,ME,2,REP,Dale John Crafts,crafts d,0,no_bio
-2020,Senate,ME,,OTH,Max Linn,linn m,0,no_bio
-2020,Senate,ME,,DEM,Betsy Sweet,sweet b,0,no_bio
-2020,House,MI,6,DEM,Jen Richardson,richardson j,0,no_bio
-2020,House,MI,2,DEM,Bryan Berghoef,berghoef b,0,no_bio
-2020,House,MI,3,REP,Lynn Afendoulis,afendoulis l,0,no_bio
-2020,Senate,MI,,OTH,Marcia Squier,squier m,0,no_bio
-2020,Senate,MI,,OTH,Doug Dern,dern d,0,no_bio
-2020,Senate,MI,,OTH,Valerie Willis,willis v,0,no_bio
-2020,House,MN,2,OTH,Adam Charles Weeks,weeks a,0,no_bio
-2020,Senate,MN,,OTH,Oliver Steinberg,steinberg o,0,no_bio
-2020,Senate,MN,,OTH,Kevin O'Connor,connor k,0,no_bio
-2020,Governor,MO,,OTH,Rik Combs,combs r,0,no_bio
-2020,Governor,MO,,OTH,Jerome Bauer,bauer j,0,no_bio
-2020,House,MO,2,OTH,Martin Schulte,schulte m,0,no_bio
-2020,Senate,MS,,OTH,Jimmy Edwards,edwards j,0,no_bio
-2020,Governor,MT,,OTH,Lyman Bishop,bishop l,0,no_bio
-2020,Governor,MT,,OTH,Robert Barb,barb r,0,no_bio
-2020,House,MT,1,OTH,John Gibney,gibney j,0,no_bio
-2020,Senate,MT,,OTH,Wendie Fredrickson,fredrickson w,0,no_bio
-2020,Governor,NC,,OTH,Steven Joseph DiFiore,difiore s,0,no_bio
-2020,Governor,NC,,OTH,Al Pisano,pisano a,0,no_bio
-2020,Governor,NC,,REP,Holly Grange,grange h,0,no_bio
-2020,Governor,NC,,REP,Tim Moore,moore t,0,no_bio
-2020,Governor,NC,,REP,Philip Edward Berger,berger p,0,no_bio
-2020,Governor,NC,,REP,Thomas Roland Tillis,tillis t,0,no_bio
-2020,House,NC,9,DEM,Cynthia Lee Wallace,wallace c,0,no_bio
-2020,Senate,NC,,OTH,Kevin Eugene Hayes,hayes k,0,no_bio
-2020,Senate,NC,,OTH,Shannon W. Bray,bray s,0,no_bio
-2020,Senate,NC,,DEM,Erica Danette Smith,smith e,0,no_bio
-2020,Governor,ND,,DEM,Shelley Lenz,lenz s,0,no_bio
-2020,Governor,ND,,OTH,DuWayne Hendrickson,hendrickson d,0,no_bio
-2020,House,NE,2,OTH,Tyler Schaeffer,schaeffer t,0,no_bio
-2020,Senate,NE,,DEM,Chris E. Janicek,janicek c,0,no_bio
-2020,Senate,NE,,OTH,Gene Siadek,siadek g,0,no_bio
-2020,Governor,NH,,OTH,Darryl W. Perry,perry d,0,no_bio
-2020,Governor,NH,,DEM,Andru Volinsky,volinsky a,0,no_bio
-2020,House,NH,1,OTH,Zachary Dumont,dumont z,0,no_bio
-2020,House,NH,2,OTH,Andrew Olding,olding a,0,no_bio
-2020,House,NH,1,REP,Matt Mayberry,mayberry m,0,no_bio
-2020,House,NH,2,REP,Lynne Blankenbeker,blankenbeker l,0,no_bio
-2020,Senate,NH,,OTH,Justin F. O'Donnell,donnell j,0,no_bio
-2020,Senate,NH,,REP,Donald C. Bolduc,bolduc d,0,no_bio
-2020,House,NJ,2,OTH,Jesse Ehrnstrom,ehrnstrom j,0,no_bio
-2020,House,NJ,2,OTH,Jenna Harvey,harvey j,0,no_bio
-2020,House,NJ,3,REP,David Richter,richter d,0,no_bio
-2020,Senate,NJ,,REP,Hirsh Singh,singh h,0,no_bio
-2020,House,NM,1,REP,Michelle Garcia Holmes,holmes m,0,no_bio
-2020,Senate,NM,,REP,Mark V. Ronchetti,ronchetti m,0,no_bio
-2020,Senate,NM,,OTH,Bob Walsh,walsh b,0,no_bio
-2020,Senate,NM,,REP,Gavin Clarkson,clarkson g,0,no_bio
-2020,House,NY,24,OTH,Steve Williams,williams s,0,no_bio
-2020,House,NY,18,REP,Chele Farley,farley c,0,no_bio
-2020,House,NY,18,OTH,Scott Smith,smith s,0,no_bio
-2020,House,NY,22,OTH,Keith Price,price k,0,no_bio
-2020,House,NY,23,DEM,Tracy Mitrano,mitrano t,0,no_bio
-2020,House,OH,1,OTH,Kevin David Kahn,kahn k,0,no_bio
-2020,Senate,OK,,DEM,Abby Broyles,broyles a,0,no_bio
-2020,Senate,OK,,OTH,Robert Murphy,murphy r,0,no_bio
-2020,Senate,OK,,OTH,Joan E. Farr,farr j,0,no_bio
-2020,Senate,OK,,OTH,A. D. Nesbit,nesbit a,0,no_bio
-2020,Senate,OR,,OTH,Gary Dye,dye g,0,no_bio
-2020,Senate,OR,,OTH,Ibrahim Ali Taher,taher i,0,no_bio
-2020,House,PA,7,REP,Lisa Scheller,scheller l,0,no_bio
-2020,House,PA,8,REP,Jim Bognet,bognet j,0,no_bio
-2020,House,PA,1,DEM,Christina M. Finello,finello c,0,no_bio
-2020,House,PA,17,REP,Richard Sean Parnell,parnell r,0,no_bio
-2020,House,PA,1,OTH,Steve Scheetz,scheetz s,0,no_bio
-2020,House,PA,1,DEM,Debbie Wachspress,wachspress d,0,no_bio
-2020,House,SC,1,REP,Kathy Landing,landing k,0,no_bio
-2020,Senate,SC,,OTH,Bill Bledsoe,bledsoe b,0,no_bio
-2020,Senate,SC,,OTH,Keenan Dunham,dunham k,0,no_bio
-2020,Senate,TN,,DEM,James Mackler,mackler j,0,no_bio
-2020,Senate,TN,,REP,Manny Sethi,sethi m,0,no_bio
-2020,House,TX,3,DEM,Helane Seikaly,seikaly h,0,no_bio
-2020,House,TX,3,OTH,Christopher Claytor,claytor c,0,no_bio
-2020,House,TX,7,OTH,Shawn Kelly,kelly s,0,no_bio
-2020,House,TX,10,DEM,Mike Siegel,siegel m,0,no_bio
-2020,House,TX,22,DEM,Sri Kulkarni,kulkarni s,0,no_bio
-2020,House,TX,22,OTH,Joseph Leblanc,leblanc j,0,no_bio
-2020,House,TX,10,OTH,Roy Eriksen,eriksen r,0,no_bio
-2020,House,TX,25,DEM,Julie Oliver,oliver j,0,no_bio
-2020,House,TX,25,OTH,Bill Kelsey,kelsey b,0,no_bio
-2020,House,TX,31,OTH,Clark Patterson,patterson c,0,no_bio
-2020,House,TX,31,OTH,Jeremy Bravo,bravo j,0,no_bio
-2020,House,TX,17,DEM,Rick Kennedy,kennedy r,0,no_bio
-2020,House,TX,10,DEM,Shannon Hutcheson,hutcheson s,0,no_bio
-2020,Senate,TX,,OTH,Ricardo Turullols-Bonilla,bonilla r,0,no_bio
-2020,Senate,TX,,OTH,Kerry Douglas McKennon,mckennon k,0,no_bio
-2020,Senate,TX,,OTH,David B. Collins,collins d,0,no_bio
-2020,Senate,TX,,DEM,Royce West,west r,0,no_bio
-2020,Senate,TX,,DEM,Sema Hernandez,hernandez s,0,no_bio
-2020,Governor,UT,,OTH,Daniel Rhead Cottam,cottam d,0,no_bio
-2020,Governor,UT,,OTH,Gregory C. Duerden,duerden g,0,no_bio
-2020,House,UT,4,OTH,John Molnar,molnar j,0,no_bio
-2020,House,UT,4,OTH,Jonia Marie Broderick,broderick j,0,no_bio
-2020,House,UT,3,OTH,Thomas G. McNeill,mcneill t,0,no_bio
-2020,House,UT,3,OTH,Daniel Clyde Cummings,cummings d,0,no_bio
-2020,House,UT,2,DEM,Kael Weston,weston k,0,no_bio
-2020,House,UT,2,OTH,James Robert Latham,latham j,0,no_bio
-2020,House,UT,1,DEM,Darren Parry,parry d,0,no_bio
-2020,House,VA,5,DEM,Bryant Cameron Webb,webb b,0,no_bio
-2020,Governor,VT,,OTH,Wayne Billado,billado w,0,no_bio
-2020,Governor,VT,,OTH,Michael A. Devost,devost m,0,no_bio
-2020,Governor,VT,,OTH,Charly Dickerson,dickerson c,0,no_bio
-2020,Governor,VT,,OTH,Kevin Hoyt,hoyt k,0,no_bio
-2020,Governor,VT,,OTH,Erynn Hazlett Whitney,whitney e,0,no_bio
-2020,Governor,VT,,DEM,Rebecca Holcombe,holcombe r,0,no_bio
-2020,House,VT,1,OTH,Peter R. Becker,becker p,0,no_bio
-2020,House,VT,1,OTH,Marcia E. Horne,horne m,0,no_bio
-2020,House,VT,1,OTH,Shawn Orr,orr s,0,no_bio
-2020,House,VT,1,OTH,Christopher Helali,helali c,0,no_bio
-2020,Governor,WA,,REP,Loren Culp,culp l,0,no_bio
-2020,Governor,WA,,REP,Timothy Eyman,eyman t,0,no_bio
-2020,Governor,WA,,REP,Raul Garcia,garcia r,0,no_bio
-2020,Governor,WA,,REP,Phil Fortunato,fortunato p,0,no_bio
-2020,Governor,WA,,REP,Joshua Freed,freed j,0,no_bio
-2020,House,WA,3,DEM,Carolyn Long,long c,0,table_zero
-2020,House,WA,10,DEM,Beth Doglio,doglio b,0,table_zero
-2020,House,WI,1,DEM,Roger Polack,polack r,0,no_bio
-2020,Governor,WV,,DEM,Ben Salango,salango b,0,no_bio
-2020,Governor,WV,,OTH,Erika Klie Kolenich,kolenich e,0,no_bio
-2020,Governor,WV,,OTH,Daniel P. Lutz,lutz d,0,no_bio
-2020,Senate,WV,,OTH,David Moran,moran d,0,no_bio
-2020,House,WY,1,DEM,Lynnette GreyBull,greybull l,0,no_bio
-2022,Governor,AK,,REP,Charlie Pierce,pierce c,0,no_bio
-2022,House,AK,1,OTH,Chris Bye,bye c,0,no_bio
-2022,House,AK,1,REP,Tara M. Sweeney,sweeney t,0,no_bio
-2022,House,AK,1,DEM,Christopher Constant,constant c,0,no_bio
-2022,House,AK,1,REP,Lora H. Reinbold,reinbold l,0,no_bio
-2022,Senate,AK,,REP,Kelly C. Tshibaka,tshibaka k,0,no_bio
-2022,Senate,AK,,REP,Buzz A. Kelley,kelley b,0,no_bio
-2022,Senate,AK,,OTH,Dustin T. Darden,darden d,0,no_bio
-2022,Senate,AK,,OTH,Sean M. Thorne,thorne s,0,no_bio
-2022,Senate,AK,,REP,Joe Miller,miller j,0,no_bio
-2022,Senate,AK,,DEM,Al Gross,gross a,0,no_bio
-2022,Senate,AK,,OTH,John Wayne Howe,howe j,0,no_bio
-2022,Governor,AL,,OTH,"James ""Jimmy"" Blake",blake j,0,no_bio
-2022,Senate,AL,,OTH,John Sophocleus,sophocleus j,0,no_bio
-2022,Governor,AR,,OTH,Ricky Dale Harrington Jr.,harrington r,0,no_bio
-2022,Senate,AR,,OTH,Kenneth Cates,cates k,0,no_bio
-2022,Governor,AZ,,OTH,Mikaela Shonnie Lutes-Burton,burton m,0,no_bio
-2022,Governor,AZ,,OTH,Barry Hess,hess b,0,no_bio
-2022,Governor,AZ,,REP,Karrin Taylor Robson,robson k,0,no_bio
-2022,House,AZ,4,REP,Kelly Cooper,cooper k,0,no_bio
-2022,Senate,AZ,,OTH,Marc Victor,victor m,0,no_bio
-2022,Senate,AZ,,REP,Mark Brnovich,brnovich m,0,no_bio
-2022,Senate,AZ,,REP,Jim Lamon,lamon j,0,no_bio
-2022,Senate,AZ,,REP,Michael T. McGuire,mcguire m,0,no_bio
-2022,Senate,AZ,,REP,John Sidney McCain,mccain j,0,no_bio
-2022,Governor,CA,,REP,John Cox,cox j,0,no_bio
-2022,House,CA,49,REP,Brian Maryott,maryott b,0,no_bio
-2022,House,CA,21,REP,Michael Maher,maher m,0,no_bio
-2022,House,CA,41,DEM,Will Rollins,rollins w,0,no_bio
-2022,House,CA,26,REP,Matt Jacobs,jacobs m,0,no_bio
-2022,House,CA,40,DEM,Asif Mahmood,mahmood a,0,no_bio
-2022,House,CA,27,DEM,Quaye Quartey,quartey q,0,no_bio
-2022,Senate,CA,S,REP,Mark P. Meuser,meuser m,0,no_bio
-2022,Governor,CO,,OTH,Kevin Ruskusky,ruskusky k,0,no_bio
-2022,Governor,CO,,OTH,Paul Fiorino,fiorino p,0,no_bio
-2022,Governor,CO,,OTH,Danielle Neuschwanger,neuschwanger d,0,no_bio
-2022,Governor,CO,,REP,Greg Lopez,lopez g,0,no_bio
-2022,Governor,CO,,REP,Danielle Neuschwanger,neuschwanger d,0,no_bio
-2022,Senate,CO,,OTH,Brian Peotter,peotter b,0,no_bio
-2022,Senate,CO,,OTH,T.J. Cole,cole t,0,no_bio
-2022,Senate,CO,,OTH,Frank Atwood,atwood f,0,no_bio
-2022,Senate,CO,,REP,Ron Hanks,hanks r,0,no_bio
-2022,Senate,CO,,REP,Gino Campana,campana g,0,no_bio
-2022,Senate,CO,,REP,Eli Bremer,bremer e,0,no_bio
-2022,Senate,CO,,REP,Lauren Boebert,boebert l,0,no_bio
-2022,Governor,CT,,REP,Robert Stefanowski,stefanowski r,0,no_bio
-2022,House,CT,2,REP,Mike France,france m,0,no_bio
-2022,House,CT,2,OTH,William Hall,hall w,0,no_bio
-2022,House,CT,2,OTH,Kevin Blacker,blacker k,0,no_bio
-2022,House,CT,4,REP,Jayme Stevenson,stevenson j,0,no_bio
-2022,House,CT,5,REP,George Logan,logan g,0,no_bio
-2022,Senate,CT,,REP,Themis Klarides,klarides t,0,no_bio
-2022,Senate,CT,,REP,Peter Lumaj,lumaj p,0,no_bio
-2022,House,DE,1,REP,Lee Murphy,murphy l,0,no_bio
-2022,Governor,FL,,OTH,Hector Roos,roos h,0,no_bio
-2022,Governor,FL,,OTH,Carmen Jackie Gimenez,gimenez c,0,no_bio
-2022,Governor,FL,,DEM,Nikki Fried,fried n,0,no_bio
-2022,House,FL,13,DEM,Eric Lynn,lynn e,0,no_bio
-2022,House,FL,4,DEM,"LaShonda ""L.J."" Holloway",holloway l,0,no_bio
-2022,House,FL,27,DEM,Ken Russell,russell k,0,no_bio
-2022,House,FL,13,REP,Amanda Makki,makki a,0,no_bio
-2022,House,FL,13,REP,Kevin Hayslett,hayslett k,0,no_bio
-2022,Senate,FL,,OTH,Dennis Misigoy,misigoy d,0,no_bio
-2022,Senate,FL,,OTH,Tuan T.Q. Nguyen,nguyen t,0,no_bio
-2022,Governor,GA,,OTH,Shane Hazel,hazel s,0,no_bio
-2022,Governor,GA,,OTH,Al Bartell,bartell a,0,no_bio
-2022,Governor,GA,,REP,David A. Perdue,perdue d,0,no_bio
-2022,Governor,GA,,REP,Marjorie Taylor Greene,greene m,0,no_bio
-2022,Senate,GA,,OTH,Chase Oliver,oliver c,0,no_bio
-2022,Senate,GA,,REP,Gary W. Black,black g,0,no_bio
-2022,Governor,IA,,DEM,Deidre DeJear,dejear d,0,no_bio
-2022,Governor,IA,,OTH,Rick Stewart,stewart r,0,no_bio
-2022,Senate,IA,,DEM,Abby Finkenauer,finkenauer a,0,no_bio
-2022,Governor,IL,,OTH,John Richard Phillips,phillips j,0,no_bio
-2022,Governor,IL,,OTH,Scott Schluter,schluter s,0,no_bio
-2022,Governor,IL,,REP,Gary Rabine,rabine g,0,no_bio
-2022,Governor,IL,,REP,Jesse Sullivan,sullivan j,0,no_bio
-2022,Governor,IL,,REP,Richard C. Irvin,irvin r,0,no_bio
-2022,Governor,IL,,REP,Paul M. Schimpf,schimpf p,0,no_bio
-2022,House,IL,17,REP,Esther Joy King,king e,0,no_bio
-2022,Senate,IL,,OTH,Bill Redpath,redpath b,0,no_bio
-2022,Senate,IN,,OTH,James Sceniak,sceniak j,0,no_bio
-2022,Governor,KS,,OTH,Seth Cordell,cordell s,0,no_bio
-2022,House,KS,3,OTH,Steven A. Hohe,hohe s,0,no_bio
-2022,Senate,KS,,OTH,David C. Graham,graham d,0,no_bio
-2022,Governor,MA,,OTH,Kevin Reed,reed k,0,no_bio
-2022,Governor,MA,,REP,Chris Doughty,doughty c,0,no_bio
-2022,Governor,MA,,OTH,Charles D. Baker,baker c,0,no_bio
-2022,Governor,MA,,DEM,Orlando Silva,silva o,0,no_bio
-2022,Governor,MD,,OTH,David Lashar,lashar d,0,no_bio
-2022,Governor,MD,,OTH,Nancy Wallace,wallace n,0,no_bio
-2022,Governor,MD,,OTH,David Harding,harding d,0,no_bio
-2022,House,MD,1,OTH,Daniel Frank Thibeault,thibeault d,0,no_bio
-2022,House,MD,2,REP,Nicolee Ambrose,ambrose n,0,no_bio
-2022,Governor,ME,,OTH,Sam Hunkler,hunkler s,0,no_bio
-2022,Governor,ME,,OTH,Michael Thomas Barden,barden m,0,no_bio
-2022,House,ME,1,REP,Edwin Thelander,thelander e,0,no_bio
-2022,House,ME,2,OTH,Tiffany Bond,bond t,0,no_bio
-2022,Governor,MI,,OTH,Mary Buzuma,buzuma m,0,no_bio
-2022,Governor,MI,,OTH,Donna Brandenburg,brandenburg d,0,no_bio
-2022,Governor,MI,,OTH,Kevin Hogan,hogan k,0,no_bio
-2022,Governor,MI,,OTH,Daryl M. Simpson,simpson d,0,no_bio
-2022,Governor,MI,,REP,Ryan D. Kelley,kelley r,0,no_bio
-2022,Governor,MI,,REP,Kevin Rinke,rinke k,0,no_bio
-2022,Governor,MI,,REP,Garrett Soldano,soldano g,0,no_bio
-2022,Governor,MI,,REP,Ralph Rebandt,rebandt r,0,no_bio
-2022,Governor,MI,,REP,James Craig,craig j,0,no_bio
-2022,House,MI,7,OTH,Leah Rachel Dailey,dailey l,0,no_bio
-2022,House,MI,10,DEM,Carl J. Marlinga,marlinga c,0,no_bio
-2022,House,MI,8,REP,Paul Junge,junge p,0,no_bio
-2022,House,MI,3,REP,Peter Meijer,meijer p,0,no_bio
-2022,House,MI,10,DEM,Michael C. Taylor,taylor m,0,no_bio
-2022,House,MI,10,REP,Eric S. Esshaki,esshaki e,0,no_bio
-2022,Governor,MN,,OTH,Hugh McTavish,mctavish h,0,no_bio
-2022,Governor,MN,,OTH,James McCaskel,mccaskel j,0,no_bio
-2022,Governor,MN,,OTH,Steve Patterson,patterson s,0,no_bio
-2022,Governor,MN,,OTH,Gabrielle M. Prosser,prosser g,0,no_bio
-2022,Governor,MN,,REP,Mike Murphy,murphy m,0,no_bio
-2022,Governor,MN,,REP,Kendall Qualls,qualls k,0,no_bio
-2022,Senate,MO,,DEM,Trudy Busch Valentine,valentine t,0,no_bio
-2022,Senate,MO,,OTH,Jonathan Dine,dine j,0,no_bio
-2022,Senate,MO,,OTH,Paul Venable,venable p,0,no_bio
-2022,Senate,MO,,OTH,John Frederick Wood,wood j,0,no_bio
-2022,Senate,MO,,DEM,Lucas Kunce,kunce l,0,no_bio
-2022,Senate,MO,,REP,Eric Greitens,greitens e,0,no_bio
-2022,House,MT,1,OTH,John Lamb,lamb j,0,no_bio
-2022,House,MT,2,DEM,Penny Ronning,ronning p,0,no_bio
-2022,House,MT,2,OTH,Sam Rankin,rankin s,0,no_bio
-2022,House,NC,1,REP,Sandy Smith,smith s,0,no_bio
-2022,House,NC,11,DEM,Jasmine Beach-Ferrara,ferrara j,0,no_bio
-2022,House,NC,11,OTH,David Adam Coatney,coatney d,0,no_bio
-2022,Senate,NC,,OTH,Shannon W. Bray,bray s,0,no_bio
-2022,Senate,NC,,REP,Pat McCrory,mccrory p,0,no_bio
-2022,Senate,NC,,REP,Marjorie Knott Eastman,eastman m,0,no_bio
-2022,Senate,NC,,REP,Mark Walker,walker m,0,no_bio
-2022,House,ND,1,DEM,Mark Haugen,haugen m,0,no_bio
-2022,Governor,NH,,OTH,Kelly Halldorson,halldorson k,0,no_bio
-2022,Governor,NH,,OTH,Karlyn Borysenko,borysenko k,0,no_bio
-2022,House,NH,2,REP,Robert Burns,burns r,0,no_bio
-2022,Senate,NH,,OTH,Jeremy Kauffman,kauffman j,0,no_bio
-2022,Senate,NH,,REP,Charles W. Morse,morse c,0,no_bio
-2022,Senate,NH,,REP,Kevin H. Smith,smith k,0,no_bio
-2022,Senate,NH,,REP,Bruce Fenton,fenton b,0,no_bio
-2022,Senate,NH,,REP,Bryant Messner,messner b,0,no_bio
-2022,Senate,NH,,REP,Corey Lewandowski,lewandowski c,0,no_bio
-2022,House,NJ,3,REP,Bob Healey,healey b,0,no_bio
-2022,House,NJ,1,REP,Claire Gustafson,gustafson c,0,no_bio
-2022,House,NJ,11,REP,Rosemary Becchi,becchi r,0,no_bio
-2022,Governor,NM,,REP,Mark V. Ronchetti,ronchetti m,0,no_bio
-2022,Governor,NM,,OTH,Karen Bedonie,bedonie k,0,no_bio
-2022,Governor,NM,,REP,Jay C. Block,block j,0,no_bio
-2022,Governor,NM,,REP,Rebecca L. Dow,dow r,0,no_bio
-2022,Governor,NM,,REP,Ethel R. Maharg,maharg e,0,no_bio
-2022,Governor,NM,,REP,Gregory J. Zanetti,zanetti g,0,no_bio
-2022,House,NM,1,REP,Michelle Garcia Holmes,holmes m,0,no_bio
-2022,House,NM,3,REP,Alexis Martinez Johnson,johnson a,0,no_bio
-2022,Governor,NV,,OTH,Brandon Davis,davis b,0,no_bio
-2022,Governor,NV,,OTH,Ed Bridges,bridges e,0,no_bio
-2022,Governor,NV,,REP,Dean Heller,heller d,0,no_bio
-2022,Governor,NV,,REP,Joseph Gilbert,gilbert j,0,no_bio
-2022,Governor,NV,,REP,John Lee,lee j,0,no_bio
-2022,Governor,NV,,REP,Guy Nohra,nohra g,0,no_bio
-2022,House,NV,1,REP,Mark Robertson,robertson m,0,no_bio
-2022,House,NV,1,OTH,Ken Cavanaugh,cavanaugh k,0,no_bio
-2022,House,NV,2,OTH,Darryl Baber,baber d,0,no_bio
-2022,House,NV,2,OTH,Russell Best,best r,0,no_bio
-2022,House,NV,3,REP,April Becker,becker a,0,no_bio
-2022,House,NV,4,REP,Sam Peters,peters s,0,no_bio
-2022,Senate,NV,,OTH,Neil Scott,scott n,0,no_bio
-2022,Senate,NV,,OTH,Barry Rubinson,rubinson b,0,no_bio
-2022,Senate,NV,,REP,Sam Brown,brown s,0,no_bio
-2022,Governor,NY,,OTH,Larry W. Sharpe,sharpe l,0,no_bio
-2022,Governor,NY,,REP,Robert P. Astorino,astorino r,0,no_bio
-2022,Governor,NY,,REP,Harry Wilson,wilson h,0,no_bio
-2022,Governor,NY,,REP,Andrew Harold Giuliani,giuliani a,0,no_bio
-2022,Governor,NY,,DEM,Thomas R. Suozzi,suozzi t,0,no_bio
-2022,Governor,NY,,DEM,Jumaane D. Williams,williams j,0,no_bio
-2022,Governor,NY,,REP,Elise M. Stefanik,stefanik e,0,no_bio
-2022,Governor,NY,,DEM,Alexandria Ocasio-Cortez,cortez a,0,no_bio
-2022,House,NY,22,DEM,Francis Conole,conole f,0,no_bio
-2022,House,NY,25,REP,La'Ron D. Singletary,singletary l,0,no_bio
-2022,House,NY,3,DEM,Robert P. Zimmerman,zimmerman r,0,no_bio
-2022,House,NY,19,DEM,Pat Ryan,ryan p,0,no_bio
-2022,House,NY,2,DEM,Jackie Gordon,gordon j,0,no_bio
-2022,House,NY,17,DEM,Alessandra Biaggi,biaggi a,0,no_bio
-2022,House,NY,3,DEM,Joshua Alexander Lafazan,lafazan j,0,no_bio
-2022,House,NY,3,OTH,Melanie D'Arrigo,arrigo m,0,no_bio
-2022,Senate,NY,,OTH,Diane Sare,sare d,0,no_bio
-2022,Governor,OH,,OTH,Niel Petersen,petersen n,0,no_bio
-2022,Governor,OH,,DEM,John Cranley,cranley j,0,no_bio
-2022,Governor,OH,,REP,Mary Taylor,taylor m,0,no_bio
-2022,Governor,OH,,REP,Joe Blystone,blystone j,0,no_bio
-2022,House,OH,9,REP,J.R. Majewski,majewski j,0,no_bio
-2022,Senate,OH,,REP,Jane Timken,timken j,0,no_bio
-2022,Senate,OH,,REP,Josh Mandel,mandel j,0,no_bio
-2022,Governor,OK,,OTH,Natalie Bruno,bruno n,0,no_bio
-2022,Governor,OK,,OTH,Ervin Stone Yen,yen e,0,no_bio
-2022,Senate,OK,,OTH,Kenneth D. Blevins,blevins k,0,no_bio
-2022,Senate,OK,,OTH,Micahael L. Delaney,delaney m,0,no_bio
-2022,Senate,OK,S,DEM,Kendra Horn,horn k,0,no_bio
-2022,Senate,OK,S,OTH,Robert Murphy,murphy r,0,no_bio
-2022,Senate,OK,S,OTH,Ray Woods,woods r,0,no_bio
-2022,Governor,OR,,OTH,Betsy Johnson,johnson b,0,no_bio
-2022,Governor,OR,,OTH,R. Leon Noble,noble r,0,no_bio
-2022,Governor,OR,,OTH,Donice Noelle Smith,smith d,0,no_bio
-2022,House,OR,4,OTH,Levi C. Leatherberry,leatherberry l,0,no_bio
-2022,House,OR,4,OTH,Jim Howard,howard j,0,no_bio
-2022,House,OR,4,OTH,Mike A. Beilstein,beilstein m,0,no_bio
-2022,House,OR,6,OTH,Larry D. McFarland,mcfarland l,0,no_bio
-2022,Senate,OR,,OTH,Dan Pulju,pulju d,0,no_bio
-2022,Senate,OR,,OTH,Chris Henry,henry c,0,no_bio
-2022,Governor,PA,,OTH,Matt Hackenburg,hackenburg m,0,no_bio
-2022,Governor,PA,,OTH,Christina P.K. DiGiulio,digiulio c,0,no_bio
-2022,Governor,PA,,OTH,Joe Soloski,soloski j,0,no_bio
-2022,House,PA,12,REP,Mike Doyle,doyle m,0,no_bio
-2022,House,PA,8,REP,Jim Bognet,bognet j,0,no_bio
-2022,House,PA,7,REP,Lisa Scheller,scheller l,0,no_bio
-2022,House,PA,1,DEM,Ashley Ehasz,ehasz a,0,no_bio
-2022,House,PA,10,DEM,Shamaine Daniels,daniels s,0,no_bio
-2022,Senate,PA,,OTH,Erik Gerhardt,gerhardt e,0,no_bio
-2022,Senate,PA,,OTH,Richard L. Weiss,weiss r,0,no_bio
-2022,Senate,PA,,OTH,Daniel Wassmer,wassmer d,0,no_bio
-2022,Senate,PA,,OTH,Ronald Edward Johnson,johnson r,0,no_bio
-2022,Senate,PA,,OTH,Quincy Magee,magee q,0,no_bio
-2022,Senate,PA,,REP,Jeffrey A. Bartos,bartos j,0,no_bio
-2022,Senate,PA,,REP,Richard Sean Parnell,parnell r,0,no_bio
-2022,Governor,RI,,REP,Ashley Kalus,kalus a,0,no_bio
-2022,Governor,RI,,OTH,Zachary Baker Hurwitz,hurwitz z,0,no_bio
-2022,Governor,RI,,OTH,Elijah J. Gizzarelli,gizzarelli e,0,no_bio
-2022,Governor,RI,,OTH,Paul A. Rianna Jr.,rianna p,0,no_bio
-2022,Governor,RI,,REP,Jonathan J. Riccitelli,riccitelli j,0,no_bio
-2022,House,RI,2,OTH,William H. Gilbert,gilbert w,0,no_bio
-2022,House,RI,2,DEM,Omar Bah,bah o,0,no_bio
-2022,House,RI,2,DEM,Joy Fox,fox j,0,no_bio
-2022,House,RI,2,DEM,Sarah Morgenthau,morgenthau s,0,no_bio
-2022,House,RI,2,DEM,David Segal,segal d,0,no_bio
-2022,Governor,SC,,OTH,Bruce Reeves,reeves b,0,no_bio
-2022,Senate,SC,,OTH,Larry Adams,adams l,0,no_bio
-2022,Governor,SD,,OTH,Tracey Quint,quint t,0,no_bio
-2022,House,SD,1,OTH,Collin Duprel,duprel c,0,no_bio
-2022,Senate,SD,,DEM,Brian L. Bengs,bengs b,0,no_bio
-2022,Senate,SD,,OTH,Tamara J. Lesnar,lesnar t,0,no_bio
-2022,Governor,TN,,DEM,Jason Brantley Martin,martin j,0,no_bio
-2022,Governor,TX,,OTH,Delilah Barrios,barrios d,0,no_bio
-2022,Governor,TX,,DEM,Matthew David McConaughey,mcconaughey m,0,no_bio
-2022,Governor,TX,,OTH,Daniel Behrman,behrman d,0,no_bio
-2022,House,TX,15,OTH,Ross Lynn Leone Jr.,leone r,0,no_bio
-2022,House,TX,23,DEM,John Lira,lira j,0,no_bio
-2022,House,TX,23,OTH,Frank Lopez Jr.,lopez f,0,no_bio
-2022,House,TX,23,OTH,James Hart,hart j,0,no_bio
-2022,House,UT,1,DEM,Rick Edwin Jones,jones r,0,no_bio
-2022,House,UT,2,OTH,JayMac McFarland,mcfarland j,0,no_bio
-2022,House,UT,2,OTH,Cassie Easley,easley c,0,no_bio
-2022,House,UT,3,DEM,Glenn J. Wright,wright g,0,no_bio
-2022,House,UT,3,OTH,Daniel Clyde Cummings,cummings d,0,no_bio
-2022,House,UT,3,OTH,Michael Stoddard,stoddard m,0,no_bio
-2022,House,UT,4,DEM,Darlene McDonald,mcdonald d,0,no_bio
-2022,House,UT,4,OTH,January Walker,walker j,0,no_bio
-2022,Senate,UT,,OTH,James Arthur Hansen,hansen j,0,no_bio
-2022,Senate,UT,,REP,Ally Isom,isom a,0,no_bio
-2022,Senate,UT,,REP,Becky Edwards,edwards b,0,no_bio
-2022,House,VA,7,REP,Yesli I. Vega,vega y,0,no_bio
-2022,House,VA,2,REP,Jarome Bell,bell j,0,no_bio
-2022,Governor,VT,,DEM,Brenda Siegel,siegel b,0,no_bio
-2022,Governor,VT,,OTH,Peter Duval,duval p,0,no_bio
-2022,Governor,VT,,OTH,Kevin Hoyt,hoyt k,0,no_bio
-2022,Governor,VT,,OTH,Bernard Peters,peters b,0,no_bio
-2022,Governor,VT,,OTH,Susan Hatch Davis,davis s,0,no_bio
-2022,House,VT,1,OTH,Matt Druzba,druzba m,0,no_bio
-2022,House,VT,1,OTH,Adam Ortiz,ortiz a,0,no_bio
-2022,House,VT,1,OTH,Ericka Redic,redic e,0,no_bio
-2022,House,VT,1,OTH,Luke Talbot,talbot l,0,no_bio
-2022,House,VT,1,REP,Marcia E. Horne,horne m,0,no_bio
-2022,House,VT,1,DEM,Molly Gray,gray m,0,no_bio
-2022,House,VT,1,DEM,Sianey Chase Clifford,clifford s,0,no_bio
-2022,Senate,VT,,REP,Gerald Malloy,malloy g,0,no_bio
-2022,Senate,VT,,OTH,Dawn Marie Ellis,ellis d,0,no_bio
-2022,Senate,VT,,OTH,Natasha Diamondstone-Kohout,kohout n,0,no_bio
-2022,Senate,VT,,REP,Christina Nolan,nolan c,0,no_bio
-2022,House,WA,3,REP,Joe Kent,kent j,0,table_zero
-2022,House,WA,8,REP,Matt Larkin,larkin m,0,table_zero
-2022,House,WA,8,REP,Jesse Jensen,jensen j,0,table_zero
-2022,House,WA,8,REP,Reagan Dunn,dunn r,0,table_zero
-2022,House,WA,4,REP,Loren Culp,culp l,0,table_zero
-2022,Governor,WI,,REP,Tim Michels,michels t,0,no_bio
-2022,Governor,WI,,REP,Rebecca Kleefisch,kleefisch r,0,no_bio
-2022,Governor,WI,,REP,Kevin Nicholson,nicholson k,0,no_bio
-2022,Governor,WI,,REP,Timothy S. Ramthun,ramthun t,0,no_bio
-2022,House,WI,3,DEM,Deb Baldus McGrath,mcgrath d,0,no_bio
-2022,Governor,WY,,OTH,Jared J. Baldes,baldes j,0,no_bio
-2022,House,WY,1,DEM,Lynnette GreyBull,greybull l,0,no_bio
-2022,House,WY,1,OTH,Richard Brubaker,brubaker r,0,no_bio
-2022,House,WY,1,OTH,Marissa Joy Selvig,selvig m,0,no_bio
-2024,House,AK,1,DEM,Mary S. Peltola,peltola m,0,no_bio
-2024,House,AK,1,OTH,John Wayne Howe,howe j,0,no_bio
-2024,House,AK,1,DEM,Eric Hafner,hafner e,0,no_bio
-2024,House,AK,1,REP,Nancy A. Dahlstrom,dahlstrom n,0,no_bio
-2024,House,AK,1,OTH,Chris Bye,bye c,0,no_bio
-2024,Senate,AZ,,OTH,Eduardo Quintana,quintana e,0,no_bio
-2024,Senate,AZ,,OTH,Michael Norton,norton m,0,no_bio
-2024,Senate,AZ,,OTH,Sarah Williams,williams s,0,no_bio
-2024,Senate,AZ,,REP,Mark Lamb,lamb m,0,no_bio
-2024,Senate,AZ,,REP,Brian Wright,wright b,0,no_bio
-2024,Senate,AZ,,REP,Jim Lamon,lamon j,0,no_bio
-2024,House,CA,49,REP,Matt Gunderson,gunderson m,0,no_bio
-2024,House,CA,51,REP,Bill Wells,wells b,0,no_bio
-2024,House,CA,41,DEM,Will Rollins,rollins w,0,no_bio
-2024,House,CA,12,DEM,Jennifer Tran,tran j,0,no_bio
-2024,House,CA,50,REP,Peter J. Bono,bono p,0,no_bio
-2024,House,CA,52,REP,Justin Lee,lee j,0,no_bio
-2024,House,CA,48,DEM,Stephen Houlahan,houlahan s,0,no_bio
-2024,House,CA,51,OTH,Stan Caplan,caplan s,0,no_bio
-2024,House,CA,49,REP,Margarita Wilkinson,wilkinson m,0,no_bio
-2024,House,CA,47,DEM,Joanna Weiss,weiss j,0,no_bio
-2024,Senate,CA,S,REP,Steve Garvey,garvey s,0,no_bio
-2024,Senate,CA,S,DEM,Katie Porter,porter k,0,no_bio
-2024,House,CO,4,DEM,Ike McCorkle,mccorkle i,0,no_bio
-2024,House,CO,4,DEM,Trisha Calvarese,calvarese t,0,no_bio
-2024,House,CO,4,REP,Jerry Sonnenberg,sonnenberg j,0,no_bio
-2024,Senate,CT,,REP,Matthew M. Corey,corey m,0,no_bio
-2024,House,FL,13,DEM,Whitney Fox,fox w,0,no_bio
-2024,House,FL,4,DEM,"LaShonda ""L.J."" Holloway",holloway l,0,no_bio
-2024,House,FL,15,DEM,"Patricia ""Pat"" Kemp",kemp p,0,no_bio
-2024,House,FL,27,DEM,Mike Davey,davey m,0,no_bio
-2024,House,FL,28,DEM,Phil Ehr,ehr p,0,no_bio
-2024,Senate,FL,,OTH,Feena Bonoan,bonoan f,0,no_bio
-2024,Senate,FL,,OTH,Ben Everidge,everidge b,0,no_bio
-2024,Senate,FL,,OTH,Tuan T.Q. Nguyen,nguyen t,0,no_bio
-2024,Senate,FL,,DEM,Phil Ehr,ehr p,0,no_bio
-2024,House,GA,2,REP,A. Wayne Johnson,johnson a,0,no_bio
-2024,House,IA,3,DEM,Lanon Baccam,baccam l,0,no_bio
-2024,House,IL,11,REP,Jerry Evans,evans j,0,no_bio
-2024,Governor,IN,,OTH,Donald G. Rainwater,rainwater d,0,no_bio
-2024,Governor,IN,,REP,Suzanne Crouch,crouch s,0,no_bio
-2024,Governor,IN,,REP,Curtis T. Hill,hill c,0,no_bio
-2024,Senate,IN,,DEM,Valerie McCray,mccray v,0,no_bio
-2024,Senate,IN,,OTH,Andrew Horning,horning a,0,no_bio
-2024,Senate,MA,,REP,Robert Antonellis,antonellis r,0,no_bio
-2024,Senate,MA,,REP,Ian C. Cain,cain i,0,no_bio
-2024,Senate,MA,,REP,Aaron L. Packard,packard a,0,no_bio
-2024,Senate,MA,,REP,Jonathan A. Kraft,kraft j,0,no_bio
-2024,Senate,MA,,REP,Karyn E. Polito,polito k,0,no_bio
-2024,Senate,MD,,OTH,Mike Scott,scott m,0,no_bio
-2024,Senate,MD,,OTH,Nancy Wallace,wallace n,0,no_bio
-2024,Senate,MD,,OTH,Emmanuel O. Osuchukwu,osuchukwu e,0,no_bio
-2024,Senate,MD,,DEM,David J. Trone,trone d,0,no_bio
-2024,Senate,ME,,DEM,David Allen Costello,costello d,0,no_bio
-2024,Senate,ME,,REP,Demi Kouzounas,kouzounas d,0,no_bio
-2024,Senate,ME,,OTH,Jason S. Cherry,cherry j,0,no_bio
-2024,House,MI,7,OTH,Leah Rachel Dailey,dailey l,0,no_bio
-2024,House,MI,10,DEM,Carl J. Marlinga,marlinga c,0,no_bio
-2024,House,MI,10,OTH,Mike Saliba,saliba m,0,no_bio
-2024,House,MI,10,OTH,Andrea Kirby,kirby a,0,no_bio
-2024,House,MI,8,REP,Paul Junge,junge p,0,no_bio
-2024,Senate,MI,,OTH,Joseph Solis-Mullen,mullen j,0,no_bio
-2024,Senate,MI,,OTH,Dave Stein,stein d,0,no_bio
-2024,Senate,MI,,OTH,Douglas P. Marsh,marsh d,0,no_bio
-2024,Senate,MI,,OTH,Doug Dern,dern d,0,no_bio
-2024,Senate,MI,,OTH,James Frizzell,frizzell j,0,no_bio
-2024,Senate,MI,,REP,Sandy Pensler,pensler s,0,no_bio
-2024,Senate,MI,,DEM,Hill Harper,harper h,0,no_bio
-2024,Senate,MI,,DEM,Nasser Beydoun,beydoun n,0,no_bio
-2024,Senate,MI,,REP,Nicolette Snyder,snyder n,0,no_bio
-2024,Senate,MI,,REP,John Tuttle,tuttle j,0,no_bio
-2024,House,MN,2,OTH,Thomas William Bowman,bowman t,0,no_bio
-2024,Senate,MN,,OTH,Rebecca Whiting,whiting r,0,no_bio
-2024,Senate,MN,,OTH,Joyce Lynne Lacey,lacey j,0,no_bio
-2024,Senate,MN,,REP,Joe Fraser,fraser j,0,no_bio
-2024,Governor,MO,,OTH,Bill Slantz,slantz b,0,no_bio
-2024,Governor,MO,,OTH,Paul Lehmann,lehmann p,0,no_bio
-2024,Governor,MO,,REP,John R. Ashcroft,ashcroft j,0,no_bio
-2024,Governor,MO,,REP,Bill C. Eigel,eigel b,0,no_bio
-2024,Governor,MO,,DEM,Mike Hamra,hamra m,0,no_bio
-2024,Senate,MO,,OTH,W.C. Young,young w,0,no_bio
-2024,Senate,MO,,OTH,Jared Young,young j,0,no_bio
-2024,Senate,MO,,OTH,Nathan Kline,kline n,0,no_bio
-2024,Senate,MS,,DEM,Ty Pinkins,pinkins t,0,no_bio
-2024,Governor,MT,,OTH,Kaiser Leib,leib k,0,no_bio
-2024,House,MT,1,OTH,Dennis Hayes,hayes d,0,no_bio
-2024,House,MT,2,OTH,Reilly Neill,neill r,0,no_bio
-2024,House,MT,2,OTH,John Metzger,metzger j,0,no_bio
-2024,Senate,MT,,OTH,Robert Barb,barb r,0,no_bio
-2024,Senate,MT,,OTH,Sid Daoud,daoud s,0,no_bio
-2024,Senate,MT,,OTH,Michael Downey,downey m,0,no_bio
-2024,Senate,MT,,REP,Brad Johnson,johnson b,0,no_bio
-2024,Governor,NC,,OTH,Mike Ross,ross m,0,no_bio
-2024,Governor,NC,,OTH,Michael Wayne Turner,turner m,0,no_bio
-2024,Governor,NC,,OTH,Walter Vinny Smith,smith w,0,no_bio
-2024,Governor,NC,,REP,Bill Graham,graham b,0,no_bio
-2024,Governor,NC,,REP,Dale Robbins Folwell,folwell d,0,no_bio
-2024,House,NC,1,OTH,Thomas Aaron Bailey,bailey t,0,no_bio
-2024,Governor,ND,,OTH,Michael Coachman,coachman m,0,no_bio
-2024,Senate,ND,,DEM,Katrina Christiansen,christiansen k,0,no_bio
-2024,Senate,NE,S,DEM,Preston Love Jr.,love p,0,no_bio
-2024,Governor,NH,,OTH,Stephen Villee,villee s,0,no_bio
-2024,Governor,NH,,DEM,Cinde Warmington,warmington c,0,no_bio
-2024,House,NJ,7,DEM,Sue Altman,altman s,0,no_bio
-2024,House,NJ,7,DEM,Jason Blazakis,blazakis j,0,no_bio
-2024,Senate,NJ,,REP,Curtis Bashaw,bashaw c,0,no_bio
-2024,Senate,NJ,,REP,Christine Serrano Glassner,glassner c,0,no_bio
-2024,House,NM,1,REP,Steve Jones,jones s,0,no_bio
-2024,Senate,NM,,REP,Nella Louise Domenici,domenici n,0,no_bio
-2024,House,NV,1,OTH,David Havlicek,havlicek d,0,no_bio
-2024,House,NV,2,OTH,Lynn Chapman,chapman l,0,no_bio
-2024,House,NV,2,OTH,Javi Tachiquin,tachiquin j,0,no_bio
-2024,House,NV,2,OTH,Robert Gregory Kidd,kidd r,0,no_bio
-2024,House,NV,4,OTH,Russell Best,best r,0,no_bio
-2024,House,NV,4,OTH,Timothy John Ferreira,ferreira t,0,no_bio
-2024,Senate,NV,,OTH,Chris Cunningham,cunningham c,0,no_bio
-2024,Senate,NV,,OTH,Janine Hansen,hansen j,0,no_bio
-2024,Senate,NV,,REP,Jeffrey Ross Gunter,gunter j,0,no_bio
-2024,Senate,NV,,REP,James Carl Marchant,marchant j,0,no_bio
-2024,House,NY,17,OTH,Anthony Frascone,frascone a,0,no_bio
-2024,House,NY,3,REP,Mazi Melesa Pilip,pilip m,0,no_bio
-2024,House,NY,3,REP,Kellen Curry,curry k,0,no_bio
-2024,House,NY,3,DEM,Robert P. Zimmerman,zimmerman r,0,no_bio
-2024,Senate,NY,,REP,Michael D. Sapraicone,sapraicone m,0,no_bio
-2024,Senate,OH,,OTH,Donald C. Kissick,kissick d,0,no_bio
-2024,Senate,OH,,REP,Matthew J. Dolan,dolan m,0,no_bio
-2024,Senate,OH,,REP,Frank LaRose,larose f,0,no_bio
-2024,Senate,OH,,REP,Joel Mutchler,mutchler j,0,no_bio
-2024,House,OR,5,OTH,Andrew Aasen,aasen a,0,no_bio
-2024,House,PA,1,DEM,Ashley Ehasz,ehasz a,0,no_bio
-2024,Senate,PA,,OTH,John C. Thomas,thomas j,0,no_bio
-2024,Senate,PA,,OTH,Leila Hazou,hazou l,0,no_bio
-2024,Senate,PA,,OTH,Bernard Selker,selker b,0,no_bio
-2024,Senate,PA,,OTH,Marty Selker,selker m,0,no_bio
-2024,Senate,PA,,OTH,Erik Messina,messina e,0,no_bio
-2024,House,RI,1,REP,Allen R. Waters,waters a,0,no_bio
-2024,Senate,TN,,OTH,Tharon Chandler,chandler t,0,no_bio
-2024,Senate,TN,,DEM,Marquita Bradshaw,bradshaw m,0,no_bio
-2024,House,TX,15,DEM,Michelle Vallejo,vallejo m,0,no_bio
-2024,Senate,TX,,OTH,Ted Brown,brown t,0,no_bio
-2024,Senate,TX,,OTH,Mason Cysewski,cysewski m,0,no_bio
-2024,Senate,TX,,DEM,Roland Gutierrez,gutierrez r,0,no_bio
-2024,Governor,UT,,OTH,Phil Lyman,lyman p,0,no_bio
-2024,Governor,UT,,OTH,Tommy Williams,williams t,0,no_bio
-2024,Governor,UT,,OTH,James Robert Latham,latham j,0,no_bio
-2024,House,UT,3,DEM,Glenn J. Wright,wright g,0,no_bio
-2024,House,UT,1,DEM,Bill Campbell,campbell b,0,no_bio
-2024,House,UT,1,OTH,Daniel Rhead Cottam,cottam d,0,no_bio
-2024,House,UT,2,DEM,Nathaniel Woodward,woodward n,0,no_bio
-2024,Senate,UT,,OTH,Carlton E. Bowen,bowen c,0,no_bio
-2024,House,VA,2,DEM,Missy Cotter Smasal,smasal m,0,no_bio
-2024,Senate,VA,,REP,Glenn Youngkin,youngkin g,0,no_bio
-2024,Governor,VT,,OTH,June Goodband,goodband j,0,no_bio
-2024,Governor,VT,,OTH,Eli Mutino,mutino e,0,no_bio
-2024,Governor,VT,,OTH,Kevin Hoyt,hoyt k,0,no_bio
-2024,House,VT,1,REP,Mark Coester,coester m,0,no_bio
-2024,House,VT,1,OTH,Jill Diamondstone,diamondstone j,0,no_bio
-2024,House,VT,1,OTH,Adam Ortiz,ortiz a,0,no_bio
-2024,Senate,VT,,REP,Gerald Malloy,malloy g,0,no_bio
-2024,Senate,VT,,OTH,Matt Hill,hill m,0,no_bio
-2024,Senate,VT,,OTH,Justin Schoville,schoville j,0,no_bio
-2024,Senate,VT,,OTH,Steve Berry,berry s,0,no_bio
-2024,Governor,WA,,REP,Semi Bird,bird s,0,no_bio
-2024,Senate,WA,,REP,Raul Garcia,garcia r,0,no_bio
-2024,House,WI,1,OTH,Chester Todd,todd c,0,no_bio
-2024,House,WI,3,DEM,Katrina Shankland,shankland k,0,no_bio
-2024,Senate,WI,,REP,Eric D. Hovde,hovde e,0,no_bio
-2024,Senate,WI,,OTH,Phil Anderson,anderson p,0,no_bio
-2024,Senate,WI,,OTH,Thomas Leager,leager t,0,no_bio
-2024,Governor,WV,,OTH,Erika Klie Kolenich,kolenich e,0,no_bio
-2024,Governor,WV,,OTH,Chase Linko-Looper,looper c,0,no_bio
-2024,Senate,WV,,DEM,Glenn Elliott,elliott g,0,no_bio
-2024,Senate,WV,,REP,Alexander X. Mooney,mooney a,0,no_bio
+year,office,state,district,party,candidate,cand_key,won,reason,ev
+1998,House,CA,36,DEM,Janice Hahn,hahn j,0,table_zero,True
+1998,House,HI,1,REP,Gene Ward,ward g,0,no_bio,True
+1998,House,KY,6,DEM,Ernesto Scorsone,scorsone e,0,no_bio,True
+1998,House,MT,1,DEM,Dusty Deschamps,deschamps d,0,table_zero,True
+1998,Governor,NH,,REP,Jay Lucas,lucas j,0,table_zero,True
+1998,House,NM,3,REP,Bill Redmond,redmond b,0,no_bio,True
+1998,Senate,OH,,DEM,Mary Boyle,boyle m,0,table_zero,True
+1998,Senate,OR,,REP,John Lim,lim j,0,table_zero,True
+2000,House,MI,8,DEM,Dianne Byrum,byrum d,0,no_bio,True
+2000,House,MT,1,DEM,Nancy Keenan,keenan n,0,table_zero,True
+2000,Senate,NY,,REP,Rick Lazio,lazio r,0,table_zero,True
+2000,House,OH,1,DEM,John Cranley,cranley j,0,table_zero,True
+2000,House,WA,2,REP,John Koster,koster j,0,table_zero,True
+2002,House,AZ,1,DEM,George Cordova,cordova g,0,table_zero,True
+2002,House,KY,3,DEM,Jack Conway,conway j,0,table_zero,True
+2002,House,KY,4,REP,Geoff Davis,davis g,0,table_zero,True
+2002,Governor,MN,,DEM,Roger Moe,moe r,0,table_zero,True
+2002,House,MT,1,DEM,Steve Kelly,kelly s,0,no_bio,True
+2002,House,NH,1,DEM,Martha Fuller Clark,clark m,0,no_bio,True
+2002,Senate,SC,,DEM,Alex Sanders,sanders a,0,table_zero,True
+2002,House,UT,2,REP,John Swallow,swallow j,0,no_bio,True
+2002,Governor,VT,,DEM,Doug Racine,racine d,0,table_zero,True
+2002,House,WA,2,REP,Norma Smith,smith n,0,table_zero,True
+2002,Senate,WV,,REP,Jay Wolfe,wolfe j,0,table_zero,True
+2004,House,FL,13,DEM,Jan Schneider,schneider j,0,table_zero,True
+2004,House,ME,1,REP,Charlie Summers,summers c,0,no_bio,True
+2004,House,MN,6,DEM,Patty Wetterling,wetterling p,0,no_bio,True
+2004,House,ND,1,REP,Duane Sand,sand d,0,table_zero,True
+2006,House,AK,1,DEM,Diane Benson,benson d,0,no_bio,True
+2006,House,AR,2,REP,Andy Mayberry,mayberry a,0,table_zero,True
+2006,House,IA,3,REP,Jeff Lamberti,lamberti j,0,table_zero,True
+2006,House,IL,6,DEM,Tammy Duckworth,duckworth t,0,table_zero,True
+2006,House,IL,8,REP,David McSweeney,mcsweeney d,0,table_zero,True
+2006,Senate,MI,,REP,Mike Bouchard,bouchard m,0,table_zero,True
+2006,House,SC,5,REP,Ralph Norman,norman r,0,table_zero,True
+2006,House,TX,23,DEM,Ciro D. Rodriguez,rodriguez c,0,table_zero,True
+2006,House,TX,17,REP,Van Taylor,taylor v,0,table_zero,True
+2006,House,UT,2,REP,LaVar Christensen,christensen l,0,table_zero,True
+2006,Senate,UT,,DEM,Pete Ashdown,ashdown p,0,table_zero,True
+2006,House,WA,5,DEM,Peter J. Goldmark,goldmark p,0,table_zero,True
+2008,House,AL,2,REP,Jay Love,love j,0,table_zero,True
+2008,House,DE,1,DEM,Karen M. Hartley-Nagle,nagle k,0,table_zero,True
+2008,Senate,DE,,REP,Christine O'Donnell,donnell c,0,table_zero,True
+2008,House,FL,18,DEM,Annette Taddeo,taddeo a,0,table_zero,True
+2008,House,FL,25,DEM,Joe Garcia,garcia j,0,table_zero,True
+2008,House,ME,1,REP,Charlie Summers,summers c,0,table_zero,True
+2008,Senate,MS,S,OTH,Ronnie Musgrove,musgrove r,0,no_bio,True
+2008,House,ND,1,REP,Duane Sand,sand d,0,table_zero,True
+2008,House,OH,2,DEM,Victoria Wells Wulsin,wulsin v,0,table_zero,True
+2008,House,OR,5,REP,Mike Erickson,erickson m,0,table_zero,True
+2008,House,TX,7,DEM,Michael Peter Skelly,skelly m,0,table_zero,True
+2010,Governor,AK,,DEM,Ethan Berkowitz,berkowitz e,0,table_zero,True
+2010,House,AR,1,DEM,Chad Causey,causey c,0,table_zero,True
+2010,House,AZ,8,REP,Jesse Kelly,kelly j,0,no_bio,True
+2010,House,CA,3,DEM,Ami Bera,bera a,0,table_zero,True
+2010,House,CA,11,REP,David Harmer,harmer d,0,table_zero,True
+2010,House,CA,20,REP,Andy Vidak,vidak a,0,table_zero,True
+2010,House,CT,4,REP,Dan Debicella,debicella d,0,table_zero,True
+2010,Senate,DE,S,REP,Christine O'Donnell,donnell c,0,no_bio,True
+2010,House,FL,25,DEM,Joe Garcia,garcia j,0,table_zero,True
+2010,House,GA,2,REP,Mike Keown,keown m,0,table_zero,True
+2010,Governor,HI,,REP,Duke Aiona,aiona d,0,table_zero,True
+2010,House,IA,2,REP,Mariannette Miller-Meeks,meeks m,0,table_zero,True
+2010,House,IN,2,REP,Jackie Walorski,walorski j,0,table_zero,True
+2010,House,KS,1,DEM,Alan E. Jilka,jilka a,0,table_zero,True
+2010,House,KY,6,REP,Andy Barr,barr a,0,table_zero,True
+2010,House,MA,6,REP,Bill Hudak,hudak b,0,table_zero,True
+2010,House,MI,1,DEM,Gary McDowell,mcdowell g,0,table_zero,True
+2010,House,MI,15,REP,Rob Steele,steele r,0,table_zero,True
+2010,House,NC,8,REP,Harold Johnson,johnson h,0,table_zero,True
+2010,House,NH,2,DEM,Ann McLane Kuster,kuster a,0,table_zero,True
+2010,House,NY,20,DEM,Scott Murphy,murphy s,0,table_zero,True
+2010,House,VA,5,DEM,Tom S. Perriello,perriello t,0,no_bio,True
+2010,House,WA,3,DEM,Denny Heck,heck d,0,table_zero,True
+2010,House,WA,8,DEM,Suzan DelBene,delbene s,0,table_zero,True
+2010,House,WA,2,REP,John Koster,koster j,0,table_zero,True
+2010,Senate,WV,S,REP,John Raese,raese j,0,no_bio,True
+2012,House,AZ,8,REP,Jesse Kelly,kelly j,0,no_bio,True
+2012,House,UT,2,DEM,F. Jay Seegmiller,seegmiller f,0,no_bio,True
+2014,House,CA,31,REP,Paul Chabot,chabot p,0,no_bio,True
+2014,House,DE,1,REP,Rose Izzo,izzo r,0,table_zero,True
+2014,Senate,DE,,REP,Kevin Wade,wade k,0,no_bio,True
+2014,Senate,HI,S,REP,Cam Cavasso,cavasso c,0,no_bio,True
+2014,House,IA,4,DEM,Jim Mowrer,mowrer j,0,no_bio,True
+2014,House,KS,2,DEM,Margie Wakefield,wakefield m,0,no_bio,True
+2014,Senate,OK,S,DEM,Constance N. Johnson,johnson c,0,no_bio,True
+2014,Senate,SC,S,DEM,Joyce Dickerson,dickerson j,0,no_bio,True
+2016,House,CA,31,REP,Paul Chabot,chabot p,0,no_bio,True
+2016,House,IA,3,DEM,Jim Mowrer,mowrer j,0,no_bio,True
+2018,Governor,AK,,OTH,Billy Toien,toien b,0,no_bio,True
+2018,House,AR,2,OTH,Joe Swafford,swafford j,0,no_bio,True
+2018,House,AR,4,OTH,Tom Canada,canada t,0,no_bio,True
+2018,Governor,AZ,,OTH,Barry Hess,hess b,0,no_bio,True
+2018,House,FL,9,REP,Wayne Liebnitzky,liebnitzky w,0,no_bio,True
+2018,House,IA,1,OTH,Troy Hageman,hageman t,0,no_bio,True
+2018,House,IA,2,REP,Christopher Peters,peters c,0,no_bio,True
+2018,House,IL,12,OTH,Randall Auxier,auxier r,0,no_bio,True
+2018,House,KS,2,OTH,Kelly Standley,standley k,0,no_bio,True
+2018,Senate,MD,,OTH,Arvin Vohra,vohra a,0,no_bio,True
+2018,House,MN,7,REP,Dave Hughes,hughes d,0,no_bio,True
+2018,Senate,MN,,OTH,Dennis Schuller,schuller d,0,no_bio,True
+2018,Senate,MS,,OTH,Danny Bedwell,bedwell d,0,no_bio,True
+2018,House,MT,1,OTH,Elinor Swanson,swanson e,0,no_bio,True
+2018,House,NE,2,DEM,Kara Eastman,eastman k,0,table_zero,True
+2018,Governor,NH,,OTH,Jilletta Jarvis,jarvis j,0,no_bio,True
+2018,House,NJ,2,REP,Seth Grossman,grossman s,0,no_bio,True
+2018,Senate,NJ,,OTH,Murray Sabrin,sabrin m,0,no_bio,True
+2018,Governor,NM,,OTH,Bob Walsh,walsh b,0,no_bio,True
+2018,House,NM,3,OTH,Christopher Manning,manning c,0,no_bio,True
+2018,Governor,NV,,OTH,Russell Best,best r,0,no_bio,True
+2018,House,NY,19,REP,John J. Faso,faso j,0,no_bio,True
+2018,House,NY,24,DEM,Dana Balter,balter d,0,no_bio,True
+2018,House,OH,4,DEM,Janet Garrett,garrett j,0,no_bio,True
+2018,Senate,OH,,OTH,Stephen Faris,faris s,0,no_bio,True
+2018,Senate,OH,,OTH,Bruce Jaynes,jaynes b,0,no_bio,True
+2018,House,OR,2,DEM,Jamie McLeod-Skinner,skinner j,0,table_zero,True
+2018,House,OR,5,REP,Mark Callahan,callahan m,0,table_zero,True
+2018,House,SC,1,REP,Katie Arrington,arrington k,0,table_zero,True
+2018,House,UT,1,OTH,Eric Eliason,eliason e,0,no_bio,True
+2018,House,UT,3,OTH,Gregory C. Duerden,duerden g,0,no_bio,True
+2018,House,VA,9,DEM,Anthony Flaccavento,flaccavento a,0,no_bio,True
+2020,House,AK,1,DEM,Alyse S. Galvin,galvin a,0,no_bio,True
+2020,Senate,AK,,OTH,John Wayne Howe,howe j,0,no_bio,True
+2020,Senate,AK,,OTH,Forrest Dunbar,dunbar f,0,no_bio,True
+2020,Senate,AK,,DEM,Forrest Dunbar,dunbar f,0,no_bio,True
+2020,House,CA,50,DEM,Ammar Campa-Najjar,najjar a,0,no_bio,True
+2020,House,CA,39,DEM,Gil Cisneros,cisneros g,0,no_bio,True
+2020,House,CA,25,DEM,Christy Smith,smith c,0,no_bio,True
+2020,House,CA,21,DEM,TJ Cox,cox t,0,no_bio,True
+2020,House,CA,48,DEM,Harley Rouda,rouda h,0,no_bio,True
+2020,House,CO,3,OTH,John Ryan Keil,keil j,0,no_bio,True
+2020,House,CO,3,OTH,Critter Milton,milton c,0,no_bio,True
+2020,House,FL,7,REP,Joel Greenberg,greenberg j,0,no_bio,True
+2020,Senate,GA,,OTH,Shane Hazel,hazel s,0,no_bio,True
+2020,House,IA,3,OTH,Bryan Jack Holder,holder b,0,no_bio,True
+2020,Senate,IA,,OTH,Rick Stewart,stewart r,0,no_bio,True
+2020,House,IL,13,DEM,Betsy Dirksen Londrigan,londrigan b,0,no_bio,True
+2020,Senate,IL,,OTH,Danny Malouf,malouf d,0,no_bio,True
+2020,Governor,IN,,OTH,Donald G. Rainwater,rainwater d,0,no_bio,True
+2020,Senate,KS,,OTH,Jason Buckley,buckley j,0,no_bio,True
+2020,Senate,KY,,OTH,Brad Barron,barron b,0,no_bio,True
+2020,Senate,MI,,OTH,Doug Dern,dern d,0,no_bio,True
+2020,Governor,MO,,OTH,Rik Combs,combs r,0,no_bio,True
+2020,Governor,MT,,OTH,Lyman Bishop,bishop l,0,no_bio,True
+2020,House,MT,1,OTH,John Gibney,gibney j,0,no_bio,True
+2020,Senate,MT,,OTH,Wendie Fredrickson,fredrickson w,0,no_bio,True
+2020,Governor,NC,,REP,Tim Moore,moore t,0,no_bio,True
+2020,Governor,NC,,REP,Thomas Roland Tillis,tillis t,0,no_bio,True
+2020,Senate,NC,,OTH,Shannon W. Bray,bray s,0,no_bio,True
+2020,Governor,ND,,OTH,DuWayne Hendrickson,hendrickson d,0,no_bio,True
+2020,Governor,NH,,DEM,Andru Volinsky,volinsky a,0,no_bio,True
+2020,Senate,NM,,OTH,Bob Walsh,walsh b,0,no_bio,True
+2020,Senate,OR,,OTH,Gary Dye,dye g,0,no_bio,True
+2020,Senate,SC,,OTH,Bill Bledsoe,bledsoe b,0,no_bio,True
+2020,Senate,TN,,DEM,James Mackler,mackler j,0,no_bio,True
+2020,Senate,TN,,REP,Manny Sethi,sethi m,0,no_bio,True
+2020,House,TX,31,OTH,Clark Patterson,patterson c,0,no_bio,True
+2020,House,TX,17,DEM,Rick Kennedy,kennedy r,0,no_bio,True
+2020,Governor,UT,,OTH,Gregory C. Duerden,duerden g,0,no_bio,True
+2020,House,UT,3,OTH,Daniel Clyde Cummings,cummings d,0,no_bio,True
+2020,House,UT,2,DEM,Kael Weston,weston k,0,no_bio,True
+2020,Governor,WA,,REP,Loren Culp,culp l,0,no_bio,True
+2020,Senate,WV,,OTH,David Moran,moran d,0,no_bio,True
+2022,House,AK,1,OTH,Chris Bye,bye c,0,no_bio,True
+2022,Senate,AK,,OTH,John Wayne Howe,howe j,0,no_bio,True
+2022,Senate,AL,,OTH,John Sophocleus,sophocleus j,0,no_bio,True
+2022,Senate,AR,,OTH,Kenneth Cates,cates k,0,no_bio,True
+2022,Governor,AZ,,OTH,Barry Hess,hess b,0,no_bio,True
+2022,Governor,AZ,,REP,Karrin Taylor Robson,robson k,0,no_bio,True
+2022,House,CT,2,REP,Mike France,france m,0,no_bio,True
+2022,House,CT,5,REP,George Logan,logan g,0,no_bio,True
+2022,Senate,CT,,REP,Themis Klarides,klarides t,0,no_bio,True
+2022,Senate,CT,,REP,Peter Lumaj,lumaj p,0,no_bio,True
+2022,Governor,GA,,OTH,Shane Hazel,hazel s,0,no_bio,True
+2022,Governor,GA,,REP,David A. Perdue,perdue d,0,no_bio,True
+2022,Senate,GA,,OTH,Chase Oliver,oliver c,0,no_bio,True
+2022,Governor,IA,,OTH,Rick Stewart,stewart r,0,no_bio,True
+2022,Governor,IL,,OTH,Scott Schluter,schluter s,0,no_bio,True
+2022,House,IL,17,REP,Esther Joy King,king e,0,no_bio,True
+2022,Senate,IN,,OTH,James Sceniak,sceniak j,0,no_bio,True
+2022,Governor,MA,,OTH,Charles D. Baker,baker c,0,no_bio,True
+2022,House,ME,2,OTH,Tiffany Bond,bond t,0,no_bio,True
+2022,Governor,MI,,REP,James Craig,craig j,0,no_bio,True
+2022,House,MI,3,REP,Peter Meijer,meijer p,0,no_bio,True
+2022,Governor,MN,,REP,Kendall Qualls,qualls k,0,no_bio,True
+2022,Senate,MO,,DEM,Lucas Kunce,kunce l,0,no_bio,True
+2022,House,MT,1,OTH,John Lamb,lamb j,0,no_bio,True
+2022,House,MT,2,OTH,Sam Rankin,rankin s,0,no_bio,True
+2022,House,NC,1,REP,Sandy Smith,smith s,0,no_bio,True
+2022,Senate,NC,,OTH,Shannon W. Bray,bray s,0,no_bio,True
+2022,Governor,NH,,OTH,Karlyn Borysenko,borysenko k,0,no_bio,True
+2022,Senate,NH,,OTH,Jeremy Kauffman,kauffman j,0,no_bio,True
+2022,Senate,NH,,REP,Bryant Messner,messner b,0,no_bio,True
+2022,Senate,NH,,REP,Corey Lewandowski,lewandowski c,0,no_bio,True
+2022,House,NJ,11,REP,Rosemary Becchi,becchi r,0,no_bio,True
+2022,Governor,NM,,OTH,Karen Bedonie,bedonie k,0,no_bio,True
+2022,Governor,NV,,OTH,Brandon Davis,davis b,0,no_bio,True
+2022,House,NV,1,REP,Mark Robertson,robertson m,0,no_bio,True
+2022,House,NV,2,OTH,Russell Best,best r,0,no_bio,True
+2022,House,NV,3,REP,April Becker,becker a,0,no_bio,True
+2022,House,NV,4,REP,Sam Peters,peters s,0,no_bio,True
+2022,Senate,NV,,OTH,Neil Scott,scott n,0,no_bio,True
+2022,Senate,NV,,REP,Sam Brown,brown s,0,no_bio,True
+2022,Governor,NY,,REP,Harry Wilson,wilson h,0,no_bio,True
+2022,Governor,NY,,DEM,Thomas R. Suozzi,suozzi t,0,no_bio,True
+2022,Governor,NY,,REP,Elise M. Stefanik,stefanik e,0,no_bio,True
+2022,House,NY,22,DEM,Francis Conole,conole f,0,no_bio,True
+2022,House,NY,3,OTH,Melanie D'Arrigo,arrigo m,0,no_bio,True
+2022,Senate,NY,,OTH,Diane Sare,sare d,0,no_bio,True
+2022,Senate,OH,,REP,Jane Timken,timken j,0,no_bio,True
+2022,Governor,PA,,OTH,Matt Hackenburg,hackenburg m,0,no_bio,True
+2022,Governor,SD,,OTH,Tracey Quint,quint t,0,no_bio,True
+2022,House,SD,1,OTH,Collin Duprel,duprel c,0,no_bio,True
+2022,Governor,TX,,OTH,Delilah Barrios,barrios d,0,no_bio,True
+2022,House,UT,3,OTH,Daniel Clyde Cummings,cummings d,0,no_bio,True
+2022,House,UT,3,OTH,Michael Stoddard,stoddard m,0,no_bio,True
+2022,House,UT,4,DEM,Darlene McDonald,mcdonald d,0,no_bio,True
+2022,House,UT,4,OTH,January Walker,walker j,0,no_bio,True
+2022,House,WA,3,REP,Joe Kent,kent j,0,table_zero,True
+2022,House,WA,4,REP,Loren Culp,culp l,0,table_zero,True
+2022,Governor,WI,,REP,Tim Michels,michels t,0,no_bio,True
+2024,House,AK,1,DEM,Mary S. Peltola,peltola m,0,no_bio,True
+2024,House,AK,1,OTH,John Wayne Howe,howe j,0,no_bio,True
+2024,House,AK,1,OTH,Chris Bye,bye c,0,no_bio,True
+2024,Senate,CA,S,REP,Steve Garvey,garvey s,0,no_bio,True
+2024,Governor,IN,,OTH,Donald G. Rainwater,rainwater d,0,no_bio,True
+2024,Senate,IN,,DEM,Valerie McCray,mccray v,0,no_bio,True
+2024,Senate,IN,,OTH,Andrew Horning,horning a,0,no_bio,True
+2024,Senate,MD,,DEM,David J. Trone,trone d,0,no_bio,True
+2024,Senate,MI,,OTH,Doug Dern,dern d,0,no_bio,True
+2024,Senate,MI,,REP,Sandy Pensler,pensler s,0,no_bio,True
+2024,Senate,MI,,DEM,Hill Harper,harper h,0,no_bio,True
+2024,Senate,MI,,DEM,Nasser Beydoun,beydoun n,0,no_bio,True
+2024,Governor,MO,,OTH,Bill Slantz,slantz b,0,no_bio,True
+2024,Governor,MT,,OTH,Kaiser Leib,leib k,0,no_bio,True
+2024,House,MT,1,OTH,Dennis Hayes,hayes d,0,no_bio,True
+2024,Senate,MT,,OTH,Michael Downey,downey m,0,no_bio,True
+2024,Senate,NE,S,DEM,Preston Love Jr.,love p,0,no_bio,True
+2024,Governor,NH,,DEM,Cinde Warmington,warmington c,0,no_bio,True
+2024,House,NV,4,OTH,Russell Best,best r,0,no_bio,True
+2024,Senate,PA,,OTH,Leila Hazou,hazou l,0,no_bio,True
+2024,Senate,PA,,OTH,Bernard Selker,selker b,0,no_bio,True
+2024,House,RI,1,REP,Allen R. Waters,waters a,0,no_bio,True
+2024,Senate,TN,,OTH,Tharon Chandler,chandler t,0,no_bio,True
+2024,Senate,TN,,DEM,Marquita Bradshaw,bradshaw m,0,no_bio,True
+2024,House,TX,15,DEM,Michelle Vallejo,vallejo m,0,no_bio,True
+2024,Senate,TX,,DEM,Roland Gutierrez,gutierrez r,0,no_bio,True
+2024,Governor,UT,,OTH,Tommy Williams,williams t,0,no_bio,True
+2024,Senate,VA,,REP,Glenn Youngkin,youngkin g,0,no_bio,True
+2024,House,VT,1,REP,Mark Coester,coester m,0,no_bio,True
+2024,House,WI,3,DEM,Katrina Shankland,shankland k,0,no_bio,True
+2024,Senate,WV,,REP,Alexander X. Mooney,mooney a,0,no_bio,True
