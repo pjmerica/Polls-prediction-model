@@ -23,6 +23,7 @@ Writes data/candidate_bios.csv (every consumer reads this). Rebuilds from scratc
 """
 import json
 import os
+import re
 
 import pandas as pd
 
@@ -154,6 +155,56 @@ def main():
               f"leak-free as-of-year rows (gap-filling; Wikipedia preferred)")
 
     combined = pd.concat([wiki, pd.DataFrame(bp_rows)], ignore_index=True) if bp_rows else wiki
+
+    # ---- WIKIPEDIA SELF-CROSS-REFERENCE (2026-07-28, user-requested, leak-free) ----
+    # A person's office history is often recorded on SOME of their Wikipedia race pages but
+    # not others: Dino Rossi reads "state senator" (2) in 2004/2010/2016 but 0 on his blank
+    # 2008/2018 table rows. We propagate a person's own informative Wikipedia levels FORWARD
+    # ONLY, which is unambiguously leak-free:
+    #   an office HELD (level L>0) as of Wikipedia bio-year Y applies to that person's races in
+    #   years >= Y (offices persist forward; you don't un-hold an office).
+    # BACKWARD propagation was tried and REMOVED (2026-07-28): a "former US Rep" descriptor in
+    # year Y does NOT reveal how far back the office extends - it gave Denny Heck's 2010 race
+    # level 4 from a 2024 "former U.S. representative" row, but he wasn't a US Rep until 2013 (a
+    # real leak). Forward-only never assumes prior tenure (Rossi 2008->2 still works: forward
+    # from his 2004 state-senator row). Only Wikipedia rows feed the reference (contemporaneous,
+    # trusted); emitted as src="wiki_xref" so it's auditable and ranks under a direct wiki row.
+    w = combined[combined["src"] == "wikipedia"].copy()
+    fwd = {}            # (name,state) -> [(year, level)] of offices held as-of that bio-year
+    for r in w.itertuples():
+        if r.office_level <= 0:
+            continue
+        fwd.setdefault((r.name, r.state), []).append((int(r.year), int(r.office_level)))
+    # existing (key) coverage so we only FILL gaps, never overwrite a real row
+    covered_lvl = {tuple(str(x) for x in (r.year, r.office, r.state, r.district, r.party, r.cand_key)):
+                   r.office_level for r in combined.itertuples()}
+    xref_rows = []
+    if os.path.exists(os.path.join(HERE, "polls_long_with_results.csv")):
+        allraces = F.prepare_polls(pd.read_csv(os.path.join(HERE, "polls_long_with_results.csv"),
+                                               low_memory=False))
+        allraces = allraces.drop_duplicates(subset=["year", "office", "state", "district",
+                                                    "cand_key", "party_std"]).copy()
+        allraces = allraces.rename(columns={"party_std": "party"})
+        allraces["district"] = allraces["district"].fillna("").astype(str).str.replace(r"\.0$", "", regex=True)
+        for r in allraces.itertuples():
+            k = (r.candidate, r.state)
+            best = 0
+            for (y, l) in fwd.get(k, []):
+                if y <= r.year:            # office held by bio-year Y, race is in year >= Y
+                    best = max(best, l)
+            if best <= 0:
+                continue
+            rk = tuple(str(x) for x in (r.year, r.office, r.state, r.district, r.party, r.cand_key))
+            if covered_lvl.get(rk, 0) >= best:   # only fill if it beats what's there (incl table-0)
+                continue
+            xref_rows.append(dict(
+                year=r.year, office=r.office, state=r.state, district=r.district, party=r.party,
+                name=r.candidate, cand_key=r.cand_key, office_level=int(best),
+                bio_in_office=0, bio_prior_candidacy=0, src="wiki_xref"))
+        combined = pd.concat([combined, pd.DataFrame(xref_rows)], ignore_index=True) if xref_rows else combined
+        print(f"wikipedia self-cross-reference: {len(xref_rows)} gap rows "
+              f"(forward office-persistence, leak-free)")
+
     # final dedup: on a key collision keep the HIGHER office_level. This lets a Ballotpedia
     # real-level row override a Wikipedia table-zero row (the only case a BP row is emitted for
     # an already-covered key - see the override gate above), while still keeping Wikipedia's
@@ -165,8 +216,10 @@ def main():
     # win over a Wikipedia table-zero level-0 (unknown) at the same key, so the surviving row
     # carries src="manual" and measure_office_coverage.py counts it as covered, not table_zero
     # (fixed 2026-07-27: Renzi/Ellmers-type verified first-timers were being read as uncovered).
-    _src_rank = {"manual": 0, "ballotpedia": 1, "wikipedia": 2}
-    combined["_sr"] = combined["src"].map(_src_rank).fillna(3)
+    # src authority on EQUAL level: hand-verified manual > ballotpedia > direct wikipedia >
+    # wiki self-cross-reference (a derived fill, ranks last so a direct row always wins its key).
+    _src_rank = {"manual": 0, "ballotpedia": 1, "wikipedia": 2, "wiki_xref": 3}
+    combined["_sr"] = combined["src"].map(_src_rank).fillna(4)
     combined = (combined.sort_values(["office_level", "_sr"], ascending=[False, True],
                                      kind="stable")
                         .drop_duplicates(subset=KEY, keep="first")

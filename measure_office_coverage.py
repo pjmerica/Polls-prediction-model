@@ -50,7 +50,8 @@ def covered_keys_and_tablezeros():
         # (src manual/ballotpedia is verified data, so its level-0 is a real "no prior office",
         # not a blank results-table unknown). Only a blank-descriptor Wikipedia level-0 is a
         # table-zero (unknown).
-        if r.office_level > 0 or _real_descriptor(desc) or src in ("manual", "ballotpedia"):
+        if (r.office_level > 0 or _real_descriptor(desc)
+                or src in ("manual", "ballotpedia", "wiki_xref")):
             covered.add(k)
         else:
             tablezero.add(k)

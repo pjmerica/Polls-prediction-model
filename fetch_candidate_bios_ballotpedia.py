@@ -316,11 +316,31 @@ def main():
         done = set(zip(old["candidate"], old["state"]))
         print(f"resuming: {len(done)} lookups already done")
 
+    # per-run lookup cap (2026-07-28): do a solid batch then stop cleanly for a cooldown,
+    # rather than pushing until a block. Tunable via --max-per-run N (default 100). Keeps each
+    # resume cycle productive without hammering Ballotpedia into a longer wall.
+    max_per_run = 100
+    miss_guard = 20      # consecutive-miss soft-block threshold (original default); tunable
+                         # via --miss-guard=N (the non-winner sweep passes a large value because
+                         # its absence streaks are genuine no-profile people, not a block)
+    for a in sys.argv:
+        if a.startswith("--max-per-run="):
+            max_per_run = int(a.split("=", 1)[1])
+        if a.startswith("--miss-guard="):
+            miss_guard = int(a.split("=", 1)[1])
+
     n_hit = 0
+    n_this_run = 0
     consec_miss = 0   # soft-block guard: many consecutive real-fetch misses = a 200-status
     for i, r in enumerate(people.itertuples()):
         if (r.candidate, r.state) in done:
             continue
+        if n_this_run >= max_per_run:
+            pd.DataFrame(rows).to_csv(OUT, index=False)
+            print(f"  -- reached --max-per-run={max_per_run} this cycle; stopping clean "
+                  f"(progress saved, resume to continue)")
+            break
+        n_this_run += 1
         try:
             info, url, offices = resolve_and_extract(r.candidate, r.state)
         except RateLimited:
@@ -355,7 +375,13 @@ def main():
             # pages) is the block signature, not real absence. Bail out clean rather than
             # poison - a resume will retry these.
             consec_miss += 1
-            if consec_miss >= 20:
+            # SOFT-BLOCK GUARD, now tunable (--miss-guard=N, default 40). Verified 2026-07-28
+            # that on the NON-WINNER set a run of 40 consecutive misses was REAL ABSENCE, not a
+            # block (Nancy Pelosi's page fetched fine immediately after the stop) - obscure
+            # losing challengers genuinely have no Ballotpedia profile. So for that set the guard
+            # HURTS (premature stops on honest absence streaks); pass a large --miss-guard and
+            # rely on the RateLimited exception (real 429/reset) to catch an actual block instead.
+            if consec_miss >= miss_guard:
                 pd.DataFrame(rows).to_csv(OUT, index=False)
                 print(f"  !! {consec_miss} consecutive misses - likely a soft volume-block, "
                       f"not real absence. Stopping clean; re-run later to resume.")

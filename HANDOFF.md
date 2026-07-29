@@ -4,6 +4,30 @@ For the next agent. Read AGENTS.md first (architecture + rules), CONCERNS.md sec
 (risk register + roadmap). This file: what's mid-flight RIGHT NOW, what's most likely to
 break, and what to do next, in order.
 
+## CURRENT STATE 2026-07-29 — non-winner backfill in progress + Wikipedia self-cross-ref.
+
+Working toward non-winner coverage after WINNERS hit 100% (Stage 3). Overall now **72.6%**.
+- **Wikipedia SELF-CROSS-REFERENCE (user asked "are you cross-referencing Wikipedia too?"):**
+  a person's office history is on SOME of their Wikipedia race pages but not others (Dino
+  Rossi: "state senator"=2 in 2004/2010/2016 but 0 on his blank 2008/2018 table rows). Added a
+  builder step that propagates a person's own informative Wikipedia levels FORWARD ONLY - an
+  office held as-of bio-year Y applies to their races in years >= Y (leak-free; offices
+  persist). BACKWARD propagation was tried + REMOVED (it gave Denny Heck's 2010 race level 4
+  from a 2024 "former US Rep" row, but he wasn't a US Rep until 2013 - a leak). Emitted as
+  src="wiki_xref". Resolved ~240 rows from data already in hand, 70.8% -> 72.6% overall.
+- **Ballotpedia non-winner sweep:** 826/1315 people looked up, but the TAIL yield is only ~5-8%
+  (the remaining are mostly genuine no-profile losing challengers = verified level 0). Key
+  finding: the soft-block guard's consecutive-miss stops were REAL ABSENCE, not blocks
+  (verified Pelosi fetched fine mid-stop) - so the scraper now takes --miss-guard=N (large value
+  for this set) + --max-per-run=N. Default miss_guard restored to 20 (user request). Ballotpedia
+  IS now genuinely rate-limiting the IP (real RateLimited, needs multi-hour cooldown) after
+  heavy use today.
+- **REMAINING to 100% overall:** 1,234 uncovered people - 485 BP-checked-no-profile (safe to
+  bulk verified-level-0) + 714 never-BP-reached (block cut off; ~7% would have profiles).
+  Endgame: finish/limit the BP sweep, then bulk-append the confirmed-no-profile people to
+  data/candidate_bios_manual.csv with offices_json [] (=verified level 0), rebuild, re-measure.
+  Feature still opt-in / not shipped - data completeness only.
+
 ## CURRENT STATE 2026-07-28 — Stage 3 done: WINNERS office_level coverage = 100%.
 
 Hand-coded office histories for all 248 uncovered winners no scraper could reach ->
