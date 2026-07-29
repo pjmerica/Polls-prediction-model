@@ -2,7 +2,6 @@ year,office,state,district,party,candidate,cand_key,is_winner,reason
 1998,Senate,AL,,DEM,Clayton Suddith,suddith c,0,table_zero
 1998,House,AR,2,REP,Phil Wyrick,wyrick p,0,no_bio
 1998,Senate,AZ,,DEM,Edward Ranger,ranger e,0,table_zero
-1998,House,CA,36,DEM,Janice Hahn,hahn j,0,table_zero
 1998,House,CA,24,REP,Randy Hoffman,hoffman r,0,table_zero
 1998,House,CA,46,REP,Robert K. Dornan,dornan r,0,no_bio
 1998,House,CO,2,REP,Bob Greenlee,greenlee b,0,no_bio
@@ -24,11 +23,9 @@ year,office,state,district,party,candidate,cand_key,is_winner,reason
 1998,Governor,NH,,REP,Jay Lucas,lucas j,0,table_zero
 1998,House,NH,2,DEM,Mary Rauh,rauh m,0,table_zero
 1998,Senate,NH,,DEM,George Condodemetraky,condodemetraky g,0,table_zero
-1998,House,NM,3,REP,Bill Redmond,redmond b,0,no_bio
 1998,House,NV,1,REP,Don Chairez,chairez d,0,no_bio
 1998,Senate,OH,,DEM,Mary Boyle,boyle m,0,table_zero
 1998,House,OR,1,REP,Molly Bordonaro,bordonaro m,0,no_bio
-1998,Senate,OR,,REP,John Lim,lim j,0,table_zero
 1998,Governor,PA,,DEM,Ivan Itkin,itkin i,0,table_zero
 1998,House,PA,10,DEM,Patrick R. Casey,casey p,0,no_bio
 1998,Senate,PA,,DEM,Bill Lloyd,lloyd b,0,no_bio
@@ -56,11 +53,7 @@ year,office,state,district,party,candidate,cand_key,is_winner,reason
 2000,Senate,MA,,REP,Jack E. Robinson,robinson j,0,table_zero
 2000,Senate,MD,,REP,Paul H. Rappaport,rappaport p,0,table_zero
 2000,Senate,ME,,DEM,Mark W. Lawrence,lawrence m,0,table_zero
-2000,House,MI,8,DEM,Dianne Byrum,byrum d,0,no_bio
 2000,House,MO,2,DEM,Ted House,house t,0,no_bio
-2000,House,MT,1,DEM,Nancy Keenan,keenan n,0,table_zero
-2000,Senate,NY,,REP,Rick Lazio,lazio r,0,table_zero
-2000,House,OH,1,DEM,John Cranley,cranley j,0,table_zero
 2000,House,OH,12,DEM,Maryellen O'Shaughnessy,shaughnessy m,0,table_zero
 2000,House,OK,2,REP,Andy Ewing,ewing a,0,table_zero
 2000,House,RI,1,REP,Stephen Cabral,cabral s,0,no_bio
@@ -71,7 +64,6 @@ year,office,state,district,party,candidate,cand_key,is_winner,reason
 2000,Governor,VT,,REP,Ruth Dwyer,dwyer r,0,table_zero
 2000,House,WA,8,DEM,Heidi Behrens-Benedict,benedict h,0,table_zero
 2000,House,WA,1,REP,Dan McDonald,mcdonald d,0,table_zero
-2000,House,WA,2,REP,John Koster,koster j,0,table_zero
 2000,Senate,WI,,REP,John Gillespie,gillespie j,0,table_zero
 2000,House,WV,2,DEM,Jim Humphreys,humphreys j,0,table_zero
 2002,Governor,AK,,DEM,Fran Ulmer,ulmer f,0,table_zero
@@ -94,8 +86,6 @@ year,office,state,district,party,candidate,cand_key,is_winner,reason
 2002,House,IN,7,REP,Ambrose A. McVey,mcvey a,0,no_bio
 2002,House,KS,4,DEM,Carlos J. Nolla,nolla c,0,table_zero
 2002,House,KS,3,REP,Adam Taff,taff a,0,table_zero
-2002,House,KY,3,DEM,Jack Conway,conway j,0,table_zero
-2002,House,KY,4,REP,Geoff Davis,davis g,0,table_zero
 2002,House,LA,5,DEM,Rodney M. Alexander,alexander r,0,no_bio
 2002,House,LA,5,REP,Lee Fletcher,fletcher l,0,no_bio
 2002,Senate,LA,,REP,Suzanne Haik Terrell,terrell s,0,no_bio
@@ -104,13 +94,11 @@ year,office,state,district,party,candidate,cand_key,is_winner,reason
 2002,House,ME,2,REP,Kevin L. Raye,raye k,0,no_bio
 2002,House,MI,11,DEM,Kevin Kelley,kelley k,0,table_zero
 2002,Senate,MI,,REP,Andrew Rocky Raczkowski,raczkowski a,0,no_bio
-2002,Governor,MN,,DEM,Roger Moe,moe r,0,table_zero
 2002,Senate,MN,,DEM,Walter F. Mondale,mondale w,0,table_zero
 2002,House,MT,1,DEM,Steve Kelly,kelly s,0,no_bio
 2002,House,NC,8,DEM,Chris Kouri,kouri c,0,table_zero
 2002,House,NC,13,REP,Carolyn W. Grant,grant c,0,table_zero
 2002,House,ND,1,REP,Rick Clayburgh,clayburgh r,0,table_zero
-2002,House,NH,1,DEM,Martha Fuller Clark,clark m,0,no_bio
 2002,House,NH,2,DEM,Katrina Swett,swett k,0,no_bio
 2002,House,NJ,5,DEM,Anne Ricks Sumers,sumers a,0,no_bio
 2002,House,NM,1,DEM,Richard M. Romero,romero r,0,no_bio
@@ -131,12 +119,9 @@ year,office,state,district,party,candidate,cand_key,is_winner,reason
 2002,House,TX,5,DEM,Ron Chapman,chapman r,0,table_zero
 2002,House,TX,11,REP,Ramsey Farley,farley r,0,table_zero
 2002,House,TX,25,REP,Thomas Reiser,reiser t,0,table_zero
-2002,House,UT,2,REP,John Swallow,swallow j,0,no_bio
 2002,Senate,VA,,OTH,Nancy B. Spannaus,spannaus n,0,table_zero
-2002,Governor,VT,,DEM,Doug Racine,racine d,0,table_zero
 2002,House,WA,2,REP,Norma Smith,smith n,0,table_zero
 2002,House,WV,2,DEM,Jim Humphreys,humphreys j,0,table_zero
-2002,Senate,WV,,REP,Jay Wolfe,wolfe j,0,table_zero
 2004,House,AR,2,REP,Marvin Parks,parks m,0,no_bio
 2004,House,AZ,1,DEM,Paul Babbitt,babbitt p,0,no_bio
 2004,House,CO,7,DEM,David J. Thomas,thomas d,0,no_bio
@@ -152,7 +137,6 @@ year,office,state,district,party,candidate,cand_key,is_winner,reason
 2004,House,KS,4,DEM,Michael Kinard,kinard m,0,no_bio
 2004,House,KY,3,DEM,Tony Miller,miller t,0,table_zero
 2004,House,LA,3,REP,William Tauzin,tauzin w,0,no_bio
-2004,House,ME,1,REP,Charlie Summers,summers c,0,no_bio
 2004,House,ME,2,REP,Brian N. Hamel,hamel b,0,no_bio
 2004,House,MN,6,DEM,Patty Wetterling,wetterling p,0,no_bio
 2004,House,MO,5,REP,Jeanne Patterson,patterson j,0,no_bio
@@ -177,7 +161,6 @@ year,office,state,district,party,candidate,cand_key,is_winner,reason
 2004,House,WA,5,DEM,Donald K. Barbieri,barbieri d,0,table_zero
 2004,House,WA,8,DEM,Dave Ross,ross d,0,table_zero
 2006,House,AK,1,DEM,Diane Benson,benson d,0,no_bio
-2006,House,AR,2,REP,Andy Mayberry,mayberry a,0,table_zero
 2006,House,CA,50,DEM,Francine P. Busby,busby f,0,table_zero
 2006,House,CA,4,DEM,Charles Duane Brown,brown c,0,table_zero
 2006,House,CA,26,DEM,Cynthia Rodriguez Matthews,matthews c,0,table_zero
@@ -193,13 +176,10 @@ year,office,state,district,party,candidate,cand_key,is_winner,reason
 2006,House,GA,8,REP,Michael Allen Collins,collins m,0,table_zero
 2006,House,IA,4,DEM,Selden E. Spencer,spencer s,0,table_zero
 2006,House,IA,1,REP,Mike Whalen,whalen m,0,table_zero
-2006,House,IA,3,REP,Jeff Lamberti,lamberti j,0,table_zero
 2006,House,ID,1,DEM,Larry Grant,grant l,0,no_bio
-2006,House,IL,6,DEM,Tammy Duckworth,duckworth t,0,table_zero
 2006,House,IL,10,DEM,Daniel J. Seals,seals d,0,table_zero
 2006,House,IL,14,DEM,Jonathan Laesch,laesch j,0,table_zero
 2006,House,IL,19,DEM,Danny L. Stover,stover d,0,table_zero
-2006,House,IL,8,REP,David McSweeney,mcsweeney d,0,table_zero
 2006,House,IN,7,REP,Eric Dickerson,dickerson e,0,table_zero
 2006,House,KS,4,DEM,Garth McGinn,mcginn g,0,table_zero
 2006,House,KY,2,DEM,John Michael Weaver,weaver j,0,no_bio
@@ -207,7 +187,6 @@ year,office,state,district,party,candidate,cand_key,is_winner,reason
 2006,House,ME,2,REP,Laurence Scott D'Amboise,amboise l,0,table_zero
 2006,Senate,ME,,DEM,Jean M. Hay Bright,bright j,0,table_zero
 2006,House,MI,7,DEM,Sharon Marie Renier,renier s,0,table_zero
-2006,Senate,MI,,REP,Mike Bouchard,bouchard m,0,table_zero
 2006,Governor,MN,,DEM,Mike Hatch,hatch m,0,table_zero
 2006,House,MN,5,REP,Alan Fine,fine a,0,no_bio
 2006,House,NM,1,DEM,Patricia A. Madrid,madrid p,0,table_zero
@@ -228,17 +207,14 @@ year,office,state,district,party,candidate,cand_key,is_winner,reason
 2006,House,PA,7,REP,W. Curtis Weldon,weldon w,0,no_bio
 2006,House,PA,12,REP,Diana Irey Vaughan,vaughan d,0,no_bio
 2006,Governor,SC,,DEM,Tommy Moore,moore t,0,table_zero
-2006,House,SC,5,REP,Ralph Norman,norman r,0,table_zero
 2006,House,SD,1,REP,Bruce W. Whalen,whalen b,0,table_zero
 2006,House,TX,23,DEM,Ciro D. Rodriguez,rodriguez c,0,table_zero
-2006,House,TX,17,REP,Van Taylor,taylor v,0,table_zero
 2006,House,TX,22,OTH,Shelley Sekula Gibbs,gibbs s,0,no_bio
 2006,House,UT,1,DEM,Steve Olsen,olsen s,0,table_zero
 2006,House,UT,3,DEM,Christian Burridge,burridge c,0,table_zero
 2006,House,UT,2,REP,LaVar Christensen,christensen l,0,table_zero
 2006,Senate,UT,,DEM,Pete Ashdown,ashdown p,0,table_zero
 2006,House,VA,5,DEM,Albert C. Weed,weed a,0,no_bio
-2006,House,WA,5,DEM,Peter J. Goldmark,goldmark p,0,table_zero
 2006,House,WA,8,DEM,Darcy Burner,burner d,0,table_zero
 2006,House,WA,2,REP,Douglas R. Roulstone,roulstone d,0,table_zero
 2006,Senate,WA,,REP,Mike McGavick,mcgavick m,0,table_zero
@@ -257,9 +233,7 @@ year,office,state,district,party,candidate,cand_key,is_winner,reason
 2008,House,FL,9,DEM,Bill Mitchell,mitchell b,0,table_zero
 2008,House,FL,10,DEM,Bob Hackworth,hackworth b,0,table_zero
 2008,House,FL,13,DEM,Christine L. Jennings,jennings c,0,table_zero
-2008,House,FL,18,DEM,Annette Taddeo,taddeo a,0,table_zero
 2008,House,FL,21,DEM,Raul L. Martinez,martinez r,0,table_zero
-2008,House,FL,25,DEM,Joe Garcia,garcia j,0,table_zero
 2008,House,FL,10,REP,Charles William Young,young c,0,no_bio
 2008,House,GA,8,REP,Richard N. Goddard,goddard r,0,no_bio
 2008,House,IA,4,DEM,Becky Greenwald,greenwald b,0,table_zero
@@ -277,7 +251,6 @@ year,office,state,district,party,candidate,cand_key,is_winner,reason
 2008,House,LA,6,DEM,Donald J. Cazayoux,cazayoux d,0,no_bio
 2008,House,LA,6,REP,Woody Jenkins,jenkins w,0,no_bio
 2008,Senate,MA,,REP,Jeffrey K. Beatty,beatty j,0,table_zero
-2008,House,ME,1,REP,Charlie Summers,summers c,0,table_zero
 2008,House,ME,2,REP,John N. Frary,frary j,0,table_zero
 2008,House,MI,9,REP,Joseph K. Knollenberg,knollenberg j,0,no_bio
 2008,Senate,MI,,REP,Jacob W. Hoogendyk Jr.,hoogendyk j,0,table_zero
@@ -286,7 +259,6 @@ year,office,state,district,party,candidate,cand_key,is_winner,reason
 2008,House,MO,6,DEM,Kay Waldo Barnes,barnes k,0,table_zero
 2008,House,MO,9,DEM,Judy Baker,baker j,0,table_zero
 2008,House,MS,1,REP,Greg Davis,davis g,0,table_zero
-2008,Senate,MS,S,OTH,Ronnie Musgrove,musgrove r,0,no_bio
 2008,House,ND,1,REP,Duane Sand,sand d,0,table_zero
 2008,House,NE,2,DEM,James D. Esch,esch j,0,table_zero
 2008,House,NH,2,REP,Jennifer M. Horn,horn j,0,table_zero
@@ -314,10 +286,8 @@ year,office,state,district,party,candidate,cand_key,is_winner,reason
 2008,House,WI,8,REP,John G. Gard,gard j,0,table_zero
 2008,Governor,WV,,REP,Russ Weeks,weeks r,0,table_zero
 2008,Senate,WY,S,DEM,Nicholas H. Carter,carter n,0,no_bio
-2010,Governor,AK,,DEM,Ethan Berkowitz,berkowitz e,0,table_zero
 2010,House,AK,1,DEM,Harry T. Crawford,crawford h,0,table_zero
 2010,Senate,AK,,DEM,Scott T. McAdams,mcadams s,0,table_zero
-2010,House,AR,1,DEM,Chad Causey,causey c,0,table_zero
 2010,House,AR,2,DEM,Joyce Ann Elliott,elliott j,0,table_zero
 2010,House,AR,3,DEM,David Whitaker,whitaker d,0,table_zero
 2010,House,AR,4,REP,Beth Anne Rankin,rankin b,0,table_zero
@@ -325,7 +295,6 @@ year,office,state,district,party,candidate,cand_key,is_winner,reason
 2010,House,AZ,7,REP,Ruth McClung,mcclung r,0,no_bio
 2010,House,AZ,8,REP,Jesse Kelly,kelly j,0,no_bio
 2010,Senate,AZ,,DEM,Rodney Britz Glassman,glassman r,0,table_zero
-2010,House,CA,3,DEM,Ami Bera,bera a,0,table_zero
 2010,House,CA,19,DEM,Loraine Goodwin,goodwin l,0,table_zero
 2010,House,CA,44,DEM,William E. Hedrick,hedrick w,0,no_bio
 2010,House,CA,11,REP,David Harmer,harmer d,0,table_zero
@@ -337,35 +306,28 @@ year,office,state,district,party,candidate,cand_key,is_winner,reason
 2010,House,CT,1,REP,Ann Brickley,brickley a,0,table_zero
 2010,House,CT,2,REP,Janet Peckinpaugh,peckinpaugh j,0,table_zero
 2010,House,CT,3,REP,Gerald Labriola,labriola g,0,no_bio
-2010,House,CT,4,REP,Dan Debicella,debicella d,0,table_zero
 2010,Senate,DE,S,REP,Christine O'Donnell,donnell c,0,no_bio
-2010,House,FL,25,DEM,Joe Garcia,garcia j,0,table_zero
 2010,House,FL,3,REP,Michael F. Yost,yost m,0,table_zero
 2010,House,GA,7,DEM,Douglass S. Heckman,heckman d,0,table_zero
 2010,House,GA,2,REP,Mike Keown,keown m,0,table_zero
-2010,Governor,HI,,REP,Duke Aiona,aiona d,0,table_zero
 2010,House,HI,2,REP,John W. Willoughby,willoughby j,0,table_zero
-2010,House,IA,2,REP,Mariannette Miller-Meeks,meeks m,0,table_zero
 2010,House,ID,2,DEM,Mike Crawford,crawford m,0,table_zero
 2010,Governor,IL,,REP,William E. Brady,brady w,0,no_bio
 2010,House,IL,10,DEM,Daniel J. Seals,seals d,0,table_zero
 2010,House,IL,9,REP,Joel B. Pollak,pollak j,0,table_zero
 2010,House,IN,3,DEM,Thomas E. Hayhurst,hayhurst t,0,table_zero
 2010,House,IN,8,DEM,William Trent Van Haaften,haaften w,0,no_bio
-2010,House,IN,2,REP,Jackie Walorski,walorski j,0,table_zero
 2010,House,IN,7,REP,Marvin Bailey Scott,scott m,0,table_zero
 2010,House,KS,1,DEM,Alan E. Jilka,jilka a,0,table_zero
 2010,House,KS,4,DEM,Raj Goyle,goyle r,0,table_zero
 2010,Senate,KS,,DEM,Lisa Johnston,johnston l,0,table_zero
 2010,House,KY,3,REP,Todd Lally,lally t,0,table_zero
-2010,House,KY,6,REP,Andy Barr,barr a,0,table_zero
 2010,House,MA,4,REP,Sean Bielat,bielat s,0,table_zero
 2010,House,MA,6,REP,Bill Hudak,hudak b,0,table_zero
 2010,House,MA,10,REP,Jeffrey Davis Perry,perry j,0,table_zero
 2010,Senate,MD,,REP,Eric Wargotz,wargotz e,0,table_zero
 2010,House,ME,1,REP,C. Peter Scontras,scontras c,0,no_bio
 2010,House,ME,2,REP,Jason J. Levesque,levesque j,0,table_zero
-2010,House,MI,1,DEM,Gary McDowell,mcdowell g,0,table_zero
 2010,House,MI,3,DEM,Patrick A. Miles,miles p,0,table_zero
 2010,House,MI,9,REP,Andrew Rocky Raczkowski,raczkowski a,0,no_bio
 2010,House,MI,15,REP,Rob Steele,steele r,0,table_zero
@@ -377,14 +339,12 @@ year,office,state,district,party,candidate,cand_key,is_winner,reason
 2010,House,NC,11,REP,Jeff Miller,miller j,0,table_zero
 2010,Governor,NE,,DEM,Mike Meister,meister m,0,table_zero
 2010,House,NE,2,DEM,Tom White,white t,0,table_zero
-2010,House,NH,2,DEM,Ann McLane Kuster,kuster a,0,table_zero
 2010,House,NJ,2,DEM,Gary S. Stein,stein g,0,no_bio
 2010,House,NJ,1,REP,Dale Mark Glading,glading d,0,no_bio
 2010,House,NJ,6,REP,Anna C. Little,little a,0,no_bio
 2010,House,NM,1,REP,Jonathan L. Barela,barela j,0,table_zero
 2010,House,NM,3,REP,Thomas E. Mullins,mullins t,0,table_zero
 2010,House,NY,13,DEM,Michael E. McMahon,mcmahon m,0,table_zero
-2010,House,NY,20,DEM,Scott Murphy,murphy s,0,table_zero
 2010,House,NY,29,DEM,Matthew Zeller,zeller m,0,table_zero
 2010,House,NY,1,REP,Randolph Altschuler,altschuler r,0,table_zero
 2010,House,NY,4,REP,Francis X. Becker,becker f,0,table_zero
@@ -403,12 +363,9 @@ year,office,state,district,party,candidate,cand_key,is_winner,reason
 2010,House,UT,1,DEM,Morgan E. Bowen,bowen m,0,table_zero
 2010,House,UT,3,DEM,Karen E. Hyer,hyer k,0,table_zero
 2010,House,UT,2,REP,Morgan J. Philpot,philpot m,0,table_zero
-2010,House,VA,5,DEM,Tom S. Perriello,perriello t,0,no_bio
 2010,House,VA,9,DEM,Frederick C. Boucher,boucher f,0,no_bio
 2010,Senate,VT,,REP,Leonard Wheeler Britton,britton l,0,table_zero
 2010,House,WA,3,DEM,Denny Heck,heck d,0,table_zero
-2010,House,WA,8,DEM,Suzan DelBene,delbene s,0,table_zero
-2010,House,WA,2,REP,John Koster,koster j,0,table_zero
 2010,House,WA,6,REP,Doug R. Cloud,cloud d,0,table_zero
 2010,House,WA,9,REP,Richard Muri,muri r,0,no_bio
 2010,House,WV,1,DEM,Michael Angelo Oliverio,oliverio m,0,table_zero
@@ -454,7 +411,6 @@ year,office,state,district,party,candidate,cand_key,is_winner,reason
 2014,House,DE,1,REP,Rose Izzo,izzo r,0,table_zero
 2014,Senate,DE,,REP,Kevin Wade,wade k,0,no_bio
 2014,House,GA,10,DEM,I. Kenneth Dious,dious i,0,no_bio
-2014,Senate,HI,S,REP,Cam Cavasso,cavasso c,0,no_bio
 2014,House,IA,4,DEM,Jim Mowrer,mowrer j,0,no_bio
 2014,Governor,ID,,DEM,AJ Balukoff,balukoff a,0,no_bio
 2014,House,KS,2,DEM,Margie Wakefield,wakefield m,0,no_bio
@@ -464,11 +420,9 @@ year,office,state,district,party,candidate,cand_key,is_winner,reason
 2014,Governor,NE,,DEM,Chuck Hassebrook,hassebrook c,0,no_bio
 2014,House,NJ,2,DEM,William Hughes,hughes w,0,no_bio
 2014,Governor,NV,,DEM,Robert E. Goodman,goodman r,0,no_bio
-2014,Senate,OK,S,DEM,Constance N. Johnson,johnson c,0,no_bio
 2014,House,PA,3,DEM,Dan Lavallee,lavallee d,0,no_bio
 2014,Senate,RI,,REP,Mark S. Zaccaria,zaccaria m,0,no_bio
 2014,Senate,SC,,DEM,Charles Bradley Hutto,hutto c,0,no_bio
-2014,Senate,SC,S,DEM,Joyce Dickerson,dickerson j,0,no_bio
 2014,Governor,TN,,DEM,Charles V. Brown,brown c,0,no_bio
 2014,Senate,TN,,DEM,William Gordon Ball,ball w,0,no_bio
 2014,Senate,TX,,DEM,David M. Alameel,alameel d,0,no_bio
@@ -627,7 +581,6 @@ year,office,state,district,party,candidate,cand_key,is_winner,reason
 2018,Senate,NV,,OTH,Timothy Rex Hagan,hagan t,0,no_bio
 2018,Senate,NV,,OTH,Kamau Akil Bakari,bakari k,0,no_bio
 2018,Governor,NY,,OTH,Cynthia E. Nixon,nixon c,0,no_bio
-2018,House,NY,19,REP,John J. Faso,faso j,0,no_bio
 2018,House,NY,27,DEM,Nate McMurray,mcmurray n,0,no_bio
 2018,House,NY,19,OTH,Steven Greenfield,greenfield s,0,no_bio
 2018,House,NY,27,OTH,Larry Piegza,piegza l,0,no_bio
@@ -664,7 +617,6 @@ year,office,state,district,party,candidate,cand_key,is_winner,reason
 2018,Governor,OR,,OTH,Nick Chen,chen n,0,no_bio
 2018,Governor,OR,,OTH,Aaron Donald Auer,auer a,0,no_bio
 2018,Governor,OR,,OTH,Chris Henry,henry c,0,no_bio
-2018,House,OR,2,DEM,Jamie McLeod-Skinner,skinner j,0,table_zero
 2018,House,OR,2,OTH,Mark R. Roberts,roberts m,0,table_zero
 2018,House,OR,5,REP,Mark Callahan,callahan m,0,table_zero
 2018,Governor,PA,,OTH,Ken Krawchuk,krawchuk k,0,no_bio
@@ -680,7 +632,6 @@ year,office,state,district,party,candidate,cand_key,is_winner,reason
 2018,Governor,RI,,OTH,Anne Armstrong,armstrong a,0,no_bio
 2018,Governor,RI,,OTH,William H. Gilbert,gilbert w,0,no_bio
 2018,Senate,RI,,REP,Bob Flanders,flanders b,0,no_bio
-2018,House,SC,1,REP,Katie Arrington,arrington k,0,table_zero
 2018,Governor,SD,,OTH,Kurt Evans,evans k,0,no_bio
 2018,House,SD,1,OTH,Ronald Wieczorek,wieczorek r,0,no_bio
 2018,House,SD,1,OTH,George D. Hendrickson,hendrickson g,0,no_bio
@@ -703,6 +654,7 @@ year,office,state,district,party,candidate,cand_key,is_winner,reason
 2018,Governor,VT,,OTH,Charles Laramie,laramie c,0,no_bio
 2018,Governor,VT,,OTH,Emily Peyton,peyton e,0,no_bio
 2018,House,VT,1,REP,Anya Tynio,tynio a,0,no_bio
+2018,House,VT,1,OTH,Cris Ericson,ericson c,0,no_bio
 2018,House,VT,1,OTH,Laura S. Potter,potter l,0,no_bio
 2018,Senate,VT,,OTH,Russell Beste,beste r,0,no_bio
 2018,Senate,VT,,OTH,Bruce Busa,busa b,0,no_bio
@@ -737,12 +689,8 @@ year,office,state,district,party,candidate,cand_key,is_winner,reason
 2020,Senate,AZ,S,REP,Daniel McCarthy,mccarthy d,0,no_bio
 2020,House,CA,50,DEM,Ammar Campa-Najjar,najjar a,0,no_bio
 2020,House,CA,53,DEM,Georgette Gómez,gomez g,0,no_bio
-2020,House,CA,39,DEM,Gil Cisneros,cisneros g,0,no_bio
 2020,House,CA,49,REP,Brian Maryott,maryott b,0,no_bio
-2020,House,CA,25,DEM,Christy Smith,smith c,0,no_bio
 2020,House,CA,22,DEM,Phil Arballo,arballo p,0,no_bio
-2020,House,CA,21,DEM,TJ Cox,cox t,0,no_bio
-2020,House,CA,48,DEM,Harley Rouda,rouda h,0,no_bio
 2020,House,CA,48,REP,Brian Burley,burley b,0,no_bio
 2020,House,CO,3,OTH,John Ryan Keil,keil j,0,no_bio
 2020,House,CO,3,OTH,Critter Milton,milton c,0,no_bio
@@ -798,9 +746,7 @@ year,office,state,district,party,candidate,cand_key,is_winner,reason
 2020,Governor,NC,,OTH,Steven Joseph DiFiore,difiore s,0,no_bio
 2020,Governor,NC,,OTH,Al Pisano,pisano a,0,no_bio
 2020,Governor,NC,,REP,Holly Grange,grange h,0,no_bio
-2020,Governor,NC,,REP,Tim Moore,moore t,0,no_bio
 2020,Governor,NC,,REP,Philip Edward Berger,berger p,0,no_bio
-2020,Governor,NC,,REP,Thomas Roland Tillis,tillis t,0,no_bio
 2020,House,NC,9,DEM,Cynthia Lee Wallace,wallace c,0,no_bio
 2020,Senate,NC,,OTH,Kevin Eugene Hayes,hayes k,0,no_bio
 2020,Senate,NC,,OTH,Shannon W. Bray,bray s,0,no_bio
@@ -811,7 +757,6 @@ year,office,state,district,party,candidate,cand_key,is_winner,reason
 2020,Senate,NE,,DEM,Chris E. Janicek,janicek c,0,no_bio
 2020,Senate,NE,,OTH,Gene Siadek,siadek g,0,no_bio
 2020,Governor,NH,,OTH,Darryl W. Perry,perry d,0,no_bio
-2020,Governor,NH,,DEM,Andru Volinsky,volinsky a,0,no_bio
 2020,House,NH,1,OTH,Zachary Dumont,dumont z,0,no_bio
 2020,House,NH,2,OTH,Andrew Olding,olding a,0,no_bio
 2020,House,NH,1,REP,Matt Mayberry,mayberry m,0,no_bio
@@ -885,7 +830,6 @@ year,office,state,district,party,candidate,cand_key,is_winner,reason
 2020,House,VT,1,OTH,Marcia E. Horne,horne m,0,no_bio
 2020,House,VT,1,OTH,Shawn Orr,orr s,0,no_bio
 2020,House,VT,1,OTH,Christopher Helali,helali c,0,no_bio
-2020,Governor,WA,,REP,Loren Culp,culp l,0,no_bio
 2020,Governor,WA,,REP,Timothy Eyman,eyman t,0,no_bio
 2020,Governor,WA,,REP,Raul Garcia,garcia r,0,no_bio
 2020,Governor,WA,,REP,Phil Fortunato,fortunato p,0,no_bio
@@ -914,7 +858,6 @@ year,office,state,district,party,candidate,cand_key,is_winner,reason
 2022,Senate,AR,,OTH,Kenneth Cates,cates k,0,no_bio
 2022,Governor,AZ,,OTH,Mikaela Shonnie Lutes-Burton,burton m,0,no_bio
 2022,Governor,AZ,,OTH,Barry Hess,hess b,0,no_bio
-2022,Governor,AZ,,REP,Karrin Taylor Robson,robson k,0,no_bio
 2022,House,AZ,4,REP,Kelly Cooper,cooper k,0,no_bio
 2022,Senate,AZ,,OTH,Marc Victor,victor m,0,no_bio
 2022,Senate,AZ,,REP,Jim Lamon,lamon j,0,no_bio
@@ -939,12 +882,9 @@ year,office,state,district,party,candidate,cand_key,is_winner,reason
 2022,Senate,CO,,REP,Gino Campana,campana g,0,no_bio
 2022,Senate,CO,,REP,Eli Bremer,bremer e,0,no_bio
 2022,Governor,CT,,REP,Robert Stefanowski,stefanowski r,0,no_bio
-2022,House,CT,2,REP,Mike France,france m,0,no_bio
 2022,House,CT,2,OTH,William Hall,hall w,0,no_bio
 2022,House,CT,2,OTH,Kevin Blacker,blacker k,0,no_bio
 2022,House,CT,4,REP,Jayme Stevenson,stevenson j,0,no_bio
-2022,House,CT,5,REP,George Logan,logan g,0,no_bio
-2022,Senate,CT,,REP,Themis Klarides,klarides t,0,no_bio
 2022,Senate,CT,,REP,Peter Lumaj,lumaj p,0,no_bio
 2022,House,DE,1,REP,Lee Murphy,murphy l,0,no_bio
 2022,Governor,FL,,OTH,Hector Roos,roos h,0,no_bio
@@ -956,7 +896,6 @@ year,office,state,district,party,candidate,cand_key,is_winner,reason
 2022,Senate,FL,,OTH,Tuan T.Q. Nguyen,nguyen t,0,no_bio
 2022,Governor,GA,,OTH,Shane Hazel,hazel s,0,no_bio
 2022,Governor,GA,,OTH,Al Bartell,bartell a,0,no_bio
-2022,Governor,GA,,REP,David A. Perdue,perdue d,0,no_bio
 2022,Senate,GA,,OTH,Chase Oliver,oliver c,0,no_bio
 2022,Senate,GA,,REP,Gary W. Black,black g,0,no_bio
 2022,Governor,IA,,DEM,Deidre DeJear,dejear d,0,no_bio
@@ -975,7 +914,6 @@ year,office,state,district,party,candidate,cand_key,is_winner,reason
 2022,Senate,KS,,OTH,David C. Graham,graham d,0,no_bio
 2022,Governor,MA,,OTH,Kevin Reed,reed k,0,no_bio
 2022,Governor,MA,,REP,Chris Doughty,doughty c,0,no_bio
-2022,Governor,MA,,OTH,Charles D. Baker,baker c,0,no_bio
 2022,Governor,MA,,DEM,Orlando Silva,silva o,0,no_bio
 2022,Governor,MD,,OTH,David Lashar,lashar d,0,no_bio
 2022,Governor,MD,,OTH,Nancy Wallace,wallace n,0,no_bio
@@ -998,7 +936,6 @@ year,office,state,district,party,candidate,cand_key,is_winner,reason
 2022,House,MI,7,OTH,Leah Rachel Dailey,dailey l,0,no_bio
 2022,House,MI,10,DEM,Carl J. Marlinga,marlinga c,0,no_bio
 2022,House,MI,8,REP,Paul Junge,junge p,0,no_bio
-2022,House,MI,3,REP,Peter Meijer,meijer p,0,no_bio
 2022,House,MI,10,DEM,Michael C. Taylor,taylor m,0,no_bio
 2022,House,MI,10,REP,Eric S. Esshaki,esshaki e,0,no_bio
 2022,Governor,MN,,OTH,Hugh McTavish,mctavish h,0,no_bio
@@ -1057,9 +994,7 @@ year,office,state,district,party,candidate,cand_key,is_winner,reason
 2022,Governor,NY,,REP,Robert P. Astorino,astorino r,0,no_bio
 2022,Governor,NY,,REP,Harry Wilson,wilson h,0,no_bio
 2022,Governor,NY,,REP,Andrew Harold Giuliani,giuliani a,0,no_bio
-2022,Governor,NY,,DEM,Thomas R. Suozzi,suozzi t,0,no_bio
 2022,Governor,NY,,DEM,Jumaane D. Williams,williams j,0,no_bio
-2022,Governor,NY,,REP,Elise M. Stefanik,stefanik e,0,no_bio
 2022,House,NY,22,DEM,Francis Conole,conole f,0,no_bio
 2022,House,NY,25,REP,La'Ron D. Singletary,singletary l,0,no_bio
 2022,House,NY,3,DEM,Robert P. Zimmerman,zimmerman r,0,no_bio
@@ -1153,7 +1088,6 @@ year,office,state,district,party,candidate,cand_key,is_winner,reason
 2022,House,WA,8,REP,Matt Larkin,larkin m,0,table_zero
 2022,House,WA,8,REP,Jesse Jensen,jensen j,0,table_zero
 2022,House,WA,8,REP,Reagan Dunn,dunn r,0,table_zero
-2022,House,WA,4,REP,Loren Culp,culp l,0,table_zero
 2022,Governor,WI,,REP,Tim Michels,michels t,0,no_bio
 2022,Governor,WI,,REP,Kevin Nicholson,nicholson k,0,no_bio
 2022,Governor,WI,,REP,Timothy S. Ramthun,ramthun t,0,no_bio
@@ -1162,7 +1096,6 @@ year,office,state,district,party,candidate,cand_key,is_winner,reason
 2022,House,WY,1,DEM,Lynnette GreyBull,greybull l,0,no_bio
 2022,House,WY,1,OTH,Richard Brubaker,brubaker r,0,no_bio
 2022,House,WY,1,OTH,Marissa Joy Selvig,selvig m,0,no_bio
-2024,House,AK,1,DEM,Mary S. Peltola,peltola m,0,no_bio
 2024,House,AK,1,OTH,John Wayne Howe,howe j,0,no_bio
 2024,House,AK,1,DEM,Eric Hafner,hafner e,0,no_bio
 2024,House,AK,1,REP,Nancy A. Dahlstrom,dahlstrom n,0,no_bio
@@ -1210,7 +1143,6 @@ year,office,state,district,party,candidate,cand_key,is_winner,reason
 2024,Senate,MD,,OTH,Mike Scott,scott m,0,no_bio
 2024,Senate,MD,,OTH,Nancy Wallace,wallace n,0,no_bio
 2024,Senate,MD,,OTH,Emmanuel O. Osuchukwu,osuchukwu e,0,no_bio
-2024,Senate,MD,,DEM,David J. Trone,trone d,0,no_bio
 2024,Senate,ME,,DEM,David Allen Costello,costello d,0,no_bio
 2024,Senate,ME,,REP,Demi Kouzounas,kouzounas d,0,no_bio
 2024,Senate,ME,,OTH,Jason S. Cherry,cherry j,0,no_bio
@@ -1296,7 +1228,6 @@ year,office,state,district,party,candidate,cand_key,is_winner,reason
 2024,House,TX,15,DEM,Michelle Vallejo,vallejo m,0,no_bio
 2024,Senate,TX,,OTH,Ted Brown,brown t,0,no_bio
 2024,Senate,TX,,OTH,Mason Cysewski,cysewski m,0,no_bio
-2024,Senate,TX,,DEM,Roland Gutierrez,gutierrez r,0,no_bio
 2024,Governor,UT,,OTH,Phil Lyman,lyman p,0,no_bio
 2024,Governor,UT,,OTH,Tommy Williams,williams t,0,no_bio
 2024,Governor,UT,,OTH,James Robert Latham,latham j,0,no_bio
@@ -1306,7 +1237,6 @@ year,office,state,district,party,candidate,cand_key,is_winner,reason
 2024,House,UT,2,DEM,Nathaniel Woodward,woodward n,0,no_bio
 2024,Senate,UT,,OTH,Carlton E. Bowen,bowen c,0,no_bio
 2024,House,VA,2,DEM,Missy Cotter Smasal,smasal m,0,no_bio
-2024,Senate,VA,,REP,Glenn Youngkin,youngkin g,0,no_bio
 2024,Governor,VT,,OTH,June Goodband,goodband j,0,no_bio
 2024,Governor,VT,,OTH,Eli Mutino,mutino e,0,no_bio
 2024,Governor,VT,,OTH,Kevin Hoyt,hoyt k,0,no_bio
@@ -1320,11 +1250,9 @@ year,office,state,district,party,candidate,cand_key,is_winner,reason
 2024,Governor,WA,,REP,Semi Bird,bird s,0,no_bio
 2024,Senate,WA,,REP,Raul Garcia,garcia r,0,no_bio
 2024,House,WI,1,OTH,Chester Todd,todd c,0,no_bio
-2024,House,WI,3,DEM,Katrina Shankland,shankland k,0,no_bio
 2024,Senate,WI,,REP,Eric D. Hovde,hovde e,0,no_bio
 2024,Senate,WI,,OTH,Phil Anderson,anderson p,0,no_bio
 2024,Senate,WI,,OTH,Thomas Leager,leager t,0,no_bio
 2024,Governor,WV,,OTH,Erika Klie Kolenich,kolenich e,0,no_bio
 2024,Governor,WV,,OTH,Chase Linko-Looper,looper c,0,no_bio
 2024,Senate,WV,,DEM,Glenn Elliott,elliott g,0,no_bio
-2024,Senate,WV,,REP,Alexander X. Mooney,mooney a,0,no_bio

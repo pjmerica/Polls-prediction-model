@@ -4,6 +4,26 @@ For the next agent. Read AGENTS.md first (architecture + rules), CONCERNS.md sec
 (risk register + roadmap). This file: what's mid-flight RIGHT NOW, what's most likely to
 break, and what to do next, in order.
 
+## CURRENT STATE 2026-07-29 — office_level coverage = 100% OVERALL and WINNERS.
+
+Every one of the 4,844 candidate-races now has a leak-free, defensible office_level.
+check_officeholder passes. Sources: 28,582 wikipedia + 1,741 manual + 194 wiki_xref +
+173 ballotpedia. This completes the whole backfill arc (Stages 1-4).
+- **The zeros are VERIFIED, not assumed** (user insisted on this). Every level-0 person has
+  NO office evidence in ANY source: no race win, no Wikipedia office descriptor (scanned even
+  blank-leveled rows for office words outside candidacy phrasing), no Ballotpedia profile.
+- **Audit caught 228 people who would have been WRONGLY zeroed** - incl 25 who won federal
+  races (Duckworth, Lazio, Bera, Barr, DelBene...). All hand-coded with leak-free as-of-year
+  offices in data/candidate_bios_manual.csv instead. Verified: Duckworth 2006->0 (VA roles +
+  House all came later), Lazio 2000->4 (sitting US Rep), Denny Heck 2010->0 (not a US Rep till
+  2013), Dino Rossi 2008->2 (fwd from 2004 state-senator row), Roger Moe 2002->2.
+- **1,166 bulk verified-0** (no evidence anywhere) appended to candidate_bios_manual.csv with
+  offices_json []; a descriptor safety-scan confirmed 0 hidden officeholders among them.
+- measure_office_coverage.py --write now writes an EMPTY roster (nothing uncovered).
+STILL: feature is opt-in / NOT shipped (the whole arc is data completeness). A future
+re-ablation now runs on 100%-covered data - the strongest possible test. Re-run the ablation
+(model.ipynb harness) before ever shipping bio_office_level.
+
 ## CURRENT STATE 2026-07-29 — non-winner backfill in progress + Wikipedia self-cross-ref.
 
 Working toward non-winner coverage after WINNERS hit 100% (Stage 3). Overall now **72.6%**.
