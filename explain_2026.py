@@ -40,6 +40,9 @@ FRIENDLY = {
     "poll_avg": "Polling average (%)",
     "poll_last": "Most recent poll (%)",
     "poll_last30": "Polling avg, final 30 days (%)",
+    "poll_last7": "Polling avg, final 7 days (%)",
+    "n_polls_last7": "# of polls in the final 7 days",
+    "poll_lead_last7": "Polling lead, final 7 days (pts)",
     "poll_std": "Poll-to-poll variability",
     "n_polls": "# of polls (candidate)",
     "n_polls_over50": "# of polls above 50%",
@@ -86,6 +89,11 @@ DESC = {
     "poll_avg": "Average of all the candidate's general-election polls this cycle.",
     "poll_last": "The candidate's share in the most recent dated poll.",
     "poll_last30": "Average over polls taken in the final 30 days before the election.",
+    "poll_last7": "Average over polls taken in the final week before the election - the "
+                  "freshest read on the race. Blank when no poll landed in that window.",
+    "n_polls_last7": "How many polls of this candidate landed in the final week.",
+    "poll_lead_last7": "Final-week polling lead over the best opponent. Unlike the overall "
+                       "polling lead, this ignores early-campaign polls entirely.",
     "poll_std": "How much the candidate's poll numbers bounce around between surveys.",
     "n_polls": "How many polls include this candidate.",
     "n_polls_over50": "How many polls put the candidate above 50%.",
