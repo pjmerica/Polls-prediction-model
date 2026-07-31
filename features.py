@@ -368,16 +368,40 @@ def prepare_polls(d):
     d["district"] = d["district"].map(dist_str)
     return d
 
+# Generic corporate/industry descriptor words that sources append inconsistently to the SAME
+# pollster ("Mitchell Research" vs "Mitchell Research & Communications", "Rosetta Stone" vs
+# "Rosetta Stone Communications"). Stripped only from the END of the name, and never down to
+# nothing (see norm_pollster) - so a firm whose name IS a descriptor keeps it. Deliberately
+# does NOT include 'research'/'polling'/'strategies'/'insights'/'group': those are load-bearing
+# parts of real distinct names (Tulchin Research vs Tulchin; Peak Insights vs Peak).
+_POLLSTER_TAIL = r"(communications|company|llc|ltd|corp|corporation|and associates|associates)"
+
 def norm_pollster(p):
     """Normalize pollster names so house effects match across feeds (538 vs NYT/Wikipedia):
-    casefold, drop partisan tags, '&'->'and', 'Co.'->'company', strip punctuation."""
+    casefold, drop partisan tags, '&'->'and', 'Co.'->'company', strip punctuation, then drop
+    trailing generic descriptors (2026-07-31).
+
+    The trailing-descriptor strip exists because the 2026 feed carries the same survey under
+    two spellings from two sources, which then survived dedup as two independent polls and
+    got double-counted in the averages (found in MI-Sen-DEM: 99 poll rows for 36 real
+    surveys). Stripping is anchored to the END and refuses to empty the string, so it merges
+    'mitchell research communications' -> 'mitchell research' without touching a pollster
+    actually named e.g. 'Communications Co'."""
     s = str(p).casefold().strip()
     s = re.sub(r"\(([dr]|dem|rep)\)", "", s)
     s = s.replace("&", " and ")
     s = re.sub(r"\bco\b\.?", "company", s)
     s = re.sub(r"\binc\b\.?|,", "", s)
     s = re.sub(r"[^a-z0-9/ ]", "", s)
-    return re.sub(r"\s+", " ", s).strip()
+    s = re.sub(r"\s+", " ", s).strip()
+    # repeat: "X Research and Communications LLC" -> "X Research"
+    while True:
+        s2 = re.sub(rf"\s+{_POLLSTER_TAIL}$", "", s).strip()
+        s2 = re.sub(r"\s+and$", "", s2).strip()   # left dangling by the strip above
+        if s2 == s or not s2:
+            break
+        s = s2
+    return s
 
 # ---------------------------------------------------------------- race dynamics
 
@@ -522,6 +546,7 @@ def build_candidate_table(d, macro, natl_env_map, funds, house_train_years=None,
             gc = gc.sort_values("end_date")
             dated = gc.dropna(subset=["end_date"])          # NaT polls can't be "most recent"
             last30 = gc[gc["days_to_elec"] <= 30]
+            last7 = gc[gc["days_to_elec"] <= 7]
             party = gc["party_std"].iloc[0]
             sign = 1 if party == "DEM" else -1 if party == "REP" else 0
 
@@ -585,6 +610,15 @@ def build_candidate_table(d, macro, natl_env_map, funds, house_train_years=None,
                 poll_avg=gc["pct"].mean(),
                 poll_last=(dated["pct"].iloc[-1] if len(dated) else gc["pct"].mean()),
                 poll_last30=(last30["pct"].mean() if len(last30) else gc["pct"].mean()),
+                # final-week average (2026-07-31), mirroring features_primary. Unlike
+                # poll_last30 this does NOT fall back to the all-time mean on an empty window:
+                # a 7-day window is empty for most candidates most of the time, and that
+                # fallback would silently re-inject the stale full-campaign average under a
+                # "final week" name. NaN instead - XGBoost routes missing natively.
+                # Still an unweighted WINDOW, not recency weighting: the no-weighting rule at
+                # the top of this file is intact (same basis as the existing poll_last30).
+                poll_last7=(last7["pct"].mean() if len(last7) else np.nan),
+                n_polls_last7=len(last7),
                 poll_std=gc["pct"].std(),
                 n_polls=len(gc),
                 n_polls_over50=int((gc["pct"] > 50).sum()),
@@ -638,6 +672,11 @@ def build_candidate_table(d, macro, natl_env_map, funds, house_train_years=None,
     # margin_model.ipynb's add_margin_target). Feature-value change -> full retrain (rule 1).
     c["field_best"] = c.groupby("race_id")["poll_avg"].transform(best_other)
     c["poll_lead"] = c["poll_avg"] - c["field_best"]
+    # same lead computed on the final week only (2026-07-31). poll_lead inherits poll_avg's
+    # full-campaign staleness; this is its fresh counterpart. NaN when either side has no
+    # final-week polls - never a silent 0, which would read as "tied".
+    c["poll_lead_last7"] = c["poll_last7"] - c.groupby("race_id")["poll_last7"].transform(
+        best_other)
     c["poll_share"] = c["poll_avg"] / c.groupby("race_id")["poll_avg"].transform("sum")
     c["n_cands"] = c.groupby("race_id")["cand_key"].transform("count")
     c["race_total_polls"] = c.groupby("race_id")["n_polls"].transform("sum")
@@ -671,6 +710,18 @@ def feature_list(macro_feats, fund=False, primary_results=False, candidate_bios=
            + ([] if not primary_results else ["primary_margin", "primary_uncontested"])
            + ([] if not candidate_bios else ["bio_office_level"])) + [
         "poll_avg", "poll_last", "poll_last30", "poll_std", "n_polls",
+        # poll_last7 / n_polls_last7 / poll_lead_last7 are BUILT in build_candidate_table but
+        # deliberately NOT model features here (2026-07-31). They work for the PRIMARY model
+        # (feature_list_primary does include them) because primaries are always imminent when
+        # predicted - MI's is 4 days out, so the window is populated at serve time. The
+        # GENERAL election is a single fixed date: on 2026-07-31 it is 95 days away, so
+        # poll_last7 is populated for 39% of TRAINING rows and 0.0% of live 2026 general rows
+        # (measured on the feed: 0 of 3370 rows within 7 days; min days_to_elec = 99). Adding
+        # it would train splits on a feature that is always-missing in production - the exact
+        # train/serve skew that got poll_adj dropped on 2026-07-12.
+        # To ship it here, gate it on days-to-election so training only sees it when the race
+        # is as close as the race being served, or re-add it in late October when the live
+        # window actually fills.
         "n_polls_over50", "frac_polls_over50", "race_total_polls",
         "avg_sample", "min_days",
         "poll_lead", "poll_share", "n_cands",

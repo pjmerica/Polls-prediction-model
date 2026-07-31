@@ -143,12 +143,20 @@ def load_agg_polls(paths, cycle):
             print(f"dropped-out candidates removed: {int(mask.sum())} poll rows")
             d = d[~mask]
 
-    # dedup: internal repeats + NYT/Wikipedia cross-source duplicates
+    # dedup: internal repeats + NYT/Wikipedia cross-source duplicates.
+    # Keyed on the NORMALIZED pollster (2026-07-31): the raw string missed exactly the
+    # cross-source case this dedup exists for - the same survey filed under two spellings
+    # ("Glengariff Group, Inc." vs "Glengariff Group", "Mitchell Research" vs "Mitchell
+    # Research & Communications") survived as two independent polls and got double-counted
+    # in every aggregate. Found in the primary model (MI-Sen-DEM: 99 rows for 36 real
+    # surveys); the general feed had the same bug, 46 rows. Same key as predict_primary.py
+    # and build_primary_dataset.py - keeping them in sync is the never-fork rule.
     before = len(d)
+    d["_pollster_key"] = d["pollster"].map(F.norm_pollster)
     d = (d.sort_values("_src_priority")
-           .drop_duplicates(subset=["pollster", "end_date", "year", "state",
+           .drop_duplicates(subset=["_pollster_key", "end_date", "year", "state",
                                     "office", "district", "cand_key"], keep="first")
-           .drop(columns="_src_priority"))
+           .drop(columns=["_src_priority", "_pollster_key"]))
     print(f"polls loaded: {before} rows -> {len(d)} after dedup "
           f"({before - len(d)} duplicates removed)")
 

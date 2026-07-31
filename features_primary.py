@@ -219,6 +219,7 @@ def build_primary_table(d, fec=None, inc_map=None, macro_asof=None, hist=None, b
             gc = gc.sort_values("end_date")
             dated = gc.dropna(subset=["end_date"])
             last30 = gc[gc["days_to_elec"] <= 30]
+            last7 = gc[gc["days_to_elec"] <= 7]
             pop_feats = {}
             for tag, vals in POPS.items():
                 gp = (gc[gc["population"].astype(str).str.lower().isin(vals)]
@@ -248,6 +249,17 @@ def build_primary_table(d, fec=None, inc_map=None, macro_asof=None, hist=None, b
                 poll_avg=gc["pct"].mean(),
                 poll_last=(dated["pct"].iloc[-1] if len(dated) else gc["pct"].mean()),
                 poll_last30=(last30["pct"].mean() if len(last30) else gc["pct"].mean()),
+                # final-week average (2026-07-31). Unlike poll_last30 this does NOT fall back
+                # to the all-time mean when the window is empty: a 7-day window is empty for
+                # most candidates most of the time, and that fallback is exactly the bug this
+                # feature exists to counter (it would silently re-inject the stale 15-month
+                # average under a "final week" name). NaN instead - XGBoost routes missing.
+                # Rationale: poll_avg is a flat mean over every poll ever taken, so in a race
+                # with a year of polling it lags badly (MI-Sen-DEM 2026: poll_avg 32.3 while
+                # the candidate had been polling 41-56 for a month). poll_last is fresh but
+                # is a single poll; poll_last7 is the fresh-AND-averaged middle ground.
+                poll_last7=(last7["pct"].mean() if len(last7) else np.nan),
+                n_polls_last7=len(last7),
                 poll_std=gc["pct"].std(),
                 n_polls=len(gc),
                 avg_sample=gc["sample_size"].mean(),
@@ -288,6 +300,12 @@ def build_primary_table(d, fec=None, inc_map=None, macro_asof=None, hist=None, b
     # within-FIELD relatives (the field = this party's candidates = the race group)
     c["field_best"] = c.groupby("race_id")["poll_avg"].transform(F.best_other)
     c["poll_lead"] = c["poll_avg"] - c["field_best"]
+    # ...and the same lead computed on the final week only (2026-07-31). poll_lead inherits
+    # poll_avg's staleness, which is how one 15-month-old number leaked into five features at
+    # once; this is the fresh counterpart. NaN when any side of the comparison has no
+    # final-week polls (never a silent 0 - that would read as "tied").
+    c["poll_lead_last7"] = c["poll_last7"] - c.groupby("race_id")["poll_last7"].transform(
+        F.best_other)
     c["poll_share"] = c["poll_avg"] / c.groupby("race_id")["poll_avg"].transform("sum")
     c["n_cands"] = c.groupby("race_id")["cand_key"].transform("count")
     c["race_total_polls"] = c.groupby("race_id")["n_polls"].transform("sum")
@@ -311,6 +329,13 @@ def feature_list_primary(macro_feats=(), fund=False):
     return [
         "poll_avg", "poll_last", "poll_last30", "poll_std", "n_polls", "avg_sample",
         "min_days", "poll_momentum",
+        # final-week window (2026-07-31, user request). poll_avg is a flat all-time mean, so
+        # in a long primary campaign every feature derived from it (poll_lead, poll_share,
+        # poll_std, gap_x_recency) carries year-old polling. These are the fresh counterparts;
+        # both are exposed so the model can use the long-run level AND the current one.
+        # NOT recency WEIGHTING - the no-weighting rule (features.py:7) still holds; this is
+        # an unweighted window exactly like the existing poll_last30.
+        "poll_last7", "n_polls_last7", "poll_lead_last7",
         "poll_lead", "poll_share", "n_cands", "race_total_polls", "undecided",
         "gap_x_recency",
         "n_lead_changes", "avg_margin_over_time", "margin_volatility", "min_margin",

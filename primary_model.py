@@ -52,12 +52,63 @@ def race_acc(te, col):
 # each candidate INDEPENDENTLY, which (a) made 2+ strong candidates each ~1.0 so divide-by-sum
 # normalization mushed them to ~50/50, and (b) made the explainer's raw number disagree with
 # the dashboard's normalized number). Ranking + softmax handles an N-candidate field coherently.
-SOFTMAX_TEMP = 1.0    # tuned below on the eval cycles by called-winner accuracy
+# TEMPERATURE (fixed 2026-07-31): this was hardcoded 1.0 with a comment claiming it was
+# "tuned on the eval cycles by called-winner accuracy". It never was, and it COULDN'T be:
+# softmax is monotonic, so temperature does not change the argmax - race_acc is identical at
+# every T. Tuning it by accuracy is a no-op by construction. The metric that actually moves
+# is Brier (calibration), and 1.0 turned out to be the WORST value in the plausible range:
+# the ranker's raw scores have std ~1.3, so dividing by 1.0 squashes genuinely-separated
+# candidates toward 50/50. Measured on the 2022+2024 expanding-window rows:
+#     T=1.00  Brier .0428   mean prob on the actual nominee .661   <- old hardcoded value
+#     T=0.50  Brier .0254   .819
+#     T=0.25  Brier .0213   .887                                   <- optimum
+#     T=0.15  Brier .0225   .907
+# Symptom that surfaced this: MI-Sen-DEM 2026, where the ranker separates the field cleanly
+# (scores 1.94 / 1.54 / -0.69) but the reported probability was a mushy 57.6% - and the SHAP
+# explainer disagreed with the dashboard, because SHAP explains the SCORE while the displayed
+# number came from the miscalibrated softmax. At the tuned T the same scores give 83.6%.
+# tune_softmax_temp() below now fits this on the eval cycles by Brier and writes the result
+# into the artifact, so predict_primary.py picks it up via meta["softmax_temp"].
+TEMP_GRID = [0.10, 0.15, 0.20, 0.25, 0.30, 0.40, 0.50, 0.75, 1.00, 1.50]
+SOFTMAX_TEMP = 0.25   # default/fallback only; main() overwrites it with the tuned value
 
 def race_softmax(scores, temp=SOFTMAX_TEMP):
     s = np.asarray(scores, dtype=float) / temp
     e = np.exp(s - np.nanmax(s))
     return e / e.sum()
+
+def tune_softmax_temp(c, feats, params, eval_years, grid=TEMP_GRID):
+    """Pick the within-race softmax temperature by BRIER on the expanding-window eval rows.
+
+    Temperature is a pure calibration knob: it cannot change which candidate the ranker picks
+    (softmax is monotonic), so it is tuned on probability quality, not accuracy. Scores are
+    collected ONCE per eval cycle under the same train-strictly-before-test discipline as
+    expanding_eval, then scored across the grid.
+    """
+    rows = []
+    for ty in eval_years:
+        tr, te = c[c["year"] < ty], c[c["year"] == ty].copy()
+        if not len(te) or not len(tr):
+            continue
+        te["_score"] = _fit_ranker(tr, feats, params).predict(te[feats])
+        rows.append(te)
+    if not rows:
+        return SOFTMAX_TEMP, None
+    ev = pd.concat(rows)
+    y = ev["won"].astype(int)
+    out = []
+    for T in grid:
+        p = ev.groupby("race_id", group_keys=False)["_score"].transform(
+            lambda s: race_softmax(s, temp=T))
+        out.append(dict(temp=T, Brier=brier_score_loss(y, p), logloss=log_loss(y, p),
+                        mean_p_on_nominee=float(p[y == 1].mean())))
+    tab = pd.DataFrame(out).set_index("temp")
+    print("\n=== SOFTMAX TEMPERATURE tuning (Brier on expanding-window eval rows) ===")
+    print(tab.round(4).to_string())
+    best = float(tab["Brier"].idxmin())
+    print(f"chosen softmax_temp = {best} (Brier {tab['Brier'].min():.4f}; "
+          f"T=1.0 would be {tab['Brier'].get(1.0, float('nan')):.4f})")
+    return best, tab
 
 def _fit_ranker(tr, feats, params):
     """XGBRanker needs rows grouped by race (qid). Returns (model, sorted_tr)."""
@@ -67,13 +118,18 @@ def _fit_ranker(tr, feats, params):
     m.fit(tr[feats], tr["won"].astype(int), group=grp)
     return m
 
-def eval_fold(tr, te, feats, params):
-    """Train the ranker on tr, return within-race softmax probabilities for te (index-aligned)."""
+def eval_fold(tr, te, feats, params, temp=None):
+    """Train the ranker on tr, return within-race softmax probabilities for te (index-aligned).
+
+    temp: softmax temperature; None = module default. Only affects CALIBRATION metrics
+    (Brier/logloss) - the argmax, and therefore race_acc, is identical at every temperature.
+    """
+    T = SOFTMAX_TEMP if temp is None else temp
     m = _fit_ranker(tr, feats, params)
     te = te.copy()
     te["_score"] = m.predict(te[feats])
     te["_p"] = te.groupby("race_id", group_keys=False)["_score"].transform(
-        lambda s: race_softmax(s))
+        lambda s: race_softmax(s, temp=T))
     return te["_p"]
 
 def loco_race_acc(c, feats, params, cycles):
@@ -90,13 +146,13 @@ def loco_race_acc(c, feats, params, cycles):
         accs.append(race_acc(te, "p"))
     return float(np.mean(accs)) if accs else -np.inf
 
-def expanding_eval(c, feats, params, eval_years, label):
+def expanding_eval(c, feats, params, eval_years, label, temp=None):
     rows = []
     for ty in eval_years:
         tr, te = c[c["year"] < ty], c[c["year"] == ty].copy()
         if not len(te) or not len(tr):
             continue
-        te["p"] = eval_fold(tr, te, feats, params)
+        te["p"] = eval_fold(tr, te, feats, params, temp=temp)
         y = te["won"].astype(int)
         rows.append(dict(
             cycle=ty, n_races=te["race_id"].nunique(), n_cand=len(te),
@@ -155,13 +211,18 @@ def main():
     print(f"\nbest tune-cycle LOCO race-acc: {best[0]:.4f}")
     print("PARAMS =", PARAMS)
 
+    # ---- softmax temperature: calibrate AFTER the hyperparameters are fixed. Tuned by Brier
+    # on the expanding-window eval rows (temperature cannot move race_acc - see the note on
+    # TEMP_GRID). Everything below reports at the tuned temperature.
+    TEMP, temp_tab = tune_softmax_temp(c, FEATS, PARAMS, eval_years)
+
     ev = expanding_eval(c, FEATS, PARAMS, eval_years,
-                        "no fund, no macro - PRIMARY headline")
+                        f"no fund, no macro - PRIMARY headline (softmax T={TEMP})", temp=TEMP)
 
     # ---- candidate-history/bio ablation (2026-07-17 features): measure their value ----
     NOHIST = [f for f in FEATS if not (f.startswith("hist_") or f.startswith("bio_"))]
     evh = expanding_eval(c, NOHIST, PARAMS, eval_years,
-                         "WITHOUT candidate history/bio - ablation")
+                         "WITHOUT candidate history/bio - ablation", temp=TEMP)
     print(f"history/bio ablation: race-acc {ev['race_acc'].mean():.3f} vs "
           f"{evh['race_acc'].mean():.3f} without, Brier {ev['Brier'].mean():.4f} vs "
           f"{evh['Brier'].mean():.4f}")
@@ -169,7 +230,7 @@ def main():
     # ---- fund ablation (leakage evidence: cycle-END FEC totals include post-primary
     # money, so fund_share partly encodes the training label; see feature_list_primary) --
     evf = expanding_eval(c, FP.feature_list_primary(fund=True), PARAMS, eval_years,
-                         "WITH fund - ablation only (leak-suspect)")
+                         "WITH fund - ablation only (leak-suspect)", temp=TEMP)
     print(f"fund ablation: race-acc {evf['race_acc'].mean():.3f} vs {ev['race_acc'].mean():.3f} "
           f"(identical picks expected), Brier gain {ev['Brier'].mean()-evf['Brier'].mean():+.4f} "
           f"= the leak-suspect juice; artifact stays NO-fund")
@@ -179,7 +240,7 @@ def main():
                                 bios=BIOS, macro_asof=build_macro_asof)
     macro_feats = sorted(set(cm.columns) - set(c.columns))
     evm = expanding_eval(cm, FP.feature_list_primary(macro_feats), PARAMS, eval_years,
-                         f"WITH macro ({len(macro_feats)} extra cols) - ablation only")
+                         f"WITH macro ({len(macro_feats)} extra cols) - ablation only", temp=TEMP)
     dif = evm["Brier"].mean() - ev["Brier"].mean()
     print(f"\nmacro ablation: Brier {'WORSE' if dif > 0 else 'better'} by {abs(dif):.4f} "
           f"with macro (noise-level on ~{c['race_id'].nunique()} races) -> artifact stays NO-macro")
@@ -191,7 +252,10 @@ def main():
         json.dump(dict(features=FEATS, xgb_params=PARAMS,
                        model_type="xgbranker",            # predict_primary must load XGBRanker
                        objective="rank:pairwise",
-                       softmax_temp=SOFTMAX_TEMP,          # within-race score -> probability
+                       softmax_temp=TEMP,                 # TUNED (Brier); see tune_softmax_temp
+                       softmax_temp_grid={str(t): round(float(b), 4) for t, b
+                                          in temp_tab["Brier"].items()} if temp_tab is not None
+                                         else None,
                        score_semantics=("raw ranker scores are unbounded and only comparable "
                                         "WITHIN a race; convert to probability via a within-race "
                                         "softmax (temp above). This one number is used by BOTH "

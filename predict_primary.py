@@ -133,10 +133,19 @@ def load_primary_feed(paths, cycle):
     if n_merged:
         print(f"nickname-alias merges: {n_merged} candidate name variants unified")
 
+    # dedup on the NORMALIZED pollster (2026-07-31): keying on the raw string let the same
+    # survey survive twice under two source spellings ("Glengariff Group, Inc." 41.4 and
+    # "Glengariff Group" 41.0 for 2026-07-11; likewise Mitchell Research, Susquehanna,
+    # Rosetta Stone), silently double-counting it in every poll aggregate. MI-Sen-DEM carried
+    # 99 poll rows for 36 real surveys before this.
+    d["_pollster_key"] = d["pollster"].map(F.norm_pollster)
+    n_before = len(d)
     d = (d.sort_values("_src_priority")
-           .drop_duplicates(subset=["pollster", "end_date", "year", "state", "office",
+           .drop_duplicates(subset=["_pollster_key", "end_date", "year", "state", "office",
                                     "district", "party_std", "cand_key"], keep="first")
-           .drop(columns="_src_priority"))
+           .drop(columns=["_src_priority", "_pollster_key"]))
+    if n_before - len(d):
+        print(f"cross-source duplicate poll rows dropped: {n_before - len(d)}")
 
     per_race, per_state = primary_dates(cycle)
     d["election_date"] = [per_race.get((st, of), per_state.get(st))

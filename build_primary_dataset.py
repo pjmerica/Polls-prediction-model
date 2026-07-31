@@ -82,8 +82,17 @@ def load_wiki_polls():
         "end_date": p["end_date"],
         "election_date": p["src_page"].map(dmap),
     }).dropna(subset=["pct", "cand_key", "year"])
-    out = out.drop_duplicates(subset=["pollster", "end_date", "year", "state", "office",
-                                      "party_std", "cand_key", "pct"])
+    # dedup on the NORMALIZED pollster, and NOT on pct (2026-07-31): the old key used the raw
+    # pollster string plus pct, so it only caught byte-identical rows - the same survey under
+    # two source spellings ("Mitchell Research" / "Mitchell Research & Communications") with
+    # slightly different rounding (27 vs 28) survived as two independent polls. predict_primary
+    # got the identical fix; keeping the two keys in sync is the never-fork rule.
+    out["_pollster_key"] = out["pollster"].map(F.norm_pollster)
+    n_before = len(out)
+    out = out.drop_duplicates(subset=["_pollster_key", "end_date", "year", "state", "office",
+                                      "party_std", "cand_key"]).drop(columns="_pollster_key")
+    if n_before - len(out):
+        print(f"  cross-source duplicate poll rows dropped: {n_before - len(out)}")
     return out
 
 def nominee_sets():
