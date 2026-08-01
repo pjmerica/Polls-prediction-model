@@ -86,7 +86,7 @@ missing `stage` there doesn't mean "unknown."
 | `poll_party` | str | 0.0% | Candidate party as given by the poll. |
 | `party_std` | str | 0.0% | **Normalized party: DEM / REP / OTH.** |
 | `pct` | float | 0.0% | **The poll number — this candidate's support in this poll (the core predictor).** |
-| `cand_key` | str | 0.0% | Normalized join key: `lastname firstinitial` (accent-stripped). |
+| `cand_key` | str | 0.0% | Normalized join key: `lastname firstinitial` (accent-stripped). **THE shared key** — polls ↔ results ↔ FEC ↔ bios ↔ candidate history, in both pipelines, so any change to `features.norm_name` re-keys every join and is retrain-triggering. **Fixed 2026-08-01**: intra-word punctuation is now deleted rather than turned into a space. Previously the two apostrophe characters took different paths (`"O’Rourke"` → `orourke b` via the NFKD/ASCII drop, `"O'Rourke"` → `rourke b` via `[^a-z\s]`→space), so one person became two rows that split their own polling; hyphens hit the same inconsistency and keyed 357 politicians off only the back half of their surname (`Ocasio-Cortez`→`cortez a`, `Hyde-Smith`→`smith c`). Hyphens additionally swallow surrounding whitespace, because sources type stray spaces (`"Debbie Mucarsel- Powell"` vs `"Mucarsel-Powell"` broke the nominee join and silently dropped `2024_FL_Senate_DEM` from primary training). Periods deliberately do **not** swallow space, or a middle initial glues onto the surname (`"Robert F. Kennedy"`→`fkennedy r`). **14 committed CSVs cache `cand_key` as a column** and therefore go stale whenever `norm_name` changes — re-run `scripts_rekey_cand_key.py` (lossless; the key is a pure function of the name column). |
 | `start_date` | str | 0.0% | Poll field start. |
 | `end_date` | str | 0.0% | Poll field end. **Used for recency weighting & days-to-election.** |
 | `hypothetical` | float | 13.7% | 1 if a hypothetical matchup. |
@@ -127,6 +127,8 @@ grades don't exist for future polls) and no longer appear in the model.
 | `poll_avg` | 0% | Simple mean of the candidate's polls. **Current #1 feature by gain** (39%). |
 | `poll_last` | 0% | The candidate's most recent poll value. |
 | `poll_last30` | 0% | Mean of polls in the final 30 days (falls back to all if none). |
+| `poll_last7` | ~61% train / ~53% serve (PRIMARY model only) | Mean of polls in the final **7** days. Unlike `poll_last30` it does **NOT** fall back to the all-time mean on an empty window — that fallback is exactly the staleness bug it exists to counter — so it is NaN and XGBoost routes missing. **Built in both pipelines but a model feature only in `feature_list_primary`**: the general election is one fixed date, so on 2026-07-31 (95 days out) the window was populated for 39% of training rows and **0.0%** of live general rows (0 of 3370; min days_to_elec 99) — an always-missing-in-production feature, the same train/serve skew that killed `poll_adj`. Primaries are always imminent when predicted, so there it works (added 2026-07-31). |
+| `n_polls_last7` | 0% | Count of polls in the final 7 days (0, never NaN). Primary model only. |
 | `poll_std` | ~25% | Std of the candidate's polls. **NaN when only 1 poll exists** (std undefined). |
 | `n_polls` | 0% | How many polls this candidate had. |
 | `n_polls_over50` | 0% | Count of the candidate's polls above 50%. |
@@ -139,6 +141,7 @@ grades don't exist for future polls) and no longer appear in the model.
 | feature | missing | meaning |
 |---|---|---|
 | `poll_lead` | 0% | `poll_avg` minus the best OTHER candidate's `poll_avg` (per-candidate, not a race-wide constant — **fixed 2026-07-21**: previously used one constant subtracted from every candidate, so 2nd place always read exactly 0.0). Current #3 feature by gain. |
+| `poll_lead_last7` | ~61% train (PRIMARY only) | `poll_last7` minus the best OTHER candidate's `poll_last7` — the final-week counterpart to `poll_lead`, which inherits `poll_avg`'s full-campaign staleness. NaN when either side has no final-week polls (never a silent 0, which would read as "tied"). Same primary-only scoping as `poll_last7`. |
 | `poll_share` | 0% | Candidate's share of the summed polled support in the race. |
 | `n_cands` | 0% | Number of candidates in the race. |
 | `twoparty_margin_cand` | 0% | DEM−REP race margin, signed toward this candidate's party. Current #4 feature. |

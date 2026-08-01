@@ -97,7 +97,26 @@ feature builder used by training AND prediction — never fork feature logic out
 - CSV round-trips turn House districts into floats (`'1'`→`1.0`) — `features.dist_str`
   normalizes; a hard assert in model.ipynb guards House fundamentals coverage.
 - The results files' `party` column is all-null — use `ballot_party`.
-- The polling-agg feed has internal + cross-source duplicate polls — predict.py dedups.
+- The polling-agg feed has internal + cross-source duplicate polls — predict.py dedups
+  **on the NORMALIZED pollster** (`F.norm_pollster`), not the raw string: the same survey is
+  filed under two spellings ("Glengariff Group, Inc." vs "Glengariff Group") and the raw key
+  let both through. The identical key lives in `predict.py`, `predict_primary.py` and
+  `build_primary_dataset.py` — **keep all three in sync** (never-fork rule).
+- **`features.norm_name` is THE shared join key** (polls ↔ results ↔ FEC ↔ bios ↔ history,
+  both pipelines). Changing it re-keys every join ⇒ full retrain. Two live gotchas: hyphens
+  must swallow adjacent whitespace (sources type "Mucarsel- Powell", and the mismatch
+  silently DROPS a race from training), while periods must NOT (or "Robert F. Kennedy"
+  becomes `fkennedy r`). **14 committed CSVs cache `cand_key` as a column** and go stale on
+  any `norm_name` change — re-run `scripts_rekey_cand_key.py` (dry-run first).
+- **Softmax temperature cannot be tuned by accuracy** — softmax is monotonic, so it never
+  changes the argmax. Tune it on Brier. It was hardcoded at the worst value for weeks under
+  a comment claiming otherwise; see METHODOLOGY.md.
+- **Never re-run `classify()` on descriptor-less bio rows.** ~8000 rows are hand-coded
+  (`src='manual'`, empty descriptor); classifying an empty string returns 0 and silently
+  drops sitting members of Congress from office_level 4 to 0.
+- **Dry-run every in-place data repair script** before `--apply`. Both repair scripts added
+  2026-08-01 default to dry run for this reason; one of them would have wiped ~600 correct
+  hand-coded rows on the first attempt.
 - "General"-stage feed rows include **hypothetical primary-season matchups**; the
   stale-candidate filter (14d, with guards) removes primary losers (e.g. ME-Sen had 5
   candidates before it).

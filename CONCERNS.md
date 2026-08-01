@@ -59,6 +59,19 @@ No more reporting the selection score as the performance estimate.
   rows duplicated between NYT and Wikipedia sources (80% with identical pct). `predict.py`
   dedups on (pollster, end_date, race, candidate), NYT preferred. **The polling-agg
   aggregator itself may be double-weighting these — worth fixing there too.**
+  **Dedup key fixed 2026-07-31: it now uses the NORMALIZED pollster (`F.norm_pollster`), not
+  the raw string.** Keying on the raw string missed exactly the cross-source case the dedup
+  exists for — the same survey filed under two spellings survived as two independent polls
+  and was double-counted in every aggregate: `"Glengariff Group, Inc."` 41.4 **and**
+  `"Glengariff Group"` 41.0 for the same 2026-07-11 field date, likewise Mitchell Research,
+  Susquehanna, Rosetta Stone. MI-Sen-DEM carried **99 poll rows for 36 real surveys**.
+  Removed 2254 duplicate rows from the 2026 primary feed and 1040 from the general feed.
+  `norm_pollster` also gained a trailing-descriptor strip (`Communications`, `& Associates`,
+  `LLC`, …) — anchored to the END and never allowed to empty the string, and verified not to
+  merge distinct firms (`Lester & Associates` vs `Ron Lester and Associates` stay separate;
+  all 19 collapsed groups are real spelling variants of one pollster).
+  **The same key must stay in sync in three places** — `predict.py`, `predict_primary.py`,
+  `build_primary_dataset.py` (never-fork rule).
 - Also fixed while auditing: **primary-stage polls** were flowing into the dataset
   (a candidate's primary numbers contaminated their general averages); now filtered.
   Hypothetical-matchup general polls (~1k) are kept deliberately — they polled the real
@@ -214,3 +227,31 @@ above:
     them (features_primary.merge_nickname_aliases, 36 merges in the feed); predict.py's
     general path does NOT yet — leading candidates' poll_avg can be diluted. Port the
     merge into load_agg_polls (feature-affecting ⇒ verify + full retrain).
+    **Partly addressed 2026-08-01** — a *different* cause of the same symptom was fixed in
+    `norm_name` itself (punctuation splitting one person into two keys; see the
+    `cand_key` entry in DATA_DICTIONARY.md). The NICKNAME half of this item is still open
+    for the general path.
+
+## Added by the 2026-08-01 name-key / bio-leakage pass
+
+22. **`bio_office_level`: the two models disagree, and it has never been settled.**
+    On the general WIN model it is a top-5 feature by mean |SHAP| (and #9 by gain) at
+    **99.9% training coverage**. On the PRIMARY model the with/without test shows it adding
+    **nothing** — race_acc .910 both ways, Brier .0231 vs .0233 — at **56.1%** coverage.
+    Serve-time coverage differs too: general 87.3% vs primary 47.2%, so both carry some
+    train/serve gap (mild, unlike `poll_last7`'s 39%→0% cliff). Worth one honest
+    with/without run per model rather than keeping it by inertia on one side and ignoring
+    the null on the other. Deferred by user ("we will fix all of this later").
+23. **`poll_last7` is primary-only and should be revisited for the general model in late
+    October.** It is 0.0% populated for 2026 general races today (95 days out) vs 39% in
+    training — an always-missing-in-production feature. Two ways to ship it: gate training
+    rows on days-to-election so the model only sees it at the horizon being served, or
+    simply add it once the live window fills near election day. Either is feature-affecting
+    ⇒ full re-tune + retrain.
+24. **14 committed CSVs cache `cand_key` as a column.** They silently go stale whenever
+    `features.norm_name` changes, and a stale key breaks joins rather than erroring.
+    `scripts_rekey_cand_key.py` repairs them, but the real fix is to stop caching a derived
+    key — derive it at load time, or add a CI check that recomputes and diffs it.
+25. **Wikipedia race pages sometimes omit a candidate's prior office** (Bean's 2022 page
+    reads 0 despite 2016 reading 2). Pre-existing source-completeness gap, separate from the
+    future-tense leak fixed 2026-08-01; not overridden, still worth a cleanup pass.

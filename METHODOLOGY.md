@@ -152,13 +152,33 @@ raw ranker scores are converted to ONE probability by a **within-race softmax** 
 the artifact meta). That single number is what BOTH the dashboard and the Explain modal show
 (explain_primary.py softmaxes the same scores; verified equal to the cent). This also makes an
 N-candidate field coherent (Maine's 9-way DEM Senate primary sums to 1 across all nine, ranked)
-instead of the classifier's independent scores. Tuned by LOCO called-winner accuracy (Brier is
-not meaningful for a ranker's raw scores); expanding-window eval held up: race-acc 0.902 / AUC
-0.987 / Brier 0.045 (2022+2024), vs the poll-leader baseline 0.723. `predict_primary.py` and
+instead of the classifier's independent scores. `predict_primary.py` and
 `explain_primary.py` load XGBRanker; the artifact meta carries `model_type=xgbranker` +
 `softmax_temp`. field_confidence is redefined as the leader's softmax prob above a uniform 1/n
 (replaces the old "raw prob sum < 0.30" heuristic). User note that drove this: "we need to do
 this so we can consider more than 2 candidates in a primary" + explainer must match dashboard.
+
+**SOFTMAX TEMPERATURE — tune on BRIER, never on accuracy (fixed 2026-07-31).**
+`SOFTMAX_TEMP` was hardcoded `1.0` under a comment claiming it was "tuned on the eval cycles
+by called-winner accuracy." It never was — **and it could not be: softmax is monotonic, so
+temperature cannot change the argmax. `race_acc` is bit-identical at every T.** Tuning a
+temperature by accuracy is a no-op by construction. The metric that moves is Brier
+(calibration), and 1.0 turned out to be the WORST value in the plausible range: the ranker's
+raw scores have std ≈1.3, so dividing by 1.0 squashes genuinely-separated candidates toward
+50/50. Measured on the 2022+2024 expanding-window rows:
+    T=1.00  Brier .0501   mean prob on the actual nominee .661   ← old hardcoded value
+    T=0.50  Brier .0254   .819
+    T=0.25  Brier .0213   .887                                   ← optimum at the time
+`tune_softmax_temp()` in `primary_model.py` now fits T by Brier after the hyperparameters are
+fixed, prints the whole grid, and writes both the choice and the grid into the artifact meta;
+`predict_primary.py` reads it as `softmax_temp`. Because it is fit AFTER tuning, it moves with
+the hyperparameters — never carry a stored temperature across a feature change.
+**Symptom that exposed this:** MI-Sen-DEM 2026, where the ranker separated the field cleanly
+(scores 1.94 / 1.54 / −0.69) but the card read a mushy 57.6%, and the Explain modal appeared
+to "disagree" with the dashboard — SHAP explains the SCORE while the card showed the
+miscalibrated softmax output. Same scores at the tuned T give 85%+.
+**Confidence here is earned, not a bug:** on held-out cycles, primary leaders predicted ≥0.99
+won 46/46 and ≥0.97 won 98.4% (n=64). Do not "fix" a 95%+ primary call by re-flattening T.
 
 **Labels (upgraded 2026-07-15, same day):** won = the ACTUAL primary winner, scraped from
 the same Wikipedia race pages' results tables (fetch_primary_results_2026.py --hist; last
@@ -271,6 +291,23 @@ Two source kinds, both contributing an as-of-year level:
     PREFERRED on any key overlap. (Caveat: a race page occasionally omits a candidate's prior
     office — e.g. Bean's 2022 page reads 0 despite 2016 reading 2. That's a Wikipedia
     source-completeness gap, not a builder bug; flagged for later cleanup, not overridden.)
+
+    **FUTURE-TENSE DESCRIPTORS (fixed 2026-08-01).** The as-of-year rule above is enforced by
+    the row's YEAR, but the descriptor PROSE could still leak, because Wikipedia bios are
+    written after the fact and sometimes name an office the candidate only won LATER:
+      Raphael Warnock, 2016 GA-Sen: "pastor ... and future U.S. Senator" → classified 4
+      Ron DeSantis,    2012 FL-Hou: "veteran, prosecutor and future Florida governor" → 3
+    Both held NO office at the time — the model was reading "later became a senator" as a
+    pre-election credential. `classify()` now strips future-office phrases (`future X`,
+    `later became/elected X`, `subsequently won X`) but deliberately PRESERVES campaign-event
+    language: "incumbent U.S. representative (ran for governor, later withdrew)" is genuinely
+    a 4 and must stay one. 7 candidates corrected (also Loeffler, Ricketts, Schweitzer → 0;
+    Fulcher → 2; Padilla → 3, correctly statewide as CA Secretary of State).
+    Repaired in place by `scripts_fix_future_office_level.py` (no re-scrape).
+    **TRAP:** that script only re-classifies rows that HAVE descriptor prose. ~8000 rows are
+    hand-coded (`src='manual'`, empty descriptor); running `classify()` on an empty string
+    returns 0 and would silently drop sitting members of Congress from 4 to 0 (Peltola, Risch,
+    Schiff — caught in dry run). Never re-classify descriptor-less rows.
   - BALLOTPEDIA (`candidate_bios_ballotpedia.csv`, gap-filler only): person-level but carries
     per-office TENURE DATES in an `offices_json` column (e.g.
     `[["U.S. House VA 7",2019,2025],["Governor of Virginia",2026,null]]`). The builder computes

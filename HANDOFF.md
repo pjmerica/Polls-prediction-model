@@ -4,7 +4,67 @@ For the next agent. Read AGENTS.md first (architecture + rules), CONCERNS.md sec
 (risk register + roadmap). This file: what's mid-flight RIGHT NOW, what's most likely to
 break, and what to do next, in order.
 
-## CURRENT STATE 2026-07-29 (latest) — PRIMARY model: classifier -> RANKER (multi-candidate fix).
+## CURRENT STATE 2026-08-01 (latest) — softmax temp + poll dedup + name join key + bio leakage; all 3 models retrained.
+
+Started from the user flagging MI-Sen-DEM again: Abdul El-Sayed reading **57%** despite leading
+every recent poll, with an Explain modal showing only positive drivers. Four distinct bugs came
+out of it; all are fixed, all three models retrained, both repos pushed, Pages verified live.
+
+**1. Softmax temperature was never tuned (biggest effect; every primary race).**
+`SOFTMAX_TEMP = 1.0` was hardcoded under a comment claiming it was tuned by called-winner
+accuracy. It never was, and it CANNOT be — softmax is monotonic, so temperature never changes
+the argmax and race_acc is identical at every T. Brier is what moves, and 1.0 was the worst
+value in range (.0501 vs .0213 at T=0.25). `tune_softmax_temp()` now fits it by Brier after the
+hyperparameters are fixed and writes it + the grid to the artifact. Full write-up in
+METHODOLOGY.md ("SOFTMAX TEMPERATURE — tune on BRIER, never on accuracy").
+This also explains the explainer-vs-dashboard mismatch: SHAP explains the ranker SCORE, the card
+showed the miscalibrated softmax OUTPUT.
+
+**2. Cross-source duplicate polls.** Dedup keyed the RAW pollster string, so one survey filed
+under two spellings survived twice ("Glengariff Group, Inc." 41.4 AND "Glengariff Group" 41.0).
+MI-Sen-DEM had 99 poll rows for 36 real surveys. Now keys on `F.norm_pollster` in all three
+places (predict.py, predict_primary.py, build_primary_dataset.py). −2254 primary rows, −1040
+general. Details in CONCERNS.md §"polling-agg repo: dirty".
+
+**3. `norm_name` split one person into two keys.** The two apostrophe characters took different
+paths ("O’Rourke"→`orourke b`, "O'Rourke"→`rourke b`); hyphens had the same inconsistency and
+keyed **357 politicians** off only the back half of their surname (Ocasio-Cortez→`cortez a`).
+A stray-space variant ("Debbie Mucarsel- Powell") broke the nominee join and had been silently
+dropping **2024_FL_Senate_DEM** from primary training (212→213 races restored).
+2723 cached `cand_key` values regenerated via `scripts_rekey_cand_key.py`.
+Primary `bio_office_level` coverage rose **35% → 56.1%** as a side effect.
+
+**4. `bio_office_level` counted offices not yet won.** Wikipedia bios are written after the
+fact, so prose like "pastor … and future U.S. Senator" (Warnock 2016) or "veteran, prosecutor
+and future Florida governor" (DeSantis 2012) classified as 4 and 3. `classify()` now strips
+future-office phrases while preserving campaign-event language. 7 candidates corrected via
+`scripts_fix_future_office_level.py`.
+
+**RESULTS (all re-tuned, per the rerun-everything rule):**
+  primary  Brier .0231, race_acc .910, softmax T=0.4, 213 races
+  win      AUC .970, Brier .068, race_acc .869 (expanding-window 2018–2024)
+  margin   MAE 7.273 expanding-window; still beats calibrated polls in EVERY office
+           (Sen 6.99 vs 7.45, House 7.73 vs 8.11, Gov 8.21 vs 8.54)
+  MI-Sen-DEM El-Sayed **57% → 94%** (Polymarket 86%); explainer == dashboard.
+
+**TRAPS THIS PASS (do not repeat):**
+- `scripts_fix_future_office_level.py` must ONLY re-classify rows that HAVE descriptor prose.
+  ~8000 rows are hand-coded (`src='manual'`, empty descriptor); running `classify()` on an
+  empty string returns 0 and would drop sitting members of Congress from 4 to 0 (Peltola,
+  Risch, Schiff). Caught in dry run — always dry-run these repair scripts first.
+- Periods must NOT swallow adjacent whitespace in `norm_name`, or middle initials glue onto
+  surnames ("Robert F. Kennedy" → `fkennedy r`). Hyphens must; periods must not.
+- A `git commit -m ... <<'EOF'` heredoc silently lost the message once (committed as "idk").
+  Use `git commit -F -` with the heredoc, and verify with `git log --oneline -1`.
+- The dashboard repo diverges constantly (CI pushes every ~2h). Always `git fetch` + reset to
+  origin and REGENERATE on top of CI's fresher polls rather than force-pushing local outputs.
+
+**STILL OPEN (deferred by user — "we will fix all of this later"):** CONCERNS.md items 22–25 —
+the `bio_office_level` disagreement between models (top-5 SHAP on win, null on primary), the
+`poll_last7` late-October revisit for the general model, the cached-`cand_key` fragility, and
+the Wikipedia prior-office omissions.
+
+## CURRENT STATE 2026-07-29 — PRIMARY model: classifier -> RANKER (multi-candidate fix).
 
 User flagged MI Senate DEM primary reading El-Sayed ~50% despite a real polling lead, and the
 Explain modal (95%) disagreeing with the dashboard (51%). Root cause: the primary nominee model
