@@ -116,9 +116,33 @@ def main():
         # in that particular file. The poll feed is stable and contains every race a person ran,
         # so a BP-resolved person's as-of-year level lands on ALL their races. `won` carried for
         # the mapping only (name matched below on candidate+state, same as before).
+        # The roster must span BOTH feeds (2026-08-01). It used to read only the GENERAL poll
+        # file, so a hand-coded or Ballotpedia-resolved person who never appears in a general
+        # poll got NO rows at all - silently discarding the entry. That hid every primary-only
+        # candidate (Eric Barlow, Andy Gipson, Shad White, Nirav Shah, Lynn Fitch, ...) and is
+        # why hand-coding them appeared to do nothing. The primary long file carries the same
+        # columns after prepare_polls, so the two concatenate directly.
         import features as _F
-        _d = _F.prepare_polls(pd.read_csv(os.path.join(HERE, "polls_long_with_results.csv"),
-                                          low_memory=False))
+        _COLS = ["year", "office", "state", "district", "cand_key", "party_std", "candidate"]
+        _frames = []
+        for _p in ("polls_long_with_results.csv", os.path.join("data", "primary_polls_long.csv")):
+            _fp = os.path.join(HERE, _p)
+            if os.path.exists(_fp):
+                _f = _F.prepare_polls(pd.read_csv(_fp, low_memory=False))
+                _frames.append(_f[_COLS])
+        # ...and the LIVE primary feed, which is the only place a current-cycle primary-only
+        # candidate appears (the two training files stop at the last completed cycle). Without
+        # this, hand-coding a 2026 primary candidate silently produced no rows: Eric Barlow,
+        # Andy Gipson, Shad White, Megan Degenfelder are in no historical poll file.
+        try:
+            from predict import DEFAULT_POLLS as _DP
+            from predict_primary import load_primary_feed as _lpf
+            _live = _lpf(_DP, 2026)
+            _frames.append(_live[_COLS])
+        except Exception as _e:      # feed absent (fresh clone / CI without polling-agg)
+            print(f"  live 2026 primary feed unavailable for the roster ({_e.__class__.__name__})"
+                  " - current-cycle primary-only hand-codes will not land")
+        _d = pd.concat(_frames, ignore_index=True)
         unc = _d.drop_duplicates(subset=["year", "office", "state", "district", "cand_key",
                                          "party_std"]).copy()
         unc = unc.rename(columns={"candidate": "candidate", "party_std": "party"})

@@ -65,12 +65,36 @@ _BP_LEVELS = [
                    # qualifier is treated as the STATE office (level 3, below) since in this data
                    # state secretaries of state vastly outnumber the lone federal one.
                    r"(u\.?s\.?|united states)\s+secretary of\b|"
-                   r"secretary of (the treasury|defense|labor|commerce|energy|"
-                   r"education|transportation|agriculture|homeland security|"
-                   r"veterans affairs|the interior|housing)\b", re.I)),
+                   # Departments that exist ONLY federally keep the bare form...
+                   r"secretary of (the treasury|defense|energy|homeland security|"
+                   r"veterans affairs|the interior|housing)\b|"
+                   # ...but labor/commerce/education/transportation/agriculture also name
+                   # STATE cabinet posts ("Maryland Secretary of Commerce" = level 3), so
+                   # those require an explicit federal qualifier (fixed 2026-08-01).
+                   r"(?:u\.?s\.?|united states|federal)\s+secretary of\s+"
+                   r"(?:labor|commerce|education|transportation|agriculture)\b", re.I)),
     (3, re.compile(r"\bgovernor of\b|lieutenant governor|attorney general|"
                    r"secretary of state|state treasurer|state auditor|state comptroller|"
-                   r"land commissioner|superintendent of public|insurance commissioner", re.I)),
+                   r"land commissioner|superintendent of public|insurance commissioner|"
+                   # APPOINTED statewide/federal agency heads (added 2026-08-01). Only
+                   # "commissioner of <dept>" was matching before, so a state health director
+                   # or cabinet secretary read 0 - Nirav Shah (director of the Maine CDC, then
+                   # principal deputy director of the federal CDC) classified as "no office
+                   # held". These are real executive credentials: name recognition, donor
+                   # networks, statewide profile. Requires an agency word so it cannot catch a
+                   # corporate "director of marketing".
+                   r"(?:(?:deputy|principal deputy|acting)\s+)?"
+                   r"(?:director|administrator|commissioner|superintendent|chief)\s+of\s+"
+                   r"(?:the\s+)?[a-z' ]{0,40}?"
+                   r"(?:department|agency|administration|bureau|division|"
+                   r"centers? for disease control|environmental protection)\b|"
+                   r"\b(?:state\s+)?(?:health|education|transportation|revenue|labor|"
+                   r"corrections|agriculture|commerce|emergency management)\s+"
+                   r"(?:department\s+)?(?:director|commissioner|secretary)\b|"
+                   r"\bsecretary of (?:commerce|labor|health|education|corrections|"
+                   r"administration|revenue|state agencies)\b|"
+                   r"\bchief justice\b|\bstate supreme court\b|\bsupreme court of\b|"
+                   r"\bunited states ambassador\b|\bu\.?s\.? ambassador\b", re.I)),
     (2, re.compile(r"state senate|state house|state assembly|state legislature|"
                    r"house of delegates|general assembly|state senator|state representative|"
                    r"state delegate|"
@@ -87,9 +111,14 @@ _BP_LEVELS = [
                    r"utah|vermont|virginia|washington|west virginia|wisconsin|wyoming)\s+"
                    r"(?:state\s+)?(?:senate|house|assembly|house of representatives|"
                    r"house of delegates|general assembly)\b", re.I)),
-    (1, re.compile(r"\bmayor\b|county (executive|commissioner|clerk|treasurer|sheriff)|"
+    (1, re.compile(r"\bmayor\b|county (executive|commissioner|clerk|treasurer|sheriff|"
+                   r"supervisor|legislature|legislator|prosecutor|attorney)|"
                    r"city council|county council|school board|city commission|"
-                   r"district attorney|\bjudge\b|alderman|selectman", re.I)),
+                   r"district attorney|\bjudge\b|alderman|selectman|"
+                   # added 2026-08-01 alongside the level-3 agency-head patterns
+                   r"borough president|board of (?:education|supervisors|selectmen)|"
+                   r"town council|village trustee|city clerk|\bsheriff\b|"
+                   r"circuit court|district court|superior court|county court", re.I)),
 ]
 
 def classify_ballotpedia(infobox_text, office=None):

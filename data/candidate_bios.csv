@@ -1,6 +1,7 @@
 district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_office,bio_prior_candidacy,src
 ,DEM,Mary S. Peltola,,2026,Senate,AK,peltola m,4,0,0,manual
 ,REP,James E. Risch,,2026,Senate,ID,risch j,4,0,0,manual
+,REP,Dave McCormick,,2024,Senate,PA,mccormick d,4,0,0,manual
 S,DEM,Adam B. Schiff,,2024,Senate,CA,schiff a,4,0,0,manual
 ,DEM,David J. Trone,,2024,Senate,MD,trone d,4,0,0,manual
 ,REP,Alexander X. Mooney,,2024,Senate,WV,mooney a,4,0,0,manual
@@ -37,6 +38,7 @@ S,REP,Jim Talent,,2002,Senate,MO,talent j,4,0,0,manual
 ,REP,George F. Allen,,2000,Senate,VA,allen g,4,0,0,manual
 3,REP,Bill Redmond,,1998,House,NM,redmond b,4,0,0,manual
 1,REP,Steve Chabot,,2010,House,OH,chabot s,4,0,0,manual
+,REP,Dave McCormick,,2022,Senate,PA,mccormick d,4,0,0,manual
 ,REP,John Cornyn,,2026,Senate,TX,cornyn j,4,0,0,ballotpedia
 ,OTH,Angus S. King Jr.,,2024,Senate,ME,king a,4,0,0,ballotpedia
 ,OTH,Bernie Sanders,,2024,Senate,VT,sanders b,4,0,0,ballotpedia
@@ -144,6 +146,7 @@ S,REP,John Barrasso,,2008,Senate,WY,barrasso j,4,0,0,ballotpedia
 2,REP,Charles Bass,,2010,House,NH,bass c,4,0,0,ballotpedia
 2,REP,Frank A. LoBiondo,,2010,House,NJ,lobiondo f,4,0,0,ballotpedia
 2,REP,Joe Wilson,,2010,House,SC,wilson j,4,0,0,ballotpedia
+,DEM,Tim Ryan,,2024,Senate,OH,ryan t,4,0,0,ballotpedia
 ,REP,Jeff Flake,U.S. representative from the 6th district,2012,Senate,AZ,flake j,4,1,0,wikipedia
 ,REP,Trent Franks,U.S. representative,2012,Senate,AZ,franks t,4,1,0,wikipedia
 ,REP,J. D. Hayworth,former U.S. representative,2012,Senate,AZ,hayworth j,4,1,0,wikipedia
@@ -7003,6 +7006,28 @@ S,OTH,Ronnie Musgrove,,2008,Senate,MS,musgrove r,3,0,0,manual
 ,REP,George V. Voinovich,,1998,Senate,OH,voinovich g,3,0,0,manual
 1,REP,William J. Janklow,,2002,House,SD,janklow w,3,0,0,manual
 13,REP,Katherine Harris,,2004,House,FL,harris k,3,0,0,manual
+,DEM,Cary Kennedy,,2018,Governor,CO,kennedy c,3,0,0,manual
+,DEM,Lori Swanson,,2018,Governor,MN,swanson l,3,0,0,manual
+,REP,Todd Lamb,,2018,Governor,OK,lamb t,3,0,0,manual
+,REP,Scott Pruitt,,2018,Governor,OK,pruitt s,3,0,0,manual
+,REP,Tate Reeves,,2018,Senate,MS,reeves t,3,0,0,manual
+,REP,Lynn Fitch,,2019,Governor,MS,fitch l,3,0,0,manual
+,REP,Woody Thrasher,,2020,Governor,WV,thrasher w,3,0,0,manual
+,REP,Lynda Blanchard,,2022,Governor,AL,blanchard l,3,0,0,manual
+,REP,Kelly Schulz,,2022,Governor,MD,schulz k,3,0,0,manual
+,DEM,Tobias Read,,2022,Governor,OR,read t,3,0,0,manual
+,DEM,Nellie Gorbea,,2022,Governor,RI,gorbea n,3,0,0,manual
+,REP,Lynda Blanchard,,2022,Senate,AL,blanchard l,3,0,0,manual
+,DEM,Bethany Hall-Long,,2024,Governor,DE,halllong b,3,0,0,manual
+1,REP,Jillian Balow,,2026,House,WY,balow j,3,0,0,manual
+,REP,Megan Degenfelder,,2026,Governor,WY,degenfelder m,3,0,0,manual
+,DEM,Nirav Shah,,2026,Governor,ME,shah n,3,0,0,manual
+,REP,Genter Drummond,,2026,Governor,OK,drummond g,3,0,0,manual
+,DEM,Jacqueline Coleman,,2026,Governor,KY,coleman j,3,0,0,manual
+,REP,Shad White,,2026,Governor,MS,white s,3,0,0,manual
+,REP,Lynn Fitch,,2026,Governor,MS,fitch l,3,0,0,manual
+,REP,Andy Gipson,,2026,Governor,MS,gipson a,3,0,0,manual
+,DEM,Nirav Shah,,2026,Senate,ME,shah n,3,0,0,manual
 ,REP,Kris W. Kobach,,2020,Senate,KS,kobach k,3,0,0,ballotpedia
 S,DEM,Kate Brown,,2016,Governor,OR,brown k,3,0,0,ballotpedia
 ,DEM,Christine Gregoire,,2008,Governor,WA,gregoire c,3,0,0,ballotpedia
@@ -7023,6 +7048,7 @@ S,REP,Gary Richard Herbert,,2010,Governor,UT,herbert g,3,0,0,ballotpedia
 6,REP,Nancy P. Hollister,,1998,House,OH,hollister n,3,0,0,ballotpedia
 1,REP,Denny Rehberg,,2000,House,MT,rehberg d,3,0,0,ballotpedia
 4,REP,Tom Cole,,2002,House,OK,cole t,3,0,0,ballotpedia
+,REP,Delbert Hosemann,,2026,Governor,MS,hosemann d,3,0,0,ballotpedia
 ,REP,Jan Brewer,Arizona governor,2012,Senate,AZ,brewer j,3,0,0,wikipedia
 ,REP,Sarah Palin,former governor of Alaska (2006–2009) and nominee for vice president of the United States in 2008,2012,Senate,AZ,palin s,3,0,1,wikipedia
 ,REP,Fife Symington III,former Arizona governor,2012,Senate,AZ,symington f,3,0,0,wikipedia
@@ -8628,6 +8654,7 @@ S,DEM,Martha Coakley,,2010,Senate,MA,coakley m,3,0,0,wiki_xref
 ,OTH,Todd Achilles,,2026,Senate,ID,achilles t,2,0,0,manual
 ,DEM,Roland Gutierrez,,2024,Senate,TX,gutierrez r,2,0,0,manual
 S,REP,Karin Housley,,2018,Senate,MN,housley k,2,0,0,manual
+6,DEM,Cherlynn Stevenson,,2026,House,KY,stevenson c,2,0,0,manual
 3,REP,John Braun,,2026,House,WA,braun j,2,0,0,manual
 10,REP,Mike Bouchard,,2026,House,MI,bouchard m,2,0,0,manual
 1,REP,Mark Smith,,2026,House,SC,smith m,2,0,0,manual
@@ -8644,6 +8671,7 @@ S,REP,Karin Housley,,2018,Senate,MN,housley k,2,0,0,manual
 9,REP,H. Morgan Griffith,,2018,House,VA,griffith h,2,0,0,manual
 ,DEM,Tom Begich,,2026,Governor,AK,begich t,2,0,0,manual
 ,REP,Click Bishop,,2026,Governor,AK,bishop c,2,0,0,manual
+,REP,Ed Diehl,,2026,Governor,OR,diehl e,2,0,0,manual
 ,REP,Tim Moore,,2020,Governor,NC,moore t,2,0,0,manual
 S,DEM,Constance N. Johnson,,2014,Senate,OK,johnson c,2,0,0,manual
 ,DEM,Ethan Berkowitz,,2010,Governor,AK,berkowitz e,2,0,0,manual
@@ -8774,6 +8802,30 @@ S,REP,Scott Brown,,2010,Senate,MA,brown s,2,0,0,manual
 2,REP,John Koster,,2010,House,WA,koster j,2,0,0,manual
 3,REP,Jaime Herrera Beutler,,2010,House,WA,beutler j,2,0,0,manual
 1,REP,David B. McKinley,,2010,House,WV,mckinley d,2,0,0,manual
+,REP,Jeanne Ives,,2018,Governor,IL,ives j,2,0,0,manual
+,DEM,Chris Giunchigliani,,2018,Governor,NV,giunchigliani c,2,0,0,manual
+,REP,Patricia Morgan,,2018,Governor,RI,morgan p,2,0,0,manual
+,REP,Mike Kennedy,,2018,Senate,UT,kennedy m,2,0,0,manual
+,REP,Robert Goforth,,2019,Governor,KY,goforth r,2,0,0,manual
+,DEM,Ron Stollings,,2020,Governor,WV,stollings r,2,0,0,manual
+,REP,Kate Campanale,,2022,Governor,MA,campanale k,2,0,0,manual
+,DEM,Eric Lesser,,2022,Governor,MA,lesser e,2,0,0,manual
+,REP,Bob Tiernan,,2022,Governor,OR,tiernan b,2,0,0,manual
+,REP,Steven Haugaard,,2022,Governor,SD,haugaard s,2,0,0,manual
+,REP,Moore Capito,,2024,Governor,WV,capito m,2,0,0,manual
+,REP,Mike Kennedy,,2024,Senate,UT,kennedy m,2,0,0,manual
+,DEM,Julie Gonzales,,2026,Senate,CO,gonzales j,2,0,0,manual
+1,REP,Joseph Chaplik,,2026,House,AZ,chaplik j,2,0,0,manual
+8,DEM,Shannon Bird,,2026,House,CO,bird s,2,0,0,manual
+1,DEM,Nate Blouin,,2026,House,UT,blouin n,2,0,0,manual
+2,REP,Karianne Lisonbee,,2026,House,UT,lisonbee k,2,0,0,manual
+21,REP,Robert Smullen,,2026,House,NY,smullen r,2,0,0,manual
+9,REP,Briscoe Cain,,2026,House,TX,cain b,2,0,0,manual
+,REP,Eric Barlow,,2026,Governor,WY,barlow e,2,0,0,manual
+,DEM,Josh Elliot,,2026,Governor,CT,elliot j,2,0,0,manual
+,REP,Ralph Norman,,2026,Governor,SC,norman r,2,0,0,manual
+,REP,Jim Carlin,,2026,Senate,IA,carlin j,2,0,0,manual
+7,DEM,Bob Brooks,,2026,House,PA,brooks b,2,0,0,manual
 39,REP,Young Kim,,2020,House,CA,kim y,2,0,0,ballotpedia
 ,REP,Mike Dunleavy,,2018,Governor,AK,dunleavy m,2,0,0,ballotpedia
 1,DEM,John B. Larson,,1998,House,CT,larson j,2,0,0,ballotpedia
@@ -12485,7 +12537,10 @@ S,REP,Scott Walker,,2012,Governor,WI,walker s,2,0,0,wiki_xref
 ,REP,Norm Coleman,,2002,Senate,MN,coleman n,2,0,0,wiki_xref
 ,DEM,Scott Colom,,2026,Senate,MS,colom s,1,0,0,manual
 1,DEM,Bob Harvie,,2026,House,PA,harvie b,1,0,0,manual
+3,DEM,Heidi Hall,,2026,House,CA,hall h,1,0,0,manual
+5,REP,"Robert G. ""Bob"" Good",,2020,House,VA,good r,1,0,0,manual
 10,DEM,Marilyn Strickland,,2020,House,WA,strickland m,1,0,0,manual
+48,REP,Michelle Steel,,2020,House,CA,steel m,1,0,0,manual
 3,REP,Michael Guest,,2018,House,MS,guest m,1,0,0,manual
 ,DEM,Jerri Green,,2026,Governor,TN,green j,1,0,0,manual
 ,REP,Dave Bronson,,2026,Governor,AK,bronson d,1,0,0,manual
@@ -12501,6 +12556,7 @@ S,DEM,Joyce Dickerson,,2014,Senate,SC,dickerson j,1,0,0,manual
 1,DEM,Thomas H. Allen,,2004,House,ME,allen t,1,0,0,manual
 8,DEM,Brad Ellsworth,,2006,House,IN,ellsworth b,1,0,0,manual
 4,DEM,Kenneth R. Lucas,,2006,House,KY,lucas k,1,0,0,manual
+19,DEM,John Hall,,2006,House,NY,hall j,1,0,0,manual
 24,DEM,Michael A. Arcuri,,2006,House,NY,arcuri m,1,0,0,manual
 8,DEM,James Marshall,,2008,House,GA,marshall j,1,0,0,manual
 1,DEM,Martin Heinrich,,2008,House,NM,heinrich m,1,0,0,manual
@@ -12518,6 +12574,19 @@ S,DEM,Joyce Dickerson,,2014,Senate,SC,dickerson j,1,0,0,manual
 29,REP,Thomas Reed,,2010,House,NY,reed t,1,0,0,manual
 16,REP,Jim Renacci,,2010,House,OH,renacci j,1,0,0,manual
 26,REP,Carlos Curbelo,,2016,House,FL,curbelo c,1,0,0,manual
+,REP,Russell Fagg,,2018,Senate,MT,fagg r,1,0,0,manual
+,DEM,Robert Shuler Smith,,2019,Governor,MS,smith r,1,0,0,manual
+,DEM,Chokwe Antar Lumumba,,2019,Governor,MS,lumumba c,1,0,0,manual
+,DEM,Ikaika Anderson,,2022,Governor,HI,anderson i,1,0,0,manual
+,REP,Russell Fagg,,2024,Senate,MT,fagg r,1,0,0,manual
+1,DEM,Stefany Shaheen,,2026,House,NH,shaheen s,1,0,0,manual
+17,DEM,Beth Davidson,,2026,House,NY,davidson b,1,0,0,manual
+7,DEM,Antonio Reynoso,,2026,House,NY,reynoso a,1,0,0,manual
+8,DEM,Mussab Ali,,2026,House,NJ,ali m,1,0,0,manual
+3,DEM,Emily Berge,,2026,House,WI,berge e,1,0,0,manual
+1,REP,Asa Buck,,2026,House,NC,buck a,1,0,0,manual
+,DEM,Sam Bregman,,2026,Governor,NM,bregman s,1,0,0,manual
+7,DEM,Lamont McClure,,2026,House,PA,mcclure l,1,0,0,manual
 S,DEM,Christopher A. Coons,,2010,Senate,DE,coons c,1,0,0,ballotpedia
 ,DEM,Mark Begich,,2008,Senate,AK,begich m,1,0,0,ballotpedia
 2,DEM,Rick Larsen,,2000,House,WA,larsen r,1,0,0,ballotpedia
@@ -13906,6 +13975,7 @@ S,DEM,Peter Corroon,,2010,Governor,UT,corroon p,1,0,0,wiki_xref
 ,DEM,Hector Mujica,,2026,Senate,FL,mujica h,0,0,0,manual
 ,OTH,Shannon W. Bray,,2026,Senate,NC,bray s,0,0,0,manual
 ,DEM,Hallie Shoffner,,2026,Senate,AR,shoffner h,0,0,0,manual
+,DEM,Nathan Sage,,2026,Senate,IA,sage n,0,0,0,manual
 ,DEM,Amy McGrath,,2026,Senate,KY,mcgrath a,0,0,0,manual
 ,DEM,Jordan Wood,,2026,Senate,ME,wood j,0,0,0,manual
 ,REP,Sam Brown,,2024,Senate,NV,brown s,0,0,0,manual
@@ -14190,7 +14260,6 @@ S,OTH,Jerry Trooien,,2018,Senate,MN,trooien j,0,0,0,manual
 28,DEM,Hector Mujica,,2026,House,FL,mujica h,0,0,0,manual
 27,DEM,Robin Peguero,,2026,House,FL,peguero r,0,0,0,manual
 1,OTH,Thomas Aaron Bailey,,2026,House,NC,bailey t,0,0,0,manual
-3,DEM,Heidi Hall,,2026,House,CA,hall h,0,0,0,manual
 27,DEM,Mike Davey,,2026,House,FL,davey m,0,0,0,manual
 40,DEM,Esther Kim-Varet,,2026,House,CA,kimvaret e,0,0,0,manual
 1,DEM,Mac Deford,,2026,House,SC,deford m,0,0,0,manual
@@ -14388,7 +14457,6 @@ S,OTH,Jerry Trooien,,2018,Senate,MN,trooien j,0,0,0,manual
 50,DEM,Ammar Campa-Najjar,,2020,House,CA,campanajjar a,0,0,0,manual
 7,REP,Lisa Scheller,,2020,House,PA,scheller l,0,0,0,manual
 5,DEM,Bryant Cameron Webb,,2020,House,VA,webb b,0,0,0,manual
-5,REP,"Robert G. ""Bob"" Good",,2020,House,VA,good r,0,0,0,manual
 3,DEM,Helane Seikaly,,2020,House,TX,seikaly h,0,0,0,manual
 3,OTH,Christopher Claytor,,2020,House,TX,claytor c,0,0,0,manual
 3,DEM,Carolyn Long,,2020,House,WA,long c,0,0,0,manual
@@ -14456,7 +14524,6 @@ S,OTH,Jerry Trooien,,2018,Senate,MN,trooien j,0,0,0,manual
 1,DEM,Debbie Wachspress,,2020,House,PA,wachspress d,0,0,0,manual
 4,REP,JayMac McFarland,,2020,House,UT,mcfarland j,0,0,0,manual
 9,OTH,Jeffery Scott,,2019,House,NC,scott j,0,0,0,manual
-48,REP,Michelle Steel,,2020,House,CA,steel m,0,0,0,manual
 1,OTH,Ronald Wieczorek,,2018,House,SD,wieczorek r,0,0,0,manual
 1,OTH,George D. Hendrickson,,2018,House,SD,hendrickson g,0,0,0,manual
 1,OTH,Richard Brubaker,,2018,House,WY,brubaker r,0,0,0,manual
@@ -14999,7 +15066,6 @@ S,DEM,Nicholas H. Carter,,2008,Senate,WY,carter n,0,0,0,manual
 1,DEM,Patricia A. Madrid,,2006,House,NM,madrid p,0,0,0,manual
 2,DEM,Albert D. Kissling,,2006,House,NM,kissling a,0,0,0,manual
 3,DEM,David L. Mejias,,2006,House,NY,mejias d,0,0,0,manual
-19,DEM,John Hall,,2006,House,NY,hall j,0,0,0,manual
 20,DEM,Kirsten E. Gillibrand,,2006,House,NY,gillibrand k,0,0,0,manual
 25,DEM,Daniel B. Maffei,,2006,House,NY,maffei d,0,0,0,manual
 26,DEM,Jack Davis,,2006,House,NY,davis j,0,0,0,manual
@@ -15449,6 +15515,79 @@ S,REP,John Raese,,2010,Senate,WV,raese j,0,0,0,manual
 1,REP,Hans Reigle,,2016,House,DE,reigle h,0,0,0,manual
 10,REP,Thuy Lowe,,2016,House,FL,lowe t,0,0,0,manual
 1,REP,Richard Priem,,2016,House,NM,priem r,0,0,0,manual
+,REP,Jan Morgan,,2018,Governor,AR,morgan j,0,0,0,manual
+,REP,Marissa Kerns,,2018,Governor,HI,kerns m,0,0,0,manual
+,REP,Jeremy Low,,2018,Governor,HI,low j,0,0,0,manual
+,DEM,John Norris,,2018,Governor,IA,norris j,0,0,0,manual
+,DEM,Chris Kennedy,,2018,Governor,IL,kennedy c,0,0,0,manual
+,REP,Mary Mayhew,,2018,Governor,ME,mayhew m,0,0,0,manual
+,DEM,Betsy Sweet,,2018,Governor,ME,sweet b,0,0,0,manual
+,DEM,Abdul El-Sayed,,2018,Governor,MI,elsayed a,0,0,0,manual
+,DEM,Shri Thanedar,,2018,Governor,MI,thanedar s,0,0,0,manual
+,REP,Greg Wooldridge,,2018,Governor,OR,wooldridge g,0,0,0,manual
+,REP,Catherine Templeton,,2018,Governor,SC,templeton c,0,0,0,manual
+,DEM,Phil Noble,,2018,Governor,SC,noble p,0,0,0,manual
+,DEM,Marguerite Willis,,2018,Governor,SC,willis m,0,0,0,manual
+,REP,Randy Boyd,,2018,Governor,TN,boyd r,0,0,0,manual
+,DEM,Andrew White,,2018,Governor,TX,white a,0,0,0,manual
+,DEM,Kerri Evelyn Harris,,2018,Senate,DE,harris k,0,0,0,manual
+,REP,Gene Truono,,2018,Senate,DE,truono g,0,0,0,manual
+,REP,John Kingston,,2018,Senate,MA,kingston j,0,0,0,manual
+,REP,Beth Lindstrom,,2018,Senate,MA,lindstrom b,0,0,0,manual
+,REP,Sandy Pensler,,2018,Senate,MI,pensler s,0,0,0,manual
+,REP,Troy Downing,,2018,Senate,MT,downing t,0,0,0,manual
+,REP,Mike Gibbons,,2018,Senate,OH,gibbons m,0,0,0,manual
+,DEM,Sema Hernandez,,2018,Senate,TX,hernandez s,0,0,0,manual
+,REP,Kevin Nicholson,,2018,Senate,WI,nicholson k,0,0,0,manual
+,REP,Don Blankenship,,2018,Senate,WV,blankenship d,0,0,0,manual
+,DEM,Ryan Jackson,,2020,Governor,UT,jackson r,0,0,0,manual
+,DEM,Stephen Smith,,2020,Governor,WV,smith s,0,0,0,manual
+,REP,Sandy Smith,,2020,Senate,NC,smith s,0,0,0,manual
+,REP,Garland Tucker,,2020,Senate,NC,tucker g,0,0,0,manual
+,REP,Matt Innis,,2020,Senate,NE,innis m,0,0,0,manual
+,REP,Elisa Martinez,,2020,Senate,NM,martinez e,0,0,0,manual
+,REP,Hirsh Singh,,2021,Governor,NJ,singh h,0,0,0,manual
+,REP,Amanda Chase,,2021,Governor,VA,chase a,0,0,0,manual
+,REP,Francis Washburn,,2022,Governor,AR,washburn f,0,0,0,manual
+,DEM,Vicky Cayetano,,2022,Governor,HI,cayetano v,0,0,0,manual
+,DEM,Keith Amemiya,,2022,Governor,HI,amemiya k,0,0,0,manual
+,REP,B.J. Penn,,2022,Governor,HI,penn b,0,0,0,manual
+,REP,Brett Lindstrom,,2022,Governor,NE,lindstrom b,0,0,0,manual
+,REP,Mike Durant,,2022,Senate,AL,durant m,0,0,0,manual
+,REP,Jake Bequette,,2022,Senate,AR,bequette j,0,0,0,manual
+,REP,Jan Morgan,,2022,Senate,AR,morgan j,0,0,0,manual
+,REP,Peggy Hubbard,,2022,Senate,IL,hubbard p,0,0,0,manual
+,REP,Mike Gibbons,,2022,Senate,OH,gibbons m,0,0,0,manual
+,REP,Jackson Lahmeyer,,2022,Senate,OK,lahmeyer j,0,0,0,manual
+,REP,Robert Burns,,2024,Governor,NH,burns r,0,0,0,manual
+,REP,Phil Lyman,,2024,Governor,UT,lyman p,0,0,0,manual
+1,REP,Gerald Malloy,,2026,House,VT,malloy g,0,0,0,manual
+1,REP,Mark Coester,,2026,House,VT,coester m,0,0,0,manual
+4,DEM,Kai Newkirk,,2026,House,AZ,newkirk k,0,0,0,manual
+20,DEM,Dale Holness,,2026,House,FL,holness d,0,0,0,manual
+1,REP,David Giralt,,2026,House,WY,giralt d,0,0,0,manual
+1,REP,Frank Chapman,,2026,House,WY,chapman f,0,0,0,manual
+1,REP,Kevin Christensen,,2026,House,WY,christensen k,0,0,0,manual
+1,REP,Steve Friess,,2026,House,WY,friess s,0,0,0,manual
+1,REP,Reid Rasner,,2026,House,WY,rasner r,0,0,0,manual
+12,DEM,Jack Schlossberg,,2026,House,NY,schlossberg j,0,0,0,manual
+12,DEM,Sue Altman,,2026,House,NJ,altman s,0,0,0,manual
+21,REP,Anthony Constantino,,2026,House,NY,constantino a,0,0,0,manual
+1,REP,James Bialota,,2026,House,SD,bialota j,0,0,0,manual
+2,REP,Keith Gross,,2026,House,FL,gross k,0,0,0,manual
+3,REP,Hope Scheppelman,,2026,House,CO,scheppelman h,0,0,0,manual
+9,DEM,Terry Virts,,2026,House,TX,virts t,0,0,0,manual
+,REP,Brent Bien,,2026,Governor,WY,bien b,0,0,0,manual
+,REP,Robert Charles,,2026,Governor,ME,charles r,0,0,0,manual
+,REP,Tommy Duff,,2026,Governor,MS,duff t,0,0,0,manual
+,REP,Peter Lumaj,,2026,Governor,CT,lumaj p,0,0,0,manual
+1,DEM,Frank Church,,2026,House,WY,church f,0,0,0,manual
+2,REP,David Flippo,,2026,House,NV,flippo d,0,0,0,manual
+7,DEM,Brian Poindexter,,2026,House,OH,poindexter b,0,0,0,manual
+,DEM,Terry Virts,,2026,Senate,TX,virts t,0,0,0,manual
+1,DEM,Russell Cleveland,,2026,House,MT,cleveland r,0,0,0,manual
+,DEM,Andrew White,,2026,Governor,TX,white a,0,0,0,manual
+15,DEM,Ada Cuellar,,2026,House,TX,cuellar a,0,0,0,manual
 ,OTH,Mark Tippetts,,2022,Governor,TX,tippetts m,0,0,0,ballotpedia
 ,OTH,Mark Tippetts,,2018,Governor,TX,tippetts m,0,0,0,ballotpedia
 ,DEM,Robert Menendez,,2012,Senate,NJ,menendez r,0,0,0,ballotpedia
@@ -16517,7 +16656,6 @@ S,REP,John Raese,,2010,Senate,WV,raese j,0,0,0,manual
 ,DEM,Pat Chesbro,teacher,2022,Senate,AK,chesbro p,0,0,0,wikipedia
 ,DEM,2020,( ran for governor ),2022,Senate,AK,,0,0,0,wikipedia
 ,REP,Katie Britt,former president and CEO of the Business Council of Alabama; former chief of staff to outgoing senator Richard Shelby,2022,Senate,AL,britt k,0,0,0,wikipedia
-,REP,Lynda Blanchard,United States Ambassador to Slovenia (2019–2021) ( ran for governor ),2022,Senate,AL,blanchard l,0,0,0,wikipedia
 ,REP,U.S. Marine Corps,veteran ( ran for Alabama Senate ; endorsed Durant),2022,Senate,AL,corps u,0,0,0,wikipedia
 ,REP,Alabama's 2nd congressional district,"in 2020 (endorsed Durant, later Brooks)",2022,Senate,AL,district a,0,0,0,wikipedia
 ,DEM,John Sophocleus,former Auburn University professor and nominee for governor in 2002,2022,Senate,AL,sophocleus j,0,0,1,wikipedia
@@ -16785,7 +16923,6 @@ S,REP,John Raese,,2010,Senate,WV,raese j,0,0,0,manual
 ,REP,Stephen Faris,electrical engineer,2024,Senate,OH,faris s,0,0,0,wikipedia
 ,REP,Green Party,"), U.S. Navy veteran and perennial candidate",2024,Senate,OH,party g,0,0,0,wikipedia
 ,DEM,William Parker,app developer,2024,Senate,PA,parker w,0,0,0,wikipedia
-,REP,Dave McCormick,"former U.S. Under Secretary of the Treasury for International Affairs (2007–2009), former CEO of Bridgewater Associates (2020–2022), and candidate for U.S. Senate in 2022",2024,Senate,PA,mccormick d,0,0,1,wikipedia
 ,REP,Conestoga Township,treasurer and secretary (ran as a write-in candidate),2024,Senate,PA,township c,0,0,0,wikipedia
 ,REP,Joseph Vodvarka,spring manufacturer and perennial candidate,2024,Senate,PA,vodvarka j,0,0,0,wikipedia
 ,REP,Kathy Barnette,"political commentator, nominee for Pennsylvania's 4th congressional district in 2020 , and candidate for U.S. Senate in 2022",2024,Senate,PA,barnette k,0,0,1,wikipedia
@@ -16885,7 +17022,6 @@ S,REP,John Raese,,2010,Senate,WV,raese j,0,0,0,manual
 ,DEM,University of Maine,and primary candidate for this seat,2026,Senate,ME,maine u,0,0,1,wikipedia
 ,DEM,Kristina Libby,"writer, actor, and organizer",2026,Senate,ME,libby k,0,0,0,wikipedia
 ,DEM,ME-02,in 2026,2026,Senate,ME,me,0,0,0,wikipedia
-,DEM,Nirav Shah,"former principal deputy director of the Centers for Disease Control and Prevention (2023–2025), former director of the Maine CDC (2019–2023), and candidate for governor in 2026 (endorsed Jackson)",2026,Senate,ME,shah n,0,0,1,wikipedia
 ,DEM,Patrick Dempsey,actor,2026,Senate,ME,dempsey p,0,0,0,wikipedia
 ,DEM,Heather Cox Richardson,historian,2026,Senate,ME,richardson h,0,0,0,wikipedia
 ,IND,Tim Rich,former restaurant owner,2026,Senate,ME,rich t,0,0,0,wikipedia
@@ -16973,7 +17109,6 @@ S,REP,John Raese,,2010,Senate,WV,raese j,0,0,0,manual
 ,REP,Tony Schmoker,realtor,2026,Senate,TX,schmoker t,0,0,0,wikipedia
 ,DEM,Emily Morgul,administrative assistant,2026,Senate,TX,morgul e,0,0,0,wikipedia
 ,DEM,Michael Swanson,waiter,2026,Senate,TX,swanson m,0,0,0,wikipedia
-,DEM,Terry Virts,retired United States Air Force pilot and NASA astronaut ( ran for U.S. House ),2026,Senate,TX,virts t,0,0,0,wikipedia
 ,DEM,Paula Williams,realtor,2026,Senate,TX,williams p,0,0,0,wikipedia
 ,IND,Ronald Evans,minister,2026,Senate,TX,evans r,0,0,0,wikipedia
 ,IND,Camencia Ford,businesswoman,2026,Senate,TX,ford c,0,0,0,wikipedia
