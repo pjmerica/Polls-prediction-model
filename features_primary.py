@@ -159,7 +159,12 @@ def merge_nickname_aliases(d, name_col="candidate"):
     return d, merges
 
 def load_candidate_bios(path=None):
-    """data/candidate_bios.csv -> {(year, office, state, district, party, ck): feats}.
+    """data/candidate_bios.csv -> {(year, office, state, district, party, ck): feats}, plus
+    the two fallback indexes the primary lookup needs (see build_primary_table):
+      "__person_offices__" : {(ck, state): offices}  - leak-free as-of-year level (shared with
+                             features.load_candidate_bios; used identically here)
+      "__person_years__"   : {(ck, state): {year: feats}} - the same person's bio in OTHER
+                             cycles, for the most-recent-PRIOR-year fallback
     Wikipedia race-page candidate descriptors classified into office levels
     (fetch_candidate_bios.py). district = '' for statewide."""
     import os
@@ -169,16 +174,65 @@ def load_candidate_bios(path=None):
         return {}
     b = pd.read_csv(path, low_memory=False)
     out = {}
+    by_person = {}
     for r in b.itertuples():
         di = F.dist_str(r.district)   # crash-safe: handles "S" special-election district + float round-trip
         party = F.npar(r.party)
-        out[(int(r.year), r.office, r.state, di, party, r.cand_key)] = dict(
-            bio_office_level=int(r.office_level),
-            bio_in_office=int(r.bio_in_office),
-            bio_prior_candidacy=int(r.bio_prior_candidacy))
+        if pd.isna(r.cand_key):
+            continue
+        feats = dict(bio_office_level=int(r.office_level),
+                     bio_in_office=int(r.bio_in_office),
+                     bio_prior_candidacy=int(r.bio_prior_candidacy))
+        yr = int(r.year)
+        out[(yr, r.office, r.state, di, party, r.cand_key)] = feats
+        # keep the HIGHEST level seen for a person-year (a cycle can hold several rows for
+        # one person - e.g. they appear on both the Senate and Governor page)
+        pk = (r.cand_key, r.state)
+        prev = by_person.setdefault(pk, {}).get(yr)
+        if prev is None or feats["bio_office_level"] > prev["bio_office_level"]:
+            by_person[pk][yr] = feats
+    out["__person_years__"] = by_person
+    # reuse the general loader's person-level tenure map (hand-coded + Ballotpedia), which is
+    # keyed (cand_key, state) and evaluated as-of-year, so it is leak-free by construction
+    gen = F.load_candidate_bios()          # no-arg: reads the same default data/candidate_bios.csv
+    out["__person_offices__"] = gen.get("__person_offices__", {}) if gen else {}
     return out
 
 _BIO_NAN = dict(bio_office_level=np.nan, bio_in_office=np.nan, bio_prior_candidacy=np.nan)
+
+def _bio_lookup(bios, yr, of, st, di, party, ck):
+    """Bio feats for one candidate-race, or _BIO_NAN.
+
+    Three tiers, all leak-free (2026-08-01 - the primary path previously had ONLY tier 1,
+    which is why 453 real candidates read NaN while their bios sat in the file):
+      1. exact (year, office, state, district, party, cand_key), with statewide offices
+         collapsed to district "" (ports the same "S"-district fix features.py already had);
+      2. person-level tenure map, as-of-year (identical to the general pipeline's fallback);
+      3. the SAME person's bio from the most recent STRICTLY-PRIOR cycle. Only looks
+         backward, so it cannot leak a later-won office - it is the same no-look-ahead rule
+         the as-of-year table is built on. This is what rescues odd-year races (2019 KY,
+         2019 MS, 2021 VA have ~9 bio rows total because the scraper only covers even years)
+         and people like Andrew Cuomo, who has 12 bio rows but none for the 2024 cycle.
+    """
+    if bios is None:
+        return _BIO_NAN
+    bio_di = "" if of in ("Senate", "Governor") else di
+    hit = bios.get((yr, of, st, bio_di, party, ck))
+    if hit is not None:
+        return hit
+    poff = bios.get("__person_offices__", {})
+    if (ck, st) in poff:
+        lvl = F._person_asof_level(poff[(ck, st)], yr)
+        if lvl is not None:
+            return dict(bio_office_level=lvl, bio_in_office=np.nan,
+                        bio_prior_candidacy=np.nan)
+    years = bios.get("__person_years__", {}).get((ck, st))
+    if years:
+        prior = [y for y in years if y < yr]
+        if prior:
+            return years[max(prior)]
+    return _BIO_NAN
+
 
 def build_primary_table(d, fec=None, inc_map=None, macro_asof=None, hist=None, bios=None):
     """d: prepared long frame (F.prepare_polls applied) with columns
@@ -282,9 +336,10 @@ def build_primary_table(d, fec=None, inc_map=None, macro_asof=None, hist=None, b
                 # candidate electoral history (candidate_history.CandidateHistory,
                 # strictly-prior-cycle; fact-checked - see check_candidate_history.py)
                 **(hist.history(yr, st, ck) if hist is not None else {}),
-                # officeholder bio (Wikipedia descriptors; NaN when no bio matched)
-                **(bios.get((yr, of, st, di, party, ck), _BIO_NAN)
-                   if bios is not None else {}),
+                # officeholder bio: exact key -> person-level as-of-year -> most recent PRIOR
+                # cycle (all leak-free; see _bio_lookup). NaN only when the person is absent
+                # from the bio table entirely.
+                **(_bio_lookup(bios, yr, of, st, di, party, ck) if bios is not None else {}),
                 **macro_for(ed),
             ))
     c = pd.DataFrame(rows)

@@ -17,6 +17,7 @@ S,REP,Markwayne Mullin,,2022,Senate,OK,mullin m,4,0,0,manual
 ,REP,David A. Perdue,,2022,Governor,GA,perdue d,4,0,0,manual
 ,REP,Elise M. Stefanik,,2022,Governor,NY,stefanik e,4,0,0,manual
 ,REP,Thomas Roland Tillis,,2020,Governor,NC,tillis t,4,0,0,manual
+,DEM,Carol Moseley-Braun,,1998,Senate,IL,moseleybraun c,4,0,0,manual
 22,DEM,Nicholas V. Lampson,,2006,House,TX,lampson n,4,0,0,manual
 20,DEM,Scott Murphy,,2010,House,NY,murphy s,4,0,0,manual
 5,DEM,Tom S. Perriello,,2010,House,VA,perriello t,4,0,0,manual
@@ -348,7 +349,6 @@ S,REP,John Barrasso,,2008,Senate,WY,barrasso j,4,0,0,ballotpedia
 ,REP,Robert Pittenger,U.S. representative,2014,Senate,NC,pittenger r,4,1,0,wikipedia
 ,REP,Jeff Fortenberry,U.S. representative,2014,Senate,NE,fortenberry j,4,1,0,wikipedia
 ,REP,Mike Johanns,incumbent U.S. senator,2014,Senate,NE,johanns m,4,0,0,wikipedia
-,REP,Pete Ricketts,former COO of TD Ameritrade and nominee for the U.S. Senate in 2006 and future U.S. senator for this seat (running for governor),2014,Senate,NE,ricketts p,0,0,1,wikipedia
 ,REP,Adrian Smith,U.S. representative,2014,Senate,NE,smith a,4,1,0,wikipedia
 ,REP,Lee Terry,U.S. representative,2014,Senate,NE,terry l,4,1,0,wikipedia
 ,DEM,Bob Kerrey,former U.S. senator and former governor of Nebraska,2014,Senate,NE,kerrey b,4,0,0,wikipedia
@@ -434,7 +434,6 @@ S,REP,John Barrasso,,2008,Senate,WY,barrasso j,4,0,0,ballotpedia
 ,DEM,Jane Harman,"director, president and CEO of the Woodrow Wilson International Center for Scholars , former U.S. representative and candidate for the governorship in 1998",2016,Senate,CA,harman j,4,1,1,wikipedia
 ,DEM,Jared Huffman,U.S. representative,2016,Senate,CA,huffman j,4,1,0,wikipedia
 ,DEM,Janet Napolitano,"president of the University of California , former United States Secretary of Homeland Security and former governor of Arizona",2016,Senate,CA,napolitano j,4,0,0,wikipedia
-,DEM,Alex Padilla,"Secretary of State of California , former state senator and future U.S. senator for this seat",2016,Senate,CA,padilla a,3,0,0,wikipedia
 ,DEM,Raul Ruiz,U.S. representative,2016,Senate,CA,ruiz r,4,1,0,wikipedia
 ,DEM,Linda Sánchez,U.S. representative,2016,Senate,CA,sanchez l,4,1,0,wikipedia
 ,DEM,Adam Schiff,U.S. representative,2016,Senate,CA,schiff a,4,1,0,wikipedia
@@ -483,12 +482,10 @@ S,REP,John Barrasso,,2008,Senate,WY,barrasso j,4,0,0,ballotpedia
 ,REP,Johnny Isakson,incumbent U.S. senator,2016,Senate,GA,isakson j,4,0,0,wikipedia
 ,REP,Paul Broun,former U.S. representative and candidate for the U.S. Senate in 1996 and 2014 ( running for GA-09 ),2016,Senate,GA,broun p,4,1,1,wikipedia
 ,REP,Tom Graves,U.S. representative,2016,Senate,GA,graves t,4,1,0,wikipedia
-,REP,Kelly Loeffler,owner of the Atlanta Dream and future U.S. senator for this seat,2016,Senate,GA,loeffler k,0,0,0,wikipedia
 ,REP,Tom Price,U.S. representative,2016,Senate,GA,price t,4,1,0,wikipedia
 ,REP,Allen West,former U.S. representative from Florida,2016,Senate,GA,west a,4,1,0,wikipedia
 ,DEM,John Barrow,former U.S. representative,2016,Senate,GA,barrow j,4,1,0,wikipedia
 ,DEM,Jim Marshall,former U.S. representative,2016,Senate,GA,marshall j,4,1,0,wikipedia
-,DEM,Raphael Warnock,pastor of Ebenezer Baptist Church and future U.S. Senator for this seat,2016,Senate,GA,warnock r,0,0,0,wikipedia
 ,DEM,Brian Schatz,incumbent senator,2016,Senate,HI,schatz b,4,0,0,wikipedia
 ,DEM,Colleen Hanabusa,former U.S. Representative and candidate for the U.S. Senate in 2014 (running for HI-01 ),2016,Senate,HI,hanabusa c,4,1,1,wikipedia
 ,DEM,Mark Takai,U.S. Representative  (died),2016,Senate,HI,takai m,4,1,0,wikipedia
@@ -1600,7 +1597,6 @@ S,REP,John Barrasso,,2008,Senate,WY,barrasso j,4,0,0,ballotpedia
 ,DEM,Ed Case,former U.S. Representative and candidate for the U.S. Senate in 2006 and 2012,2014,Governor,HI,case e,4,1,1,wikipedia
 ,REP,Charles Djou,former U.S. Representative ( running for HI-01 ),2014,Governor,HI,djou c,4,1,0,wikipedia
 ,DEM,Tom Vilsack,United States Secretary of Agriculture and former governor,2014,Governor,IA,vilsack t,4,0,0,wikipedia
-,REP,Russ Fulcher,state senator and future U.S. Representative from Idaho's 1st congressional district,2014,Governor,ID,fulcher r,2,1,0,wikipedia
 ,REP,Raúl Labrador,U.S. representative,2014,Governor,ID,labrador r,4,1,0,wikipedia
 ,DEM,Cecil D. Andrus,former governor and former United States Secretary of the Interior,2014,Governor,ID,andrus c,4,0,0,wikipedia
 ,DEM,William M. Daley,former White House Chief of Staff and former United States Secretary of Commerce,2014,Governor,IL,daley w,4,0,0,wikipedia
@@ -6865,21 +6861,18 @@ S,REP,John Barrasso,,2008,Senate,WY,barrasso j,4,0,0,ballotpedia
 9,DEM,Adam Smith,incumbent U.S. Representative,2022,House,WA,smith a,4,1,0,wikipedia
 10,DEM,Marilyn Strickland,incumbent U.S. Representative,2022,House,WA,strickland m,4,1,0,wikipedia
 ,REP,Dan Sullivan,,2026,Senate,AK,sullivan d,4,0,0,wiki_xref
-,REP,Pete Ricketts,,2026,Senate,NE,ricketts p,4,0,0,wiki_xref
 ,REP,Buddy Carter,,2026,Senate,GA,carter b,4,0,0,wiki_xref
 ,REP,Cindy Hyde-Smith,,2026,Senate,MS,hydesmith c,4,0,0,wiki_xref
 ,REP,Tom Cotton,,2026,Senate,AR,cotton t,4,0,0,wiki_xref
 ,DEM,Jasmine Crockett,,2026,Senate,TX,crockett j,4,0,0,wiki_xref
 ,REP,Wesley Hunt,,2026,Senate,TX,hunt w,4,0,0,wiki_xref
 ,REP,Kelly Loeffler,,2026,Senate,GA,loeffler k,4,0,0,wiki_xref
-S,REP,Pete Ricketts,,2024,Senate,NE,ricketts p,4,0,0,wiki_xref
 ,REP,Justin Amash,,2024,Senate,MI,amash j,4,0,0,wiki_xref
 S,DEM,Katie Porter,,2024,Senate,CA,porter k,4,0,0,wiki_xref
 ,OTH,Kyrsten Sinema,,2024,Senate,AZ,sinema k,4,0,0,wiki_xref
 ,REP,Jaime Herrera Beutler,,2024,Senate,WA,beutler j,4,0,0,wiki_xref
 ,REP,Greg Gianforte,,2024,Senate,MT,gianforte g,4,0,0,wiki_xref
 S,DEM,Kendra Horn,,2022,Senate,OK,horn k,4,0,0,wiki_xref
-S,DEM,Alex Padilla,,2022,Senate,CA,padilla a,4,0,0,wiki_xref
 ,DEM,Richard Blumenthal,,2022,Senate,CT,blumenthal r,4,0,0,wiki_xref
 ,REP,Vicky Hartzler,,2022,Senate,MO,hartzler v,4,0,0,wiki_xref
 ,REP,Mark Walker,,2022,Senate,NC,walker m,4,0,0,wiki_xref
@@ -6910,7 +6903,6 @@ S,DEM,Tina Smith,,2018,Senate,MN,smith t,4,0,0,wiki_xref
 1,REP,Brian Fitzpatrick,,2020,House,PA,fitzpatrick b,4,0,0,wiki_xref
 4,REP,Steve King,,2020,House,IA,king s,4,0,0,wiki_xref
 1,REP,Jim Hagedorn,,2018,House,MN,hagedorn j,4,0,0,wiki_xref
-1,REP,Russ Fulcher,,2018,House,ID,fulcher r,4,0,0,wiki_xref
 18,DEM,Conor Lamb,,2018,House,PA,lamb c,4,0,0,wiki_xref
 ,DEM,Katie Porter,,2026,Governor,CA,porter k,4,0,0,wiki_xref
 ,DEM,Xavier Becerra,,2026,Governor,CA,becerra x,4,0,0,wiki_xref
@@ -6956,7 +6948,6 @@ S,DEM,Jean Carnahan,,2002,Senate,MO,carnahan j,4,0,0,wiki_xref
 1,DEM,Stephanie Herseth Sandlin,,2010,House,SD,sandlin s,4,0,0,wiki_xref
 4,DEM,Doug Owens,,2016,House,UT,owens d,4,0,0,wiki_xref
 ,REP,Sam Brownback,,2014,Governor,KS,brownback s,4,0,0,wiki_xref
-,REP,Pete Ricketts,,2014,Governor,NE,ricketts p,4,0,0,wiki_xref
 ,REP,Mary Fallin,,2014,Governor,OK,fallin m,4,0,0,wiki_xref
 ,REP,Bob Riley,,2006,Governor,AL,riley b,4,0,0,wiki_xref
 ,REP,Mark Sanford,,2006,Governor,SC,sanford m,4,0,0,wiki_xref
@@ -6974,11 +6965,18 @@ S,DEM,Jean Carnahan,,2002,Senate,MO,carnahan j,4,0,0,wiki_xref
 10,REP,Robert Dold,,2016,House,IL,dold r,4,0,0,wiki_xref
 1,REP,Liz Cheney,,2016,House,WY,cheney l,4,0,0,wiki_xref
 23,REP,Henry Bonilla,,2006,House,TX,bonilla h,4,0,0,wiki_xref
+,REP,Pete Ricketts,,2026,Senate,NE,ricketts p,3,0,0,manual
+S,REP,Pete Ricketts,,2024,Senate,NE,ricketts p,3,0,0,manual
 ,REP,Glenn Youngkin,,2024,Senate,VA,youngkin g,3,0,0,manual
+S,DEM,Alex Padilla,,2022,Senate,CA,padilla a,3,0,0,manual
 ,REP,Jim Pillen,,2026,Governor,NE,pillen j,3,0,0,manual
+,DEM,Andy Beshear,,2023,Governor,KY,beshear a,3,0,0,manual
+,REP,Tate Reeves,,2023,Governor,MS,reeves t,3,0,0,manual
 ,DEM,Gavin Newsom,,2022,Governor,CA,newsom g,3,0,0,manual
 ,OTH,Bill Walker,,2022,Governor,AK,walker b,3,0,0,manual
 ,OTH,Charles D. Baker,,2022,Governor,MA,baker c,3,0,0,manual
+,DEM,Andy Beshear,,2019,Governor,KY,beshear a,3,0,0,manual
+,REP,Tate Reeves,,2019,Governor,MS,reeves t,3,0,0,manual
 ,OTH,Bill Walker,,2018,Governor,AK,walker b,3,0,0,manual
 ,DEM,Kamala Harris,,2016,Senate,CA,harris k,3,0,0,manual
 ,DEM,Jay Nixon,,2008,Governor,MO,nixon j,3,0,0,manual
@@ -7177,6 +7175,7 @@ S,REP,Gary Richard Herbert,,2010,Governor,UT,herbert g,3,0,0,ballotpedia
 ,DEM,John Chiang,"California State Treasurer , former California State Controller and former member of the State Board of Equalization",2016,Senate,CA,chiang j,3,0,0,wikipedia
 ,DEM,Bill Lockyer,former California State Treasurer and former Attorney General of California,2016,Senate,CA,lockyer b,3,0,0,wikipedia
 ,DEM,Gavin Newsom,Lieutenant Governor of California and former Mayor of San Francisco ( running for the governorship in 2018 ),2016,Senate,CA,newsom g,3,0,0,wikipedia
+,DEM,Alex Padilla,"Secretary of State of California , former state senator and future U.S. senator for this seat",2016,Senate,CA,padilla a,3,0,0,wikipedia
 ,REP,Abel Maldonado,"former lieutenant governor of California , candidate for California State Controller in 2006 , for CA-24 in 2012 and for governor in 2014",2016,Senate,CA,maldonado a,3,0,1,wikipedia
 ,REP,Arnold Schwarzenegger,actor and former governor of California,2016,Senate,CA,schwarzenegger a,3,0,0,wikipedia
 ,REP,Cynthia Coffman,Colorado attorney general,2016,Senate,CO,coffman c,3,0,0,wikipedia
@@ -7470,7 +7469,6 @@ S,REP,Gary Richard Herbert,,2010,Governor,UT,herbert g,3,0,0,ballotpedia
 ,DEM,Steve Henry,Lieutenant Governor,1998,Senate,KY,henry s,3,0,0,wikipedia
 ,DEM,Mike Easley,North Carolina Attorney General since 1993,1998,Senate,NC,easley m,3,0,0,wikipedia
 ,REP,Mark Dayton,"(DFL), former State Auditor and nominee for this seat in 1982",2000,Senate,MN,dayton m,3,0,1,wikipedia
-,DEM,Brian Schweitzer,"farmer and former United States Department of Agriculture employee, future Governor of Montana",2000,Senate,MT,schweitzer b,0,0,0,wikipedia
 ,DEM,Ben Nelson,former Governor of Nebraska and 1996 Democratic nominee for the United States Senate,2000,Senate,NE,nelson b,3,0,1,wikipedia
 ,REP,Don Stenberg,Attorney General of Nebraska,2000,Senate,NE,stenberg d,3,0,0,wikipedia
 ,REP,Scott Moore,Secretary of State of Nebraska,2000,Senate,NE,moore s,3,0,0,wikipedia
@@ -8405,7 +8403,6 @@ S,REP,Gary Richard Herbert,,2010,Governor,UT,herbert g,3,0,0,ballotpedia
 21,DEM,Cruz Bustamante,former lieutenant governor and nominee for governor in 2003,2012,House,CA,bustamante c,3,0,1,wikipedia
 24,REP,Abel Maldonado,former lieutenant governor,2012,House,CA,maldonado a,3,0,0,wikipedia
 26,DEM,Mary Anne Rooney,commissioner of the Oxnard Harbor District,2012,House,CA,rooney m,3,0,0,wikipedia
-6,REP,Ron DeSantis,"Iraq War veteran , former prosecutor and future Florida governor",2012,House,FL,desantis r,0,0,0,wikipedia
 13,IND,Charlie Crist,former governor and candidate for Senate in 2010,2012,House,FL,crist c,3,0,1,wikipedia
 19,REP,Tom Grady,commissioner of the Florida Office of Financial Regulation,2012,House,FL,grady t,3,0,0,wikipedia
 19,REP,Jeff Kottkamp,former lieutenant governor of Florida,2012,House,FL,kottkamp j,3,0,0,wikipedia
@@ -8615,7 +8612,6 @@ S,REP,Gary Richard Herbert,,2010,Governor,UT,herbert g,3,0,0,ballotpedia
 ,DEM,Rob Sand,,2026,Governor,IA,sand r,3,0,0,wiki_xref
 ,REP,Brad Raffensperger,,2026,Governor,GA,raffensperger b,3,0,0,wiki_xref
 ,REP,Tom Leonard,,2026,Governor,MI,leonard t,3,0,0,wiki_xref
-,DEM,Andy Beshear,,2023,Governor,KY,beshear a,3,0,0,wiki_xref
 ,REP,Suzanne Crouch,,2024,Governor,IN,crouch s,3,0,0,wiki_xref
 ,DEM,Nikki Fried,,2022,Governor,FL,fried n,3,0,0,wiki_xref
 ,REP,Rebecca Kleefisch,,2022,Governor,WI,kleefisch r,3,0,0,wiki_xref
@@ -8624,7 +8620,6 @@ S,REP,Gary Richard Herbert,,2010,Governor,UT,herbert g,3,0,0,ballotpedia
 ,DEM,Alison Lundergan Grimes,,2019,Governor,KY,grimes a,3,0,0,wiki_xref
 ,OTH,Terry Hayes,,2018,Governor,ME,hayes t,3,0,0,wiki_xref
 ,DEM,Phil Angelides,,2006,Governor,CA,angelides p,3,0,0,wiki_xref
-,DEM,Brian Schweitzer,,2004,Governor,MT,schweitzer b,3,0,0,wiki_xref
 ,DEM,Gary Locke,,2000,Governor,WA,locke g,3,0,0,wiki_xref
 S,DEM,Martha Coakley,,2010,Senate,MA,coakley m,3,0,0,wiki_xref
 ,DEM,Nancy Farmer,,2004,Senate,MO,farmer n,3,0,0,wiki_xref
@@ -8632,6 +8627,7 @@ S,DEM,Martha Coakley,,2010,Senate,MA,coakley m,3,0,0,wiki_xref
 7,REP,Rick O'Donnell,,2006,House,CO,odonnell r,3,0,0,wiki_xref
 ,OTH,Todd Achilles,,2026,Senate,ID,achilles t,2,0,0,manual
 ,DEM,Roland Gutierrez,,2024,Senate,TX,gutierrez r,2,0,0,manual
+S,REP,Karin Housley,,2018,Senate,MN,housley k,2,0,0,manual
 3,REP,John Braun,,2026,House,WA,braun j,2,0,0,manual
 10,REP,Mike Bouchard,,2026,House,MI,bouchard m,2,0,0,manual
 1,REP,Mark Smith,,2026,House,SC,smith m,2,0,0,manual
@@ -8644,6 +8640,7 @@ S,DEM,Martha Coakley,,2010,Senate,MA,coakley m,3,0,0,wiki_xref
 25,DEM,Christy Smith,,2020,House,CA,smith c,2,0,0,manual
 3,REP,Carol Miller,,2018,House,WV,miller c,2,0,0,manual
 1,REP,Katie Arrington,,2018,House,SC,arrington k,2,0,0,manual
+1,REP,Russ Fulcher,,2018,House,ID,fulcher r,2,0,0,manual
 9,REP,H. Morgan Griffith,,2018,House,VA,griffith h,2,0,0,manual
 ,DEM,Tom Begich,,2026,Governor,AK,begich t,2,0,0,manual
 ,REP,Click Bishop,,2026,Governor,AK,bishop c,2,0,0,manual
@@ -9464,6 +9461,7 @@ S,REP,Scott Brown,,2010,Senate,MA,brown s,2,0,0,manual
 ,DEM,Pam Jochum,president of the Iowa Senate,2014,Governor,IA,jochum p,2,0,0,wikipedia
 ,DEM,Bob Krause,"former state representative, nominee for state treasurer in 1978, candidate for Mayor of Waterloo in 1982 and candidate for the U.S. Senate in 2010",2014,Governor,IA,krause b,2,1,1,wikipedia
 ,DEM,Janet Petersen,state senator,2014,Governor,IA,petersen j,2,0,0,wikipedia
+,REP,Russ Fulcher,state senator and future U.S. Representative from Idaho's 1st congressional district,2014,Governor,ID,fulcher r,2,1,0,wikipedia
 ,DEM,Kwame Raoul,state senator,2014,Governor,IL,raoul k,2,0,0,wikipedia
 ,REP,Bill Brady,"state senator, candidate for governor in 2006 and nominee for governor in 2010  Running mate: Maria Rodriguez, former Village President of Long Grove",2014,Governor,IL,brady b,2,0,1,wikipedia
 ,REP,Kirk Dillard,"state senator and candidate for governor in 2010  Running mate: Jil Tracy , state representative",2014,Governor,IL,dillard k,2,1,1,wikipedia
@@ -10169,6 +10167,7 @@ S,REP,Scott Brown,,2010,Senate,MA,brown s,2,0,0,manual
 ,REP,Eli Bebout,former Speaker of the Wyoming House of Representatives,2002,Governor,WY,bebout e,2,1,0,wikipedia
 ,REP,Stephen Watt,State Representative,2002,Governor,WY,watt s,2,1,0,wikipedia
 ,DEM,Vi Simpson,state senator from Bloomington,2004,Governor,IN,simpson v,2,0,0,wikipedia
+,DEM,Brian Schweitzer,"rancher, former United States Department of Agriculture employee, nominee for the United States Senate in 2000 Running mate : John Bohlinger , former State Representative (1993–1999) and State Senator (1999–2005)",2004,Governor,MT,schweitzer b,2,1,1,wikipedia
 ,DEM,John Vincent,"former State Representative (1975–1990), former Speaker of the Montana House of Representatives (1985–1986; 1989–1990) and former Mayor of Bozeman (1994–1995) Running mate : Mary Sexton, Teton County Commissioner",2004,Governor,MT,vincent j,2,1,0,wikipedia
 ,DEM,John Bohlinger,former State Representative (1993–1999) and State Senator (1999–2005),2004,Governor,MT,bohlinger j,2,1,0,wikipedia
 ,REP,Ken Miller,"former State Senator (1995–2003) and former Montana Republican Party Chairman (2001–2003) Running mate : Wayne Buchanan, former executive secretary for the Montana Board of Public Education",2004,Governor,MT,miller k,2,0,0,wikipedia
@@ -12460,7 +12459,6 @@ S,REP,Scott Brown,,2010,Senate,MA,brown s,2,0,0,manual
 ,REP,Kevin H. Smith,,2022,Senate,NH,smith k,2,0,0,wiki_xref
 ,REP,Matt Rosendale,,2018,Senate,MT,rosendale m,2,0,0,wiki_xref
 ,DEM,Kevin de León,,2018,Senate,CA,leon k,2,0,0,wiki_xref
-S,REP,Karin Housley,,2018,Senate,MN,housley k,2,0,0,wiki_xref
 2,OTH,Reilly Neill,,2024,House,MT,neill r,2,0,0,wiki_xref
 4,REP,Jerry Sonnenberg,,2024,House,CO,sonnenberg j,2,0,0,wiki_xref
 17,DEM,Alessandra Biaggi,,2022,House,NY,biaggi a,2,0,0,wiki_xref
@@ -12507,6 +12505,7 @@ S,DEM,Joyce Dickerson,,2014,Senate,SC,dickerson j,1,0,0,manual
 8,DEM,James Marshall,,2008,House,GA,marshall j,1,0,0,manual
 1,DEM,Martin Heinrich,,2008,House,NM,heinrich m,1,0,0,manual
 24,DEM,Michael A. Arcuri,,2010,House,NY,arcuri m,1,0,0,manual
+7,DEM,Gloria Bromell-Tinubu,,2012,House,SC,bromelltinubu g,1,0,0,manual
 ,REP,William Edward Haslam,,2014,Governor,TN,haslam w,1,0,0,manual
 ,REP,William Edward Haslam,,2010,Governor,TN,haslam w,1,0,0,manual
 22,REP,E. Clay Shaw,,2000,House,FL,shaw e,1,0,0,manual
@@ -15164,6 +15163,7 @@ S,REP,William C. Pierce,,2016,Governor,OR,pierce w,0,0,0,manual
 ,REP,William Paul Cole,,2016,Governor,WV,cole w,0,0,0,manual
 ,REP,Mark Callahan,,2016,Senate,OR,callahan m,0,0,0,manual
 ,REP,Darryl Glenn,,2016,Senate,CO,glenn d,0,0,0,manual
+,REP,Pete Ricketts,,2014,Governor,NE,ricketts p,0,0,0,manual
 ,REP,Charles D. Baker,,2014,Governor,MA,baker c,0,0,0,manual
 ,REP,William E. Brady,,2010,Governor,IL,brady w,0,0,0,manual
 ,REP,Charles D. Baker,,2010,Governor,MA,baker c,0,0,0,manual
@@ -15764,6 +15764,7 @@ S,REP,John Raese,,2010,Senate,WV,raese j,0,0,0,manual
 ,REP,Patrick Borchers,former vice president of academic affairs of Creighton University and former dean of Creighton University School of Law,2014,Senate,NE,borchers p,0,0,0,wikipedia
 ,REP,Mike Foley,auditor of public accounts ( running for governor ),2014,Senate,NE,foley m,0,0,0,wikipedia
 ,REP,Charles Herbster,businessman,2014,Senate,NE,herbster c,0,0,0,wikipedia
+,REP,Pete Ricketts,former COO of TD Ameritrade and nominee for the U.S. Senate in 2006 and future U.S. senator for this seat (running for governor),2014,Senate,NE,ricketts p,0,0,1,wikipedia
 ,REP,Don Stenberg,"treasurer of Nebraska, candidate for the U.S. Senate in 1996 , 2006 and 2012 and nominee for the U.S. Senate in 2000",2014,Senate,NE,stenberg d,0,0,1,wikipedia
 ,DEM,David Domina,trial attorney and candidate for governor of Nebraska in 1986,2014,Senate,NE,domina d,0,0,1,wikipedia
 ,DEM,2008,and 2012,2014,Senate,NE,,0,0,0,wikipedia
@@ -15956,11 +15957,13 @@ S,REP,John Raese,,2010,Senate,WV,raese j,0,0,0,manual
 ,REP,Fayette County,Board of Education member and candidate for state superintendent of schools in 2014,2016,Senate,GA,county f,0,0,1,wikipedia
 ,REP,MARTA,"engineer, minister and candidate for the U.S. Senate in 2014",2016,Senate,GA,marta,0,0,1,wikipedia
 ,REP,2007,(running for the Columbia County Commission),2016,Senate,GA,,0,0,0,wikipedia
+,REP,Kelly Loeffler,owner of the Atlanta Dream and future U.S. senator for this seat,2016,Senate,GA,loeffler k,0,0,0,wikipedia
 ,DEM,James F. Barksdale,investment firm executive,2016,Senate,GA,barksdale j,0,0,0,wikipedia
 ,DEM,Cheryl Copeland,AT&T manager,2016,Senate,GA,copeland c,0,0,0,wikipedia
 ,DEM,John Coyne,businessman and perennial candidate,2016,Senate,GA,coyne j,0,0,0,wikipedia
 ,DEM,United States Air Force,veteran,2016,Senate,GA,force u,0,0,0,wikipedia
 ,DEM,Michelle Nunn,former CEO of Points of Light and nominee for the U.S. Senate in 2014,2016,Senate,GA,nunn m,0,0,1,wikipedia
+,DEM,Raphael Warnock,pastor of Ebenezer Baptist Church and future U.S. Senator for this seat,2016,Senate,GA,warnock r,0,0,0,wikipedia
 ,DEM,2004,and 2008 and nominee for lieutenant governor of Georgia in 2006,2016,Senate,GA,,0,0,1,wikipedia
 ,REP,Karla Gottschalk,attorney,2016,Senate,HI,gottschalk k,0,0,0,wikipedia
 ,REP,Eddie Pirkowski,perennial candidate,2016,Senate,HI,pirkowski e,0,0,0,wikipedia
@@ -17198,6 +17201,7 @@ S,REP,John Raese,,2010,Senate,WV,raese j,0,0,0,manual
 ,OTH,Jim Giles,,2000,Senate,MS,giles j,0,0,0,wikipedia
 ,OTH,Lewis Napper,,2000,Senate,MS,napper l,0,0,0,wikipedia
 ,OTH,Shawn O'Hara,,2000,Senate,MS,ohara s,0,0,0,wikipedia
+,DEM,Brian Schweitzer,"farmer and former United States Department of Agriculture employee, future Governor of Montana",2000,Senate,MT,schweitzer b,0,0,0,wikipedia
 ,REP,Brian Schweitzer,"(D), farmer and former United States Department of Agriculture employee",2000,Senate,MT,schweitzer b,0,0,0,wikipedia
 ,OTH,Sam Rankin,,2000,Senate,MT,rankin s,0,0,0,wikipedia
 ,OTH,Gary Lee,,2000,Senate,MT,lee g,0,0,0,wikipedia
@@ -22637,6 +22641,7 @@ additional terms may apply. By using this site, you agree to the Terms of Use an
 2,DEM,Jay Liles,activist,2012,House,FL,liles j,0,0,0,wikipedia
 3,REP,Ted Yoho,veterinarian,2012,House,FL,yoho t,0,0,0,wikipedia
 3,DEM,J.R. Gaillot,policy consultant,2012,House,FL,gaillot,0,0,0,wikipedia
+6,REP,Ron DeSantis,"Iraq War veteran , former prosecutor and future Florida governor",2012,House,FL,desantis r,0,0,0,wikipedia
 6,DEM,Navy,cryptologist and nominee for the 7th district in 2010,2012,House,FL,navy,0,0,1,wikipedia
 7,DEM,Jason Kendall,social media consultant and sales manager,2012,House,FL,kendall j,0,0,0,wikipedia
 9,REP,2008,& 2010,2012,House,FL,,0,0,0,wikipedia

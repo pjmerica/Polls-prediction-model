@@ -98,8 +98,35 @@ JUNK_ANSWERS = {
     "skipped", "will not vote", "not sure",
 }
 
+# Exact-set matching alone let COMBINED and punctuated variants through (found 2026-08-01
+# auditing NaN bio_office_level rows): "Other / Undecided", "Undecided/ Other",
+# "Other/Undecided", "Others", "Generic Opponent", plus bare "Yes"/"No" from
+# approve/disapprove-style questions. 19 of these were sitting in PRIMARY training as if they
+# were real candidates - several polling 45-62%, which inflates the race's summed support and
+# so distorts poll_share, poll_lead and undecided for the REAL candidates in that race.
+# Pattern-based now: strip punctuation, then match the whole normalized string.
+_JUNK_RX = re.compile(
+    r"^(?:"
+    r"(?:other|others|undecided|dont know|do not know|not sure|no opinion|refused|skipped|"
+    r"neither|none|none of these|someone else|no one|nobody|no preference|"
+    r"would not vote|will not vote|not voting|no answer|na|n a)"
+    r"(?:\s+(?:or|and)?\s*(?:other|others|undecided|dont know|not sure|no opinion|none))*"
+    r"|generic\s+(?:democrat|republican|opponent|candidate|ballot|challenger|dem|rep|gop)"
+    r"|(?:more|less)\s+\w+\s+\w+\s+(?:democrat|republican)"   # "more liberal female Democrat"
+    r"|yes|no"                              # approve/disapprove style question answers
+    r"|write[- ]?ins?"
+    r")$")
+
 def is_junk_answer(name):
-    return str(name).strip().lower() in JUNK_ANSWERS
+    """True for poll RESPONSE OPTIONS that are not candidates. These must never become
+    candidate rows: they carry real poll percentages, so a missed one both trains as a fake
+    candidate and skews every within-race relative feature for the real ones."""
+    s = str(name).strip().lower()
+    if s in JUNK_ANSWERS:
+        return True
+    s = re.sub(r"[^a-z0-9\s]", " ", s)       # "other / undecided" -> "other   undecided"
+    s = re.sub(r"\s+", " ", s).strip()
+    return bool(_JUNK_RX.match(s))
 
 def best_other(s):
     """Per-row 'best OTHER value in the group' (NaN-safe): for the top value, the runner-up's
