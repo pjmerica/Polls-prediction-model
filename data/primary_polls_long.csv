@@ -19,7 +19,6 @@ year,state,office,district,party_std,candidate,cand_key,pct,pollster,sample_size
 2018,AL,Governor,,REP,Roy Moore,moore r,28.000000000000004,Public Insight Research,607.0,,7/1/16,2018-06-05,2018_AL_Governor_REP,0
 2018,AL,Governor,,REP,Martha Roby,roby m,6.0,Public Insight Research,607.0,,7/1/16,2018-06-05,2018_AL_Governor_REP,0
 2018,AL,Governor,,REP,Luther Strange,strange l,19.0,Public Insight Research,607.0,,7/1/16,2018-06-05,2018_AL_Governor_REP,0
-2018,AL,Governor,,REP,Undecided/ Other,other u,24.0,Public Insight Research,607.0,,7/1/16,2018-06-05,2018_AL_Governor_REP,0
 2018,AL,Governor,,REP,Mike Hubbard,hubbard m,4.0,Public Insight Research,601.0,,7/1/15,2018-06-05,2018_AL_Governor_REP,0
 2018,AL,Governor,,REP,Tim James,james t,4.0,Public Insight Research,601.0,,7/1/15,2018-06-05,2018_AL_Governor_REP,0
 2018,AL,Governor,,REP,Del Marsh,marsh d,5.0,Public Insight Research,601.0,,7/1/15,2018-06-05,2018_AL_Governor_REP,0
@@ -27,7 +26,6 @@ year,state,office,district,party_std,candidate,cand_key,pct,pollster,sample_size
 2018,AL,Governor,,REP,John Merrill,merrill j,3.0,Public Insight Research,601.0,,7/1/15,2018-06-05,2018_AL_Governor_REP,0
 2018,AL,Governor,,REP,Roy Moore,moore r,32.0,Public Insight Research,601.0,,7/1/15,2018-06-05,2018_AL_Governor_REP,0
 2018,AL,Governor,,REP,Luther Strange,strange l,19.0,Public Insight Research,601.0,,7/1/15,2018-06-05,2018_AL_Governor_REP,0
-2018,AL,Governor,,REP,Undecided/ Other,other u,30.0,Public Insight Research,601.0,,7/1/15,2018-06-05,2018_AL_Governor_REP,0
 2018,AR,Governor,,REP,Asa Hutchinson,hutchinson a,57.99999999999999,Hendrix College,676.0,,4/19/18,2018-05-22,2018_AR_Governor_REP,1
 2018,AR,Governor,,REP,Jan Morgan,morgan j,31.0,Hendrix College,676.0,,4/19/18,2018-05-22,2018_AR_Governor_REP,0
 2018,AZ,Governor,,REP,Doug Ducey,ducey d,44.0,Emerson College,305.0,,6/22/18,2018-08-28,2018_AZ_Governor_REP,1
@@ -1518,7 +1516,6 @@ year,state,office,district,party_std,candidate,cand_key,pct,pollster,sample_size
 2018,TN,Senate,,REP,Stephen Fincher,fincher s,9.0,Victory Phones (R-SCF),600.0,,2/13/18,2018-08-02,2018_TN_Senate_REP,0
 2018,TN,Senate,,REP,Bob Corker,corker b,25.0,WPA Intelligence (R-Club for Growth),502.0,,1/15/18,2018-08-02,2018_TN_Senate_REP,0
 2018,TN,Senate,,REP,Bob Corker,corker b,41.6,Triton/ Tennessee Star,1007.0,,6/5/18,2018-08-02,2018_TN_Senate_REP,0
-2018,TN,Senate,,REP,Generic Opponent,opponent g,41.6,Triton/ Tennessee Star,1007.0,,6/5/18,2018-08-02,2018_TN_Senate_REP,0
 2018,TX,Senate,,REP,Ted Cruz,cruz t,73.0,Dixie Strategies,,,2/23/18,2018-03-06,2018_TX_Senate_REP,1
 2018,TX,Senate,,REP,Stefano de Stefano,stefano,1.0,Dixie Strategies,,,2/23/18,2018-03-06,2018_TX_Senate_REP,0
 2018,TX,Senate,,REP,Bruce Jacobson,jacobson b,2.0,Dixie Strategies,,,2/23/18,2018-03-06,2018_TX_Senate_REP,0
@@ -1643,18 +1640,15 @@ year,state,office,district,party_std,candidate,cand_key,pct,pollster,sample_size
 2020,MT,Governor,,DEM,Reilly Neill,neill r,2.0,Montana State University Billings,40.0,lv,10/16/19,2020-06-02,2020_MT_Governor_DEM,0
 2020,MT,Governor,,DEM,Casey Schreiner,schreiner c,6.0,Montana State University Billings,40.0,lv,10/16/19,2020-06-02,2020_MT_Governor_DEM,0
 2020,MT,Governor,,DEM,Whitney Williams,williams w,11.0,Montana State University Billings,40.0,lv,10/16/19,2020-06-02,2020_MT_Governor_DEM,0
-2020,MT,Governor,,DEM,Other / Undecided,undecided o,62.0,Montana State University Billings,40.0,lv,10/16/19,2020-06-02,2020_MT_Governor_DEM,0
 2020,MT,Governor,,REP,Tim Fox,fox t,25.0,Montana State University Billings,99.0,lv,10/16/19,2020-06-02,2020_MT_Governor_REP,0
 2020,MT,Governor,,REP,Greg Gianforte,gianforte g,33.0,Montana State University Billings,99.0,lv,10/16/19,2020-06-02,2020_MT_Governor_REP,1
 2020,MT,Governor,,REP,Albert Olszewski,olszewski a,9.0,Montana State University Billings,99.0,lv,10/16/19,2020-06-02,2020_MT_Governor_REP,0
-2020,MT,Governor,,REP,Other / Undecided,undecided o,32.0,Montana State University Billings,99.0,lv,10/16/19,2020-06-02,2020_MT_Governor_REP,0
 2020,MT,Governor,,REP,Tim Fox,fox t,28.999999999999996,Gravis Marketing,433.0,rv,8/30/19,2020-06-02,2020_MT_Governor_REP,0
 2020,MT,Governor,,REP,Greg Gianforte,gianforte g,56.00000000000001,Gravis Marketing,433.0,rv,8/30/19,2020-06-02,2020_MT_Governor_REP,1
 2020,MT,Governor,,REP,Albert Olszewski,olszewski a,15.0,Gravis Marketing,433.0,rv,8/30/19,2020-06-02,2020_MT_Governor_REP,0
 2020,MT,Governor,,REP,Tim Fox,fox t,17.0,Moore Information,400.0,lv,7/10/19,2020-06-02,2020_MT_Governor_REP,0
 2020,MT,Governor,,REP,Greg Gianforte,gianforte g,56.00000000000001,Moore Information,400.0,lv,7/10/19,2020-06-02,2020_MT_Governor_REP,1
 2020,MT,Governor,,REP,Albert Olszewski,olszewski a,5.0,Moore Information,400.0,lv,7/10/19,2020-06-02,2020_MT_Governor_REP,0
-2020,MT,Governor,,REP,Other / Undecided,undecided o,23.0,Moore Information,400.0,lv,7/10/19,2020-06-02,2020_MT_Governor_REP,0
 2020,NC,Governor,,DEM,Roy Cooper,cooper r,74.0,High Point University,269.0,lv,2/28/20,2020-03-03,2020_NC_Governor_DEM,1
 2020,NC,Governor,,DEM,Ernest Reeves,reeves e,13.0,High Point University,269.0,lv,2/28/20,2020-03-03,2020_NC_Governor_DEM,0
 2020,NC,Governor,,DEM,Roy Cooper,cooper r,73.0,SurveyUSA / WRAL-TV,698.0,lv,2/16/20,2020-03-03,2020_NC_Governor_DEM,1
@@ -1684,7 +1678,6 @@ year,state,office,district,party_std,candidate,cand_key,pct,pollster,sample_size
 2020,UT,Governor,,REP,Greg Hughes,hughes g,15.0,Dan Jones & Associates / Salt Lake Chamber of Commerce,1247.0,lv,6/24/20,2020-06-30,2020_UT_Governor_REP,0
 2020,UT,Governor,,REP,Jon Huntsman Jr.,huntsman j,28.999999999999996,Dan Jones & Associates / Salt Lake Chamber of Commerce,1247.0,lv,6/24/20,2020-06-30,2020_UT_Governor_REP,0
 2020,UT,Governor,,REP,Thomas Wright,wright t,6.0,Dan Jones & Associates / Salt Lake Chamber of Commerce,1247.0,lv,6/24/20,2020-06-30,2020_UT_Governor_REP,0
-2020,UT,Governor,,REP,Other / Undecided,undecided o,19.0,Dan Jones & Associates / Salt Lake Chamber of Commerce,1247.0,lv,6/24/20,2020-06-30,2020_UT_Governor_REP,0
 2020,UT,Governor,,REP,Spencer Cox,cox s,32.0,Y2 Analytics UtahPolicy / KUTV 2 News,797.0,lv,6/17/20,2020-06-30,2020_UT_Governor_REP,1
 2020,UT,Governor,,REP,Greg Hughes,hughes g,23.0,Y2 Analytics UtahPolicy / KUTV 2 News,797.0,lv,6/17/20,2020-06-30,2020_UT_Governor_REP,0
 2020,UT,Governor,,REP,Jon Huntsman Jr.,huntsman j,36.0,Y2 Analytics UtahPolicy / KUTV 2 News,797.0,lv,6/17/20,2020-06-30,2020_UT_Governor_REP,0
@@ -1693,22 +1686,18 @@ year,state,office,district,party_std,candidate,cand_key,pct,pollster,sample_size
 2020,UT,Governor,,REP,Greg Hughes,hughes g,20.0,Y2 Analytics / Cox for Governor,691.0,lv,6/16/20,2020-06-30,2020_UT_Governor_REP,0
 2020,UT,Governor,,REP,Jon Huntsman Jr.,huntsman j,28.000000000000004,Y2 Analytics / Cox for Governor,691.0,lv,6/16/20,2020-06-30,2020_UT_Governor_REP,0
 2020,UT,Governor,,REP,Thomas Wright,wright t,9.0,Y2 Analytics / Cox for Governor,691.0,lv,6/16/20,2020-06-30,2020_UT_Governor_REP,0
-2020,UT,Governor,,REP,Other / Undecided,undecided o,9.0,Y2 Analytics / Cox for Governor,691.0,lv,6/16/20,2020-06-30,2020_UT_Governor_REP,0
 2020,UT,Governor,,REP,Spencer Cox,cox s,32.0,Dan Jones & Associates / Salt Lake Chamber of Commerce,676.0,lv,6/10/20,2020-06-30,2020_UT_Governor_REP,1
 2020,UT,Governor,,REP,Greg Hughes,hughes g,10.0,Dan Jones & Associates / Salt Lake Chamber of Commerce,676.0,lv,6/10/20,2020-06-30,2020_UT_Governor_REP,0
 2020,UT,Governor,,REP,Jon Huntsman Jr.,huntsman j,37.0,Dan Jones & Associates / Salt Lake Chamber of Commerce,676.0,lv,6/10/20,2020-06-30,2020_UT_Governor_REP,0
 2020,UT,Governor,,REP,Thomas Wright,wright t,5.0,Dan Jones & Associates / Salt Lake Chamber of Commerce,676.0,lv,6/10/20,2020-06-30,2020_UT_Governor_REP,0
-2020,UT,Governor,,REP,Other / Undecided,undecided o,4.0,Dan Jones & Associates / Salt Lake Chamber of Commerce,676.0,lv,6/10/20,2020-06-30,2020_UT_Governor_REP,0
 2020,UT,Governor,,REP,Spencer Cox,cox s,32.0,Suffolk University / Salt Lake Tribune,500.0,lv,6/7/20,2020-06-30,2020_UT_Governor_REP,1
 2020,UT,Governor,,REP,Greg Hughes,hughes g,10.0,Suffolk University / Salt Lake Tribune,500.0,lv,6/7/20,2020-06-30,2020_UT_Governor_REP,0
 2020,UT,Governor,,REP,Jon Huntsman Jr.,huntsman j,30.0,Suffolk University / Salt Lake Tribune,500.0,lv,6/7/20,2020-06-30,2020_UT_Governor_REP,0
 2020,UT,Governor,,REP,Thomas Wright,wright t,8.0,Suffolk University / Salt Lake Tribune,500.0,lv,6/7/20,2020-06-30,2020_UT_Governor_REP,0
-2020,UT,Governor,,REP,Other / Undecided,undecided o,17.0,Suffolk University / Salt Lake Tribune,500.0,lv,6/7/20,2020-06-30,2020_UT_Governor_REP,0
 2020,UT,Governor,,REP,Spencer Cox,cox s,28.000000000000004,Deseret News / Hinckley Institute,643.0,lv,5/31/20,2020-06-30,2020_UT_Governor_REP,1
 2020,UT,Governor,,REP,Greg Hughes,hughes g,18.0,Deseret News / Hinckley Institute,643.0,lv,5/31/20,2020-06-30,2020_UT_Governor_REP,0
 2020,UT,Governor,,REP,Jon Huntsman Jr.,huntsman j,24.0,Deseret News / Hinckley Institute,643.0,lv,5/31/20,2020-06-30,2020_UT_Governor_REP,0
 2020,UT,Governor,,REP,Thomas Wright,wright t,4.0,Deseret News / Hinckley Institute,643.0,lv,5/31/20,2020-06-30,2020_UT_Governor_REP,0
-2020,UT,Governor,,REP,Other / Undecided,undecided o,26.0,Deseret News / Hinckley Institute,643.0,lv,5/31/20,2020-06-30,2020_UT_Governor_REP,0
 2020,UT,Governor,,REP,Spencer Cox,cox s,40.0,Y2 Analytics / UtahPolicy / KUTV 2 News,610.0,lv,5/15/20,2020-06-30,2020_UT_Governor_REP,1
 2020,UT,Governor,,REP,Greg Hughes,hughes g,18.0,Y2 Analytics / UtahPolicy / KUTV 2 News,610.0,lv,5/15/20,2020-06-30,2020_UT_Governor_REP,0
 2020,UT,Governor,,REP,Jon Huntsman Jr.,huntsman j,34.0,Y2 Analytics / UtahPolicy / KUTV 2 News,610.0,lv,5/15/20,2020-06-30,2020_UT_Governor_REP,0
@@ -1720,7 +1709,6 @@ year,state,office,district,party_std,candidate,cand_key,pct,pollster,sample_size
 2020,UT,Governor,,REP,Jon Huntsman Jr.,huntsman j,33.0,Y2 Analytics,738.0,lv,3/30/20,2020-06-30,2020_UT_Governor_REP,0
 2020,UT,Governor,,REP,Aimee Winder Newton,newton a,4.0,Y2 Analytics,738.0,lv,3/30/20,2020-06-30,2020_UT_Governor_REP,0
 2020,UT,Governor,,REP,Thomas Wright,wright t,1.0,Y2 Analytics,738.0,lv,3/30/20,2020-06-30,2020_UT_Governor_REP,0
-2020,UT,Governor,,REP,Other / Undecided,undecided o,1.0,Y2 Analytics,738.0,lv,3/30/20,2020-06-30,2020_UT_Governor_REP,0
 2020,UT,Governor,,REP,Jeff Burningham,burningham j,7.000000000000001,Hinckley Institute,326.0,lv,3/28/20,2020-06-30,2020_UT_Governor_REP,0
 2020,UT,Governor,,REP,Spencer Cox,cox s,24.0,Hinckley Institute,326.0,lv,3/28/20,2020-06-30,2020_UT_Governor_REP,1
 2020,UT,Governor,,REP,Jan Garbett,garbett j,1.0,Hinckley Institute,326.0,lv,3/28/20,2020-06-30,2020_UT_Governor_REP,0
@@ -1728,7 +1716,6 @@ year,state,office,district,party_std,candidate,cand_key,pct,pollster,sample_size
 2020,UT,Governor,,REP,Jon Huntsman Jr.,huntsman j,26.0,Hinckley Institute,326.0,lv,3/28/20,2020-06-30,2020_UT_Governor_REP,0
 2020,UT,Governor,,REP,Aimee Winder Newton,newton a,2.0,Hinckley Institute,326.0,lv,3/28/20,2020-06-30,2020_UT_Governor_REP,0
 2020,UT,Governor,,REP,Thomas Wright,wright t,2.0,Hinckley Institute,326.0,lv,3/28/20,2020-06-30,2020_UT_Governor_REP,0
-2020,UT,Governor,,REP,Other / Undecided,undecided o,32.0,Hinckley Institute,326.0,lv,3/28/20,2020-06-30,2020_UT_Governor_REP,0
 2020,UT,Governor,,REP,Jeff Burningham,burningham j,6.0,Dan Jones & Associates,338.0,v,3/11/20,2020-06-30,2020_UT_Governor_REP,0
 2020,UT,Governor,,REP,Spencer Cox,cox s,30.0,Dan Jones & Associates,338.0,v,3/11/20,2020-06-30,2020_UT_Governor_REP,1
 2020,UT,Governor,,REP,Jan Garbett,garbett j,2.0,Dan Jones & Associates,338.0,v,3/11/20,2020-06-30,2020_UT_Governor_REP,0
@@ -1736,7 +1723,6 @@ year,state,office,district,party_std,candidate,cand_key,pct,pollster,sample_size
 2020,UT,Governor,,REP,Jon Huntsman Jr.,huntsman j,27.0,Dan Jones & Associates,338.0,v,3/11/20,2020-06-30,2020_UT_Governor_REP,0
 2020,UT,Governor,,REP,Aimee Winder Newton,newton a,4.0,Dan Jones & Associates,338.0,v,3/11/20,2020-06-30,2020_UT_Governor_REP,0
 2020,UT,Governor,,REP,Thomas Wright,wright t,6.0,Dan Jones & Associates,338.0,v,3/11/20,2020-06-30,2020_UT_Governor_REP,0
-2020,UT,Governor,,REP,Other / Undecided,undecided o,15.0,Dan Jones & Associates,338.0,v,3/11/20,2020-06-30,2020_UT_Governor_REP,0
 2020,UT,Governor,,REP,Jeff Burningham,burningham j,7.000000000000001,Hinckley Institute,312.0,lv,3/1/20,2020-06-30,2020_UT_Governor_REP,0
 2020,UT,Governor,,REP,Spencer Cox,cox s,20.0,Hinckley Institute,312.0,lv,3/1/20,2020-06-30,2020_UT_Governor_REP,1
 2020,UT,Governor,,REP,Jan Garbett,garbett j,1.0,Hinckley Institute,312.0,lv,3/1/20,2020-06-30,2020_UT_Governor_REP,0
@@ -1744,21 +1730,18 @@ year,state,office,district,party_std,candidate,cand_key,pct,pollster,sample_size
 2020,UT,Governor,,REP,Jon Huntsman Jr.,huntsman j,32.0,Hinckley Institute,312.0,lv,3/1/20,2020-06-30,2020_UT_Governor_REP,0
 2020,UT,Governor,,REP,Aimee Winder Newton,newton a,2.0,Hinckley Institute,312.0,lv,3/1/20,2020-06-30,2020_UT_Governor_REP,0
 2020,UT,Governor,,REP,Thomas Wright,wright t,1.0,Hinckley Institute,312.0,lv,3/1/20,2020-06-30,2020_UT_Governor_REP,0
-2020,UT,Governor,,REP,Other / Undecided,undecided o,30.0,Hinckley Institute,312.0,lv,3/1/20,2020-06-30,2020_UT_Governor_REP,0
 2020,UT,Governor,,REP,Jeff Burningham,burningham j,1.0,Suffolk University / Salt Lake Tribune,246.0,lv,1/22/20,2020-06-30,2020_UT_Governor_REP,0
 2020,UT,Governor,,REP,Spencer Cox,cox s,18.0,Suffolk University / Salt Lake Tribune,246.0,lv,1/22/20,2020-06-30,2020_UT_Governor_REP,1
 2020,UT,Governor,,REP,Greg Hughes,hughes g,7.000000000000001,Suffolk University / Salt Lake Tribune,246.0,lv,1/22/20,2020-06-30,2020_UT_Governor_REP,0
 2020,UT,Governor,,REP,Jon Huntsman Jr.,huntsman j,26.0,Suffolk University / Salt Lake Tribune,246.0,lv,1/22/20,2020-06-30,2020_UT_Governor_REP,0
 2020,UT,Governor,,REP,Aimee Winder Newton,newton a,1.0,Suffolk University / Salt Lake Tribune,246.0,lv,1/22/20,2020-06-30,2020_UT_Governor_REP,0
 2020,UT,Governor,,REP,Thomas Wright,wright t,1.0,Suffolk University / Salt Lake Tribune,246.0,lv,1/22/20,2020-06-30,2020_UT_Governor_REP,0
-2020,UT,Governor,,REP,Other / Undecided,undecided o,46.0,Suffolk University / Salt Lake Tribune,246.0,lv,1/22/20,2020-06-30,2020_UT_Governor_REP,0
 2020,UT,Governor,,REP,Jeff Burningham,burningham j,6.0,Hinckley Institute / Deseret News,424.0,lv,1/22/20,2020-06-30,2020_UT_Governor_REP,0
 2020,UT,Governor,,REP,Spencer Cox,cox s,25.0,Hinckley Institute / Deseret News,424.0,lv,1/22/20,2020-06-30,2020_UT_Governor_REP,1
 2020,UT,Governor,,REP,Greg Hughes,hughes g,3.0,Hinckley Institute / Deseret News,424.0,lv,1/22/20,2020-06-30,2020_UT_Governor_REP,0
 2020,UT,Governor,,REP,Jon Huntsman Jr.,huntsman j,35.0,Hinckley Institute / Deseret News,424.0,lv,1/22/20,2020-06-30,2020_UT_Governor_REP,0
 2020,UT,Governor,,REP,Aimee Winder Newton,newton a,3.0,Hinckley Institute / Deseret News,424.0,lv,1/22/20,2020-06-30,2020_UT_Governor_REP,0
 2020,UT,Governor,,REP,Thomas Wright,wright t,3.0,Hinckley Institute / Deseret News,424.0,lv,1/22/20,2020-06-30,2020_UT_Governor_REP,0
-2020,UT,Governor,,REP,Other / Undecided,undecided o,25.0,Hinckley Institute / Deseret News,424.0,lv,1/22/20,2020-06-30,2020_UT_Governor_REP,0
 2020,UT,Governor,,REP,Rob Bishop,bishop r,9.0,Y2 Analytics,457.0,v,12/7/19,2020-06-30,2020_UT_Governor_REP,0
 2020,UT,Governor,,REP,Jeff Burningham,burningham j,5.0,Y2 Analytics,457.0,v,12/7/19,2020-06-30,2020_UT_Governor_REP,0
 2020,UT,Governor,,REP,Spencer Cox,cox s,41.0,Y2 Analytics,457.0,v,12/7/19,2020-06-30,2020_UT_Governor_REP,1
@@ -1772,69 +1755,55 @@ year,state,office,district,party_std,candidate,cand_key,pct,pollster,sample_size
 2020,UT,Governor,,REP,Greg Hughes,hughes g,2.0,Dan Jones & Associates / Salt Lake Chamber of Commerce,271.0,v,10/10/19,2020-06-30,2020_UT_Governor_REP,0
 2020,UT,Governor,,REP,Jon Huntsman Jr.,huntsman j,30.0,Dan Jones & Associates / Salt Lake Chamber of Commerce,271.0,v,10/10/19,2020-06-30,2020_UT_Governor_REP,0
 2020,UT,Governor,,REP,Thomas Wright,wright t,7.000000000000001,Dan Jones & Associates / Salt Lake Chamber of Commerce,271.0,v,10/10/19,2020-06-30,2020_UT_Governor_REP,0
-2020,UT,Governor,,REP,Other / Undecided,undecided o,25.0,Dan Jones & Associates / Salt Lake Chamber of Commerce,271.0,v,10/10/19,2020-06-30,2020_UT_Governor_REP,0
 2020,UT,Governor,,REP,Rob Bishop,bishop r,10.0,University of Utah,311.0,rv,1/24/19,2020-06-30,2020_UT_Governor_REP,0
 2020,UT,Governor,,REP,Jason Chaffetz,chaffetz j,27.0,University of Utah,311.0,rv,1/24/19,2020-06-30,2020_UT_Governor_REP,0
 2020,UT,Governor,,REP,Spencer Cox,cox s,28.000000000000004,University of Utah,311.0,rv,1/24/19,2020-06-30,2020_UT_Governor_REP,1
 2020,UT,Governor,,REP,Greg Hughes,hughes g,4.0,University of Utah,311.0,rv,1/24/19,2020-06-30,2020_UT_Governor_REP,0
 2020,UT,Governor,,REP,Greg Miller,miller g,2.0,University of Utah,311.0,rv,1/24/19,2020-06-30,2020_UT_Governor_REP,0
 2020,UT,Governor,,REP,Sean Reyes,reyes s,4.0,University of Utah,311.0,rv,1/24/19,2020-06-30,2020_UT_Governor_REP,0
-2020,UT,Governor,,REP,Other / Undecided,undecided o,24.0,University of Utah,311.0,rv,1/24/19,2020-06-30,2020_UT_Governor_REP,0
 2020,UT,Governor,,REP,Rob Bishop,bishop r,11.0,University of Utah,291.0,rv,10/9/18,2020-06-30,2020_UT_Governor_REP,0
 2020,UT,Governor,,REP,Jason Chaffetz,chaffetz j,25.0,University of Utah,291.0,rv,10/9/18,2020-06-30,2020_UT_Governor_REP,0
 2020,UT,Governor,,REP,Spencer Cox,cox s,16.0,University of Utah,291.0,rv,10/9/18,2020-06-30,2020_UT_Governor_REP,1
 2020,UT,Governor,,REP,Greg Hughes,hughes g,3.0,University of Utah,291.0,rv,10/9/18,2020-06-30,2020_UT_Governor_REP,0
 2020,UT,Governor,,REP,Greg Miller,miller g,2.0,University of Utah,291.0,rv,10/9/18,2020-06-30,2020_UT_Governor_REP,0
 2020,UT,Governor,,REP,Sean Reyes,reyes s,7.000000000000001,University of Utah,291.0,rv,10/9/18,2020-06-30,2020_UT_Governor_REP,0
-2020,UT,Governor,,REP,Other / Undecided,undecided o,36.0,University of Utah,291.0,rv,10/9/18,2020-06-30,2020_UT_Governor_REP,0
 2020,UT,Governor,,REP,Rob Bishop,bishop r,9.0,Hinckley Institute / Salt Lake Tribune,510.0,v,6/18/18,2020-06-30,2020_UT_Governor_REP,0
 2020,UT,Governor,,REP,Jason Chaffetz,chaffetz j,25.0,Hinckley Institute / Salt Lake Tribune,510.0,v,6/18/18,2020-06-30,2020_UT_Governor_REP,0
 2020,UT,Governor,,REP,Spencer Cox,cox s,16.0,Hinckley Institute / Salt Lake Tribune,510.0,v,6/18/18,2020-06-30,2020_UT_Governor_REP,1
 2020,UT,Governor,,REP,Greg Hughes,hughes g,3.0,Hinckley Institute / Salt Lake Tribune,510.0,v,6/18/18,2020-06-30,2020_UT_Governor_REP,0
 2020,UT,Governor,,REP,Sean Reyes,reyes s,9.0,Hinckley Institute / Salt Lake Tribune,510.0,v,6/18/18,2020-06-30,2020_UT_Governor_REP,0
-2020,UT,Governor,,REP,Other / Undecided,undecided o,37.0,Hinckley Institute / Salt Lake Tribune,510.0,v,6/18/18,2020-06-30,2020_UT_Governor_REP,0
 2020,UT,Governor,,DEM,Neil Hansen,hansen n,11.0,Y2 Analytics / UtahPolicy / KUTV 2 News,167.0,lv,3/30/20,2020-06-30,2020_UT_Governor_DEM,0
 2020,UT,Governor,,DEM,Ryan Jackson,jackson r,11.0,Y2 Analytics / UtahPolicy / KUTV 2 News,167.0,lv,3/30/20,2020-06-30,2020_UT_Governor_DEM,0
 2020,UT,Governor,,DEM,Zachary Moses,moses z,7.000000000000001,Y2 Analytics / UtahPolicy / KUTV 2 News,167.0,lv,3/30/20,2020-06-30,2020_UT_Governor_DEM,0
 2020,UT,Governor,,DEM,Christopher Peterson,peterson c,38.0,Y2 Analytics / UtahPolicy / KUTV 2 News,167.0,lv,3/30/20,2020-06-30,2020_UT_Governor_DEM,1
 2020,UT,Governor,,DEM,Nikki Pino,pino n,28.000000000000004,Y2 Analytics / UtahPolicy / KUTV 2 News,167.0,lv,3/30/20,2020-06-30,2020_UT_Governor_DEM,0
 2020,UT,Governor,,DEM,Archie Williams III,williams a,5.0,Y2 Analytics / UtahPolicy / KUTV 2 News,167.0,lv,3/30/20,2020-06-30,2020_UT_Governor_DEM,0
-2020,UT,Governor,,DEM,Other / Undecided,undecided o,10.0,Y2 Analytics / UtahPolicy / KUTV 2 News,167.0,lv,3/30/20,2020-06-30,2020_UT_Governor_DEM,0
 2020,WV,Governor,,REP,Jim Justice,justice j,53.0,Triton Polling & Research /WMOV,719.0,lv,5/26/20,2020-06-09,2020_WV_Governor_REP,1
 2020,WV,Governor,,REP,Mike Folk,folk m,15.0,Triton Polling & Research /WMOV,719.0,lv,5/26/20,2020-06-09,2020_WV_Governor_REP,0
 2020,WV,Governor,,REP,Woody Thrasher,thrasher w,14.000000000000002,Triton Polling & Research /WMOV,719.0,lv,5/26/20,2020-06-09,2020_WV_Governor_REP,0
-2020,WV,Governor,,REP,Other / Undecided,undecided o,18.0,Triton Polling & Research /WMOV,719.0,lv,5/26/20,2020-06-09,2020_WV_Governor_REP,0
 2020,WV,Governor,,REP,Jim Justice,justice j,38.0,WPA Intelligence,502.0,lv,12/18/19,2020-06-09,2020_WV_Governor_REP,1
 2020,WV,Governor,,REP,Mike Folk,folk m,6.0,WPA Intelligence,502.0,lv,12/18/19,2020-06-09,2020_WV_Governor_REP,0
 2020,WV,Governor,,REP,Woody Thrasher,thrasher w,30.0,WPA Intelligence,502.0,lv,12/18/19,2020-06-09,2020_WV_Governor_REP,0
-2020,WV,Governor,,REP,Other / Undecided,undecided o,26.0,WPA Intelligence,502.0,lv,12/18/19,2020-06-09,2020_WV_Governor_REP,0
 2020,WV,Governor,,REP,Jim Justice,justice j,56.00000000000001,Research America Inc.,229.0,lv,12/9/19,2020-06-09,2020_WV_Governor_REP,1
 2020,WV,Governor,,REP,Mike Folk,folk m,11.0,Research America Inc.,229.0,lv,12/9/19,2020-06-09,2020_WV_Governor_REP,0
 2020,WV,Governor,,REP,Woody Thrasher,thrasher w,21.0,Research America Inc.,229.0,lv,12/9/19,2020-06-09,2020_WV_Governor_REP,0
-2020,WV,Governor,,REP,Other / Undecided,undecided o,12.0,Research America Inc.,229.0,lv,12/9/19,2020-06-09,2020_WV_Governor_REP,0
 2020,WV,Governor,,REP,Jim Justice,justice j,56.00000000000001,Public Opinion Strategies,,,8/25/19,2020-06-09,2020_WV_Governor_REP,1
 2020,WV,Governor,,REP,Woody Thrasher,thrasher w,26.0,Public Opinion Strategies,,,8/25/19,2020-06-09,2020_WV_Governor_REP,0
-2020,WV,Governor,,REP,Other / Undecided,undecided o,18.0,Public Opinion Strategies,,,8/25/19,2020-06-09,2020_WV_Governor_REP,0
 2020,WV,Governor,,REP,Jim Justice,justice j,53.0,Research America Inc.,216.0,lv,8/22/19,2020-06-09,2020_WV_Governor_REP,1
 2020,WV,Governor,,REP,Mike Folk,folk m,12.0,Research America Inc.,216.0,lv,8/22/19,2020-06-09,2020_WV_Governor_REP,0
 2020,WV,Governor,,REP,Woody Thrasher,thrasher w,19.0,Research America Inc.,216.0,lv,8/22/19,2020-06-09,2020_WV_Governor_REP,0
-2020,WV,Governor,,REP,Other / Undecided,undecided o,17.0,Research America Inc.,216.0,lv,8/22/19,2020-06-09,2020_WV_Governor_REP,0
 2020,WV,Governor,,REP,Jim Justice,justice j,38.0,WPA Intelligence,509.0,v,8/14/19,2020-06-09,2020_WV_Governor_REP,1
 2020,WV,Governor,,REP,Mike Folk,folk m,11.0,WPA Intelligence,509.0,v,8/14/19,2020-06-09,2020_WV_Governor_REP,0
 2020,WV,Governor,,REP,Woody Thrasher,thrasher w,23.0,WPA Intelligence,509.0,v,8/14/19,2020-06-09,2020_WV_Governor_REP,0
-2020,WV,Governor,,REP,Other / Undecided,undecided o,28.000000000000004,WPA Intelligence,509.0,v,8/14/19,2020-06-09,2020_WV_Governor_REP,0
 2020,WV,Governor,,REP,Jim Justice,justice j,57.99999999999999,WPA Intelligence,509.0,v,3/10/19,2020-06-09,2020_WV_Governor_REP,1
 2020,WV,Governor,,REP,Mike Folk,folk m,5.0,WPA Intelligence,509.0,v,3/10/19,2020-06-09,2020_WV_Governor_REP,0
 2020,WV,Governor,,REP,Woody Thrasher,thrasher w,5.0,WPA Intelligence,509.0,v,3/10/19,2020-06-09,2020_WV_Governor_REP,0
-2020,WV,Governor,,REP,Other / Undecided,undecided o,32.0,WPA Intelligence,509.0,v,3/10/19,2020-06-09,2020_WV_Governor_REP,0
 2020,WV,Governor,,DEM,Ben Salango,salango b,30.0,Triton Polling & Research /WMOV,231.0,lv,5/26/20,2020-06-09,2020_WV_Governor_DEM,1
 2020,WV,Governor,,DEM,Stephen Smith,smith s,27.0,Triton Polling & Research /WMOV,231.0,lv,5/26/20,2020-06-09,2020_WV_Governor_DEM,0
 2020,WV,Governor,,DEM,Ron Stollings,stollings r,10.0,Triton Polling & Research /WMOV,231.0,lv,5/26/20,2020-06-09,2020_WV_Governor_DEM,0
-2020,WV,Governor,,DEM,Other / Undecided,undecided o,33.0,Triton Polling & Research /WMOV,231.0,lv,5/26/20,2020-06-09,2020_WV_Governor_DEM,0
 2020,WV,Governor,,DEM,Ben Salango,salango b,18.0,Research America / MetroNews,220.0,lv,12/10/19,2020-06-09,2020_WV_Governor_DEM,1
 2020,WV,Governor,,DEM,Stephen Smith,smith s,21.0,Research America / MetroNews,220.0,lv,12/10/19,2020-06-09,2020_WV_Governor_DEM,0
 2020,WV,Governor,,DEM,Ron Stollings,stollings r,19.0,Research America / MetroNews,220.0,lv,12/10/19,2020-06-09,2020_WV_Governor_DEM,0
-2020,WV,Governor,,DEM,Other / Undecided,undecided o,46.0,Research America / MetroNews,220.0,lv,12/10/19,2020-06-09,2020_WV_Governor_DEM,0
 2020,AL,Senate,,REP,Stanley Adair,adair s,1.0,WPA Intelligence,607.0,lv,2/19/20,2020-03-03,2020_AL_Senate_REP,0
 2020,AL,Senate,,REP,Bradley Byrne,byrne b,17.0,WPA Intelligence,607.0,lv,2/19/20,2020-03-03,2020_AL_Senate_REP,0
 2020,AL,Senate,,REP,Arnold Mooney,mooney a,1.0,WPA Intelligence,607.0,lv,2/19/20,2020-03-03,2020_AL_Senate_REP,0
@@ -1917,7 +1886,6 @@ year,state,office,district,party_std,candidate,cand_key,pct,pollster,sample_size
 2020,AL,Senate,,REP,Roy Moore,moore r,33.0,JMC Analytics,525.0,lv,12/18/19,2020-03-03,2020_AL_Senate_REP,0
 2020,CO,Senate,,DEM,John Hickenlooper,hickenlooper j,57.99999999999999,SurveyUSA,575.0,lv,6/24/20,2020-06-30,2020_CO_Senate_DEM,1
 2020,CO,Senate,,DEM,Andrew Romanoff,romanoff a,28.000000000000004,SurveyUSA,575.0,lv,6/24/20,2020-06-30,2020_CO_Senate_DEM,0
-2020,CO,Senate,,DEM,Other / Undecided,undecided o,15.0,SurveyUSA,575.0,lv,6/24/20,2020-06-30,2020_CO_Senate_DEM,0
 2020,CO,Senate,,DEM,John Hickenlooper,hickenlooper j,51.0,Myers Research and Strategic Services,500.0,lv,6/17/20,2020-06-30,2020_CO_Senate_DEM,1
 2020,CO,Senate,,DEM,Andrew Romanoff,romanoff a,39.0,Myers Research and Strategic Services,500.0,lv,6/17/20,2020-06-30,2020_CO_Senate_DEM,0
 2020,CO,Senate,,DEM,John Hickenlooper,hickenlooper j,68.0,Unspecified polling firm,,lv,10/1/19,2020-06-30,2020_CO_Senate_DEM,1
@@ -1925,47 +1893,28 @@ year,state,office,district,party_std,candidate,cand_key,pct,pollster,sample_size
 2020,CO,Senate,,DEM,John Hickenlooper,hickenlooper j,60.0,Public Policy Polling,509.0,lv,8/29/19,2020-06-30,2020_CO_Senate_DEM,1
 2020,CO,Senate,,DEM,Mike Johnston,johnston m,3.0,Public Policy Polling,509.0,lv,8/29/19,2020-06-30,2020_CO_Senate_DEM,0
 2020,CO,Senate,,DEM,Andrew Romanoff,romanoff a,9.0,Public Policy Polling,509.0,lv,8/29/19,2020-06-30,2020_CO_Senate_DEM,0
-2020,CO,Senate,,DEM,Other / Undecided,undecided o,27.0,Public Policy Polling,509.0,lv,8/29/19,2020-06-30,2020_CO_Senate_DEM,0
 2020,CO,Senate,,DEM,Jena Griswold,griswold j,6.0,Garin-Hart-Yang Research Group,600.0,lv,7/28/19,2020-06-30,2020_CO_Senate_DEM,0
 2020,CO,Senate,,DEM,John Hickenlooper,hickenlooper j,61.0,Garin-Hart-Yang Research Group,600.0,lv,7/28/19,2020-06-30,2020_CO_Senate_DEM,1
 2020,CO,Senate,,DEM,Mike Johnston,johnston m,10.0,Garin-Hart-Yang Research Group,600.0,lv,7/28/19,2020-06-30,2020_CO_Senate_DEM,0
 2020,CO,Senate,,DEM,Andrew Romanoff,romanoff a,8.0,Garin-Hart-Yang Research Group,600.0,lv,7/28/19,2020-06-30,2020_CO_Senate_DEM,0
-2020,CO,Senate,,DEM,Other / Undecided,undecided o,15.0,Garin-Hart-Yang Research Group,600.0,lv,7/28/19,2020-06-30,2020_CO_Senate_DEM,0
 2020,CO,Senate,,DEM,Jena Griswold,griswold j,4.0,Public Policy Polling,561.0,lv,7/14/19,2020-06-30,2020_CO_Senate_DEM,0
 2020,CO,Senate,,DEM,John Hickenlooper,hickenlooper j,44.0,Public Policy Polling,561.0,lv,7/14/19,2020-06-30,2020_CO_Senate_DEM,1
 2020,CO,Senate,,DEM,Mike Johnston,johnston m,3.0,Public Policy Polling,561.0,lv,7/14/19,2020-06-30,2020_CO_Senate_DEM,0
 2020,CO,Senate,,DEM,Andrew Romanoff,romanoff a,12.0,Public Policy Polling,561.0,lv,7/14/19,2020-06-30,2020_CO_Senate_DEM,0
-2020,CO,Senate,,DEM,Other / Undecided,undecided o,38.0,Public Policy Polling,561.0,lv,7/14/19,2020-06-30,2020_CO_Senate_DEM,0
 2020,CO,Senate,,DEM,Dan Baer,baer d,11.0,Public Policy Polling,509.0,lv,8/29/19,2020-06-30,2020_CO_Senate_DEM,0
 2020,CO,Senate,,DEM,Alice Madden,madden a,14.000000000000002,Public Policy Polling,509.0,lv,8/29/19,2020-06-30,2020_CO_Senate_DEM,0
 2020,CO,Senate,,DEM,Angela Williams,williams a,11.0,Public Policy Polling,509.0,lv,8/29/19,2020-06-30,2020_CO_Senate_DEM,0
 2020,CO,Senate,,DEM,John Hickenlooper,hickenlooper j,51.0,Public Policy Polling,840.0,v,6/30/20,2020-06-30,2020_CO_Senate_DEM,1
-2020,CO,Senate,,DEM,Other / Undecided,undecided o,9.0,Public Policy Polling,840.0,v,6/30/20,2020-06-30,2020_CO_Senate_DEM,0
 2020,CO,Senate,,DEM,John Hickenlooper,hickenlooper j,54.0,Keating Research / OnSight Public Affairs / Melanson,600.0,lv,5/3/20,2020-06-30,2020_CO_Senate_DEM,1
-2020,CO,Senate,,DEM,Other / Undecided,undecided o,10.0,Keating Research / OnSight Public Affairs / Melanson,600.0,lv,5/3/20,2020-06-30,2020_CO_Senate_DEM,0
 2020,CO,Senate,,DEM,John Hickenlooper,hickenlooper j,48.0,Montana State University Bozeman,379.0,lv,4/19/20,2020-06-30,2020_CO_Senate_DEM,1
-2020,CO,Senate,,DEM,Other / Undecided,undecided o,21.0,Montana State University Bozeman,379.0,lv,4/19/20,2020-06-30,2020_CO_Senate_DEM,0
 2020,CO,Senate,,DEM,John Hickenlooper,hickenlooper j,53.0,Keating Research,500.0,lv,10/14/19,2020-06-30,2020_CO_Senate_DEM,1
-2020,CO,Senate,,DEM,Other / Undecided,undecided o,5.0,Keating Research,500.0,lv,10/14/19,2020-06-30,2020_CO_Senate_DEM,0
 2020,CO,Senate,,DEM,John Hickenlooper,hickenlooper j,53.0,Emerson College,1000.0,rv,8/19/19,2020-06-30,2020_CO_Senate_DEM,1
-2020,CO,Senate,,DEM,Other / Undecided,undecided o,8.0,Emerson College,1000.0,rv,8/19/19,2020-06-30,2020_CO_Senate_DEM,0
 2020,CO,Senate,,DEM,John Hickenlooper,hickenlooper j,49.0,Global Strategy Group,617.0,lv,8/14/19,2020-06-30,2020_CO_Senate_DEM,1
-2020,CO,Senate,,DEM,Other / Undecided,undecided o,13.0,Global Strategy Group,617.0,lv,8/14/19,2020-06-30,2020_CO_Senate_DEM,0
 2020,CO,Senate,,DEM,John Hickenlooper,hickenlooper j,51.0,Public Policy Polling,739.0,v,8/11/19,2020-06-30,2020_CO_Senate_DEM,1
-2020,CO,Senate,,DEM,Other / Undecided,undecided o,12.0,Public Policy Polling,739.0,v,8/11/19,2020-06-30,2020_CO_Senate_DEM,0
-2020,CO,Senate,,DEM,Other / Undecided,undecided o,9.0,Global Strategy Group,818.0,rv,2/4/19,2020-06-30,2020_CO_Senate_DEM,0
-2020,CO,Senate,,DEM,Other / Undecided,undecided o,16.0,DFM Research,550.0,a,1/5/19,2020-06-30,2020_CO_Senate_DEM,0
-2020,CO,Senate,,DEM,Other / Undecided,undecided o,13.0,Public Policy Polling,628.0,v,8/3/17,2020-06-30,2020_CO_Senate_DEM,0
-2020,CO,Senate,,DEM,Other / Undecided,undecided o,8.0,Public Policy Polling,870.0,v,7/1/17,2020-06-30,2020_CO_Senate_DEM,0
-2020,CO,Senate,,DEM,Yes,yes,32.0,Fabrizio Ward / AARP,600.0,lv,7/31/19,2020-06-30,2020_CO_Senate_DEM,0
-2020,CO,Senate,,DEM,No,no,50.0,Fabrizio Ward / AARP,600.0,lv,7/31/19,2020-06-30,2020_CO_Senate_DEM,0
-2020,CO,Senate,,DEM,Other / Undecided,undecided o,19.0,Fabrizio Ward / AARP,600.0,lv,7/31/19,2020-06-30,2020_CO_Senate_DEM,0
-2020,CO,Senate,,DEM,Other / Undecided,undecided o,12.0,Climate Nexus,485.0,rv,2/19/20,2020-06-30,2020_CO_Senate_DEM,0
 2020,CO,Senate,,DEM,Mike Johnston,johnston m,50.0,Global Strategy Group,617.0,lv,8/14/19,2020-06-30,2020_CO_Senate_DEM,0
 2020,CO,Senate,,DEM,Mike Johnston,johnston m,39.0,Fabrizio Ward / AARP,600.0,lv,7/31/19,2020-06-30,2020_CO_Senate_DEM,0
 2020,DE,Senate,,DEM,Lisa Blunt Rochester,rochester l,31.0,Data for Progress,528.0,lv,11/25/19,2020-09-15,2020_DE_Senate_DEM,0
 2020,DE,Senate,,DEM,Chris Coons,coons c,35.0,Data for Progress,528.0,lv,11/25/19,2020-09-15,2020_DE_Senate_DEM,1
-2020,DE,Senate,,DEM,More liberal female Democrat,democrat m,45.0,Data for Progress,528.0,lv,11/25/19,2020-09-15,2020_DE_Senate_DEM,0
 2020,GA,Senate,,DEM,Sarah Riggs Amico,amico s,9.0,Landmark Communications,500.0,lv,6/1/20,2020-06-09,2020_GA_Senate_DEM,0
 2020,GA,Senate,,DEM,Jon Ossoff,ossoff j,42.0,Landmark Communications,500.0,lv,6/1/20,2020-06-09,2020_GA_Senate_DEM,1
 2020,GA,Senate,,DEM,Teresa Tomlinson,tomlinson t,14.000000000000002,Landmark Communications,500.0,lv,6/1/20,2020-06-09,2020_GA_Senate_DEM,0
@@ -2083,10 +2032,8 @@ year,state,office,district,party_std,candidate,cand_key,pct,pollster,sample_size
 2020,ME,Senate,,REP,Shawn Moody,moody s,45.0,Public Policy Polling,271.0,lv,10/13/19,2020-07-14,2020_ME_Senate_REP,0
 2020,ME,Senate,,DEM,Sara Gideon,gideon s,67.0,Victory Geek,,lv,5/18/20,2020-07-14,2020_ME_Senate_DEM,1
 2020,ME,Senate,,DEM,Betsy Sweet,sweet b,17.0,Victory Geek,,lv,5/18/20,2020-07-14,2020_ME_Senate_DEM,0
-2020,ME,Senate,,DEM,Other / Undecided,undecided o,17.0,Victory Geek,,lv,5/18/20,2020-07-14,2020_ME_Senate_DEM,0
 2020,ME,Senate,,DEM,Sara Gideon,gideon s,60.0,Colby College / SocialSphere,383.0,lv,2/13/20,2020-07-14,2020_ME_Senate_DEM,1
 2020,ME,Senate,,DEM,Betsy Sweet,sweet b,8.0,Colby College / SocialSphere,383.0,lv,2/13/20,2020-07-14,2020_ME_Senate_DEM,0
-2020,ME,Senate,,DEM,Other / Undecided,undecided o,33.0,Colby College / SocialSphere,383.0,lv,2/13/20,2020-07-14,2020_ME_Senate_DEM,0
 2020,MI,Senate,,REP,John James,james j,59.0,Target Insyght,296.0,lv,4/25/19,2020-08-04,2020_MI_Senate_REP,1
 2020,MI,Senate,,REP,Bill Schuette,schuette b,15.0,Target Insyght,296.0,lv,4/25/19,2020-08-04,2020_MI_Senate_REP,0
 2020,NC,Senate,,REP,Thom Tillis,tillis t,69.0,High Point University,247.0,lv,2/28/20,2020-03-03,2020_NC_Senate_REP,1
@@ -3243,18 +3190,11 @@ year,state,office,district,party_std,candidate,cand_key,pct,pollster,sample_size
 2022,NH,Governor,,REP,Frank Edelbut,edelbut f,7.000000000000001,Praecones Analytica,792.0,lv,8/20/21,2022-09-13,2022_NH_Governor_REP,0
 2022,NH,Governor,,REP,Chuck Morse,morse c,6.0,Praecones Analytica,792.0,lv,8/20/21,2022-09-13,2022_NH_Governor_REP,0
 2022,NH,Governor,,REP,Chris Sununu,sununu c,52.0,Emerson College,800.0,lv,9/15/22,2022-09-13,2022_NH_Governor_REP,1
-2022,NH,Governor,,DEM,Tom Sherman,sherman t,37.0,Emerson College,800.0,lv,9/15/22,2022-09-13,2022_NH_Governor_DEM,1
-2022,NH,Governor,,DEM,Tom Sherman,sherman t,28.999999999999996,Saint Anselm College,1898.0,rv,8/11/22,2022-09-13,2022_NH_Governor_DEM,1
 2022,NH,Governor,,REP,Chris Sununu,sununu c,43.0,Public Policy Polling,601.0,lv,7/6/22,2022-09-13,2022_NH_Governor_REP,1
-2022,NH,Governor,,DEM,Tom Sherman,sherman t,33.0,Public Policy Polling,601.0,lv,7/6/22,2022-09-13,2022_NH_Governor_DEM,1
 2022,NH,Governor,,REP,Chris Sununu,sununu c,55.00000000000001,University of New Hampshire,868.0,lv,4/18/22,2022-09-13,2022_NH_Governor_REP,1
-2022,NH,Governor,,DEM,Tom Sherman,sherman t,28.999999999999996,University of New Hampshire,868.0,lv,4/18/22,2022-09-13,2022_NH_Governor_DEM,1
 2022,NH,Governor,,REP,Chris Sununu,sununu c,62.0,Phillips Academy,533.0,a,4/8/22,2022-09-13,2022_NH_Governor_REP,1
-2022,NH,Governor,,DEM,Tom Sherman,sherman t,24.0,Phillips Academy,533.0,a,4/8/22,2022-09-13,2022_NH_Governor_DEM,1
 2022,NH,Governor,,REP,Chris Sununu,sununu c,51.0,Saint Anselm College,1265.0,rv,3/24/22,2022-09-13,2022_NH_Governor_REP,1
-2022,NH,Governor,,DEM,Tom Sherman,sherman t,24.0,Saint Anselm College,1265.0,rv,3/24/22,2022-09-13,2022_NH_Governor_DEM,1
 2022,NH,Governor,,REP,Chris Sununu,sununu c,45.0,Saint Anselm College,1215.0,rv,1/12/22,2022-09-13,2022_NH_Governor_REP,1
-2022,NH,Governor,,DEM,Generic Opponent,opponent g,45.0,Saint Anselm College,1215.0,rv,1/12/22,2022-09-13,2022_NH_Governor_DEM,0
 2022,NM,Governor,,REP,Jay Block,block j,8.0,Research & Polling Inc.,560.0,lv,5/19/22,2022-06-07,2022_NM_Governor_REP,0
 2022,NM,Governor,,REP,Rebecca Dow,dow r,17.0,Research & Polling Inc.,560.0,lv,5/19/22,2022-06-07,2022_NM_Governor_REP,0
 2022,NM,Governor,,REP,Mark Ronchetti,ronchetti m,45.0,Research & Polling Inc.,560.0,lv,5/19/22,2022-06-07,2022_NM_Governor_REP,1
@@ -3395,12 +3335,8 @@ year,state,office,district,party_std,candidate,cand_key,pct,pollster,sample_size
 2022,NY,Governor,,DEM,Andrew Cuomo,cuomo a,48.0,Siena College,793.0,rv,5/20/21,2022-06-28,2022_NY_Governor_DEM,0
 2022,NY,Governor,,DEM,Letitia James,james l,46.0,Siena College,793.0,rv,5/20/21,2022-06-28,2022_NY_Governor_DEM,0
 2022,NY,Governor,,DEM,Kathy Hochul,hochul k,46.0,Siena College,802.0,rv,6/13/22,2022-06-28,2022_NY_Governor_DEM,1
-2022,NY,Governor,,REP,Generic Opponent,opponent g,44.0,Siena College,802.0,rv,6/13/22,2022-06-28,2022_NY_Governor_REP,0
 2022,NY,Governor,,DEM,Kathy Hochul,hochul k,40.0,Siena College,806.0,rv,4/21/22,2022-06-28,2022_NY_Governor_DEM,1
-2022,NY,Governor,,REP,Generic Opponent,opponent g,45.0,Siena College,806.0,rv,4/21/22,2022-06-28,2022_NY_Governor_REP,0
-2022,NY,Governor,,REP,Generic Opponent,opponent g,43.0,Siena College,804.0,rv,3/24/22,2022-06-28,2022_NY_Governor_REP,0
 2022,NY,Governor,,DEM,Kathy Hochul,hochul k,47.0,Siena College,803.0,rv,2/17/22,2022-06-28,2022_NY_Governor_DEM,1
-2022,NY,Governor,,REP,Generic Opponent,opponent g,38.0,Siena College,803.0,rv,2/17/22,2022-06-28,2022_NY_Governor_REP,0
 2022,OH,Governor,,REP,Joe Blystone,blystone j,19.0,The Trafalgar Group,1081.0,lv,5/1/22,2022-05-03,2022_OH_Governor_REP,0
 2022,OH,Governor,,REP,Mike DeWine,dewine m,47.0,The Trafalgar Group,1081.0,lv,5/1/22,2022-05-03,2022_OH_Governor_REP,1
 2022,OH,Governor,,REP,Ron Hood,hood r,2.0,The Trafalgar Group,1081.0,lv,5/1/22,2022-05-03,2022_OH_Governor_REP,0
@@ -4009,7 +3945,6 @@ year,state,office,district,party_std,candidate,cand_key,pct,pollster,sample_size
 2022,CT,Senate,,REP,Themis Klarides,klarides t,34.0,McLaughlin & Associates,500.0,lv,7/27/22,2022-08-09,2022_CT_Senate_REP,0
 2022,CT,Senate,,REP,Themis Klarides,klarides t,40.0,Emerson College,1000.0,rv,5/11/22,2022-08-09,2022_CT_Senate_REP,0
 2022,CT,Senate,,REP,Peter Lumaj,lumaj p,35.0,Emerson College,1000.0,rv,5/11/22,2022-08-09,2022_CT_Senate_REP,0
-2022,CT,Senate,,REP,Generic Opponent,opponent g,47.0,McLaughlin & Associates,500.0,lv,7/27/22,2022-08-09,2022_CT_Senate_REP,0
 2022,FL,Senate,,DEM,Ricardo De La Fuente,fuente r,2.0,University of North Florida,529.0,lv,8/12/22,2022-08-23,2022_FL_Senate_DEM,0
 2022,FL,Senate,,DEM,Val Demings,demings v,80.0,University of North Florida,529.0,lv,8/12/22,2022-08-23,2022_FL_Senate_DEM,1
 2022,FL,Senate,,DEM,Brian Rush,rush b,4.0,University of North Florida,529.0,lv,8/12/22,2022-08-23,2022_FL_Senate_DEM,0
@@ -5538,7 +5473,6 @@ year,state,office,district,party_std,candidate,cand_key,pct,pollster,sample_size
 2024,AZ,Senate,,REP,Jim Lamon,lamon j,27.0,Public Policy Polling,559.0,v,4/19/23,2024-07-30,2024_AZ_Senate_REP,0
 2024,DE,Senate,,DEM,Lisa Blunt Rochester,rochester l,43.0,Slingshot Strategies,600.0,rv,10/14/23,2024-09-10,2024_DE_Senate_DEM,1
 2024,DE,Senate,,DEM,John Carney,carney j,33.0,Slingshot Strategies,600.0,rv,10/14/23,2024-09-10,2024_DE_Senate_DEM,0
-2024,DE,Senate,,DEM,Others,others,9.0,Slingshot Strategies,600.0,rv,10/14/23,2024-09-10,2024_DE_Senate_DEM,0
 2024,FL,Senate,,DEM,Alan Grayson,grayson a,12.0,Mainstreet Research / FAU,346.0,rv,6/9/24,2024-08-20,2024_FL_Senate_DEM,0
 2024,FL,Senate,,DEM,Debbie Mucarsel- Powell,mucarselpowell d,43.0,Mainstreet Research / FAU,346.0,rv,6/9/24,2024-08-20,2024_FL_Senate_DEM,1
 2024,FL,Senate,,DEM,Debbie Mucarsel- Powell,mucarselpowell d,45.0,Public Policy Polling,837.0,rv,8/22/24,2024-08-20,2024_FL_Senate_DEM,1
@@ -5571,7 +5505,6 @@ year,state,office,district,party_std,candidate,cand_key,pct,pollster,sample_size
 2024,MA,Senate,,REP,John Deaton,deaton j,4.0,Suffolk University,99.0,lv,4/20/24,2024-09-03,2024_MA_Senate_REP,1
 2024,MA,Senate,,REP,John Deaton,deaton j,24.0,YouGov,700.0,a,5/30/23,2024-09-03,2024_MA_Senate_REP,1
 2024,MA,Senate,,REP,Robert Antonellis,antonellis r,23.0,YouGov,700.0,a,5/30/23,2024-09-03,2024_MA_Senate_REP,0
-2024,MA,Senate,,REP,Other/Undecided,undecided o,27.0,YouGov,700.0,a,5/30/23,2024-09-03,2024_MA_Senate_REP,0
 2024,MA,Senate,,REP,Charlie Baker,baker c,49.0,Fiscal Alliance Foundation,750.0,lv,5/7/23,2024-09-03,2024_MA_Senate_REP,0
 2024,MA,Senate,,REP,Ian Cain,cain i,24.0,YouGov,700.0,a,5/30/23,2024-09-03,2024_MA_Senate_REP,0
 2024,MA,Senate,,REP,Johnathan Kraft,kraft j,33.0,Suffolk University,1000.0,lv,2/5/23,2024-09-03,2024_MA_Senate_REP,0
@@ -5759,23 +5692,18 @@ year,state,office,district,party_std,candidate,cand_key,pct,pollster,sample_size
 2024,MO,Senate,,DEM,Wesley Bell,bell w,34.0,Emerson College,491.0,rv,10/4/23,2024-08-06,2024_MO_Senate_DEM,0
 2024,MT,Senate,,REP,Matt Rosendale,rosendale m,24.0,co/efficient,888.0,lv,11/14/23,2024-06-04,2024_MT_Senate_REP,0
 2024,MT,Senate,,REP,Tim Sheehy,sheehy t,40.0,co/efficient,888.0,lv,11/14/23,2024-06-04,2024_MT_Senate_REP,1
-2024,MT,Senate,,REP,Other / Undecided,undecided o,36.0,co/efficient,888.0,lv,11/14/23,2024-06-04,2024_MT_Senate_REP,0
 2024,MT,Senate,,REP,Brad Johnson,johnson b,6.0,"Fabrizio, Lee & Associates",600.0,lv,10/25/23,2024-06-04,2024_MT_Senate_REP,0
 2024,MT,Senate,,REP,Matt Rosendale,rosendale m,35.0,"Fabrizio, Lee & Associates",600.0,lv,10/25/23,2024-06-04,2024_MT_Senate_REP,0
 2024,MT,Senate,,REP,Tim Sheehy,sheehy t,38.0,"Fabrizio, Lee & Associates",600.0,lv,10/25/23,2024-06-04,2024_MT_Senate_REP,1
-2024,MT,Senate,,REP,Other / Undecided,undecided o,21.0,"Fabrizio, Lee & Associates",600.0,lv,10/25/23,2024-06-04,2024_MT_Senate_REP,0
 2024,MT,Senate,,REP,Matt Rosendale,rosendale m,52.0,J.L. Partners,418.0,lv,8/17/23,2024-06-04,2024_MT_Senate_REP,0
 2024,MT,Senate,,REP,Tim Sheehy,sheehy t,21.0,J.L. Partners,418.0,lv,8/17/23,2024-06-04,2024_MT_Senate_REP,1
-2024,MT,Senate,,REP,Other / Undecided,undecided o,28.000000000000004,J.L. Partners,418.0,lv,8/17/23,2024-06-04,2024_MT_Senate_REP,0
 2024,MT,Senate,,REP,Matt Rosendale,rosendale m,64.0,Public Policy Polling,510.0,lv,6/20/23,2024-06-04,2024_MT_Senate_REP,0
 2024,MT,Senate,,REP,Tim Sheehy,sheehy t,10.0,Public Policy Polling,510.0,lv,6/20/23,2024-06-04,2024_MT_Senate_REP,1
-2024,MT,Senate,,REP,Other / Undecided,undecided o,26.0,Public Policy Polling,510.0,lv,6/20/23,2024-06-04,2024_MT_Senate_REP,0
 2024,MT,Senate,,REP,Russell Fagg,fagg r,2.0,OnMessage Inc.,600.0,lv,2/21/23,2024-06-04,2024_MT_Senate_REP,0
 2024,MT,Senate,,REP,Matt Rosendale,rosendale m,36.0,OnMessage Inc.,600.0,lv,2/21/23,2024-06-04,2024_MT_Senate_REP,0
 2024,MT,Senate,,REP,Tim Sheehy,sheehy t,2.0,OnMessage Inc.,600.0,lv,2/21/23,2024-06-04,2024_MT_Senate_REP,1
 2024,MT,Senate,,REP,Corey Stapleton,stapleton c,6.0,OnMessage Inc.,600.0,lv,2/21/23,2024-06-04,2024_MT_Senate_REP,0
 2024,MT,Senate,,REP,Ryan Zinke,zinke r,26.0,OnMessage Inc.,600.0,lv,2/21/23,2024-06-04,2024_MT_Senate_REP,0
-2024,MT,Senate,,REP,Other / Undecided,undecided o,28.000000000000004,OnMessage Inc.,600.0,lv,2/21/23,2024-06-04,2024_MT_Senate_REP,0
 2024,MT,Senate,,REP,Tim Sheehy,sheehy t,48.0,"Fabrizio, Lee & Associates",500.0,lv,6/5/24,2024-06-04,2024_MT_Senate_REP,1
 2024,MT,Senate,,REP,Tim Sheehy,sheehy t,48.0,J.L. Partners,503.0,lv,3/29/24,2024-06-04,2024_MT_Senate_REP,1
 2024,MT,Senate,,REP,Tim Sheehy,sheehy t,42.0,Emerson College,1000.0,rv,3/2/24,2024-06-04,2024_MT_Senate_REP,1
