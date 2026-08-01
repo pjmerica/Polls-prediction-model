@@ -48,28 +48,28 @@
   "bio_office_level"
  ],
  "xgb_params": {
-  "max_depth": 1,
+  "max_depth": 2,
   "learning_rate": 0.05,
-  "n_estimators": 100,
-  "min_child_weight": 8,
+  "n_estimators": 200,
+  "min_child_weight": 4,
   "subsample": 0.7,
   "colsample_bytree": 0.5,
-  "reg_lambda": 1
+  "reg_lambda": 20
  },
  "model_type": "xgbranker",
  "objective": "rank:pairwise",
- "softmax_temp": 0.25,
+ "softmax_temp": 0.4,
  "softmax_temp_grid": {
-  "0.1": 0.0259,
-  "0.15": 0.0237,
-  "0.2": 0.0226,
-  "0.25": 0.0223,
-  "0.3": 0.0227,
-  "0.4": 0.0247,
-  "0.5": 0.0279,
-  "0.75": 0.0384,
-  "1.0": 0.0501,
-  "1.5": 0.0707
+  "0.1": 0.024,
+  "0.15": 0.022,
+  "0.2": 0.0207,
+  "0.25": 0.0198,
+  "0.3": 0.0193,
+  "0.4": 0.0192,
+  "0.5": 0.02,
+  "0.75": 0.0244,
+  "1.0": 0.0315,
+  "1.5": 0.0488
  },
  "score_semantics": "raw ranker scores are unbounded and only comparable WITHIN a race; convert to probability via a within-race softmax (temp above). This one number is used by BOTH the dashboard and the Explain modal.",
  "trained_on_cycles": [
@@ -86,21 +86,21 @@
   "2022": {
    "n_races": 66.0,
    "n_cand": 368.0,
-   "AUC": 0.9981,
-   "AUC_PR": 0.9917,
+   "AUC": 0.9987,
+   "AUC_PR": 0.9944,
    "KS": 0.9669,
-   "Brier": 0.0145,
-   "race_acc": 0.9394,
+   "Brier": 0.0125,
+   "race_acc": 0.9545,
    "pollleader_acc": 0.7576
   },
   "2024": {
    "n_races": 37.0,
    "n_cand": 170.0,
-   "AUC": 0.9759,
-   "AUC_PR": 0.9419,
-   "KS": 0.8783,
-   "Brier": 0.0393,
-   "race_acc": 0.8919,
+   "AUC": 0.9848,
+   "AUC_PR": 0.9597,
+   "KS": 0.9084,
+   "Brier": 0.0338,
+   "race_acc": 0.8649,
    "pollleader_acc": 0.6757
   }
  }

@@ -340,7 +340,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,DEM,Tom Vilsack,United States Secretary of Agriculture and former governor,2014,Governor,IA,vilsack t,4,0,0
 ,REP,Walt Bayes,perennial candidate,2014,Governor,ID,bayes w,0,0,0
 ,REP,Idaho's 1st congressional district,in 2000 and 2010 and candidate for Mayor of Boise in 2001,2014,Governor,ID,district i,0,0,1
-,REP,Russ Fulcher,state senator and future U.S. Representative from Idaho's 1st congressional district,2014,Governor,ID,fulcher r,4,1,0
+,REP,Russ Fulcher,state senator and future U.S. Representative from Idaho's 1st congressional district,2014,Governor,ID,fulcher r,2,1,0
 ,REP,Butch Otter,incumbent governor,2014,Governor,ID,otter b,3,0,0
 ,REP,Raúl Labrador,U.S. representative,2014,Governor,ID,labrador r,4,1,0
 ,REP,Brad Little,Lieutenant Governor of Idaho,2014,Governor,ID,little b,3,0,0
@@ -353,7 +353,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,DEM,Cecil D. Andrus,former governor and former United States Secretary of the Interior,2014,Governor,ID,andrus c,4,0,0
 ,DEM,David H. Bieter,Mayor of Boise,2014,Governor,ID,bieter d,1,0,0
 ,IND,Boise City Council,in 2013,2014,Governor,ID,council b,0,0,0
-,IND,Pro-Life,"(formerly known as Marvin Richardson), organic strawberry farmer, anti-abortion activist and perennial candidate",2014,Governor,ID,life p,0,0,0
+,IND,Pro-Life,"(formerly known as Marvin Richardson), organic strawberry farmer, anti-abortion activist and perennial candidate",2014,Governor,ID,prolife,0,0,0
 ,DEM,CeaseFire,"Running mate: Brunell Donald, attorney, author and motivational speaker.",2014,Governor,IL,ceasefire,0,0,0
 ,DEM,Pat Quinn,"incumbent governor of Illinois  Running mate: Paul Vallas , former CEO of Chicago Public Schools and candidate for governor in 2002",2014,Governor,IL,quinn p,3,0,1
 ,DEM,Running mate: Brunell Donald,"attorney, author and motivational speaker.",2014,Governor,IL,donald r,0,0,0
@@ -451,7 +451,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,DEM,Peter Franchot,Comptroller of Maryland (ran for re-election),2014,Governor,MD,franchot p,0,0,0
 ,DEM,Dutch Ruppersberger,U.S. Representative (ran for re-election),2014,Governor,MD,ruppersberger d,4,1,0
 ,REP,David R. Craig,Harford County Executive,2014,Governor,MD,craig d,1,0,0
-,REP,Jeannie Haddaway-Riccio,State Delegate,2014,Governor,MD,riccio j,2,0,0
+,REP,Jeannie Haddaway-Riccio,State Delegate,2014,Governor,MD,haddawayriccio j,2,0,0
 ,REP,Ron George,State Delegate,2014,Governor,MD,george r,2,0,0
 ,REP,Frederick,Alderman,2014,Governor,MD,frederick,1,0,0
 ,REP,Larry Hogan,former State Secretary of Appointments,2014,Governor,MD,hogan l,0,0,0
@@ -769,7 +769,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,DEM,Stephanie Herseth Sandlin,former U.S. representative,2014,Governor,SD,sandlin s,4,1,0
 ,DEM,Sioux Falls,(running for re-election),2014,Governor,SD,falls s,0,0,0
 ,DEM,Steve Jarding,"educator, lecturer and political consultant",2014,Governor,SD,jarding s,0,0,0
-,DEM,Pat O'Brien,"author, television anchor and radio host",2014,Governor,SD,brien p,0,0,0
+,DEM,Pat O'Brien,"author, television anchor and radio host",2014,Governor,SD,obrien p,0,0,0
 ,IND,Independent,"), former University of South Dakota School of Law professor and former CEO of Mayo Clinic",2014,Governor,SD,independent,0,0,0
 ,IND,Constitution,"), Tea Party activist",2014,Governor,SD,constitution,0,0,0
 ,REP,Basil Marceaux,perennial candidate,2014,Governor,TN,marceaux b,0,0,0
@@ -971,7 +971,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,DEM,running for NH-01,),2016,Governor,NH,nh r,0,0,0
 ,DEM,Chris Pappas,Executive Councilor,2016,Governor,NH,pappas c,0,0,0
 ,DEM,Portsmouth,City Councilor and daughter of U.S. senator Jeanne Shaheen,2016,Governor,NH,portsmouth,4,0,0
-,DEM,Carol Shea-Porter,former U.S. representative ( running for NH-01 ),2016,Governor,NH,porter c,4,1,0
+,DEM,Carol Shea-Porter,former U.S. representative ( running for NH-01 ),2016,Governor,NH,sheaporter c,4,1,0
 ,DEM,Donna Soucy,state senator,2016,Governor,NH,soucy d,2,0,0
 ,DEM,Mike Vlacich,campaign manager for Senator Shaheen,2016,Governor,NH,vlacich m,0,0,0
 ,REP,Frank Edelblut,state representative,2016,Governor,NH,edelblut f,2,1,0
@@ -1219,7 +1219,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,DEM,Jeremy Ring,former Florida state senator ( ran for CFO ),2018,Governor,FL,ring j,2,0,0
 ,DEM,Jack Seiler,mayor of Fort Lauderdale,2018,Governor,FL,seiler j,1,0,0
 ,IND,president,in 2012,2018,Governor,FL,president,0,0,0
-,IND,Afro-Cuban,activist (running for state representative ),2018,Governor,FL,cuban a,0,1,0
+,IND,Afro-Cuban,activist (running for state representative ),2018,Governor,FL,afrocuban,0,1,0
 ,IND,Lake County,"School Board, candidate for state representative in 2004, and candidate for mayor of Mount Dora in 2013",2018,Governor,FL,county l,1,1,1
 ,IND,Ryan Christopher Foley,former emergency medical technician,2018,Governor,FL,foley r,0,0,0
 ,IND,"Kyle ""KC"" Gibson",pastor,2018,Governor,FL,gibson k,0,0,0
@@ -1254,7 +1254,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,DEM,Jill Tokuda,state senator,2018,Governor,HI,tokuda j,2,0,0
 ,DEM,Alan Arakawa,mayor of Maui County  (running for Maui County Council),2018,Governor,HI,arakawa a,1,0,0
 ,REP,John Carroll,"former state representative, and former state senator",2018,Governor,HI,carroll j,2,1,0
-,REP,Ray L'Heureux,"president and chairman of the Education Institute of Hawaii, former assistant superintendent, and retired U.S. Marine colonel",2018,Governor,HI,heureux r,0,0,0
+,REP,Ray L'Heureux,"president and chairman of the Education Institute of Hawaii, former assistant superintendent, and retired U.S. Marine colonel",2018,Governor,HI,lheureux r,0,0,0
 ,REP,Andria Tupola,Minority Leader of the Hawaii House of Representatives,2018,Governor,HI,tupola a,2,1,0
 ,REP,Bob McDermott,state representative and nominee for HI-02 in 2002,2018,Governor,HI,mcdermott b,2,1,1
 ,REP,Kim Reynolds,incumbent governor of Iowa,2018,Governor,IA,reynolds k,3,0,0
@@ -1376,7 +1376,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,DEM,Quentin Palfrey,former senior advisor to the president for jobs & competitiveness,2018,Governor,MA,palfrey q,0,0,0
 ,DEM,Jimmy Tingle,humorist and activist,2018,Governor,MA,tingle j,0,0,0
 ,DEM,Norfolk County,Register of Probate,2018,Governor,MA,county n,0,0,0
-,DEM,Matt O'Malley,Boston City Councilor,2018,Governor,MA,malley m,1,0,0
+,DEM,Matt O'Malley,Boston City Councilor,2018,Governor,MA,omalley m,1,0,0
 ,DEM,Ayanna Pressley,Boston City Councilor (running for MA-7 ),2018,Governor,MA,pressley a,1,0,0
 ,REP,Larry Hogan,incumbent governor,2018,Governor,MD,hogan l,3,0,0
 ,REP,Barry Glassman,Harford County Executive,2018,Governor,MD,glassman b,1,0,0
@@ -1392,9 +1392,9 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,DEM,Ike Leggett,Montgomery County executive,2018,Governor,MD,leggett i,1,0,0
 ,DEM,Maggie McIntosh,state delegate,2018,Governor,MD,mcintosh m,2,0,0
 ,DEM,Heather Mizeur,former state delegate and candidate for governor in 2014,2018,Governor,MD,mizeur h,2,0,1
-,DEM,Joseline Peña-Melnyk,state delegate and candidate for MD-04 in 2016,2018,Governor,MD,melnyk j,2,0,1
+,DEM,Joseline Peña-Melnyk,state delegate and candidate for MD-04 in 2016,2018,Governor,MD,penamelnyk j,2,0,1
 ,DEM,Thomas Perez,"chair of the Democratic National Committee , former United States Secretary of Labor , and former Maryland Secretary of Labor",2018,Governor,MD,perez t,4,0,0
-,DEM,Stephanie Rawlings-Blake,former mayor of Baltimore,2018,Governor,MD,blake s,1,0,0
+,DEM,Stephanie Rawlings-Blake,former mayor of Baltimore,2018,Governor,MD,rawlingsblake s,1,0,0
 ,DEM,David Trone,businessman and candidate for MD-08 in 2016 (running for MD-06),2018,Governor,MD,trone d,0,0,1
 ,DEM,Kenneth Ulman,former Howard County executive and nominee for lieutenant governor in 2014,2018,Governor,MD,ulman k,1,0,1
 ,DEM,Maryland Green Party,"Running mate: Annie Chambers, reverend and Baltimore City Resident Advisory Board member",2018,Governor,MD,party m,0,0,0
@@ -1427,7 +1427,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,IND,Aaron D. Chadbourne,"writer and activist  (write-in candidate, endorsed Moody)",2018,Governor,ME,chadbourne a,0,0,0
 ,IND,Karmo Sanders,actress,2018,Governor,ME,sanders k,0,0,0
 ,IND,Eliot Cutler,attorney and candidate for governor in 2010 and 2014,2018,Governor,ME,cutler e,0,0,1
-,IND,running for re-election,),2018,Governor,ME,election r,0,0,0
+,IND,running for re-election,),2018,Governor,ME,reelection r,0,0,0
 ,IND,Peter Vigue,businessman,2018,Governor,ME,vigue p,0,0,0
 ,IND,Richard G. Woodbury,former state senator,2018,Governor,ME,woodbury r,2,0,0
 ,REP,Bill Schuette,Attorney General of Michigan,2018,Governor,MI,schuette b,3,0,0
@@ -1528,7 +1528,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,DEM,David McTeigue,juvenile probation officer,2018,Governor,NM,mcteigue d,0,0,0
 ,DEM,Michael Padilla,state senator,2018,Governor,NM,padilla m,2,0,0
 ,DEM,Brian Colón,"former chairman of the Democratic Party of New Mexico , nominee for lieutenant governor in 2010 and candidate for mayor of Albuquerque in 2017 ( running for State Auditor )",2018,Governor,NM,colon b,0,0,1
-,DEM,Bill O'Neill,state senator,2018,Governor,NM,neill b,2,0,0
+,DEM,Bill O'Neill,state senator,2018,Governor,NM,oneill b,2,0,0
 ,DEM,Bob Walsh,retired mathematician,2018,Governor,NM,walsh b,0,0,0
 ,DEM,"Aubrey Dunn, Jr.","Commissioner of Public Lands   ( ran for the U.S. Senate, but dropped out )",2018,Governor,NM,dunn a,3,0,0
 ,DEM,Gary Johnson,former Republican governor and nominee for president in 2012 and 2016   ( running for the U.S. Senate ),2018,Governor,NM,johnson g,3,0,1
@@ -1603,7 +1603,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,REP,2014,and 2016,2018,Governor,OR,,0,0,0
 ,REP,Jeff Smith,small business owner,2018,Governor,OR,smith j,0,0,0
 ,REP,Blue Angels,commanding officer,2018,Governor,OR,angels b,0,0,0
-,REP,Lori Chavez-DeRemer,Mayor of Happy Valley and nominee for the state house in 2016,2018,Governor,OR,deremer l,1,0,1
+,REP,Lori Chavez-DeRemer,Mayor of Happy Valley and nominee for the state house in 2016,2018,Governor,OR,chavezderemer l,1,0,1
 ,REP,Cedric Ross Hayden,state representative,2018,Governor,OR,hayden c,2,1,0
 ,REP,Mike McLane,House Minority Leader,2018,Governor,OR,mclane m,0,0,0
 ,REP,Bud Pierce,physician and nominee for governor in 2016,2018,Governor,OR,pierce b,0,0,1
@@ -1755,7 +1755,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,REP,Foster Friess,businessman and activist,2018,Governor,WY,friess f,0,0,0
 ,REP,Sam Galeotos,businessman,2018,Governor,WY,galeotos s,0,0,0
 ,REP,Harriet Hageman,attorney and former Liz Cheney campaign advisor,2018,Governor,WY,hageman h,0,0,0
-,REP,write-in,candidate for governor in 2010 and candidate for governor in 2014,2018,Governor,WY,in w,0,0,1
+,REP,write-in,candidate for governor in 2010 and candidate for governor in 2014,2018,Governor,WY,writein,0,0,1
 ,REP,Rex Rammell,veterinarian and perennial candidate (ran for Constitution Party nomination),2018,Governor,WY,rammell r,0,0,0
 ,DEM,Mary Throne,former minority leader of the Wyoming House of Representatives,2018,Governor,WY,throne m,2,1,0
 ,DEM,James W. Byrd,state representative (ran for secretary of state),2018,Governor,WY,byrd j,2,1,0
@@ -1930,7 +1930,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,DEM,Charlene Fernandez,Minority Leader of the Arizona House of Representatives,2022,Governor,AZ,fernandez c,2,1,0
 ,DEM,Kate Gallego,Mayor of Phoenix,2022,Governor,AZ,gallego k,1,0,0
 ,DEM,Ruben Gallego,U.S. representative for Arizona's 7th congressional district ( running for re-election ),2022,Governor,AZ,gallego r,4,1,0
-,DEM,Tom O'Halleran,U.S. representative for Arizona's 1st congressional district ( running for re-election ),2022,Governor,AZ,halleran t,4,1,0
+,DEM,Tom O'Halleran,U.S. representative for Arizona's 1st congressional district ( running for re-election ),2022,Governor,AZ,ohalleran t,4,1,0
 ,DEM,Greg Stanton,U.S. representative for Arizona's 9th congressional district and former mayor of Phoenix ( running for re-election ),2022,Governor,AZ,stanton g,4,1,0
 ,REP,Brian Dahle,state senator from the 1st district and former Minority Leader of the California State Assembly,2022,Governor,CA,dahle b,2,0,0
 ,REP,Larry Elder,"conservative talk show host, author, and candidate in the 2021 recall election",2022,Governor,CA,elder l,0,0,0
@@ -1996,7 +1996,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,REP,Duke Aiona,former lieutenant governor (2002–2010) and nominee for governor in 2010 and 2014,2022,Governor,HI,aiona d,3,0,1
 ,REP,Peter Savio,businessperson and real estate developer,2022,Governor,HI,savio p,0,0,0
 ,REP,Andria Tupola,"Honolulu City Councilmember (2021–present), former Minority Leader of the Hawaii House of Representatives (2017–2018), and nominee for governor in 2018",2022,Governor,HI,tupola a,2,1,1
-,REP,Seaula Tupa'i Jr.,pastor,2022,Governor,HI,i s,0,0,0
+,REP,Seaula Tupa'i Jr.,pastor,2022,Governor,HI,tupai s,0,0,0
 ,REP,Kim Reynolds,incumbent governor (2017–present),2022,Governor,IA,reynolds k,3,1,0
 ,REP,Ashley Hinson,U.S. representative from IA-01 (2021–present) ( ran for re-election ),2022,Governor,IA,hinson a,4,1,0
 ,DEM,secretary of state of Iowa,in 2018,2022,Governor,IA,iowa s,0,0,0
@@ -2014,7 +2014,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,DEM,Boise School District,"trustee, nominee for governor in 2014 , and candidate in 2018  (endorsed Shelby Rognstad)",2022,Governor,ID,district b,0,0,1
 ,DEM,White Bird,"city councilman, retired software engineer",2022,Governor,ID,bird w,1,0,0
 ,DEM,Ryan Cole,member of the Central Idaho Health District board and pathologist (failed to change party registration and running as write-in candidate instead),2022,Governor,ID,cole r,0,0,0
-,DEM,Pro-Life,organic strawberry farmer and perennial candidate (ran for lieutenant governor),2022,Governor,ID,life p,0,0,0
+,DEM,Pro-Life,organic strawberry farmer and perennial candidate (ran for lieutenant governor),2022,Governor,ID,prolife,0,0,0
 ,IND,Ammon Bundy,leader of the Occupation of the Malheur National Wildlife Refuge,2022,Governor,ID,bundy a,0,0,0
 ,DEM,JB Pritzker,"incumbent governor  Running mate: Juliana Stratton , incumbent lieutenant governor",2022,Governor,IL,pritzker j,3,0,0
 ,DEM,Juliana Stratton,incumbent lieutenant governor,2022,Governor,IL,stratton j,3,0,0
@@ -2045,8 +2045,8 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,REP,Mike Kennealy,secretary of housing and economic development for the Commonwealth of Massachusetts,2022,Governor,MA,kennealy m,0,0,0
 ,REP,Andrew Lelling,former U.S. attorney for the District of Massachusetts (2017–2021),2022,Governor,MA,lelling a,0,0,0
 ,REP,Scott Lively,"anti-gay activist, independent candidate for governor in 2014 and Republican candidate for governor in 2018",2022,Governor,MA,lively s,0,0,1
-,REP,Shaunna O'Connell,mayor of Taunton (2020–present) and former state representative (2011–2020),2022,Governor,MA,connell s,2,1,0
-,REP,Patrick O'Connor,state senator (2016–present),2022,Governor,MA,connor p,2,1,0
+,REP,Shaunna O'Connell,mayor of Taunton (2020–present) and former state representative (2011–2020),2022,Governor,MA,oconnell s,2,1,0
+,REP,Patrick O'Connor,state senator (2016–present),2022,Governor,MA,oconnor p,2,1,0
 ,REP,Karyn Polito,lieutenant governor of Massachusetts (2015–2023),2022,Governor,MA,polito k,3,0,0
 ,REP,Jane Swift,former acting governor (2001–2003) and former lieutenant governor (1999–2003),2022,Governor,MA,swift j,3,0,0
 ,REP,Leah Cole Allen,former state representative (2013–2015) (ran with Geoff Diehl),2022,Governor,MA,allen l,2,1,0
@@ -2055,7 +2055,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,REP,Agawam,city councilor ( ran for state senate ),2022,Governor,MA,agawam,1,0,0
 ,DEM,Maura Healey,attorney general of Massachusetts (2015–2023),2022,Governor,MA,healey m,3,0,0
 ,DEM,Danielle Allen,political science professor at Harvard University   (endorsed Healey),2022,Governor,MA,allen d,0,0,0
-,DEM,Sonia Chang-Díaz,state senator (2009–2023) (remained on ballot),2022,Governor,MA,diaz s,2,0,0
+,DEM,Sonia Chang-Díaz,state senator (2009–2023) (remained on ballot),2022,Governor,MA,changdiaz s,2,0,0
 ,DEM,Scott Donohue,Melrose resident  (ran for lieutenant governor),2022,Governor,MA,donohue s,0,0,0
 ,DEM,Benjamin Downing,former state senator (2007–2017),2022,Governor,MA,downing b,2,0,0
 ,DEM,Jake Auchincloss,U.S. representative for Massachusetts's 4th congressional district (2021–present) ( ran for re-election )   (endorsed Healey),2022,Governor,MA,auchincloss j,4,1,0
@@ -2152,7 +2152,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,REP,Mike Lindell,"inventor of My Pillow , businessman",2022,Governor,MN,lindell m,0,0,0
 ,REP,Carla Nelson,state senator  (ran for reelection),2022,Governor,MN,nelson c,2,0,0
 ,REP,Pete Stauber,U.S. representative for Minnesota's 8th congressional district (ran for reelection),2022,Governor,MN,stauber p,4,1,0
-,IND,anti-lockdown,activist  Matt Huff,2022,Governor,MN,lockdown a,0,0,0
+,IND,anti-lockdown,activist  Matt Huff,2022,Governor,MN,antilockdown,0,0,0
 ,IND,BLM,"activist  David Sandbeck, activist and candidate for Minnesota's 4th congressional district in 2020",2022,Governor,MN,blm,0,0,1
 ,IND,Minnesota's 4th congressional district,in 2020,2022,Governor,MN,district m,0,0,0
 ,IND,Forward Party,") Tamara Uselman, school administrator",2022,Governor,MN,party f,0,0,0
@@ -2231,7 +2231,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,DEM,Jessica Ramos,state senator from the 13th district (2019–present),2022,Governor,NY,ramos j,2,1,0
 ,DEM,Kathleen Rice,U.S. representative for NY-04 (2015–present) (endorsed Hochul),2022,Governor,NY,rice k,4,1,0
 ,DEM,Al Sharpton,civil rights activist,2022,Governor,NY,sharpton a,0,0,0
-,DEM,Andrea Stewart-Cousins,Majority Leader of the New York State Senate (2019–present); state senator from the 35th district (2007–present) (endorsed Hochul) (running for reelection),2022,Governor,NY,cousins a,2,1,0
+,DEM,Andrea Stewart-Cousins,Majority Leader of the New York State Senate (2019–present); state senator from the 35th district (2007–present) (endorsed Hochul) (running for reelection),2022,Governor,NY,stewartcousins a,2,1,0
 ,DEM,Antonio Delgado,"lieutenant governor (2022–present), former U.S. representative from New York's 19th congressional district (2019–2022)",2022,Governor,NY,delgado a,4,1,0
 ,DEM,Brian Benjamin,"lieutenant governor of New York (2021–2022), state senator from the 30th district (2017–2021); candidate for New York City Comptroller in 2021",2022,Governor,NY,benjamin b,3,0,1
 ,REP,Lee Zeldin,U.S. representative for NY-01 (2015–2023)    (running with Alison Esposito),2022,Governor,NY,zeldin l,4,1,0
@@ -2408,7 +2408,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,REP,Sid Miller,Texas Agriculture Commissioner (running for re-election),2022,Governor,TX,miller s,0,0,0
 ,REP,Rick Perry,former governor and former U.S. Secretary of Energy,2022,Governor,TX,perry r,4,0,0
 ,REP,Joe Straus,former Speaker of the Texas House of Representatives,2022,Governor,TX,straus j,2,1,0
-,DEM,Beto O'Rourke,"former U.S. representative for Texas's 16th congressional district , nominee for U.S. Senate in 2018 and candidate for president of the United States in 2020",2022,Governor,TX,rourke b,4,1,1
+,DEM,Beto O'Rourke,"former U.S. representative for Texas's 16th congressional district , nominee for U.S. Senate in 2018 and candidate for president of the United States in 2020",2022,Governor,TX,orourke b,4,1,1
 ,DEM,Steve Adler,mayor of Austin,2022,Governor,TX,adler s,1,0,0
 ,DEM,Joaquin Castro,U.S. representative for Texas's 20th congressional district  (endorsed O'Rourke),2022,Governor,TX,castro j,4,1,0
 ,DEM,Wendy Davis,"former state senator, nominee for governor in 2014 , and nominee for Texas's 21st congressional district in 2020",2022,Governor,TX,davis w,2,0,1
@@ -2419,7 +2419,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,DEM,Texas House of Representatives,"in 2014 , and candidate for President of the United States in 2020",2022,Governor,TX,representatives t,0,0,1
 ,DEM,Andrew Jewell,"industrial maintenance technician, Secretary of Libertarian Party of Dallas County, chair of Texas Libertarian Party Radical Caucus, and candidate for Dallas County Commissioner District 3 in 2020",2022,Governor,TX,jewell a,0,0,1
 ,IND,American Solidarity Party,candidate,2022,Governor,TX,party a,0,0,0
-,IND,Deirdre Dickson-Gilbert,public educator (previously ran for Democratic nomination),2022,Governor,TX,gilbert d,0,0,0
+,IND,Deirdre Dickson-Gilbert,public educator (previously ran for Democratic nomination),2022,Governor,TX,dicksongilbert d,0,0,0
 ,IND,U.S. Senate,in 2020  [ better source needed ],2022,Governor,TX,senate u,0,0,0
 ,IND,U.S. Navy,veteran ( Reform Party )  [ better source needed ],2022,Governor,TX,navy u,0,0,0
 ,IND,Matthew McConaughey,Academy Award -winning actor   (no declared party affiliation),2022,Governor,TX,mcconaughey m,0,0,0
@@ -2473,7 +2473,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,REP,Micah Beckwith,"pastor, former Noblesville public library trustee, and candidate for Indiana's 5th congressional district in 2020",2024,Governor,IN,beckwith m,0,0,1
 ,REP,Julie McGuire,state representative from the 93rd district (2022–present),2024,Governor,IN,mcguire j,2,1,0
 ,DEM,Jennifer McCormick,former Indiana Superintendent of Public Instruction (2017–2021),2024,Governor,IN,mccormick j,3,0,0
-,DEM,Tamie Dixon-Tatum,municipal official and perennial candidate  (ran for lieutenant governor),2024,Governor,IN,tatum t,0,0,0
+,DEM,Tamie Dixon-Tatum,municipal official and perennial candidate  (ran for lieutenant governor),2024,Governor,IN,dixontatum t,0,0,0
 ,DEM,Bob Kern,retired paralegal and perennial candidate (ran for lieutenant governor),2024,Governor,IN,kern b,0,0,0
 ,DEM,Joe Donnelly,U.S. Ambassador to the Holy See (2022–2024) and former U.S. senator (2013–2019),2024,Governor,IN,donnelly j,4,0,0
 ,DEM,Thomas McDermott Jr.,"mayor of Hammond , nominee for U.S. Senate in 2022 , and candidate for Indiana's 1st congressional district in 2020",2024,Governor,IN,mcdermott t,1,0,1
@@ -2532,7 +2532,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,REP,Spencer Cox,"incumbent governor  Running mate: Deidre Henderson , incumbent lieutenant governor",2024,Governor,UT,cox s,3,0,0
 ,REP,Deidre Henderson,incumbent lieutenant governor,2024,Governor,UT,henderson d,3,0,0
 ,REP,Jason Chaffetz,former U.S. representative from Utah's 3rd congressional district (2009–2017),2024,Governor,UT,chaffetz j,4,1,0
-,REP,Robert O'Brien,former U.S. National Security Advisor (2019–2021),2024,Governor,UT,brien r,0,0,0
+,REP,Robert O'Brien,former U.S. National Security Advisor (2019–2021),2024,Governor,UT,obrien r,0,0,0
 ,DEM,Brian King,"state representative from the 23rd district (2009–present) and former Minority Leader of the Utah House of Representatives (2015–2023)  Running mate: Rebekah Cummings, director of digital matters at the University of Utah",2024,Governor,UT,king b,2,1,0
 ,DEM,2012,"and nominee for Utah's 2nd congressional district in 2020  Running mate: Barry Short, businessman, perennial candidate, and nominee for lieutenant governor in 2016 and 2020",2024,Governor,UT,,0,0,1
 ,IND,2022,"Running mate: Archie Williams, heavy equipment operator and perennial candidate",2024,Governor,UT,,0,0,0
@@ -2667,7 +2667,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,REP,Ashley Hinson,U.S. representative from Iowa's 2nd congressional district (2021–present)  ( running for U.S. Senate ),2026,Governor,IA,hinson a,4,1,0
 ,REP,Bobby Kaufmann,state representative from the 82nd district (2013–present) ( running for re-election ),2026,Governor,IA,kaufmann b,2,1,0
 ,REP,Kari Lake,senior advisor to the U.S. Agency for Global Media (2025–present) and nominee for governor of Arizona in 2022 and U.S. senator in 2024,2026,Governor,IA,lake k,0,1,1
-,REP,Mariannette Miller-Meeks,U.S. representative from Iowa's 1st congressional district (2021–present)  ( running for re-election ; endorsed Feenstra),2026,Governor,IA,meeks m,4,1,0
+,REP,Mariannette Miller-Meeks,U.S. representative from Iowa's 1st congressional district (2021–present)  ( running for re-election ; endorsed Feenstra),2026,Governor,IA,millermeeks m,4,1,0
 ,REP,Mike Naig,Iowa secretary of agriculture (2018–present) (running for re-election; endorsed Feenstra),2026,Governor,IA,naig m,0,1,0
 ,REP,Zach Nunn,U.S. representative from Iowa's 3rd congressional district (2023–present) ( running for re-election ),2026,Governor,IA,nunn z,4,1,0
 ,REP,Kim Reynolds,incumbent governor (2017–present),2026,Governor,IA,reynolds k,3,1,0
@@ -2701,7 +2701,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,DEM,Dinah Sykes,minority leader of the Kansas Senate (2021–present)  (running for insurance commissioner ),2026,Governor,KS,sykes d,2,1,0
 ,DEM,David Toland,lieutenant governor of Kansas (2021–present)  (endorsed Corson),2026,Governor,KS,toland d,3,1,0
 ,REP,Ty Masterson,"president of the Kansas Senate (2021–present) from the 16th district (2009–present)  Running mate: Jeff Klemp , state senator from the 5th district (2025–present)",2026,Governor,KS,masterson t,2,1,0
-,REP,Charlotte O'Hara,"former Johnson County commissioner (2021–2025) and former state representative from the 17th district (2011–2013)  Running mate: Michelle Dombrosky, member of the Kansas State Board of Education",2026,Governor,KS,hara c,2,1,0
+,REP,Charlotte O'Hara,"former Johnson County commissioner (2021–2025) and former state representative from the 17th district (2011–2013)  Running mate: Michelle Dombrosky, member of the Kansas State Board of Education",2026,Governor,KS,ohara c,2,1,0
 ,REP,Wichita Schools,board member (2013–2018),2026,Governor,KS,schools w,0,0,0
 ,REP,Vicki Schmidt,"Kansas Insurance Commissioner (2019–present)  Running mate: Joe Newland , president of the Kansas Farm Bureau (2022–present) and former state representative from the 13th district (2019–2022)",2026,Governor,KS,schmidt v,2,1,0
 ,REP,Scott Schwab,"Kansas Secretary of State (2019–present)  Running mate: Ken Rahjes , state representative from the 110th district (2016–present)",2026,Governor,KS,schwab s,3,1,0
@@ -2815,7 +2815,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,IND,Green,")    Running mate: Jane Kirby, retired midwife and animal rights activist",2026,Governor,MN,green,0,0,0
 ,IND,Running mate: Jane Kirby,retired midwife and animal rights activist,2026,Governor,MN,kirby r,0,0,0
 ,IND,Brad Kohler,retired mixed martial arts fighter ( previously registered as a Republican ),2026,Governor,MN,kohler b,0,0,0
-,IND,Grassroots-LC,nominee for governor in 2022,2026,Governor,MN,lc g,0,0,1
+,IND,Grassroots-LC,nominee for governor in 2022,2026,Governor,MN,grassrootslc,0,0,1
 ,IND,Mike Newcome,entrepreneur and business consultant,2026,Governor,MN,newcome m,0,0,0
 ,IND,Calvin Larson Jr.,labor union leader (running for State Senate District 2),2026,Governor,MN,larson c,0,0,0
 ,REP,Kelly Ayotte,incumbent governor (2025–present),2026,Governor,NH,ayotte k,3,1,0
@@ -2837,7 +2837,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,DEM,Stephanie Garcia Richard,New Mexico Commissioner of Public Lands (2019–present),2026,Governor,NM,richard s,3,1,0
 ,DEM,Leo Jaramillo,state senator from the 5th district (2021–present),2026,Governor,NM,jaramillo l,2,1,0
 ,DEM,Harold Pope Jr.,state senator from the 23rd district (2021–present) and runner-up in original primary election,2026,Governor,NM,pope h,2,1,0
-,DEM,Antonia Roybal-Mack,attorney,2026,Governor,NM,mack a,0,0,0
+,DEM,Antonia Roybal-Mack,attorney,2026,Governor,NM,roybalmack a,0,0,0
 ,DEM,Sonia Smith,former New Mexico Secretary of Veterans Services,2026,Governor,NM,smith s,0,0,0
 ,DEM,Maggie Toulouse Oliver,New Mexico Secretary of State (2016–present)  (withdrew on June 18),2026,Governor,NM,oliver m,3,1,0
 ,DEM,Loving,village councilor,2026,Governor,NM,loving,0,0,0
@@ -2987,7 +2987,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,DEM,Jasmine Crockett,"U.S. representative from Texas's 30th congressional district (2023–present) ( ran for U.S. Senate , endorsed Hinojosa)",2026,Governor,TX,crockett j,4,1,0
 ,DEM,Veronica Escobar,"U.S. representative from Texas's 16th congressional district (2019–present) ( running for re-election , endorsed Hinojosa)",2026,Governor,TX,escobar v,4,1,0
 ,DEM,Clay Jenkins,Dallas County Judge [ d ] (2011–present),2026,Governor,TX,jenkins c,1,1,0
-,DEM,Beto O'Rourke,"former U.S. representative from Texas's 16th congressional district (2013–2019), nominee for governor in 2022 , nominee for U.S. Senate in 2018 , and candidate for president in 2020",2026,Governor,TX,rourke b,4,1,1
+,DEM,Beto O'Rourke,"former U.S. representative from Texas's 16th congressional district (2013–2019), nominee for governor in 2022 , nominee for U.S. Senate in 2018 , and candidate for president in 2020",2026,Governor,TX,orourke b,4,1,1
 ,DEM,Ron Nirenberg,former mayor of San Antonio (2017–2025) ( running for Bexar County Judge),2026,Governor,TX,nirenberg r,1,0,0
 ,IND,Libertarian,"), former chair of the Libertarian Party of Texas",2026,Governor,TX,libertarian,0,0,0
 ,IND,Matthew McConaughey,actor,2026,Governor,TX,mcconaughey m,0,0,0
@@ -3024,7 +3024,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,REP,2024,and candidate in 2012,2026,Governor,WI,,0,0,0
 ,REP,Ron Johnson,U.S. senator (2011–present),2026,Governor,WI,johnson r,4,1,0
 ,REP,Mary Felzkowski,president of the Wisconsin Senate (2025–present) from the 12th district (2021–present),2026,Governor,WI,felzkowski m,2,1,0
-,REP,WTMJ-TV,host and owner of the Janesville Jets,2026,Governor,WI,tv w,0,0,0
+,REP,WTMJ-TV,host and owner of the Janesville Jets,2026,Governor,WI,wtmjtv,0,0,0
 ,REP,Michels Corporation,nominee for governor in 2022 and U.S. Senate in 2004,2026,Governor,WI,corporation m,0,0,1
 ,REP,Matt Neumann,business owner,2026,Governor,WI,neumann m,0,0,0
 ,REP,Bryan Steil,U.S. representative for Wisconsin's 1st congressional district (2019–present)  ( running for re-election ; endorsed Tiffany),2026,Governor,WI,steil b,4,1,0
@@ -3069,9 +3069,9 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,OTH,Katherine Gallant,,1998,Governor,AZ,gallant k,0,0,0
 ,OTH,Tom Rawles,,1998,Governor,AZ,rawles t,0,0,0
 ,OTH,Scott Alan Malcomson,,1998,Governor,AZ,malcomson s,0,0,0
-,OTH,Alan White (write-in),,1998,Governor,AZ,in a,0,0,0
-,OTH,D'Herrera Tapia (write-in),,1998,Governor,AZ,in d,0,0,0
-,OTH,Robert B. Winn (write-in),,1998,Governor,AZ,in r,0,0,0
+,OTH,Alan White (write-in),,1998,Governor,AZ,writein a,0,0,0
+,OTH,D'Herrera Tapia (write-in),,1998,Governor,AZ,writein d,0,0,0
+,OTH,Robert B. Winn (write-in),,1998,Governor,AZ,writein r,0,0,0
 ,DEM,Gray Davis,,1998,Governor,CA,davis g,0,0,0
 ,DEM,Al Checchi,,1998,Governor,CA,checchi a,0,0,0
 ,DEM,Jane Harman,,1998,Governor,CA,harman j,0,0,0
@@ -3089,9 +3089,9 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,,American Independent,,1998,Governor,CA,independent a,0,0,0
 ,,Natural Law,,1998,Governor,CA,law n,0,0,0
 ,,Invalid or blank votes,,1998,Governor,CA,votes i,0,0,0
-,OTH,Gale Shangold (write-in),,1998,Governor,CA,in g,0,0,0
-,OTH,Phillip Ashamallah (write-in),,1998,Governor,CA,in p,0,0,0
-,OTH,Lark D. Jursek (write-in),,1998,Governor,CA,in l,0,0,0
+,OTH,Gale Shangold (write-in),,1998,Governor,CA,writein g,0,0,0
+,OTH,Phillip Ashamallah (write-in),,1998,Governor,CA,writein p,0,0,0
+,OTH,Lark D. Jursek (write-in),,1998,Governor,CA,writein l,0,0,0
 ,DEM,Gail Schoettler,Lieutenant Governor of Colorado,1998,Governor,CO,schoettler g,3,0,0
 ,DEM,Minority Leader,of the Colorado State Senate,1998,Governor,CO,leader m,2,0,0
 ,DEM,Bernie Buescher,former Executive Director of the Colorado Department of Health Care Policy and Financing,1998,Governor,CO,buescher b,0,0,0
@@ -3214,12 +3214,12 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,REP,Gary Artinian,,1998,Governor,MI,artinian g,0,0,0
 ,DEM,Larry Owen,,1998,Governor,MI,owen l,0,0,0
 ,DEM,Doug Ross,,1998,Governor,MI,ross d,0,0,0
-,,Terry Link (write-in),,1998,Governor,MI,in t,0,0,0
-,,Carl Humphrey (write-in),,1998,Governor,MI,in c,0,0,0
-,,Vicki Foreback (write-in),,1998,Governor,MI,in v,0,0,0
-,,Marc Katz (write-in),,1998,Governor,MI,in m,0,0,0
-,,Robert Marek (write-in),,1998,Governor,MI,in r,0,0,0
-,,Johnni Matthew III (write-in),,1998,Governor,MI,in j,0,0,0
+,,Terry Link (write-in),,1998,Governor,MI,writein t,0,0,0
+,,Carl Humphrey (write-in),,1998,Governor,MI,writein c,0,0,0
+,,Vicki Foreback (write-in),,1998,Governor,MI,writein v,0,0,0
+,,Marc Katz (write-in),,1998,Governor,MI,writein m,0,0,0
+,,Robert Marek (write-in),,1998,Governor,MI,writein r,0,0,0
+,,Johnni Matthew III (write-in),,1998,Governor,MI,writein j,0,0,0
 ,DEM,Skip Humphrey,"Attorney General of Minnesota and son of former Vice President of the United States Hubert Humphrey and former U.S. Senator Muriel Humphrey Running mate: Roger Moe , Minnesota Senate Majority Leader from the 2nd district",1998,Governor,MN,humphrey s,4,0,0
 ,DEM,Roger Moe,Minnesota Senate Majority Leader from the 2nd district,1998,Governor,MN,moe r,2,0,0
 ,REP,Norm Coleman,"mayor of St. Paul Running mate: Gen Olson , State Senator from the 34th district",1998,Governor,MN,coleman n,2,0,0
@@ -3271,7 +3271,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,DEM,New Mexico House of Representatives,District 2 candidate,1998,Governor,NM,representatives n,0,0,0
 ,REP,Gary Johnson,incumbent Governor of New Mexico,1998,Governor,NM,johnson g,3,0,0
 ,DEM,Ben Chavez,,1998,Governor,NM,chavez b,0,0,0
-,DEM,Frances Salas (write-in),,1998,Governor,NM,in f,0,0,0
+,DEM,Frances Salas (write-in),,1998,Governor,NM,writein f,0,0,0
 ,DEM,"Patrick Matthew ""Pat"" Fitzpatrick",perennial candidate,1998,Governor,NV,fitzpatrick p,0,0,0
 ,DEM,Jan Laverty Jones,Mayor of Las Vegas,1998,Governor,NV,jones j,1,0,0
 ,DEM,Joe Neal,Nevada State Senator,1998,Governor,NV,neal j,2,0,0
@@ -3345,7 +3345,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,OTH,Bob Newland,,1998,Governor,SD,newland b,0,0,0
 ,OTH,Ronald Wieczorek,,1998,Governor,SD,wieczorek r,0,0,0
 ,REP,Don Sundquist,incumbent Governor,1998,Governor,TN,sundquist d,3,0,0
-,REP,Shirley Beck-Vosse,,1998,Governor,TN,vosse s,0,0,0
+,REP,Shirley Beck-Vosse,,1998,Governor,TN,beckvosse s,0,0,0
 ,DEM,John J. Hooker,,1998,Governor,TN,hooker j,0,0,0
 ,DEM,Mike Whitaker,,1998,Governor,TN,whitaker m,0,0,0
 ,DEM,Sherry Whittenberg,,1998,Governor,TN,whittenberg s,0,0,0
@@ -3380,7 +3380,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,REP,Jeffrey A. Hyslop,,1998,Governor,WI,hyslop j,0,0,0
 ,OTH,Jim Mueller,,1998,Governor,WI,mueller j,0,0,0
 ,,U.S. Taxpayers',,1998,Governor,WI,taxpayers u,0,0,0
-,OTH,Jeffrey Lane Smith (write-in),,1998,Governor,WI,in j,0,0,0
+,OTH,Jeffrey Lane Smith (write-in),,1998,Governor,WI,writein j,0,0,0
 ,OTH,A-Ja-mu Muhammad,,1998,Governor,WI,muhammad a,0,0,0
 ,OTH,Vida Harley Bridges,,1998,Governor,WI,bridges v,0,0,0
 ,REP,Jim Geringer,incumbent Governor,1998,Governor,WY,geringer j,3,0,0
@@ -3395,7 +3395,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,OTH,Floyd E. McDowell,,2000,Governor,DE,mcdowell f,0,0,0
 ,REP,David M. McIntosh,,2000,Governor,IN,mcintosh d,0,0,0
 ,REP,John Price,,2000,Governor,IN,price j,0,0,0
-,DEM,Frank O'Bannon,incumbent Governor,2000,Governor,IN,bannon f,3,0,0
+,DEM,Frank O'Bannon,incumbent Governor,2000,Governor,IN,obannon f,3,0,0
 ,OTH,Andrew Horning/Mark Schreiber,,2000,Governor,IN,schreiber a,0,0,0
 ,REP,Jim Talent,U.S. Representative,2000,Governor,MO,talent j,4,1,0
 ,REP,Jen Sievers,investor,2000,Governor,MO,sievers j,0,0,0
@@ -3417,7 +3417,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,OTH,Larry Rice,,2000,Governor,MO,rice l,0,0,0
 ,OTH,Lavoy Reed,,2000,Governor,MO,reed l,0,0,0
 ,DEM,Mike Cooney,secretary of state of Montana,2000,Governor,MT,cooney m,3,0,0
-,DEM,Mark O'Keefe,Montana state auditor,2000,Governor,MT,keefe m,3,0,0
+,DEM,Mark O'Keefe,Montana state auditor,2000,Governor,MT,okeefe m,3,0,0
 ,REP,Judy Martz,lieutenant governor of Montana,2000,Governor,MT,martz j,3,0,0
 ,REP,Rob Natelson,conservative activist and constitutional law professor,2000,Governor,MT,natelson r,0,0,0
 ,DEM,Joseph Mazurek,,2000,Governor,MT,mazurek j,0,0,0
@@ -3500,20 +3500,20 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,DEM,Janet Napolitano,Attorney General of Arizona (1999-2003),2002,Governor,AZ,napolitano j,3,0,0
 ,REP,Betsey Bayless,,2002,Governor,AZ,bayless b,0,0,0
 ,REP,Carol Springer,,2002,Governor,AZ,springer c,0,0,0
-,REP,Steve Moore (write-in),,2002,Governor,AZ,in s,0,0,0
-,REP,Diana Kennedy (write-in),,2002,Governor,AZ,in d,0,0,0
+,REP,Steve Moore (write-in),,2002,Governor,AZ,writein s,0,0,0
+,REP,Diana Kennedy (write-in),,2002,Governor,AZ,writein d,0,0,0
 ,DEM,Alfredo Gutierrez,,2002,Governor,AZ,gutierrez a,0,0,0
 ,DEM,Mark Osterloh,,2002,Governor,AZ,osterloh m,0,0,0
 ,DEM,Mike Newcomb,,2002,Governor,AZ,newcomb m,0,0,0
 ,OTH,Barry Hess,,2002,Governor,AZ,hess b,0,0,0
 ,OTH,Gary Fallon,,2002,Governor,AZ,fallon g,0,0,0
 ,OTH,Richard D. Mahoney,,2002,Governor,AZ,mahoney r,0,0,0
-,OTH,Carlton Rahmani (write-in),,2002,Governor,AZ,in c,0,0,0
-,OTH,Tracey Sturgess (write-in),,2002,Governor,AZ,in t,0,0,0
-,OTH,Naida Axford (write-in),,2002,Governor,AZ,in n,0,0,0
-,OTH,Raymond Caplette (write-in),,2002,Governor,AZ,in r,0,0,0
-,OTH,D'Herrera Tapia (write-in),,2002,Governor,AZ,in d,0,0,0
-,OTH,L. D. Talbow (write-in),,2002,Governor,AZ,in l,0,0,0
+,OTH,Carlton Rahmani (write-in),,2002,Governor,AZ,writein c,0,0,0
+,OTH,Tracey Sturgess (write-in),,2002,Governor,AZ,writein t,0,0,0
+,OTH,Naida Axford (write-in),,2002,Governor,AZ,writein n,0,0,0
+,OTH,Raymond Caplette (write-in),,2002,Governor,AZ,writein r,0,0,0
+,OTH,D'Herrera Tapia (write-in),,2002,Governor,AZ,writein d,0,0,0
+,OTH,L. D. Talbow (write-in),,2002,Governor,AZ,writein l,0,0,0
 ,DEM,Gray Davis,incumbent governor since 1999,2002,Governor,CA,davis g,3,0,0
 ,REP,Bill Jones,Secretary of State of California since 1995 and former assemblyman from Fresno,2002,Governor,CA,jones b,3,0,0
 ,REP,Richard Riordan,former mayor of Los Angeles,2002,Governor,CA,riordan r,1,0,0
@@ -3530,7 +3530,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,REP,Jim Dimov,,2002,Governor,CA,dimov j,0,0,0
 ,,American Independent,,2002,Governor,CA,independent a,0,0,0
 ,OTH,Gary David Copeland,,2002,Governor,CA,copeland g,0,0,0
-,OTH,Art Olivier (write-in),,2002,Governor,CA,in a,0,0,0
+,OTH,Art Olivier (write-in),,2002,Governor,CA,writein a,0,0,0
 ,,Natural Law,,2002,Governor,CA,law n,0,0,0
 ,,Invalid or blank votes,,2002,Governor,CA,votes i,0,0,0
 ,REP,Bill Owens,incumbent Governor of Colorado,2002,Governor,CO,owens b,3,0,0
@@ -3583,18 +3583,18 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,REP,Raynelle J. George,,2002,Governor,ID,george r,0,0,0
 ,DEM,Rue T. Stears,,2002,Governor,ID,stears r,0,0,0
 ,OTH,Daniel L. J. Adams,,2002,Governor,ID,adams d,0,0,0
-,OTH,Michael Monroe Gollaher (write-in),,2002,Governor,ID,in m,0,0,0
+,OTH,Michael Monroe Gollaher (write-in),,2002,Governor,ID,writein m,0,0,0
 ,DEM,Rod Blagojevich,U.S. Representative,2002,Governor,IL,blagojevich r,4,1,0
 ,DEM,Roland Burris,"former Attorney General of Illinois , former Illinois State Comptroller , candidate for governor in 1994 and 1998 and independent candidate for Mayor of Chicago in 1995",2002,Governor,IL,burris r,3,0,1
 ,DEM,Paul Vallas,former CEO of Chicago Public Schools,2002,Governor,IL,vallas p,0,0,0
 ,DEM,Pat Quinn,"former Treasurer of Illinois , nominee for Secretary of State in 1994 candidate for US Senate in 1996 candidate for Lieutenant Governor in 1998",2002,Governor,IL,quinn p,0,0,1
 ,DEM,Joyce Washington,Nurse,2002,Governor,IL,washington j,0,0,0
-,REP,Patrick O'Malley,State Senator,2002,Governor,IL,malley p,2,0,0
+,REP,Patrick O'Malley,State Senator,2002,Governor,IL,omalley p,2,0,0
 ,REP,Jim Ryan,Attorney General of Illinois,2002,Governor,IL,ryan j,3,0,0
 ,REP,Corinne Wood,Lieutenant Governor,2002,Governor,IL,wood c,3,0,0
 ,REP,Carl Hawkinson,State Senator and former Knox County State's Attorney,2002,Governor,IL,hawkinson c,2,0,0
 ,DEM,"F. Michael Kelleher, Jr.",,2002,Governor,IL,kelleher f,0,0,0
-,REP,William A. O'Connor,,2002,Governor,IL,connor w,0,0,0
+,REP,William A. O'Connor,,2002,Governor,IL,oconnor w,0,0,0
 ,REP,Jack J. McInerney,,2002,Governor,IL,mcinerney j,0,0,0
 ,REP,Charles G. Owens,,2002,Governor,IL,owens c,0,0,0
 ,OTH,Cal Skinner,,2002,Governor,IL,skinner c,0,0,0
@@ -3625,7 +3625,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,REP,Suffolk County,District Attorney,2002,Governor,MA,county s,1,0,0
 ,REP,Christy Mihos,member of the Massachusetts Turnpike Authority,2002,Governor,MA,mihos c,0,0,0
 ,DEM,Thomas Birmingham,President of the Massachusetts Senate,2002,Governor,MA,birmingham t,2,0,0
-,DEM,Shannon O'Brien,Treasurer and Receiver-General of Massachusetts,2002,Governor,MA,brien s,0,0,0
+,DEM,Shannon O'Brien,Treasurer and Receiver-General of Massachusetts,2002,Governor,MA,obrien s,0,0,0
 ,DEM,Robert Reich,former United States Secretary of Labor,2002,Governor,MA,reich r,4,0,0
 ,DEM,Warren Tolman,former State Senator from Watertown and nominee for lieutenant governor in 1998,2002,Governor,MA,tolman w,2,0,1
 ,DEM,Steve Grossman,former chair of the DNC and president of AIPAC,2002,Governor,MA,grossman s,0,0,0
@@ -3668,13 +3668,13 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,DEM,Ferndale,engineer and staffer for the Ralph Nader 2000 presidential campaign (Green),2002,Governor,MI,ferndale,0,0,0
 ,DEM,Capac,resident and candidate for U.S. representative in 2000 (U.S. Taxpayers),2002,Governor,MI,capac,0,1,1
 ,DEM,Dick Posthumus,Lieutenant Governor of Michigan (Republican),2002,Governor,MI,posthumus d,3,0,0
-,REP,Angelo Scott Brown (write-in),,2002,Governor,MI,in a,0,0,0
-,DEM,Tracey Elaine Stevenson (write-in),,2002,Governor,MI,in t,0,0,0
+,REP,Angelo Scott Brown (write-in),,2002,Governor,MI,writein a,0,0,0
+,DEM,Tracey Elaine Stevenson (write-in),,2002,Governor,MI,writein t,0,0,0
 ,OTH,Douglas Campbell,,2002,Governor,MI,campbell d,0,0,0
 ,,U.S. Taxpayers,,2002,Governor,MI,taxpayers u,0,0,0
-,,Don Mackle (write-in),,2002,Governor,MI,in d,0,0,0
-,,Mark Anthony McFarlin (write-in),,2002,Governor,MI,in m,0,0,0
-,,Angelo Scott Brown (write-in),,2002,Governor,MI,in a,0,0,0
+,,Don Mackle (write-in),,2002,Governor,MI,writein d,0,0,0
+,,Mark Anthony McFarlin (write-in),,2002,Governor,MI,writein m,0,0,0
+,,Angelo Scott Brown (write-in),,2002,Governor,MI,writein a,0,0,0
 ,REP,Minneapolis mayoral candidate,in 1994,2002,Governor,MN,candidate m,0,0,0
 ,REP,Tim Pawlenty,majority leader of the Minnesota House of Representatives,2002,Governor,MN,pawlenty t,2,1,0
 ,REP,Roger Moe,majority leader of the Minnesota Senate,2002,Governor,MN,moe r,2,0,0
@@ -3707,7 +3707,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,REP,Walter D. Bradley,Lieutenant Governor,2002,Governor,NM,bradley w,3,0,0
 ,REP,John A. Sanchez,State Representative,2002,Governor,NM,sanchez j,2,1,0
 ,REP,Bill Richardson,"(D), former United States Secretary of Energy , former United States Ambassador to the United Nations and former U.S. Representative",2002,Governor,NM,richardson b,4,1,0
-,DEM,Mike Nalley (write-in),,2002,Governor,NM,in m,0,0,0
+,DEM,Mike Nalley (write-in),,2002,Governor,NM,writein m,0,0,0
 ,REP,Robert M. Burpo,,2002,Governor,NM,burpo r,0,0,0
 ,REP,Gilbert S. Baca,,2002,Governor,NM,baca g,0,0,0
 ,OTH,David E. Bacon,,2002,Governor,NM,bacon d,0,0,0
@@ -3829,7 +3829,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,DEM,John Worldpeace,,2002,Governor,TX,worldpeace j,0,0,0
 ,OTH,Jeff Daiell,,2002,Governor,TX,daiell j,0,0,0
 ,OTH,Rahul Mahajan,,2002,Governor,TX,mahajan r,0,0,0
-,OTH,Earl W. O'Neil (write-in),,2002,Governor,TX,in e,0,0,0
+,OTH,Earl W. O'Neil (write-in),,2002,Governor,TX,writein e,0,0,0
 ,DEM,Doug Racine,,2002,Governor,VT,racine d,0,0,0
 ,REP,Jim Douglas,,2002,Governor,VT,douglas j,0,0,0
 ,,Michael J. Badamo,,2002,Governor,VT,badamo m,0,0,0
@@ -3838,7 +3838,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,,Cris Ericson,,2002,Governor,VT,ericson c,0,0,0
 ,OTH,Joel Williams,,2002,Governor,VT,williams j,0,0,0
 ,,Patricia Hejny,,2002,Governor,VT,hejny p,0,0,0
-,,Restore Justice-Freedom,,2002,Governor,VT,freedom r,0,0,0
+,,Restore Justice-Freedom,,2002,Governor,VT,justicefreedom r,0,0,0
 ,,Liberty Union,,2002,Governor,VT,union l,0,0,0
 ,OTH,Brian Pearl,,2002,Governor,VT,pearl b,0,0,0
 ,REP,William Lorge,former State Representative,2002,Governor,WI,lorge w,2,1,0
@@ -3887,7 +3887,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,REP,David M. McIntosh,nominee in 2000 and former U.S. representative from Muncie,2004,Governor,IN,mcintosh d,4,1,0
 ,OTH,Kenn Gividen/Elaine Badnarik,,2004,Governor,IN,badnarik k,0,0,0
 ,REP,Matt Blunt,,2004,Governor,MO,blunt m,0,0,0
-,REP,Karen Skelton-Memhardt,,2004,Governor,MO,memhardt k,0,0,0
+,REP,Karen Skelton-Memhardt,,2004,Governor,MO,skeltonmemhardt k,0,0,0
 ,REP,Jen Sievers,,2004,Governor,MO,sievers j,0,0,0
 ,REP,Jeff Killian,,2004,Governor,MO,killian j,0,0,0
 ,REP,Roy W. Lang,,2004,Governor,MO,lang r,0,0,0
@@ -3997,7 +3997,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,DEM,Lucy Baxley,"(Democratic), Lieutenant Governor of Alabama , former Alabama State Treasurer",2006,Governor,AL,baxley l,3,0,0
 ,DEM,Loretta Nall,"( Libertarian ; write-in ), founder of the United States Marijuana Party",2006,Governor,AL,nall l,0,0,0
 ,DEM,Nathan Mathis,"(write-in), former State Representative",2006,Governor,AL,mathis n,2,1,0
-,DEM,Michael A. Polemeni (write-in),Huntsville/Madison County Chapter President of Alabama Family Rights Association,2006,Governor,AL,in m,0,0,0
+,DEM,Michael A. Polemeni (write-in),Huntsville/Madison County Chapter President of Alabama Family Rights Association,2006,Governor,AL,writein m,0,0,0
 ,REP,Bob Riley,incumbent Governor,2006,Governor,AL,riley b,3,0,0
 ,REP,Roy Moore,,2006,Governor,AL,moore r,0,0,0
 ,DEM,Don Siegelman,,2006,Governor,AL,siegelman d,0,0,0
@@ -4017,11 +4017,11 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,REP,Gary Tupper,contractor,2006,Governor,AZ,tupper g,0,0,0
 ,REP,Barry Hess,currency speculator and perennial candidate,2006,Governor,AZ,hess b,0,0,0
 ,REP,Don Goldwater,,2006,Governor,AZ,goldwater d,0,0,0
-,REP,Steve Moore (write-in),,2006,Governor,AZ,in s,0,0,0
+,REP,Steve Moore (write-in),,2006,Governor,AZ,writein s,0,0,0
 ,OTH,Barry Hess,,2006,Governor,AZ,hess b,0,0,0
-,OTH,Arthur Ray Arvizu (write-in),,2006,Governor,AZ,in a,0,0,0
-,OTH,Brian Wright (write-in),,2006,Governor,AZ,in b,0,0,0
-,OTH,Robert B. Winn (write-in),,2006,Governor,AZ,in r,0,0,0
+,OTH,Arthur Ray Arvizu (write-in),,2006,Governor,AZ,writein a,0,0,0
+,OTH,Brian Wright (write-in),,2006,Governor,AZ,writein b,0,0,0
+,OTH,Robert B. Winn (write-in),,2006,Governor,AZ,writein r,0,0,0
 ,IND,Phil Angelides,"( Democratic ) – California State Treasurer , Ex-State Democratic Chair & Developer",2006,Governor,CA,angelides p,3,0,0
 ,IND,Peter Camejo,"( Green ) – 2002/2003 Green Party gubernatorial candidate, 2004 independent vice presidential candidate ( Ralph Nader 's running mate)",2006,Governor,CA,camejo p,0,0,0
 ,IND,Art Olivier,"( Libertarian ) – former mayor of Bellflower , 2000 Libertarian Party vice presidential candidate ( Harry Browne 's running mate)",2006,Governor,CA,olivier a,1,0,0
@@ -4043,13 +4043,13 @@ additional terms may apply. By using this site, you agree to the Terms of Use an
 ,REP,Jeffrey R. Burns,,2006,Governor,CA,burns j,0,0,0
 ,,American Independent,,2006,Governor,CA,independent a,0,0,0
 ,,Peace and Freedom,,2006,Governor,CA,freedom p,0,0,0
-,OTH,James Harris (write-in),,2006,Governor,CA,in j,0,0,0
-,OTH,Donald Etkes (write-in),,2006,Governor,CA,in d,0,0,0
-,OTH,Elisha Shapiro (write-in),,2006,Governor,CA,in e,0,0,0
-,OTH,Vibert Greene (write-in),,2006,Governor,CA,in v,0,0,0
+,OTH,James Harris (write-in),,2006,Governor,CA,writein j,0,0,0
+,OTH,Donald Etkes (write-in),,2006,Governor,CA,writein d,0,0,0
+,OTH,Elisha Shapiro (write-in),,2006,Governor,CA,writein e,0,0,0
+,OTH,Vibert Greene (write-in),,2006,Governor,CA,writein v,0,0,0
 ,DEM,Bill Ritter,former District Attorney of Denver,2006,Governor,CO,ritter b,1,0,0
 ,REP,Bob Beauprez,U.S. Congressman from Colorado's 7th congressional district,2006,Governor,CO,beauprez b,4,0,0
-,OTH,Dawn Winkler-Kinateder,,2006,Governor,CO,kinateder d,0,0,0
+,OTH,Dawn Winkler-Kinateder,,2006,Governor,CO,winklerkinateder d,0,0,0
 ,OTH,Paul Noel Fiorino,,2006,Governor,CO,fiorino p,0,0,0
 ,OTH,Clyde J. Harkins,,2006,Governor,CO,harkins c,0,0,0
 ,REP,Jodi Rell,incumbent governor,2006,Governor,CT,rell j,3,0,0
@@ -4094,7 +4094,7 @@ additional terms may apply. By using this site, you agree to the Terms of Use an
 ,REP,George L. Berish,fellow of the Society of Actuaries,2006,Governor,HI,berish g,0,0,0
 ,REP,Paul Manner,freelance news correspondent,2006,Governor,HI,manner p,0,0,0
 ,DEM,Randy Iwase,former state senator and former Honolulu city councilor,2006,Governor,HI,iwase r,2,0,0
-,DEM,Wai'anae,harbormaster,2006,Governor,HI,anae w,0,0,0
+,DEM,Wai'anae,harbormaster,2006,Governor,HI,waianae,0,0,0
 ,DEM,Van Tanabe,former telecommunications executive,2006,Governor,HI,tanabe v,0,0,0
 ,REP,George Peabody,,2006,Governor,HI,peabody g,0,0,0
 ,DEM,"William J. Aila, Jr.",,2006,Governor,HI,aila w,0,0,0
@@ -4181,9 +4181,9 @@ additional terms may apply. By using this site, you agree to the Terms of Use an
 ,,All others,,2006,Governor,MA,others a,0,0,0
 ,OTH,Christy Mihos,,2006,Governor,MA,mihos c,0,0,0
 ,OTH,Grace Ross,,2006,Governor,MA,ross g,0,0,0
-,DEM,Martin O'Malley,Mayor of Baltimore,2006,Governor,MD,malley m,1,0,0
+,DEM,Martin O'Malley,Mayor of Baltimore,2006,Governor,MD,omalley m,1,0,0
 ,REP,Bob Ehrlich,incumbent governor,2006,Governor,MD,ehrlich b,3,0,0
-,REP,Martin O'Malley,Mayor of Baltimore (D),2006,Governor,MD,malley m,1,0,0
+,REP,Martin O'Malley,Mayor of Baltimore (D),2006,Governor,MD,omalley m,1,0,0
 ,REP,Ed Boyd,temporary employment agency recruiter (G),2006,Governor,MD,boyd e,0,0,0
 ,OTH,Ed Boyd,,2006,Governor,MD,boyd e,0,0,0
 ,,Christopher Driscoll,,2006,Governor,MD,driscoll c,0,0,0
@@ -4233,14 +4233,14 @@ additional terms may apply. By using this site, you agree to the Terms of Use an
 ,,Barry Richards,,2006,Governor,NE,richards b,0,0,0
 ,DEM,John Lynch,incumbent Governor of New Hampshire,2006,Governor,NH,lynch j,3,0,0
 ,REP,Jim Coburn,New Hampshire State Representative,2006,Governor,NH,coburn j,2,1,0
-,OTH,Richard Kahn (write-in),,2006,Governor,NH,in r,0,0,0
+,OTH,Richard Kahn (write-in),,2006,Governor,NH,writein r,0,0,0
 ,DEM,Bill Richardson,incumbent governor of New Mexico,2006,Governor,NM,richardson b,3,0,0
 ,REP,James R. Damron,physician,2006,Governor,NM,damron j,0,0,0
 ,REP,George Brent Bailey Jr.,educator and minister,2006,Governor,NM,bailey g,0,0,0
 ,REP,Bill Richardson,"( Democrat ), incumbent governor of New Mexico",2006,Governor,NM,richardson b,3,0,0
 ,REP,John Dendahl,"( Republican ), former chair of the Republican Party of New Mexico",2006,Governor,NM,dendahl j,0,0,0
-,DEM,Anselmo A. Chávez (write-in),,2006,Governor,NM,in a,0,0,0
-,REP,George Bailey (write-in),,2006,Governor,NM,in g,0,0,0
+,DEM,Anselmo A. Chávez (write-in),,2006,Governor,NM,writein a,0,0,0
+,REP,George Bailey (write-in),,2006,Governor,NM,writein g,0,0,0
 ,DEM,Dina Titus,Minority Leader of the Nevada Senate,2006,Governor,NV,titus d,2,0,0
 ,DEM,James B. Gibson,Mayor of Henderson,2006,Governor,NV,gibson j,1,0,0
 ,DEM,Leola McConnell,liberal activist,2006,Governor,NV,mcconnell l,0,0,0
@@ -4440,7 +4440,7 @@ additional terms may apply. By using this site, you agree to the Terms of Use an
 ,REP,Jim Douglas,incumbent Governor,2008,Governor,VT,douglas j,3,0,0
 ,OTH,Anthony Pollina,,2008,Governor,VT,pollina a,0,0,0
 ,DEM,Gaye Symington,,2008,Governor,VT,symington g,0,0,0
-,OTH,Tony O'Connor,,2008,Governor,VT,connor t,0,0,0
+,OTH,Tony O'Connor,,2008,Governor,VT,oconnor t,0,0,0
 ,OTH,Sam Young,,2008,Governor,VT,young s,0,0,0
 ,,Liberty Union,,2008,Governor,VT,union l,0,0,0
 ,OTH,Cris Ericson,,2008,Governor,VT,ericson c,0,0,0
@@ -4549,9 +4549,9 @@ additional terms may apply. By using this site, you agree to the Terms of Use an
 ,IND,Dale Ogden,business consultant and actuary,2010,Governor,CA,ogden d,0,0,0
 ,IND,Carlos Alvarez,retail worker,2010,Governor,CA,alvarez c,0,0,0
 ,IND,Mohammad Arif,businessman,2010,Governor,CA,arif m,0,0,0
-,REP,David Tully-Smith,,2010,Governor,CA,smith d,0,0,0
-,REP,Steven Paul Mozena (write-in),,2010,Governor,CA,in s,0,0,0
-,DEM,Nadia B. Smalley (write-in),,2010,Governor,CA,in n,0,0,0
+,REP,David Tully-Smith,,2010,Governor,CA,tullysmith d,0,0,0
+,REP,Steven Paul Mozena (write-in),,2010,Governor,CA,writein s,0,0,0
+,DEM,Nadia B. Smalley (write-in),,2010,Governor,CA,writein n,0,0,0
 ,,American Independent,,2010,Governor,CA,independent a,0,0,0
 ,,Peace and Freedom,,2010,Governor,CA,freedom p,0,0,0
 ,DEM,John Hickenlooper,Mayor of Denver,2010,Governor,CO,hickenlooper j,1,0,0
@@ -4578,7 +4578,7 @@ additional terms may apply. By using this site, you agree to the Terms of Use an
 ,REP,Thomas C. Foley,former United States Ambassador to Ireland,2010,Governor,CT,foley t,0,0,0
 ,REP,Oz Griebel,president and CEO of the MetroHartford Alliance,2010,Governor,CT,griebel o,0,0,0
 ,REP,Jodi Rell,incumbent governor,2010,Governor,CT,rell j,3,0,0
-,REP,Kevin J. O'Connor,former U.S. Attorney for the District of Connecticut,2010,Governor,CT,connor k,0,0,0
+,REP,Kevin J. O'Connor,former U.S. Attorney for the District of Connecticut,2010,Governor,CT,oconnor k,0,0,0
 ,REP,"Lawrence F. ""Larry"" Cafero",State House Republican Leader,2010,Governor,CT,cafero l,2,0,0
 ,REP,Chris Shays,former U.S. Representative,2010,Governor,CT,shays c,4,1,0
 ,REP,John P. McKinney,State Senate Republican Leader,2010,Governor,CT,mckinney j,2,0,0
@@ -4731,7 +4731,7 @@ additional terms may apply. By using this site, you agree to the Terms of Use an
 ,OTH,Jill Stein,,2010,Governor,MA,stein j,0,0,0
 ,,All others,,2010,Governor,MA,others a,0,0,0
 ,DEM,perennial candidate,Running mate: Freda Jaffe,2010,Governor,MD,candidate p,0,0,0
-,DEM,Martin O'Malley,"incumbent governor Running mate: Anthony Brown , incumbent lieutenant governor",2010,Governor,MD,malley m,3,0,0
+,DEM,Martin O'Malley,"incumbent governor Running mate: Anthony Brown , incumbent lieutenant governor",2010,Governor,MD,omalley m,3,0,0
 ,REP,Bob Ehrlich,former governor,2010,Governor,MD,ehrlich b,3,0,0
 ,REP,Running mate: Mary Kane,former Maryland secretary of state,2010,Governor,MD,kane r,3,0,0
 ,REP,Brian Murphy,businessman,2010,Governor,MD,murphy b,0,0,0
@@ -4866,7 +4866,7 @@ additional terms may apply. By using this site, you agree to the Terms of Use an
 ,OTH,John Babiarz,,2010,Governor,NH,babiarz j,0,0,0
 ,DEM,Diane Denish,lieutenant governor,2010,Governor,NM,denish d,3,0,0
 ,DEM,Val Kilmer,"actor, activist",2010,Governor,NM,kilmer v,0,0,0
-,REP,Janice Arnold-Jones,state representative,2010,Governor,NM,jones j,2,1,0
+,REP,Janice Arnold-Jones,state representative,2010,Governor,NM,arnoldjones j,2,1,0
 ,REP,Pete Domenici,"Jr., attorney and son of former U.S. Senator Pete Domenici",2010,Governor,NM,domenici p,4,0,0
 ,REP,Susana Martínez,Doña Ana County district attorney,2010,Governor,NM,martinez s,1,0,0
 ,REP,Governor of New Mexico,Gary Johnson,2010,Governor,NM,mexico g,0,0,0
@@ -4875,7 +4875,7 @@ additional terms may apply. By using this site, you agree to the Terms of Use an
 ,REP,Heather Wilson,former U.S. representative and candidate for the U.S. Senate in 2008,2010,Governor,NM,wilson h,4,1,1
 ,REP,Gregory Zanetti,former Bernalillo County Republican Party chair and New Mexico National Guard brigadier general,2010,Governor,NM,zanetti g,0,0,0
 ,REP,Doug Turner,,2010,Governor,NM,turner d,0,0,0
-,REP,Kenneth A. Gomez (write-in),,2010,Governor,NM,in k,0,0,0
+,REP,Kenneth A. Gomez (write-in),,2010,Governor,NM,writein k,0,0,0
 ,REP,Jim Gibbons,incumbent governor,2010,Governor,NV,gibbons j,3,0,0
 ,REP,Mike Montandon,Mayor of North Las Vegas,2010,Governor,NV,montandon m,1,0,0
 ,REP,Brian Sandoval,former judge of the United States District Court for the District of Nevada and former Nevada Attorney General,2010,Governor,NV,sandoval b,3,0,0
@@ -5003,7 +5003,7 @@ additional terms may apply. By using this site, you agree to the Terms of Use an
 ,DEM,Farouk Shami,businessman,2010,Governor,TX,shami f,0,0,0
 ,DEM,Bill White,former mayor of Houston,2010,Governor,TX,white b,1,0,0
 ,DEM,Tom Schieffer,former U.S. Ambassador to Japan & U.S. Ambassador to Australia,2010,Governor,TX,schieffer t,0,0,0
-,DEM,write-in,"), orthodontist",2010,Governor,TX,in w,0,0,0
+,DEM,write-in,"), orthodontist",2010,Governor,TX,writein,0,0,0
 ,DEM,Kathie Glass (L),attorney,2010,Governor,TX,l k,0,0,0
 ,DEM,Rick Perry,"(R), incumbent governor",2010,Governor,TX,perry r,3,0,0
 ,DEM,(G),educator,2010,Governor,TX,g,0,0,0
@@ -5012,7 +5012,7 @@ additional terms may apply. By using this site, you agree to the Terms of Use an
 ,DEM,Clement E. Glenn,,2010,Governor,TX,glenn c,0,0,0
 ,OTH,Kathie Glass,,2010,Governor,TX,glass k,0,0,0
 ,OTH,Deb Shafto,,2010,Governor,TX,shafto d,0,0,0
-,OTH,Andy Barron (write-in),,2010,Governor,TX,in a,0,0,0
+,OTH,Andy Barron (write-in),,2010,Governor,TX,writein a,0,0,0
 ,DEM,Peter Corroon,Mayor of Salt Lake County,2010,Governor,UT,corroon p,1,0,0
 ,REP,Gary Herbert,Governor,2010,Governor,UT,herbert g,3,0,0
 ,REP,Daniel Van Oaks,Jr.,2010,Governor,UT,oaks d,0,0,0
@@ -5055,9 +5055,9 @@ additional terms may apply. By using this site, you agree to the Terms of Use an
 ,OTH,Jim Langer,,2010,Governor,WI,langer j,0,0,0
 ,OTH,James James,,2010,Governor,WI,james,0,0,0
 ,,Common Sense,,2010,Governor,WI,sense c,0,0,0
-,OTH,Patricia Messicci (write-in),,2010,Governor,WI,in p,0,0,0
-,OTH,Leslie Ervin Smetak (write-in),,2010,Governor,WI,in l,0,0,0
-,OTH,Hari Trivedi (write-in),,2010,Governor,WI,in h,0,0,0
+,OTH,Patricia Messicci (write-in),,2010,Governor,WI,writein p,0,0,0
+,OTH,Leslie Ervin Smetak (write-in),,2010,Governor,WI,writein l,0,0,0
+,OTH,Hari Trivedi (write-in),,2010,Governor,WI,writein h,0,0,0
 ,DEM,Pete Gosar,"teacher, commercial pilot, state employee and small business owner, brother of Rep. Paul Gosar (R-AZ)",2010,Governor,WY,gosar p,0,0,0
 ,DEM,Teton County,Commissioner and Chair of the Wyoming Democratic Party,2010,Governor,WY,county t,0,0,0
 ,DEM,Rex Wilde,cabinet maker,2010,Governor,WY,wilde r,0,0,0
@@ -5088,7 +5088,7 @@ additional terms may apply. By using this site, you agree to the Terms of Use an
 ,DEM,Vi Simpson,state Senate Minority Leader,2012,Governor,IN,simpson v,2,0,0
 ,DEM,Rupert Boneham,"(Libertarian), four-time contestant on Survivor and founder of Rupert's Kids",2012,Governor,IN,boneham r,0,0,0
 ,OTH,Rupert Boneham,,2012,Governor,IN,boneham r,0,0,0
-,OTH,Donnie Harold Harris (write-in),,2012,Governor,IN,in d,0,0,0
+,OTH,Donnie Harold Harris (write-in),,2012,Governor,IN,writein d,0,0,0
 ,REP,Ed Schafer,former Governor of North Dakota and former U.S. Secretary of Agriculture,2012,Governor,ND,schafer e,4,0,0
 ,REP,Jack Dalrymple,incumbent Governor,2012,Governor,ND,dalrymple j,3,0,0
 ,DEM,Ryan Taylor,,2012,Governor,ND,taylor r,0,0,0
@@ -5201,4 +5201,4 @@ additional terms may apply. By using this site, you agree to the Terms of Use an
 ,IND,Susan Bysiewicz,incumbent lieutenant governor,2022,Governor,CT,bysiewicz s,3,0,0
 ,,Working Families,,2022,Governor,CT,families w,0,0,0
 ,,Griebel-Frank for CT Party,,2022,Governor,CT,party g,0,0,0
-,OTH,Michelle Louise Bicking (write-in),,2022,Governor,CT,in m,0,0,0
+,OTH,Michelle Louise Bicking (write-in),,2022,Governor,CT,writein m,0,0,0

@@ -352,9 +352,9 @@
  ],
  "xgb_params": {
   "max_depth": 2,
-  "learning_rate": 0.02,
-  "n_estimators": 300,
-  "min_child_weight": 15,
+  "learning_rate": 0.05,
+  "n_estimators": 150,
+  "min_child_weight": 8,
   "subsample": 0.8,
   "colsample_bytree": 1.0,
   "reg_lambda": 1,

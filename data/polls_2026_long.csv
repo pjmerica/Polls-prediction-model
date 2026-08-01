@@ -11,7 +11,7 @@ year,state,office,district,candidate,party_std,pct,end_date,sample_size,pollster
 2026,NC,Senate,,Roy A. Cooper,DEM,48.0,2026-07-11,759.0,Public Policy Polling,f744b6a4-6d46-4db9-81f4-136e1d25501c,2026-11-03,cooper r,DEM,2026_NC_Senate,115
 2026,MI,Senate,,Mike Rogers,REP,46.0,2026-06-22,709.0,Data for Progress,007278d5-49cd-4aa2-9400-8c95c5fc50c5,2026-11-03,rogers m,REP,2026_MI_Senate,134
 2026,MI,Senate,,Haley Stevens,DEM,45.0,2026-06-22,709.0,Data for Progress,007278d5-49cd-4aa2-9400-8c95c5fc50c5,2026-11-03,stevens h,DEM,2026_MI_Senate,134
-2026,MI,Senate,,Abdul El-Sayed,DEM,47.0,2026-06-22,709.0,Data for Progress,007278d5-49cd-4aa2-9400-8c95c5fc50c5,2026-11-03,sayed a,DEM,2026_MI_Senate,134
+2026,MI,Senate,,Abdul El-Sayed,DEM,47.0,2026-06-22,709.0,Data for Progress,007278d5-49cd-4aa2-9400-8c95c5fc50c5,2026-11-03,elsayed a,DEM,2026_MI_Senate,134
 2026,NH,Senate,,Chris Pappas,DEM,43.0,2026-06-27,500.0,Peak Insights,81a561d0-30fb-49a1-b168-19f24d658d06,2026-11-03,pappas c,DEM,2026_NH_Senate,129
 2026,NH,Senate,,John E. Sununu,REP,42.0,2026-06-27,500.0,Peak Insights,81a561d0-30fb-49a1-b168-19f24d658d06,2026-11-03,sununu j,REP,2026_NH_Senate,129
 2026,ME,Senate,,Susan M. Collins,REP,47.0,2026-07-07,785.0,Public Policy Polling,089a174b-74ee-4363-9ca1-60d01ed22eba,2026-11-03,collins s,REP,2026_ME_Senate,119
@@ -36,7 +36,7 @@ year,state,office,district,candidate,party_std,pct,end_date,sample_size,pollster
 2026,MI,Senate,,Mike Rogers,REP,43.7,2026-06-30,947.0,Quantus Insights,edf376a8-2e75-4c89-bb0d-665392aae970,2026-11-03,rogers m,REP,2026_MI_Senate,126
 2026,MI,Senate,,Haley Stevens,DEM,45.1,2026-06-30,947.0,Quantus Insights,edf376a8-2e75-4c89-bb0d-665392aae970,2026-11-03,stevens h,DEM,2026_MI_Senate,126
 2026,MI,Senate,,Mallory McMorrow,DEM,44.4,2026-06-30,947.0,Quantus Insights,edf376a8-2e75-4c89-bb0d-665392aae970,2026-11-03,mcmorrow m,DEM,2026_MI_Senate,126
-2026,MI,Senate,,Abdul El-Sayed,DEM,45.2,2026-06-30,947.0,Quantus Insights,edf376a8-2e75-4c89-bb0d-665392aae970,2026-11-03,sayed a,DEM,2026_MI_Senate,126
+2026,MI,Senate,,Abdul El-Sayed,DEM,45.2,2026-06-30,947.0,Quantus Insights,edf376a8-2e75-4c89-bb0d-665392aae970,2026-11-03,elsayed a,DEM,2026_MI_Senate,126
 2026,NH,Senate,,John E. Sununu,REP,41.0,2026-06-25,1614.0,St. Anselm,323ff676-e8d3-44aa-a932-d8cb8fbc0695,2026-11-03,sununu j,REP,2026_NH_Senate,131
 2026,NH,Senate,,Chris Pappas,DEM,47.0,2026-06-25,1614.0,St. Anselm,323ff676-e8d3-44aa-a932-d8cb8fbc0695,2026-11-03,pappas c,DEM,2026_NH_Senate,131
 2026,NH,Senate,,Scott Brown,REP,36.0,2026-06-25,1614.0,St. Anselm,323ff676-e8d3-44aa-a932-d8cb8fbc0695,2026-11-03,brown s,REP,2026_NH_Senate,131
@@ -71,7 +71,7 @@ year,state,office,district,candidate,party_std,pct,end_date,sample_size,pollster
 2026,MI,Senate,,Mallory McMorrow,DEM,41.0,2026-06-28,602.0,Wedgewood Polls,ac22743d-7975-4bd3-981b-d39a2d3c9051,2026-11-03,mcmorrow m,DEM,2026_MI_Senate,128
 2026,MI,Senate,,Mike Rogers,REP,48.0,2026-06-28,602.0,Wedgewood Polls,ac22743d-7975-4bd3-981b-d39a2d3c9051,2026-11-03,rogers m,REP,2026_MI_Senate,128
 2026,MI,Senate,,Haley Stevens,DEM,46.0,2026-06-28,602.0,Wedgewood Polls,ac22743d-7975-4bd3-981b-d39a2d3c9051,2026-11-03,stevens h,DEM,2026_MI_Senate,128
-2026,MI,Senate,,Abdul El-Sayed,DEM,49.0,2026-06-28,602.0,Wedgewood Polls,ac22743d-7975-4bd3-981b-d39a2d3c9051,2026-11-03,sayed a,DEM,2026_MI_Senate,128
+2026,MI,Senate,,Abdul El-Sayed,DEM,49.0,2026-06-28,602.0,Wedgewood Polls,ac22743d-7975-4bd3-981b-d39a2d3c9051,2026-11-03,elsayed a,DEM,2026_MI_Senate,128
 2026,ME,Senate,,Susan M. Collins,REP,47.0,2026-06-26,608.0,The New York Times/Siena University,67b56c94-89a5-47e0-ace0-551879438390,2026-11-03,collins s,REP,2026_ME_Senate,130
 2026,ME,Senate,,Graham Platner,DEM,49.2,2026-06-26,608.0,The New York Times/Siena University,67b56c94-89a5-47e0-ace0-551879438390,2026-11-03,platner g,DEM,2026_ME_Senate,130
 2026,IA,Senate,,Josh Turek,DEM,44.2,2026-06-19,600.0,Cygnal,24dd386f-3111-4c4a-9e7e-08d902516a53,2026-11-03,turek j,DEM,2026_IA_Senate,137
@@ -93,13 +93,13 @@ year,state,office,district,candidate,party_std,pct,end_date,sample_size,pollster
 2026,MI,Senate,,Mike Rogers,REP,42.0,2026-06-14,602.0,Zenith Research,71938f8f-5729-4080-8138-466f03f51516,2026-11-03,rogers m,REP,2026_MI_Senate,142
 2026,MI,Senate,,Haley Stevens,DEM,43.0,2026-06-14,602.0,Zenith Research,71938f8f-5729-4080-8138-466f03f51516,2026-11-03,stevens h,DEM,2026_MI_Senate,142
 2026,MI,Senate,,Mallory McMorrow,DEM,44.0,2026-06-14,602.0,Zenith Research,71938f8f-5729-4080-8138-466f03f51516,2026-11-03,mcmorrow m,DEM,2026_MI_Senate,142
-2026,MI,Senate,,Abdul El-Sayed,DEM,45.0,2026-06-14,602.0,Zenith Research,71938f8f-5729-4080-8138-466f03f51516,2026-11-03,sayed a,DEM,2026_MI_Senate,142
+2026,MI,Senate,,Abdul El-Sayed,DEM,45.0,2026-06-14,602.0,Zenith Research,71938f8f-5729-4080-8138-466f03f51516,2026-11-03,elsayed a,DEM,2026_MI_Senate,142
 2026,OH,Senate,S,Jon Husted,REP,42.0,2026-06-04,600.0,Tulchin Research,3abe7c38-03f5-4972-ab6c-6562912cdf5f,2026-11-03,husted j,REP,2026_OH_Senate-S,152
 2026,OH,Senate,S,Sherrod Brown,DEM,46.0,2026-06-04,600.0,Tulchin Research,3abe7c38-03f5-4972-ab6c-6562912cdf5f,2026-11-03,brown s,DEM,2026_OH_Senate-S,152
 2026,FL,Senate,S,Alexander Vindman,DEM,46.0,2026-06-14,1015.0,Change Research,4d861c8b-85ec-4c48-b202-172e27f1f06d,2026-11-03,vindman a,DEM,2026_FL_Senate-S,142
 2026,FL,Senate,S,Ashley Moody,REP,46.0,2026-06-14,1015.0,Change Research,4d861c8b-85ec-4c48-b202-172e27f1f06d,2026-11-03,moody a,REP,2026_FL_Senate-S,142
 2026,MI,Senate,,Mike Rogers,REP,42.0,2026-06-13,827.0,Mitchell Research & Communications,65ba6cdf-2251-4329-92db-d3957baf9616,2026-11-03,rogers m,REP,2026_MI_Senate,143
-2026,MI,Senate,,Abdul El-Sayed,DEM,47.0,2026-06-13,827.0,Mitchell Research & Communications,65ba6cdf-2251-4329-92db-d3957baf9616,2026-11-03,sayed a,DEM,2026_MI_Senate,143
+2026,MI,Senate,,Abdul El-Sayed,DEM,47.0,2026-06-13,827.0,Mitchell Research & Communications,65ba6cdf-2251-4329-92db-d3957baf9616,2026-11-03,elsayed a,DEM,2026_MI_Senate,143
 2026,MI,Senate,,Haley Stevens,DEM,41.0,2026-06-13,827.0,Mitchell Research & Communications,65ba6cdf-2251-4329-92db-d3957baf9616,2026-11-03,stevens h,DEM,2026_MI_Senate,143
 2026,MI,Senate,,Mallory McMorrow,DEM,41.0,2026-06-13,827.0,Mitchell Research & Communications,65ba6cdf-2251-4329-92db-d3957baf9616,2026-11-03,mcmorrow m,DEM,2026_MI_Senate,143
 2026,ME,Senate,,Graham Platner,DEM,47.6,2026-06-14,1008.0,Wick,6539644e-fc58-4f80-9d89-ed3a81a98bc6,2026-11-03,platner g,DEM,2026_ME_Senate,142
@@ -117,7 +117,7 @@ year,state,office,district,candidate,party_std,pct,end_date,sample_size,pollster
 2026,ID,Senate,,David Roth,DEM,15.0,2026-06-07,500.0,Peak Insights,c122ad52-5f1f-4e63-adb5-0e3e0218943e,2026-11-03,roth d,DEM,2026_ID_Senate,149
 2026,ID,Senate,,James E. Risch,REP,55.0,2026-06-07,500.0,Peak Insights,c122ad52-5f1f-4e63-adb5-0e3e0218943e,2026-11-03,risch j,REP,2026_ID_Senate,149
 2026,MI,Senate,,Mike Rogers,REP,41.0,2026-06-04,500.0,Tulchin Research,171c2baa-929a-4545-9980-55d6685168c3,2026-11-03,rogers m,REP,2026_MI_Senate,152
-2026,MI,Senate,,Abdul El-Sayed,DEM,46.0,2026-06-04,500.0,Tulchin Research,171c2baa-929a-4545-9980-55d6685168c3,2026-11-03,sayed a,DEM,2026_MI_Senate,152
+2026,MI,Senate,,Abdul El-Sayed,DEM,46.0,2026-06-04,500.0,Tulchin Research,171c2baa-929a-4545-9980-55d6685168c3,2026-11-03,elsayed a,DEM,2026_MI_Senate,152
 2026,TX,Senate,,James Talarico,DEM,46.0,2026-06-04,807.0,Siena University,476ff6b9-434a-4db8-aca3-58fd8bc21cf2,2026-11-03,talarico j,DEM,2026_TX_Senate,152
 2026,TX,Senate,,Ken Paxton,REP,46.0,2026-06-04,807.0,Siena University,476ff6b9-434a-4db8-aca3-58fd8bc21cf2,2026-11-03,paxton k,REP,2026_TX_Senate,152
 2026,ME,Senate,,Susan M. Collins,REP,45.0,2026-06-08,1642.0,Tavern Research,2e2c0413-91b8-44b6-b805-5e2f8bc934a1,2026-11-03,collins s,REP,2026_ME_Senate,148
@@ -148,7 +148,7 @@ year,state,office,district,candidate,party_std,pct,end_date,sample_size,pollster
 2026,ID,Senate,,David Roth,DEM,33.0,2026-06-01,774.0,The Bullfinch Group,2cefc24c-dab8-41e7-954c-c1e56215262b,2026-11-03,roth d,DEM,2026_ID_Senate,155
 2026,MI,Senate,,Mike Rogers,REP,41.6,2026-05-23,1163.0,TIPP Insights,4edb8181-1463-4c6b-b48d-17951e1158d0,2026-11-03,rogers m,REP,2026_MI_Senate,164
 2026,MI,Senate,,Mallory McMorrow,DEM,45.2,2026-05-23,1163.0,TIPP Insights,4edb8181-1463-4c6b-b48d-17951e1158d0,2026-11-03,mcmorrow m,DEM,2026_MI_Senate,164
-2026,MI,Senate,,Abdul El-Sayed,DEM,43.4,2026-05-23,1163.0,TIPP Insights,4edb8181-1463-4c6b-b48d-17951e1158d0,2026-11-03,sayed a,DEM,2026_MI_Senate,164
+2026,MI,Senate,,Abdul El-Sayed,DEM,43.4,2026-05-23,1163.0,TIPP Insights,4edb8181-1463-4c6b-b48d-17951e1158d0,2026-11-03,elsayed a,DEM,2026_MI_Senate,164
 2026,MI,Senate,,Haley Stevens,DEM,47.8,2026-05-23,1163.0,TIPP Insights,4edb8181-1463-4c6b-b48d-17951e1158d0,2026-11-03,stevens h,DEM,2026_MI_Senate,164
 2026,TX,Senate,,James Talarico,DEM,47.0,2026-05-28,1670.0,Slingshot Strategies,48331063-1d9a-4a55-a585-6981c1b38e81,2026-11-03,talarico j,DEM,2026_TX_Senate,159
 2026,TX,Senate,,Ken Paxton,REP,44.0,2026-05-28,1670.0,Slingshot Strategies,48331063-1d9a-4a55-a585-6981c1b38e81,2026-11-03,paxton k,REP,2026_TX_Senate,159
@@ -179,11 +179,11 @@ year,state,office,district,candidate,party_std,pct,end_date,sample_size,pollster
 2026,MI,Senate,,Haley Stevens,DEM,41.5,2026-05-01,600.0,"Glengariff Group, Inc.",1a46e29b-fef9-46bd-910c-0dc101930ec8,2026-11-03,stevens h,DEM,2026_MI_Senate,186
 2026,MI,Senate,,Mike Rogers,REP,43.8,2026-05-01,600.0,"Glengariff Group, Inc.",1a46e29b-fef9-46bd-910c-0dc101930ec8,2026-11-03,rogers m,REP,2026_MI_Senate,186
 2026,MI,Senate,,Mallory McMorrow,DEM,40.7,2026-05-01,600.0,"Glengariff Group, Inc.",1a46e29b-fef9-46bd-910c-0dc101930ec8,2026-11-03,mcmorrow m,DEM,2026_MI_Senate,186
-2026,MI,Senate,,Abdul El-Sayed,DEM,39.8,2026-05-01,600.0,"Glengariff Group, Inc.",1a46e29b-fef9-46bd-910c-0dc101930ec8,2026-11-03,sayed a,DEM,2026_MI_Senate,186
+2026,MI,Senate,,Abdul El-Sayed,DEM,39.8,2026-05-01,600.0,"Glengariff Group, Inc.",1a46e29b-fef9-46bd-910c-0dc101930ec8,2026-11-03,elsayed a,DEM,2026_MI_Senate,186
 2026,MI,Senate,,Haley Stevens,DEM,39.0,2026-05-07,606.0,Mitchell Research & Communications,26ee4caa-20a1-4547-8faa-12fd3976299a,2026-11-03,stevens h,DEM,2026_MI_Senate,180
 2026,MI,Senate,,Mike Rogers,REP,42.0,2026-05-07,606.0,Mitchell Research & Communications,26ee4caa-20a1-4547-8faa-12fd3976299a,2026-11-03,rogers m,REP,2026_MI_Senate,180
 2026,MI,Senate,,Mallory McMorrow,DEM,41.0,2026-05-07,606.0,Mitchell Research & Communications,26ee4caa-20a1-4547-8faa-12fd3976299a,2026-11-03,mcmorrow m,DEM,2026_MI_Senate,180
-2026,MI,Senate,,Abdul El-Sayed,DEM,41.0,2026-05-07,607.0,Mitchell Research & Communications,26ee4caa-20a1-4547-8faa-12fd3976299a,2026-11-03,sayed a,DEM,2026_MI_Senate,180
+2026,MI,Senate,,Abdul El-Sayed,DEM,41.0,2026-05-07,607.0,Mitchell Research & Communications,26ee4caa-20a1-4547-8faa-12fd3976299a,2026-11-03,elsayed a,DEM,2026_MI_Senate,180
 2026,NE,Senate,,Pete Ricketts,REP,50.0,2026-05-11,1165.0,Tavern Research,cc32f509-8940-4dc1-a883-3b2cb93bda47,2026-11-03,ricketts p,REP,2026_NE_Senate,176
 2026,NE,Senate,,Dan Osborn,DEM,47.0,2026-05-11,1165.0,Tavern Research,cc32f509-8940-4dc1-a883-3b2cb93bda47,2026-11-03,osborn d,IND,2026_NE_Senate,176
 2026,KS,Senate,,Roger Marshall,REP,49.0,2026-04-27,500.0,GQR,db1fc453-f2fa-46e8-a6cf-dc61581e548b,2026-11-03,marshall r,REP,2026_KS_Senate,190
@@ -215,7 +215,7 @@ year,state,office,district,candidate,party_std,pct,end_date,sample_size,pollster
 2026,GA,Senate,,Jon Ossoff,DEM,51.0,2026-04-09,407.0,Echelon Insights,e154d9f8-b73d-4cec-b9db-b5df7f368768,2026-11-03,ossoff j,DEM,2026_GA_Senate,208
 2026,GA,Senate,,Mike Collins,REP,44.0,2026-04-09,407.0,Echelon Insights,e154d9f8-b73d-4cec-b9db-b5df7f368768,2026-11-03,collins m,REP,2026_GA_Senate,208
 2026,MS,Senate,,Ty Pinkins,OTH,6.0,2026-04-12,500.0,Impact Research,bb2c7efc-df3d-4cee-aef5-0db1bb547945,2026-11-03,pinkins t,OTH,2026_MS_Senate,205
-2026,MS,Senate,,Cindy Hyde-Smith,REP,42.0,2026-04-12,500.0,Impact Research,bb2c7efc-df3d-4cee-aef5-0db1bb547945,2026-11-03,smith c,REP,2026_MS_Senate,205
+2026,MS,Senate,,Cindy Hyde-Smith,REP,42.0,2026-04-12,500.0,Impact Research,bb2c7efc-df3d-4cee-aef5-0db1bb547945,2026-11-03,hydesmith c,REP,2026_MS_Senate,205
 2026,MS,Senate,,Scott Colom,DEM,39.0,2026-04-12,500.0,Impact Research,bb2c7efc-df3d-4cee-aef5-0db1bb547945,2026-11-03,colom s,DEM,2026_MS_Senate,205
 2026,OH,Senate,S,Sherrod Brown,DEM,47.0,2026-04-14,1000.0,Bowling Green State University Democracy and Public Policy Research Network/YouGov,b5910ed4-b6e9-4abc-a223-faf2fc268e09,2026-11-03,brown s,DEM,2026_OH_Senate-S,203
 2026,OH,Senate,S,Jon Husted,REP,50.0,2026-04-14,1000.0,Bowling Green State University Democracy and Public Policy Research Network/YouGov,b5910ed4-b6e9-4abc-a223-faf2fc268e09,2026-11-03,husted j,REP,2026_OH_Senate-S,203
@@ -258,7 +258,7 @@ year,state,office,district,candidate,party_std,pct,end_date,sample_size,pollster
 2026,NH,Senate,,Scott Brown,REP,38.0,2026-03-18,1491.0,St. Anselm,34dd8f45-0aed-4e65-bb57-a284d358ecf6,2026-11-03,brown s,REP,2026_NH_Senate,230
 2026,ID,Senate,,James E. Risch,REP,48.0,2026-03-17,639.0,Public Policy Polling,ce0853bf-4a38-40f5-9911-70dbc617ed6a,2026-11-03,risch j,REP,2026_ID_Senate,231
 2026,ID,Senate,,Todd Achilles,OTH,34.0,2026-03-17,639.0,Public Policy Polling,ce0853bf-4a38-40f5-9911-70dbc617ed6a,2026-11-03,achilles t,OTH,2026_ID_Senate,231
-2026,MS,Senate,,Cindy Hyde-Smith,REP,38.0,2025-06-22,500.0,Impact Research,803968fc-40bf-4a44-936f-7fc711b46df3,2026-11-03,smith c,REP,2026_MS_Senate,499
+2026,MS,Senate,,Cindy Hyde-Smith,REP,38.0,2025-06-22,500.0,Impact Research,803968fc-40bf-4a44-936f-7fc711b46df3,2026-11-03,hydesmith c,REP,2026_MS_Senate,499
 2026,TX,Senate,,Ken Paxton,REP,43.0,2026-03-17,900.0,Impact Research,9495e1a8-06aa-4f93-a43e-8fb527866254,2026-11-03,paxton k,REP,2026_TX_Senate,231
 2026,TX,Senate,,James Talarico,DEM,44.0,2026-03-17,900.0,Impact Research,9495e1a8-06aa-4f93-a43e-8fb527866254,2026-11-03,talarico j,DEM,2026_TX_Senate,231
 2026,SC,Senate,,Lindsey Graham,REP,47.0,2026-03-01,700.0,Impact Research,0fa96ba9-faec-4c39-8015-80b9565e6f66,2026-11-03,graham l,REP,2026_SC_Senate,247
@@ -325,7 +325,7 @@ year,state,office,district,candidate,party_std,pct,end_date,sample_size,pollster
 2026,MI,Senate,,Haley Stevens,DEM,47.0,2025-06-16,700.0,"Normington, Petts & Associates",056c5919-461b-4fd7-bb50-e04c47588d89,2026-11-03,stevens h,DEM,2026_MI_Senate,505
 2026,MI,Senate,,Mallory McMorrow,DEM,44.0,2025-06-16,700.0,"Normington, Petts & Associates",056c5919-461b-4fd7-bb50-e04c47588d89,2026-11-03,mcmorrow m,DEM,2026_MI_Senate,505
 2026,MI,Senate,,Mike Rogers,REP,42.8,2026-01-25,1000.0,Emerson College,ad15c7d5-e8e0-4525-b45a-3fc93cc72455,2026-11-03,rogers m,REP,2026_MI_Senate,282
-2026,MI,Senate,,Abdul El-Sayed,DEM,42.5,2026-01-25,1000.0,Emerson College,ad15c7d5-e8e0-4525-b45a-3fc93cc72455,2026-11-03,sayed a,DEM,2026_MI_Senate,282
+2026,MI,Senate,,Abdul El-Sayed,DEM,42.5,2026-01-25,1000.0,Emerson College,ad15c7d5-e8e0-4525-b45a-3fc93cc72455,2026-11-03,elsayed a,DEM,2026_MI_Senate,282
 2026,MI,Senate,,Mallory McMorrow,DEM,45.7,2026-01-25,1000.0,Emerson College,ad15c7d5-e8e0-4525-b45a-3fc93cc72455,2026-11-03,mcmorrow m,DEM,2026_MI_Senate,282
 2026,MI,Senate,,Haley Stevens,DEM,47.3,2026-01-25,1000.0,Emerson College,ad15c7d5-e8e0-4525-b45a-3fc93cc72455,2026-11-03,stevens h,DEM,2026_MI_Senate,282
 2026,NH,Senate,,Scott Brown,REP,42.0,2026-01-19,2017.0,University of New Hampshire,595a8c5c-ca0e-46db-b6f7-75559cf68bbc,2026-11-03,brown s,REP,2026_NH_Senate,288
@@ -340,7 +340,7 @@ year,state,office,district,candidate,party_std,pct,end_date,sample_size,pollster
 2026,TX,Senate,,James Talarico,DEM,43.6,2026-01-12,1165.0,Emerson College,2ef0604a-7949-4374-8e47-a88e5e37df35,2026-11-03,talarico j,DEM,2026_TX_Senate,295
 2026,TX,Senate,,Ken Paxton,REP,45.6,2026-01-12,1165.0,Emerson College,2ef0604a-7949-4374-8e47-a88e5e37df35,2026-11-03,paxton k,REP,2026_TX_Senate,295
 2026,MI,Senate,,Mike Rogers,REP,48.0,2026-01-06,600.0,"Glengariff Group, Inc.",28660620-44e6-4e18-999f-6b06d90e282b,2026-11-03,rogers m,REP,2026_MI_Senate,301
-2026,MI,Senate,,Abdul El-Sayed,DEM,41.6,2026-01-06,600.0,"Glengariff Group, Inc.",28660620-44e6-4e18-999f-6b06d90e282b,2026-11-03,sayed a,DEM,2026_MI_Senate,301
+2026,MI,Senate,,Abdul El-Sayed,DEM,41.6,2026-01-06,600.0,"Glengariff Group, Inc.",28660620-44e6-4e18-999f-6b06d90e282b,2026-11-03,elsayed a,DEM,2026_MI_Senate,301
 2026,MI,Senate,,Mallory McMorrow,DEM,42.4,2026-01-06,600.0,"Glengariff Group, Inc.",28660620-44e6-4e18-999f-6b06d90e282b,2026-11-03,mcmorrow m,DEM,2026_MI_Senate,301
 2026,MI,Senate,,Haley Stevens,DEM,43.7,2026-01-06,600.0,"Glengariff Group, Inc.",28660620-44e6-4e18-999f-6b06d90e282b,2026-11-03,stevens h,DEM,2026_MI_Senate,301
 2026,AK,Senate,,Dan Sullivan,REP,46.4,2026-01-11,1681.0,Alaska Survey Research,738d7b99-da3b-4c01-8c34-1ad6bd19e307,2026-11-03,sullivan d,REP,2026_AK_Senate,296
@@ -373,7 +373,7 @@ year,state,office,district,candidate,party_std,pct,end_date,sample_size,pollster
 2026,MI,Senate,,Haley Stevens,DEM,40.0,2025-11-21,616.0,Mitchell Research & Communications,f5b58ace-3cac-4876-a31f-7422705bbdfb,2026-11-03,stevens h,DEM,2026_MI_Senate,347
 2026,MI,Senate,,Mike Rogers,REP,42.0,2025-11-21,616.0,Mitchell Research & Communications,f5b58ace-3cac-4876-a31f-7422705bbdfb,2026-11-03,rogers m,REP,2026_MI_Senate,347
 2026,MI,Senate,,Mallory McMorrow,DEM,38.0,2025-11-21,616.0,Mitchell Research & Communications,f5b58ace-3cac-4876-a31f-7422705bbdfb,2026-11-03,mcmorrow m,DEM,2026_MI_Senate,347
-2026,MI,Senate,,Abdul El-Sayed,DEM,38.0,2025-11-21,616.0,Mitchell Research & Communications,f5b58ace-3cac-4876-a31f-7422705bbdfb,2026-11-03,sayed a,DEM,2026_MI_Senate,347
+2026,MI,Senate,,Abdul El-Sayed,DEM,38.0,2025-11-21,616.0,Mitchell Research & Communications,f5b58ace-3cac-4876-a31f-7422705bbdfb,2026-11-03,elsayed a,DEM,2026_MI_Senate,347
 2026,TX,Senate,,Ken Paxton,REP,50.0,2025-11-26,1189.0,Change Research,bfb57500-15ff-4484-8eb1-6fb058ea71d4,2026-11-03,paxton k,REP,2026_TX_Senate,342
 2026,MA,Senate,,John Deaton,REP,29.0,2025-11-23,500.0,Suffolk University,2c6268e3-dccd-438f-9b60-9f9ecdb3f9ae,2026-11-03,deaton j,REP,2026_MA_Senate,345
 2026,MA,Senate,,Seth Moulton,DEM,52.0,2025-11-23,500.0,Suffolk University,2c6268e3-dccd-438f-9b60-9f9ecdb3f9ae,2026-11-03,moulton s,DEM,2026_MA_Senate,345
@@ -395,7 +395,7 @@ year,state,office,district,candidate,party_std,pct,end_date,sample_size,pollster
 2026,MI,Senate,,Haley Stevens,DEM,40.0,2025-10-25,637.0,Rosetta Stone,87756c91-078b-4414-b782-ae65c23e4e14,2026-11-03,stevens h,DEM,2026_MI_Senate,374
 2026,MI,Senate,,Mike Rogers,REP,47.0,2025-10-25,637.0,Rosetta Stone,87756c91-078b-4414-b782-ae65c23e4e14,2026-11-03,rogers m,REP,2026_MI_Senate,374
 2026,MI,Senate,,Mallory McMorrow,DEM,39.0,2025-10-25,637.0,Rosetta Stone,87756c91-078b-4414-b782-ae65c23e4e14,2026-11-03,mcmorrow m,DEM,2026_MI_Senate,374
-2026,MI,Senate,,Abdul El-Sayed,DEM,31.0,2025-10-25,637.0,Rosetta Stone,87756c91-078b-4414-b782-ae65c23e4e14,2026-11-03,sayed a,DEM,2026_MI_Senate,374
+2026,MI,Senate,,Abdul El-Sayed,DEM,31.0,2025-10-25,637.0,Rosetta Stone,87756c91-078b-4414-b782-ae65c23e4e14,2026-11-03,elsayed a,DEM,2026_MI_Senate,374
 2026,AK,Senate,,Dan Sullivan,REP,45.0,2025-10-23,823.0,Data for Progress,2abdc064-3a16-4478-a841-23467c99f334,2026-11-03,sullivan d,REP,2026_AK_Senate,376
 2026,AK,Senate,,Mary S. Peltola,DEM,46.0,2025-10-23,823.0,Data for Progress,2abdc064-3a16-4478-a841-23467c99f334,2026-11-03,peltola m,DEM,2026_AK_Senate,376
 2026,OH,Senate,S,Sherrod Brown,DEM,49.0,2025-10-14,800.0,Bowling Green State University Democracy and Public Policy Research Network/YouGov,684724e8-ac36-4d8b-8d84-ba6fbd786ca7,2026-11-03,brown s,DEM,2026_OH_Senate-S,385
@@ -458,7 +458,7 @@ year,state,office,district,candidate,party_std,pct,end_date,sample_size,pollster
 2026,GA,Senate,,Jon Ossoff,DEM,48.4,2025-04-24,1000.0,University of Georgia,88cf1205-1d9c-4264-8a4f-5464d6681ae6,2026-11-03,ossoff j,DEM,2026_GA_Senate,558
 2026,MI,Senate,,Haley Stevens,DEM,45.1,2025-05-08,600.0,"Glengariff Group, Inc.",4a00a654-caa2-47c4-99ed-f35d446ec88b,2026-11-03,stevens h,DEM,2026_MI_Senate,544
 2026,MI,Senate,,Mallory McMorrow,DEM,41.4,2025-05-08,600.0,"Glengariff Group, Inc.",4a00a654-caa2-47c4-99ed-f35d446ec88b,2026-11-03,mcmorrow m,DEM,2026_MI_Senate,544
-2026,MI,Senate,,Abdul El-Sayed,DEM,40.5,2025-05-08,600.0,"Glengariff Group, Inc.",4a00a654-caa2-47c4-99ed-f35d446ec88b,2026-11-03,sayed a,DEM,2026_MI_Senate,544
+2026,MI,Senate,,Abdul El-Sayed,DEM,40.5,2025-05-08,600.0,"Glengariff Group, Inc.",4a00a654-caa2-47c4-99ed-f35d446ec88b,2026-11-03,elsayed a,DEM,2026_MI_Senate,544
 2026,MI,Senate,,Mike Rogers,REP,43.8,2025-05-08,600.0,"Glengariff Group, Inc.",4a00a654-caa2-47c4-99ed-f35d446ec88b,2026-11-03,rogers m,REP,2026_MI_Senate,544
 2026,GA,Senate,,Jon Ossoff,DEM,46.4,2025-04-27,1426.0,Trafalgar Group,d58ed767-bc6f-4924-a6a9-fca28ac2e4f6,2026-11-03,ossoff j,DEM,2026_GA_Senate,555
 2026,GA,Senate,,Mike Collins,REP,42.8,2025-04-27,1426.0,Trafalgar Group,d58ed767-bc6f-4924-a6a9-fca28ac2e4f6,2026-11-03,collins m,REP,2026_GA_Senate,555
@@ -496,7 +496,7 @@ year,state,office,district,candidate,party_std,pct,end_date,sample_size,pollster
 2026,FL,House,14,Kevin Steele,REP,38.5,2026-07-15,469.0,St. Pete Polls,8625996e-08c9-473c-8330-f5afadd9dd6e,2026-11-03,steele k,REP,2026_FL_House-14,111
 2026,FL,House,14,Mike Beltran,REP,37.5,2026-07-15,469.0,St. Pete Polls,8625996e-08c9-473c-8330-f5afadd9dd6e,2026-11-03,beltran m,REP,2026_FL_House-14,111
 2026,NV,House,2,David Flippo,REP,46.0,2026-07-12,350.0,Wedgewood Polls,4cad4c84-d015-49ef-b046-404cbc081d2a,2026-11-03,flippo d,REP,2026_NV_House-2,114
-2026,NV,House,2,Teresa Benitez-Thompson,DEM,48.0,2026-07-12,350.0,Wedgewood Polls,4cad4c84-d015-49ef-b046-404cbc081d2a,2026-11-03,thompson t,DEM,2026_NV_House-2,114
+2026,NV,House,2,Teresa Benitez-Thompson,DEM,48.0,2026-07-12,350.0,Wedgewood Polls,4cad4c84-d015-49ef-b046-404cbc081d2a,2026-11-03,benitezthompson t,DEM,2026_NV_House-2,114
 2026,WA,House,3,Marie Gluesenkamp Perez,DEM,42.0,2026-07-10,500.0,Emerson College,6e479a7e-3f3a-41aa-b7dd-611ae4aa5215,2026-11-03,perez m,DEM,2026_WA_House-3,116
 2026,WA,House,3,John Braun,REP,43.0,2026-07-10,500.0,Emerson College,6e479a7e-3f3a-41aa-b7dd-611ae4aa5215,2026-11-03,braun j,REP,2026_WA_House-3,116
 2026,KY,House,6,Ralph Alvarado,REP,42.0,2026-06-28,,GQR,ce844147-e0fc-47cb-bb72-f56747f82bce,2026-11-03,alvarado r,REP,2026_KY_House-6,128
@@ -658,7 +658,7 @@ year,state,office,district,candidate,party_std,pct,end_date,sample_size,pollster
 2026,MI,House,10,Tim Greimel,DEM,42.0,2026-01-17,592.0,Public Policy Polling,24a6bdc7-2392-455c-95c2-e4dcf914df16,2026-11-03,greimel t,DEM,2026_MI_House-10,290
 2026,MI,House,10,Christina Hines,DEM,44.0,2026-01-17,592.0,Public Policy Polling,24a6bdc7-2392-455c-95c2-e4dcf914df16,2026-11-03,hines c,DEM,2026_MI_House-10,290
 2026,CA,House,40,Young Kim,REP,44.0,2026-01-19,800.0,Tulchin Research,43bcce59-3f82-4738-874d-6928c996d13e,2026-11-03,kim y,REP,2026_CA_House-40,288
-2026,CA,House,40,Esther Kim-Varet,DEM,43.0,2026-01-19,800.0,Tulchin Research,43bcce59-3f82-4738-874d-6928c996d13e,2026-11-03,varet e,DEM,2026_CA_House-40,288
+2026,CA,House,40,Esther Kim-Varet,DEM,43.0,2026-01-19,800.0,Tulchin Research,43bcce59-3f82-4738-874d-6928c996d13e,2026-11-03,kimvaret e,DEM,2026_CA_House-40,288
 2026,CA,House,40,Ken Calvert,REP,44.0,2026-01-19,800.0,Tulchin Research,43bcce59-3f82-4738-874d-6928c996d13e,2026-11-03,calvert k,REP,2026_CA_House-40,288
 2026,MN,House,1,Jake Johnson,DEM,41.0,2026-02-03,708.0,Public Policy Polling,20012cfb-ab35-4259-9d47-328c107cf770,2026-11-03,johnson j,DEM,2026_MN_House-1,273
 2026,MN,House,1,Brad Finstad,REP,44.0,2026-02-03,708.0,Public Policy Polling,20012cfb-ab35-4259-9d47-328c107cf770,2026-11-03,finstad b,REP,2026_MN_House-1,273
@@ -687,7 +687,7 @@ year,state,office,district,candidate,party_std,pct,end_date,sample_size,pollster
 2026,AZ,House,1,Gina Swoboda,REP,40.0,2025-11-17,500.0,GrayHouse,e251a4a0-a480-477f-84ea-392b35c58b52,2026-11-03,swoboda g,REP,2026_AZ_House-1,351
 2026,AZ,House,1,Thomas (Jay) Feely,REP,42.0,2025-11-17,500.0,GrayHouse,e251a4a0-a480-477f-84ea-392b35c58b52,2026-11-03,feely t,REP,2026_AZ_House-1,351
 2026,CA,House,48,Darrell Issa,REP,40.0,2025-10-26,517.0,Blueprint Polling,7646a549-0add-41ca-8f97-eb9999119af6,2026-11-03,issa d,REP,2026_CA_House-48,373
-2026,CA,House,48,Ammar Campa-Najjar,DEM,43.0,2025-10-26,517.0,Blueprint Polling,7646a549-0add-41ca-8f97-eb9999119af6,2026-11-03,najjar a,DEM,2026_CA_House-48,373
+2026,CA,House,48,Ammar Campa-Najjar,DEM,43.0,2025-10-26,517.0,Blueprint Polling,7646a549-0add-41ca-8f97-eb9999119af6,2026-11-03,campanajjar a,DEM,2026_CA_House-48,373
 2026,CO,House,5,Matt Cavanaugh,OTH,5.0,2025-11-03,450.0,Global Strategy Group,f54b098e-2666-4e2c-acc7-adb7f2312cce,2026-11-03,cavanaugh m,OTH,2026_CO_House-5,365
 2026,CO,House,5,Jeff Crank,REP,43.0,2025-11-03,450.0,Global Strategy Group,f54b098e-2666-4e2c-acc7-adb7f2312cce,2026-11-03,crank j,REP,2026_CO_House-5,365
 2026,CO,House,5,Jessica Killin,DEM,40.0,2025-11-03,450.0,Global Strategy Group,f54b098e-2666-4e2c-acc7-adb7f2312cce,2026-11-03,killin j,DEM,2026_CO_House-5,365
@@ -717,7 +717,7 @@ year,state,office,district,candidate,party_std,pct,end_date,sample_size,pollster
 2026,PA,House,10,Scott Perry,REP,43.0,2025-07-11,559.0,Public Policy Polling,09e9ea7a-1660-4fd4-bcc9-43f9692170b8,2026-11-03,perry s,REP,2026_PA_House-10,480
 2026,PA,House,10,Janelle Stelson,DEM,46.0,2025-07-11,559.0,Public Policy Polling,09e9ea7a-1660-4fd4-bcc9-43f9692170b8,2026-11-03,stelson j,DEM,2026_PA_House-10,480
 2026,ME,House,2,Paul R. LePage,REP,50.0,2025-06-23,394.0,University of New Hampshire,1a3cbc7a-9ae3-4bcd-a2dc-3a59cfc406c8,2026-11-03,lepage p,REP,2026_ME_House-2,498
-2026,IA,House,1,Mariannette Miller-Meeks,REP,39.0,2025-06-19,555.0,Public Policy Polling,0dfde340-4dea-40c1-8e1c-eba2fefde7ce,2026-11-03,meeks m,REP,2026_IA_House-1,502
+2026,IA,House,1,Mariannette Miller-Meeks,REP,39.0,2025-06-19,555.0,Public Policy Polling,0dfde340-4dea-40c1-8e1c-eba2fefde7ce,2026-11-03,millermeeks m,REP,2026_IA_House-1,502
 2026,IA,House,1,Christina Bohannan,DEM,43.0,2025-06-19,555.0,Public Policy Polling,0dfde340-4dea-40c1-8e1c-eba2fefde7ce,2026-11-03,bohannan c,DEM,2026_IA_House-1,502
 2026,ME,House,2,Paul R. LePage,REP,43.0,2025-06-10,400.0,Mellman Group,61637f40-79d4-4b9a-9b0b-256aec63804e,2026-11-03,lepage p,REP,2026_ME_House-2,511
 2026,NJ,House,2,Jeff Van Drew,REP,46.0,2025-05-22,505.0,Public Policy Polling,1f1d93d8-d35a-4c69-ac7d-93f2eb120b0a,2026-11-03,drew j,REP,2026_NJ_House-2,530
@@ -747,7 +747,7 @@ year,state,office,district,candidate,party_std,pct,end_date,sample_size,pollster
 2026,OR,Governor,,Christine Drazan,REP,48.0,2026-06-24,600.0,Public Opinion Strategies,d13e5872-52f7-4775-a9af-a77ded150eac,2026-11-03,drazan c,REP,2026_OR_Governor,132
 2026,AK,Governor,,Bill Walker,OTH,10.5,2026-07-01,,Alaska Survey Research,20f27607-a8b9-472f-bc31-aca78c152dae,2026-11-03,walker b,OTH,2026_AK_Governor,125
 2026,AK,Governor,,Click Bishop,REP,13.2,2026-07-01,,Alaska Survey Research,20f27607-a8b9-472f-bc31-aca78c152dae,2026-11-03,bishop c,REP,2026_AK_Governor,125
-2026,AK,Governor,,Jonathan Kreiss-Tomkins,DEM,15.5,2026-07-01,,Alaska Survey Research,20f27607-a8b9-472f-bc31-aca78c152dae,2026-11-03,tomkins j,DEM,2026_AK_Governor,125
+2026,AK,Governor,,Jonathan Kreiss-Tomkins,DEM,15.5,2026-07-01,,Alaska Survey Research,20f27607-a8b9-472f-bc31-aca78c152dae,2026-11-03,kreisstomkins j,DEM,2026_AK_Governor,125
 2026,AK,Governor,,Dave Bronson,REP,16.9,2026-07-01,,Alaska Survey Research,20f27607-a8b9-472f-bc31-aca78c152dae,2026-11-03,bronson d,REP,2026_AK_Governor,125
 2026,AK,Governor,,Bernadette Wilson,REP,21.8,2026-07-01,,Alaska Survey Research,20f27607-a8b9-472f-bc31-aca78c152dae,2026-11-03,wilson b,REP,2026_AK_Governor,125
 2026,AK,Governor,,Tom Begich,DEM,22.1,2026-07-01,,Alaska Survey Research,20f27607-a8b9-472f-bc31-aca78c152dae,2026-11-03,begich t,DEM,2026_AK_Governor,125
@@ -1211,9 +1211,9 @@ year,state,office,district,candidate,party_std,pct,end_date,sample_size,pollster
 2026,MA,Senate,,John Deaton,REP,30.0,2026-01-25,800.0,Cygnal,affe34718848df01f3fb8d17,2026-11-03,deaton j,REP,2026_MA_Senate,282
 2026,MA,Senate,,Ed Markey,DEM,35.0,2025-02-20,700.0,UMass Amherst / YouGov,c707ed8d1c892e7d7ee279aa,2026-11-03,markey e,DEM,2026_MA_Senate,621
 2026,MI,Senate,,Mike Rogers,REP,42.0,2026-05-07,607.0,Mitchell Research,ed5d432a5a4438894b78af8e,2026-11-03,rogers m,REP,2026_MI_Senate,180
-2026,MI,Senate,,Abdul El-Sayed,DEM,40.0,2026-05-01,600.0,Glengariff Group,2b5bc2aaed7ee3bd65c94f95,2026-11-03,sayed a,DEM,2026_MI_Senate,186
+2026,MI,Senate,,Abdul El-Sayed,DEM,40.0,2026-05-01,600.0,Glengariff Group,2b5bc2aaed7ee3bd65c94f95,2026-11-03,elsayed a,DEM,2026_MI_Senate,186
 2026,MI,Senate,,Mike Rogers,REP,45.0,2026-05-01,600.0,Glengariff Group,2b5bc2aaed7ee3bd65c94f95,2026-11-03,rogers m,REP,2026_MI_Senate,186
-2026,MI,Senate,,Abdul El-Sayed,DEM,47.0,2026-01-06,600.0,Glengariff Group,ee1bbbb9c16f643e2fb476d6,2026-11-03,sayed a,DEM,2026_MI_Senate,301
+2026,MI,Senate,,Abdul El-Sayed,DEM,47.0,2026-01-06,600.0,Glengariff Group,ee1bbbb9c16f643e2fb476d6,2026-11-03,elsayed a,DEM,2026_MI_Senate,301
 2026,MI,Senate,,Mike Rogers,REP,43.0,2026-01-06,600.0,Glengariff Group,ee1bbbb9c16f643e2fb476d6,2026-11-03,rogers m,REP,2026_MI_Senate,301
 2026,MI,Senate,,Mike Rogers,REP,45.0,2025-10-25,637.0,Rosetta Stone Communications,08b545d43851ae38d4475713,2026-11-03,rogers m,REP,2026_MI_Senate,374
 2026,MI,Senate,,Haley Stevens,DEM,42.0,2026-05-01,600.0,Glengariff Group,2b5bc2aaed7ee3bd65c94f95,2026-11-03,stevens h,DEM,2026_MI_Senate,186

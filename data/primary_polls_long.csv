@@ -541,10 +541,10 @@ year,state,office,district,party_std,candidate,cand_key,pct,pollster,sample_size
 2018,HI,Governor,,DEM,Kim Coco Iwamoto,iwamoto k,5.0,Mason-Dixon,498.0,,3/18/18,2018-08-11,2018_HI_Governor_DEM,0
 2018,HI,Governor,,DEM,Jill Tokuda,tokuda j,12.0,Mason-Dixon,498.0,,3/18/18,2018-08-11,2018_HI_Governor_DEM,0
 2018,HI,Governor,,REP,John Carroll,carroll j,22.0,Merriman River Group,219.0,,7/21/18,2018-08-11,2018_HI_Governor_REP,0
-2018,HI,Governor,,REP,Raymond L'Heureux,heureux r,4.0,Merriman River Group,219.0,,7/21/18,2018-08-11,2018_HI_Governor_REP,0
+2018,HI,Governor,,REP,Raymond L'Heureux,lheureux r,4.0,Merriman River Group,219.0,,7/21/18,2018-08-11,2018_HI_Governor_REP,0
 2018,HI,Governor,,REP,Andria Tupola,tupola a,39.0,Merriman River Group,219.0,,7/21/18,2018-08-11,2018_HI_Governor_REP,1
 2018,HI,Governor,,REP,John Carroll,carroll j,28.000000000000004,Mason-Dixon,143.0,,7/11/18,2018-08-11,2018_HI_Governor_REP,0
-2018,HI,Governor,,REP,Raymond L'Heureux,heureux r,8.0,Mason-Dixon,143.0,,7/11/18,2018-08-11,2018_HI_Governor_REP,0
+2018,HI,Governor,,REP,Raymond L'Heureux,lheureux r,8.0,Mason-Dixon,143.0,,7/11/18,2018-08-11,2018_HI_Governor_REP,0
 2018,HI,Governor,,REP,Andria Tupola,tupola a,41.0,Mason-Dixon,143.0,,7/11/18,2018-08-11,2018_HI_Governor_REP,1
 2018,HI,Governor,,REP,John Carroll,carroll j,40.0,Mason-Dixon,134.0,,3/18/18,2018-08-11,2018_HI_Governor_REP,0
 2018,HI,Governor,,REP,Andria Tupola,tupola a,28.000000000000004,Mason-Dixon,134.0,,3/18/18,2018-08-11,2018_HI_Governor_REP,1
@@ -824,47 +824,47 @@ year,state,office,district,party_std,candidate,cand_key,pct,pollster,sample_size
 2018,MI,Governor,,REP,Arlan Meekhof,meekhof a,3.0,Target-Insyght,400.0,,2/4/16,2018-08-07,2018_MI_Governor_REP,0
 2018,MI,Governor,,REP,Candice Miller,miller c,20.0,Target-Insyght,400.0,,2/4/16,2018-08-07,2018_MI_Governor_REP,0
 2018,MI,Governor,,REP,Bill Schuette,schuette b,21.0,Target-Insyght,400.0,,2/4/16,2018-08-07,2018_MI_Governor_REP,1
-2018,MI,Governor,,DEM,Abdul El-Sayed,sayed a,19.0,EPIC-MRA,1054.0,,7/22/18,2018-08-07,2018_MI_Governor_DEM,0
+2018,MI,Governor,,DEM,Abdul El-Sayed,elsayed a,19.0,EPIC-MRA,1054.0,,7/22/18,2018-08-07,2018_MI_Governor_DEM,0
 2018,MI,Governor,,DEM,Shri Thanedar,thanedar s,22.0,EPIC-MRA,1054.0,,7/22/18,2018-08-07,2018_MI_Governor_DEM,0
 2018,MI,Governor,,DEM,Gretchen Whitmer,whitmer g,49.0,EPIC-MRA,1054.0,,7/22/18,2018-08-07,2018_MI_Governor_DEM,1
-2018,MI,Governor,,DEM,Abdul El-Sayed,sayed a,27.0,Change Research (D-El-Sayed),1503.0,,7/21/18,2018-08-07,2018_MI_Governor_DEM,0
+2018,MI,Governor,,DEM,Abdul El-Sayed,elsayed a,27.0,Change Research (D-El-Sayed),1503.0,,7/21/18,2018-08-07,2018_MI_Governor_DEM,0
 2018,MI,Governor,,DEM,Shri Thanedar,thanedar s,15.0,Change Research (D-El-Sayed),1503.0,,7/21/18,2018-08-07,2018_MI_Governor_DEM,0
 2018,MI,Governor,,DEM,Gretchen Whitmer,whitmer g,33.0,Change Research (D-El-Sayed),1503.0,,7/21/18,2018-08-07,2018_MI_Governor_DEM,1
-2018,MI,Governor,,DEM,Abdul El-Sayed,sayed a,12.0,Emerson College,282.0,,7/21/18,2018-08-07,2018_MI_Governor_DEM,0
+2018,MI,Governor,,DEM,Abdul El-Sayed,elsayed a,12.0,Emerson College,282.0,,7/21/18,2018-08-07,2018_MI_Governor_DEM,0
 2018,MI,Governor,,DEM,Shri Thanedar,thanedar s,17.0,Emerson College,282.0,,7/21/18,2018-08-07,2018_MI_Governor_DEM,0
 2018,MI,Governor,,DEM,Gretchen Whitmer,whitmer g,39.0,Emerson College,282.0,,7/21/18,2018-08-07,2018_MI_Governor_DEM,1
-2018,MI,Governor,,DEM,Abdul El-Sayed,sayed a,22.0,Marist College,442.0,,7/19/18,2018-08-07,2018_MI_Governor_DEM,0
+2018,MI,Governor,,DEM,Abdul El-Sayed,elsayed a,22.0,Marist College,442.0,,7/19/18,2018-08-07,2018_MI_Governor_DEM,0
 2018,MI,Governor,,DEM,Shri Thanedar,thanedar s,27.0,Marist College,442.0,,7/19/18,2018-08-07,2018_MI_Governor_DEM,0
 2018,MI,Governor,,DEM,Gretchen Whitmer,whitmer g,31.0,Marist College,442.0,,7/19/18,2018-08-07,2018_MI_Governor_DEM,1
-2018,MI,Governor,,DEM,Abdul El-Sayed,sayed a,17.0,Target-Insyght,400.0,,6/26/18,2018-08-07,2018_MI_Governor_DEM,0
+2018,MI,Governor,,DEM,Abdul El-Sayed,elsayed a,17.0,Target-Insyght,400.0,,6/26/18,2018-08-07,2018_MI_Governor_DEM,0
 2018,MI,Governor,,DEM,Shri Thanedar,thanedar s,19.0,Target-Insyght,400.0,,6/26/18,2018-08-07,2018_MI_Governor_DEM,0
 2018,MI,Governor,,DEM,Gretchen Whitmer,whitmer g,40.0,Target-Insyght,400.0,,6/26/18,2018-08-07,2018_MI_Governor_DEM,1
 2018,MI,Governor,,DEM,Bill Cobbs,cobbs b,3.0,Glengariff Group,400.0,,4/22/18,2018-08-07,2018_MI_Governor_DEM,0
-2018,MI,Governor,,DEM,Abdul El-Sayed,sayed a,7.000000000000001,Glengariff Group,400.0,,4/22/18,2018-08-07,2018_MI_Governor_DEM,0
+2018,MI,Governor,,DEM,Abdul El-Sayed,elsayed a,7.000000000000001,Glengariff Group,400.0,,4/22/18,2018-08-07,2018_MI_Governor_DEM,0
 2018,MI,Governor,,DEM,Shri Thanedar,thanedar s,30.0,Glengariff Group,400.0,,4/22/18,2018-08-07,2018_MI_Governor_DEM,0
 2018,MI,Governor,,DEM,Gretchen Whitmer,whitmer g,26.0,Glengariff Group,400.0,,4/22/18,2018-08-07,2018_MI_Governor_DEM,1
 2018,MI,Governor,,DEM,Bill Cobbs,cobbs b,2.0,Denno Research,500.0,,4/7/18,2018-08-07,2018_MI_Governor_DEM,0
-2018,MI,Governor,,DEM,Abdul El-Sayed,sayed a,2.0,Denno Research,500.0,,4/7/18,2018-08-07,2018_MI_Governor_DEM,0
+2018,MI,Governor,,DEM,Abdul El-Sayed,elsayed a,2.0,Denno Research,500.0,,4/7/18,2018-08-07,2018_MI_Governor_DEM,0
 2018,MI,Governor,,DEM,Shri Thanedar,thanedar s,15.0,Denno Research,500.0,,4/7/18,2018-08-07,2018_MI_Governor_DEM,0
 2018,MI,Governor,,DEM,Gretchen Whitmer,whitmer g,17.0,Denno Research,500.0,,4/7/18,2018-08-07,2018_MI_Governor_DEM,1
 2018,MI,Governor,,DEM,Bill Cobbs,cobbs b,3.0,Marketing Resource Group,233.0,,3/17/18,2018-08-07,2018_MI_Governor_DEM,0
-2018,MI,Governor,,DEM,Abdul El-Sayed,sayed a,10.0,Marketing Resource Group,233.0,,3/17/18,2018-08-07,2018_MI_Governor_DEM,0
+2018,MI,Governor,,DEM,Abdul El-Sayed,elsayed a,10.0,Marketing Resource Group,233.0,,3/17/18,2018-08-07,2018_MI_Governor_DEM,0
 2018,MI,Governor,,DEM,Shri Thanedar,thanedar s,21.0,Marketing Resource Group,233.0,,3/17/18,2018-08-07,2018_MI_Governor_DEM,0
 2018,MI,Governor,,DEM,Gretchen Whitmer,whitmer g,18.0,Marketing Resource Group,233.0,,3/17/18,2018-08-07,2018_MI_Governor_DEM,1
 2018,MI,Governor,,DEM,Bill Cobbs,cobbs b,4.0,Target-Insyght,500.0,,3/8/18,2018-08-07,2018_MI_Governor_DEM,0
-2018,MI,Governor,,DEM,Abdul El-Sayed,sayed a,6.0,Target-Insyght,500.0,,3/8/18,2018-08-07,2018_MI_Governor_DEM,0
+2018,MI,Governor,,DEM,Abdul El-Sayed,elsayed a,6.0,Target-Insyght,500.0,,3/8/18,2018-08-07,2018_MI_Governor_DEM,0
 2018,MI,Governor,,DEM,Shri Thanedar,thanedar s,20.0,Target-Insyght,500.0,,3/8/18,2018-08-07,2018_MI_Governor_DEM,0
 2018,MI,Governor,,DEM,Gretchen Whitmer,whitmer g,34.0,Target-Insyght,500.0,,3/8/18,2018-08-07,2018_MI_Governor_DEM,1
 2018,MI,Governor,,DEM,Bill Cobbs,cobbs b,3.0,EPIC-MRA (D-Thanedar),600.0,,2/22/18,2018-08-07,2018_MI_Governor_DEM,0
-2018,MI,Governor,,DEM,Abdul El-Sayed,sayed a,8.0,EPIC-MRA (D-Thanedar),600.0,,2/22/18,2018-08-07,2018_MI_Governor_DEM,0
+2018,MI,Governor,,DEM,Abdul El-Sayed,elsayed a,8.0,EPIC-MRA (D-Thanedar),600.0,,2/22/18,2018-08-07,2018_MI_Governor_DEM,0
 2018,MI,Governor,,DEM,Shri Thanedar,thanedar s,24.0,EPIC-MRA (D-Thanedar),600.0,,2/22/18,2018-08-07,2018_MI_Governor_DEM,0
 2018,MI,Governor,,DEM,Gretchen Whitmer,whitmer g,34.0,EPIC-MRA (D-Thanedar),600.0,,2/22/18,2018-08-07,2018_MI_Governor_DEM,1
 2018,MI,Governor,,DEM,Bill Cobbs,cobbs b,4.0,Target-Insyght,400.0,,11/6/17,2018-08-07,2018_MI_Governor_DEM,0
-2018,MI,Governor,,DEM,Abdul El-Sayed,sayed a,13.0,Target-Insyght,400.0,,11/6/17,2018-08-07,2018_MI_Governor_DEM,0
+2018,MI,Governor,,DEM,Abdul El-Sayed,elsayed a,13.0,Target-Insyght,400.0,,11/6/17,2018-08-07,2018_MI_Governor_DEM,0
 2018,MI,Governor,,DEM,Shri Thanedar,thanedar s,2.0,Target-Insyght,400.0,,11/6/17,2018-08-07,2018_MI_Governor_DEM,0
 2018,MI,Governor,,DEM,Gretchen Whitmer,whitmer g,45.0,Target-Insyght,400.0,,11/6/17,2018-08-07,2018_MI_Governor_DEM,1
 2018,MI,Governor,,DEM,Bill Cobbs,cobbs b,8.0,Marketing Resource Group,255.0,,9/18/17,2018-08-07,2018_MI_Governor_DEM,0
-2018,MI,Governor,,DEM,Abdul El-Sayed,sayed a,4.0,Marketing Resource Group,255.0,,9/18/17,2018-08-07,2018_MI_Governor_DEM,0
+2018,MI,Governor,,DEM,Abdul El-Sayed,elsayed a,4.0,Marketing Resource Group,255.0,,9/18/17,2018-08-07,2018_MI_Governor_DEM,0
 2018,MI,Governor,,DEM,Shri Thanedar,thanedar s,3.0,Marketing Resource Group,255.0,,9/18/17,2018-08-07,2018_MI_Governor_DEM,0
 2018,MI,Governor,,DEM,Gretchen Whitmer,whitmer g,27.0,Marketing Resource Group,255.0,,9/18/17,2018-08-07,2018_MI_Governor_DEM,1
 2018,MI,Governor,,DEM,Mike Duggan,duggan m,28.999999999999996,Target-Insyght,400.0,,11/6/17,2018-08-07,2018_MI_Governor_DEM,0
@@ -872,11 +872,11 @@ year,state,office,district,party_std,candidate,cand_key,pct,pollster,sample_size
 2018,MI,Governor,,DEM,Mark Hackel,hackel m,9.0,Target-Insyght,400.0,,2/4/16,2018-08-07,2018_MI_Governor_DEM,0
 2018,MI,Governor,,DEM,Dan Kildee,kildee d,12.0,Target-Insyght,400.0,,2/4/16,2018-08-07,2018_MI_Governor_DEM,0
 2018,MI,Governor,,DEM,Gretchen Whitmer,whitmer g,16.0,Target-Insyght,400.0,,2/4/16,2018-08-07,2018_MI_Governor_DEM,1
-2018,MI,Governor,,DEM,Abdul El-Sayed,sayed a,4.0,Target-Insyght,377.0,,7/25/17,2018-08-07,2018_MI_Governor_DEM,0
+2018,MI,Governor,,DEM,Abdul El-Sayed,elsayed a,4.0,Target-Insyght,377.0,,7/25/17,2018-08-07,2018_MI_Governor_DEM,0
 2018,MI,Governor,,DEM,Geoffrey Fieger,fieger g,35.0,Target-Insyght,377.0,,7/25/17,2018-08-07,2018_MI_Governor_DEM,0
 2018,MI,Governor,,DEM,Shri Thanedar,thanedar s,3.0,Target-Insyght,377.0,,7/25/17,2018-08-07,2018_MI_Governor_DEM,0
 2018,MI,Governor,,DEM,Gretchen Whitmer,whitmer g,35.0,Target-Insyght,377.0,,7/25/17,2018-08-07,2018_MI_Governor_DEM,1
-2018,MI,Governor,,DEM,Abdul El-Sayed,sayed a,9.0,Marketing Resource Group,255.0,,5/11/17,2018-08-07,2018_MI_Governor_DEM,0
+2018,MI,Governor,,DEM,Abdul El-Sayed,elsayed a,9.0,Marketing Resource Group,255.0,,5/11/17,2018-08-07,2018_MI_Governor_DEM,0
 2018,MI,Governor,,DEM,Geoffrey Fieger,fieger g,26.0,Marketing Resource Group,255.0,,5/11/17,2018-08-07,2018_MI_Governor_DEM,0
 2018,MI,Governor,,DEM,Gretchen Whitmer,whitmer g,24.0,Marketing Resource Group,255.0,,5/11/17,2018-08-07,2018_MI_Governor_DEM,1
 2018,MN,Governor,,DEM,Erin Murphy,murphy e,19.0,Emerson College,217.0,,8/11/18,2018-08-14,2018_MN_Governor_DEM,0
@@ -992,19 +992,19 @@ year,state,office,district,party_std,candidate,cand_key,pct,pollster,sample_size
 2018,OH,Governor,,REP,Mary Taylor,taylor m,10.0,The Tarrance Group,800.0,,1/26/17,2018-05-08,2018_OH_Governor_REP,0
 2018,OH,Governor,,DEM,Richard Cordray,cordray r,31.0,Baldwin Wallace University,333.0,,5/2/18,2018-05-08,2018_OH_Governor_DEM,1
 2018,OH,Governor,,DEM,Dennis Kucinich,kucinich d,15.0,Baldwin Wallace University,333.0,,5/2/18,2018-05-08,2018_OH_Governor_DEM,0
-2018,OH,Governor,,DEM,Bill O'Neill,neill b,6.0,Baldwin Wallace University,333.0,,5/2/18,2018-05-08,2018_OH_Governor_DEM,0
+2018,OH,Governor,,DEM,Bill O'Neill,oneill b,6.0,Baldwin Wallace University,333.0,,5/2/18,2018-05-08,2018_OH_Governor_DEM,0
 2018,OH,Governor,,DEM,Joe Schiavoni,schiavoni j,6.0,Baldwin Wallace University,333.0,,5/2/18,2018-05-08,2018_OH_Governor_DEM,0
 2018,OH,Governor,,DEM,Richard Cordray,cordray r,28.000000000000004,Fallon Research,500.0,,4/7/18,2018-05-08,2018_OH_Governor_DEM,1
 2018,OH,Governor,,DEM,Dennis Kucinich,kucinich d,13.0,Fallon Research,500.0,,4/7/18,2018-05-08,2018_OH_Governor_DEM,0
-2018,OH,Governor,,DEM,Bill O'Neill,neill b,3.0,Fallon Research,500.0,,4/7/18,2018-05-08,2018_OH_Governor_DEM,0
+2018,OH,Governor,,DEM,Bill O'Neill,oneill b,3.0,Fallon Research,500.0,,4/7/18,2018-05-08,2018_OH_Governor_DEM,0
 2018,OH,Governor,,DEM,Joe Schiavoni,schiavoni j,5.0,Fallon Research,500.0,,4/7/18,2018-05-08,2018_OH_Governor_DEM,0
 2018,OH,Governor,,DEM,Richard Cordray,cordray r,21.0,SurveyUSA,509.0,,3/20/18,2018-05-08,2018_OH_Governor_DEM,1
 2018,OH,Governor,,DEM,Dennis Kucinich,kucinich d,21.0,SurveyUSA,509.0,,3/20/18,2018-05-08,2018_OH_Governor_DEM,0
-2018,OH,Governor,,DEM,Bill O'Neill,neill b,4.0,SurveyUSA,509.0,,3/20/18,2018-05-08,2018_OH_Governor_DEM,0
+2018,OH,Governor,,DEM,Bill O'Neill,oneill b,4.0,SurveyUSA,509.0,,3/20/18,2018-05-08,2018_OH_Governor_DEM,0
 2018,OH,Governor,,DEM,Connie Pillich,pillich c,5.0,SurveyUSA,509.0,,3/20/18,2018-05-08,2018_OH_Governor_DEM,0
 2018,OH,Governor,,DEM,Richard Cordray,cordray r,23.0,Fallon Research,248.0,,1/19/18,2018-05-08,2018_OH_Governor_DEM,1
 2018,OH,Governor,,DEM,Dennis Kucinich,kucinich d,16.0,Fallon Research,248.0,,1/19/18,2018-05-08,2018_OH_Governor_DEM,0
-2018,OH,Governor,,DEM,Bill O'Neill,neill b,3.0,Fallon Research,248.0,,1/19/18,2018-05-08,2018_OH_Governor_DEM,0
+2018,OH,Governor,,DEM,Bill O'Neill,oneill b,3.0,Fallon Research,248.0,,1/19/18,2018-05-08,2018_OH_Governor_DEM,0
 2018,OH,Governor,,DEM,Connie Pillich,pillich c,2.0,Fallon Research,248.0,,1/19/18,2018-05-08,2018_OH_Governor_DEM,0
 2018,OH,Governor,,DEM,Joe Schiavoni,schiavoni j,4.0,Fallon Research,248.0,,1/19/18,2018-05-08,2018_OH_Governor_DEM,0
 2018,OH,Governor,,DEM,Richard Cordray,cordray r,17.0,Luntz Global,500.0,,6/12/17,2018-05-08,2018_OH_Governor_DEM,1
@@ -1080,7 +1080,7 @@ year,state,office,district,party_std,candidate,cand_key,pct,pollster,sample_size
 2018,OR,Governor,,REP,Sam Carpenter,carpenter s,23.0,Triton Polling & Research (R-Carpenter),628.0,,3/25/18,2018-05-15,2018_OR_Governor_REP,0
 2018,OR,Governor,,REP,Greg Wooldridge,wooldridge g,4.0,Triton Polling & Research (R-Carpenter),628.0,,3/25/18,2018-05-15,2018_OR_Governor_REP,0
 2018,OR,Governor,,REP,Knute Buehler,buehler k,28.000000000000004,iCitizen,168.0,,9/28/17,2018-05-15,2018_OR_Governor_REP,1
-2018,OR,Governor,,REP,Lori Chavez-DeRemer,deremer l,8.0,iCitizen,168.0,,9/28/17,2018-05-15,2018_OR_Governor_REP,0
+2018,OR,Governor,,REP,Lori Chavez-DeRemer,chavezderemer l,8.0,iCitizen,168.0,,9/28/17,2018-05-15,2018_OR_Governor_REP,0
 2018,OR,Governor,,REP,Greg Wooldridge,wooldridge g,31.0,iCitizen,168.0,,9/28/17,2018-05-15,2018_OR_Governor_REP,0
 2018,PA,Governor,,DEM,Aryanna Berringer,berringer a,2.0,"Independence Communications & Campaigns, LLC",467.0,,2/4/18,2018-05-15,2018_PA_Governor_DEM,0
 2018,PA,Governor,,DEM,Kathi Cozzone,cozzone k,10.0,"Independence Communications & Campaigns, LLC",467.0,,2/4/18,2018-05-15,2018_PA_Governor_DEM,0
@@ -1372,7 +1372,7 @@ year,state,office,district,party_std,candidate,cand_key,pct,pollster,sample_size
 2018,FL,Senate,,REP,Marcia R. Thorne,thorne m,1.0,Saint Leo University,166.0,,11/24/17,2018-08-28,2018_FL_Senate_REP,0
 2018,FL,Senate,,REP,Ron DeSantis,desantis r,3.0,Saint Leo University,138.0,,11/30/16,2018-08-28,2018_FL_Senate_REP,0
 2018,FL,Senate,,REP,David Jolly,jolly d,6.0,Saint Leo University,138.0,,11/30/16,2018-08-28,2018_FL_Senate_REP,0
-2018,FL,Senate,,REP,Carlos López-Cantera,cantera c,3.0,Saint Leo University,138.0,,11/30/16,2018-08-28,2018_FL_Senate_REP,0
+2018,FL,Senate,,REP,Carlos López-Cantera,lopezcantera c,3.0,Saint Leo University,138.0,,11/30/16,2018-08-28,2018_FL_Senate_REP,0
 2018,FL,Senate,,REP,Tom Rooney,rooney t,3.0,Saint Leo University,138.0,,11/30/16,2018-08-28,2018_FL_Senate_REP,0
 2018,FL,Senate,,REP,Rick Scott,scott r,41.0,Saint Leo University,138.0,,11/30/16,2018-08-28,2018_FL_Senate_REP,1
 2018,IN,Senate,,REP,Luke Messer,messer l,28.999999999999996,Strategic National,300.0,,5/6/18,2018-05-08,2018_IN_Senate_REP,0
@@ -1540,10 +1540,10 @@ year,state,office,district,party_std,candidate,cand_key,pct,pollster,sample_size
 2018,TX,Senate,,REP,Rick Perry,perry r,46.0,Public Policy Polling,522.0,,8/14/16,2018-03-06,2018_TX_Senate_REP,0
 2018,TX,Senate,,DEM,Sema Hernandez,hernandez s,6.0,Dixie Strategies,,,2/23/18,2018-03-06,2018_TX_Senate_DEM,0
 2018,TX,Senate,,DEM,Edward Kimbrough,kimbrough e,4.0,Dixie Strategies,,,2/23/18,2018-03-06,2018_TX_Senate_DEM,0
-2018,TX,Senate,,DEM,Beto O'Rourke,rourke b,38.0,Dixie Strategies,,,2/23/18,2018-03-06,2018_TX_Senate_DEM,1
+2018,TX,Senate,,DEM,Beto O'Rourke,orourke b,38.0,Dixie Strategies,,,2/23/18,2018-03-06,2018_TX_Senate_DEM,1
 2018,TX,Senate,,DEM,Sema Hernandez,hernandez s,19.0,University of Texas,453.0,,2/12/18,2018-03-06,2018_TX_Senate_DEM,0
 2018,TX,Senate,,DEM,Edward Kimbrough,kimbrough e,8.0,University of Texas,453.0,,2/12/18,2018-03-06,2018_TX_Senate_DEM,0
-2018,TX,Senate,,DEM,Beto O'Rourke,rourke b,73.0,University of Texas,453.0,,2/12/18,2018-03-06,2018_TX_Senate_DEM,1
+2018,TX,Senate,,DEM,Beto O'Rourke,orourke b,73.0,University of Texas,453.0,,2/12/18,2018-03-06,2018_TX_Senate_DEM,1
 2018,UT,Senate,,REP,Mike Kennedy,kennedy m,23.0,Dan Jones & Associates,356.0,,6/18/18,2018-06-26,2018_UT_Senate_REP,0
 2018,UT,Senate,,REP,Mitt Romney,romney m,65.0,Dan Jones & Associates,356.0,,6/18/18,2018-06-26,2018_UT_Senate_REP,1
 2018,UT,Senate,,REP,Mike Kennedy,kennedy m,24.0,Dan Jones & Associates,295.0,,5/25/18,2018-06-26,2018_UT_Senate_REP,0
@@ -2067,11 +2067,11 @@ year,state,office,district,party_std,candidate,cand_key,pct,pollster,sample_size
 2020,MA,Senate,,DEM,Ed Markey,markey e,28.000000000000004,Suffolk University / Boston Globe,500.0,lv,9/5/19,2020-09-01,2020_MA_Senate_DEM,1
 2020,MA,Senate,,DEM,Joe Kennedy III,kennedy j,42.0,Suffolk University / Boston Globe,500.0,lv,9/5/19,2020-09-01,2020_MA_Senate_DEM,0
 2020,MA,Senate,,DEM,Ed Markey,markey e,25.0,Change Research,808.0,rv,8/25/19,2020-09-01,2020_MA_Senate_DEM,1
-2020,MA,Senate,,DEM,Shannon Liss-Riordan,riordan s,5.0,Change Research,808.0,rv,8/25/19,2020-09-01,2020_MA_Senate_DEM,0
+2020,MA,Senate,,DEM,Shannon Liss-Riordan,lissriordan s,5.0,Change Research,808.0,rv,8/25/19,2020-09-01,2020_MA_Senate_DEM,0
 2020,MA,Senate,,DEM,Joe Kennedy III,kennedy j,42.0,Change Research,808.0,rv,8/25/19,2020-09-01,2020_MA_Senate_DEM,0
 2020,MA,Senate,,DEM,Steve Pemberton,pemberton s,7.000000000000001,Change Research,808.0,rv,8/25/19,2020-09-01,2020_MA_Senate_DEM,0
 2020,MA,Senate,,DEM,Ed Markey,markey e,44.0,Suffolk University,370.0,lv,6/9/19,2020-09-01,2020_MA_Senate_DEM,1
-2020,MA,Senate,,DEM,Shannon Liss-Riordan,riordan s,5.0,Suffolk University,370.0,lv,6/9/19,2020-09-01,2020_MA_Senate_DEM,0
+2020,MA,Senate,,DEM,Shannon Liss-Riordan,lissriordan s,5.0,Suffolk University,370.0,lv,6/9/19,2020-09-01,2020_MA_Senate_DEM,0
 2020,MA,Senate,,DEM,Steve Pemberton,pemberton s,5.0,Suffolk University,370.0,lv,6/9/19,2020-09-01,2020_MA_Senate_DEM,0
 2020,MA,Senate,,DEM,Ed Markey,markey e,26.0,YouGov / UMass Amherst,635.0,rv,11/14/18,2020-09-01,2020_MA_Senate_DEM,1
 2020,MA,Senate,,DEM,Maura Healey,healey m,27.0,YouGov / UMass Amherst,635.0,rv,11/14/18,2020-09-01,2020_MA_Senate_DEM,0
@@ -2258,7 +2258,7 @@ year,state,office,district,party_std,candidate,cand_key,pct,pollster,sample_size
 2020,TX,Senate,,DEM,Chris Bell,bell c,4.0,Beacon Research,408.0,lv,11/21/19,2020-03-03,2020_TX_Senate_DEM,0
 2020,TX,Senate,,DEM,MJ Hegar,hegar m,6.0,Beacon Research,408.0,lv,11/21/19,2020-03-03,2020_TX_Senate_DEM,1
 2020,TX,Senate,,DEM,Sema Hernandez,hernandez s,6.0,Beacon Research,408.0,lv,11/21/19,2020-03-03,2020_TX_Senate_DEM,0
-2020,TX,Senate,,DEM,Beto O'Rourke,rourke b,57.99999999999999,Beacon Research,408.0,lv,11/21/19,2020-03-03,2020_TX_Senate_DEM,0
+2020,TX,Senate,,DEM,Beto O'Rourke,orourke b,57.99999999999999,Beacon Research,408.0,lv,11/21/19,2020-03-03,2020_TX_Senate_DEM,0
 2020,TX,Senate,,DEM,Royce West,west r,13.0,Beacon Research,408.0,lv,11/21/19,2020-03-03,2020_TX_Senate_DEM,0
 2020,TX,Senate,,DEM,Chris Bell,bell c,7.000000000000001,University of Texas at Tyler,427.0,rv,11/14/19,2020-03-03,2020_TX_Senate_DEM,0
 2020,TX,Senate,,DEM,Amanda Edwards,edwards a,8.0,University of Texas at Tyler,427.0,rv,11/14/19,2020-03-03,2020_TX_Senate_DEM,0
@@ -2300,11 +2300,11 @@ year,state,office,district,party_std,candidate,cand_key,pct,pollster,sample_size
 2020,TX,Senate,,REP,John Cornyn,cornyn j,28.999999999999996,Emerson College,799.0,rv,4/28/19,2020-03-03,2020_TX_Senate_REP,1
 2020,TX,Senate,,DEM,MJ Hegar,hegar m,12.0,Emerson College,799.0,rv,4/28/19,2020-03-03,2020_TX_Senate_DEM,1
 2020,TX,Senate,,REP,John Cornyn,cornyn j,46.0,Quinnipiac University,1222.0,rv,2/25/19,2020-03-03,2020_TX_Senate_REP,1
-2020,TX,Senate,,DEM,Beto O'Rourke,rourke b,46.0,Quinnipiac University,1222.0,rv,2/25/19,2020-03-03,2020_TX_Senate_DEM,0
+2020,TX,Senate,,DEM,Beto O'Rourke,orourke b,46.0,Quinnipiac University,1222.0,rv,2/25/19,2020-03-03,2020_TX_Senate_DEM,0
 2020,TX,Senate,,REP,John Cornyn,cornyn j,47.0,Public Policy Polling,743.0,rv,2/14/19,2020-03-03,2020_TX_Senate_REP,1
-2020,TX,Senate,,DEM,Beto O'Rourke,rourke b,45.0,Public Policy Polling,743.0,rv,2/14/19,2020-03-03,2020_TX_Senate_DEM,0
+2020,TX,Senate,,DEM,Beto O'Rourke,orourke b,45.0,Public Policy Polling,743.0,rv,2/14/19,2020-03-03,2020_TX_Senate_DEM,0
 2020,TX,Senate,,REP,John Cornyn,cornyn j,50.0,Atlantic Media & Research,504.0,lv,1/11/19,2020-03-03,2020_TX_Senate_REP,1
-2020,TX,Senate,,DEM,Beto O'Rourke,rourke b,37.0,Atlantic Media & Research,504.0,lv,1/11/19,2020-03-03,2020_TX_Senate_DEM,0
+2020,TX,Senate,,DEM,Beto O'Rourke,orourke b,37.0,Atlantic Media & Research,504.0,lv,1/11/19,2020-03-03,2020_TX_Senate_DEM,0
 2020,TX,Senate,,REP,John Cornyn,cornyn j,43.0,Univision / UH,1004.0,rv,2/26/20,2020-03-03,2020_TX_Senate_REP,1
 2020,TX,Senate,,REP,John Cornyn,cornyn j,41.0,Univision / UH,1004.0,rv,9/6/19,2020-03-03,2020_TX_Senate_REP,1
 2020,WY,Senate,,REP,Liz Cheney,cheney l,56.00000000000001,The Tarrance Group,502.0,lv,6/24/19,2020-08-18,2020_WY_Senate_REP,0
@@ -2460,13 +2460,13 @@ year,state,office,district,party_std,candidate,cand_key,pct,pollster,sample_size
 2022,AL,Governor,,DEM,Patricia Jamieson,jamieson p,2.0,Emerson College,294.0,lv,5/16/22,2022-05-24,2022_AL_Governor_DEM,0
 2022,AL,Governor,,DEM,Arthur Kennedy,kennedy a,5.0,Emerson College,294.0,lv,5/16/22,2022-05-24,2022_AL_Governor_DEM,0
 2022,AL,Governor,,DEM,Chad Martin,martin c,7.000000000000001,Emerson College,294.0,lv,5/16/22,2022-05-24,2022_AL_Governor_DEM,0
-2022,AL,Governor,,DEM,Malika Sanders-Fortier,fortier m,5.0,Emerson College,294.0,lv,5/16/22,2022-05-24,2022_AL_Governor_DEM,0
+2022,AL,Governor,,DEM,Malika Sanders-Fortier,sandersfortier m,5.0,Emerson College,294.0,lv,5/16/22,2022-05-24,2022_AL_Governor_DEM,0
 2022,AL,Governor,,DEM,Doug Smith,smith d,3.0,Emerson College,294.0,lv,5/16/22,2022-05-24,2022_AL_Governor_DEM,0
 2022,AL,Governor,,DEM,Yolanda Flowers,flowers y,11.0,Emerson College,359.0,lv,3/27/22,2022-05-24,2022_AL_Governor_DEM,1
 2022,AL,Governor,,DEM,Patricia Jamieson,jamieson p,3.0,Emerson College,359.0,lv,3/27/22,2022-05-24,2022_AL_Governor_DEM,0
 2022,AL,Governor,,DEM,Arthur Kennedy,kennedy a,7.000000000000001,Emerson College,359.0,lv,3/27/22,2022-05-24,2022_AL_Governor_DEM,0
 2022,AL,Governor,,DEM,Chad Martin,martin c,4.0,Emerson College,359.0,lv,3/27/22,2022-05-24,2022_AL_Governor_DEM,0
-2022,AL,Governor,,DEM,Malika Sanders-Fortier,fortier m,8.0,Emerson College,359.0,lv,3/27/22,2022-05-24,2022_AL_Governor_DEM,0
+2022,AL,Governor,,DEM,Malika Sanders-Fortier,sandersfortier m,8.0,Emerson College,359.0,lv,3/27/22,2022-05-24,2022_AL_Governor_DEM,0
 2022,AL,Governor,,DEM,Doug Smith,smith d,8.0,Emerson College,359.0,lv,3/27/22,2022-05-24,2022_AL_Governor_DEM,0
 2022,AR,Governor,,REP,Sarah Huckabee Sanders,sanders s,73.0,Hendrix College,802.0,lv,5/2/22,2022-05-24,2022_AR_Governor_REP,1
 2022,AR,Governor,,REP,Francis Washburn,washburn f,17.0,Hendrix College,802.0,lv,5/2/22,2022-05-24,2022_AR_Governor_REP,0
@@ -2478,7 +2478,7 @@ year,state,office,district,party_std,candidate,cand_key,pct,pollster,sample_size
 2022,AR,Governor,,REP,Sarah Huckabee Sanders,sanders s,43.0,Hendrix College,535.0,lv,5/31/21,2022-05-24,2022_AR_Governor_REP,1
 2022,AR,Governor,,DEM,Anthony Bland,bland a,3.0,Hendrix College,597.0,lv,5/2/22,2022-05-24,2022_AR_Governor_DEM,0
 2022,AR,Governor,,DEM,Chris Jones,jones c,60.0,Hendrix College,597.0,lv,5/2/22,2022-05-24,2022_AR_Governor_DEM,1
-2022,AR,Governor,,DEM,Supha Xayprasith-Mays,mays s,2.0,Hendrix College,597.0,lv,5/2/22,2022-05-24,2022_AR_Governor_DEM,0
+2022,AR,Governor,,DEM,Supha Xayprasith-Mays,xayprasithmays s,2.0,Hendrix College,597.0,lv,5/2/22,2022-05-24,2022_AR_Governor_DEM,0
 2022,AR,Governor,,DEM,Jay Martin,martin j,3.0,Hendrix College,597.0,lv,5/2/22,2022-05-24,2022_AR_Governor_DEM,0
 2022,AR,Governor,,DEM,James Russell,russell j,2.0,Hendrix College,597.0,lv,5/2/22,2022-05-24,2022_AR_Governor_DEM,0
 2022,AR,Governor,,REP,Sarah Huckabee Sanders,sanders s,57.99999999999999,Remington Research Group,827.0,lv,2/27/22,2022-05-24,2022_AR_Governor_REP,1
@@ -2812,15 +2812,15 @@ year,state,office,district,party_std,candidate,cand_key,pct,pollster,sample_size
 2022,HI,Governor,,DEM,Keith Amemiya,amemiya k,19.0,Mason-Dixon,317.0,lv,7/17/22,2022-08-13,2022_HI_Governor_DEM,0
 2022,HI,Governor,,DEM,Ikaika Anderson,anderson i,18.0,Mason-Dixon,317.0,lv,7/17/22,2022-08-13,2022_HI_Governor_DEM,0
 2022,HI,Governor,,DEM,Sylvia Luke,luke s,21.0,Mason-Dixon,317.0,lv,7/17/22,2022-08-13,2022_HI_Governor_DEM,0
-2022,HI,Governor,,DEM,Sherry Menor-McNamara,mcnamara s,4.0,Mason-Dixon,317.0,lv,7/17/22,2022-08-13,2022_HI_Governor_DEM,0
+2022,HI,Governor,,DEM,Sherry Menor-McNamara,menormcnamara s,4.0,Mason-Dixon,317.0,lv,7/17/22,2022-08-13,2022_HI_Governor_DEM,0
 2022,HI,Governor,,DEM,Keith Amemiya,amemiya k,10.0,MRG Research,782.0,lv,6/30/22,2022-08-13,2022_HI_Governor_DEM,0
 2022,HI,Governor,,DEM,Ikaika Anderson,anderson i,14.000000000000002,MRG Research,782.0,lv,6/30/22,2022-08-13,2022_HI_Governor_DEM,0
 2022,HI,Governor,,DEM,Sylvia Luke,luke s,20.0,MRG Research,782.0,lv,6/30/22,2022-08-13,2022_HI_Governor_DEM,0
-2022,HI,Governor,,DEM,Sherry Menor-McNamara,mcnamara s,7.000000000000001,MRG Research,782.0,lv,6/30/22,2022-08-13,2022_HI_Governor_DEM,0
+2022,HI,Governor,,DEM,Sherry Menor-McNamara,menormcnamara s,7.000000000000001,MRG Research,782.0,lv,6/30/22,2022-08-13,2022_HI_Governor_DEM,0
 2022,HI,Governor,,DEM,Keith Amemiya,amemiya k,8.0,Mason-Dixon,320.0,lv,1/28/22,2022-08-13,2022_HI_Governor_DEM,0
 2022,HI,Governor,,DEM,Ikaika Anderson,anderson i,9.0,Mason-Dixon,320.0,lv,1/28/22,2022-08-13,2022_HI_Governor_DEM,0
 2022,HI,Governor,,DEM,Sylvia Luke,luke s,3.0,Mason-Dixon,320.0,lv,1/28/22,2022-08-13,2022_HI_Governor_DEM,0
-2022,HI,Governor,,DEM,Sherry Menor-McNamara,mcnamara s,7.000000000000001,Mason-Dixon,320.0,lv,1/28/22,2022-08-13,2022_HI_Governor_DEM,0
+2022,HI,Governor,,DEM,Sherry Menor-McNamara,menormcnamara s,7.000000000000001,Mason-Dixon,320.0,lv,1/28/22,2022-08-13,2022_HI_Governor_DEM,0
 2022,HI,Governor,,DEM,Jill Tokuda,tokuda j,13.0,Mason-Dixon,320.0,lv,1/28/22,2022-08-13,2022_HI_Governor_DEM,0
 2022,HI,Governor,,REP,Duke Aiona,aiona d,48.0,Mason-Dixon,133.0,lv,7/17/22,2022-08-13,2022_HI_Governor_REP,1
 2022,HI,Governor,,REP,B.J. Penn,penn b,26.0,Mason-Dixon,133.0,lv,7/17/22,2022-08-13,2022_HI_Governor_REP,0
@@ -2944,15 +2944,15 @@ year,state,office,district,party_std,candidate,cand_key,pct,pollster,sample_size
 2022,MA,Governor,,REP,Karyn Polito,polito k,22.0,"Advantage, Inc.",221.0,lv,2/26/21,2022-09-06,2022_MA_Governor_REP,0
 2022,MA,Governor,,REP,Leah Cole Allen,allen l,13.0,"Advantage, Inc.",187.0,lv,8/23/22,2022-09-06,2022_MA_Governor_REP,0
 2022,MA,Governor,,REP,Kate Campanale,campanale k,19.0,"Advantage, Inc.",187.0,lv,8/23/22,2022-09-06,2022_MA_Governor_REP,0
-2022,MA,Governor,,DEM,Sonia Chang-Díaz,diaz s,14.000000000000002,UMass Amherst,500.0,lv,8/29/22,2022-09-06,2022_MA_Governor_DEM,0
+2022,MA,Governor,,DEM,Sonia Chang-Díaz,changdiaz s,14.000000000000002,UMass Amherst,500.0,lv,8/29/22,2022-09-06,2022_MA_Governor_DEM,0
 2022,MA,Governor,,DEM,Maura Healey,healey m,73.0,UMass Amherst,500.0,lv,8/29/22,2022-09-06,2022_MA_Governor_DEM,1
-2022,MA,Governor,,DEM,Sonia Chang-Díaz,diaz s,20.0,UMass Amherst,557.0,lv,6/21/22,2022-09-06,2022_MA_Governor_DEM,0
+2022,MA,Governor,,DEM,Sonia Chang-Díaz,changdiaz s,20.0,UMass Amherst,557.0,lv,6/21/22,2022-09-06,2022_MA_Governor_DEM,0
 2022,MA,Governor,,DEM,Maura Healey,healey m,53.0,UMass Amherst,557.0,lv,6/21/22,2022-09-06,2022_MA_Governor_DEM,1
-2022,MA,Governor,,DEM,Sonia Chang-Díaz,diaz s,8.0,Emerson College,488.0,lv,5/4/22,2022-09-06,2022_MA_Governor_DEM,0
+2022,MA,Governor,,DEM,Sonia Chang-Díaz,changdiaz s,8.0,Emerson College,488.0,lv,5/4/22,2022-09-06,2022_MA_Governor_DEM,0
 2022,MA,Governor,,DEM,Maura Healey,healey m,34.0,Emerson College,488.0,lv,5/4/22,2022-09-06,2022_MA_Governor_DEM,1
-2022,MA,Governor,,DEM,Sonia Chang-Díaz,diaz s,17.0,UMass Lowell,800.0,lv,4/11/22,2022-09-06,2022_MA_Governor_DEM,0
+2022,MA,Governor,,DEM,Sonia Chang-Díaz,changdiaz s,17.0,UMass Lowell,800.0,lv,4/11/22,2022-09-06,2022_MA_Governor_DEM,0
 2022,MA,Governor,,DEM,Maura Healey,healey m,62.0,UMass Lowell,800.0,lv,4/11/22,2022-09-06,2022_MA_Governor_DEM,1
-2022,MA,Governor,,DEM,Sonia Chang-Díaz,diaz s,12.0,MassINC Polling Group,310.0,lv,1/20/22,2022-09-06,2022_MA_Governor_DEM,0
+2022,MA,Governor,,DEM,Sonia Chang-Díaz,changdiaz s,12.0,MassINC Polling Group,310.0,lv,1/20/22,2022-09-06,2022_MA_Governor_DEM,0
 2022,MA,Governor,,DEM,Maura Healey,healey m,48.0,MassINC Polling Group,310.0,lv,1/20/22,2022-09-06,2022_MA_Governor_DEM,1
 2022,MA,Governor,,DEM,Danielle Allen,allen d,2.0,MassINC Polling Group,310.0,lv,1/20/22,2022-09-06,2022_MA_Governor_DEM,0
 2022,MA,Governor,,DEM,Marty Walsh,walsh m,32.0,MassINC Polling Group,310.0,lv,1/20/22,2022-09-06,2022_MA_Governor_DEM,0
@@ -3007,8 +3007,8 @@ year,state,office,district,party_std,candidate,cand_key,pct,pollster,sample_size
 2022,MA,Governor,,DEM,Danielle Allen,allen d,12.0,YouGov / UMass Amherst,750.0,a,11/16/21,2022-09-06,2022_MA_Governor_DEM,0
 2022,MA,Governor,,REP,Charlie Baker,baker c,30.0,YouGov / UMass Amherst,800.0,a,3/9/21,2022-09-06,2022_MA_Governor_REP,0
 2022,MA,Governor,,DEM,Danielle Allen,allen d,14.000000000000002,YouGov / UMass Amherst,800.0,a,3/9/21,2022-09-06,2022_MA_Governor_DEM,0
-2022,MA,Governor,,DEM,Sonia Chang-Díaz,diaz s,16.0,YouGov / UMass Amherst,750.0,a,11/16/21,2022-09-06,2022_MA_Governor_DEM,0
-2022,MA,Governor,,DEM,Sonia Chang-Díaz,diaz s,16.0,YouGov / UMass Amherst,800.0,a,3/9/21,2022-09-06,2022_MA_Governor_DEM,0
+2022,MA,Governor,,DEM,Sonia Chang-Díaz,changdiaz s,16.0,YouGov / UMass Amherst,750.0,a,11/16/21,2022-09-06,2022_MA_Governor_DEM,0
+2022,MA,Governor,,DEM,Sonia Chang-Díaz,changdiaz s,16.0,YouGov / UMass Amherst,800.0,a,3/9/21,2022-09-06,2022_MA_Governor_DEM,0
 2022,MA,Governor,,DEM,Benjamin Downing,downing b,11.0,YouGov / UMass Amherst,750.0,a,11/16/21,2022-09-06,2022_MA_Governor_DEM,0
 2022,MA,Governor,,DEM,Benjamin Downing,downing b,11.0,YouGov / UMass Amherst,800.0,a,3/9/21,2022-09-06,2022_MA_Governor_DEM,0
 2022,MA,Governor,,REP,Charlie Baker,baker c,33.0,Change Research / Northwind Strategies,789.0,lv,11/19/21,2022-09-06,2022_MA_Governor_REP,0
@@ -3021,8 +3021,8 @@ year,state,office,district,party_std,candidate,cand_key,pct,pollster,sample_size
 2022,MA,Governor,,REP,Karyn Polito,polito k,21.0,YouGov / UMass Amherst,750.0,a,11/16/21,2022-09-06,2022_MA_Governor_REP,0
 2022,MA,Governor,,REP,Karyn Polito,polito k,21.0,Change Research / Northwind Strategies,789.0,lv,11/19/21,2022-09-06,2022_MA_Governor_REP,0
 2022,MA,Governor,,REP,Geoff Diehl,diehl g,21.0,Change Research / Northwind Strategies,789.0,lv,11/19/21,2022-09-06,2022_MA_Governor_REP,1
-2022,MA,Governor,,DEM,Sonia Chang-Díaz,diaz s,54.0,UMass Lowell,1000.0,lv,6/15/22,2022-09-06,2022_MA_Governor_DEM,0
-2022,MA,Governor,,DEM,Sonia Chang-Díaz,diaz s,45.0,Suffolk University,651.0,lv,4/28/22,2022-09-06,2022_MA_Governor_DEM,0
+2022,MA,Governor,,DEM,Sonia Chang-Díaz,changdiaz s,54.0,UMass Lowell,1000.0,lv,6/15/22,2022-09-06,2022_MA_Governor_DEM,0
+2022,MA,Governor,,DEM,Sonia Chang-Díaz,changdiaz s,45.0,Suffolk University,651.0,lv,4/28/22,2022-09-06,2022_MA_Governor_DEM,0
 2022,MA,Governor,,REP,Chris Doughty,doughty c,30.0,UMass Lowell,1000.0,lv,6/15/22,2022-09-06,2022_MA_Governor_REP,0
 2022,MA,Governor,,REP,Chris Doughty,doughty c,27.0,Suffolk University,651.0,lv,4/28/22,2022-09-06,2022_MA_Governor_REP,0
 2022,MA,Governor,,REP,Chris Doughty,doughty c,22.0,Suffolk University,493.0,lv,7/23/22,2022-09-06,2022_MA_Governor_REP,0
@@ -3295,7 +3295,7 @@ year,state,office,district,party_std,candidate,cand_key,pct,pollster,sample_size
 2022,NY,Governor,,DEM,Kathy Hochul,hochul k,24.0,Marist College,389.0,rv,10/7/21,2022-06-28,2022_NY_Governor_DEM,1
 2022,NY,Governor,,DEM,Jumaane Williams,williams j,9.0,Marist College,389.0,rv,10/7/21,2022-06-28,2022_NY_Governor_DEM,0
 2022,NY,Governor,,DEM,Kathy Hochul,hochul k,45.0,co/efficient,814.0,lv,8/16/21,2022-06-28,2022_NY_Governor_DEM,1
-2022,NY,Governor,,DEM,Alexandria Ocasio-Cortez,cortez a,26.0,co/efficient,814.0,lv,8/16/21,2022-06-28,2022_NY_Governor_DEM,0
+2022,NY,Governor,,DEM,Alexandria Ocasio-Cortez,ocasiocortez a,26.0,co/efficient,814.0,lv,8/16/21,2022-06-28,2022_NY_Governor_DEM,0
 2022,NY,Governor,,DEM,Steven Bellone,bellone s,2.0,Slingshot Strategies,600.0,lv,8/7/21,2022-06-28,2022_NY_Governor_DEM,0
 2022,NY,Governor,,DEM,Preet Bharara,bharara p,4.0,Slingshot Strategies,600.0,lv,8/7/21,2022-06-28,2022_NY_Governor_DEM,0
 2022,NY,Governor,,DEM,Alessandra Biaggi,biaggi a,1.0,Slingshot Strategies,600.0,lv,8/7/21,2022-06-28,2022_NY_Governor_DEM,0
@@ -3307,7 +3307,7 @@ year,state,office,district,party_std,candidate,cand_key,pct,pollster,sample_size
 2022,NY,Governor,,DEM,Kathy Hochul,hochul k,4.0,Slingshot Strategies,600.0,lv,8/7/21,2022-06-28,2022_NY_Governor_DEM,1
 2022,NY,Governor,,DEM,Letitia James,james l,9.0,Slingshot Strategies,600.0,lv,8/7/21,2022-06-28,2022_NY_Governor_DEM,0
 2022,NY,Governor,,DEM,Sean Patrick Maloney,maloney s,2.0,Slingshot Strategies,600.0,lv,8/7/21,2022-06-28,2022_NY_Governor_DEM,0
-2022,NY,Governor,,DEM,Alexandria Ocasio-Cortez,cortez a,8.0,Slingshot Strategies,600.0,lv,8/7/21,2022-06-28,2022_NY_Governor_DEM,0
+2022,NY,Governor,,DEM,Alexandria Ocasio-Cortez,ocasiocortez a,8.0,Slingshot Strategies,600.0,lv,8/7/21,2022-06-28,2022_NY_Governor_DEM,0
 2022,NY,Governor,,DEM,Tom Suozzi,suozzi t,2.0,Slingshot Strategies,600.0,lv,8/7/21,2022-06-28,2022_NY_Governor_DEM,0
 2022,NY,Governor,,DEM,Scott Stringer,stringer s,3.0,Slingshot Strategies,600.0,lv,8/7/21,2022-06-28,2022_NY_Governor_DEM,0
 2022,NY,Governor,,DEM,Jumaane Williams,williams j,2.0,Slingshot Strategies,600.0,lv,8/7/21,2022-06-28,2022_NY_Governor_DEM,0
@@ -3391,7 +3391,7 @@ year,state,office,district,party_std,candidate,cand_key,pct,pollster,sample_size
 2022,NY,Governor,,DEM,Jumaane Williams,williams j,43.0,John Zogby Strategies,1003.0,lv,3/3/22,2022-06-28,2022_NY_Governor_DEM,0
 2022,NY,Governor,,REP,Elise Stefanik,stefanik e,37.0,Zogby Analytics,810.0,lv,2/5/21,2022-06-28,2022_NY_Governor_REP,0
 2022,NY,Governor,,DEM,Andrew Cuomo,cuomo a,44.0,Data for Progress,947.0,lv,4/4/22,2022-06-28,2022_NY_Governor_DEM,0
-2022,NY,Governor,,DEM,Alexandria Ocasio-Cortez,cortez a,48.0,Zogby Analytics,810.0,lv,2/5/21,2022-06-28,2022_NY_Governor_DEM,0
+2022,NY,Governor,,DEM,Alexandria Ocasio-Cortez,ocasiocortez a,48.0,Zogby Analytics,810.0,lv,2/5/21,2022-06-28,2022_NY_Governor_DEM,0
 2022,NY,Governor,,DEM,Andrew Cuomo,cuomo a,48.0,Siena College,793.0,rv,5/20/21,2022-06-28,2022_NY_Governor_DEM,0
 2022,NY,Governor,,DEM,Letitia James,james l,46.0,Siena College,793.0,rv,5/20/21,2022-06-28,2022_NY_Governor_DEM,0
 2022,NY,Governor,,DEM,Kathy Hochul,hochul k,46.0,Siena College,802.0,rv,6/13/22,2022-06-28,2022_NY_Governor_DEM,1
@@ -3673,7 +3673,7 @@ year,state,office,district,party_std,candidate,cand_key,pct,pollster,sample_size
 2022,TX,Governor,,DEM,Inocencio Barrientez,barrientez i,1.0,Emerson College,388.0,lv,2/22/22,2022-03-01,2022_TX_Governor_DEM,0
 2022,TX,Governor,,DEM,Michael Cooper,cooper m,5.0,Emerson College,388.0,lv,2/22/22,2022-03-01,2022_TX_Governor_DEM,0
 2022,TX,Governor,,DEM,Joy Diaz,diaz j,4.0,Emerson College,388.0,lv,2/22/22,2022-03-01,2022_TX_Governor_DEM,0
-2022,TX,Governor,,DEM,Beto O'Rourke,rourke b,78.0,Emerson College,388.0,lv,2/22/22,2022-03-01,2022_TX_Governor_DEM,1
+2022,TX,Governor,,DEM,Beto O'Rourke,orourke b,78.0,Emerson College,388.0,lv,2/22/22,2022-03-01,2022_TX_Governor_DEM,1
 2022,TX,Governor,,DEM,Rich Wakeland,wakeland r,2.0,Emerson College,388.0,lv,2/22/22,2022-03-01,2022_TX_Governor_DEM,0
 2022,TX,Governor,,DEM,Inocencio Barrientez,barrientez i,2.0,UT Tyler,479.0,lv,2/15/22,2022-03-01,2022_TX_Governor_DEM,0
 2022,TX,Governor,,DEM,Michael Cooper,cooper m,3.0,UT Tyler,479.0,lv,2/15/22,2022-03-01,2022_TX_Governor_DEM,0
@@ -3681,12 +3681,12 @@ year,state,office,district,party_std,candidate,cand_key,pct,pollster,sample_size
 2022,TX,Governor,,DEM,Jack Foster Jr.,foster j,2.0,UT Tyler,479.0,lv,2/15/22,2022-03-01,2022_TX_Governor_DEM,0
 2022,TX,Governor,,DEM,Deirdre Gilbert,gilbert d,2.0,UT Tyler,479.0,lv,2/15/22,2022-03-01,2022_TX_Governor_DEM,0
 2022,TX,Governor,,DEM,Star Locke,locke s,2.0,UT Tyler,479.0,lv,2/15/22,2022-03-01,2022_TX_Governor_DEM,0
-2022,TX,Governor,,DEM,Beto O'Rourke,rourke b,68.0,UT Tyler,479.0,lv,2/15/22,2022-03-01,2022_TX_Governor_DEM,1
+2022,TX,Governor,,DEM,Beto O'Rourke,orourke b,68.0,UT Tyler,479.0,lv,2/15/22,2022-03-01,2022_TX_Governor_DEM,1
 2022,TX,Governor,,DEM,Rich Wakeland,wakeland r,2.0,UT Tyler,479.0,lv,2/15/22,2022-03-01,2022_TX_Governor_DEM,0
 2022,TX,Governor,,DEM,Inocencio Barrientez,barrientez i,2.0,YouGov / UT,348.0,lv,2/7/22,2022-03-01,2022_TX_Governor_DEM,0
 2022,TX,Governor,,DEM,Michael Cooper,cooper m,1.0,YouGov / UT,348.0,lv,2/7/22,2022-03-01,2022_TX_Governor_DEM,0
 2022,TX,Governor,,DEM,Joy Diaz,diaz j,2.0,YouGov / UT,348.0,lv,2/7/22,2022-03-01,2022_TX_Governor_DEM,0
-2022,TX,Governor,,DEM,Beto O'Rourke,rourke b,93.0,YouGov / UT,348.0,lv,2/7/22,2022-03-01,2022_TX_Governor_DEM,1
+2022,TX,Governor,,DEM,Beto O'Rourke,orourke b,93.0,YouGov / UT,348.0,lv,2/7/22,2022-03-01,2022_TX_Governor_DEM,1
 2022,TX,Governor,,DEM,Rich Wakeland,wakeland r,1.0,YouGov / UT,348.0,lv,2/7/22,2022-03-01,2022_TX_Governor_DEM,0
 2022,TX,Governor,,DEM,Inocencio Barrientez,barrientez i,1.0,UT Tyler,459.0,lv,1/25/22,2022-03-01,2022_TX_Governor_DEM,0
 2022,TX,Governor,,DEM,Michael Cooper,cooper m,6.0,UT Tyler,459.0,lv,1/25/22,2022-03-01,2022_TX_Governor_DEM,0
@@ -3694,25 +3694,25 @@ year,state,office,district,party_std,candidate,cand_key,pct,pollster,sample_size
 2022,TX,Governor,,DEM,Jack Foster Jr.,foster j,2.0,UT Tyler,459.0,lv,1/25/22,2022-03-01,2022_TX_Governor_DEM,0
 2022,TX,Governor,,DEM,Deirdre Gilbert,gilbert d,1.0,UT Tyler,459.0,lv,1/25/22,2022-03-01,2022_TX_Governor_DEM,0
 2022,TX,Governor,,DEM,Star Locke,locke s,1.0,UT Tyler,459.0,lv,1/25/22,2022-03-01,2022_TX_Governor_DEM,0
-2022,TX,Governor,,DEM,Beto O'Rourke,rourke b,57.99999999999999,UT Tyler,459.0,lv,1/25/22,2022-03-01,2022_TX_Governor_DEM,1
+2022,TX,Governor,,DEM,Beto O'Rourke,orourke b,57.99999999999999,UT Tyler,459.0,lv,1/25/22,2022-03-01,2022_TX_Governor_DEM,1
 2022,TX,Governor,,DEM,Rich Wakeland,wakeland r,0.0,UT Tyler,459.0,lv,1/25/22,2022-03-01,2022_TX_Governor_DEM,0
 2022,TX,Governor,,DEM,Inocencio Barrientez,barrientez i,3.0,YouGov / UH,616.0,lv,1/24/22,2022-03-01,2022_TX_Governor_DEM,0
 2022,TX,Governor,,DEM,Michael Cooper,cooper m,4.0,YouGov / UH,616.0,lv,1/24/22,2022-03-01,2022_TX_Governor_DEM,0
 2022,TX,Governor,,DEM,Joy Diaz,diaz j,3.0,YouGov / UH,616.0,lv,1/24/22,2022-03-01,2022_TX_Governor_DEM,0
-2022,TX,Governor,,DEM,Beto O'Rourke,rourke b,73.0,YouGov / UH,616.0,lv,1/24/22,2022-03-01,2022_TX_Governor_DEM,1
+2022,TX,Governor,,DEM,Beto O'Rourke,orourke b,73.0,YouGov / UH,616.0,lv,1/24/22,2022-03-01,2022_TX_Governor_DEM,1
 2022,TX,Governor,,DEM,Rich Wakeland,wakeland r,1.0,YouGov / UH,616.0,lv,1/24/22,2022-03-01,2022_TX_Governor_DEM,0
-2022,TX,Governor,,DEM,Beto O'Rourke,rourke b,70.0,YouGov / UT / TT,436.0,rv,10/31/21,2022-03-01,2022_TX_Governor_DEM,1
+2022,TX,Governor,,DEM,Beto O'Rourke,orourke b,70.0,YouGov / UT / TT,436.0,rv,10/31/21,2022-03-01,2022_TX_Governor_DEM,1
 2022,TX,Governor,,REP,Greg Abbott,abbott g,45.0,Climate Nexus,806.0,lv,2/9/22,2022-03-01,2022_TX_Governor_REP,1
-2022,TX,Governor,,DEM,Beto O'Rourke,rourke b,40.0,Climate Nexus,806.0,lv,2/9/22,2022-03-01,2022_TX_Governor_DEM,1
+2022,TX,Governor,,DEM,Beto O'Rourke,orourke b,40.0,Climate Nexus,806.0,lv,2/9/22,2022-03-01,2022_TX_Governor_DEM,1
 2022,TX,Governor,,REP,Greg Abbott,abbott g,52.0,Quinnipiac University,1224.0,rv,12/6/21,2022-03-01,2022_TX_Governor_REP,1
-2022,TX,Governor,,DEM,Beto O'Rourke,rourke b,37.0,Quinnipiac University,1224.0,rv,12/6/21,2022-03-01,2022_TX_Governor_DEM,1
-2022,TX,Governor,,DEM,Beto O'Rourke,rourke b,39.0,UT Tyler,1106.0,rv,11/16/21,2022-03-01,2022_TX_Governor_DEM,1
+2022,TX,Governor,,DEM,Beto O'Rourke,orourke b,37.0,Quinnipiac University,1224.0,rv,12/6/21,2022-03-01,2022_TX_Governor_DEM,1
+2022,TX,Governor,,DEM,Beto O'Rourke,orourke b,39.0,UT Tyler,1106.0,rv,11/16/21,2022-03-01,2022_TX_Governor_DEM,1
 2022,TX,Governor,,REP,Greg Abbott,abbott g,40.0,Redfield & Wilton Strategies,884.0,rv,11/9/21,2022-03-01,2022_TX_Governor_REP,1
-2022,TX,Governor,,DEM,Beto O'Rourke,rourke b,39.0,Redfield & Wilton Strategies,884.0,rv,11/9/21,2022-03-01,2022_TX_Governor_DEM,1
-2022,TX,Governor,,DEM,Beto O'Rourke,rourke b,42.0,YouGov / TXHPF,1402.0,rv,10/27/21,2022-03-01,2022_TX_Governor_DEM,1
-2022,TX,Governor,,DEM,Beto O'Rourke,rourke b,37.0,UT Tyler,1148.0,rv,9/14/21,2022-03-01,2022_TX_Governor_DEM,1
-2022,TX,Governor,,DEM,Beto O'Rourke,rourke b,33.0,UT Tyler,1090.0,rv,6/29/21,2022-03-01,2022_TX_Governor_DEM,1
-2022,TX,Governor,,DEM,Beto O'Rourke,rourke b,42.0,Public Opinion Strategies,800.0,lv,6/17/21,2022-03-01,2022_TX_Governor_DEM,1
+2022,TX,Governor,,DEM,Beto O'Rourke,orourke b,39.0,Redfield & Wilton Strategies,884.0,rv,11/9/21,2022-03-01,2022_TX_Governor_DEM,1
+2022,TX,Governor,,DEM,Beto O'Rourke,orourke b,42.0,YouGov / TXHPF,1402.0,rv,10/27/21,2022-03-01,2022_TX_Governor_DEM,1
+2022,TX,Governor,,DEM,Beto O'Rourke,orourke b,37.0,UT Tyler,1148.0,rv,9/14/21,2022-03-01,2022_TX_Governor_DEM,1
+2022,TX,Governor,,DEM,Beto O'Rourke,orourke b,33.0,UT Tyler,1090.0,rv,6/29/21,2022-03-01,2022_TX_Governor_DEM,1
+2022,TX,Governor,,DEM,Beto O'Rourke,orourke b,42.0,Public Opinion Strategies,800.0,lv,6/17/21,2022-03-01,2022_TX_Governor_DEM,1
 2022,TX,Governor,,DEM,Julián Castro,castro j,35.0,Redfield & Wilton Strategies,884.0,rv,11/9/21,2022-03-01,2022_TX_Governor_DEM,0
 2022,TX,Governor,,REP,Greg Abbott,abbott g,33.0,UT Tyler,1124.0,rv,4/13/21,2022-03-01,2022_TX_Governor_REP,1
 2022,TX,Governor,,REP,Greg Abbott,abbott g,46.0,Data for Progress,726.0,lv,9/22/20,2022-03-01,2022_TX_Governor_REP,1
@@ -4003,7 +4003,7 @@ year,state,office,district,party_std,candidate,cand_key,pct,pollster,sample_size
 2022,AZ,Senate,,REP,Blake Masters,masters b,1.0,Data Orbital,600.0,lv,2/19/21,2022-08-02,2022_AZ_Senate_REP,1
 2022,AZ,Senate,,REP,Michael McGuire,mcguire m,3.0,Data Orbital,600.0,lv,2/19/21,2022-08-02,2022_AZ_Senate_REP,0
 2022,CO,Senate,,REP,Ron Hanks,hanks r,14.000000000000002,Public Opinion Strategies,400.0,lv,5/20/22,2022-06-28,2022_CO_Senate_REP,0
-2022,CO,Senate,,REP,Joe O'Dea,dea j,38.0,Public Opinion Strategies,400.0,lv,5/20/22,2022-06-28,2022_CO_Senate_REP,1
+2022,CO,Senate,,REP,Joe O'Dea,odea j,38.0,Public Opinion Strategies,400.0,lv,5/20/22,2022-06-28,2022_CO_Senate_REP,1
 2022,CT,Senate,,REP,Leora Levy,levy l,33.0,McLaughlin & Associates,500.0,lv,7/27/22,2022-08-09,2022_CT_Senate_REP,1
 2022,CT,Senate,,REP,Leora Levy,levy l,36.0,Emerson College,1000.0,rv,5/11/22,2022-08-09,2022_CT_Senate_REP,1
 2022,CT,Senate,,REP,Themis Klarides,klarides t,34.0,McLaughlin & Associates,500.0,lv,7/27/22,2022-08-09,2022_CT_Senate_REP,0
@@ -4015,7 +4015,7 @@ year,state,office,district,party_std,candidate,cand_key,pct,pollster,sample_size
 2022,FL,Senate,,DEM,Brian Rush,rush b,4.0,University of North Florida,529.0,lv,8/12/22,2022-08-23,2022_FL_Senate_DEM,0
 2022,FL,Senate,,DEM,William Sanchez,sanchez w,4.0,University of North Florida,529.0,lv,8/12/22,2022-08-23,2022_FL_Senate_DEM,0
 2022,GA,Senate,,DEM,Raphael Warnock,warnock r,85.0,Emerson College,453.0,lv,4/3/22,2022-05-24,2022_GA_Senate_DEM,1
-2022,GA,Senate,,DEM,Tamara Johnson-Shealey,shealey t,6.0,Emerson College,453.0,lv,4/3/22,2022-05-24,2022_GA_Senate_DEM,0
+2022,GA,Senate,,DEM,Tamara Johnson-Shealey,johnsonshealey t,6.0,Emerson College,453.0,lv,4/3/22,2022-05-24,2022_GA_Senate_DEM,0
 2022,GA,Senate,,REP,Gary Black,black g,10.0,The Trafalgar Group,1074.0,lv,5/23/22,2022-05-24,2022_GA_Senate_REP,0
 2022,GA,Senate,,REP,Josh Clark,clark j,3.0,The Trafalgar Group,1074.0,lv,5/23/22,2022-05-24,2022_GA_Senate_REP,0
 2022,GA,Senate,,REP,Kelvin King,king k,4.0,The Trafalgar Group,1074.0,lv,5/23/22,2022-05-24,2022_GA_Senate_REP,0
@@ -4551,7 +4551,7 @@ year,state,office,district,party_std,candidate,cand_key,pct,pollster,sample_size
 2022,NV,Senate,,REP,Dean Heller,heller d,25.0,WPA Intelligence,300.0,lv,12/11/20,2022-06-14,2022_NV_Senate_REP,0
 2022,NV,Senate,,REP,Adam Laxalt,laxalt a,44.0,WPA Intelligence,300.0,lv,12/11/20,2022-06-14,2022_NV_Senate_REP,1
 2022,NY,Senate,,DEM,Chuck Schumer,schumer c,54.0,Zogby Analytics,328.0,lv,5/9/20,2022-08-23,2022_NY_Senate_DEM,1
-2022,NY,Senate,,DEM,Alexandria Ocasio-Cortez,cortez a,21.0,Zogby Analytics,328.0,lv,5/9/20,2022-08-23,2022_NY_Senate_DEM,0
+2022,NY,Senate,,DEM,Alexandria Ocasio-Cortez,ocasiocortez a,21.0,Zogby Analytics,328.0,lv,5/9/20,2022-08-23,2022_NY_Senate_DEM,0
 2022,OH,Senate,,REP,Matt Dolan,dolan m,22.0,The Trafalgar Group,1081.0,lv,5/1/22,2022-05-03,2022_OH_Senate_REP,0
 2022,OH,Senate,,REP,Mike Gibbons,gibbons m,13.0,The Trafalgar Group,1081.0,lv,5/1/22,2022-05-03,2022_OH_Senate_REP,0
 2022,OH,Senate,,REP,Josh Mandel,mandel j,21.0,The Trafalgar Group,1081.0,lv,5/1/22,2022-05-03,2022_OH_Senate_REP,0
@@ -5037,7 +5037,7 @@ year,state,office,district,party_std,candidate,cand_key,pct,pollster,sample_size
 2022,UT,Senate,,REP,Brendan Wright,wright b,3.0,OH Predictive Insights,337.0,rv,8/8/21,2022-06-28,2022_UT_Senate_REP,0
 2022,UT,Senate,,REP,Becky Edwards,edwards b,11.0,RMG Research,587.0,lv,6/25/21,2022-06-28,2022_UT_Senate_REP,0
 2022,UT,Senate,,REP,Mike Lee,lee m,47.0,RMG Research,587.0,lv,6/25/21,2022-06-28,2022_UT_Senate_REP,1
-2022,VT,Senate,,DEM,Isaac Evans-Frantz,frantz i,6.0,University of New Hampshire,352.0,lv,7/25/22,2022-08-09,2022_VT_Senate_DEM,0
+2022,VT,Senate,,DEM,Isaac Evans-Frantz,evansfrantz i,6.0,University of New Hampshire,352.0,lv,7/25/22,2022-08-09,2022_VT_Senate_DEM,0
 2022,VT,Senate,,DEM,Niki Thran,thran n,1.0,University of New Hampshire,352.0,lv,7/25/22,2022-08-09,2022_VT_Senate_DEM,0
 2022,VT,Senate,,DEM,Peter Welch,welch p,82.0,University of New Hampshire,352.0,lv,7/25/22,2022-08-09,2022_VT_Senate_DEM,1
 2022,VT,Senate,,REP,Gerald Malloy,malloy g,30.0,University of New Hampshire,196.0,lv,7/25/22,2022-08-09,2022_VT_Senate_REP,1
@@ -5099,22 +5099,22 @@ year,state,office,district,party_std,candidate,cand_key,pct,pollster,sample_size
 2022,WI,Senate,,DEM,Sarah Godlewski,godlewski s,5.0,Normington Petts,,lv,8/1/21,2022-08-09,2022_WI_Senate_DEM,0
 2022,WI,Senate,,DEM,Alex Lasry,lasry a,4.0,Normington Petts,,lv,8/1/21,2022-08-09,2022_WI_Senate_DEM,0
 2022,WI,Senate,,DEM,Tom Nelson,nelson t,7.000000000000001,Normington Petts,,lv,8/1/21,2022-08-09,2022_WI_Senate_DEM,0
-2024,DE,Governor,,DEM,Bethany Hall-Long,long b,19.0,Trailblazer Opinion Strategies,,,8/27/24,2024-09-10,2024_DE_Governor_DEM,0
+2024,DE,Governor,,DEM,Bethany Hall-Long,halllong b,19.0,Trailblazer Opinion Strategies,,,8/27/24,2024-09-10,2024_DE_Governor_DEM,0
 2024,DE,Governor,,DEM,Matt Meyer,meyer m,33.0,Trailblazer Opinion Strategies,,,8/27/24,2024-09-10,2024_DE_Governor_DEM,1
-2024,DE,Governor,,DEM,Collin O'Mara,mara c,17.0,Trailblazer Opinion Strategies,,,8/27/24,2024-09-10,2024_DE_Governor_DEM,0
-2024,DE,Governor,,DEM,Bethany Hall-Long,long b,23.0,Slingshot Strategies,500.0,rv,8/13/24,2024-09-10,2024_DE_Governor_DEM,0
+2024,DE,Governor,,DEM,Collin O'Mara,omara c,17.0,Trailblazer Opinion Strategies,,,8/27/24,2024-09-10,2024_DE_Governor_DEM,0
+2024,DE,Governor,,DEM,Bethany Hall-Long,halllong b,23.0,Slingshot Strategies,500.0,rv,8/13/24,2024-09-10,2024_DE_Governor_DEM,0
 2024,DE,Governor,,DEM,Matt Meyer,meyer m,27.0,Slingshot Strategies,500.0,rv,8/13/24,2024-09-10,2024_DE_Governor_DEM,1
-2024,DE,Governor,,DEM,Collin O'Mara,mara c,11.0,Slingshot Strategies,500.0,rv,8/13/24,2024-09-10,2024_DE_Governor_DEM,0
-2024,DE,Governor,,DEM,Bethany Hall-Long,long b,23.0,Concord Public Opinion Partners,453.0,rv,8/7/24,2024-09-10,2024_DE_Governor_DEM,0
+2024,DE,Governor,,DEM,Collin O'Mara,omara c,11.0,Slingshot Strategies,500.0,rv,8/13/24,2024-09-10,2024_DE_Governor_DEM,0
+2024,DE,Governor,,DEM,Bethany Hall-Long,halllong b,23.0,Concord Public Opinion Partners,453.0,rv,8/7/24,2024-09-10,2024_DE_Governor_DEM,0
 2024,DE,Governor,,DEM,Matt Meyer,meyer m,30.0,Concord Public Opinion Partners,453.0,rv,8/7/24,2024-09-10,2024_DE_Governor_DEM,1
-2024,DE,Governor,,DEM,Collin O'Mara,mara c,8.0,Concord Public Opinion Partners,453.0,rv,8/7/24,2024-09-10,2024_DE_Governor_DEM,0
-2024,DE,Governor,,DEM,Bethany Hall-Long,long b,31.0,Public Policy Polling,661.0,lv,7/17/24,2024-09-10,2024_DE_Governor_DEM,0
+2024,DE,Governor,,DEM,Collin O'Mara,omara c,8.0,Concord Public Opinion Partners,453.0,rv,8/7/24,2024-09-10,2024_DE_Governor_DEM,0
+2024,DE,Governor,,DEM,Bethany Hall-Long,halllong b,31.0,Public Policy Polling,661.0,lv,7/17/24,2024-09-10,2024_DE_Governor_DEM,0
 2024,DE,Governor,,DEM,Matt Meyer,meyer m,19.0,Public Policy Polling,661.0,lv,7/17/24,2024-09-10,2024_DE_Governor_DEM,1
-2024,DE,Governor,,DEM,Collin O'Mara,mara c,9.0,Public Policy Polling,661.0,lv,7/17/24,2024-09-10,2024_DE_Governor_DEM,0
-2024,DE,Governor,,DEM,Bethany Hall-Long,long b,27.0,Slingshot Strategies,446.0,rv,7/9/24,2024-09-10,2024_DE_Governor_DEM,0
+2024,DE,Governor,,DEM,Collin O'Mara,omara c,9.0,Public Policy Polling,661.0,lv,7/17/24,2024-09-10,2024_DE_Governor_DEM,0
+2024,DE,Governor,,DEM,Bethany Hall-Long,halllong b,27.0,Slingshot Strategies,446.0,rv,7/9/24,2024-09-10,2024_DE_Governor_DEM,0
 2024,DE,Governor,,DEM,Matt Meyer,meyer m,27.0,Slingshot Strategies,446.0,rv,7/9/24,2024-09-10,2024_DE_Governor_DEM,1
-2024,DE,Governor,,DEM,Collin O'Mara,mara c,7.000000000000001,Slingshot Strategies,446.0,rv,7/9/24,2024-09-10,2024_DE_Governor_DEM,0
-2024,DE,Governor,,DEM,Bethany Hall-Long,long b,30.0,Public Policy Polling,643.0,lv,1/11/24,2024-09-10,2024_DE_Governor_DEM,0
+2024,DE,Governor,,DEM,Collin O'Mara,omara c,7.000000000000001,Slingshot Strategies,446.0,rv,7/9/24,2024-09-10,2024_DE_Governor_DEM,0
+2024,DE,Governor,,DEM,Bethany Hall-Long,halllong b,30.0,Public Policy Polling,643.0,lv,1/11/24,2024-09-10,2024_DE_Governor_DEM,0
 2024,DE,Governor,,DEM,Matt Meyer,meyer m,23.0,Public Policy Polling,643.0,lv,1/11/24,2024-09-10,2024_DE_Governor_DEM,1
 2024,IN,Governor,,REP,Mike Braun,braun m,44.0,SurveyUSA,447.0,lv,4/7/24,2024-05-07,2024_IN_Governor_REP,1
 2024,IN,Governor,,REP,Brad Chambers,chambers b,8.0,SurveyUSA,447.0,lv,4/7/24,2024-05-07,2024_IN_Governor_REP,0
@@ -5540,20 +5540,20 @@ year,state,office,district,party_std,candidate,cand_key,pct,pollster,sample_size
 2024,DE,Senate,,DEM,John Carney,carney j,33.0,Slingshot Strategies,600.0,rv,10/14/23,2024-09-10,2024_DE_Senate_DEM,0
 2024,DE,Senate,,DEM,Others,others,9.0,Slingshot Strategies,600.0,rv,10/14/23,2024-09-10,2024_DE_Senate_DEM,0
 2024,FL,Senate,,DEM,Alan Grayson,grayson a,12.0,Mainstreet Research / FAU,346.0,rv,6/9/24,2024-08-20,2024_FL_Senate_DEM,0
-2024,FL,Senate,,DEM,Debbie Mucarsel- Powell,powell d,43.0,Mainstreet Research / FAU,346.0,rv,6/9/24,2024-08-20,2024_FL_Senate_DEM,1
-2024,FL,Senate,,DEM,Debbie Mucarsel- Powell,powell d,45.0,Public Policy Polling,837.0,rv,8/22/24,2024-08-20,2024_FL_Senate_DEM,1
-2024,FL,Senate,,DEM,Debbie Mucarsel- Powell,powell d,43.0,Mainstreet Research / FAU,1055.0,rv,8/11/24,2024-08-20,2024_FL_Senate_DEM,1
-2024,FL,Senate,,DEM,Debbie Mucarsel- Powell,powell d,42.0,McLaughlin & Associates,800.0,lv,8/8/24,2024-08-20,2024_FL_Senate_DEM,1
-2024,FL,Senate,,DEM,Debbie Mucarsel- Powell,powell d,43.0,University of North Florida,774.0,lv,7/27/24,2024-08-20,2024_FL_Senate_DEM,1
-2024,FL,Senate,,DEM,Debbie Mucarsel- Powell,powell d,41.0,Targoz Market Research,1200.0,rv,7/24/24,2024-08-20,2024_FL_Senate_DEM,1
-2024,FL,Senate,,DEM,Debbie Mucarsel- Powell,powell d,33.0,The Tyson Group,1050.0,lv,6/9/24,2024-08-20,2024_FL_Senate_DEM,1
-2024,FL,Senate,,DEM,Debbie Mucarsel- Powell,powell d,37.0,CBS News / YouGov,1209.0,rv,5/16/24,2024-08-20,2024_FL_Senate_DEM,1
-2024,FL,Senate,,DEM,Debbie Mucarsel- Powell,powell d,39.0,Cherry Communications,609.0,rv,5/7/24,2024-08-20,2024_FL_Senate_DEM,1
-2024,FL,Senate,,DEM,Debbie Mucarsel- Powell,powell d,35.0,Mainstreet Research / FAU,865.0,rv,4/17/24,2024-08-20,2024_FL_Senate_DEM,1
-2024,FL,Senate,,DEM,Debbie Mucarsel- Powell,powell d,26.0,USA Today / Ipsos,1014.0,a,4/7/24,2024-08-20,2024_FL_Senate_DEM,1
-2024,FL,Senate,,DEM,Debbie Mucarsel- Powell,powell d,38.0,Emerson College,608.0,lv,4/7/24,2024-08-20,2024_FL_Senate_DEM,1
-2024,FL,Senate,,DEM,Debbie Mucarsel- Powell,powell d,41.0,Public Policy Polling,790.0,v,3/1/24,2024-08-20,2024_FL_Senate_DEM,1
-2024,FL,Senate,,DEM,Debbie Mucarsel- Powell,powell d,44.0,Global Strategy Group,1000.0,lv,7/10/23,2024-08-20,2024_FL_Senate_DEM,1
+2024,FL,Senate,,DEM,Debbie Mucarsel- Powell,mucarselpowell d,43.0,Mainstreet Research / FAU,346.0,rv,6/9/24,2024-08-20,2024_FL_Senate_DEM,1
+2024,FL,Senate,,DEM,Debbie Mucarsel- Powell,mucarselpowell d,45.0,Public Policy Polling,837.0,rv,8/22/24,2024-08-20,2024_FL_Senate_DEM,1
+2024,FL,Senate,,DEM,Debbie Mucarsel- Powell,mucarselpowell d,43.0,Mainstreet Research / FAU,1055.0,rv,8/11/24,2024-08-20,2024_FL_Senate_DEM,1
+2024,FL,Senate,,DEM,Debbie Mucarsel- Powell,mucarselpowell d,42.0,McLaughlin & Associates,800.0,lv,8/8/24,2024-08-20,2024_FL_Senate_DEM,1
+2024,FL,Senate,,DEM,Debbie Mucarsel- Powell,mucarselpowell d,43.0,University of North Florida,774.0,lv,7/27/24,2024-08-20,2024_FL_Senate_DEM,1
+2024,FL,Senate,,DEM,Debbie Mucarsel- Powell,mucarselpowell d,41.0,Targoz Market Research,1200.0,rv,7/24/24,2024-08-20,2024_FL_Senate_DEM,1
+2024,FL,Senate,,DEM,Debbie Mucarsel- Powell,mucarselpowell d,33.0,The Tyson Group,1050.0,lv,6/9/24,2024-08-20,2024_FL_Senate_DEM,1
+2024,FL,Senate,,DEM,Debbie Mucarsel- Powell,mucarselpowell d,37.0,CBS News / YouGov,1209.0,rv,5/16/24,2024-08-20,2024_FL_Senate_DEM,1
+2024,FL,Senate,,DEM,Debbie Mucarsel- Powell,mucarselpowell d,39.0,Cherry Communications,609.0,rv,5/7/24,2024-08-20,2024_FL_Senate_DEM,1
+2024,FL,Senate,,DEM,Debbie Mucarsel- Powell,mucarselpowell d,35.0,Mainstreet Research / FAU,865.0,rv,4/17/24,2024-08-20,2024_FL_Senate_DEM,1
+2024,FL,Senate,,DEM,Debbie Mucarsel- Powell,mucarselpowell d,26.0,USA Today / Ipsos,1014.0,a,4/7/24,2024-08-20,2024_FL_Senate_DEM,1
+2024,FL,Senate,,DEM,Debbie Mucarsel- Powell,mucarselpowell d,38.0,Emerson College,608.0,lv,4/7/24,2024-08-20,2024_FL_Senate_DEM,1
+2024,FL,Senate,,DEM,Debbie Mucarsel- Powell,mucarselpowell d,41.0,Public Policy Polling,790.0,v,3/1/24,2024-08-20,2024_FL_Senate_DEM,1
+2024,FL,Senate,,DEM,Debbie Mucarsel- Powell,mucarselpowell d,44.0,Global Strategy Group,1000.0,lv,7/10/23,2024-08-20,2024_FL_Senate_DEM,1
 2024,FL,Senate,,DEM,Phil Ehr,ehr p,41.0,Change Research,1298.0,lv,6/29/23,2024-08-20,2024_FL_Senate_DEM,0
 2024,IN,Senate,,REP,Jim Banks,banks j,14.000000000000002,Bellwether Research,1000.0,lv,12/17/22,2024-05-07,2024_IN_Senate_REP,1
 2024,IN,Senate,,REP,Trey Hollingsworth,hollingsworth t,11.0,Bellwether Research,1000.0,lv,12/17/22,2024-05-07,2024_IN_Senate_REP,0
@@ -5647,19 +5647,19 @@ year,state,office,district,party_std,candidate,cand_key,pct,pollster,sample_size
 2024,MI,Senate,,DEM,Leslie Love,love l,2.0,Emerson College,551.0,rv,8/2/23,2024-08-06,2024_MI_Senate_DEM,0
 2024,MI,Senate,,DEM,Elissa Slotkin,slotkin e,34.0,Emerson College,551.0,rv,8/2/23,2024-08-06,2024_MI_Senate_DEM,1
 2024,MI,Senate,,REP,Justin Amash,amash j,14.000000000000002,Tarrance Group,500.0,lv,7/10/24,2024-08-06,2024_MI_Senate_REP,0
-2024,MI,Senate,,REP,Sherry O'Donnell,donnell s,5.0,Tarrance Group,500.0,lv,7/10/24,2024-08-06,2024_MI_Senate_REP,0
+2024,MI,Senate,,REP,Sherry O'Donnell,odonnell s,5.0,Tarrance Group,500.0,lv,7/10/24,2024-08-06,2024_MI_Senate_REP,0
 2024,MI,Senate,,REP,Sandy Pensler,pensler s,14.000000000000002,Tarrance Group,500.0,lv,7/10/24,2024-08-06,2024_MI_Senate_REP,0
 2024,MI,Senate,,REP,Mike Rogers,rogers m,52.0,Tarrance Group,500.0,lv,7/10/24,2024-08-06,2024_MI_Senate_REP,1
 2024,MI,Senate,,REP,Justin Amash,amash j,8.0,Mitchell Research,266.0,lv,6/3/24,2024-08-06,2024_MI_Senate_REP,0
-2024,MI,Senate,,REP,Sherry O'Donnell,donnell s,0.0,Mitchell Research,266.0,lv,6/3/24,2024-08-06,2024_MI_Senate_REP,0
+2024,MI,Senate,,REP,Sherry O'Donnell,odonnell s,0.0,Mitchell Research,266.0,lv,6/3/24,2024-08-06,2024_MI_Senate_REP,0
 2024,MI,Senate,,REP,Sandy Pensler,pensler s,3.0,Mitchell Research,266.0,lv,6/3/24,2024-08-06,2024_MI_Senate_REP,0
 2024,MI,Senate,,REP,Mike Rogers,rogers m,28.000000000000004,Mitchell Research,266.0,lv,6/3/24,2024-08-06,2024_MI_Senate_REP,1
 2024,MI,Senate,,REP,Justin Amash,amash j,11.0,Public Policy Polling,486.0,lv,5/23/24,2024-08-06,2024_MI_Senate_REP,0
-2024,MI,Senate,,REP,Sherry O'Donnell,donnell s,3.0,Public Policy Polling,486.0,lv,5/23/24,2024-08-06,2024_MI_Senate_REP,0
+2024,MI,Senate,,REP,Sherry O'Donnell,odonnell s,3.0,Public Policy Polling,486.0,lv,5/23/24,2024-08-06,2024_MI_Senate_REP,0
 2024,MI,Senate,,REP,Sandy Pensler,pensler s,12.0,Public Policy Polling,486.0,lv,5/23/24,2024-08-06,2024_MI_Senate_REP,0
 2024,MI,Senate,,REP,Mike Rogers,rogers m,30.0,Public Policy Polling,486.0,lv,5/23/24,2024-08-06,2024_MI_Senate_REP,1
 2024,MI,Senate,,REP,Justin Amash,amash j,8.0,Emerson College,545.0,lv,5/1/24,2024-08-06,2024_MI_Senate_REP,0
-2024,MI,Senate,,REP,Sherry O'Donnell,donnell s,2.0,Emerson College,545.0,lv,5/1/24,2024-08-06,2024_MI_Senate_REP,0
+2024,MI,Senate,,REP,Sherry O'Donnell,odonnell s,2.0,Emerson College,545.0,lv,5/1/24,2024-08-06,2024_MI_Senate_REP,0
 2024,MI,Senate,,REP,Sandy Pensler,pensler s,3.0,Emerson College,545.0,lv,5/1/24,2024-08-06,2024_MI_Senate_REP,0
 2024,MI,Senate,,REP,Mike Rogers,rogers m,32.0,Emerson College,545.0,lv,5/1/24,2024-08-06,2024_MI_Senate_REP,1
 2024,MI,Senate,,REP,Justin Amash,amash j,6.0,Mitchell Research,288.0,lv,3/16/24,2024-08-06,2024_MI_Senate_REP,0
@@ -5671,7 +5671,7 @@ year,state,office,district,party_std,candidate,cand_key,pct,pollster,sample_size
 2024,MI,Senate,,REP,Mike Rogers,rogers m,23.0,Market Resource Group,600.0,lv,2/22/24,2024-08-06,2024_MI_Senate_REP,1
 2024,MI,Senate,,REP,James Craig,craig j,33.0,Target Insyght,600.0,lv,1/10/24,2024-08-06,2024_MI_Senate_REP,0
 2024,MI,Senate,,REP,Peter Meijer,meijer p,11.0,Target Insyght,600.0,lv,1/10/24,2024-08-06,2024_MI_Senate_REP,0
-2024,MI,Senate,,REP,Sherry O'Donnell,donnell s,1.0,Target Insyght,600.0,lv,1/10/24,2024-08-06,2024_MI_Senate_REP,0
+2024,MI,Senate,,REP,Sherry O'Donnell,odonnell s,1.0,Target Insyght,600.0,lv,1/10/24,2024-08-06,2024_MI_Senate_REP,0
 2024,MI,Senate,,REP,Sandy Pensler,pensler s,2.0,Target Insyght,600.0,lv,1/10/24,2024-08-06,2024_MI_Senate_REP,0
 2024,MI,Senate,,REP,Mike Rogers,rogers m,20.0,Target Insyght,600.0,lv,1/10/24,2024-08-06,2024_MI_Senate_REP,1
 2024,MI,Senate,,REP,James Craig,craig j,30.0,Public Policy Polling,430.0,lv,10/10/23,2024-08-06,2024_MI_Senate_REP,0
@@ -5786,10 +5786,10 @@ year,state,office,district,party_std,candidate,cand_key,pct,pollster,sample_size
 2024,MT,Senate,,REP,Matt Rosendale,rosendale m,40.0,SurveyUSA,549.0,lv,2/15/24,2024-06-04,2024_MT_Senate_REP,0
 2024,MT,Senate,,REP,Matt Rosendale,rosendale m,40.0,Political Company,534.0,lv,2/1/23,2024-06-04,2024_MT_Senate_REP,0
 2024,MT,Senate,,REP,Ryan Zinke,zinke r,40.0,Political Company,534.0,lv,2/1/23,2024-06-04,2024_MT_Senate_REP,0
-2024,NJ,Senate,,DEM,Patricia Campos-Medina,medina p,6.0,Emerson College,408.0,rv,3/29/24,2024-06-04,2024_NJ_Senate_DEM,0
+2024,NJ,Senate,,DEM,Patricia Campos-Medina,camposmedina p,6.0,Emerson College,408.0,rv,3/29/24,2024-06-04,2024_NJ_Senate_DEM,0
 2024,NJ,Senate,,DEM,Lawrence Hamm,hamm l,5.0,Emerson College,408.0,rv,3/29/24,2024-06-04,2024_NJ_Senate_DEM,0
 2024,NJ,Senate,,DEM,Andy Kim,kim a,51.0,Emerson College,408.0,rv,3/29/24,2024-06-04,2024_NJ_Senate_DEM,1
-2024,NJ,Senate,,DEM,Patricia Campos-Medina,medina p,8.0,Braun Research / Fairleigh Dickinson University,504.0,lv,1/28/24,2024-06-04,2024_NJ_Senate_DEM,0
+2024,NJ,Senate,,DEM,Patricia Campos-Medina,camposmedina p,8.0,Braun Research / Fairleigh Dickinson University,504.0,lv,1/28/24,2024-06-04,2024_NJ_Senate_DEM,0
 2024,NJ,Senate,,DEM,Bob Menendez,menendez b,9.0,Braun Research / Fairleigh Dickinson University,504.0,lv,1/28/24,2024-06-04,2024_NJ_Senate_DEM,0
 2024,NJ,Senate,,DEM,Andy Kim,kim a,32.0,Braun Research / Fairleigh Dickinson University,504.0,lv,1/28/24,2024-06-04,2024_NJ_Senate_DEM,1
 2024,NJ,Senate,,DEM,Tammy Murphy,murphy t,20.0,Braun Research / Fairleigh Dickinson University,504.0,lv,1/28/24,2024-06-04,2024_NJ_Senate_DEM,0
@@ -5976,10 +5976,10 @@ year,state,office,district,party_std,candidate,cand_key,pct,pollster,sample_size
 2024,PA,Senate,,REP,Doug Mastriano,mastriano d,39.0,Cygnal,600.0,lv,4/13/23,2024-04-23,2024_PA_Senate_REP,0
 2024,TN,Senate,,DEM,Marquita Bradshaw,bradshaw m,7.000000000000001,Targoz Market Research,282.0,lv,4/2/24,2024-08-01,2024_TN_Senate_DEM,0
 2024,TN,Senate,,DEM,Gloria Johnson,johnson g,38.0,Targoz Market Research,282.0,lv,4/2/24,2024-08-01,2024_TN_Senate_DEM,1
-2024,TN,Senate,,DEM,Civil Miller-Watkins,watkins c,2.0,Targoz Market Research,282.0,lv,4/2/24,2024-08-01,2024_TN_Senate_DEM,0
+2024,TN,Senate,,DEM,Civil Miller-Watkins,millerwatkins c,2.0,Targoz Market Research,282.0,lv,4/2/24,2024-08-01,2024_TN_Senate_DEM,0
 2024,TN,Senate,,DEM,Marquita Bradshaw,bradshaw m,11.0,Targoz Market Research,251.0,lv,12/28/23,2024-08-01,2024_TN_Senate_DEM,0
 2024,TN,Senate,,DEM,Gloria Johnson,johnson g,41.0,Targoz Market Research,251.0,lv,12/28/23,2024-08-01,2024_TN_Senate_DEM,1
-2024,TN,Senate,,DEM,Civil Miller-Watkins,watkins c,2.0,Targoz Market Research,251.0,lv,12/28/23,2024-08-01,2024_TN_Senate_DEM,0
+2024,TN,Senate,,DEM,Civil Miller-Watkins,millerwatkins c,2.0,Targoz Market Research,251.0,lv,12/28/23,2024-08-01,2024_TN_Senate_DEM,0
 2024,TN,Senate,,DEM,Gloria Johnson,johnson g,32.0,Targoz Market Research,1124.0,rv,7/1/24,2024-08-01,2024_TN_Senate_DEM,1
 2024,TN,Senate,,DEM,Gloria Johnson,johnson g,40.0,SSRS / Vanderbilt University,1003.0,rv,5/9/24,2024-08-01,2024_TN_Senate_DEM,1
 2024,TN,Senate,,DEM,Gloria Johnson,johnson g,28.999999999999996,Targoz Market Research,850.0,lv,10/16/23,2024-08-01,2024_TN_Senate_DEM,1

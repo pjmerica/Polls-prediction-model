@@ -40,8 +40,8 @@ year,office,state,district,party,candidate,cand_key,won,reason,ev
 2006,Senate,UT,,DEM,Pete Ashdown,ashdown p,0,table_zero,True
 2006,House,WA,5,DEM,Peter J. Goldmark,goldmark p,0,table_zero,True
 2008,House,AL,2,REP,Jay Love,love j,0,table_zero,True
-2008,House,DE,1,DEM,Karen M. Hartley-Nagle,nagle k,0,table_zero,True
-2008,Senate,DE,,REP,Christine O'Donnell,donnell c,0,table_zero,True
+2008,House,DE,1,DEM,Karen M. Hartley-Nagle,hartleynagle k,0,table_zero,True
+2008,Senate,DE,,REP,Christine O'Donnell,odonnell c,0,table_zero,True
 2008,House,FL,18,DEM,Annette Taddeo,taddeo a,0,table_zero,True
 2008,House,FL,25,DEM,Joe Garcia,garcia j,0,table_zero,True
 2008,House,ME,1,REP,Charlie Summers,summers c,0,table_zero,True
@@ -57,11 +57,11 @@ year,office,state,district,party,candidate,cand_key,won,reason,ev
 2010,House,CA,11,REP,David Harmer,harmer d,0,table_zero,True
 2010,House,CA,20,REP,Andy Vidak,vidak a,0,table_zero,True
 2010,House,CT,4,REP,Dan Debicella,debicella d,0,table_zero,True
-2010,Senate,DE,S,REP,Christine O'Donnell,donnell c,0,no_bio,True
+2010,Senate,DE,S,REP,Christine O'Donnell,odonnell c,0,no_bio,True
 2010,House,FL,25,DEM,Joe Garcia,garcia j,0,table_zero,True
 2010,House,GA,2,REP,Mike Keown,keown m,0,table_zero,True
 2010,Governor,HI,,REP,Duke Aiona,aiona d,0,table_zero,True
-2010,House,IA,2,REP,Mariannette Miller-Meeks,meeks m,0,table_zero,True
+2010,House,IA,2,REP,Mariannette Miller-Meeks,millermeeks m,0,table_zero,True
 2010,House,IN,2,REP,Jackie Walorski,walorski j,0,table_zero,True
 2010,House,KS,1,DEM,Alan E. Jilka,jilka a,0,table_zero,True
 2010,House,KY,6,REP,Andy Barr,barr a,0,table_zero,True
@@ -114,7 +114,7 @@ year,office,state,district,party,candidate,cand_key,won,reason,ev
 2018,House,OH,4,DEM,Janet Garrett,garrett j,0,no_bio,True
 2018,Senate,OH,,OTH,Stephen Faris,faris s,0,no_bio,True
 2018,Senate,OH,,OTH,Bruce Jaynes,jaynes b,0,no_bio,True
-2018,House,OR,2,DEM,Jamie McLeod-Skinner,skinner j,0,table_zero,True
+2018,House,OR,2,DEM,Jamie McLeod-Skinner,mcleodskinner j,0,table_zero,True
 2018,House,OR,5,REP,Mark Callahan,callahan m,0,table_zero,True
 2018,House,SC,1,REP,Katie Arrington,arrington k,0,table_zero,True
 2018,House,UT,1,OTH,Eric Eliason,eliason e,0,no_bio,True
@@ -124,7 +124,7 @@ year,office,state,district,party,candidate,cand_key,won,reason,ev
 2020,Senate,AK,,OTH,John Wayne Howe,howe j,0,no_bio,True
 2020,Senate,AK,,OTH,Forrest Dunbar,dunbar f,0,no_bio,True
 2020,Senate,AK,,DEM,Forrest Dunbar,dunbar f,0,no_bio,True
-2020,House,CA,50,DEM,Ammar Campa-Najjar,najjar a,0,no_bio,True
+2020,House,CA,50,DEM,Ammar Campa-Najjar,campanajjar a,0,no_bio,True
 2020,House,CA,39,DEM,Gil Cisneros,cisneros g,0,no_bio,True
 2020,House,CA,25,DEM,Christy Smith,smith c,0,no_bio,True
 2020,House,CA,21,DEM,TJ Cox,cox t,0,no_bio,True
@@ -206,7 +206,7 @@ year,office,state,district,party,candidate,cand_key,won,reason,ev
 2022,Governor,NY,,DEM,Thomas R. Suozzi,suozzi t,0,no_bio,True
 2022,Governor,NY,,REP,Elise M. Stefanik,stefanik e,0,no_bio,True
 2022,House,NY,22,DEM,Francis Conole,conole f,0,no_bio,True
-2022,House,NY,3,OTH,Melanie D'Arrigo,arrigo m,0,no_bio,True
+2022,House,NY,3,OTH,Melanie D'Arrigo,darrigo m,0,no_bio,True
 2022,Senate,NY,,OTH,Diane Sare,sare d,0,no_bio,True
 2022,Senate,OH,,REP,Jane Timken,timken j,0,no_bio,True
 2022,Governor,PA,,OTH,Matt Hackenburg,hackenburg m,0,no_bio,True

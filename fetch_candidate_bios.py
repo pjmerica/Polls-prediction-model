@@ -119,6 +119,19 @@ def classify(desc, office=None):
     # House )" parenthetical and mislabeling e.g. "school board member (ran for U.S. House)" as 4.
     d = re.sub(r"(unsuccessful\s+)?(candidate|nominee)\s+for\s+[^,;.()]+", " ", d)
     d = re.sub(r"\b(ran|running)\s+for\s+[^,;.()]+", " ", d)
+    # FUTURE offices are not offices held at the time of THIS race (2026-08-01). Wikipedia
+    # bios are written after the fact, so a candidate's page can describe an office they only
+    # won LATER: "pastor of Ebenezer Baptist Church and future U.S. Senator for this seat"
+    # (Warnock, 2016) was classifying as 4, and "Iraq War veteran, former prosecutor and
+    # future Florida governor" (DeSantis, 2012) as 3 - both held NO office at the time. That
+    # is label leakage: the model would read "this person later became a senator" as a
+    # pre-election credential. Strip the future-office phrase only; "later withdrew" /
+    # "later ran for governor" describe CAMPAIGN events and must NOT nuke a real credential
+    # ("incumbent U.S. representative (ran for governor, later withdrew)" is genuinely 4),
+    # which is why this targets 'future X' and 'later became/elected X', not every 'later'.
+    d = re.sub(r"\bfuture\s+[^,;.()]+", " ", d)
+    d = re.sub(r"\blater\s+(became|elected|won|appointed)\b[^,;.()]*", " ", d)
+    d = re.sub(r"\b(subsequently|went\s+on\s+to)\s+(became?|won|elected)\b[^,;.()]*", " ", d)
     if office in INCUMBENT_BY_OFFICE_RX and INCUMBENT_BY_OFFICE_RX[office].search(d):
         return 4
     for lvl, rx in LEVELS:

@@ -46,11 +46,42 @@ def npar(p):
     p = str(p).upper()
     return "DEM" if p.startswith("DEM") else "REP" if p.startswith("REP") else "OTH"
 
+# Intra-word punctuation is DELETED, not spaced (2026-08-01). Before this, the two
+# apostrophe characters took different paths and produced different keys for one person:
+#   "Beto O’Rourke" (curly) -> NFKD/ascii DROPS it   -> "orourke"  -> key 'orourke b'
+#   "Beto O'Rourke"      (straight) survives ascii, then
+#                                  [^a-z\s] -> SPACE      -> "o rourke" -> key 'rourke b'
+# ...so one candidate became two, splitting his own polling support between two rows (found
+# 2026-07-31 in TX-Sen-DEM). The same split hit ASCII vs Unicode hyphens, which matters much
+# more: a hyphenated surname ("Ocasio-Cortez") keyed off the LAST token only ('cortez a') when
+# the hyphen spaced, but the whole surname ('ocasiocortez a') when it vanished. Deleting
+# intra-word punctuation makes both spellings converge on the SAME key and keeps hyphenated
+# surnames whole. Word SEPARATORS (whitespace) are still separators.
+_APOS = r"\'‘’ʼʻ`´′"          # apostrophes/primes
+_DASH = r"\-‐‑‒–—―"           # hyphens/dashes
+# Apostrophes and periods are deleted in place. HYPHENS additionally swallow the whitespace
+# around them, because sources type stray spaces there and a hyphen joins two surname parts
+# into ONE token: the feed spells one candidate "Debbie Mucarsel- Powell" while the results
+# archive has "Debbie Mucarsel-Powell", and without eating that space the surname still splits
+# ('powell d' vs 'mucarselpowell d'), silently dropping 2024_FL_Senate_DEM from training.
+# Periods do NOT swallow space - "Robert F. Kennedy" must stay three tokens, or the middle
+# initial glues onto the surname ('fkennedy r').
+_PUNCT_IN_WORD = re.compile(rf"[{_APOS}\.]")
+_HYPHEN_JOIN = re.compile(rf"\s*[{_DASH}]\s*")
+
 def norm_name(s):
-    """Candidate-name join key: strip accents/suffixes -> 'lastname firstinitial'."""
+    """Candidate-name join key: strip accents/suffixes -> 'lastname firstinitial'.
+
+    THE shared join key: polls <-> results <-> FEC <-> bios <-> candidate history, in both the
+    general and primary pipelines. Any change here re-keys every join, so it is a
+    retrain-triggering change (see the _PUNCT_IN_WORD note above)."""
     if pd.isna(s):
         return None
     s = unicodedata.normalize("NFKD", str(s)).encode("ascii", "ignore").decode().lower()
+    # collapse intra-word punctuation BEFORE the catch-all, so "o'rourke"/"o’rourke" and
+    # "smith-jones"/"smith – jones" all land on one spelling instead of several.
+    s = _HYPHEN_JOIN.sub("", s)     # hyphens join their two halves into one token
+    s = _PUNCT_IN_WORD.sub("", s)   # apostrophes/periods vanish in place
     s = re.sub(r"\b(jr|sr|ii|iii|iv)\b", "", s)
     s = re.sub(r"[^a-z\s]", " ", s)
     parts = [w for w in s.split() if w]

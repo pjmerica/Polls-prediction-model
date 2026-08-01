@@ -76,21 +76,21 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2018_HI_Governor_DEM,DEM,David Ige,124572,51.4,1,True,ige d
 2018_HI_Governor_DEM,DEM,Colleen Hanabusa,107631,44.4,1,False,hanabusa c
 2018_HI_Governor_DEM,DEM,Ernest Caravalho,5662,2.3,1,False,caravalho e
-2018_HI_Governor_DEM,DEM,Wendell Ka'ehu'ae'a,2298,0.9,1,False,a w
+2018_HI_Governor_DEM,DEM,Wendell Ka'ehu'ae'a,2298,0.9,1,False,kaehuaea w
 2018_HI_Governor_DEM,DEM,Richard Kim,1576,0.6,1,False,kim r
 2018_HI_Governor_DEM,DEM,Van Tanabe,775,0.3,1,False,tanabe v
 2018_HI_Governor_REP,REP,Andria Tupola,17297,55.5,2,True,tupola a
 2018_HI_Governor_REP,REP,John Carroll,10974,35.2,2,False,carroll j
-2018_HI_Governor_REP,REP,Ray L'Heureux,2885,9.3,2,False,heureux r
+2018_HI_Governor_REP,REP,Ray L'Heureux,2885,9.3,2,False,lheureux r
 2018_IA_Governor_REP,REP,Kim Reynolds,94118,98.63,1,True,reynolds k
-2018_IA_Governor_REP,REP,Write-ins,1307,1.37,1,False,ins w
+2018_IA_Governor_REP,REP,Write-ins,1307,1.37,1,False,writeins
 2018_IA_Governor_DEM,DEM,Fred Hubbell,99245,55.41,2,True,hubbell f
 2018_IA_Governor_DEM,DEM,Cathy Glasson,36815,20.55,2,False,glasson c
 2018_IA_Governor_DEM,DEM,John Norris,20498,11.44,2,False,norris j
 2018_IA_Governor_DEM,DEM,Andy McGuire,9404,5.25,2,False,mcguire a
 2018_IA_Governor_DEM,DEM,Nate Boulton,9082,5.07,2,False,boulton n
 2018_IA_Governor_DEM,DEM,Ross Wilburn,3880,2.17,2,False,wilburn r
-2018_IA_Governor_DEM,DEM,Write-ins,200,0.01,2,False,ins w
+2018_IA_Governor_DEM,DEM,Write-ins,200,0.01,2,False,writeins
 2018_ID_Governor_REP,REP,Brad Little,72518,37.3,1,True,little b
 2018_ID_Governor_REP,REP,Raúl Labrador,63460,32.6,1,False,labrador r
 2018_ID_Governor_REP,REP,Tommy Ahlquist,50977,26.2,1,False,ahlquist t
@@ -175,13 +175,13 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2018_ME_Governor_DEM,DEM,Mark Dion,5200,4.1,2,False,dion m
 2018_ME_Governor_DEM,DEM,Diane Russell,2728,2.2,2,False,russell d
 2018_ME_Governor_DEM,DEM,Donna Dion,1596,1.3,2,False,dion d
-2018_ME_Governor_DEM,DEM,Write-ins,748,0.6,2,False,ins w
+2018_ME_Governor_DEM,DEM,Write-ins,748,0.6,2,False,writeins
 2018_MI_Governor_REP,REP,Bill Schuette,501959,50.7,1,True,schuette b
 2018_MI_Governor_REP,REP,Brian Calley,249185,25.2,1,False,calley b
 2018_MI_Governor_REP,REP,Patrick Colbeck,129646,13.1,1,False,colbeck p
 2018_MI_Governor_REP,REP,Jim Hines,108735,11.0,1,False,hines j
 2018_MI_Governor_DEM,DEM,Gretchen Whitmer,588436,52.0,2,True,whitmer g
-2018_MI_Governor_DEM,DEM,Abdul El-Sayed,342179,30.2,2,False,sayed a
+2018_MI_Governor_DEM,DEM,Abdul El-Sayed,342179,30.2,2,False,elsayed a
 2018_MI_Governor_DEM,DEM,Shri Thanedar,200645,17.7,2,False,thanedar s
 2018_MI_Senate_DEM,DEM,Debbie Stabenow,1045450,100.0,1,True,stabenow d
 2018_MI_Senate_REP,REP,John James,518564,54.67,2,True,james j
@@ -217,8 +217,8 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2018_MT_Senate_REP,REP,Troy Downing,29341,19.13,2,False,downing t
 2018_MT_Senate_REP,REP,Al Olszewski,28681,18.7,2,False,olszewski a
 2018_ND_Senate_REP,REP,Kevin Cramer,61529,87.73,2,True,cramer k
-2018_ND_Senate_REP,REP,Thomas O'Neill,8509,12.13,2,False,neill t
-2018_ND_Senate_REP,REP,Write-ins,95,0.14,2,False,ins w
+2018_ND_Senate_REP,REP,Thomas O'Neill,8509,12.13,2,False,oneill t
+2018_ND_Senate_REP,REP,Write-ins,95,0.14,2,False,writeins
 2018_NM_Governor_REP,REP,Steve Pearce,75162,100.0,1,True,pearce s
 2018_NM_Governor_DEM,DEM,Michelle Lujan Grisham,116754,66.38,2,True,grisham m
 2018_NM_Governor_DEM,DEM,Jeff Apodaca,38975,22.16,2,False,apodaca j
@@ -257,7 +257,7 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2018_OH_Governor_DEM,DEM,Richard Cordray,428159,62.16,2,True,cordray r
 2018_OH_Governor_DEM,DEM,Dennis Kucinich,158284,22.98,2,False,kucinich d
 2018_OH_Governor_DEM,DEM,Joe Schiavoni,63131,9.17,2,False,schiavoni j
-2018_OH_Governor_DEM,DEM,Bill O'Neill,22667,3.29,2,False,neill b
+2018_OH_Governor_DEM,DEM,Bill O'Neill,22667,3.29,2,False,oneill b
 2018_OH_Governor_DEM,DEM,Paul Ray Jerry Schroeder,9536,1.38,2,False,schroeder p
 2018_OH_Governor_DEM,DEM,Larry Ealy Jeffrey Lynn,7011,1.02,2,False,lynn l
 2018_OH_Senate_DEM,DEM,Sherrod Brown,613373,100.0,1,True,brown s
@@ -273,14 +273,14 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2018_OR_Governor_DEM,DEM,Kate Brown,324541,81.9,1,True,brown k
 2018_OR_Governor_DEM,DEM,Ed Jones,33464,8.4,1,False,jones e
 2018_OR_Governor_DEM,DEM,Candace Neville,29110,7.4,1,False,neville c
-2018_OR_Governor_DEM,DEM,Write-ins,8912,2.3,1,False,ins w
+2018_OR_Governor_DEM,DEM,Write-ins,8912,2.3,1,False,writeins
 2018_OR_Governor_REP,REP,Knute Buehler,144103,45.9,2,True,buehler k
 2018_OR_Governor_REP,REP,Sam Carpenter,90572,28.8,2,False,carpenter s
 2018_OR_Governor_REP,REP,Greg C. Wooldridge,63049,20.1,2,False,wooldridge g
 2018_OR_Governor_REP,REP,Bruce Cuff,4857,1.5,2,False,cuff b
 2018_OR_Governor_REP,REP,Jeff Smith,4691,1.5,2,False,smith j
 2018_OR_Governor_REP,REP,David Stauffer,2096,0.7,2,False,stauffer d
-2018_OR_Governor_REP,REP,Write-ins,1701,0.5,2,False,ins w
+2018_OR_Governor_REP,REP,Write-ins,1701,0.5,2,False,writeins
 2018_OR_Governor_REP,REP,Jonathan Edwards III,861,0.3,2,False,edwards j
 2018_OR_Governor_REP,REP,Keenan Bohach,787,0.3,2,False,bohach k
 2018_OR_Governor_REP,REP,Brett Hyland,755,0.2,2,False,hyland b
@@ -337,7 +337,7 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2018_TX_Senate_REP,REP,Bruce Jacobson Jr.,64791,4.18,1,False,jacobson b
 2018_TX_Senate_REP,REP,Stefano de Stefano,44456,2.87,1,False,stefano
 2018_TX_Senate_REP,REP,Geraldine Sam,22887,1.48,1,False,sam g
-2018_TX_Senate_DEM,DEM,Beto O'Rourke,644632,61.81,2,True,rourke b
+2018_TX_Senate_DEM,DEM,Beto O'Rourke,644632,61.81,2,True,orourke b
 2018_TX_Senate_DEM,DEM,Sema Hernandez,247424,23.72,2,False,hernandez s
 2018_TX_Senate_DEM,DEM,Edward Kimbrough,150858,14.47,2,False,kimbrough e
 2018_UT_Senate_REP,REP,Mitt Romney,240021,71.27,1,True,romney m
@@ -382,12 +382,12 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2018_WY_Governor_REP,REP,Sam Galeotos,14554,12.3,1,False,galeotos s
 2018_WY_Governor_REP,REP,Taylor Haynes,6511,5.5,1,False,haynes t
 2018_WY_Governor_REP,REP,Bill Dahlin,1763,1.5,1,False,dahlin b
-2018_WY_Governor_REP,REP,Write-ins,113,0.0,1,False,ins w
+2018_WY_Governor_REP,REP,Write-ins,113,0.0,1,False,writeins
 2018_WY_Governor_DEM,DEM,Mary Throne,12948,66.5,2,True,throne m
 2018_WY_Governor_DEM,DEM,Michael Green,2391,12.3,2,False,green m
 2018_WY_Governor_DEM,DEM,Kenneth Casner,1213,6.2,2,False,casner k
 2018_WY_Governor_DEM,DEM,Rex Wilde,1201,6.2,2,False,wilde r
-2018_WY_Governor_DEM,DEM,Write-ins,323,1.7,2,False,ins w
+2018_WY_Governor_DEM,DEM,Write-ins,323,1.7,2,False,writeins
 2019_KY_Governor_REP,REP,Matt Bevin,136060,52.4,1,True,bevin m
 2019_KY_Governor_REP,REP,Robert Goforth,101343,39.0,1,False,goforth r
 2019_KY_Governor_REP,REP,William Woods,14004,5.4,1,False,woods w
@@ -419,7 +419,7 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2020_GA_Senate_DEM,DEM,Jon Ossoff,626819,52.82,2,True,ossoff j
 2020_GA_Senate_DEM,DEM,Teresa Tomlinson,187416,15.79,2,False,tomlinson t
 2020_GA_Senate_DEM,DEM,Sarah Riggs Amico,139574,11.76,2,False,amico s
-2020_GA_Senate_DEM,DEM,Maya Dillard-Smith,105000,8.85,2,False,smith m
+2020_GA_Senate_DEM,DEM,Maya Dillard-Smith,105000,8.85,2,False,dillardsmith m
 2020_GA_Senate_DEM,DEM,James Knox,49452,4.17,2,False,knox j
 2020_GA_Senate_DEM,DEM,Marckeith DeJesus,45936,3.87,2,False,dejesus m
 2020_GA_Senate_DEM,DEM,Tricia Carpenter McCracken,32463,2.74,2,False,mccracken t
@@ -455,10 +455,10 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2020_KY_Senate_DEM,DEM,John R. Sharpensteen,2992,0.55,2,False,sharpensteen j
 2020_MA_Senate_DEM,DEM,Ed Markey,782694,55.35,1,True,markey e
 2020_MA_Senate_DEM,DEM,Joe Kennedy III,629359,44.51,1,False,kennedy j
-2020_MA_Senate_DEM,DEM,Write-ins,1935,0.14,1,False,ins w
-2020_MA_Senate_REP,REP,Kevin O'Connor,158590,59.71,2,True,connor k
+2020_MA_Senate_DEM,DEM,Write-ins,1935,0.14,1,False,writeins
+2020_MA_Senate_REP,REP,Kevin O'Connor,158590,59.71,2,True,oconnor k
 2020_MA_Senate_REP,REP,Shiva Ayyadurai,104782,39.45,2,False,ayyadurai s
-2020_MA_Senate_REP,REP,Write-ins,2245,0.84,2,False,ins w
+2020_MA_Senate_REP,REP,Write-ins,2245,0.84,2,False,writeins
 2020_ME_Senate_REP,REP,Susan Collins,87375,98.79,1,True,collins s
 2020_ME_Senate_REP,REP,Amy Colter,1073,1.21,1,False,colter a
 2020_ME_Senate_DEM,DEM,Sara Gideon,116264,71.47,2,True,gideon s
@@ -557,14 +557,14 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2020_WY_Senate_REP,REP,Devon Cade,1027,0.96,1,False,cade d
 2020_WY_Senate_REP,REP,Michael Kemler,985,0.93,1,False,kemler m
 2020_WY_Senate_REP,REP,Star Roselli,627,0.59,1,False,roselli s
-2020_WY_Senate_REP,REP,Write-ins,501,0.47,1,False,ins w
-2020_WY_Senate_DEM,DEM,Merav Ben-David,9584,40.28,2,True,david m
+2020_WY_Senate_REP,REP,Write-ins,501,0.47,1,False,writeins
+2020_WY_Senate_DEM,DEM,Merav Ben-David,9584,40.28,2,True,bendavid m
 2020_WY_Senate_DEM,DEM,Yana Ludwig,4931,20.73,2,False,ludwig y
 2020_WY_Senate_DEM,DEM,Nathan Wendt,4212,17.7,2,False,wendt n
 2020_WY_Senate_DEM,DEM,Kenneth Casner,2139,8.99,2,False,casner k
 2020_WY_Senate_DEM,DEM,Rex Wilde,1888,7.93,2,False,wilde r
 2020_WY_Senate_DEM,DEM,James DeBrine,865,3.64,2,False,debrine j
-2020_WY_Senate_DEM,DEM,Write-ins,173,0.73,2,False,ins w
+2020_WY_Senate_DEM,DEM,Write-ins,173,0.73,2,False,writeins
 2021_VA_Governor_DEM,DEM,Terry McAuliffe,307367,62.1,1,True,mcauliffe t
 2021_VA_Governor_DEM,DEM,Jennifer Carroll Foy,98052,19.81,1,False,foy j
 2021_VA_Governor_DEM,DEM,Jennifer McClellan,58213,11.76,1,False,mcclellan j
@@ -580,7 +580,7 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2022_AL_Governor_REP,REP,Stacy Lee George,2546,0.39,1,False,george s
 2022_AL_Governor_REP,REP,Dean Young,2356,0.36,1,False,young d
 2022_AL_Governor_DEM,DEM,Yolanda Rochelle Flowers,32529,55.14,3,True,flowers y
-2022_AL_Governor_DEM,DEM,Malika Sanders-Fortier,26469,44.86,3,False,fortier m
+2022_AL_Governor_DEM,DEM,Malika Sanders-Fortier,26469,44.86,3,False,sandersfortier m
 2022_AL_Senate_REP,REP,Katie Britt,253251,63.02,2,True,britt k
 2022_AL_Senate_REP,REP,Mo Brooks,148636,36.98,2,False,brooks m
 2022_AL_Senate_DEM,DEM,Will Boyd,107588,63.72,3,True,boyd w
@@ -592,7 +592,7 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2022_AR_Governor_DEM,DEM,Anthony Bland,9055,9.58,2,False,bland a
 2022_AR_Governor_DEM,DEM,Jay Martin,7731,8.18,2,False,martin j
 2022_AR_Governor_DEM,DEM,"James ""Rus"" Russell",6421,6.8,2,False,russell j
-2022_AR_Governor_DEM,DEM,Supha Xayprasith-Mays,4725,5.0,2,False,mays s
+2022_AR_Governor_DEM,DEM,Supha Xayprasith-Mays,4725,5.0,2,False,xayprasithmays s
 2022_AR_Senate_REP,REP,John Boozman,201677,58.03,1,True,boozman j
 2022_AR_Senate_REP,REP,Jake Bequette,71809,20.66,1,False,bequette j
 2022_AR_Senate_REP,REP,Jan Morgan,65958,18.98,1,False,morgan j
@@ -604,7 +604,7 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2022_AZ_Governor_REP,REP,Karrin Taylor Robson,358662,43.13,1,False,robson k
 2022_AZ_Governor_REP,REP,Matt Salmon,30704,3.69,1,False,salmon m
 2022_AZ_Governor_REP,REP,Scott Neely,25876,3.11,1,False,neely s
-2022_AZ_Governor_REP,REP,Paola Tulliani-Zen,17281,2.08,1,False,zen p
+2022_AZ_Governor_REP,REP,Paola Tulliani-Zen,17281,2.08,1,False,tullianizen p
 2022_AZ_Governor_DEM,DEM,Katie Hobbs,431059,72.32,2,True,hobbs k
 2022_AZ_Governor_DEM,DEM,Marco A. López Jr.,136090,22.83,2,False,lopez m
 2022_AZ_Governor_DEM,DEM,Aaron Lieberman,28878,4.85,2,False,lieberman a
@@ -615,7 +615,7 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2022_AZ_Senate_REP,REP,Michael McGuire,71100,8.75,2,False,mcguire m
 2022_AZ_Senate_REP,REP,Justin Olson,41985,5.16,2,False,olson j
 2022_CO_Senate_DEM,DEM,Michael Bennet,516985,100.0,1,True,bennet m
-2022_CO_Senate_REP,REP,Joe O'Dea,345060,54.44,2,True,dea j
+2022_CO_Senate_REP,REP,Joe O'Dea,345060,54.44,2,True,odea j
 2022_CO_Senate_REP,REP,Ron Hanks,288483,45.51,2,False,hanks r
 2022_CO_Senate_REP,REP,Daniel Hendricks,302,0.05,2,False,hendricks d
 2022_CT_Senate_REP,REP,Leora Levy,46774,50.6,1,True,levy l
@@ -636,7 +636,7 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2022_GA_Governor_REP,REP,Tom Williams,3255,0.27,1,False,williams t
 2022_GA_Governor_DEM,DEM,Stacey Abrams,727168,100.0,2,True,abrams s
 2022_GA_Senate_DEM,DEM,Raphael Warnock,702610,96.04,1,True,warnock r
-2022_GA_Senate_DEM,DEM,Tamara Johnson-Shealey,28984,3.96,1,False,shealey t
+2022_GA_Senate_DEM,DEM,Tamara Johnson-Shealey,28984,3.96,1,False,johnsonshealey t
 2022_GA_Senate_REP,REP,Herschel Walker,803560,68.18,2,True,walker h
 2022_GA_Senate_REP,REP,Gary Black,157370,13.35,2,False,black g
 2022_GA_Senate_REP,REP,Latham Saddler,104471,8.86,2,False,saddler l
@@ -674,7 +674,7 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2022_ID_Governor_REP,REP,Ben Cannady,804,0.3,1,False,cannady b
 2022_ID_Governor_REP,REP,Cody Usabel,680,0.2,1,False,usabel c
 2022_ID_Governor_DEM,DEM,Stephen Heidt,25088,78.8,2,True,heidt s
-2022_ID_Governor_DEM,DEM,Write-ins,6757,21.2,2,False,ins w
+2022_ID_Governor_DEM,DEM,Write-ins,6757,21.2,2,False,writeins
 2022_IL_Governor_DEM,DEM,JB Pritzker,810989,91.88,1,True,pritzker j
 2022_IL_Governor_DEM,DEM,Beverly Miles Karla Shaw,71704,8.12,1,False,shaw b
 2022_IL_Governor_REP,REP,Darren Bailey,458102,57.48,2,True,bailey d
@@ -706,7 +706,7 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2022_MA_Governor_REP,REP,Geoff Diehl,149800,55.44,1,True,diehl g
 2022_MA_Governor_REP,REP,Chris Doughty,120418,44.56,1,False,doughty c
 2022_MA_Governor_DEM,DEM,Maura Healey,642092,85.54,3,True,healey m
-2022_MA_Governor_DEM,DEM,Sonia Chang-Díaz,108574,14.46,3,False,diaz s
+2022_MA_Governor_DEM,DEM,Sonia Chang-Díaz,108574,14.46,3,False,changdiaz s
 2022_MD_Governor_REP,REP,Dan Cox,153423,52.0,1,True,cox d
 2022_MD_Governor_REP,REP,Kelly Schulz,128302,43.48,1,False,schulz k
 2022_MD_Governor_REP,REP,Robin Ficker,8268,2.8,1,False,ficker r
@@ -967,7 +967,7 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2022_TX_Governor_REP,REP,Kandy Kaye Horn,23605,1.21,1,False,horn k
 2022_TX_Governor_REP,REP,Paul Belew,11387,0.58,1,False,belew p
 2022_TX_Governor_REP,REP,Danny Harrison,10829,0.55,1,False,harrison d
-2022_TX_Governor_DEM,DEM,Beto O'Rourke,983182,91.41,2,True,rourke b
+2022_TX_Governor_DEM,DEM,Beto O'Rourke,983182,91.41,2,True,orourke b
 2022_TX_Governor_DEM,DEM,Joy Diaz,33622,3.13,2,False,diaz j
 2022_TX_Governor_DEM,DEM,Michael Cooper,32673,3.04,2,False,cooper m
 2022_TX_Governor_DEM,DEM,Rich Wakeland,13237,1.23,2,False,wakeland r
@@ -976,7 +976,7 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2022_UT_Senate_REP,REP,Becky Edwards,123617,29.67,1,False,edwards b
 2022_UT_Senate_REP,REP,Ally Isom,34997,8.4,1,False,isom a
 2022_VT_Senate_DEM,DEM,Peter Welch,86603,87.01,1,True,welch p
-2022_VT_Senate_DEM,DEM,Isaac Evans-Frantz,7230,7.26,1,False,frantz i
+2022_VT_Senate_DEM,DEM,Isaac Evans-Frantz,7230,7.26,1,False,evansfrantz i
 2022_VT_Senate_DEM,DEM,Niki Thran,5104,5.13,1,False,thran n
 2022_VT_Senate_REP,REP,Gerald Malloy,12169,42.39,2,True,malloy g
 2022_VT_Senate_REP,REP,Christina Nolan,10825,37.7,2,False,nolan c
@@ -1002,15 +1002,15 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2024_AZ_Senate_REP,REP,Mark Lamb,292888,39.56,2,False,lamb m
 2024_AZ_Senate_REP,REP,Elizabeth Jean Reye,38208,5.16,2,False,reye e
 2024_DE_Governor_DEM,DEM,Matt Meyer,40518,46.98,1,True,meyer m
-2024_DE_Governor_DEM,DEM,Bethany Hall-Long,31588,36.62,1,False,long b
-2024_DE_Governor_DEM,DEM,Collin O'Mara,14142,16.4,1,False,mara c
+2024_DE_Governor_DEM,DEM,Bethany Hall-Long,31588,36.62,1,False,halllong b
+2024_DE_Governor_DEM,DEM,Collin O'Mara,14142,16.4,1,False,omara c
 2024_DE_Governor_REP,REP,Mike Ramone,26414,72.29,2,True,ramone m
 2024_DE_Governor_REP,REP,Jerry Price,5971,16.34,2,False,price j
 2024_DE_Governor_REP,REP,Bobby Williamson,4153,11.37,2,False,williamson b
 2024_FL_Senate_REP,REP,Rick Scott,1283904,84.38,1,True,scott r
 2024_FL_Senate_REP,REP,Keith Gross,142392,9.36,1,False,gross k
 2024_FL_Senate_REP,REP,John Columbus,95342,6.26,1,False,columbus j
-2024_FL_Senate_DEM,DEM,Debbie Mucarsel-Powell,747397,68.5,2,True,powell d
+2024_FL_Senate_DEM,DEM,Debbie Mucarsel-Powell,747397,68.5,2,True,mucarselpowell d
 2024_FL_Senate_DEM,DEM,Stanley Campbell,213777,19.59,2,False,campbell s
 2024_FL_Senate_DEM,DEM,Brian Rush,73013,6.69,2,False,rush b
 2024_FL_Senate_DEM,DEM,Rod Joseph,56961,5.22,2,False,joseph r
@@ -1049,7 +1049,7 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2024_MI_Senate_DEM,DEM,Hill Harper,221053,23.67,1,False,harper h
 2024_MI_Senate_REP,REP,Mike Rogers,555766,63.19,2,True,rogers m
 2024_MI_Senate_REP,REP,Justin Amash,137565,15.64,2,False,amash j
-2024_MI_Senate_REP,REP,Sherry O'Donnell,106466,12.1,2,False,donnell s
+2024_MI_Senate_REP,REP,Sherry O'Donnell,106466,12.1,2,False,odonnell s
 2024_MI_Senate_REP,REP,Sandy Pensler,79772,9.07,2,False,pensler s
 2024_MO_Governor_REP,REP,Mike Kehoe,274840,39.4,1,True,kehoe m
 2024_MO_Governor_REP,REP,Bill Eigel,227012,32.6,1,False,eigel b
@@ -1094,7 +1094,7 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2024_NH_Governor_DEM,DEM,Cinde Warmington,52420,41.85,2,False,warmington c
 2024_NH_Governor_DEM,DEM,Jon Kiper,11789,9.41,2,False,kiper j
 2024_NJ_Senate_DEM,DEM,Andy Kim,392602,74.83,14,True,kim a
-2024_NJ_Senate_DEM,DEM,Patricia Campos-Medina,84286,16.06,14,False,medina p
+2024_NJ_Senate_DEM,DEM,Patricia Campos-Medina,84286,16.06,14,False,camposmedina p
 2024_NJ_Senate_DEM,DEM,Lawrence Hamm,47796,9.11,14,False,hamm l
 2024_NJ_Senate_REP,REP,Curtis Bashaw,144869,45.57,29,True,bashaw c
 2024_NJ_Senate_REP,REP,Christine Serrano Glassner,121986,38.38,29,False,glassner c
@@ -1128,7 +1128,7 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2024_TN_Senate_DEM,DEM,Gloria Johnson,143962,70.2,2,True,johnson g
 2024_TN_Senate_DEM,DEM,Marquita Bradshaw,44657,21.78,2,False,bradshaw m
 2024_TN_Senate_DEM,DEM,Lola Brown,10027,4.89,2,False,brown l
-2024_TN_Senate_DEM,DEM,Civil Miller-Watkins,6420,3.13,2,False,watkins c
+2024_TN_Senate_DEM,DEM,Civil Miller-Watkins,6420,3.13,2,False,millerwatkins c
 2024_TX_Senate_REP,REP,Ted Cruz,1977961,88.3,1,True,cruz t
 2024_TX_Senate_REP,REP,Holland Gibson,134011,5.98,1,False,gibson h
 2024_TX_Senate_REP,REP,Rufus Lopez,127986,5.71,1,False,lopez r
@@ -1139,7 +1139,7 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2024_TX_Senate_DEM,DEM,Carl Sherman,31694,3.28,2,False,sherman c
 2024_TX_Senate_DEM,DEM,Robert Hassan,21855,2.26,2,False,hassan r
 2024_TX_Senate_DEM,DEM,Steven Keough,21801,2.25,2,False,keough s
-2024_TX_Senate_DEM,DEM,Heli Rodriguez-Prilliman,18801,1.94,2,False,prilliman h
+2024_TX_Senate_DEM,DEM,Heli Rodriguez-Prilliman,18801,1.94,2,False,rodriguezprilliman h
 2024_TX_Senate_DEM,DEM,Thierry Tchenko,13395,1.38,2,False,tchenko t
 2024_UT_Governor_REP,REP,Spencer Cox,232164,54.4,2,True,cox s
 2024_UT_Governor_REP,REP,Phil Lyman,194639,45.6,2,False,lyman p

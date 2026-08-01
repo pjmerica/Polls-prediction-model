@@ -9,22 +9,22 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 1998_ID_House-2_REP,REP,Dane Watkins,9100,13.81,3,False,watkins d
 1998_ID_House-2_REP,REP,Ann Rydalch,6844,10.39,3,False,rydalch a
 1998_NE_House-1_DEM,DEM,Don Eret,30220,98.97,2,True,eret d
-1998_NE_House-1_DEM,DEM,Write-ins,313,1.03,2,False,ins w
+1998_NE_House-1_DEM,DEM,Write-ins,313,1.03,2,False,writeins
 1998_NE_House-1_REP,REP,Doug Bereuter,66033,99.31,1,True,bereuter d
-1998_NE_House-1_REP,REP,Write-ins,460,0.69,1,False,ins w
+1998_NE_House-1_REP,REP,Write-ins,460,0.69,1,False,writeins
 1998_NE_House-2_DEM,DEM,Michael Scott,21482,64.35,4,True,scott m
 1998_NE_House-2_DEM,DEM,John C. McCourt,5263,15.77,4,False,mccourt j
 1998_NE_House-2_DEM,DEM,Jess M. Pritchett,5126,15.36,4,False,pritchett j
 1998_NE_House-2_DEM,DEM,Melvin Muhammad,1126,3.37,4,False,muhammad m
-1998_NE_House-2_DEM,DEM,Write-ins,386,1.16,4,False,ins w
+1998_NE_House-2_DEM,DEM,Write-ins,386,1.16,4,False,writeins
 1998_NE_House-2_REP,REP,Lee Terry,23769,40.16,3,True,terry l
 1998_NE_House-2_REP,REP,Steve Kupka,17673,29.86,3,False,kupka s
 1998_NE_House-2_REP,REP,Brad Kuiper,15569,26.3,3,False,kuiper b
 1998_NE_House-2_REP,REP,Pat Jones,1585,2.68,3,False,jones p
 1998_NE_House-2_REP,REP,Steven C. Laird,532,0.9,3,False,laird s
-1998_NE_House-2_REP,REP,Write-ins,64,0.11,3,False,ins w
+1998_NE_House-2_REP,REP,Write-ins,64,0.11,3,False,writeins
 1998_NE_House-3_REP,REP,Bill Barrett,81850,99.62,5,True,barrett b
-1998_NE_House-3_REP,REP,Write-ins,316,0.38,5,False,ins w
+1998_NE_House-3_REP,REP,Write-ins,316,0.38,5,False,writeins
 1998_NJ_House-10_DEM,DEM,Donald M. Payne,24747,91.65,18,True,payne d
 1998_NJ_House-10_DEM,DEM,Dennis Speed,2254,8.35,18,False,speed d
 1998_NJ_House-10_REP,REP,William Stanley Wnuck,1431,100.0,19,True,wnuck w
@@ -99,7 +99,7 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 1998_PA_House-19_REP,REP,Charlie Gerow,17247,32.36,35,False,gerow c
 1998_PA_House-1_DEM,DEM,Bob Brady,23181,63.89,1,True,brady b
 1998_PA_House-1_DEM,DEM,Andrew Carn,8061,22.22,1,False,carn a
-1998_PA_House-1_DEM,DEM,Dennis Morrison-Wesley,4052,11.17,1,False,wesley d
+1998_PA_House-1_DEM,DEM,Dennis Morrison-Wesley,4052,11.17,1,False,morrisonwesley d
 1998_PA_House-1_DEM,DEM,Sam Jones,986,2.72,1,False,jones s
 1998_PA_House-1_REP,REP,William Harrison,4768,100.0,2,True,harrison w
 1998_PA_House-20_DEM,DEM,Frank Mascara,40882,100.0,36,True,mascara f
@@ -117,7 +117,7 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 1998_PA_House-5_REP,REP,John Peterson,28022,100.0,9,True,peterson j
 1998_PA_House-6_DEM,DEM,Tim Holden,20758,100.0,10,True,holden t
 1998_PA_House-6_REP,REP,John Meckley,18416,100.0,11,True,meckley j
-1998_PA_House-7_DEM,DEM,Martin J. D'Urso,6536,100.0,12,True,urso m
+1998_PA_House-7_DEM,DEM,Martin J. D'Urso,6536,100.0,12,True,durso m
 1998_PA_House-7_REP,REP,Curt Weldon,34760,100.0,13,True,weldon c
 1998_PA_House-8_DEM,DEM,Bill Tuthill,9030,100.0,14,True,tuthill b
 1998_PA_House-8_REP,REP,Jim Greenwood,21347,67.44,15,True,greenwood j
@@ -126,15 +126,15 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 1998_PA_House-9_REP,REP,Bud Shuster,24768,100.0,17,True,shuster b
 1998_VT_House-1_DEM,DEM,Bernie Sanders,1661,47.88,2,True,sanders b
 1998_VT_House-1_DEM,DEM,Mark Candon,524,15.11,2,False,candon m
-1998_VT_House-1_DEM,DEM,Other Write-ins,467,13.46,2,False,ins o
+1998_VT_House-1_DEM,DEM,Other Write-ins,467,13.46,2,False,writeins o
 1998_VT_House-1_DEM,DEM,Jack Long,465,13.4,2,False,long j
 1998_VT_House-1_DEM,DEM,Peter Diamondstone,352,10.15,2,False,diamondstone p
 1998_VT_House-1_REP,REP,Mark Candon,23101,48.43,1,True,candon m
 1998_VT_House-1_REP,REP,Jack Long,15716,32.95,1,False,long j
 1998_VT_House-1_REP,REP,Peter Diamondstone,8327,17.46,1,False,diamondstone p
-1998_VT_House-1_REP,REP,Write-ins,552,1.16,1,False,ins w
+1998_VT_House-1_REP,REP,Write-ins,552,1.16,1,False,writeins
 1998_WY_House-1_DEM,DEM,Scott Farris,19706,64.33,1,True,farris s
-1998_WY_House-1_DEM,DEM,John O'Steen,6131,20.02,1,False,steen j
+1998_WY_House-1_DEM,DEM,John O'Steen,6131,20.02,1,False,osteen j
 1998_WY_House-1_DEM,DEM,Mickey Kalinay,4795,15.65,1,False,kalinay m
 1998_WY_House-1_REP,REP,Barbara Cubin,73201,100.0,2,True,cubin b
 2000_AZ_House-1_REP,REP,Jeff Flake,16745,31.8,1,True,flake j
@@ -180,20 +180,20 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2000_MN_House-8_REP,REP,Robert Lemen,7197,50.1,25,True,lemen r
 2000_MN_House-8_REP,REP,Warren Nelson,7179,49.9,25,False,nelson w
 2000_NE_House-1_DEM,DEM,Alan Jacobsen,25940,99.02,2,True,jacobsen a
-2000_NE_House-1_DEM,DEM,Write-ins,256,0.98,2,False,ins w
+2000_NE_House-1_DEM,DEM,Write-ins,256,0.98,2,False,writeins
 2000_NE_House-1_REP,REP,Doug Bereuter,50365,98.99,1,True,bereuter d
-2000_NE_House-1_REP,REP,Write-ins,516,1.01,1,False,ins w
+2000_NE_House-1_REP,REP,Write-ins,516,1.01,1,False,writeins
 2000_NE_House-2_DEM,DEM,Shelley Kiel,30578,69.61,5,True,kiel s
 2000_NE_House-2_DEM,DEM,Allen C. Johnson,13092,29.8,5,False,johnson a
-2000_NE_House-2_DEM,DEM,Write-ins,259,0.59,5,False,ins w
+2000_NE_House-2_DEM,DEM,Write-ins,259,0.59,5,False,writeins
 2000_NE_House-2_REP,REP,Lee Terry,55696,98.66,4,True,terry l
-2000_NE_House-2_REP,REP,Write-ins,758,1.34,4,False,ins w
+2000_NE_House-2_REP,REP,Write-ins,758,1.34,4,False,writeins
 2000_NE_House-3_DEM,DEM,Roland E. Reynolds,23364,98.84,8,True,reynolds r
-2000_NE_House-3_DEM,DEM,Write-ins,275,1.16,8,False,ins w
+2000_NE_House-3_DEM,DEM,Write-ins,275,1.16,8,False,writeins
 2000_NE_House-3_REP,REP,Tom Osborne,52438,70.71,7,True,osborne t
 2000_NE_House-3_REP,REP,John A. Gale,12573,16.95,7,False,gale j
 2000_NE_House-3_REP,REP,Kathy Wilmot,9127,12.31,7,False,wilmot k
-2000_NE_House-3_REP,REP,Write-ins,26,0.04,7,False,ins w
+2000_NE_House-3_REP,REP,Write-ins,26,0.04,7,False,writeins
 2000_NJ_House-10_DEM,DEM,Donald M. Payne,45880,100.0,17,True,payne d
 2000_NJ_House-10_REP,REP,Dirk B. Weber,1492,100.0,18,True,weber d
 2000_NJ_House-11_DEM,DEM,John P. Scollo,15419,100.0,20,True,scollo j
@@ -238,7 +238,7 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2000_PA_House-13_REP,REP,Stewart Greenleaf,24623,57.2,23,True,greenleaf s
 2000_PA_House-13_REP,REP,John Coffey,18427,42.8,23,False,coffey j
 2000_PA_House-14_DEM,DEM,William J. Coyne,44187,100.0,24,True,coyne w
-2000_PA_House-15_DEM,DEM,Edward J. O'Brien,18093,100.0,25,True,brien e
+2000_PA_House-15_DEM,DEM,Edward J. O'Brien,18093,100.0,25,True,obrien e
 2000_PA_House-15_REP,REP,Pat Toomey,21487,100.0,26,True,toomey p
 2000_PA_House-16_DEM,DEM,Bob Yorczyk,9517,100.0,27,True,yorczyk b
 2000_PA_House-16_REP,REP,Joe Pitts,34781,100.0,28,True,pitts j
@@ -287,9 +287,9 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2000_SD_House-1_DEM,DEM,Raymond Earl Osloond Sr.,1715,7.5,1,False,osloond r
 2000_VT_House-1_DEM,DEM,Peter Diamondstone,20539,90.94,2,True,diamondstone p
 2000_VT_House-1_DEM,DEM,Bernie Sanders,1337,5.92,2,False,sanders b
-2000_VT_House-1_DEM,DEM,Write-ins,710,3.14,2,False,ins w
+2000_VT_House-1_DEM,DEM,Write-ins,710,3.14,2,False,writeins
 2000_VT_House-1_REP,REP,Karen Ann Kerin,47632,92.47,1,True,kerin k
-2000_VT_House-1_REP,REP,Write-ins,2981,5.79,1,False,ins w
+2000_VT_House-1_REP,REP,Write-ins,2981,5.79,1,False,writeins
 2000_VT_House-1_REP,REP,Bernie Sanders,895,1.74,1,False,sanders b
 2000_WY_House-1_DEM,DEM,Michael Allen Green,14219,53.11,1,True,green m
 2000_WY_House-1_DEM,DEM,Leonard Munker,12555,46.89,1,False,munker l
@@ -365,7 +365,7 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2002_CO_House-7_DEM,DEM,Mike Feeley,11265,56.5,13,True,feeley m
 2002_CO_House-7_DEM,DEM,Dave Thomas,8690,43.5,13,False,thomas d
 2002_CO_House-7_REP,REP,Bob Beauprez,10172,38.2,14,True,beauprez b
-2002_CO_House-7_REP,REP,Rick O'Donnell,8213,30.8,14,False,donnell r
+2002_CO_House-7_REP,REP,Rick O'Donnell,8213,30.8,14,False,odonnell r
 2002_CO_House-7_REP,REP,Samir Zakhem,4848,18.2,14,False,zakhem s
 2002_CO_House-7_REP,REP,Joe Rogers,3430,12.9,14,False,rogers j
 2002_MN_House-1_REP,REP,Gil Gutknecht,25978,100.0,1,True,gutknecht g
@@ -427,7 +427,7 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2002_PA_House-13_REP,REP,Melissa Brown,19917,55.17,22,True,brown m
 2002_PA_House-13_REP,REP,Al Taubenberger,16184,44.83,22,False,taubenberger a
 2002_PA_House-14_DEM,DEM,Mike Doyle,72886,100.0,23,True,doyle m
-2002_PA_House-15_DEM,DEM,Edward J. O'Brien,32671,100.0,24,True,brien e
+2002_PA_House-15_DEM,DEM,Edward J. O'Brien,32671,100.0,24,True,obrien e
 2002_PA_House-15_REP,REP,Pat Toomey,23602,100.0,25,True,toomey p
 2002_PA_House-16_REP,REP,Joe Pitts,35759,100.0,26,True,pitts j
 2002_PA_House-17_DEM,DEM,Tim Holden,35940,100.0,27,True,holden t
@@ -469,27 +469,27 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2002_SD_House-1_REP,REP,Tim Amdahl,10593,9.61,1,False,amdahl t
 2002_SD_House-1_REP,REP,Roger Hunt,7799,7.07,1,False,hunt r
 2002_SD_House-1_REP,REP,Bert Tollefson,1311,1.19,1,False,tollefson b
-2002_TN_House-1_DEM,DEM,Write-Ins,494,100.0,1,True,ins w
+2002_TN_House-1_DEM,DEM,Write-Ins,494,100.0,1,True,writeins
 2002_TN_House-1_REP,REP,Bill Jenkins,127300,98.77,3,True,jenkins b
 2002_TN_House-2_DEM,DEM,John Greene,23885,100.0,4,True,greene j
-2002_TN_House-2_DEM,DEM,Write-Ins,3,0.0,4,False,ins w
+2002_TN_House-2_DEM,DEM,Write-Ins,3,0.0,4,False,writeins
 2002_TN_House-2_REP,REP,John J. Duncan Jr.,67582,91.7,5,True,duncan j
 2002_TN_House-2_REP,REP,Jim Pendergrass,6095,8.3,5,False,pendergrass j
 2002_TN_House-3_DEM,DEM,John Wolfe,22731,66.1,7,True,wolfe j
 2002_TN_House-3_DEM,DEM,"Norman E. Knott, Jr.",11517,33.5,7,False,knott n
-2002_TN_House-3_DEM,DEM,Write-Ins,150,0.4,7,False,ins w
+2002_TN_House-3_DEM,DEM,Write-Ins,150,0.4,7,False,writeins
 2002_TN_House-3_REP,REP,Zach Wamp,59410,99.3,8,True,wamp z
-2002_TN_House-3_REP,REP,Write-Ins,392,0.7,8,False,ins w
+2002_TN_House-3_REP,REP,Write-Ins,392,0.7,8,False,writeins
 2002_TN_House-4_DEM,DEM,Lincoln Davis,48843,57.0,11,True,davis l
 2002_TN_House-4_DEM,DEM,Fran Marcum,36779,42.92,11,False,marcum f
-2002_TN_House-4_DEM,DEM,Write-in,64,0.07,11,False,in w
+2002_TN_House-4_DEM,DEM,Write-in,64,0.07,11,False,writein
 2002_TN_House-4_REP,REP,Janice Bowling,20709,37.1,10,True,bowling j
 2002_TN_House-4_REP,REP,Mike Greene,13563,24.3,10,False,greene m
 2002_TN_House-4_REP,REP,Andy Ogles,8201,14.69,10,False,ogles a
 2002_TN_House-4_REP,REP,John Bumpus,7245,12.98,10,False,bumpus j
 2002_TN_House-4_REP,REP,Mike Coffield,4991,8.94,10,False,coffield m
 2002_TN_House-4_REP,REP,Harvey Howard,1063,1.91,10,False,howard h
-2002_TN_House-4_REP,REP,Write-ins,41,0.07,10,False,ins w
+2002_TN_House-4_REP,REP,Write-ins,41,0.07,10,False,writeins
 2002_TN_House-5_DEM,DEM,Jim Cooper,32651,46.7,13,True,cooper j
 2002_TN_House-5_DEM,DEM,John Arriola,16878,24.2,13,False,arriola j
 2002_TN_House-5_DEM,DEM,Gayle Ray,16087,23.0,13,False,ray g
@@ -497,21 +497,21 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2002_TN_House-5_DEM,DEM,Carlton Cornett,1096,1.6,13,False,cornett c
 2002_TN_House-5_DEM,DEM,Ronnie Steine,901,1.3,13,False,steine r
 2002_TN_House-5_DEM,DEM,Adam Cox,593,0.8,13,False,cox a
-2002_TN_House-5_DEM,DEM,Write-Ins,21,0.0,13,False,ins w
+2002_TN_House-5_DEM,DEM,Write-Ins,21,0.0,13,False,writeins
 2002_TN_House-5_REP,REP,Robert Duvall,11572,45.3,14,True,duvall r
 2002_TN_House-5_REP,REP,Thomas W. Lawless,5759,22.5,14,False,lawless t
 2002_TN_House-5_REP,REP,Kevin Wilkinson,5608,21.9,14,False,wilkinson k
 2002_TN_House-5_REP,REP,Remo Circo,2009,7.9,14,False,circo r
 2002_TN_House-5_REP,REP,Ben J. Tomeo,600,2.3,14,False,tomeo b
-2002_TN_House-5_REP,REP,Write-Ins,23,0.1,14,False,ins w
+2002_TN_House-5_REP,REP,Write-Ins,23,0.1,14,False,writeins
 2002_TN_House-6_DEM,DEM,Bart Gordon,69121,91.6,16,True,gordon b
 2002_TN_House-6_DEM,DEM,Harvey Howard,6255,8.3,16,False,howard h
-2002_TN_House-6_DEM,DEM,Write-Ins,99,0.1,16,False,ins w
+2002_TN_House-6_DEM,DEM,Write-Ins,99,0.1,16,False,writeins
 2002_TN_House-6_REP,REP,Robert L. Garrison,34329,99.6,17,True,garrison r
-2002_TN_House-6_REP,REP,Write-Ins,147,0.4,17,False,ins w
+2002_TN_House-6_REP,REP,Write-Ins,147,0.4,17,False,writeins
 2002_TN_House-7_DEM,DEM,Tim Barron,22789,71.0,19,True,barron t
 2002_TN_House-7_DEM,DEM,Omer R. Hayden,9262,28.9,19,False,hayden o
-2002_TN_House-7_DEM,DEM,Write-Ins,25,0.1,19,False,ins w
+2002_TN_House-7_DEM,DEM,Write-Ins,25,0.1,19,False,writeins
 2002_TN_House-7_REP,REP,Marsha Blackburn,36633,40.32,20,True,blackburn m
 2002_TN_House-7_REP,REP,David Kustoff,18392,20.24,20,False,kustoff d
 2002_TN_House-7_REP,REP,Brent Taylor,14139,15.56,20,False,taylor b
@@ -521,18 +521,18 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2002_TN_House-7_REP,REP,Randy Starkey,628,0.69,20,False,starkey r
 2002_TN_House-8_DEM,DEM,John Tanner,66015,86.8,22,True,tanner j
 2002_TN_House-8_DEM,DEM,Richard Ward,10069,13.2,22,False,ward r
-2002_TN_House-8_DEM,DEM,Write-Ins,12,0.0,22,False,ins w
+2002_TN_House-8_DEM,DEM,Write-Ins,12,0.0,22,False,writeins
 2002_TN_House-8_REP,REP,Mat McClain,18878,56.5,23,True,mcclain m
 2002_TN_House-8_REP,REP,Bill Warren,14531,43.5,23,False,warren b
-2002_TN_House-8_REP,REP,Write-Ins,26,0.1,23,False,ins w
+2002_TN_House-8_REP,REP,Write-Ins,26,0.1,23,False,writeins
 2002_TN_House-9_DEM,DEM,Harold Ford Jr.,120904,83.81,27,True,ford h
-2002_TN_House-9_REP,REP,Write-Ins,5,100.0,26,True,ins w
+2002_TN_House-9_REP,REP,Write-Ins,5,100.0,26,True,writeins
 2002_VT_House-1_DEM,DEM,Bernie Sanders,2583,65.15,1,True,sanders b
-2002_VT_House-1_DEM,DEM,Write-ins,1382,34.85,1,False,ins w
+2002_VT_House-1_DEM,DEM,Write-ins,1382,34.85,1,False,writeins
 2002_VT_House-1_REP,REP,"William ""Bill"" Meub",14105,57.23,2,True,meub w
 2002_VT_House-1_REP,REP,Greg Parke,5467,22.18,2,False,parke g
 2002_VT_House-1_REP,REP,Karen Ann Kerin,4643,18.84,2,False,kerin k
-2002_VT_House-1_REP,REP,Write-ins,431,1.75,2,False,ins w
+2002_VT_House-1_REP,REP,Write-ins,431,1.75,2,False,writeins
 2002_WY_House-1_DEM,DEM,Ron Akin,20068,63.72,1,True,akin r
 2002_WY_House-1_DEM,DEM,John Swett,11526,36.28,1,False,swett j
 2002_WY_House-1_REP,REP,Barbara Cubin,66235,100.0,2,True,cubin b
@@ -550,7 +550,7 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2004_AZ_House-5_DEM,DEM,Elizabeth Rogers,11362,69.5,13,True,rogers e
 2004_AZ_House-5_DEM,DEM,Ronald Maynard,4985,30.5,13,False,maynard r
 2004_AZ_House-5_REP,REP,J. D. Hayworth,43166,79.3,12,True,hayworth j
-2004_AZ_House-5_REP,REP,Roselyn O'Connell,11296,20.7,12,False,connell r
+2004_AZ_House-5_REP,REP,Roselyn O'Connell,11296,20.7,12,False,oconnell r
 2004_AZ_House-6_REP,REP,Jeff Flake,33784,59.3,15,True,flake j
 2004_AZ_House-6_REP,REP,Stan Barnes,23186,40.7,15,False,barnes s
 2004_AZ_House-7_DEM,DEM,Raúl Grijalva,26450,100.0,17,True,grijalva r
@@ -594,14 +594,14 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2004_MN_House-8_REP,REP,Mark Groettum,13429,100.0,20,True,groettum m
 2004_MS_House-2_DEM,DEM,Bennie Thompson,24316,100.0,1,True,thompson b
 2004_MS_House-2_REP,REP,Clinton LeSueur,14468,84.83,2,True,lesueur c
-2004_MS_House-2_REP,REP,Stephanie Summers-O'Neal,1319,7.73,2,False,neal s
+2004_MS_House-2_REP,REP,Stephanie Summers-O'Neal,1319,7.73,2,False,summersoneal s
 2004_MS_House-2_REP,REP,James Broadwater,1266,7.42,2,False,broadwater j
-2004_MS_House-2_REP,REP,Write-in,3,0.02,2,False,in w
+2004_MS_House-2_REP,REP,Write-in,3,0.02,2,False,writein
 2004_MS_House-4_DEM,DEM,Gene Taylor,938,100.0,3,True,taylor g
 2004_MS_House-4_REP,REP,Michael Lott,14468,84.83,4,True,lott m
-2004_MS_House-4_REP,REP,Stephanie Summers-O'Neal,1319,7.73,4,False,neal s
+2004_MS_House-4_REP,REP,Stephanie Summers-O'Neal,1319,7.73,4,False,summersoneal s
 2004_MS_House-4_REP,REP,James Broadwater,1266,7.42,4,False,broadwater j
-2004_MS_House-4_REP,REP,Write-in,3,0.02,4,False,in w
+2004_MS_House-4_REP,REP,Write-in,3,0.02,4,False,writein
 2004_NE_House-1_DEM,DEM,Matt Connealy,14807,40.85,2,True,connealy m
 2004_NE_House-1_DEM,DEM,Janet Stewart,9857,27.19,2,False,stewart j
 2004_NE_House-1_DEM,DEM,Charlie Matulka,2750,7.59,2,False,matulka c
@@ -663,7 +663,7 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2004_PA_House-15_DEM,DEM,Richard J. Orloski,14535,43.64,24,False,orloski r
 2004_PA_House-15_REP,REP,Charlie Dent,25376,51.5,25,True,dent c
 2004_PA_House-15_REP,REP,Joe Pascuzzo,16152,32.78,25,False,pascuzzo j
-2004_PA_House-15_REP,REP,Brian O'Neill,7749,15.72,25,False,neill b
+2004_PA_House-15_REP,REP,Brian O'Neill,7749,15.72,25,False,oneill b
 2004_PA_House-16_DEM,DEM,Lois Herr,12522,100.0,26,True,herr l
 2004_PA_House-16_REP,REP,Joe Pitts,54345,100.0,27,True,pitts j
 2004_PA_House-17_DEM,DEM,Tim Holden,31127,100.0,28,True,holden t
@@ -799,9 +799,9 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2006_CO_House-7_DEM,DEM,Ed Perlmutter,15598,53.3,13,True,perlmutter e
 2006_CO_House-7_DEM,DEM,Peggy Lamm,11047,37.7,13,False,lamm p
 2006_CO_House-7_DEM,DEM,Herb Rubenstein,2625,9.0,13,False,rubenstein h
-2006_CO_House-7_REP,REP,Rick O'Donnell,20535,100.0,12,True,donnell r
+2006_CO_House-7_REP,REP,Rick O'Donnell,20535,100.0,12,True,odonnell r
 2006_DE_House-1_DEM,DEM,Dennis Spivack,9515,60.34,1,True,spivack d
-2006_DE_House-1_DEM,DEM,Karen M. Hartley-Nagle,6253,39.66,1,False,nagle k
+2006_DE_House-1_DEM,DEM,Karen M. Hartley-Nagle,6253,39.66,1,False,hartleynagle k
 2006_FL_House-8_DEM,DEM,Charlie Stuart,12728,47.73,1,True,stuart c
 2006_FL_House-8_DEM,DEM,Alan Grayson,9691,36.34,1,False,grayson a
 2006_FL_House-8_DEM,DEM,Homer Hartage,4250,15.94,1,False,hartage h
@@ -846,7 +846,7 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2006_NJ_House-13_DEM,DEM,Joseph Vas,9486,27.78,23,False,vas j
 2006_NJ_House-13_REP,REP,John J. Guarini,2769,100.0,24,True,guarini j
 2006_NJ_House-1_DEM,DEM,incumbent,18418,100.0,1,True,incumbent
-2006_NJ_House-2_DEM,DEM,Viola Thomas-Hughes,8268,82.92,3,True,hughes v
+2006_NJ_House-2_DEM,DEM,Viola Thomas-Hughes,8268,82.92,3,True,thomashughes v
 2006_NJ_House-2_DEM,DEM,Henry David Marcus,1703,17.08,3,False,marcus h
 2006_NJ_House-2_REP,REP,incumbent,14440,100.0,2,True,incumbent
 2006_NJ_House-3_DEM,DEM,Rich Sexton,9960,100.0,5,True,sexton r
@@ -992,7 +992,7 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2006_OR_House-2_REP,REP,Paul A. Daghlian,7401,9.47,4,False,daghlian p
 2006_OR_House-3_DEM,DEM,Earl Blumenauer,63350,90.72,5,True,blumenauer e
 2006_OR_House-3_DEM,DEM,John Sweeney,6338,9.08,5,False,sweeney j
-2006_OR_House-3_REP,REP,write-in,353,18.02,6,True,in w
+2006_OR_House-3_REP,REP,write-in,353,18.02,6,True,writein
 2006_OR_House-4_DEM,DEM,Peter A. DeFazio,66432,99.11,7,True,defazio p
 2006_OR_House-4_REP,REP,Jim Feldkamp,47560,82.05,8,True,feldkamp j
 2006_OR_House-4_REP,REP,Monica Johnson,9757,16.83,8,False,johnson m
@@ -1102,13 +1102,13 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2006_TN_House-9_REP,REP,Rudolph Daniels,770,3.98,26,False,daniels r
 2006_VA_House-11_DEM,DEM,Andrew Hurst,10831,55.1,2,True,hurst a
 2006_VA_House-11_DEM,DEM,Ken Longmyer,8818,44.9,2,False,longmyer k
-2006_VA_House-8_REP,REP,Tom O'Donoghue,3064,69.5,1,True,donoghue t
+2006_VA_House-8_REP,REP,Tom O'Donoghue,3064,69.5,1,True,odonoghue t
 2006_VA_House-8_REP,REP,Mark Ellmore,1345,30.5,1,False,ellmore m
 2006_VT_House-1_DEM,DEM,Peter Welch,34706,97.11,1,True,welch p
-2006_VT_House-1_DEM,DEM,Write-ins,1033,2.89,1,False,ins w
+2006_VT_House-1_DEM,DEM,Write-ins,1033,2.89,1,False,writeins
 2006_VT_House-1_REP,REP,Martha Rainville,26199,71.31,2,True,rainville m
 2006_VT_House-1_REP,REP,Mark Shepard,10285,27.99,2,False,shepard m
-2006_VT_House-1_REP,REP,Write-ins,258,0.7,2,False,ins w
+2006_VT_House-1_REP,REP,Write-ins,258,0.7,2,False,writeins
 2006_WY_House-1_DEM,DEM,Gary Trauner,25914,100.0,1,True,trauner g
 2006_WY_House-1_REP,REP,Barbara Cubin,50004,60.04,2,True,cubin b
 2006_WY_House-1_REP,REP,Bill Winney,33287,24.62,2,False,winney b
@@ -1149,7 +1149,7 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2008_CO_House-1_REP,REP,George Lilly,6300,58.2,2,True,lilly g
 2008_CO_House-1_REP,REP,Charles Crain,4533,41.8,2,False,crain c
 2008_CO_House-2_DEM,DEM,Jared Polis,20493,41.7,3,True,polis j
-2008_CO_House-2_DEM,DEM,Joan Fitz-Gerald,18599,37.8,3,False,gerald j
+2008_CO_House-2_DEM,DEM,Joan Fitz-Gerald,18599,37.8,3,False,fitzgerald j
 2008_CO_House-2_DEM,DEM,Will Shafroth,10075,20.5,3,False,shafroth w
 2008_CO_House-2_REP,REP,Scott Starin,19293,100.0,4,True,starin s
 2008_CO_House-3_DEM,DEM,John Salazar,22192,100.0,5,True,salazar j
@@ -1167,7 +1167,7 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2008_CO_House-6_REP,REP,Steve Ward,8452,11.9,11,False,ward s
 2008_CO_House-7_DEM,DEM,Ed Perlmutter,29704,100.0,13,True,perlmutter e
 2008_CO_House-7_REP,REP,John Lerew,25155,100.0,14,True,lerew j
-2008_DE_House-1_DEM,DEM,Karen Hartley-Nagle,35995,55.4,1,True,nagle k
+2008_DE_House-1_DEM,DEM,Karen Hartley-Nagle,35995,55.4,1,True,hartleynagle k
 2008_DE_House-1_DEM,DEM,Jerry Northington,22393,34.5,1,False,northington j
 2008_DE_House-1_DEM,DEM,Michael Miller,6609,10.1,1,False,miller m
 2008_GA_House-12_DEM,DEM,John Barrow,45235,76.4,2,True,barrow j
@@ -1258,7 +1258,7 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2008_NH_House-2_REP,REP,Bob Clegg,10731,34.13,2,False,clegg b
 2008_NH_House-2_REP,REP,Jim Steiner,4561,14.51,2,False,steiner j
 2008_NH_House-2_REP,REP,Grant Bosse,2944,9.36,2,False,bosse g
-2008_NH_House-2_REP,REP,Alfred L'Eplattenier,540,1.72,2,False,eplattenier a
+2008_NH_House-2_REP,REP,Alfred L'Eplattenier,540,1.72,2,False,leplattenier a
 2008_NJ_House-10_DEM,DEM,Donald M. Payne,30764,100.0,19,True,payne d
 2008_NJ_House-11_DEM,DEM,Tom Wyka,10885,69.72,21,True,wyka t
 2008_NJ_House-11_DEM,DEM,Ellen Greenberg,2456,15.73,21,False,greenberg e
@@ -1271,7 +1271,7 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2008_NJ_House-13_REP,REP,Joseph Turula,1739,100.0,25,True,turula j
 2008_NJ_House-1_DEM,DEM,Camille Andrews,32108,83.03,1,True,andrews c
 2008_NJ_House-1_DEM,DEM,John Caramanna,4342,11.23,1,False,caramanna j
-2008_NJ_House-1_DEM,DEM,Mahdi Ibn-Ziyad,2222,5.75,1,False,ziyad m
+2008_NJ_House-1_DEM,DEM,Mahdi Ibn-Ziyad,2222,5.75,1,False,ibnziyad m
 2008_NJ_House-1_DEM,DEM,David G. Evans,0,0.0,1,False,evans d
 2008_NJ_House-1_REP,REP,Dale M. Glading,5873,82.27,2,True,glading d
 2008_NJ_House-1_REP,REP,Fernando Powers,1266,17.73,2,False,powers f
@@ -1305,7 +1305,7 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2008_NJ_House-9_DEM,DEM,Steve Rothman,25418,100.0,17,True,rothman s
 2008_NJ_House-9_REP,REP,Vincent Micco,5797,100.0,18,True,micco v
 2008_NM_House-1_DEM,DEM,Martin T. Heinrich,22344,44.0,1,True,heinrich m
-2008_NM_House-1_DEM,DEM,Rebecca D. Vigil-Giron,12659,25.0,1,False,giron r
+2008_NM_House-1_DEM,DEM,Rebecca D. Vigil-Giron,12659,25.0,1,False,vigilgiron r
 2008_NM_House-1_DEM,DEM,Michelle Lujan Grisham,12073,24.0,1,False,grisham m
 2008_NM_House-1_DEM,DEM,Robert L. Pidcock,4272,8.0,1,False,pidcock r
 2008_NM_House-1_REP,REP,Darren White,57878,88.0,2,True,white d
@@ -1385,7 +1385,7 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2008_PA_House-16_REP,REP,Joe Pitts,49740,100.0,31,True,pitts j
 2008_PA_House-17_DEM,DEM,Tim Holden,79551,100.0,32,True,holden t
 2008_PA_House-17_REP,REP,Toni Gilhooley,49123,100.0,33,True,gilhooley t
-2008_PA_House-18_DEM,DEM,Steve O'Donnell,52247,44.96,34,True,donnell s
+2008_PA_House-18_DEM,DEM,Steve O'Donnell,52247,44.96,34,True,odonnell s
 2008_PA_House-18_DEM,DEM,Beth Hafer,48224,41.5,34,False,hafer b
 2008_PA_House-18_DEM,DEM,Brien Wall,15733,13.54,34,False,wall b
 2008_PA_House-18_REP,REP,Tim Murphy,39780,100.0,35,True,murphy t
@@ -1464,7 +1464,7 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2008_VA_House-8_REP,REP,Amit Singh,2577,44.0,2,False,singh a
 2008_VT_House-1_DEM,DEM,Peter Welch,19566,87.74,1,True,welch p
 2008_VT_House-1_DEM,DEM,Craig Hill,2635,11.82,1,False,hill c
-2008_VT_House-1_DEM,DEM,Write-ins,98,0.44,1,False,ins w
+2008_VT_House-1_DEM,DEM,Write-ins,98,0.44,1,False,writeins
 2008_WY_House-1_DEM,DEM,Gary Trauner,24741,100.0,1,True,trauner g
 2008_WY_House-1_REP,REP,Cynthia Lummis,33149,46.24,2,True,lummis c
 2008_WY_House-1_REP,REP,Mark Gordon,26827,37.42,2,False,gordon m
@@ -1629,7 +1629,7 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2010_IL_House-5_REP,REP,Ashvin Lad,3942,27.46,4,False,lad a
 2010_IL_House-7_DEM,DEM,Danny K. Davis,52728,66.77,6,True,davis d
 2010_IL_House-7_DEM,DEM,Sharon Denise Dixon,10851,13.74,6,False,dixon s
-2010_IL_House-7_DEM,DEM,Darlena Williams-Burnett,10173,12.88,6,False,burnett d
+2010_IL_House-7_DEM,DEM,Darlena Williams-Burnett,10173,12.88,6,False,williamsburnett d
 2010_IL_House-7_DEM,DEM,James Ascot,5221,6.61,6,False,ascot j
 2010_IL_House-8_DEM,DEM,Melissa Bean,25000,99.9,7,True,bean m
 2010_IL_House-8_DEM,DEM,Jonathan Farnick,25,0.1,7,False,farnick j
@@ -1759,7 +1759,7 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2010_MS_House-2_REP,REP,Richard Cook,2230,41.64,3,False,cook r
 2010_MS_House-3_DEM,DEM,Joel Gill,3805,52.33,4,True,gill j
 2010_MS_House-3_DEM,DEM,James D. Jackson,2138,29.4,4,False,jackson j
-2010_MS_House-3_DEM,DEM,Shawn O'Hara,1328,18.26,4,False,hara s
+2010_MS_House-3_DEM,DEM,Shawn O'Hara,1328,18.26,4,False,ohara s
 2010_MS_House-4_REP,REP,Steven Palazzo,15556,57.15,5,True,palazzo s
 2010_MS_House-4_REP,REP,Joe Tegerdine,11663,42.85,5,False,tegerdine j
 2010_MT_House-1_DEM,DEM,Dennis McDonald,24014,38.42,1,True,mcdonald d
@@ -1817,7 +1817,7 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2010_NC_House-8_DEM,DEM,Larry Kissell,24541,62.7,9,True,kissell l
 2010_NC_House-8_DEM,DEM,Nancy Shakir,14600,37.3,9,False,shakir n
 2010_NC_House-8_REP,REP,Harold Johnson,9261,60.97,11,True,johnson h
-2010_NC_House-8_REP,REP,Tim D'Annunzio,5928,39.03,11,False,annunzio t
+2010_NC_House-8_REP,REP,Tim D'Annunzio,5928,39.03,11,False,dannunzio t
 2010_NJ_House-10_DEM,DEM,Donald M. Payne,22155,100.0,19,True,payne d
 2010_NJ_House-10_REP,REP,Michael Alonso,1061,100.0,20,True,alonso m
 2010_NJ_House-11_DEM,DEM,Douglas Herbert,6192,71.52,22,True,herbert d
@@ -1922,7 +1922,7 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2010_PA_House-10_REP,REP,David Madeira,18524,31.06,18,False,madeira d
 2010_PA_House-10_REP,REP,Malcolm Derk,16690,27.98,18,False,derk m
 2010_PA_House-11_DEM,DEM,Paul Kanjorski,33900,49.36,19,True,kanjorski p
-2010_PA_House-11_DEM,DEM,Corey O'Brien,23267,33.87,19,False,brien c
+2010_PA_House-11_DEM,DEM,Corey O'Brien,23267,33.87,19,False,obrien c
 2010_PA_House-11_DEM,DEM,Brian Kelly,11519,16.77,19,False,kelly b
 2010_PA_House-11_REP,REP,Lou Barletta,28397,100.0,20,True,barletta l
 2010_PA_House-12_DEM,DEM,Mark Critz,58817,71.46,21,True,critz m
@@ -1942,7 +1942,7 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2010_PA_House-16_DEM,DEM,Lois Herr,24541,100.0,29,True,herr l
 2010_PA_House-16_REP,REP,Joe Pitts,50629,100.0,30,True,pitts j
 2010_PA_House-17_DEM,DEM,Tim Holden,30630,65.27,31,True,holden t
-2010_PA_House-17_DEM,DEM,Sheila Dow-Ford,16296,34.73,31,False,ford s
+2010_PA_House-17_DEM,DEM,Sheila Dow-Ford,16296,34.73,31,False,dowford s
 2010_PA_House-17_REP,REP,Dave Argall,20712,32.33,32,True,argall d
 2010_PA_House-17_REP,REP,Frank Ryan,19890,31.05,32,False,ryan f
 2010_PA_House-17_REP,REP,Josh First,14955,23.35,32,False,first j
@@ -2001,7 +2001,7 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2010_TN_House-3_REP,REP,Van Irion,10492,11.59,6,False,irion v
 2010_TN_House-3_REP,REP,Tommy Crangle,5149,5.69,6,False,crangle t
 2010_TN_House-3_REP,REP,Art Rhodes,4552,5.03,6,False,rhodes a
-2010_TN_House-3_REP,REP,Jean Howard-Hill,1259,1.39,6,False,hill j
+2010_TN_House-3_REP,REP,Jean Howard-Hill,1259,1.39,6,False,howardhill j
 2010_TN_House-3_REP,REP,Rick Kernea,739,0.82,6,False,kernea r
 2010_TN_House-3_REP,REP,Harvey Howard,670,0.74,6,False,howard h
 2010_TN_House-3_REP,REP,Basil Marceaux,655,0.72,6,False,marceaux b
@@ -2077,11 +2077,11 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2010_VA_House-8_REP,REP,Jay Patrick Murray,7136,51.7,4,True,murray j
 2010_VA_House-8_REP,REP,Matthew Berry,6654,48.3,4,False,berry m
 2010_VT_House-1_DEM,DEM,Peter Welch,65920,98.63,1,True,welch p
-2010_VT_House-1_DEM,DEM,Write-ins,913,1.37,1,False,ins w
+2010_VT_House-1_DEM,DEM,Write-ins,913,1.37,1,False,writeins
 2010_VT_House-1_REP,REP,Paul D. Beaudry,10797,43.83,2,True,beaudry p
 2010_VT_House-1_REP,REP,John M. Mitchell,9631,39.1,2,False,mitchell j
 2010_VT_House-1_REP,REP,Keith Stern,3545,14.39,2,False,stern k
-2010_VT_House-1_REP,REP,Write-ins,659,2.68,2,False,ins w
+2010_VT_House-1_REP,REP,Write-ins,659,2.68,2,False,writeins
 2010_WA_House-7_DEM,DEM,Jim McDermott,110914,79.85,7,True,mcdermott j
 2010_WA_House-7_DEM,DEM,Bill Hoffman,6135,4.42,7,False,hoffman b
 2010_WA_House-7_DEM,DEM,Don Rivers,4781,3.44,7,False,rivers d
@@ -2099,10 +2099,10 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2010_WI_House-8_REP,REP,Terri McCormick,14107,17.56,6,False,mccormick t
 2010_WI_House-8_REP,REP,Marc Savard,1968,2.45,6,False,savard m
 2010_WY_House-1_DEM,DEM,David Wendt,20410,99.04,1,True,wendt d
-2010_WY_House-1_DEM,DEM,Write-ins,198,0.96,1,False,ins w
+2010_WY_House-1_DEM,DEM,Write-ins,198,0.96,1,False,writeins
 2010_WY_House-1_REP,REP,Cynthia Lummis,84063,82.82,2,True,lummis c
 2010_WY_House-1_REP,REP,Evan Liam Slafter,17148,16.89,2,False,slafter e
-2010_WY_House-1_REP,REP,Write-ins,289,0.28,2,False,ins w
+2010_WY_House-1_REP,REP,Write-ins,289,0.28,2,False,writeins
 2012_AK_House-1_DEM,DEM,Sharon Cissna,16329,42.8,2,True,cissna s
 2012_AK_House-1_DEM,DEM,Matt Moore,7374,19.3,2,False,moore m
 2012_AK_House-1_DEM,DEM,Debra Chesnut,5626,14.7,2,False,chesnut d
@@ -2191,7 +2191,7 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2012_CA_House-29_DEM,DEM,Richard Valdez,5379,13.9,30,False,valdez r
 2012_CA_House-35_DEM,DEM,Joe Baca,15388,45.0,36,True,baca j
 2012_CA_House-35_DEM,DEM,Gloria Negrete McLeod,12425,36.3,36,False,mcleod g
-2012_CA_House-40_DEM,DEM,Lucille Roybal-Allard,16596,65.4,41,True,allard l
+2012_CA_House-40_DEM,DEM,Lucille Roybal-Allard,16596,65.4,41,True,roybalallard l
 2012_CA_House-40_DEM,DEM,David Sanchez,8777,34.6,41,False,sanchez d
 2012_CA_House-43_DEM,DEM,Maxine Waters,36062,65.4,44,True,waters m
 2012_CA_House-43_DEM,DEM,Bob Flores,19061,34.6,44,False,flores b
@@ -2223,7 +2223,7 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2012_CT_House-5_REP,REP,Andrew Roraback,9536,32.1,3,True,roraback a
 2012_CT_House-5_REP,REP,Mark Greenberg,8033,27.0,3,False,greenberg m
 2012_CT_House-5_REP,REP,Justin Bernier,6167,20.8,3,False,bernier j
-2012_CT_House-5_REP,REP,Lisa Wilson-Foley,5966,20.1,3,False,foley l
+2012_CT_House-5_REP,REP,Lisa Wilson-Foley,5966,20.1,3,False,wilsonfoley l
 2012_DE_House-1_REP,REP,Tom Kovach,15018,65.6,1,True,kovach t
 2012_DE_House-1_REP,REP,Rose Izzo,7888,34.4,1,False,izzo r
 2012_FL_House-13_REP,REP,C. W. Bill Young,39395,69.1,9,True,young c
@@ -2332,31 +2332,31 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2012_HI_House-1_REP,REP,John Giuffre,376,1.4,2,False,giuffre j
 2012_HI_House-2_DEM,DEM,Tulsi Gabbard,62882,55.1,3,True,gabbard t
 2012_HI_House-2_DEM,DEM,Mufi Hannemann,39176,34.3,3,False,hannemann m
-2012_HI_House-2_DEM,DEM,Esther Kia'aina,6681,5.9,3,False,aina e
+2012_HI_House-2_DEM,DEM,Esther Kia'aina,6681,5.9,3,False,kiaaina e
 2012_HI_House-2_DEM,DEM,Bob Marx,4327,3.8,3,False,marx b
 2012_HI_House-2_DEM,DEM,Miles Shiratori,573,0.5,3,False,shiratori m
 2012_HI_House-2_DEM,DEM,Rafael del Castillo,520,0.4,3,False,castillo r
 2012_HI_House-2_REP,REP,Kawika Crowley,9056,60.8,4,True,crowley k
 2012_HI_House-2_REP,REP,Matt DiGeronimo,5843,39.2,4,False,digeronimo m
 2012_IA_House-1_DEM,DEM,Bruce Braley,11912,99.2,1,True,braley b
-2012_IA_House-1_DEM,DEM,Write-ins,92,0.8,1,False,ins w
+2012_IA_House-1_DEM,DEM,Write-ins,92,0.8,1,False,writeins
 2012_IA_House-1_REP,REP,Ben Lange,13217,52.9,2,True,lange b
 2012_IA_House-1_REP,REP,Rod Blum,11551,46.2,2,False,blum r
-2012_IA_House-1_REP,REP,Write-ins,143,0.9,2,False,ins w
+2012_IA_House-1_REP,REP,Write-ins,143,0.9,2,False,writeins
 2012_IA_House-2_DEM,DEM,Dave Loebsack,17467,81.5,3,True,loebsack d
 2012_IA_House-2_DEM,DEM,Joe M. Seng,3913,18.3,3,False,seng j
-2012_IA_House-2_DEM,DEM,Write-ins,39,0.2,3,False,ins w
+2012_IA_House-2_DEM,DEM,Write-ins,39,0.2,3,False,writeins
 2012_IA_House-2_REP,REP,John Archer,16604,60.5,4,True,archer j
 2012_IA_House-2_REP,REP,Dan Dolan,10775,39.3,4,False,dolan d
-2012_IA_House-2_REP,REP,Write-ins,57,0.2,4,False,ins w
+2012_IA_House-2_REP,REP,Write-ins,57,0.2,4,False,writeins
 2012_IA_House-3_DEM,DEM,Leonard Boswell,8382,98.3,5,True,boswell l
-2012_IA_House-3_DEM,DEM,Write-ins,145,1.7,5,False,ins w
+2012_IA_House-3_DEM,DEM,Write-ins,145,1.7,5,False,writeins
 2012_IA_House-3_REP,REP,Tom Latham,27757,99.2,6,True,latham t
-2012_IA_House-3_REP,REP,Write-ins,218,0.8,6,False,ins w
+2012_IA_House-3_REP,REP,Write-ins,218,0.8,6,False,writeins
 2012_IA_House-4_DEM,DEM,Christie Vilsack,10765,99.2,8,True,vilsack c
-2012_IA_House-4_DEM,DEM,Write-ins,88,0.8,8,False,ins w
+2012_IA_House-4_DEM,DEM,Write-ins,88,0.8,8,False,writeins
 2012_IA_House-4_REP,REP,Steve King,38238,98.9,7,True,king s
-2012_IA_House-4_REP,REP,Write-ins,420,1.1,7,False,ins w
+2012_IA_House-4_REP,REP,Write-ins,420,1.1,7,False,writeins
 2012_ID_House-1_DEM,DEM,Jimmy Farris,5362,53.2,2,True,farris j
 2012_ID_House-1_DEM,DEM,Cynthia Clinkingbeard,4723,46.8,2,False,clinkingbeard c
 2012_ID_House-1_REP,REP,Raúl Labrador,58003,80.6,1,True,labrador r
@@ -2514,7 +2514,7 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2012_KY_House-4_DEM,DEM,Bill Adkins,17209,68.6,4,True,adkins b
 2012_KY_House-4_DEM,DEM,Greg Frank,7869,31.4,4,False,frank g
 2012_KY_House-4_REP,REP,Thomas Massie,19689,44.8,3,True,massie t
-2012_KY_House-4_REP,REP,Alecia Webb-Edgington,12557,28.6,3,False,edgington a
+2012_KY_House-4_REP,REP,Alecia Webb-Edgington,12557,28.6,3,False,webbedgington a
 2012_KY_House-4_REP,REP,Gary Moore,6521,14.8,3,False,moore g
 2012_KY_House-4_REP,REP,Walter Christian Schumm,3514,8.0,3,False,schumm w
 2012_KY_House-4_REP,REP,Marc Carey,783,1.8,3,False,carey m
@@ -2530,43 +2530,43 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2012_MA_House-1_DEM,DEM,Richard Neal,40295,65.5,1,True,neal r
 2012_MA_House-1_DEM,DEM,"Andrea F. Nuciforo, Jr.",15159,24.6,1,False,nuciforo a
 2012_MA_House-1_DEM,DEM,Bill Shein,6059,9.8,1,False,shein b
-2012_MA_House-1_DEM,DEM,Write-ins,33,0.1,1,False,ins w
+2012_MA_House-1_DEM,DEM,Write-ins,33,0.1,1,False,writeins
 2012_MA_House-2_DEM,DEM,James McGovern,24375,91.3,2,True,mcgovern j
 2012_MA_House-2_DEM,DEM,William Feegbeh,2265,8.5,2,False,feegbeh w
-2012_MA_House-2_DEM,DEM,Write-ins,44,0.2,2,False,ins w
+2012_MA_House-2_DEM,DEM,Write-ins,44,0.2,2,False,writeins
 2012_MA_House-3_DEM,DEM,Nicola Tsongas,24105,99.2,3,True,tsongas n
-2012_MA_House-3_DEM,DEM,Write-ins,196,0.8,3,False,ins w
+2012_MA_House-3_DEM,DEM,Write-ins,196,0.8,3,False,writeins
 2012_MA_House-3_REP,REP,Jonathan Golnik,12928,66.3,4,True,golnik j
 2012_MA_House-3_REP,REP,Thomas Weaver,6527,33.5,4,False,weaver t
-2012_MA_House-3_REP,REP,Write-ins,38,0.2,4,False,ins w
+2012_MA_House-3_REP,REP,Write-ins,38,0.2,4,False,writeins
 2012_MA_House-4_DEM,DEM,"Joseph P. Kennedy, III",36557,90.0,5,True,kennedy j
 2012_MA_House-4_DEM,DEM,Herb Robinson,6059,3.4,5,False,robinson h
 2012_MA_House-4_DEM,DEM,Rachel Brown,2635,6.5,5,False,brown r
-2012_MA_House-4_DEM,DEM,Write-ins,73,0.1,5,False,ins w
+2012_MA_House-4_DEM,DEM,Write-ins,73,0.1,5,False,writeins
 2012_MA_House-4_REP,REP,Sean Bielat,14834,73.2,6,True,bielat s
 2012_MA_House-4_REP,REP,Elizabeth Childs,2735,13.5,6,False,childs e
 2012_MA_House-4_REP,REP,David L. Steinhof,2669,13.2,6,False,steinhof d
-2012_MA_House-4_REP,REP,Write-ins,25,0.1,6,False,ins w
+2012_MA_House-4_REP,REP,Write-ins,25,0.1,6,False,writeins
 2012_MA_House-5_DEM,DEM,Ed Markey,38196,99.2,7,True,markey e
-2012_MA_House-5_DEM,DEM,Write-ins,316,0.8,7,False,ins w
+2012_MA_House-5_DEM,DEM,Write-ins,316,0.8,7,False,writeins
 2012_MA_House-5_REP,REP,Tom Tierney,4789,41.2,8,True,tierney t
 2012_MA_House-5_REP,REP,"Frank John Addivinola, Jr.",3531,30.3,8,False,addivinola f
 2012_MA_House-5_REP,REP,Jeffrey Semon,3250,27.9,8,False,semon j
-2012_MA_House-5_REP,REP,Write-ins,65,0.6,8,False,ins w
+2012_MA_House-5_REP,REP,Write-ins,65,0.6,8,False,writeins
 2012_MA_House-6_DEM,DEM,John F. Tierney,28395,98.2,9,True,tierney j
-2012_MA_House-6_DEM,DEM,Write-ins,517,1.8,9,False,ins w
+2012_MA_House-6_DEM,DEM,Write-ins,517,1.8,9,False,writeins
 2012_MA_House-6_REP,REP,Richard R. Tisei,18331,99.0,10,True,tisei r
-2012_MA_House-6_REP,REP,Write-ins,186,1.0,10,False,ins w
+2012_MA_House-6_REP,REP,Write-ins,186,1.0,10,False,writeins
 2012_MA_House-7_DEM,DEM,Mike Capuano,32445,98.6,11,True,capuano m
-2012_MA_House-7_DEM,DEM,Write-ins,446,1.4,11,False,ins w
+2012_MA_House-7_DEM,DEM,Write-ins,446,1.4,11,False,writeins
 2012_MA_House-8_DEM,DEM,Stephen Lynch,29352,98.8,12,True,lynch s
-2012_MA_House-8_DEM,DEM,Write-ins,369,1.2,12,False,ins w
+2012_MA_House-8_DEM,DEM,Write-ins,369,1.2,12,False,writeins
 2012_MA_House-8_REP,REP,Joe Selvaggi,5968,59.1,13,True,selvaggi j
 2012_MA_House-8_REP,REP,Matias Temperley,4081,40.4,13,False,temperley m
-2012_MA_House-8_REP,REP,Write-ins,47,0.5,13,False,ins w
+2012_MA_House-8_REP,REP,Write-ins,47,0.5,13,False,writeins
 2012_MA_House-9_DEM,DEM,William Richard Keating,31366,59.1,14,True,keating w
 2012_MA_House-9_DEM,DEM,Samuel Sutter,21675,40.8,14,False,sutter s
-2012_MA_House-9_DEM,DEM,Write-ins,47,0.1,14,False,ins w
+2012_MA_House-9_DEM,DEM,Write-ins,47,0.1,14,False,writeins
 2012_MD_House-1_DEM,DEM,Wendy Rosen,10907,43.1,2,True,rosen w
 2012_MD_House-1_DEM,DEM,John LaFerla,10850,42.8,2,False,laferla j
 2012_MD_House-1_DEM,DEM,Kim Letke,3564,14.1,2,False,letke k
@@ -2593,7 +2593,7 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2012_MD_House-4_REP,REP,Greg Holmes,1370,9.2,8,False,holmes g
 2012_MD_House-5_DEM,DEM,Steny Hoyer,36961,84.7,9,True,hoyer s
 2012_MD_House-5_DEM,DEM,Cathy Johnson Pendleton,6688,15.3,9,False,pendleton c
-2012_MD_House-5_REP,REP,Tony O'Donnell,17329,73.7,10,True,donnell t
+2012_MD_House-5_REP,REP,Tony O'Donnell,17329,73.7,10,True,odonnell t
 2012_MD_House-5_REP,REP,David Hill,3289,14.0,10,False,hill d
 2012_MD_House-5_REP,REP,Glenn Morton,2903,12.3,10,False,morton g
 2012_MD_House-6_DEM,DEM,John Delaney,20414,54.2,12,True,delaney j
@@ -2665,7 +2665,7 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2012_MI_House-5_DEM,DEM,Dan Kildee,51840,100.0,9,True,kildee d
 2012_MI_House-5_REP,REP,Jim Slezak,16951,63.9,10,True,slezak j
 2012_MI_House-5_REP,REP,Tom Wassa,9583,36.1,10,False,wassa t
-2012_MI_House-6_DEM,DEM,Mike O'Brien,14224,100.0,12,True,brien m
+2012_MI_House-6_DEM,DEM,Mike O'Brien,14224,100.0,12,True,obrien m
 2012_MI_House-6_REP,REP,Fred Upton,34581,66.3,11,True,upton f
 2012_MI_House-6_REP,REP,Jack Hoogendyk,17561,33.7,11,False,hoogendyk j
 2012_MI_House-7_DEM,DEM,Kurt Richard Haskell,18812,66.7,14,True,haskell k
@@ -2783,7 +2783,7 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2012_NC_House-2_REP,REP,Clement F. Munno,2982,4.4,2,False,munno c
 2012_NC_House-3_REP,REP,Walter B. Jones,42644,69.0,4,True,jones w
 2012_NC_House-3_REP,REP,Frank Palombo,19166,31.0,4,False,palombo f
-2012_NC_House-4_REP,REP,Tim D'Annunzio,14065,46.4,5,True,annunzio t
+2012_NC_House-4_REP,REP,Tim D'Annunzio,14065,46.4,5,True,dannunzio t
 2012_NC_House-4_REP,REP,Jim Allen,10430,34.4,5,False,allen j
 2012_NC_House-4_REP,REP,George Frank Hutchins,5811,19.2,5,False,hutchins g
 2012_NC_House-5_DEM,DEM,Elisabeth Motsinger,38512,69.7,6,True,motsinger e
@@ -2817,20 +2817,20 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2012_NE_House-3_DEM,DEM,Mark Sullivan,17500,100.0,6,True,sullivan m
 2012_NE_House-3_REP,REP,Adrian Smith,62645,81.4,5,True,smith a
 2012_NE_House-3_REP,REP,Bob Lingenfelter,14297,18.6,5,False,lingenfelter b
-2012_NH_House-1_DEM,DEM,Carol Shea-Porter,38623,99.1,2,True,porter c
-2012_NH_House-1_DEM,DEM,Write-ins,358,0.9,2,False,ins w
+2012_NH_House-1_DEM,DEM,Carol Shea-Porter,38623,99.1,2,True,sheaporter c
+2012_NH_House-1_DEM,DEM,Write-ins,358,0.9,2,False,writeins
 2012_NH_House-1_REP,REP,Frank Guinta,46979,84.4,1,True,guinta f
 2012_NH_House-1_REP,REP,Rick Parent,6923,12.4,1,False,parent r
 2012_NH_House-1_REP,REP,Vern Clough,1639,3.0,1,False,clough v
-2012_NH_House-1_REP,REP,Write-ins,130,0.2,1,False,ins w
+2012_NH_House-1_REP,REP,Write-ins,130,0.2,1,False,writeins
 2012_NH_House-2_DEM,DEM,Anne McLane Kuster,40627,99.2,4,True,kuster a
-2012_NH_House-2_DEM,DEM,Write-ins,337,0.8,4,False,ins w
+2012_NH_House-2_DEM,DEM,Write-ins,337,0.8,4,False,writeins
 2012_NH_House-2_REP,REP,Charles Bass,39605,81.2,3,True,bass c
 2012_NH_House-2_REP,REP,Dennis Lamare,4263,8.8,3,False,lamare d
 2012_NH_House-2_REP,REP,Will Dean,2129,4.4,3,False,dean w
 2012_NH_House-2_REP,REP,Miroslaw Dziedzic,1310,2.7,3,False,dziedzic m
 2012_NH_House-2_REP,REP,Gerard Beloin,1127,2.3,3,False,beloin g
-2012_NH_House-2_REP,REP,Write-ins,316,0.6,3,False,ins w
+2012_NH_House-2_REP,REP,Write-ins,316,0.6,3,False,writeins
 2012_NJ_House-10_DEM,DEM,Donald Payne Jr.,36576,59.6,19,True,payne d
 2012_NJ_House-10_DEM,DEM,Ronald Rice,11939,19.5,19,False,rice r
 2012_NJ_House-10_DEM,DEM,Nia Gill,10207,16.6,19,False,gill n
@@ -2878,7 +2878,7 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2012_NM_House-1_DEM,DEM,Michelle Lujan Grisham,19111,40.1,1,True,grisham m
 2012_NM_House-1_DEM,DEM,Eric Griego,16702,35.0,1,False,griego e
 2012_NM_House-1_DEM,DEM,Martin Chávez,11895,24.9,1,False,chavez m
-2012_NM_House-1_REP,REP,Janice Arnold-Jones,26198,100.0,2,True,jones j
+2012_NM_House-1_REP,REP,Janice Arnold-Jones,26198,100.0,2,True,arnoldjones j
 2012_NM_House-2_DEM,DEM,Evelyn Madrid Erhard,24175,100.0,4,True,erhard e
 2012_NM_House-2_REP,REP,Steve Pearce,29911,100.0,3,True,pearce s
 2012_NM_House-3_DEM,DEM,Ben R. Luján,53908,100.0,5,True,lujan b
@@ -2948,7 +2948,7 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2012_NY_House-6_DEM,DEM,Robert Mittman,1462,5.2,5,False,mittman r
 2012_NY_House-7_DEM,DEM,Nydia Velazquez,17208,57.9,6,True,velazquez n
 2012_NY_House-7_DEM,DEM,Erik Dilan,10408,35.0,6,False,dilan e
-2012_NY_House-7_DEM,DEM,Daniel O'Connor,1351,4.6,6,False,connor d
+2012_NY_House-7_DEM,DEM,Daniel O'Connor,1351,4.6,6,False,oconnor d
 2012_NY_House-7_DEM,DEM,George Martinez,745,2.5,6,False,martinez g
 2012_NY_House-8_DEM,DEM,Hakeem Jeffries,28271,71.8,7,True,jeffries h
 2012_NY_House-8_DEM,DEM,Charles Barron,11130,28.2,7,False,barron c
@@ -3005,7 +3005,7 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2012_OH_House-6_DEM,DEM,Cas Adulewicz,8117,17.8,18,False,adulewicz c
 2012_OH_House-6_REP,REP,Bill Johnson,56905,83.9,17,True,johnson b
 2012_OH_House-6_REP,REP,Victor Smith,10888,16.1,17,False,smith v
-2012_OH_House-7_DEM,DEM,Joyce Healy-Abrams,22486,100.0,20,True,abrams j
+2012_OH_House-7_DEM,DEM,Joyce Healy-Abrams,22486,100.0,20,True,healyabrams j
 2012_OH_House-7_REP,REP,Bob Gibbs,54067,79.9,19,True,gibbs b
 2012_OH_House-7_REP,REP,Hombre Liggett,13621,20.1,19,False,liggett h
 2012_OH_House-8_REP,REP,John Boehner,71120,83.8,21,True,boehner j
@@ -3030,30 +3030,30 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2012_OK_House-4_REP,REP,Tom Cole,22840,87.7,8,True,cole t
 2012_OK_House-4_REP,REP,Gary D. Caissie,3195,12.3,8,False,caissie g
 2012_OR_House-1_DEM,DEM,Suzanne Bonamici,57146,98.9,1,True,bonamici s
-2012_OR_House-1_DEM,DEM,Write-ins,608,1.1,1,False,ins w
+2012_OR_House-1_DEM,DEM,Write-ins,608,1.1,1,False,writeins
 2012_OR_House-1_REP,REP,Delinda Morgan,18996,56.4,2,True,morgan d
 2012_OR_House-1_REP,REP,Lisa Michaels,14274,42.3,2,False,michaels l
-2012_OR_House-1_REP,REP,Write-ins,447,1.3,2,False,ins w
+2012_OR_House-1_REP,REP,Write-ins,447,1.3,2,False,writeins
 2012_OR_House-2_DEM,DEM,Joyce Segers,31157,76.5,4,True,segers j
 2012_OR_House-2_DEM,DEM,John Sweeney,8825,21.7,4,False,sweeney j
-2012_OR_House-2_DEM,DEM,Write-ins,751,1.8,4,False,ins w
+2012_OR_House-2_DEM,DEM,Write-ins,751,1.8,4,False,writeins
 2012_OR_House-2_REP,REP,Greg Walden,77498,99.3,3,True,walden g
-2012_OR_House-2_REP,REP,Write-ins,581,0.7,3,False,ins w
+2012_OR_House-2_REP,REP,Write-ins,581,0.7,3,False,writeins
 2012_OR_House-3_DEM,DEM,Earl Blumenauer,84628,98.9,5,True,blumenauer e
-2012_OR_House-3_DEM,DEM,Write-ins,969,1.1,5,False,ins w
+2012_OR_House-3_DEM,DEM,Write-ins,969,1.1,5,False,writeins
 2012_OR_House-3_REP,REP,Ronald Green,14844,63.2,6,True,green r
 2012_OR_House-3_REP,REP,Delia Lopez,8237,35.0,6,False,lopez d
-2012_OR_House-3_REP,REP,Write-ins,424,1.8,6,False,ins w
+2012_OR_House-3_REP,REP,Write-ins,424,1.8,6,False,writeins
 2012_OR_House-4_DEM,DEM,Peter DeFazio,69864,89.9,7,True,defazio p
 2012_OR_House-4_DEM,DEM,Matthew Robinson,7665,9.8,7,False,robinson m
-2012_OR_House-4_DEM,DEM,Write-ins,212,0.3,7,False,ins w
+2012_OR_House-4_DEM,DEM,Write-ins,212,0.3,7,False,writeins
 2012_OR_House-4_REP,REP,Art Robinson,50090,97.3,8,True,robinson a
-2012_OR_House-4_REP,REP,Write-ins,1414,2.7,8,False,ins w
+2012_OR_House-4_REP,REP,Write-ins,1414,2.7,8,False,writeins
 2012_OR_House-5_DEM,DEM,Kurt Schrader,51652,98.5,9,True,schrader k
-2012_OR_House-5_DEM,DEM,Write-ins,805,1.5,9,False,ins w
+2012_OR_House-5_DEM,DEM,Write-ins,805,1.5,9,False,writeins
 2012_OR_House-5_REP,REP,Fred Thompson,33448,67.0,10,True,thompson f
 2012_OR_House-5_REP,REP,Karen Bowerman,16174,32.4,10,False,bowerman k
-2012_OR_House-5_REP,REP,Write-ins,320,0.6,10,False,ins w
+2012_OR_House-5_REP,REP,Write-ins,320,0.6,10,False,writeins
 2012_PA_House-10_DEM,DEM,Philip Scollo,19291,100.0,19,True,scollo p
 2012_PA_House-10_REP,REP,Thomas Marino,51373,100.0,18,True,marino t
 2012_PA_House-11_DEM,DEM,Gene Stilp,18716,54.5,21,True,stilp g
@@ -3159,7 +3159,7 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2012_TN_House-9_REP,REP,Charlotte Bergmann,4398,23.9,17,False,bergmann c
 2012_TN_House-9_REP,REP,Rollin Stooksberry,1858,10.1,17,False,stooksberry r
 2012_TN_House-9_REP,REP,Ernest Lunati,368,2.0,17,False,lunati e
-2012_TX_House-10_DEM,DEM,Tawana Walter-Cadien,8061,56.65,19,True,cadien t
+2012_TX_House-10_DEM,DEM,Tawana Walter-Cadien,8061,56.65,19,True,waltercadien t
 2012_TX_House-10_DEM,DEM,"William E. Miller, Jr.",6169,43.35,19,False,miller w
 2012_TX_House-10_REP,REP,Michael McCaul,39543,83.8,18,True,mccaul m
 2012_TX_House-10_REP,REP,Eddie Traylor,7664,16.2,18,False,traylor e
@@ -3183,7 +3183,7 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2012_TX_House-15_DEM,DEM,Johnny Partain,687,1.7,27,False,partain j
 2012_TX_House-15_REP,REP,Dale Brueggemann,6403,57.3,28,True,brueggemann d
 2012_TX_House-15_REP,REP,Eddie Zamora,4771,42.7,28,False,zamora e
-2012_TX_House-16_DEM,DEM,Beto O'Rourke,23261,50.5,29,True,rourke b
+2012_TX_House-16_DEM,DEM,Beto O'Rourke,23261,50.5,29,True,orourke b
 2012_TX_House-16_DEM,DEM,Silvestre Reyes,20440,44.4,29,False,reyes s
 2012_TX_House-16_DEM,DEM,Jerome Tilghman,1270,2.8,29,False,tilghman j
 2012_TX_House-16_DEM,DEM,Ben E. Mendoza,701,1.5,29,False,mendoza b
@@ -3280,7 +3280,7 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2012_TX_House-5_DEM,DEM,Pat Wallace,2097,29.56,9,False,wallace p
 2012_TX_House-5_REP,REP,Jeb Hensarling,41348,100.0,8,True,hensarling j
 2012_TX_House-6_DEM,DEM,Kenneth Sanders,6609,61.25,11,True,sanders k
-2012_TX_House-6_DEM,DEM,Brianna Hinojosa-Flores,3483,32.27,11,False,flores b
+2012_TX_House-6_DEM,DEM,Brianna Hinojosa-Flores,3483,32.27,11,False,hinojosaflores b
 2012_TX_House-6_DEM,DEM,Don Jaquess,698,6.46,11,False,jaquess d
 2012_TX_House-6_REP,REP,Joe Barton,26192,63.22,10,True,barton j
 2012_TX_House-6_REP,REP,Joe Chow,8154,19.68,10,False,chow j
@@ -3353,9 +3353,9 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2012_WV_House-3_REP,REP,Lee Bias,6671,28.8,6,False,bias l
 2012_WV_House-3_REP,REP,Bill Lester,4104,17.8,6,False,lester b
 2012_WY_House-1_DEM,DEM,Chris Henrichsen,16259,98.9,2,True,henrichsen c
-2012_WY_House-1_DEM,DEM,Write-in,177,1.1,2,False,in w
+2012_WY_House-1_DEM,DEM,Write-in,177,1.1,2,False,writein
 2012_WY_House-1_REP,REP,Cynthia Lummis,73153,98.1,1,True,lummis c
-2012_WY_House-1_REP,REP,Write-in,1393,1.9,1,False,in w
+2012_WY_House-1_REP,REP,Write-in,1393,1.9,1,False,writein
 2014_AK_House-1_DEM,DEM,Forrest Dunbar,38735,63.19,2,True,dunbar f
 2014_AK_House-1_DEM,DEM,Frank Vondersaar,9132,14.9,2,False,vondersaar f
 2014_AK_House-1_REP,REP,Don Young,79393,74.29,1,True,young d
@@ -3395,7 +3395,7 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2014_AZ_House-7_DEM,DEM,Mary Rose Wilcox,11077,36.3,14,False,wilcox m
 2014_AZ_House-7_DEM,DEM,Randy Camacho,2330,7.6,14,False,camacho r
 2014_AZ_House-7_DEM,DEM,Jarrett Maupin,2199,7.2,14,False,maupin j
-2014_AZ_House-7_REP,REP,Write-ins,1125,100.0,15,True,ins w
+2014_AZ_House-7_REP,REP,Write-ins,1125,100.0,15,True,writeins
 2014_AZ_House-8_REP,REP,Trent Franks,53771,73.3,18,True,franks t
 2014_AZ_House-8_REP,REP,Clair Van Steenwyk,19629,26.7,18,False,steenwyk c
 2014_AZ_House-9_DEM,DEM,Kyrsten Sinema,31900,100.0,20,True,sinema k
@@ -3406,7 +3406,7 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2014_CA_House-20_DEM,DEM,Sam Farr,67528,73.8,20,True,farr s
 2014_CA_House-34_DEM,DEM,Xavier Becerra,22878,73.8,34,True,becerra x
 2014_CA_House-34_DEM,DEM,Adrienne Nicole Edwards,4473,14.4,34,False,edwards a
-2014_CA_House-40_DEM,DEM,Lucille Roybal-Allard,13745,66.4,40,True,allard l
+2014_CA_House-40_DEM,DEM,Lucille Roybal-Allard,13745,66.4,40,True,roybalallard l
 2014_CA_House-40_DEM,DEM,David Sanchez,6968,33.6,40,False,sanchez d
 2014_CA_House-44_DEM,DEM,Janice Hahn,25641,100.0,44,True,hahn j
 2014_CA_House-4_REP,REP,Tom McClintock,80999,56.2,4,True,mcclintock t
@@ -3524,31 +3524,31 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2014_IA_House-1_DEM,DEM,Monica Vernon,6559,23.6,1,False,vernon m
 2014_IA_House-1_DEM,DEM,Swati Dandekar,5076,18.3,1,False,dandekar s
 2014_IA_House-1_DEM,DEM,Anesa Kajtazovic,4067,14.7,1,False,kajtazovic a
-2014_IA_House-1_DEM,DEM,Dave O'Brien,1846,6.7,1,False,brien d
-2014_IA_House-1_DEM,DEM,Write-ins,18,0.0,1,False,ins w
+2014_IA_House-1_DEM,DEM,Dave O'Brien,1846,6.7,1,False,obrien d
+2014_IA_House-1_DEM,DEM,Write-ins,18,0.0,1,False,writeins
 2014_IA_House-1_REP,REP,Rod Blum,16886,54.9,2,True,blum r
 2014_IA_House-1_REP,REP,Steve Rathje,11420,37.1,2,False,rathje s
 2014_IA_House-1_REP,REP,Gail Boliver,2413,7.9,2,False,boliver g
-2014_IA_House-1_REP,REP,Write-ins,42,0.1,2,False,ins w
+2014_IA_House-1_REP,REP,Write-ins,42,0.1,2,False,writeins
 2014_IA_House-2_DEM,DEM,Dave Loebsack,17154,99.3,3,True,loebsack d
-2014_IA_House-2_DEM,DEM,Write-ins,117,0.7,3,False,ins w
-2014_IA_House-2_REP,REP,Mariannette Miller-Meeks,15043,49.4,4,True,meeks m
+2014_IA_House-2_DEM,DEM,Write-ins,117,0.7,3,False,writeins
+2014_IA_House-2_REP,REP,Mariannette Miller-Meeks,15043,49.4,4,True,millermeeks m
 2014_IA_House-2_REP,REP,Mark S. Lofgren,11634,38.2,4,False,lofgren m
 2014_IA_House-2_REP,REP,Matthew C. Waldren,3746,12.3,4,False,waldren m
-2014_IA_House-2_REP,REP,Write-ins,52,0.1,4,False,ins w
+2014_IA_House-2_REP,REP,Write-ins,52,0.1,4,False,writeins
 2014_IA_House-3_DEM,DEM,Staci Appel,9233,99.2,6,True,appel s
-2014_IA_House-3_DEM,DEM,Write-ins,75,0.8,6,False,ins w
+2014_IA_House-3_DEM,DEM,Write-ins,75,0.8,6,False,writeins
 2014_IA_House-3_REP,REP,Brad Zaun,10522,24.7,5,True,zaun b
 2014_IA_House-3_REP,REP,Robert Cramer,9032,21.2,5,False,cramer r
 2014_IA_House-3_REP,REP,Matt Schultz,8464,19.9,5,False,schultz m
 2014_IA_House-3_REP,REP,Monte Shaw,7220,17.0,5,False,shaw m
 2014_IA_House-3_REP,REP,David Young,6604,15.5,5,False,young d
 2014_IA_House-3_REP,REP,Joe Grandanette,661,1.6,5,False,grandanette j
-2014_IA_House-3_REP,REP,Write-ins,42,0.1,5,False,ins w
+2014_IA_House-3_REP,REP,Write-ins,42,0.1,5,False,writeins
 2014_IA_House-4_DEM,DEM,Jim Mowrer,9900,99.6,8,True,mowrer j
-2014_IA_House-4_DEM,DEM,Write-ins,42,0.4,8,False,ins w
+2014_IA_House-4_DEM,DEM,Write-ins,42,0.4,8,False,writeins
 2014_IA_House-4_REP,REP,Steve King,43098,99.1,7,True,king s
-2014_IA_House-4_REP,REP,Write-ins,382,0.9,7,False,ins w
+2014_IA_House-4_REP,REP,Write-ins,382,0.9,7,False,writeins
 2014_ID_House-1_DEM,DEM,Shirley Ringo,9047,82.0,2,True,ringo s
 2014_ID_House-1_DEM,DEM,Ryan Barone,1981,18.0,2,False,barone r
 2014_ID_House-1_REP,REP,Raúl Labrador,56206,78.6,1,True,labrador r
@@ -3887,7 +3887,7 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2014_NC_House-9_REP,REP,Robert Pittenger,29505,67.6,14,True,pittenger r
 2014_NC_House-9_REP,REP,Michael Steinberg,14146,32.4,14,False,steinberg m
 2014_ND_House-1_REP,REP,Kevin Cramer,50188,99.7,1,True,cramer k
-2014_ND_House-1_REP,REP,Write-in,151,0.3,1,False,in w
+2014_ND_House-1_REP,REP,Write-in,151,0.3,1,False,writein
 2014_NE_House-1_DEM,DEM,Dennis P. Crawford,24140,100.0,2,True,crawford d
 2014_NE_House-1_REP,REP,Jeff Fortenberry,63673,86.18,1,True,fortenberry j
 2014_NE_House-1_REP,REP,Jessica L. Turek,5902,7.99,1,False,turek j
@@ -3899,20 +3899,20 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2014_NE_House-3_DEM,DEM,Mark Sullivan,20069,100.0,7,True,sullivan m
 2014_NE_House-3_REP,REP,Adrian Smith,67113,68.1,6,True,smith a
 2014_NE_House-3_REP,REP,Tom Brewer,31436,31.9,6,False,brewer t
-2014_NH_House-1_DEM,DEM,Carol Shea-Porter,16956,98.1,1,True,porter c
-2014_NH_House-1_DEM,DEM,Write-ins,327,1.9,1,False,ins w
+2014_NH_House-1_DEM,DEM,Carol Shea-Porter,16956,98.1,1,True,sheaporter c
+2014_NH_House-1_DEM,DEM,Write-ins,327,1.9,1,False,writeins
 2014_NH_House-1_REP,REP,Frank Guinta,29246,49.0,2,True,guinta f
 2014_NH_House-1_REP,REP,Dan Innis,24342,40.8,2,False,innis d
 2014_NH_House-1_REP,REP,Brendan Kelly,4999,8.4,2,False,kelly b
 2014_NH_House-1_REP,REP,Everett Jabour,996,1.7,2,False,jabour e
-2014_NH_House-1_REP,REP,Write-ins,123,0.2,2,False,ins w
+2014_NH_House-1_REP,REP,Write-ins,123,0.2,2,False,writeins
 2014_NH_House-2_DEM,DEM,Ann McLane Kuster,21269,98.6,3,True,kuster a
-2014_NH_House-2_DEM,DEM,Write-ins,300,1.4,3,False,ins w
+2014_NH_House-2_DEM,DEM,Write-ins,300,1.4,3,False,writeins
 2014_NH_House-2_REP,REP,Marilinda Garcia,27285,49.2,4,True,garcia m
 2014_NH_House-2_REP,REP,Gary Lambert,15196,27.4,4,False,lambert g
 2014_NH_House-2_REP,REP,Jim Lawrence,10327,18.6,4,False,lawrence j
 2014_NH_House-2_REP,REP,Mike Little,2489,4.5,4,False,little m
-2014_NH_House-2_REP,REP,Write-ins,165,0.12,4,False,ins w
+2014_NH_House-2_REP,REP,Write-ins,165,0.12,4,False,writeins
 2014_NJ_House-10_DEM,DEM,Donald Payne,23965,91.3,19,True,payne d
 2014_NJ_House-10_DEM,DEM,Robert Toussaint,1259,4.8,19,False,toussaint r
 2014_NJ_House-10_DEM,DEM,Aaron Fraser,666,2.6,19,False,fraser a
@@ -4053,7 +4053,7 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2014_OH_House-9_REP,REP,Richard May,9587,72.2,20,True,may r
 2014_OH_House-9_REP,REP,"Robert C. Horrocks, Jr.",3686,27.8,20,False,horrocks r
 2014_OK_House-2_DEM,DEM,Earl E. Everett,33119,62.6,2,True,everett e
-2014_OK_House-2_DEM,DEM,Joshua Harris-Till,19813,37.4,2,False,till j
+2014_OK_House-2_DEM,DEM,Joshua Harris-Till,19813,37.4,2,False,harristill j
 2014_OK_House-2_REP,REP,Markwayne Mullin,26245,79.7,1,True,mullin m
 2014_OK_House-2_REP,REP,Darrell Robertson,6673,20.3,1,False,robertson d
 2014_OK_House-3_REP,REP,Frank Lucas,54847,82.8,3,True,lucas f
@@ -4068,32 +4068,32 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2014_OK_House-5_REP,REP,Steve Russell,19374,59.3,7,True,russell s
 2014_OK_House-5_REP,REP,Patrice Douglas,13319,40.7,7,False,douglas p
 2014_OR_House-1_DEM,DEM,Suzanne Bonamici,50903,98.8,1,True,bonamici s
-2014_OR_House-1_DEM,DEM,Write-ins,601,1.2,1,False,ins w
+2014_OR_House-1_DEM,DEM,Write-ins,601,1.2,1,False,writeins
 2014_OR_House-1_REP,REP,Jason Yates,16466,42.3,2,True,yates j
 2014_OR_House-1_REP,REP,Delinda Delgado Morgan,15521,39.9,2,False,morgan d
 2014_OR_House-1_REP,REP,Bob Niemeyer,6637,17.0,2,False,niemeyer b
-2014_OR_House-1_REP,REP,Write-ins,312,0.8,2,False,ins w
+2014_OR_House-1_REP,REP,Write-ins,312,0.8,2,False,writeins
 2014_OR_House-2_DEM,DEM,Aelea Christofferson,24407,61.8,4,True,christofferson a
 2014_OR_House-2_DEM,DEM,Barney Spera,7996,20.2,4,False,spera b
 2014_OR_House-2_DEM,DEM,C. F. Vulliet,6103,15.5,4,False,vulliet c
-2014_OR_House-2_DEM,DEM,Write-ins,1007,2.5,4,False,ins w
+2014_OR_House-2_DEM,DEM,Write-ins,1007,2.5,4,False,writeins
 2014_OR_House-2_REP,REP,Greg Walden,64603,75.5,3,True,walden g
 2014_OR_House-2_REP,REP,Dennis Linthicum,20745,24.3,3,False,linthicum d
-2014_OR_House-2_REP,REP,Write-ins,185,0.2,3,False,ins w
+2014_OR_House-2_REP,REP,Write-ins,185,0.2,3,False,writeins
 2014_OR_House-3_DEM,DEM,Earl Blumenauer,69753,98.6,5,True,blumenauer e
-2014_OR_House-3_DEM,DEM,Write-ins,969,1.4,5,False,ins w
+2014_OR_House-3_DEM,DEM,Write-ins,969,1.4,5,False,writeins
 2014_OR_House-3_REP,REP,James Buchal,15083,97.8,6,True,buchal j
-2014_OR_House-3_REP,REP,Write-ins,338,2.2,6,False,ins w
+2014_OR_House-3_REP,REP,Write-ins,338,2.2,6,False,writeins
 2014_OR_House-4_DEM,DEM,Peter DeFazio,57970,98.3,7,True,defazio p
-2014_OR_House-4_DEM,DEM,Write-ins,1016,1.7,7,False,ins w
+2014_OR_House-4_DEM,DEM,Write-ins,1016,1.7,7,False,writeins
 2014_OR_House-4_REP,REP,Arthur B. Robinson,45391,97.3,8,True,robinson a
-2014_OR_House-4_REP,REP,write-ins,1255,2.7,8,False,ins w
+2014_OR_House-4_REP,REP,write-ins,1255,2.7,8,False,writeins
 2014_OR_House-5_DEM,DEM,Kurt Schrader,42041,83.1,9,True,schrader k
 2014_OR_House-5_DEM,DEM,Anita Brown,8106,16.0,9,False,brown a
-2014_OR_House-5_DEM,DEM,Write-ins,445,0.9,9,False,ins w
+2014_OR_House-5_DEM,DEM,Write-ins,445,0.9,9,False,writeins
 2014_OR_House-5_REP,REP,Tootie Smith,31883,62.9,10,True,smith t
 2014_OR_House-5_REP,REP,Ben Pollock,18595,36.6,10,False,pollock b
-2014_OR_House-5_REP,REP,Write-ins,268,0.5,10,False,ins w
+2014_OR_House-5_REP,REP,Write-ins,268,0.5,10,False,writeins
 2014_PA_House-10_DEM,DEM,Scott Brion,22860,100.0,20,True,brion s
 2014_PA_House-10_REP,REP,Tom Marino,32538,100.0,19,True,marino t
 2014_PA_House-11_DEM,DEM,Andrew Ostrowski,28567,100.0,22,True,ostrowski a
@@ -4106,7 +4106,7 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2014_PA_House-13_DEM,DEM,Daylin Leach,10130,16.6,25,False,leach d
 2014_PA_House-13_DEM,DEM,Val Arkoosh,9386,15.4,25,False,arkoosh v
 2014_PA_House-13_REP,REP,"Carson ""Dee"" Adcock",10211,65.8,26,True,adcock c
-2014_PA_House-13_REP,REP,Beverly Plosa-Bowser,5312,34.2,26,False,bowser b
+2014_PA_House-13_REP,REP,Beverly Plosa-Bowser,5312,34.2,26,False,plosabowser b
 2014_PA_House-14_DEM,DEM,Michael F. Doyle,57039,84.1,27,True,doyle m
 2014_PA_House-14_DEM,DEM,Janis C. Brooks,10806,15.9,27,False,brooks j
 2014_PA_House-15_REP,REP,Charlie Dent,20700,100.0,28,True,dent c
@@ -4198,7 +4198,7 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2014_TN_House-9_DEM,DEM,Ricky Wilkins,22336,32.5,16,False,wilkins r
 2014_TN_House-9_DEM,DEM,Isaac Richmond,876,1.3,16,False,richmond i
 2014_TN_House-9_REP,REP,Charlotte Bergmann,18579,100.0,17,True,bergmann c
-2014_TX_House-10_DEM,DEM,Tawana Walter-Cadien,13915,100.0,16,True,cadien t
+2014_TX_House-10_DEM,DEM,Tawana Walter-Cadien,13915,100.0,16,True,waltercadien t
 2014_TX_House-10_REP,REP,Michael McCaul,38406,100.0,15,True,mccaul m
 2014_TX_House-11_REP,REP,Mike Conaway,53272,73.7,17,True,conaway m
 2014_TX_House-11_REP,REP,Wade Brown,19010,26.3,17,False,brown w
@@ -4215,7 +4215,7 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2014_TX_House-15_DEM,DEM,Rubén Hinojosa,29916,100.0,24,True,hinojosa r
 2014_TX_House-15_REP,REP,Eddie Zamora,7810,54.9,25,True,zamora e
 2014_TX_House-15_REP,REP,Doug Carlile,6407,45.1,25,False,carlile d
-2014_TX_House-16_DEM,DEM,Beto O'Rourke,24728,100.0,26,True,rourke b
+2014_TX_House-16_DEM,DEM,Beto O'Rourke,24728,100.0,26,True,orourke b
 2014_TX_House-16_REP,REP,Corey Roen,6239,100.0,27,True,roen c
 2014_TX_House-17_DEM,DEM,Nick Haynes,10141,100.0,29,True,haynes n
 2014_TX_House-17_REP,REP,Bill Flores,32770,100.0,28,True,flores b
@@ -4298,52 +4298,52 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2014_VA_House-8_DEM,DEM,Bruce Shuttleworth,85,0.2,4,False,shuttleworth b
 2014_VA_House-8_DEM,DEM,Satish Korpe,42,0.1,4,False,korpe s
 2014_VT_House-1_DEM,DEM,Peter Welch,19248,98.85,1,True,welch p
-2014_VT_House-1_DEM,DEM,Write-in,224,1.15,1,False,in w
+2014_VT_House-1_DEM,DEM,Write-in,224,1.15,1,False,writein
 2014_VT_House-1_REP,REP,Mark Donka,4340,33.67,2,True,donka m
 2014_VT_House-1_REP,REP,Donald Russell,4026,31.24,2,False,russell d
 2014_VT_House-1_REP,REP,Donald W. Nolte,3803,29.51,2,False,nolte d
-2014_VT_House-1_REP,REP,Write-in,719,5.58,2,False,in w
+2014_VT_House-1_REP,REP,Write-in,719,5.58,2,False,writein
 2014_WI_House-1_DEM,DEM,Rob Zerban,25627,77.6,2,True,zerban r
 2014_WI_House-1_DEM,DEM,Amar Kaleka,7318,22.2,2,False,kaleka a
-2014_WI_House-1_DEM,DEM,Write-ins,71,0.2,2,False,ins w
+2014_WI_House-1_DEM,DEM,Write-ins,71,0.2,2,False,writeins
 2014_WI_House-1_REP,REP,Paul Ryan,40813,94.3,1,True,ryan p
 2014_WI_House-1_REP,REP,Jeremy Ryan,2450,5.7,1,False,ryan j
-2014_WI_House-1_REP,REP,Write-ins,30,0.0,1,False,ins w
+2014_WI_House-1_REP,REP,Write-ins,30,0.0,1,False,writeins
 2014_WI_House-2_DEM,DEM,Mark Pocan,52517,99.6,3,True,pocan m
-2014_WI_House-2_DEM,DEM,Write-ins,216,0.4,3,False,ins w
+2014_WI_House-2_DEM,DEM,Write-ins,216,0.4,3,False,writeins
 2014_WI_House-2_REP,REP,Peter Theron,12464,99.8,4,True,theron p
-2014_WI_House-2_REP,REP,Write-ins,20,0.2,4,False,ins w
+2014_WI_House-2_REP,REP,Write-ins,20,0.2,4,False,writeins
 2014_WI_House-3_DEM,DEM,Ron Kind,28783,99.8,5,True,kind r
-2014_WI_House-3_DEM,DEM,Write-ins,70,0.2,5,False,ins w
+2014_WI_House-3_DEM,DEM,Write-ins,70,0.2,5,False,writeins
 2014_WI_House-3_REP,REP,Tony Kurtz,13552,56.7,6,True,kurtz t
 2014_WI_House-3_REP,REP,Karen L. Mueller,5630,23.5,6,False,mueller k
 2014_WI_House-3_REP,REP,Ken Van Doren,4704,19.7,6,False,doren k
-2014_WI_House-3_REP,REP,Write-ins,30,0.0,6,False,ins w
+2014_WI_House-3_REP,REP,Write-ins,30,0.0,6,False,writeins
 2014_WI_House-4_DEM,DEM,Gwen Moore,52413,70.9,7,True,moore g
 2014_WI_House-4_DEM,DEM,Gary R. George,21242,28.7,7,False,george g
-2014_WI_House-4_DEM,DEM,Write-ins,257,0.4,7,False,ins w
+2014_WI_House-4_DEM,DEM,Write-ins,257,0.4,7,False,writeins
 2014_WI_House-4_REP,REP,Dan Sebring,3386,79.7,8,True,sebring d
 2014_WI_House-4_REP,REP,David D. King,855,20.1,8,False,king d
-2014_WI_House-4_REP,REP,Write-ins,9,0.2,8,False,ins w
+2014_WI_House-4_REP,REP,Write-ins,9,0.2,8,False,writeins
 2014_WI_House-5_DEM,DEM,Chris Rockwood,21715,99.7,10,True,rockwood c
-2014_WI_House-5_DEM,DEM,Write-ins,141,0.6,10,False,ins w
+2014_WI_House-5_DEM,DEM,Write-ins,141,0.6,10,False,writeins
 2014_WI_House-5_REP,REP,Jim Sensenbrenner,43266,99.8,9,True,sensenbrenner j
-2014_WI_House-5_REP,REP,Write-ins,82,0.2,9,False,ins w
+2014_WI_House-5_REP,REP,Write-ins,82,0.2,9,False,writeins
 2014_WI_House-6_DEM,DEM,Mark Harris,19714,99.8,12,True,harris m
-2014_WI_House-6_DEM,DEM,Write-ins,49,0.2,12,False,ins w
+2014_WI_House-6_DEM,DEM,Write-ins,49,0.2,12,False,writeins
 2014_WI_House-6_REP,REP,Glenn Grothman,23247,36.2,11,True,grothman g
 2014_WI_House-6_REP,REP,Joe Leibham,23028,35.8,11,False,leibham j
 2014_WI_House-6_REP,REP,Duey Stroebel,15873,24.7,11,False,stroebel d
 2014_WI_House-6_REP,REP,Tom Denow,2117,3.3,11,False,denow t
-2014_WI_House-6_REP,REP,Write-ins,30,0.0,11,False,ins w
+2014_WI_House-6_REP,REP,Write-ins,30,0.0,11,False,writeins
 2014_WI_House-7_DEM,DEM,Kelly Westlund,18631,77.9,14,True,westlund k
 2014_WI_House-7_DEM,DEM,Mike Krsiean,5256,22.0,14,False,krsiean m
-2014_WI_House-7_DEM,DEM,Write-ins,24,0.1,14,False,ins w
+2014_WI_House-7_DEM,DEM,Write-ins,24,0.1,14,False,writeins
 2014_WI_House-7_REP,REP,Sean Duffy,25707,87.6,13,True,duffy s
 2014_WI_House-7_REP,REP,Don Raihala,3607,12.3,13,False,raihala d
-2014_WI_House-7_REP,REP,Write-ins,22,0.1,13,False,ins w
+2014_WI_House-7_REP,REP,Write-ins,22,0.1,13,False,writeins
 2014_WI_House-8_DEM,DEM,Ron Gruett,18030,99.8,16,True,gruett r
-2014_WI_House-8_DEM,DEM,Write-ins,34,0.2,16,False,ins w
+2014_WI_House-8_DEM,DEM,Write-ins,34,0.2,16,False,writeins
 2014_WI_House-8_REP,REP,Reid Ribble,33330,99.8,15,True,ribble r
 2014_WV_House-1_DEM,DEM,Glen Gainer III,34764,100.0,2,True,gainer g
 2014_WV_House-1_REP,REP,David McKinley,27589,100.0,1,True,mckinley d
@@ -4361,12 +4361,12 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2014_WV_House-3_REP,REP,Evan Jenkins,14374,100.0,6,True,jenkins e
 2014_WY_House-1_DEM,DEM,Richard Grayson,14209,77.62,2,True,grayson r
 2014_WY_House-1_DEM,DEM,Under Votes,3905,21.33,2,False,votes u
-2014_WY_House-1_DEM,DEM,Write-in,190,1.04,2,False,in w
+2014_WY_House-1_DEM,DEM,Write-in,190,1.04,2,False,writein
 2014_WY_House-1_DEM,DEM,Over Votes,2,0.01,2,False,votes o
 2014_WY_House-1_REP,REP,Cynthia Lummis,70918,71.41,1,True,lummis c
 2014_WY_House-1_REP,REP,Jason Senteney,22251,22.4,1,False,senteney j
 2014_WY_House-1_REP,REP,Under Votes,5820,5.86,1,False,votes u
-2014_WY_House-1_REP,REP,Write-in,274,0.28,1,False,in w
+2014_WY_House-1_REP,REP,Write-in,274,0.28,1,False,writein
 2014_WY_House-1_REP,REP,Over Votes,50,0.05,1,False,votes o
 2016_AK_House-1_DEM,DEM,Steve Lindbeck,17009,55.6,2,True,lindbeck s
 2016_AK_House-1_DEM,DEM,Lynette Hinz,5130,16.8,2,False,hinz l
@@ -4386,7 +4386,7 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2016_AL_House-4_REP,REP,Phil Norris,20096,18.8,4,False,norris p
 2016_AR_House-2_REP,REP,French Hill,86474,84.5,1,True,hill f
 2016_AR_House-2_REP,REP,Brock Olree,15811,15.5,1,False,olree b
-2016_AZ_House-1_DEM,DEM,Tom O'Halleran,30833,58.8,1,True,halleran t
+2016_AZ_House-1_DEM,DEM,Tom O'Halleran,30833,58.8,1,True,ohalleran t
 2016_AZ_House-1_DEM,DEM,Miguel Olivas,21632,41.2,1,False,olivas m
 2016_AZ_House-1_REP,REP,Paul Babeu,19533,30.8,2,True,babeu p
 2016_AZ_House-1_REP,REP,Gary Kiehne,14854,23.4,2,False,kiehne g
@@ -4427,8 +4427,8 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2016_CA_House-34_DEM,DEM,Xavier Becerra,71982,77.6,34,True,becerra x
 2016_CA_House-34_DEM,DEM,Adrienne Nicole Edwards,19624,21.2,34,False,edwards a
 2016_CA_House-34_DEM,DEM,Kenneth Mejia,1177,1.3,34,False,mejia k
-2016_CA_House-40_DEM,DEM,Lucille Roybal-Allard,60691,76.3,40,True,allard l
-2016_CA_House-40_DEM,DEM,write-in,6,0.0,40,False,in w
+2016_CA_House-40_DEM,DEM,Lucille Roybal-Allard,60691,76.3,40,True,roybalallard l
+2016_CA_House-40_DEM,DEM,write-in,6,0.0,40,False,writein
 2016_CO_House-1_DEM,DEM,Diana DeGette,55925,86.4,1,True,degette d
 2016_CO_House-1_DEM,DEM,"Charles H. ""Chuck"" Norris",8770,13.6,1,False,norris c
 2016_CO_House-1_REP,REP,"Charles ""Casper"" Stockham",15616,100.0,2,True,stockham c
@@ -4495,7 +4495,7 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2016_FL_House-27_DEM,DEM,Scott Fuhrman,17068,58.9,24,True,fuhrman s
 2016_FL_House-27_DEM,DEM,Frank Perez,7087,24.5,24,False,perez f
 2016_FL_House-27_DEM,DEM,Adam Sackrin,4808,16.6,24,False,sackrin a
-2016_FL_House-27_REP,REP,Ileana Ros-Lehtinen,30485,80.5,23,True,lehtinen i
+2016_FL_House-27_REP,REP,Ileana Ros-Lehtinen,30485,80.5,23,True,roslehtinen i
 2016_FL_House-27_REP,REP,Maria Peiro,4450,11.3,23,False,peiro m
 2016_FL_House-27_REP,REP,"David ""Tubbs"" Adams",2945,7.8,23,False,adams d
 2016_FL_House-2_DEM,DEM,Walter Dartland,30115,50.1,2,True,dartland w
@@ -4572,7 +4572,7 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2016_HI_House-1_DEM,DEM,Howard Kim,2750,3.0,1,False,kim h
 2016_HI_House-1_DEM,DEM,Javier Ocasio,1117,1.2,1,False,ocasio j
 2016_HI_House-1_DEM,DEM,Sam Puletasi,1036,1.1,1,False,puletasi s
-2016_HI_House-1_DEM,DEM,Lei Sharsh-Davis,915,1.0,1,False,davis l
+2016_HI_House-1_DEM,DEM,Lei Sharsh-Davis,915,1.0,1,False,sharshdavis l
 2016_HI_House-1_DEM,DEM,Steve Tataii,737,0.8,1,False,tataii s
 2016_HI_House-1_REP,REP,Shirlene D. Ostrov,13645,100.0,2,True,ostrov s
 2016_HI_House-2_DEM,DEM,Tulsi Gabbard,80026,84.5,5,True,gabbard t
@@ -4583,7 +4583,7 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2016_IA_House-1_DEM,DEM,Pat Murphy,10090,32.4,2,False,murphy p
 2016_IA_House-1_REP,REP,Rod Blum,13411,99.4,1,True,blum r
 2016_IA_House-2_DEM,DEM,Dave Loebsack,23738,99.0,3,True,loebsack d
-2016_IA_House-2_DEM,DEM,Write-ins,238,1.0,3,False,ins w
+2016_IA_House-2_DEM,DEM,Write-ins,238,1.0,3,False,writeins
 2016_IA_House-2_REP,REP,Christopher Peters,14987,99.3,4,True,peters c
 2016_IA_House-3_DEM,DEM,Jim Mowrer,13024,49.6,6,True,mowrer j
 2016_IA_House-3_DEM,DEM,Mike Sherzan,9573,36.4,6,False,sherzan m
@@ -4745,7 +4745,7 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2016_MA_House-8_REP,REP,William Burke,5856,95.3,11,True,burke w
 2016_MA_House-9_DEM,DEM,Bill Keating,31074,99.3,12,True,keating b
 2016_MA_House-9_REP,REP,Mark C. Alliegro,12467,61.9,13,True,alliegro m
-2016_MA_House-9_REP,REP,"Thomas Joseph O'Malley, Jr",7632,37.9,13,False,malley t
+2016_MA_House-9_REP,REP,"Thomas Joseph O'Malley, Jr",7632,37.9,13,False,omalley t
 2016_MD_House-1_DEM,DEM,Joe Werner,29729,51.0,2,True,werner j
 2016_MD_House-1_DEM,DEM,Jim Ireton,28547,49.0,2,False,ireton j
 2016_MD_House-1_REP,REP,Andy Harris,79497,78.4,1,True,harris a
@@ -4764,7 +4764,7 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2016_MD_House-3_REP,REP,Thomas Harris,14564,36.4,6,False,harris t
 2016_MD_House-4_DEM,DEM,Anthony Brown,47678,41.6,7,True,brown a
 2016_MD_House-4_DEM,DEM,Glenn Ivey,38966,34.0,7,False,ivey g
-2016_MD_House-4_DEM,DEM,Joseline Peña-Melnyk,21724,19.0,7,False,melnyk j
+2016_MD_House-4_DEM,DEM,Joseline Peña-Melnyk,21724,19.0,7,False,penamelnyk j
 2016_MD_House-4_DEM,DEM,Warren Christopher,3973,3.5,7,False,christopher w
 2016_MD_House-4_DEM,DEM,Matthew Fogg,1437,1.2,7,False,fogg m
 2016_MD_House-4_DEM,DEM,Terence Strait,845,0.7,7,False,strait t
@@ -4866,7 +4866,7 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2016_MN_House-7_REP,REP,Dave Hughes,8769,59.0,12,True,hughes d
 2016_MN_House-7_REP,REP,Amanda Lynn Hinson,6104,41.0,12,False,hinson a
 2016_MO_House-1_DEM,DEM,Lacy Clay,56139,62.6,1,True,clay l
-2016_MO_House-1_DEM,DEM,Maria Chappelle-Nadal,24059,26.9,1,False,nadal m
+2016_MO_House-1_DEM,DEM,Maria Chappelle-Nadal,24059,26.9,1,False,chappellenadal m
 2016_MO_House-1_DEM,DEM,Bill Haas,9422,10.5,1,False,haas b
 2016_MO_House-1_REP,REP,Steven G. Bailey,12450,67.2,2,True,bailey s
 2016_MO_House-1_REP,REP,Paul Berry III,6067,32.8,2,False,berry p
@@ -4896,7 +4896,7 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2016_MO_House-6_REP,REP,Kyle Reid,7910,9.6,17,False,reid k
 2016_MO_House-7_DEM,DEM,Genevieve Williams,9402,52.1,21,True,williams g
 2016_MO_House-7_DEM,DEM,Steven Reed,4915,27.3,21,False,reed s
-2016_MO_House-7_DEM,DEM,Camille Lombardi-Olive,3714,20.6,21,False,olive c
+2016_MO_House-7_DEM,DEM,Camille Lombardi-Olive,3714,20.6,21,False,lombardiolive c
 2016_MO_House-7_REP,REP,Billy Long,67012,62.4,20,True,long b
 2016_MO_House-7_REP,REP,Mary Byrne,14069,13.1,20,False,byrne m
 2016_MO_House-7_REP,REP,Matt Canovi,9538,8.9,20,False,canovi m
@@ -4981,19 +4981,19 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2016_NC_House-6_REP,REP,Mark Walker,16859,77.9,8,True,walker m
 2016_NC_House-6_REP,REP,Chris Hardin,4777,22.1,8,False,hardin c
 2016_NC_House-8_REP,REP,Richard Hudson,16375,64.6,9,True,hudson r
-2016_NC_House-8_REP,REP,Tim D'Annunzio,8943,35.4,9,False,annunzio t
+2016_NC_House-8_REP,REP,Tim D'Annunzio,8943,35.4,9,False,dannunzio t
 2016_NC_House-9_REP,REP,Robert Pittenger,9299,35.0,10,True,pittenger r
 2016_NC_House-9_REP,REP,Mark Harris,9165,34.4,10,False,harris m
 2016_NC_House-9_REP,REP,Todd Johnson,8142,30.6,10,False,johnson t
 2016_ND_House-1_REP,REP,Kevin Cramer,96357,99.1,1,True,cramer k
-2016_ND_House-1_REP,REP,Write-ins,919,0.9,1,False,ins w
+2016_ND_House-1_REP,REP,Write-ins,919,0.9,1,False,writeins
 2016_NE_House-1_DEM,DEM,Daniel Wik,25762,100.0,2,True,wik d
 2016_NE_House-1_REP,REP,Jeff Fortenberry,62704,100.0,1,True,fortenberry j
 2016_NE_House-2_DEM,DEM,Brad Ashford,23470,100.0,3,True,ashford b
 2016_NE_House-2_REP,REP,Don Bacon,32328,66.0,4,True,bacon d
 2016_NE_House-2_REP,REP,Chip Maxwell,16677,34.0,4,False,maxwell c
 2016_NE_House-3_REP,REP,Adrian Smith,78154,100.0,6,True,smith a
-2016_NH_House-1_DEM,DEM,Carol Shea-Porter,32409,98.8,2,True,porter c
+2016_NH_House-1_DEM,DEM,Carol Shea-Porter,32409,98.8,2,True,sheaporter c
 2016_NH_House-1_REP,REP,Frank Guinta,26400,46.5,1,True,guinta f
 2016_NH_House-1_REP,REP,Richard Ashooh,25678,45.2,1,False,ashooh r
 2016_NH_House-1_REP,REP,Michael Callis,2243,4.0,1,False,callis m
@@ -5034,7 +5034,7 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2016_NJ_House-5_REP,REP,Peter Vallorosi,4884,9.5,9,False,vallorosi p
 2016_NJ_House-5_REP,REP,Michael J Cino,4252,8.3,9,False,cino m
 2016_NJ_House-6_DEM,DEM,Frank Pallone Jr.,52231,100.0,11,True,pallone f
-2016_NJ_House-6_REP,REP,Brent Sonnek-Schmelz,17856,100.0,12,True,schmelz b
+2016_NJ_House-6_REP,REP,Brent Sonnek-Schmelz,17856,100.0,12,True,sonnekschmelz b
 2016_NJ_House-7_DEM,DEM,Peter Jacob,46152,100.0,14,True,jacob p
 2016_NJ_House-7_REP,REP,Leonard Lance,31807,53.9,13,True,lance l
 2016_NJ_House-7_REP,REP,David Larsen,19425,32.9,13,False,larsen d
@@ -5096,7 +5096,7 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2016_NY_House-13_DEM,DEM,Clyde E. Williams,5003,11.0,7,False,williams c
 2016_NY_House-13_DEM,DEM,Adam Clayton Powell,2986,6.6,7,False,powell a
 2016_NY_House-13_DEM,DEM,Guillermo Linares,2504,5.5,7,False,linares g
-2016_NY_House-13_DEM,DEM,Suzan D. Johnson-Cook,2341,5.1,7,False,cook s
+2016_NY_House-13_DEM,DEM,Suzan D. Johnson-Cook,2341,5.1,7,False,johnsoncook s
 2016_NY_House-13_DEM,DEM,Michael Gallagher,435,1.0,7,False,gallagher m
 2016_NY_House-13_DEM,DEM,Sam Sloan,227,0.5,7,False,sloan s
 2016_NY_House-13_DEM,DEM,Yohanny M. Caceres,116,0.2,7,False,caceres y
@@ -5108,7 +5108,7 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2016_NY_House-19_DEM,DEM,Will Yandik,5561,28.7,11,False,yandik w
 2016_NY_House-19_REP,REP,John J. Faso,10922,67.5,10,True,faso j
 2016_NY_House-19_REP,REP,Andrew Heaney,5253,32.5,10,False,heaney a
-2016_NY_House-1_DEM,DEM,Anna E. Throne-Holst,6481,51.3,1,True,holst a
+2016_NY_House-1_DEM,DEM,Anna E. Throne-Holst,6481,51.3,1,True,throneholst a
 2016_NY_House-1_DEM,DEM,David L. Calone,6162,48.7,1,False,calone d
 2016_NY_House-22_REP,REP,Claudia Tenney,9549,41.1,12,True,tenney c
 2016_NY_House-22_REP,REP,Steven M. Wells,7985,34.3,12,False,wells s
@@ -5188,7 +5188,7 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2016_OK_House-1_REP,REP,Jim Bridenstine,50595,80.7,1,True,bridenstine j
 2016_OK_House-1_REP,REP,Tom Atkinson,10056,16.1,1,False,atkinson t
 2016_OK_House-1_REP,REP,Evelyn Rogers,2004,3.2,1,False,rogers e
-2016_OK_House-2_DEM,DEM,Joshua Harris-Till,31681,60.0,3,True,till j
+2016_OK_House-2_DEM,DEM,Joshua Harris-Till,31681,60.0,3,True,harristill j
 2016_OK_House-2_DEM,DEM,Paul Schiefelbein,21152,40.0,3,False,schiefelbein p
 2016_OK_House-2_REP,REP,Markwayne Mullin,20065,63.4,2,True,mullin m
 2016_OK_House-2_REP,REP,Jarrin Jackson,11580,36.6,2,False,jackson j
@@ -5205,34 +5205,34 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2016_OK_House-5_REP,REP,Frank Volpe,6721,19.7,7,False,volpe f
 2016_OR_House-1_DEM,DEM,Suzanne Bonamici,99153,89.8,1,True,bonamici s
 2016_OR_House-1_DEM,DEM,Shabba Woodley,10961,9.9,1,False,woodley s
-2016_OR_House-1_DEM,DEM,Write-ins,375,0.3,1,False,ins w
+2016_OR_House-1_DEM,DEM,Write-ins,375,0.3,1,False,writeins
 2016_OR_House-1_REP,REP,Brian J. Heinrich,19290,48.5,2,True,heinrich b
 2016_OR_House-1_REP,REP,Delinda Morgan,10640,26.7,2,False,morgan d
 2016_OR_House-1_REP,REP,Jonathan E. Burgess,9127,22.9,2,False,burgess j
-2016_OR_House-1_REP,REP,Write-ins,768,1.9,2,False,ins w
+2016_OR_House-1_REP,REP,Write-ins,768,1.9,2,False,writeins
 2016_OR_House-2_DEM,DEM,"James ""Jim"" Crary",53484,97.6,5,True,crary j
-2016_OR_House-2_DEM,DEM,Write-ins,1295,2.4,5,False,ins w
+2016_OR_House-2_DEM,DEM,Write-ins,1295,2.4,5,False,writeins
 2016_OR_House-2_REP,REP,Greg Walden,85039,80.0,4,True,walden g
 2016_OR_House-2_REP,REP,Paul J. Romero Jr.,21099,19.8,4,False,romero p
-2016_OR_House-2_REP,REP,Write-ins,238,0.2,4,False,ins w
+2016_OR_House-2_REP,REP,Write-ins,238,0.2,4,False,writeins
 2016_OR_House-3_DEM,DEM,Earl Blumenauer,144706,98.3,7,True,blumenauer e
-2016_OR_House-3_DEM,DEM,Write-ins,2511,1.7,7,False,ins w
-2016_OR_House-3_REP,REP,Write-ins,2160,90.9,8,True,ins w
+2016_OR_House-3_DEM,DEM,Write-ins,2511,1.7,7,False,writeins
+2016_OR_House-3_REP,REP,Write-ins,2160,90.9,8,True,writeins
 2016_OR_House-3_REP,REP,David W. Walker,217,9.1,8,False,walker d
 2016_OR_House-4_DEM,DEM,Peter DeFazio,113816,91.6,10,True,defazio p
 2016_OR_House-4_DEM,DEM,Joseph McKinney,9894,8.0,10,False,mckinney j
-2016_OR_House-4_DEM,DEM,Write-ins,601,0.4,10,False,ins w
+2016_OR_House-4_DEM,DEM,Write-ins,601,0.4,10,False,writeins
 2016_OR_House-4_REP,REP,Art Robinson,55557,67.3,11,True,robinson a
 2016_OR_House-4_REP,REP,Jo Rae Perkins,26375,31.9,11,False,perkins j
-2016_OR_House-4_REP,REP,Write-ins,620,0.8,11,False,ins w
+2016_OR_House-4_REP,REP,Write-ins,620,0.8,11,False,writeins
 2016_OR_House-5_DEM,DEM,Kurt Schrader,72634,71.7,13,True,schrader k
 2016_OR_House-5_DEM,DEM,Dave McTeague,28184,27.8,13,False,mcteague d
-2016_OR_House-5_DEM,DEM,Write-ins,549,0.5,13,False,ins w
+2016_OR_House-5_DEM,DEM,Write-ins,549,0.5,13,False,writeins
 2016_OR_House-5_REP,REP,Colm Willis,40568,57.6,14,True,willis c
 2016_OR_House-5_REP,REP,Ben West,14696,20.8,14,False,west b
 2016_OR_House-5_REP,REP,Seth Allan,10779,15.3,14,False,allan s
 2016_OR_House-5_REP,REP,Earl D. Rainey,3783,5.4,14,False,rainey e
-2016_OR_House-5_REP,REP,Write-ins,665,0.9,14,False,ins w
+2016_OR_House-5_REP,REP,Write-ins,665,0.9,14,False,writeins
 2016_PA_House-10_REP,REP,Tom Marino,95321,100.0,17,True,marino t
 2016_PA_House-11_DEM,DEM,Michael Marsicano,58117,100.0,19,True,marsicano m
 2016_PA_House-11_REP,REP,Lou Barletta,92342,100.0,18,True,barletta l
@@ -5335,7 +5335,7 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2016_TN_House-9_DEM,DEM,M. LaTroy Williams,1452,3.5,17,False,williams m
 2016_TN_House-9_DEM,DEM,Larry Crim,406,1.0,17,False,crim l
 2016_TN_House-9_REP,REP,Wayne Alberson,38490,100.0,18,True,alberson w
-2016_TX_House-10_DEM,DEM,Tawana Walter-Cadien,22660,52.0,17,True,cadien t
+2016_TX_House-10_DEM,DEM,Tawana Walter-Cadien,22660,52.0,17,True,waltercadien t
 2016_TX_House-10_DEM,DEM,Scot Gallaher,20961,48.0,17,False,gallaher s
 2016_TX_House-10_REP,REP,Michael McCaul,76646,100.0,16,True,mccaul m
 2016_TX_House-11_REP,REP,Mike Conaway,101056,100.0,18,True,conaway m
@@ -5349,7 +5349,7 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2016_TX_House-15_DEM,DEM,"Juan ""Sonny"" Palacios Jr.",8379,34.3,25,False,palacios j
 2016_TX_House-15_REP,REP,Tim Westley,1384,50.5,27,True,westley t
 2016_TX_House-15_REP,REP,Ruben Villarreal,1355,49.5,27,False,villarreal r
-2016_TX_House-16_DEM,DEM,Beto O'Rourke,40051,85.6,28,True,rourke b
+2016_TX_House-16_DEM,DEM,Beto O'Rourke,40051,85.6,28,True,orourke b
 2016_TX_House-16_DEM,DEM,Ben Mendoza,6749,14.4,28,False,mendoza b
 2016_TX_House-17_DEM,DEM,William Matta,27639,100.0,30,True,matta w
 2016_TX_House-17_REP,REP,Bill Flores,60502,72.4,29,True,flores b
@@ -5461,49 +5461,49 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2016_VA_House-6_REP,REP,Harry Griego,5383,22.1,4,False,griego h
 2016_VT_House-1_DEM,DEM,Peter Welch,67285,91.97,1,True,welch p
 2016_VT_House-1_DEM,DEM,Blank votes,5410,7.39,1,False,votes b
-2016_VT_House-1_DEM,DEM,Write-in,345,0.47,1,False,in w
+2016_VT_House-1_DEM,DEM,Write-in,345,0.47,1,False,writein
 2016_VT_House-1_DEM,DEM,Spoiled votes,122,0.17,1,False,votes s
 2016_VT_House-1_REP,REP,Blank votes,42418,91.43,2,True,votes b
 2016_VT_House-1_REP,REP,Peter Welch,2093,4.51,2,False,welch p
-2016_VT_House-1_REP,REP,Write-in,1335,2.88,2,False,in w
+2016_VT_House-1_REP,REP,Write-in,1335,2.88,2,False,writein
 2016_VT_House-1_REP,REP,Spoiled votes,548,1.18,2,False,votes s
 2016_WI_House-1_DEM,DEM,Ryan Solen,14639,58.9,2,True,solen r
 2016_WI_House-1_DEM,DEM,Tom Breu,10142,40.8,2,False,breu t
-2016_WI_House-1_DEM,DEM,Write-ins,86,0.3,2,False,ins w
+2016_WI_House-1_DEM,DEM,Write-ins,86,0.3,2,False,writeins
 2016_WI_House-1_REP,REP,Paul Ryan,57364,84.1,1,True,ryan p
 2016_WI_House-1_REP,REP,Paul Nehlen,10864,15.9,1,False,nehlen p
-2016_WI_House-1_REP,REP,Write-ins,15,0.0,1,False,ins w
+2016_WI_House-1_REP,REP,Write-ins,15,0.0,1,False,writeins
 2016_WI_House-2_DEM,DEM,Mark Pocan,71461,99.5,4,True,pocan m
-2016_WI_House-2_DEM,DEM,Write-ins,395,0.5,4,False,ins w
+2016_WI_House-2_DEM,DEM,Write-ins,395,0.5,4,False,writeins
 2016_WI_House-2_REP,REP,Peter Theron,12866,99.4,5,True,theron p
-2016_WI_House-2_REP,REP,Write-ins,79,0.6,5,False,ins w
+2016_WI_House-2_REP,REP,Write-ins,79,0.6,5,False,writeins
 2016_WI_House-3_DEM,DEM,Ron Kind,33320,81.2,6,True,kind r
 2016_WI_House-3_DEM,DEM,Myron Buchholz,7689,18.8,6,False,buchholz m
-2016_WI_House-3_DEM,DEM,Write-ins,7,0.0,6,False,ins w
+2016_WI_House-3_DEM,DEM,Write-ins,7,0.0,6,False,writeins
 2016_WI_House-4_DEM,DEM,Gwen Moore,55256,84.5,7,True,moore g
 2016_WI_House-4_DEM,DEM,Gary George,10013,15.3,7,False,george g
-2016_WI_House-4_DEM,DEM,Write-ins,128,0.2,7,False,ins w
+2016_WI_House-4_DEM,DEM,Write-ins,128,0.2,7,False,writeins
 2016_WI_House-5_DEM,DEM,Khary Penebaker,19353,99.4,10,True,penebaker k
-2016_WI_House-5_DEM,DEM,Write-ins,115,0.6,10,False,ins w
+2016_WI_House-5_DEM,DEM,Write-ins,115,0.6,10,False,writeins
 2016_WI_House-5_REP,REP,James Sensenbrenner,34203,99.7,9,True,sensenbrenner j
-2016_WI_House-5_REP,REP,Write-ins,100,0.3,9,False,ins w
+2016_WI_House-5_REP,REP,Write-ins,100,0.3,9,False,writeins
 2016_WI_House-6_DEM,DEM,Sarah Lloyd,19652,75.1,13,True,lloyd s
 2016_WI_House-6_DEM,DEM,Michael Slattery,6459,24.7,13,False,slattery m
-2016_WI_House-6_DEM,DEM,Write-ins,43,0.2,13,False,ins w
+2016_WI_House-6_DEM,DEM,Write-ins,43,0.2,13,False,writeins
 2016_WI_House-6_REP,REP,Glenn Grothman,29795,99.6,12,True,grothman g
-2016_WI_House-6_REP,REP,Write-ins,105,0.4,12,False,ins w
+2016_WI_House-6_REP,REP,Write-ins,105,0.4,12,False,writeins
 2016_WI_House-7_DEM,DEM,Mary Hoeft,27289,80.6,15,True,hoeft m
 2016_WI_House-7_DEM,DEM,Joel Lewis,6531,19.3,15,False,lewis j
-2016_WI_House-7_DEM,DEM,Write-ins,50,0.1,15,False,ins w
+2016_WI_House-7_DEM,DEM,Write-ins,50,0.1,15,False,writeins
 2016_WI_House-7_REP,REP,Sean Duffy,29501,89.4,14,True,duffy s
 2016_WI_House-7_REP,REP,Don Raihala,3456,10.5,14,False,raihala d
-2016_WI_House-7_REP,REP,Write-ins,24,0.1,14,False,ins w
+2016_WI_House-7_REP,REP,Write-ins,24,0.1,14,False,writeins
 2016_WI_House-8_DEM,DEM,Tom Nelson,20914,99.9,17,True,nelson t
-2016_WI_House-8_DEM,DEM,Write-ins,28,0.1,17,False,ins w
+2016_WI_House-8_DEM,DEM,Write-ins,28,0.1,17,False,writeins
 2016_WI_House-8_REP,REP,Mike Gallagher,40322,74.5,16,True,gallagher m
 2016_WI_House-8_REP,REP,Frank Lasee,10705,19.8,16,False,lasee f
 2016_WI_House-8_REP,REP,Terry McNulty,3109,5.7,16,False,mcnulty t
-2016_WI_House-8_REP,REP,Write-ins,16,0.0,16,False,ins w
+2016_WI_House-8_REP,REP,Write-ins,16,0.0,16,False,writeins
 2016_WV_House-1_DEM,DEM,Mike Manypenny,60911,100.0,2,True,manypenny m
 2016_WV_House-1_REP,REP,David McKinley,61217,100.0,1,True,mckinley d
 2016_WV_House-2_DEM,DEM,Mark Hunt,21296,29.1,4,True,hunt m
@@ -5518,7 +5518,7 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2016_WY_House-1_DEM,DEM,Ryan Greene,10955,53.17,2,True,greene r
 2016_WY_House-1_DEM,DEM,Charlie Hardy,7868,38.18,2,False,hardy c
 2016_WY_House-1_DEM,DEM,Undervote,1654,8.03,2,False,undervote
-2016_WY_House-1_DEM,DEM,Write-ins,113,0.55,2,False,ins w
+2016_WY_House-1_DEM,DEM,Write-ins,113,0.55,2,False,writeins
 2016_WY_House-1_DEM,DEM,Overvote,15,0.07,2,False,overvote
 2016_WY_House-1_REP,REP,Liz Cheney,35043,38.78,1,True,cheney l
 2016_WY_House-1_REP,REP,Leland Christensen,19330,21.39,1,False,christensen l
@@ -5531,7 +5531,7 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2016_WY_House-1_REP,REP,Paul Paad,886,0.98,1,False,paad p
 2016_WY_House-1_REP,REP,Overvote,625,0.69,1,False,overvote
 2016_WY_House-1_REP,REP,Heath Beaudry,534,0.59,1,False,beaudry h
-2016_WY_House-1_REP,REP,Write-ins,155,0.17,1,False,ins w
+2016_WY_House-1_REP,REP,Write-ins,155,0.17,1,False,writeins
 2018_AK_House-1_DEM,DEM,Dimitri Shein,9434,23.26,2,True,shein d
 2018_AK_House-1_DEM,DEM,Carol Hafner,6071,14.97,2,False,hafner c
 2018_AK_House-1_REP,REP,Don Young,49667,70.85,1,True,young d
@@ -5559,7 +5559,7 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2018_AR_House-3_REP,REP,Robb Ryerse,8988,15.8,2,False,ryerse r
 2018_AR_House-4_REP,REP,Bruce Westerman,40201,79.8,3,True,westerman b
 2018_AR_House-4_REP,REP,Randy Caldwell,10151,20.2,3,False,caldwell r
-2018_AZ_House-1_DEM,DEM,Tom O'Halleran,64114,100.0,1,True,halleran t
+2018_AZ_House-1_DEM,DEM,Tom O'Halleran,64114,100.0,1,True,ohalleran t
 2018_AZ_House-1_REP,REP,Wendy Rogers,30180,43.7,2,True,rogers w
 2018_AZ_House-1_REP,REP,Steve Smith,25552,37.0,2,False,smith s
 2018_AZ_House-1_REP,REP,Tiffany Shedd,13260,19.2,2,False,shedd t
@@ -5600,11 +5600,11 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2018_CA_House-27_DEM,DEM,Judy Chu,86932,83.5,27,True,chu j
 2018_CA_House-27_DEM,DEM,Bryan Witt,17186,16.5,27,False,witt b
 2018_CA_House-34_DEM,DEM,Jimmy Gomez,54661,78.7,34,True,gomez j
-2018_CA_House-40_DEM,DEM,Lucille Roybal-Allard,35636,80.3,40,True,allard l
+2018_CA_House-40_DEM,DEM,Lucille Roybal-Allard,35636,80.3,40,True,roybalallard l
 2018_CA_House-5_DEM,DEM,Mike Thompson,121428,79.3,5,True,thompson m
 2018_CA_House-6_DEM,DEM,Doris Matsui,99789,87.9,6,True,matsui d
 2018_CA_House-6_DEM,DEM,Jrmar Jefferson,13786,12.1,6,False,jefferson j
-2018_CA_House-6_DEM,DEM,write-in,9,0.0,6,False,in w
+2018_CA_House-6_DEM,DEM,write-in,9,0.0,6,False,writein
 2018_CO_House-1_DEM,DEM,Diana DeGette,91102,68.2,1,True,degette d
 2018_CO_House-1_DEM,DEM,Saira Rao,42398,31.8,1,False,rao s
 2018_CO_House-1_REP,REP,Casper Stockham,29933,100.0,2,True,stockham c
@@ -5671,7 +5671,7 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2018_FL_House-1_REP,REP,Cris Dosev,30433,30.2,1,False,dosev c
 2018_FL_House-1_REP,REP,John Mills,4992,5.0,1,False,mills j
 2018_FL_House-20_DEM,DEM,Alcee Hastings,50315,73.6,23,True,hastings a
-2018_FL_House-20_DEM,DEM,Sheila Cherfilus-McCormick,18031,26.4,23,False,mccormick s
+2018_FL_House-20_DEM,DEM,Sheila Cherfilus-McCormick,18031,26.4,23,False,cherfilusmccormick s
 2018_FL_House-22_DEM,DEM,Ted Deutch,52628,86.5,24,True,deutch t
 2018_FL_House-22_DEM,DEM,Jeff Fandl,8207,13.5,24,False,fandl j
 2018_FL_House-22_REP,REP,Nicolas Kimaz,13939,41.0,25,True,kimaz n
@@ -5682,13 +5682,13 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2018_FL_House-23_REP,REP,Carla Spalding,5453,21.6,26,False,spalding c
 2018_FL_House-24_DEM,DEM,Frederica Wilson,65894,83.7,27,True,wilson f
 2018_FL_House-24_DEM,DEM,Ricardo de la Fuente,12833,16.3,27,False,fuente r
-2018_FL_House-26_DEM,DEM,Debbie Mucarsel-Powell,20997,63.5,29,True,powell d
+2018_FL_House-26_DEM,DEM,Debbie Mucarsel-Powell,20997,63.5,29,True,mucarselpowell d
 2018_FL_House-26_DEM,DEM,Demetries Grimes,12095,36.5,29,False,grimes d
 2018_FL_House-26_REP,REP,Carlos Curbelo,29506,84.0,28,True,curbelo c
 2018_FL_House-26_REP,REP,Souraya Faas,5629,16.0,28,False,faas s
 2018_FL_House-27_DEM,DEM,Donna Shalala,14153,31.9,31,True,shalala d
 2018_FL_House-27_DEM,DEM,David Richardson,12191,27.5,31,False,richardson d
-2018_FL_House-27_DEM,DEM,Kristen Rosen-Gonzalez,7783,17.5,31,False,gonzalez k
+2018_FL_House-27_DEM,DEM,Kristen Rosen-Gonzalez,7783,17.5,31,False,rosengonzalez k
 2018_FL_House-27_DEM,DEM,Matt Haggman,7510,16.9,31,False,haggman m
 2018_FL_House-27_DEM,DEM,Michael Hepburn,2723,6.1,31,False,hepburn m
 2018_FL_House-27_REP,REP,Maria Elvira Salazar,15812,40.5,30,True,salazar m
@@ -5696,7 +5696,7 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2018_FL_House-27_REP,REP,Maria Peiro,3120,8.0,30,False,peiro m
 2018_FL_House-27_REP,REP,Stephen Marks,2733,7.0,30,False,marks s
 2018_FL_House-27_REP,REP,Angie Chirino,2677,6.9,30,False,chirino a
-2018_FL_House-27_REP,REP,Bettina Rodriguez-Aguilera,1684,4.3,30,False,aguilera b
+2018_FL_House-27_REP,REP,Bettina Rodriguez-Aguilera,1684,4.3,30,False,rodriguezaguilera b
 2018_FL_House-27_REP,REP,Mike Ohevzion,1467,3.8,30,False,ohevzion m
 2018_FL_House-27_REP,REP,Elizabeth Adadi,775,2.0,30,False,adadi e
 2018_FL_House-27_REP,REP,Gina Sosa,760,1.9,30,False,sosa g
@@ -5722,7 +5722,7 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2018_FL_House-7_REP,REP,Vennia Francois,8950,15.8,10,False,francois v
 2018_FL_House-9_DEM,DEM,Darren Soto,36586,66.4,11,True,soto d
 2018_FL_House-9_DEM,DEM,Alan Grayson,18528,33.6,11,False,grayson a
-2018_GA_House-10_DEM,DEM,Tabitha A. Johnson-Green,17020,50.2,20,True,green t
+2018_GA_House-10_DEM,DEM,Tabitha A. Johnson-Green,17020,50.2,20,True,johnsongreen t
 2018_GA_House-10_DEM,DEM,Chalis Montgomery,8971,26.46,20,False,montgomery c
 2018_GA_House-10_DEM,DEM,Richard Dien Winfield,7911,23.33,20,False,winfield r
 2018_GA_House-10_REP,REP,Jody Hice,42960,78.9,19,True,hice j
@@ -5781,27 +5781,27 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2018_IA_House-1_DEM,DEM,Thomas Heckroth,8516,19.1,2,False,heckroth t
 2018_IA_House-1_DEM,DEM,Courtney Rowe,3381,7.6,2,False,rowe c
 2018_IA_House-1_DEM,DEM,George Ramsey,2837,6.4,2,False,ramsey g
-2018_IA_House-1_DEM,DEM,Write-ins,50,0.1,2,False,ins w
+2018_IA_House-1_DEM,DEM,Write-ins,50,0.1,2,False,writeins
 2018_IA_House-1_REP,REP,Rod Blum,14737,98.9,1,True,blum r
-2018_IA_House-1_REP,REP,Write-ins,167,1.1,1,False,ins w
+2018_IA_House-1_REP,REP,Write-ins,167,1.1,1,False,writeins
 2018_IA_House-2_DEM,DEM,Dave Loebsack,42378,99.3,3,True,loebsack d
-2018_IA_House-2_DEM,DEM,Write-ins,314,0.7,3,False,ins w
+2018_IA_House-2_DEM,DEM,Write-ins,314,0.7,3,False,writeins
 2018_IA_House-2_REP,REP,Christopher Peters,18056,85.7,4,True,peters c
 2018_IA_House-2_REP,REP,Ginny Caligiuri,2839,13.5,4,False,caligiuri g
-2018_IA_House-2_REP,REP,Other write-ins,181,0.9,4,False,ins o
+2018_IA_House-2_REP,REP,Other write-ins,181,0.9,4,False,writeins o
 2018_IA_House-3_DEM,DEM,Cindy Axne,32910,57.8,6,True,axne c
 2018_IA_House-3_DEM,DEM,Eddie J. Mauro,15006,26.4,6,False,mauro e
-2018_IA_House-3_DEM,DEM,Pete D'Alessandro,8874,15.6,6,False,alessandro p
-2018_IA_House-3_DEM,DEM,Write-ins,150,0.3,6,False,ins w
+2018_IA_House-3_DEM,DEM,Pete D'Alessandro,8874,15.6,6,False,dalessandro p
+2018_IA_House-3_DEM,DEM,Write-ins,150,0.3,6,False,writeins
 2018_IA_House-3_REP,REP,David Young,21712,98.9,5,True,young d
-2018_IA_House-3_REP,REP,Write-ins,234,1.1,5,False,ins w
+2018_IA_House-3_REP,REP,Write-ins,234,1.1,5,False,writeins
 2018_IA_House-4_DEM,DEM,J. D. Scholten,14733,51.3,8,True,scholten j
 2018_IA_House-4_DEM,DEM,Leann Jacobsen,9176,31.9,8,False,jacobsen l
 2018_IA_House-4_DEM,DEM,John Paschen,4806,16.7,8,False,paschen j
-2018_IA_House-4_DEM,DEM,Write-ins,29,0.1,8,False,ins w
+2018_IA_House-4_DEM,DEM,Write-ins,29,0.1,8,False,writeins
 2018_IA_House-4_REP,REP,Steve King,28053,74.7,7,True,king s
 2018_IA_House-4_REP,REP,Cyndi Hanson,9437,25.1,7,False,hanson c
-2018_IA_House-4_REP,REP,Write-ins,44,0.1,7,False,ins w
+2018_IA_House-4_REP,REP,Write-ins,44,0.1,7,False,writeins
 2018_ID_House-1_DEM,DEM,Cristina McNeil,19070,69.3,2,True,mcneil c
 2018_ID_House-1_DEM,DEM,James Vandermaas,4491,16.3,2,False,vandermaas j
 2018_ID_House-1_DEM,DEM,Michael Smith,3963,14.4,2,False,smith m
@@ -5839,7 +5839,7 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2018_IL_House-14_DEM,DEM,Victor Swanson,3597,7.0,29,False,swanson v
 2018_IL_House-14_DEM,DEM,John Hosta,2578,5.0,29,False,hosta j
 2018_IL_House-14_DEM,DEM,George Weber,2570,5.0,29,False,weber g
-2018_IL_House-14_DEM,DEM,Daniel Roldan-Johnson,1170,2.3,29,False,johnson d
+2018_IL_House-14_DEM,DEM,Daniel Roldan-Johnson,1170,2.3,29,False,roldanjohnson d
 2018_IL_House-14_REP,REP,Randy Hultgren,51672,100.0,28,True,hultgren r
 2018_IL_House-15_DEM,DEM,Kevin Gaither,17300,62.1,31,True,gaither k
 2018_IL_House-15_DEM,DEM,Carl Spoerer,10573,37.9,31,False,spoerer c
@@ -5847,7 +5847,7 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2018_IL_House-16_DEM,DEM,Sara Dady,17713,40.3,33,True,dady s
 2018_IL_House-16_DEM,DEM,Neill Mohammad,11599,27.2,33,False,mohammad n
 2018_IL_House-16_DEM,DEM,Amy Briel,8291,19.5,33,False,briel a
-2018_IL_House-16_DEM,DEM,Beth Vercolio-Osmund,5526,13.0,33,False,osmund b
+2018_IL_House-16_DEM,DEM,Beth Vercolio-Osmund,5526,13.0,33,False,vercolioosmund b
 2018_IL_House-16_REP,REP,Adam Kinzinger,44878,67.9,32,True,kinzinger a
 2018_IL_House-16_REP,REP,Jim Marter,21242,32.1,32,False,marter j
 2018_IL_House-17_DEM,DEM,Cheri Bustos,42964,100.0,34,True,bustos c
@@ -6015,13 +6015,13 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2018_KY_House-6_REP,REP,Andy Barr,40514,83.8,8,True,barr a
 2018_KY_House-6_REP,REP,Chuck Eddy,7858,16.2,8,False,eddy c
 2018_MA_House-1_DEM,DEM,Richard Neal,49213,70.8,1,True,neal r
-2018_MA_House-1_DEM,DEM,Tahirah Amatul-Wadud,20322,29.2,1,False,wadud t
+2018_MA_House-1_DEM,DEM,Tahirah Amatul-Wadud,20322,29.2,1,False,amatulwadud t
 2018_MA_House-2_DEM,DEM,Jim McGovern,53848,100.0,2,True,mcgovern j
 2018_MA_House-2_REP,REP,Tracy Lovvorn,15583,60.8,3,True,lovvorn t
 2018_MA_House-2_REP,REP,Kevin Powers,10042,39.2,3,False,powers k
 2018_MA_House-3_DEM,DEM,Lori Trahan,18527,21.6,4,True,trahan l
 2018_MA_House-3_DEM,DEM,Daniel Koh,18405,21.5,4,False,koh d
-2018_MA_House-3_DEM,DEM,Barbara L'Italien,13029,15.2,4,False,italien b
+2018_MA_House-3_DEM,DEM,Barbara L'Italien,13029,15.2,4,False,litalien b
 2018_MA_House-3_DEM,DEM,Juana Matias,12982,15.1,4,False,matias j
 2018_MA_House-3_DEM,DEM,Rufus Gifford,12856,15.1,4,False,gifford r
 2018_MA_House-3_DEM,DEM,Alexandra Chandler,4848,5.7,4,False,chandler a
@@ -6030,7 +6030,7 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2018_MA_House-3_DEM,DEM,Jeffrey Ballinger,1388,1.6,4,False,ballinger j
 2018_MA_House-3_DEM,DEM,Bopha Malone,1344,1.6,4,False,malone b
 2018_MA_House-3_DEM,DEM,Leonard Golder,585,0.7,4,False,golder l
-2018_MA_House-3_DEM,DEM,write-ins,131,0.2,4,False,ins w
+2018_MA_House-3_DEM,DEM,write-ins,131,0.2,4,False,writeins
 2018_MA_House-3_REP,REP,Rick Green,24047,100.0,5,True,green r
 2018_MA_House-4_DEM,DEM,Joe Kennedy III,59613,93.4,6,True,kennedy j
 2018_MA_House-4_DEM,DEM,Gary Rucinski,4156,6.6,6,False,rucinski g
@@ -6134,11 +6134,11 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2018_MI_House-13_DEM,DEM,Shanelle Jackson,4853,5.4,27,False,jackson s
 2018_MI_House-13_DEM,DEM,Kimberly Hill Knott,33,0.0,27,False,knott k
 2018_MI_House-13_DEM,DEM,Royce Kinniebrew,2,0.0,27,False,kinniebrew r
-2018_MI_House-13_REP,REP,Other write-ins,2391,85.1,28,True,ins o
+2018_MI_House-13_REP,REP,Other write-ins,2391,85.1,28,True,writeins o
 2018_MI_House-13_REP,REP,David Anthony Dudenhoefer,420,14.9,28,False,dudenhoefer d
 2018_MI_House-14_DEM,DEM,Brenda Lawrence,106464,100.0,29,True,lawrence b
 2018_MI_House-14_REP,REP,Marc Herschfus,18546,100.0,30,True,herschfus m
-2018_MI_House-1_DEM,DEM,write-in,29293,100.0,2,True,in w
+2018_MI_House-1_DEM,DEM,write-in,29293,100.0,2,True,writein
 2018_MI_House-1_REP,REP,Jack Bergman,83272,100.0,1,True,bergman j
 2018_MI_House-2_DEM,DEM,Rob Davidson,52221,100.0,4,True,davidson r
 2018_MI_House-2_REP,REP,Bill Huizenga,79620,100.0,3,True,huizenga b
@@ -6189,7 +6189,7 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2018_MO_House-1_DEM,DEM,DeMarco K. Davidson,4229,2.9,1,False,davidson d
 2018_MO_House-1_REP,REP,Robert Vroman,5095,34.5,2,True,vroman r
 2018_MO_House-1_REP,REP,Edward L. Van Deventer Jr.,4864,32.9,2,False,deventer e
-2018_MO_House-1_REP,REP,Camille Lombardi-Olive,4820,32.6,2,False,olive c
+2018_MO_House-1_REP,REP,Camille Lombardi-Olive,4820,32.6,2,False,lombardiolive c
 2018_MO_House-2_DEM,DEM,Cort VanOstran,45248,41.7,5,True,vanostran c
 2018_MO_House-2_DEM,DEM,Mark J. Osmack,27389,25.2,5,False,osmack m
 2018_MO_House-2_DEM,DEM,"William ""Bill"" Haas",21151,19.5,5,False,haas w
@@ -6291,7 +6291,7 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2018_ND_House-1_REP,REP,Tom Campbell,17692,26.85,1,False,campbell t
 2018_ND_House-1_REP,REP,Tiffany Abentroth,5877,8.92,1,False,abentroth t
 2018_ND_House-1_REP,REP,Paul Schaffner,5203,7.9,1,False,schaffner p
-2018_ND_House-1_REP,REP,Write-Ins,75,0.11,1,False,ins w
+2018_ND_House-1_REP,REP,Write-Ins,75,0.11,1,False,writeins
 2018_NE_House-1_DEM,DEM,Jessica McClure,22199,66.1,1,True,mcclure j
 2018_NE_House-1_DEM,DEM,Dennis P. Crawford,11386,33.9,1,False,crawford d
 2018_NE_House-1_REP,REP,Jeff Fortenberry,51809,100.0,2,True,fortenberry j
@@ -6311,7 +6311,7 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2018_NH_House-1_DEM,DEM,Levi Sanders,1709,2.7,1,False,sanders l
 2018_NH_House-1_DEM,DEM,Deaglan McEachern,1141,2.1,1,False,mceachern d
 2018_NH_House-1_DEM,DEM,Mark MacKenzie,746,1.2,1,False,mackenzie m
-2018_NH_House-1_DEM,DEM,Terence M. O'Rourke,656,1.0,1,False,rourke t
+2018_NH_House-1_DEM,DEM,Terence M. O'Rourke,656,1.0,1,False,orourke t
 2018_NH_House-1_DEM,DEM,Paul Cardinal,317,0.5,1,False,cardinal p
 2018_NH_House-1_DEM,DEM,William Martin,230,0.4,1,False,martin w
 2018_NH_House-1_REP,REP,Eddie Edwards,23510,48.0,2,True,edwards e
@@ -6383,7 +6383,7 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2018_NM_House-1_DEM,DEM,Paul Moya,3691,5.9,1,False,moya p
 2018_NM_House-1_DEM,DEM,Pat Davis,2385,3.8,1,False,davis p
 2018_NM_House-1_DEM,DEM,Damian Lara,2063,3.3,1,False,lara d
-2018_NM_House-1_REP,REP,Janice Arnold-Jones,19316,100.0,2,True,jones j
+2018_NM_House-1_REP,REP,Janice Arnold-Jones,19316,100.0,2,True,arnoldjones j
 2018_NM_House-2_DEM,DEM,Xochitl Torres Small,25395,72.6,4,True,small x
 2018_NM_House-2_DEM,DEM,Madeline Hildebrandt,9577,27.4,4,False,hildebrandt m
 2018_NM_House-2_REP,REP,Yvette Herrell,16023,49.0,5,True,herrell y
@@ -6393,7 +6393,7 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2018_NM_House-3_DEM,DEM,Ben Ray Luján,63909,100.0,6,True,lujan b
 2018_NM_House-3_REP,REP,Jerald Steve McFall,20480,100.0,7,True,mcfall j
 2018_NV_House-1_DEM,DEM,Dina Titus,20897,78.7,1,True,titus d
-2018_NV_House-1_DEM,DEM,Reuben D'Silva,5659,21.3,1,False,silva r
+2018_NV_House-1_DEM,DEM,Reuben D'Silva,5659,21.3,1,False,dsilva r
 2018_NV_House-1_REP,REP,Joyce Bentley,6444,55.2,2,True,bentley j
 2018_NV_House-1_REP,REP,Fred Horne,5235,44.8,2,False,horne f
 2018_NV_House-2_DEM,DEM,Clint Koble,9451,26.1,4,True,koble c
@@ -6444,7 +6444,7 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2018_NY_House-11_REP,REP,Michael Grimm,7957,37.1,5,False,grimm m
 2018_NY_House-12_DEM,DEM,Carolyn Maloney,26742,59.6,8,True,maloney c
 2018_NY_House-12_DEM,DEM,Suraj Patel,18098,40.4,8,False,patel s
-2018_NY_House-14_DEM,DEM,Alexandria Ocasio-Cortez,16898,56.7,9,True,cortez a
+2018_NY_House-14_DEM,DEM,Alexandria Ocasio-Cortez,16898,56.7,9,True,ocasiocortez a
 2018_NY_House-14_DEM,DEM,Joseph Crowley,12880,43.3,9,False,crowley j
 2018_NY_House-16_DEM,DEM,Eliot Engel,22160,73.7,10,True,engel e
 2018_NY_House-16_DEM,DEM,Jonathan Lewis,4866,16.2,10,False,lewis j
@@ -6459,7 +6459,7 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2018_NY_House-19_DEM,DEM,Erin Collier,1908,4.9,11,False,collier e
 2018_NY_House-1_DEM,DEM,Perry Gershon,7902,35.5,1,True,gershon p
 2018_NY_House-1_DEM,DEM,Kate Browning,6813,30.6,1,False,browning k
-2018_NY_House-1_DEM,DEM,Vivian Viloria-Fisher,3616,16.3,1,False,fisher v
+2018_NY_House-1_DEM,DEM,Vivian Viloria-Fisher,3616,16.3,1,False,viloriafisher v
 2018_NY_House-1_DEM,DEM,David Pechefsky,2565,11.5,1,False,pechefsky d
 2018_NY_House-1_DEM,DEM,Elaine DiMasi,1344,6.0,1,False,dimasi e
 2018_NY_House-21_DEM,DEM,Tedra Cobb,10853,55.3,12,True,cobb t
@@ -6496,7 +6496,7 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2018_OH_House-11_DEM,DEM,Felicia Washington Ross,432,0.66,21,False,ross f
 2018_OH_House-11_REP,REP,Beverly A. Goldstein,6922,52.5,22,True,goldstein b
 2018_OH_House-11_REP,REP,Gregory P. Dunham,6258,47.5,22,False,dunham g
-2018_OH_House-12_DEM,DEM,Danny O'Connor,18211,40.52,24,True,connor d
+2018_OH_House-12_DEM,DEM,Danny O'Connor,18211,40.52,24,True,oconnor d
 2018_OH_House-12_DEM,DEM,John Russell,7310,16.27,24,False,russell j
 2018_OH_House-12_DEM,DEM,Zach Scott,7236,16.1,24,False,scott z
 2018_OH_House-12_DEM,DEM,Jackie Patton,6299,14.02,24,False,patton j
@@ -6507,7 +6507,7 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2018_OH_House-12_REP,REP,Melanie Leneghan,18777,27.58,23,False,leneghan m
 2018_OH_House-12_REP,REP,Tim Kane,11491,16.88,23,False,kane t
 2018_OH_House-12_REP,REP,Kevin Bacon,9711,14.26,23,False,bacon k
-2018_OH_House-12_REP,REP,Carol O'Brien,4415,6.48,23,False,brien c
+2018_OH_House-12_REP,REP,Carol O'Brien,4415,6.48,23,False,obrien c
 2018_OH_House-12_REP,REP,Jon Halverstadt,1130,1.66,23,False,halverstadt j
 2018_OH_House-12_REP,REP,Pat Manley,802,1.18,23,False,manley p
 2018_OH_House-12_REP,REP,Lawrence Cohen,798,1.17,23,False,cohen l
@@ -6542,7 +6542,7 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2018_OH_House-3_REP,REP,Jim Burgess,9350,93.15,6,True,burgess j
 2018_OH_House-3_REP,REP,Abdulkadir M. Haji,1422,6.85,6,False,haji a
 2018_OH_House-4_DEM,DEM,Janet Garrett,17507,83.8,8,True,garrett j
-2018_OH_House-4_DEM,DEM,Cody James Slatzer-Rose,3385,16.2,8,False,rose c
+2018_OH_House-4_DEM,DEM,Cody James Slatzer-Rose,3385,16.2,8,False,slatzerrose c
 2018_OH_House-4_REP,REP,Jim Jordan,55767,85.34,7,True,jordan j
 2018_OH_House-4_REP,REP,Joseph Miller,9577,14.66,7,False,miller j
 2018_OH_House-5_DEM,DEM,J. Michael Galbraith,19105,73.25,10,True,galbraith j
@@ -6593,48 +6593,48 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2018_OR_House-1_DEM,DEM,Suzanne Bonamici,69774,91.7,1,True,bonamici s
 2018_OR_House-1_DEM,DEM,Ricky Barajas,2945,3.9,1,False,barajas r
 2018_OR_House-1_DEM,DEM,Michael E. Stansfield,2936,3.8,1,False,stansfield m
-2018_OR_House-1_DEM,DEM,Write-ins,424,0.6,1,False,ins w
+2018_OR_House-1_DEM,DEM,Write-ins,424,0.6,1,False,writeins
 2018_OR_House-1_REP,REP,John Verbeek,21191,50.6,2,True,verbeek j
 2018_OR_House-1_REP,REP,George Griffith,17049,40.7,2,False,griffith g
 2018_OR_House-1_REP,REP,Preston L. Miller,3228,7.7,2,False,miller p
-2018_OR_House-1_REP,REP,Write-ins,402,1.0,2,False,ins w
-2018_OR_House-2_DEM,DEM,Jamie McLeod-Skinner,25351,42.8,4,True,skinner j
+2018_OR_House-1_REP,REP,Write-ins,402,1.0,2,False,writeins
+2018_OR_House-2_DEM,DEM,Jamie McLeod-Skinner,25351,42.8,4,True,mcleodskinner j
 2018_OR_House-2_DEM,DEM,Jennifer Neahring,14020,23.7,4,False,neahring j
 2018_OR_House-2_DEM,DEM,James Crary,6774,11.4,4,False,crary j
 2018_OR_House-2_DEM,DEM,Tim S. White,3469,5.9,4,False,white t
 2018_OR_House-2_DEM,DEM,Raz Mason,3137,5.3,4,False,mason r
 2018_OR_House-2_DEM,DEM,Eric Burnette,2734,4.6,4,False,burnette e
 2018_OR_House-2_DEM,DEM,Michael Byrne,2546,4.3,4,False,byrne m
-2018_OR_House-2_DEM,DEM,Write-ins,1173,2.0,4,False,ins w
+2018_OR_House-2_DEM,DEM,Write-ins,1173,2.0,4,False,writeins
 2018_OR_House-2_REP,REP,Greg Walden,71543,77.3,5,True,walden g
 2018_OR_House-2_REP,REP,Paul J. Romero Jr,15181,16.4,5,False,romero p
 2018_OR_House-2_REP,REP,Randy Pollock,5514,6.0,5,False,pollock r
-2018_OR_House-2_REP,REP,Write-ins,280,0.3,5,False,ins w
+2018_OR_House-2_REP,REP,Write-ins,280,0.3,5,False,writeins
 2018_OR_House-3_DEM,DEM,Earl Blumenauer,91226,90.8,7,True,blumenauer e
 2018_OR_House-3_DEM,DEM,Ben Lavine,6008,6.0,7,False,lavine b
 2018_OR_House-3_DEM,DEM,Charles Rand Barnett,1586,1.6,7,False,barnett c
 2018_OR_House-3_DEM,DEM,Eric Hafner,1377,1.4,7,False,hafner e
-2018_OR_House-3_DEM,DEM,Write-ins,291,0.3,7,False,ins w
-2018_OR_House-3_REP,REP,Other write-ins,1470,93.4,8,True,ins o
+2018_OR_House-3_DEM,DEM,Write-ins,291,0.3,7,False,writeins
+2018_OR_House-3_REP,REP,Other write-ins,1470,93.4,8,True,writeins o
 2018_OR_House-3_REP,REP,Thomas Harrison,104,6.6,8,False,harrison t
 2018_OR_House-4_DEM,DEM,Peter A. DeFazio,78575,91.4,10,True,defazio p
 2018_OR_House-4_DEM,DEM,Daniel Arcangel,6672,7.8,10,False,arcangel d
-2018_OR_House-4_DEM,DEM,Write-ins,717,0.8,10,False,ins w
+2018_OR_House-4_DEM,DEM,Write-ins,717,0.8,10,False,writeins
 2018_OR_House-4_REP,REP,Arthur B. Robinson,30384,45.5,11,True,robinson a
 2018_OR_House-4_REP,REP,Court Boice,15773,23.6,11,False,boice c
 2018_OR_House-4_REP,REP,Jo Rae Perkins,13892,20.8,11,False,perkins j
 2018_OR_House-4_REP,REP,Michael Polen,3970,5.9,11,False,polen m
 2018_OR_House-4_REP,REP,Stefan G. Strek,2244,3.4,11,False,strek s
-2018_OR_House-4_REP,REP,Write-ins,503,0.8,11,False,ins w
+2018_OR_House-4_REP,REP,Write-ins,503,0.8,11,False,writeins
 2018_OR_House-5_DEM,DEM,Kurt Schrader,59196,86.1,13,True,schrader k
 2018_OR_House-5_DEM,DEM,Peter Wright,9002,13.1,13,False,wright p
-2018_OR_House-5_DEM,DEM,Write-ins,549,0.8,13,False,ins w
+2018_OR_House-5_DEM,DEM,Write-ins,549,0.8,13,False,writeins
 2018_OR_House-5_REP,REP,Mark Callahan,33933,61.9,14,True,callahan m
 2018_OR_House-5_REP,REP,Joey Nations,11300,20.6,14,False,nations j
 2018_OR_House-5_REP,REP,Robert L. Reynolds,9120,16.6,14,False,reynolds r
-2018_OR_House-5_REP,REP,Write-ins,465,0.8,14,False,ins w
+2018_OR_House-5_REP,REP,Write-ins,465,0.8,14,False,writeins
 2018_PA_House-10_DEM,DEM,George Scott,13924,36.3,20,True,scott g
-2018_PA_House-10_DEM,DEM,Shavonnia Corbin-Johnson,13376,34.9,20,False,johnson s
+2018_PA_House-10_DEM,DEM,Shavonnia Corbin-Johnson,13376,34.9,20,False,corbinjohnson s
 2018_PA_House-10_DEM,DEM,Eric Ding,6912,18.0,20,False,ding e
 2018_PA_House-10_DEM,DEM,Alan Howe,4157,10.8,20,False,howe a
 2018_PA_House-10_REP,REP,Scott Perry,57407,100.0,19,True,perry s
@@ -6797,7 +6797,7 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2018_TN_House-9_DEM,DEM,Isaac Richmond,1951,2.6,17,False,richmond i
 2018_TN_House-9_REP,REP,Charlotte Bergmann,17850,100.0,18,True,bergmann c
 2018_TX_House-10_DEM,DEM,Mike Siegel,12274,69.9,26,True,siegel m
-2018_TX_House-10_DEM,DEM,Tawana Walter-Cadien,5285,30.1,26,False,cadien t
+2018_TX_House-10_DEM,DEM,Tawana Walter-Cadien,5285,30.1,26,False,waltercadien t
 2018_TX_House-10_REP,REP,Michael McCaul,41881,80.1,24,True,mccaul m
 2018_TX_House-10_REP,REP,John W. Cook,10413,19.9,24,False,cook j
 2018_TX_House-11_DEM,DEM,Jennie Lou Leeder,7264,82.7,28,True,leeder j
@@ -6822,7 +6822,7 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2018_TX_House-16_DEM,DEM,Jerome Tilghman,1489,3.0,37,False,tilghman j
 2018_TX_House-16_DEM,DEM,John Carrillo,771,1.6,37,False,carrillo j
 2018_TX_House-16_REP,REP,Rick Seeberger,7273,69.3,38,True,seeberger r
-2018_TX_House-16_REP,REP,Alia Garcia-Ureste,3216,30.7,38,False,ureste a
+2018_TX_House-16_REP,REP,Alia Garcia-Ureste,3216,30.7,38,False,garciaureste a
 2018_TX_House-17_DEM,DEM,Rick Kennedy,14343,63.3,40,True,kennedy r
 2018_TX_House-17_DEM,DEM,Dale Mantey,8300,36.7,40,False,mantey d
 2018_TX_House-17_REP,REP,Bill Flores,44388,100.0,39,True,flores b
@@ -6850,7 +6850,7 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2018_TX_House-23_DEM,DEM,Gina Ortiz Jones,17538,67.9,55,True,jones g
 2018_TX_House-23_DEM,DEM,Rick Treviño,8289,32.1,55,False,trevino r
 2018_TX_House-23_REP,REP,Will Hurd,24866,80.2,53,True,hurd w
-2018_TX_House-23_REP,REP,Alma Arredondo-Lynch,6126,19.8,53,False,lynch a
+2018_TX_House-23_REP,REP,Alma Arredondo-Lynch,6126,19.8,53,False,arredondolynch a
 2018_TX_House-24_DEM,DEM,Jan McDowell,14551,52.5,57,True,mcdowell j
 2018_TX_House-24_DEM,DEM,John Biggan,5970,21.5,57,False,biggan j
 2018_TX_House-24_DEM,DEM,"Edward ""Todd"" Allen",5556,20.0,57,False,allen e
@@ -6962,11 +6962,11 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2018_VT_House-1_DEM,DEM,Peter Welch,55939,83.94,1,True,welch p
 2018_VT_House-1_DEM,DEM,Daniel Freilich,7881,11.83,1,False,freilich d
 2018_VT_House-1_DEM,DEM,Benjamin Mitchell,2676,4.02,1,False,mitchell b
-2018_VT_House-1_DEM,DEM,Write-ins,142,0.21,1,False,ins w
+2018_VT_House-1_DEM,DEM,Write-ins,142,0.21,1,False,writeins
 2018_VT_House-1_REP,REP,H. Brooke Paige,14721,59.89,2,True,paige h
 2018_VT_House-1_REP,REP,Anya Tynio,8485,34.52,2,False,tynio a
 2018_VT_House-1_REP,REP,Peter Welch,923,3.76,2,False,welch p
-2018_VT_House-1_REP,REP,Write-ins,450,1.83,2,False,ins w
+2018_VT_House-1_REP,REP,Write-ins,450,1.83,2,False,writeins
 2018_WA_House-2_DEM,DEM,Rick Larsen,101497,64.9,2,True,larsen r
 2018_WA_House-2_DEM,DEM,Collin Richard Carlson,12058,7.7,2,False,carlson c
 2018_WI_House-1_DEM,DEM,Randy Bryce,36397,59.6,2,True,bryce r
@@ -7014,11 +7014,11 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2018_WV_House-3_REP,REP,Philip Payton,861,2.3,6,False,payton p
 2018_WY_House-1_DEM,DEM,Greg Hunter,10332,53.1,2,True,hunter g
 2018_WY_House-1_DEM,DEM,Travis Helm,6527,33.5,2,False,helm t
-2018_WY_House-1_DEM,DEM,Write-ins,100,0.5,2,False,ins w
+2018_WY_House-1_DEM,DEM,Write-ins,100,0.5,2,False,writeins
 2018_WY_House-1_REP,REP,Liz Cheney,75183,63.7,1,True,cheney l
 2018_WY_House-1_REP,REP,Rod Miller,22045,18.7,1,False,miller r
 2018_WY_House-1_REP,REP,Blake E. Stanley,13307,11.3,1,False,stanley b
-2018_WY_House-1_REP,REP,Write-ins,478,0.4,1,False,ins w
+2018_WY_House-1_REP,REP,Write-ins,478,0.4,1,False,writeins
 2020_AK_House-1_DEM,DEM,Ray Tugatuk,4858,7.83,2,True,tugatuk r
 2020_AK_House-1_DEM,DEM,Bill Hibler,3931,6.34,2,False,hibler b
 2020_AK_House-1_REP,REP,Don Young,51972,76.13,1,True,young d
@@ -7028,13 +7028,13 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2020_AL_House-1_DEM,DEM,Kiani Gardner,12102,43.3,4,False,gardner k
 2020_AL_House-1_REP,REP,Jerry Carl,44421,52.3,2,True,carl j
 2020_AL_House-1_REP,REP,Bill Hightower,40552,47.7,2,False,hightower b
-2020_AL_House-2_DEM,DEM,Phyllis Harvey-Hall,27399,59.2,7,True,hall p
+2020_AL_House-2_DEM,DEM,Phyllis Harvey-Hall,27399,59.2,7,True,harveyhall p
 2020_AL_House-2_DEM,DEM,Nathan Mathis,18898,40.8,7,False,mathis n
 2020_AL_House-2_REP,REP,Barry Moore,52248,60.4,6,True,moore b
 2020_AL_House-2_REP,REP,Jeff Coleman,34185,39.6,6,False,coleman j
 2020_AL_House-5_REP,REP,Mo Brooks,83740,74.9,8,True,brooks m
 2020_AL_House-5_REP,REP,Chris Lewis,28113,25.1,8,False,lewis c
-2020_AZ_House-1_DEM,DEM,Tom O'Halleran,47083,58.6,1,True,halleran t
+2020_AZ_House-1_DEM,DEM,Tom O'Halleran,47083,58.6,1,True,ohalleran t
 2020_AZ_House-1_DEM,DEM,Eva Putzova,33248,41.4,1,False,putzova e
 2020_AZ_House-1_REP,REP,Tiffany Shedd,40310,54.7,2,True,shedd t
 2020_AZ_House-1_REP,REP,Nolan Reidhead,33418,45.3,2,False,reidhead n
@@ -7127,7 +7127,7 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2020_FL_House-1_REP,REP,John Mills,10383,9.6,1,False,mills j
 2020_FL_House-1_REP,REP,Greg Merk,10227,9.5,1,False,merk g
 2020_FL_House-20_DEM,DEM,Alcee Hastings,62759,69.3,20,True,hastings a
-2020_FL_House-20_DEM,DEM,Sheila Cherfilus-McCormick,27831,30.7,20,False,mccormick s
+2020_FL_House-20_DEM,DEM,Sheila Cherfilus-McCormick,27831,30.7,20,False,cherfilusmccormick s
 2020_FL_House-20_REP,REP,Greg Musselwhite,5394,52.0,21,True,musselwhite g
 2020_FL_House-20_REP,REP,Vic DeGrammont,4975,48.0,21,False,degrammont v
 2020_FL_House-21_DEM,DEM,Lois Frankel,75504,86.0,22,True,frankel l
@@ -7185,7 +7185,7 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2020_FL_House-9_REP,REP,Christopher Wright,9677,22.7,10,False,wright c
 2020_FL_House-9_REP,REP,Jose Castillo,8595,20.1,10,False,castillo j
 2020_FL_House-9_REP,REP,Sergio E. Ortiz,3680,8.6,10,False,ortiz s
-2020_GA_House-10_DEM,DEM,Tabitha Johnson-Green,48069,65.7,24,True,green t
+2020_GA_House-10_DEM,DEM,Tabitha Johnson-Green,48069,65.7,24,True,johnsongreen t
 2020_GA_House-10_DEM,DEM,Andrew Ferguson,25048,34.3,24,False,ferguson a
 2020_GA_House-10_REP,REP,Jody Hice,93506,100.0,23,True,hice j
 2020_GA_House-11_DEM,DEM,Dana Barrett,65564,100.0,26,True,barrett d
@@ -7218,7 +7218,7 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2020_GA_House-4_REP,REP,Johsie Cruz Ezammudeen,23115,100.0,9,True,ezammudeen j
 2020_GA_House-5_DEM,DEM,John Lewis,142541,87.6,10,True,lewis j
 2020_GA_House-5_DEM,DEM,Barrington D. Martin II,20096,12.4,10,False,martin b
-2020_GA_House-5_REP,REP,Angela Stanton-King,8566,100.0,11,True,king a
+2020_GA_House-5_REP,REP,Angela Stanton-King,8566,100.0,11,True,stantonking a
 2020_GA_House-6_DEM,DEM,Lucy McBath,90660,100.0,12,True,mcbath l
 2020_GA_House-6_REP,REP,Karen Handel,47986,74.3,13,True,handel k
 2020_GA_House-6_REP,REP,Joe Profit,9528,14.8,13,False,profit j
@@ -7269,7 +7269,7 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2020_IA_House-1_REP,REP,Ashley Hinson,38552,77.8,2,True,hinson a
 2020_IA_House-1_REP,REP,Thomas Hansen,10845,21.9,2,False,hansen t
 2020_IA_House-2_DEM,DEM,Rita Hart,67039,99.6,3,True,hart r
-2020_IA_House-2_REP,REP,Mariannette Miller-Meeks,23052,47.6,4,True,meeks m
+2020_IA_House-2_REP,REP,Mariannette Miller-Meeks,23052,47.6,4,True,millermeeks m
 2020_IA_House-2_REP,REP,Bobby Schilling,17582,36.3,4,False,schilling b
 2020_IA_House-2_REP,REP,Steven Everly,2806,5.8,4,False,everly s
 2020_IA_House-2_REP,REP,Rick Phillips,2444,5.1,4,False,phillips r
@@ -7340,7 +7340,7 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2020_IL_House-3_DEM,DEM,Rush Darwish,6351,5.7,5,False,darwish r
 2020_IL_House-3_DEM,DEM,Charles Hughes,2549,2.3,5,False,hughes c
 2020_IL_House-3_REP,REP,Mike Fricilone,9804,57.5,6,True,fricilone m
-2020_IL_House-3_REP,REP,Catherine O'Shea,5541,32.5,6,False,shea c
+2020_IL_House-3_REP,REP,Catherine O'Shea,5541,32.5,6,False,oshea c
 2020_IL_House-3_REP,REP,Arthur Jones,1708,10.0,6,False,jones a
 2020_IL_House-3_REP,REP,Richard Mayers,2,0.0,6,False,mayers r
 2020_IL_House-4_DEM,DEM,"Jesús ""Chuy"" García",88874,100.0,7,True,garcia j
@@ -7484,13 +7484,13 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2020_LA_House-5_REP,REP,Lance Harris,30124,38.0,2,False,harris l
 2020_MA_House-1_DEM,DEM,Richard Neal,84092,58.7,1,True,neal r
 2020_MA_House-1_DEM,DEM,Alex Morse,59110,41.2,1,False,morse a
-2020_MA_House-1_DEM,DEM,Write-ins,191,0.1,1,False,ins w
+2020_MA_House-1_DEM,DEM,Write-ins,191,0.1,1,False,writeins
 2020_MA_House-2_DEM,DEM,Jim McGovern,121645,99.4,2,True,mcgovern j
-2020_MA_House-2_DEM,DEM,Write-ins,686,0.6,2,False,ins w
+2020_MA_House-2_DEM,DEM,Write-ins,686,0.6,2,False,writeins
 2020_MA_House-2_REP,REP,Tracy Lovvorn,26456,99.1,3,True,lovvorn t
-2020_MA_House-2_REP,REP,Write-ins,241,0.9,3,False,ins w
+2020_MA_House-2_REP,REP,Write-ins,241,0.9,3,False,writeins
 2020_MA_House-3_DEM,DEM,Lori Trahan,115142,99.2,4,True,trahan l
-2020_MA_House-3_DEM,DEM,Write-ins,880,0.8,4,False,ins w
+2020_MA_House-3_DEM,DEM,Write-ins,880,0.8,4,False,writeins
 2020_MA_House-4_DEM,DEM,Jake Auchincloss,35361,22.4,5,True,auchincloss j
 2020_MA_House-4_DEM,DEM,Jesse Mermell,33216,21.0,5,False,mermell j
 2020_MA_House-4_DEM,DEM,Becky Grossman,28578,18.1,5,False,grossman b
@@ -7500,32 +7500,32 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2020_MA_House-4_DEM,DEM,Chris Zannetos,5135,3.3,5,False,zannetos c
 2020_MA_House-4_DEM,DEM,David Cavell,2498,1.6,5,False,cavell d
 2020_MA_House-4_DEM,DEM,Ben Sigel,2465,1.6,5,False,sigel b
-2020_MA_House-4_DEM,DEM,Write-ins,242,0.2,5,False,ins w
+2020_MA_House-4_DEM,DEM,Write-ins,242,0.2,5,False,writeins
 2020_MA_House-4_REP,REP,Julie Hall,19394,62.8,6,True,hall j
 2020_MA_House-4_REP,REP,David Rosa,11296,36.6,6,False,rosa d
-2020_MA_House-4_REP,REP,Write-ins,182,0.6,6,False,ins w
+2020_MA_House-4_REP,REP,Write-ins,182,0.6,6,False,writeins
 2020_MA_House-5_DEM,DEM,Katherine Clark,162768,99.4,7,True,clark k
-2020_MA_House-5_DEM,DEM,Write-ins,938,0.6,7,False,ins w
+2020_MA_House-5_DEM,DEM,Write-ins,938,0.6,7,False,writeins
 2020_MA_House-5_REP,REP,Caroline Colarusso,18818,98.2,8,True,colarusso c
-2020_MA_House-5_REP,REP,Write-ins,336,1.8,8,False,ins w
+2020_MA_House-5_REP,REP,Write-ins,336,1.8,8,False,writeins
 2020_MA_House-6_DEM,DEM,Seth Moulton,124928,78.0,9,True,moulton s
 2020_MA_House-6_DEM,DEM,Jamie Zahlaway Belsito,19492,12.2,9,False,belsito j
 2020_MA_House-6_DEM,DEM,Angus McQuilken,15478,9.6,9,False,mcquilken a
-2020_MA_House-6_DEM,DEM,Write-ins,268,0.2,9,False,ins w
+2020_MA_House-6_DEM,DEM,Write-ins,268,0.2,9,False,writeins
 2020_MA_House-6_REP,REP,John Paul Moran,32564,98.9,10,True,moran j
-2020_MA_House-6_REP,REP,Write-ins,375,1.1,10,False,ins w
+2020_MA_House-6_REP,REP,Write-ins,375,1.1,10,False,writeins
 2020_MA_House-7_DEM,DEM,Ayanna Pressley,142108,98.6,11,True,pressley a
-2020_MA_House-7_DEM,DEM,Write-ins,1979,1.4,11,False,ins w
-2020_MA_House-7_REP,REP,Other Write-ins,1779,58.6,12,True,ins o
+2020_MA_House-7_DEM,DEM,Write-ins,1979,1.4,11,False,writeins
+2020_MA_House-7_REP,REP,Other Write-ins,1779,58.6,12,True,writeins o
 2020_MA_House-7_REP,REP,Rayla Campbell,1202,39.6,12,False,campbell r
 2020_MA_House-7_REP,REP,Rachel Miselman,55,1.8,12,False,miselman r
 2020_MA_House-8_DEM,DEM,Stephen F. Lynch,111542,66.4,13,True,lynch s
 2020_MA_House-8_DEM,DEM,Robbie Goldstein,56219,33.5,13,False,goldstein r
-2020_MA_House-8_DEM,DEM,Write-ins,222,0.1,13,False,ins w
+2020_MA_House-8_DEM,DEM,Write-ins,222,0.1,13,False,writeins
 2020_MA_House-9_DEM,DEM,Bill Keating,125608,99.4,14,True,keating b
-2020_MA_House-9_DEM,DEM,Write-ins,751,0.6,14,False,ins w
+2020_MA_House-9_DEM,DEM,Write-ins,751,0.6,14,False,writeins
 2020_MA_House-9_REP,REP,Helen Brady,36238,99.0,15,True,brady h
-2020_MA_House-9_REP,REP,Write-ins,378,1.0,15,False,ins w
+2020_MA_House-9_REP,REP,Write-ins,378,1.0,15,False,writeins
 2020_MD_House-1_DEM,DEM,Mia Mason,25772,42.8,1,True,mason m
 2020_MD_House-1_DEM,DEM,Allison Galbraith,22386,37.2,1,False,galbraith a
 2020_MD_House-1_DEM,DEM,Jennifer Pingley,12040,20.0,1,False,pingley j
@@ -7636,7 +7636,7 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2020_MI_House-14_REP,REP,Robert Patrick,12481,65.4,28,True,patrick r
 2020_MI_House-14_REP,REP,Daryle F. Houston,6597,34.6,28,False,houston d
 2020_MI_House-1_DEM,DEM,Dana Ferguson,45565,64.2,2,True,ferguson d
-2020_MI_House-1_DEM,DEM,Linda O'Dell,25388,35.8,2,False,dell l
+2020_MI_House-1_DEM,DEM,Linda O'Dell,25388,35.8,2,False,odell l
 2020_MI_House-1_REP,REP,Jack Bergman,100716,100.0,1,True,bergman j
 2020_MI_House-2_DEM,DEM,Bryan Berghoef,59703,100.0,4,True,berghoef b
 2020_MI_House-2_REP,REP,Bill Huizenga,88258,100.0,3,True,huizenga b
@@ -7673,7 +7673,7 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2020_MN_House-4_REP,REP,Sia Lo,8866,49.1,4,False,lo s
 2020_MN_House-5_REP,REP,Lacy Johnson,9188,76.6,7,True,johnson l
 2020_MN_House-5_REP,REP,Danielle Stella,2236,18.7,7,False,stella d
-2020_MN_House-5_REP,REP,Dalia al-Aqidi,568,4.7,7,False,aqidi d
+2020_MN_House-5_REP,REP,Dalia al-Aqidi,568,4.7,7,False,alaqidi d
 2020_MN_House-6_REP,REP,Tom Emmer,30654,87.2,9,True,emmer t
 2020_MN_House-6_REP,REP,Patrick Munro,4518,12.8,9,False,munro p
 2020_MN_House-7_REP,REP,Michelle Fischbach,26359,58.8,12,True,fischbach m
@@ -7720,7 +7720,7 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2020_MO_House-7_REP,REP,Eric Harleman,11696,11.1,19,False,harleman e
 2020_MO_House-7_REP,REP,Kevin VanStory,10486,10.0,19,False,vanstory k
 2020_MO_House-7_REP,REP,Steve Chetnik,7407,7.1,19,False,chetnik s
-2020_MO_House-7_REP,REP,Camille Lombardi-Olive,5969,5.7,19,False,olive c
+2020_MO_House-7_REP,REP,Camille Lombardi-Olive,5969,5.7,19,False,lombardiolive c
 2020_MO_House-8_DEM,DEM,Kathryn Ellis,20354,100.0,23,True,ellis k
 2020_MO_House-8_REP,REP,Jason Smith,114074,100.0,22,True,smith j
 2020_MS_House-1_DEM,DEM,Antonia Eliason,37830,100.0,2,True,eliason a
@@ -7751,7 +7751,7 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2020_NC_House-11_DEM,DEM,Moe Davis,52983,47.3,13,True,davis m
 2020_NC_House-11_DEM,DEM,Gina Collias,25387,22.7,13,False,collias g
 2020_NC_House-11_DEM,DEM,Phillip Price,12620,11.3,13,False,price p
-2020_NC_House-11_DEM,DEM,Michael O'Shea,12523,11.2,13,False,shea m
+2020_NC_House-11_DEM,DEM,Michael O'Shea,12523,11.2,13,False,oshea m
 2020_NC_House-11_DEM,DEM,Steve Woodsmall,8439,7.5,13,False,woodsmall s
 2020_NC_House-11_REP,REP,Madison Cawthorn,30636,65.8,12,True,cawthorn m
 2020_NC_House-11_REP,REP,Lynda Bennett,15905,34.2,12,False,bennett l
@@ -7762,7 +7762,7 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2020_NC_House-1_REP,REP,Jim Glisson,3031,7.4,1,False,glisson j
 2020_NC_House-1_REP,REP,Ethan Baca,2206,5.5,1,False,baca e
 2020_NC_House-2_DEM,DEM,Deborah Ross,103574,69.9,2,True,ross d
-2020_NC_House-2_DEM,DEM,Monika Johnson-Hostler,33369,22.5,2,False,hostler m
+2020_NC_House-2_DEM,DEM,Monika Johnson-Hostler,33369,22.5,2,False,johnsonhostler m
 2020_NC_House-2_DEM,DEM,Andy Terrell,8666,5.8,2,False,terrell a
 2020_NC_House-2_DEM,DEM,Ollie Nelson,2677,1.8,2,False,nelson o
 2020_NC_House-4_DEM,DEM,David Price,153322,86.7,3,True,price d
@@ -7788,7 +7788,7 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2020_NC_House-9_DEM,DEM,Clayton Brooks,11913,14.7,9,False,brooks c
 2020_NC_House-9_DEM,DEM,Marcus Williams,10527,13.0,9,False,williams m
 2020_ND_House-1_REP,REP,Kelly Armstrong,99582,99.54,1,True,armstrong k
-2020_ND_House-1_REP,REP,Write-in,461,0.46,1,False,in w
+2020_ND_House-1_REP,REP,Write-in,461,0.46,1,False,writein
 2020_NE_House-1_DEM,DEM,Kate Bolz,43400,77.6,2,True,bolz k
 2020_NE_House-1_DEM,DEM,Barbara Ramsey,12497,22.4,2,False,ramsey b
 2020_NE_House-1_REP,REP,Jeff Fortenberry,84017,100.0,1,True,fortenberry j
@@ -7849,7 +7849,7 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2020_NJ_House-5_REP,REP,Hector Castillo,2814,5.6,10,False,castillo h
 2020_NJ_House-6_DEM,DEM,Frank Pallone Jr.,56660,79.2,11,True,pallone f
 2020_NJ_House-6_DEM,DEM,Russ Cirincione,12139,17.0,11,False,cirincione r
-2020_NJ_House-6_DEM,DEM,Amani al-Khatahtbeh,2743,3.8,11,False,khatahtbeh a
+2020_NJ_House-6_DEM,DEM,Amani al-Khatahtbeh,2743,3.8,11,False,alkhatahtbeh a
 2020_NJ_House-6_REP,REP,Christian Onuoha,508,100.0,12,True,onuoha c
 2020_NJ_House-7_DEM,DEM,Tom Malinowski,80334,100.0,13,True,malinowski t
 2020_NJ_House-7_REP,REP,Thomas H. Kean Jr.,45395,79.4,14,True,kean t
@@ -7888,7 +7888,7 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2020_NV_House-1_DEM,DEM,Allen Rheinhart,2382,6.2,1,False,rheinhart a
 2020_NV_House-1_REP,REP,Joyce Bentley,5565,35.9,2,True,bentley j
 2020_NV_House-1_REP,REP,Josh Elliott Jr.,4549,29.3,2,False,elliott j
-2020_NV_House-1_REP,REP,Citlaly Larios-Elias,3151,19.8,2,False,elias c
+2020_NV_House-1_REP,REP,Citlaly Larios-Elias,3151,19.8,2,False,larioselias c
 2020_NV_House-1_REP,REP,Eddie Hamilton,2347,15.0,2,False,hamilton e
 2020_NV_House-2_DEM,DEM,Patricia Ackerman,26411,48.9,4,True,ackerman p
 2020_NV_House-2_DEM,DEM,Clint Koble,12315,22.8,4,False,koble c
@@ -7911,7 +7911,7 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2020_NV_House-3_REP,REP,Victor Willert,1116,2.2,6,False,willert v
 2020_NV_House-4_DEM,DEM,Steven Horsford,39656,75.1,8,True,horsford s
 2020_NV_House-4_DEM,DEM,Jennifer Eason,4968,9.4,8,False,eason j
-2020_NV_House-4_DEM,DEM,Gabrielle D'Ayr,3847,7.3,8,False,ayr g
+2020_NV_House-4_DEM,DEM,Gabrielle D'Ayr,3847,7.3,8,False,dayr g
 2020_NV_House-4_DEM,DEM,Gregory Kempton,1507,2.8,8,False,kempton g
 2020_NV_House-4_DEM,DEM,Chris Colley,1431,2.7,8,False,colley c
 2020_NV_House-4_DEM,DEM,George Brucato,1424,2.7,8,False,brucato g
@@ -7935,8 +7935,8 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2020_NY_House-13_DEM,DEM,Adriano Espaillat,46066,59.3,13,True,espaillat a
 2020_NY_House-13_DEM,DEM,James Felton Keith,19799,25.5,13,False,keith j
 2020_NY_House-13_DEM,DEM,Ramon Rodriguez,11859,15.2,13,False,rodriguez r
-2020_NY_House-14_DEM,DEM,Alexandria Ocasio-Cortez,46582,74.6,14,True,cortez a
-2020_NY_House-14_DEM,DEM,Michelle Caruso-Cabrera,11339,18.2,14,False,cabrera m
+2020_NY_House-14_DEM,DEM,Alexandria Ocasio-Cortez,46582,74.6,14,True,ocasiocortez a
+2020_NY_House-14_DEM,DEM,Michelle Caruso-Cabrera,11339,18.2,14,False,carusocabrera m
 2020_NY_House-14_DEM,DEM,Badrun Khan,3119,5.0,14,False,khan b
 2020_NY_House-14_DEM,DEM,Sam Sloan,1406,2.2,14,False,sloan s
 2020_NY_House-15_DEM,DEM,Ritchie Torres,19090,32.2,15,True,torres r
@@ -7944,13 +7944,13 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2020_NY_House-15_DEM,DEM,Rubén Díaz Sr.,8559,14.4,15,False,diaz r
 2020_NY_House-15_DEM,DEM,Samelys López,8272,13.9,15,False,lopez s
 2020_NY_House-15_DEM,DEM,Ydanis Rodríguez,6291,10.6,15,False,rodriguez y
-2020_NY_House-15_DEM,DEM,Melissa Mark-Viverito,2561,4.3,15,False,viverito m
+2020_NY_House-15_DEM,DEM,Melissa Mark-Viverito,2561,4.3,15,False,markviverito m
 2020_NY_House-15_DEM,DEM,Tomás Ramos,1442,2.4,15,False,ramos t
 2020_NY_House-15_DEM,DEM,Chivona Newsome,1366,2.3,15,False,newsome c
 2020_NY_House-15_DEM,DEM,Marlene Tapper,392,0.7,15,False,tapper m
 2020_NY_House-15_DEM,DEM,Julio Pabon,244,0.4,15,False,pabon j
 2020_NY_House-15_DEM,DEM,Frangell Basora,189,0.3,15,False,basora f
-2020_NY_House-15_DEM,DEM,Mark Escoffery-Bay,153,0.3,15,False,bay m
+2020_NY_House-15_DEM,DEM,Mark Escoffery-Bay,153,0.3,15,False,escofferybay m
 2020_NY_House-16_DEM,DEM,Jamaal Bowman,49367,55.4,16,True,bowman j
 2020_NY_House-16_DEM,DEM,Eliot Engel,36149,40.6,16,False,engel e
 2020_NY_House-16_DEM,DEM,Christopher Fink,1625,1.8,16,False,fink c
@@ -7961,10 +7961,10 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2020_NY_House-17_DEM,DEM,Evelyn Farkas,12210,15.6,17,False,farkas e
 2020_NY_House-17_DEM,DEM,David Carlucci,8649,11.1,17,False,carlucci d
 2020_NY_House-17_DEM,DEM,David Buchwald,6673,8.5,17,False,buchwald d
-2020_NY_House-17_DEM,DEM,Asha Castleberry-Hernandez,2062,2.6,17,False,hernandez a
+2020_NY_House-17_DEM,DEM,Asha Castleberry-Hernandez,2062,2.6,17,False,castleberryhernandez a
 2020_NY_House-17_DEM,DEM,Allison Fine,1588,2.0,17,False,fine a
 2020_NY_House-17_DEM,DEM,Catherine Parker,1539,2.0,17,False,parker c
-2020_NY_House-17_REP,REP,Maureen McArdle-Schulman,8492,78.4,18,True,schulman m
+2020_NY_House-17_REP,REP,Maureen McArdle-Schulman,8492,78.4,18,True,mcardleschulman m
 2020_NY_House-17_REP,REP,Yehudis Gottesfeld,2338,21.6,18,False,gottesfeld y
 2020_NY_House-19_REP,REP,Kyle Van De Water,12138,57.5,19,True,water k
 2020_NY_House-19_REP,REP,Ola Hawatmeh,8988,42.5,19,False,hawatmeh o
@@ -7986,7 +7986,7 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2020_NY_House-2_REP,REP,Andrew Garbarino,17462,63.9,2,True,garbarino a
 2020_NY_House-2_REP,REP,Mike LiPetri,9867,36.1,2,False,lipetri m
 2020_NY_House-3_DEM,DEM,Tom Suozzi,36812,66.5,4,True,suozzi t
-2020_NY_House-3_DEM,DEM,Melanie D'Arrigo,14269,25.8,4,False,arrigo m
+2020_NY_House-3_DEM,DEM,Melanie D'Arrigo,14269,25.8,4,False,darrigo m
 2020_NY_House-3_DEM,DEM,Michael Weinstock,4284,7.7,4,False,weinstock m
 2020_NY_House-4_REP,REP,Douglas Tuman,10898,71.7,5,True,tuman d
 2020_NY_House-4_REP,REP,Cindy Grosz,4292,28.3,5,False,grosz c
@@ -8069,7 +8069,7 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2020_OH_House-9_REP,REP,Timothy P. Corrigan,3873,21.3,23,False,corrigan t
 2020_OH_House-9_REP,REP,Tim Connors,2064,11.4,23,False,connors t
 2020_OH_House-9_REP,REP,Charles W. Barrett,1376,7.6,23,False,barrett c
-2020_OK_House-1_DEM,DEM,Kojo Asamoa-Caesar,34868,63.6,1,True,caesar k
+2020_OK_House-1_DEM,DEM,Kojo Asamoa-Caesar,34868,63.6,1,True,asamoacaesar k
 2020_OK_House-1_DEM,DEM,Mark A. Keeter,19924,36.4,1,False,keeter m
 2020_OK_House-2_REP,REP,Markwayne Mullin,53149,79.9,2,True,mullin m
 2020_OK_House-2_REP,REP,Joseph Silk,8445,12.7,2,False,silk j
@@ -8089,16 +8089,16 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2020_OR_House-1_DEM,DEM,Heidi Briones,8260,6.9,1,False,briones h
 2020_OR_House-1_DEM,DEM,Amanda Siebe,8055,6.7,1,False,siebe a
 2020_OR_House-1_DEM,DEM,Ricky Barajas,2948,2.4,1,False,barajas r
-2020_OR_House-1_DEM,DEM,Write-in,523,0.4,1,False,in w
+2020_OR_House-1_DEM,DEM,Write-in,523,0.4,1,False,writein
 2020_OR_House-1_REP,REP,Christopher Christensen,27417,55.8,2,True,christensen c
 2020_OR_House-1_REP,REP,Army Murray,20509,41.8,2,False,murray a
-2020_OR_House-1_REP,REP,Write-in,1162,2.4,2,False,in w
+2020_OR_House-1_REP,REP,Write-in,1162,2.4,2,False,writein
 2020_OR_House-2_DEM,DEM,Alex Spenser,23482,32.1,4,True,spenser a
 2020_OR_House-2_DEM,DEM,Nick L. Heurtz,22685,31.0,4,False,heurtz n
 2020_OR_House-2_DEM,DEM,Chris Vaughn,13351,18.2,4,False,vaughn c
 2020_OR_House-2_DEM,DEM,Jack Howard,6047,8.3,4,False,howard j
 2020_OR_House-2_DEM,DEM,John P. Holm,5908,8.1,4,False,holm j
-2020_OR_House-2_DEM,DEM,Write-in,1734,2.4,4,False,in w
+2020_OR_House-2_DEM,DEM,Write-in,1734,2.4,4,False,writein
 2020_OR_House-2_REP,REP,Cliff Bentz,37488,31.3,3,True,bentz c
 2020_OR_House-2_REP,REP,Knute Buehler,26405,22.1,3,False,buehler k
 2020_OR_House-2_REP,REP,Jason Atkinson,23274,19.5,3,False,atkinson j
@@ -8107,7 +8107,7 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2020_OR_House-2_REP,REP,Jeff Smith,2539,2.1,3,False,smith j
 2020_OR_House-2_REP,REP,Justin Livingston,1350,1.1,3,False,livingston j
 2020_OR_House-2_REP,REP,Mark R. Roberts,1336,1.1,3,False,roberts m
-2020_OR_House-2_REP,REP,Write-in,450,0.4,3,False,in w
+2020_OR_House-2_REP,REP,Write-in,450,0.4,3,False,writein
 2020_OR_House-2_REP,REP,David R. Campbell,418,0.3,3,False,campbell d
 2020_OR_House-2_REP,REP,Glenn Carey,283,0.2,3,False,carey g
 2020_OR_House-2_REP,REP,Kenneth W. Medenbach,267,0.2,3,False,medenbach k
@@ -8116,26 +8116,26 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2020_OR_House-3_DEM,DEM,Dane Wilcox,1966,1.1,5,False,wilcox d
 2020_OR_House-3_DEM,DEM,Matthew S. Davis,1101,0.6,5,False,davis m
 2020_OR_House-3_DEM,DEM,Charles Rand Barnett,953,0.5,5,False,barnett c
-2020_OR_House-3_DEM,DEM,Write-in,714,0.4,5,False,in w
+2020_OR_House-3_DEM,DEM,Write-in,714,0.4,5,False,writein
 2020_OR_House-3_REP,REP,Joanna Harbour,21114,62.8,6,True,harbour j
 2020_OR_House-3_REP,REP,Tom Harrison,7751,23.1,6,False,harrison t
 2020_OR_House-3_REP,REP,Frank Hecker,4147,12.3,6,False,hecker f
-2020_OR_House-3_REP,REP,Write-in,612,1.8,6,False,in w
+2020_OR_House-3_REP,REP,Write-in,612,1.8,6,False,writein
 2020_OR_House-4_DEM,DEM,Peter DeFazio,96077,83.7,7,True,defazio p
 2020_OR_House-4_DEM,DEM,Doyle Elizabeth Canning,17701,15.4,7,False,canning d
-2020_OR_House-4_DEM,DEM,Write-in,974,0.9,7,False,in w
+2020_OR_House-4_DEM,DEM,Write-in,974,0.9,7,False,writein
 2020_OR_House-4_REP,REP,Alek Skarlatos,70599,86.4,8,True,skarlatos a
 2020_OR_House-4_REP,REP,Nelson Ijih,10325,12.6,8,False,ijih n
-2020_OR_House-4_REP,REP,Write-in,780,1.0,8,False,in w
+2020_OR_House-4_REP,REP,Write-in,780,1.0,8,False,writein
 2020_OR_House-5_DEM,DEM,Kurt Schrader,73060,68.8,9,True,schrader k
 2020_OR_House-5_DEM,DEM,Mark Gamba,24327,22.9,9,False,gamba m
 2020_OR_House-5_DEM,DEM,Blair G. Reynolds,7910,7.5,9,False,reynolds b
-2020_OR_House-5_DEM,DEM,Write-in,841,0.8,9,False,in w
+2020_OR_House-5_DEM,DEM,Write-in,841,0.8,9,False,writein
 2020_OR_House-5_REP,REP,Amy Ryan Courser,41417,53.3,10,True,courser a
 2020_OR_House-5_REP,REP,G. Shane Dinkel,15626,20.1,10,False,dinkel g
 2020_OR_House-5_REP,REP,Joey Nations,13534,17.4,10,False,nations j
 2020_OR_House-5_REP,REP,Angela Roman,6155,7.9,10,False,roman a
-2020_OR_House-5_REP,REP,Write-in,1003,1.3,10,False,in w
+2020_OR_House-5_REP,REP,Write-in,1003,1.3,10,False,writein
 2020_PA_House-10_DEM,DEM,Eugene DePasquale,45453,57.4,20,True,depasquale e
 2020_PA_House-10_DEM,DEM,Tom Brier,33661,42.6,20,False,brier t
 2020_PA_House-10_REP,REP,Scott Perry,79365,100.0,19,True,perry s
@@ -8285,7 +8285,7 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2020_TX_House-15_REP,REP,Monica De La Cruz,7423,76.0,36,True,cruz m
 2020_TX_House-15_REP,REP,Ryan Krause,2350,24.0,36,False,krause r
 2020_TX_House-16_DEM,DEM,Veronica Escobar,54910,100.0,37,True,escobar v
-2020_TX_House-16_REP,REP,Irene Armendariz-Jackson,5170,65.4,39,True,jackson i
+2020_TX_House-16_REP,REP,Irene Armendariz-Jackson,5170,65.4,39,True,armendarizjackson i
 2020_TX_House-16_REP,REP,Samuel Williams,2731,34.6,39,False,williams s
 2020_TX_House-17_DEM,DEM,Rick Kennedy,13496,57.3,43,True,kennedy r
 2020_TX_House-17_DEM,DEM,David Anthony Jaramillo,10054,42.7,43,False,jaramillo d
@@ -8411,9 +8411,9 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2020_TX_House-8_DEM,DEM,Laura Jones,12519,40.2,17,False,jones l
 2020_TX_House-8_REP,REP,Kevin Brady,75044,80.7,16,True,brady k
 2020_TX_House-8_REP,REP,Kirk Osborn,15048,16.2,16,False,osborn k
-2020_TX_House-8_REP,REP,Melissa Esparza-Mathis,2860,3.1,16,False,mathis m
+2020_TX_House-8_REP,REP,Melissa Esparza-Mathis,2860,3.1,16,False,esparzamathis m
 2020_TX_House-9_DEM,DEM,Al Green,48387,83.6,18,True,green a
-2020_TX_House-9_DEM,DEM,Melissa Wilson-Williams,9511,16.4,18,False,williams m
+2020_TX_House-9_DEM,DEM,Melissa Wilson-Williams,9511,16.4,18,False,wilsonwilliams m
 2020_TX_House-9_REP,REP,Johnny Teague,6149,58.7,19,True,teague j
 2020_TX_House-9_REP,REP,Jon Menefee,2519,24.0,19,False,menefee j
 2020_TX_House-9_REP,REP,Julian Martinez,1809,17.3,19,False,martinez j
@@ -8489,13 +8489,13 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2020_WY_House-1_DEM,DEM,Carl Beach,4107,17.42,2,False,beach c
 2020_WY_House-1_REP,REP,Liz Cheney,78870,73.46,1,True,cheney l
 2020_WY_House-1_REP,REP,Blake Stanley,28039,26.12,1,False,stanley b
-2022_AL_House-2_DEM,DEM,Phyllis Harvey-Hall,16884,68.8,1,True,hall p
+2022_AL_House-2_DEM,DEM,Phyllis Harvey-Hall,16884,68.8,1,True,harveyhall p
 2022_AL_House-2_DEM,DEM,Vimal Patel,7667,31.2,1,False,patel v
 2022_AL_House-3_REP,REP,Mike Rogers,70843,81.9,3,True,rogers m
 2022_AL_House-3_REP,REP,Michael Joiner,15618,18.1,3,False,joiner m
 2022_AL_House-4_DEM,DEM,Rick Neighbors,4500,54.1,5,True,neighbors r
 2022_AL_House-4_DEM,DEM,Rhonda Gore,3823,45.9,5,False,gore r
-2022_AL_House-5_DEM,DEM,Kathy Warner-Stanton,9010,57.2,8,True,stanton k
+2022_AL_House-5_DEM,DEM,Kathy Warner-Stanton,9010,57.2,8,True,warnerstanton k
 2022_AL_House-5_DEM,DEM,Charlie Thompson III,6739,42.8,8,False,thompson c
 2022_AL_House-5_REP,REP,Dale Strong,48138,63.4,7,True,strong d
 2022_AL_House-5_REP,REP,Casey Wardynski,27794,36.6,7,False,wardynski c
@@ -8512,7 +8512,7 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2022_AZ_House-1_REP,REP,David Schweikert,52067,43.6,1,True,schweikert d
 2022_AZ_House-1_REP,REP,Elijah Norton,39435,33.0,1,False,norton e
 2022_AZ_House-1_REP,REP,Josh Barnett,27999,23.4,1,False,barnett j
-2022_AZ_House-2_DEM,DEM,Tom O'Halleran,71391,100.0,3,True,halleran t
+2022_AZ_House-2_DEM,DEM,Tom O'Halleran,71391,100.0,3,True,ohalleran t
 2022_AZ_House-2_REP,REP,Eli Crane,38681,35.8,4,True,crane e
 2022_AZ_House-2_REP,REP,Walter Blackman,26399,24.4,4,False,blackman w
 2022_AZ_House-2_REP,REP,Mark DeLuzio,18515,17.1,4,False,deluzio m
@@ -8637,7 +8637,7 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2022_FL_House-1_REP,REP,Matt Gaetz,73374,69.7,1,True,gaetz m
 2022_FL_House-1_REP,REP,Mark Lombardo,25720,24.4,1,False,lombardo m
 2022_FL_House-1_REP,REP,Greg Merk,6170,5.9,1,False,merk g
-2022_FL_House-20_DEM,DEM,Sheila Cherfilus-McCormick,47601,65.6,26,True,mccormick s
+2022_FL_House-20_DEM,DEM,Sheila Cherfilus-McCormick,47601,65.6,26,True,cherfilusmccormick s
 2022_FL_House-20_DEM,DEM,Dale Holness,20783,28.6,26,False,holness d
 2022_FL_House-20_DEM,DEM,Anika Omphroy,4197,5.8,26,False,omphroy a
 2022_FL_House-21_REP,REP,Brian Mast,56535,78.1,27,True,mast b
@@ -8670,7 +8670,7 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2022_FL_House-25_DEM,DEM,Robert Millwee,6241,11.0,33,False,millwee r
 2022_FL_House-25_REP,REP,Carla Spalding,16425,71.6,34,True,spalding c
 2022_FL_House-25_REP,REP,Rubin Young,6511,28.4,34,False,young r
-2022_FL_House-26_REP,REP,Mario Díaz-Balart,36861,84.3,35,True,balart m
+2022_FL_House-26_REP,REP,Mario Díaz-Balart,36861,84.3,35,True,diazbalart m
 2022_FL_House-26_REP,REP,Darren Aquino,6885,15.7,35,False,aquino d
 2022_FL_House-27_DEM,DEM,Annette Taddeo,27015,67.8,37,True,taddeo a
 2022_FL_House-27_DEM,DEM,Ken Russell,10337,25.9,37,False,russell k
@@ -8714,11 +8714,11 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2022_FL_House-9_REP,REP,Jose Castillo,7537,24.8,12,False,castillo j
 2022_FL_House-9_REP,REP,Adianis Morales,3969,13.1,12,False,morales a
 2022_FL_House-9_REP,REP,Sergio Oritz,1900,6.3,12,False,oritz s
-2022_GA_House-10_DEM,DEM,Tabitha Johnson-Green,9070,64.4,26,True,green t
+2022_GA_House-10_DEM,DEM,Tabitha Johnson-Green,9070,64.4,26,True,johnsongreen t
 2022_GA_House-10_DEM,DEM,Jessica Fore,5024,35.6,26,False,fore j
 2022_GA_House-10_REP,REP,Mike Collins,30536,74.5,24,True,collins m
 2022_GA_House-10_REP,REP,Vernon Jones,10469,25.5,24,False,jones v
-2022_GA_House-11_DEM,DEM,Antonio Daza-Fernandez,33470,100.0,28,True,fernandez a
+2022_GA_House-11_DEM,DEM,Antonio Daza-Fernandez,33470,100.0,28,True,dazafernandez a
 2022_GA_House-11_REP,REP,Barry Loudermilk,99073,100.0,27,True,loudermilk b
 2022_GA_House-12_DEM,DEM,Elizabeth Johnson,44537,100.0,30,True,johnson e
 2022_GA_House-12_REP,REP,Rick Allen,81151,100.0,29,True,allen r
@@ -8742,7 +8742,7 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2022_GA_House-1_DEM,DEM,Joyce Marie Griggs,7918,38.1,3,False,griggs j
 2022_GA_House-1_REP,REP,Buddy Carter,80757,100.0,1,True,carter b
 2022_GA_House-2_DEM,DEM,Sanford Bishop,54991,93.5,4,True,bishop s
-2022_GA_House-2_DEM,DEM,Joseph O'Hara,3814,6.5,4,False,hara j
+2022_GA_House-2_DEM,DEM,Joseph O'Hara,3814,6.5,4,False,ohara j
 2022_GA_House-2_REP,REP,Chris West,14622,51.3,6,True,west c
 2022_GA_House-2_REP,REP,Jeremy Hunt,13875,48.7,6,False,hunt j
 2022_GA_House-3_DEM,DEM,Val Almonord,32207,100.0,8,True,almonord v
@@ -8786,7 +8786,7 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2022_HI_House-2_REP,REP,Joe Akana,28200,83.9,5,True,akana j
 2022_HI_House-2_REP,REP,Joe Webster,5403,16.1,5,False,webster j
 2022_IA_House-1_DEM,DEM,Christina Bohannan,37475,99.7,2,True,bohannan c
-2022_IA_House-1_REP,REP,Mariannette Miller-Meeks,41260,98.7,1,True,meeks m
+2022_IA_House-1_REP,REP,Mariannette Miller-Meeks,41260,98.7,1,True,millermeeks m
 2022_IA_House-2_DEM,DEM,Liz Mathis,40737,99.6,4,True,mathis l
 2022_IA_House-2_REP,REP,Ashley Hinson,39897,99.3,3,True,hinson a
 2022_IA_House-3_DEM,DEM,Cindy Axne,47710,99.5,5,True,axne c
@@ -8809,7 +8809,7 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2022_IL_House-11_REP,REP,Catalina Lauf,15360,31.0,22,True,lauf c
 2022_IL_House-11_REP,REP,Jerry Evans,11158,22.5,22,False,evans j
 2022_IL_House-11_REP,REP,Mark Joseph Carroll,9955,20.1,22,False,carroll m
-2022_IL_House-11_REP,REP,Susan L. Hathaway-Altman,6017,12.1,22,False,altman s
+2022_IL_House-11_REP,REP,Susan L. Hathaway-Altman,6017,12.1,22,False,hathawayaltman s
 2022_IL_House-11_REP,REP,Cassandra Tanner Miller,3730,7.5,22,False,miller c
 2022_IL_House-11_REP,REP,Andrea Heeg,3334,6.7,22,False,heeg a
 2022_IL_House-12_DEM,DEM,Chip Markel,11068,56.7,24,True,markel c
@@ -8844,7 +8844,7 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2022_IL_House-17_REP,REP,Charlie Helmick,14274,31.5,34,False,helmick c
 2022_IL_House-1_DEM,DEM,Jonathan Jackson,21607,28.2,1,True,jackson j
 2022_IL_House-1_DEM,DEM,Pat Dowell,14594,19.0,1,False,dowell p
-2022_IL_House-1_DEM,DEM,Karin Norington-Reaves,10825,14.1,1,False,reaves k
+2022_IL_House-1_DEM,DEM,Karin Norington-Reaves,10825,14.1,1,False,noringtonreaves k
 2022_IL_House-1_DEM,DEM,Jacqueline Collins,9299,12.1,1,False,collins j
 2022_IL_House-1_DEM,DEM,Chris Butler,4141,5.4,1,False,butler c
 2022_IL_House-1_DEM,DEM,Jahmal Cole,4045,5.3,1,False,cole j
@@ -8883,7 +8883,7 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2022_IL_House-6_REP,REP,Keith Pekau,20178,38.7,13,True,pekau k
 2022_IL_House-6_REP,REP,Gary Grasso,14150,27.2,13,False,grasso g
 2022_IL_House-6_REP,REP,Niki Conforti,5947,11.4,13,False,conforti n
-2022_IL_House-6_REP,REP,Catherine A. O'Shea,5243,10.1,13,False,shea c
+2022_IL_House-6_REP,REP,Catherine A. O'Shea,5243,10.1,13,False,oshea c
 2022_IL_House-6_REP,REP,Scott R. Kaspar,3573,6.9,13,False,kaspar s
 2022_IL_House-6_REP,REP,"Robert ""Rob"" Cruz",3003,5.8,13,False,cruz r
 2022_IL_House-7_DEM,DEM,Danny Davis,39230,51.9,14,True,davis d
@@ -8940,7 +8940,7 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2022_IN_House-9_DEM,DEM,Liam Dorris,3023,14.0,19,False,dorris l
 2022_IN_House-9_REP,REP,Erin Houchin,21697,37.3,18,True,houchin e
 2022_IN_House-9_REP,REP,Mike Sodrel,15008,25.8,18,False,sodrel m
-2022_IN_House-9_REP,REP,Stu Barnes-Israel,12193,21.0,18,False,israel s
+2022_IN_House-9_REP,REP,Stu Barnes-Israel,12193,21.0,18,False,barnesisrael s
 2022_IN_House-9_REP,REP,Jim Baker,2946,5.1,18,False,baker j
 2022_IN_House-9_REP,REP,J. Michael Davisson,1597,2.7,18,False,davisson j
 2022_IN_House-9_REP,REP,Eric Schansberg,1559,2.7,18,False,schansberg e
@@ -8986,11 +8986,11 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2022_MA_House-1_DEM,DEM,Richard Neal,71928,99.2,1,True,neal r
 2022_MA_House-1_REP,REP,Dean Martilli,23256,99.2,2,True,martilli d
 2022_MA_House-2_DEM,DEM,Jim McGovern,69839,99.7,3,True,mcgovern j
-2022_MA_House-2_REP,REP,Jeffrey Sossa-Paquette,22675,99.4,4,True,paquette j
+2022_MA_House-2_REP,REP,Jeffrey Sossa-Paquette,22675,99.4,4,True,sossapaquette j
 2022_MA_House-3_DEM,DEM,Lori Trahan,64190,99.6,5,True,trahan l
 2022_MA_House-3_REP,REP,Dean Tran,24087,99.3,6,True,tran d
 2022_MA_House-4_DEM,DEM,Jake Auchincloss,67738,99.3,7,True,auchincloss j
-2022_MA_House-4_REP,REP,Other Write-ins,1457,57.2,8,True,ins o
+2022_MA_House-4_REP,REP,Other Write-ins,1457,57.2,8,True,writeins o
 2022_MA_House-4_REP,REP,David Cannata,1091,42.8,8,False,cannata d
 2022_MA_House-5_DEM,DEM,Katherine Clark,84845,99.6,9,True,clark k
 2022_MA_House-5_REP,REP,Caroline Colarusso,16184,99.0,10,True,colarusso c
@@ -9044,7 +9044,7 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2022_MD_House-5_REP,REP,Vanessa Marie Hoffman,3538,9.8,10,False,hoffman v
 2022_MD_House-5_REP,REP,Tannis Villanova,2445,6.8,10,False,villanova t
 2022_MD_House-5_REP,REP,Michael S. Lemon,1818,5.0,10,False,lemon m
-2022_MD_House-5_REP,REP,Toni Jarboe-Duley,1578,4.4,10,False,duley t
+2022_MD_House-5_REP,REP,Toni Jarboe-Duley,1578,4.4,10,False,jarboeduley t
 2022_MD_House-5_REP,REP,Patrick Stevens,1344,3.7,10,False,stevens p
 2022_MD_House-5_REP,REP,Bryan DuVal Cubero,1024,2.8,10,False,cubero b
 2022_MD_House-6_DEM,DEM,David Trone,44370,79.0,11,True,trone d
@@ -9095,7 +9095,7 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2022_MI_House-13_DEM,DEM,Adam Hollier,18517,23.5,27,False,hollier a
 2022_MI_House-13_DEM,DEM,Portia Roberson,13318,16.9,27,False,roberson p
 2022_MI_House-13_DEM,DEM,John Conyers III,6778,8.6,27,False,conyers j
-2022_MI_House-13_DEM,DEM,Sherry Gay-Dagnogo,6440,8.2,27,False,dagnogo s
+2022_MI_House-13_DEM,DEM,Sherry Gay-Dagnogo,6440,8.2,27,False,gaydagnogo s
 2022_MI_House-13_DEM,DEM,Sharon McPhail,5043,6.4,27,False,mcphail s
 2022_MI_House-13_DEM,DEM,Michael Griffie,3636,4.6,27,False,griffie m
 2022_MI_House-13_DEM,DEM,Sam Riddle,1841,2.3,27,False,riddle s
@@ -9113,7 +9113,7 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2022_MI_House-4_REP,REP,Bill Huizenga,88851,100.0,7,True,huizenga b
 2022_MI_House-5_DEM,DEM,Bart Goldberg,39971,100.0,10,True,goldberg b
 2022_MI_House-5_REP,REP,Tim Walberg,67582,67.2,9,True,walberg t
-2022_MI_House-5_REP,REP,Sherry O'Donnell,32886,32.7,9,False,donnell s
+2022_MI_House-5_REP,REP,Sherry O'Donnell,32886,32.7,9,False,odonnell s
 2022_MI_House-6_DEM,DEM,Debbie Dingell,102859,100.0,11,True,dingell d
 2022_MI_House-6_REP,REP,Whittney Williams,30564,53.7,12,True,williams w
 2022_MI_House-6_REP,REP,Hima Kolanagireddy,26371,46.3,12,False,kolanagireddy h
@@ -9145,7 +9145,7 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2022_MO_House-1_DEM,DEM,Earl Childress,929,1.0,1,False,childress e
 2022_MO_House-1_REP,REP,Andrew Jones,6937,42.4,2,True,jones a
 2022_MO_House-1_REP,REP,Steven Jordan,5153,31.5,2,False,jordan s
-2022_MO_House-1_REP,REP,Laura Mitchell-Riley,4260,26.1,2,False,riley l
+2022_MO_House-1_REP,REP,Laura Mitchell-Riley,4260,26.1,2,False,mitchellriley l
 2022_MO_House-2_DEM,DEM,Trish Gunby,50457,85.2,5,True,gunby t
 2022_MO_House-2_DEM,DEM,Ray Reed,8741,14.8,5,False,reed r
 2022_MO_House-2_REP,REP,Ann Wagner,54440,67.1,4,True,wagner a
@@ -9181,7 +9181,7 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2022_MO_House-6_REP,REP,Brandon Kleinmeyer,7414,7.7,16,False,kleinmeyer b
 2022_MO_House-6_REP,REP,Dakota Shultz,5902,6.1,16,False,shultz d
 2022_MO_House-6_REP,REP,John Dady,2309,2.4,16,False,dady j
-2022_MO_House-7_DEM,DEM,Kristen Radaker-Sheafer,13680,63.3,20,True,sheafer k
+2022_MO_House-7_DEM,DEM,Kristen Radaker-Sheafer,13680,63.3,20,True,radakersheafer k
 2022_MO_House-7_DEM,DEM,John M. Woodman,5493,25.4,20,False,woodman j
 2022_MO_House-7_DEM,DEM,Bryce F. Lockwood,2430,11.2,20,False,lockwood b
 2022_MO_House-7_REP,REP,Eric Burlison,39443,38.2,19,True,burlison e
@@ -9191,7 +9191,7 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2022_MO_House-7_REP,REP,Sam Alexander,5665,5.5,19,False,alexander s
 2022_MO_House-7_REP,REP,Audrey Richards,3095,3.0,19,False,richards a
 2022_MO_House-7_REP,REP,Paul Walker,3028,2.9,19,False,walker p
-2022_MO_House-7_REP,REP,Camille Lombardi-Olive,1363,1.3,19,False,olive c
+2022_MO_House-7_REP,REP,Camille Lombardi-Olive,1363,1.3,19,False,lombardiolive c
 2022_MO_House-8_DEM,DEM,Randi McCallian,16691,100.0,24,True,mccallian r
 2022_MO_House-8_REP,REP,Jason Smith,78342,82.0,23,True,smith j
 2022_MO_House-8_REP,REP,Jacob Turner,17242,18.0,23,False,turner j
@@ -9231,7 +9231,7 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2022_NC_House-10_REP,REP,Michael Magnotta,4703,6.4,13,False,magnotta m
 2022_NC_House-10_REP,REP,Jeff Gregory,3649,5.0,13,False,gregory j
 2022_NC_House-10_REP,REP,Richard Speer,3381,4.6,13,False,speer r
-2022_NC_House-11_DEM,DEM,Jasmine Beach-Ferrara,32478,59.7,16,True,ferrara j
+2022_NC_House-11_DEM,DEM,Jasmine Beach-Ferrara,32478,59.7,16,True,beachferrara j
 2022_NC_House-11_DEM,DEM,Katie Dean,13957,25.6,16,False,dean k
 2022_NC_House-11_DEM,DEM,Jay Carey,3858,7.1,16,False,carey j
 2022_NC_House-11_DEM,DEM,Bo Hess,2082,3.8,16,False,hess b
@@ -9240,7 +9240,7 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2022_NC_House-11_REP,REP,Chuck Edwards,29496,33.4,15,True,edwards c
 2022_NC_House-11_REP,REP,Madison Cawthorn,28112,31.9,15,False,cawthorn m
 2022_NC_House-11_REP,REP,Matthew Burril,8341,9.5,15,False,burril m
-2022_NC_House-11_REP,REP,Bruce O'Connell,6037,6.8,15,False,connell b
+2022_NC_House-11_REP,REP,Bruce O'Connell,6037,6.8,15,False,oconnell b
 2022_NC_House-11_REP,REP,Rod Honeycutt,5775,6.5,15,False,honeycutt r
 2022_NC_House-11_REP,REP,Michele Woodhouse,4668,5.3,15,False,woodhouse m
 2022_NC_House-11_REP,REP,Wendy Nevarez,4525,5.1,15,False,nevarez w
@@ -9313,7 +9313,7 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2022_NC_House-7_DEM,DEM,Steve Miller,9744,23.3,11,False,miller s
 2022_NC_House-7_DEM,DEM,Yushonda Midgette,6738,16.1,11,False,midgette y
 2022_NC_House-7_REP,REP,David Rouzer,39203,79.2,10,True,rouzer d
-2022_NC_House-7_REP,REP,Max Southworth-Beckwith,10300,20.8,10,False,beckwith m
+2022_NC_House-7_REP,REP,Max Southworth-Beckwith,10300,20.8,10,False,southworthbeckwith m
 2022_NC_House-9_REP,REP,Richard Hudson,38117,79.2,12,True,hudson r
 2022_NC_House-9_REP,REP,Jennyfer Bucardo,4175,8.7,12,False,bucardo j
 2022_NC_House-9_REP,REP,Michael Adriani,3950,8.2,12,False,adriani m
@@ -9405,7 +9405,7 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2022_NJ_House-7_REP,REP,Sterling Schwab,429,0.8,16,False,schwab s
 2022_NJ_House-8_DEM,DEM,Robert J. Menendez,26490,83.0,17,True,menendez r
 2022_NJ_House-8_DEM,DEM,David Ocampo Grajales,3749,11.7,17,False,grajales d
-2022_NJ_House-8_DEM,DEM,Ane Roseborough-Eberhard,1668,5.2,17,False,eberhard a
+2022_NJ_House-8_DEM,DEM,Ane Roseborough-Eberhard,1668,5.2,17,False,roseborougheberhard a
 2022_NJ_House-8_REP,REP,Marcos Arroyo,3127,100.0,18,True,arroyo m
 2022_NJ_House-9_DEM,DEM,Bill Pascrell,19524,100.0,19,True,pascrell b
 2022_NJ_House-9_REP,REP,Billy Prempeh,10724,100.0,20,True,prempeh b
@@ -9464,7 +9464,7 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2022_NY_House-10_DEM,DEM,Quanda Francis,121,0.2,10,False,francis q
 2022_NY_House-11_DEM,DEM,Max Rose,15871,75.0,12,True,rose m
 2022_NY_House-11_DEM,DEM,Brittany Ramos DeBarros,4399,20.8,12,False,debarros b
-2022_NY_House-11_DEM,DEM,Komi Agoda-Koussema,899,4.2,12,False,koussema k
+2022_NY_House-11_DEM,DEM,Komi Agoda-Koussema,899,4.2,12,False,agodakoussema k
 2022_NY_House-11_REP,REP,Nicole Malliotakis,12212,78.5,11,True,malliotakis n
 2022_NY_House-11_REP,REP,John Matland,3348,21.5,11,False,matland j
 2022_NY_House-12_DEM,DEM,Jerry Nadler,45545,55.4,13,True,nadler j
@@ -9518,7 +9518,7 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2022_NY_House-3_DEM,DEM,Robert Zimmerman,9482,35.8,5,True,zimmerman r
 2022_NY_House-3_DEM,DEM,Jon Kaiman,6884,26.0,5,False,kaiman j
 2022_NY_House-3_DEM,DEM,Josh Lafazan,5296,20.0,5,False,lafazan j
-2022_NY_House-3_DEM,DEM,Melanie D'Arrigo,4197,15.8,5,False,arrigo m
+2022_NY_House-3_DEM,DEM,Melanie D'Arrigo,4197,15.8,5,False,darrigo m
 2022_NY_House-3_DEM,DEM,Reema Rasool,661,2.5,5,False,rasool r
 2022_NY_House-4_DEM,DEM,Laura Gillen,12432,63.1,7,True,gillen l
 2022_NY_House-4_DEM,DEM,Carrié Solages,4811,24.4,7,False,solages c
@@ -9537,7 +9537,7 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2022_OH_House-11_DEM,DEM,Nina Turner,22830,33.7,21,False,turner n
 2022_OH_House-11_REP,REP,Eric J. Brewer,8240,57.6,22,True,brewer e
 2022_OH_House-11_REP,REP,James Hemphill,6062,42.4,22,False,hemphill j
-2022_OH_House-12_DEM,DEM,Amy Rippel-Elton,12712,56.7,24,True,elton a
+2022_OH_House-12_DEM,DEM,Amy Rippel-Elton,12712,56.7,24,True,rippelelton a
 2022_OH_House-12_DEM,DEM,Michael Fletcher,9717,43.3,24,False,fletcher m
 2022_OH_House-12_REP,REP,Troy Balderson,66181,82.3,23,True,balderson t
 2022_OH_House-12_REP,REP,Brandon Michael Lape,14196,17.7,23,False,lape b
@@ -9554,7 +9554,7 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2022_OH_House-14_REP,REP,Patrick Awtrey,12296,16.0,27,False,awtrey p
 2022_OH_House-14_REP,REP,Bevin Cormack,6364,8.3,27,False,cormack b
 2022_OH_House-15_DEM,DEM,Gary Josephson,9047,97.0,30,True,josephson g
-2022_OH_House-15_DEM,DEM,Danny O'Connor,284,3.0,30,False,connor d
+2022_OH_House-15_DEM,DEM,Danny O'Connor,284,3.0,30,False,oconnor d
 2022_OH_House-15_REP,REP,Mike Carey,48938,100.0,29,True,carey m
 2022_OH_House-1_DEM,DEM,Greg Landsman,28330,100.0,2,True,landsman g
 2022_OH_House-1_REP,REP,Steve Chabot,45450,100.0,1,True,chabot s
@@ -9589,7 +9589,7 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2022_OH_House-8_REP,REP,Warren Davidson,50372,72.4,15,True,davidson w
 2022_OH_House-8_REP,REP,Phil Heimlich,19230,27.6,15,False,heimlich p
 2022_OH_House-9_DEM,DEM,Marcy Kaptur,32968,100.0,17,True,kaptur m
-2022_OH_House-9_REP,REP,J.R. Majewski,21850,35.8,18,True,majewski j
+2022_OH_House-9_REP,REP,J.R. Majewski,21850,35.8,18,True,majewski
 2022_OH_House-9_REP,REP,Craig Riedel,18757,30.7,18,False,riedel c
 2022_OH_House-9_REP,REP,Theresa Gavarone,17542,28.7,18,False,gavarone t
 2022_OH_House-9_REP,REP,Beth Deck,2931,4.8,18,False,deck b
@@ -9618,21 +9618,21 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2022_OR_House-3_REP,REP,Joanna Harbour,18031,100.0,6,True,harbour j
 2022_OR_House-4_DEM,DEM,Val Hoyle,56153,64.0,7,True,hoyle v
 2022_OR_House-4_DEM,DEM,Doyle Canning,14245,16.2,7,False,canning d
-2022_OR_House-4_DEM,DEM,Sami Al-Abdrabbuh,6080,6.9,7,False,abdrabbuh s
+2022_OR_House-4_DEM,DEM,Sami Al-Abdrabbuh,6080,6.9,7,False,alabdrabbuh s
 2022_OR_House-4_DEM,DEM,John Selker,4738,5.4,7,False,selker j
 2022_OR_House-4_DEM,DEM,Andrew Kalloch,4322,4.9,7,False,kalloch a
 2022_OR_House-4_DEM,DEM,G. Tommy Smith,1278,1.5,7,False,smith g
 2022_OR_House-4_DEM,DEM,Jake Matthews,607,0.7,7,False,matthews j
 2022_OR_House-4_DEM,DEM,Steve Laible,292,0.3,7,False,laible s
 2022_OR_House-4_REP,REP,Alek Skarlatos,58655,100.0,8,True,skarlatos a
-2022_OR_House-5_DEM,DEM,Jamie McLeod-Skinner,47148,54.9,9,True,skinner j
+2022_OR_House-5_DEM,DEM,Jamie McLeod-Skinner,47148,54.9,9,True,mcleodskinner j
 2022_OR_House-5_DEM,DEM,Kurt Schrader,38726,45.1,9,False,schrader k
-2022_OR_House-5_REP,REP,Lori Chavez-DeRemer,30438,42.8,10,True,deremer l
+2022_OR_House-5_REP,REP,Lori Chavez-DeRemer,30438,42.8,10,True,chavezderemer l
 2022_OR_House-5_REP,REP,Jimmy Crumpacker,20631,29.0,10,False,crumpacker j
 2022_OR_House-5_REP,REP,John Di Paola,11486,16.1,10,False,paola j
 2022_OR_House-5_REP,REP,Laurel L. Roses,6321,8.9,10,False,roses l
 2022_OR_House-5_REP,REP,Madison Oatman,1863,2.6,10,False,oatman m
-2022_OR_House-5_REP,REP,Write-in,429,0.6,10,False,in w
+2022_OR_House-5_REP,REP,Write-in,429,0.6,10,False,writein
 2022_OR_House-6_DEM,DEM,Andrea Salinas,26101,37.0,11,True,salinas a
 2022_OR_House-6_DEM,DEM,Carrick Flynn,13052,18.5,11,False,flynn c
 2022_OR_House-6_DEM,DEM,Cody Reynolds,7951,11.3,11,False,reynolds c
@@ -9691,7 +9691,7 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2022_RI_House-2_REP,REP,Allan Fung,12113,100.0,4,True,fung a
 2022_SC_House-1_REP,REP,Nancy Mace,39470,53.1,1,True,mace n
 2022_SC_House-1_REP,REP,Katie Arrington,33589,45.2,1,False,arrington k
-2022_SC_House-1_REP,REP,Lynz Piper-Loomis,1221,1.6,1,False,loomis l
+2022_SC_House-1_REP,REP,Lynz Piper-Loomis,1221,1.6,1,False,piperloomis l
 2022_SC_House-4_REP,REP,William Timmons,24800,52.7,2,True,timmons w
 2022_SC_House-4_REP,REP,Mark Burns,11214,23.8,2,False,burns m
 2022_SC_House-4_REP,REP,Michael LaPierre,8029,17.1,2,False,lapierre m
@@ -9745,7 +9745,7 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2022_TN_House-8_REP,REP,Danny Ray Bridger Jr.,4233,5.1,15,False,bridger d
 2022_TN_House-8_REP,REP,Gary Clouse,2291,2.76,15,False,clouse g
 2022_TN_House-9_DEM,DEM,Steve Cohen,62055,88.02,17,True,cohen s
-2022_TN_House-9_DEM,DEM,M. Latory Alexandira-Williams,8449,11.98,17,False,williams m
+2022_TN_House-9_DEM,DEM,M. Latory Alexandira-Williams,8449,11.98,17,False,alexandirawilliams m
 2022_TN_House-9_REP,REP,Charlotte Bergmann,10380,51.54,18,True,bergmann c
 2022_TN_House-9_REP,REP,Brown Dudley,8760,43.5,18,False,dudley b
 2022_TN_House-9_REP,REP,Leo AwGoWhat,1000,4.97,18,False,awgowhat l
@@ -9776,7 +9776,7 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2022_TX_House-15_REP,REP,Vangela Churchill,298,1.0,31,False,churchill v
 2022_TX_House-16_DEM,DEM,Veronica Escobar,30954,88.0,32,True,escobar v
 2022_TX_House-16_DEM,DEM,Deliris Montanez Berrios,4235,12.0,32,False,berrios d
-2022_TX_House-16_REP,REP,Irene Armendariz-Jackson,12623,100.0,33,True,jackson i
+2022_TX_House-16_REP,REP,Irene Armendariz-Jackson,12623,100.0,33,True,armendarizjackson i
 2022_TX_House-17_DEM,DEM,Mary Jo Woods,17085,100.0,36,True,woods m
 2022_TX_House-17_REP,REP,Pete Sessions,48222,70.0,35,True,sessions p
 2022_TX_House-17_REP,REP,"Jason ""Stormchaser"" Nelson",8371,12.1,35,False,nelson j
@@ -9805,7 +9805,7 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2022_TX_House-23_DEM,DEM,John Lira,19816,55.9,48,True,lira j
 2022_TX_House-23_DEM,DEM,Priscilla Golden,15664,44.1,48,False,golden p
 2022_TX_House-23_REP,REP,Tony Gonzales,37212,78.0,47,True,gonzales t
-2022_TX_House-23_REP,REP,Alma Arredondo-Lynch,7261,15.2,47,False,lynch a
+2022_TX_House-23_REP,REP,Alma Arredondo-Lynch,7261,15.2,47,False,arredondolynch a
 2022_TX_House-23_REP,REP,Alia Garcia,3235,6.8,47,False,garcia a
 2022_TX_House-24_DEM,DEM,Jan McDowell,7118,51.2,51,True,mcdowell j
 2022_TX_House-24_DEM,DEM,Derrik Gay,6788,48.8,51,False,gay d
@@ -9861,7 +9861,7 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2022_TX_House-34_REP,REP,Mayra Flores,9490,60.4,73,True,flores m
 2022_TX_House-34_REP,REP,Frank McCaffrey,3444,21.9,73,False,mccaffrey f
 2022_TX_House-34_REP,REP,Gregory Kunkle,1677,10.7,73,False,kunkle g
-2022_TX_House-34_REP,REP,Juana Cantu-Cabrera,1115,7.1,73,False,cabrera j
+2022_TX_House-34_REP,REP,Juana Cantu-Cabrera,1115,7.1,73,False,cantucabrera j
 2022_TX_House-35_DEM,DEM,Greg Casar,25505,61.1,75,True,casar g
 2022_TX_House-35_DEM,DEM,Eddie Rodriguez,6526,15.6,75,False,rodriguez e
 2022_TX_House-35_DEM,DEM,Rebecca Viagran,6511,15.6,75,False,viagran r
@@ -9991,7 +9991,7 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2022_WV_House-2_DEM,DEM,Angela Dwyer,16653,42.9,4,False,dwyer a
 2022_WV_House-2_REP,REP,Alex Mooney,45164,54.2,3,True,mooney a
 2022_WV_House-2_REP,REP,David McKinley,29619,35.6,3,False,mckinley d
-2022_WV_House-2_REP,REP,Susan Buchser-Lochocki,3329,4.0,3,False,lochocki s
+2022_WV_House-2_REP,REP,Susan Buchser-Lochocki,3329,4.0,3,False,buchserlochocki s
 2022_WV_House-2_REP,REP,Mike Seckman,3076,3.7,3,False,seckman m
 2022_WV_House-2_REP,REP,Rhonda Hercules,2083,2.5,3,False,hercules r
 2022_WY_House-1_DEM,DEM,Lynnette Grey Bull,4507,62.3,2,True,bull l
@@ -10023,8 +10023,8 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2024_AR_House-3_REP,REP,Clint Penzo,30545,46.1,1,False,penzo c
 2024_AZ_House-1_DEM,DEM,Amish Shah,17214,23.5,2,True,shah a
 2024_AZ_House-1_DEM,DEM,Andrei Cherny,15596,21.3,2,False,cherny a
-2024_AZ_House-1_DEM,DEM,Marlene Galán-Woods,15490,21.2,2,False,woods m
-2024_AZ_House-1_DEM,DEM,Conor O'Callaghan,13539,18.5,2,False,callaghan c
+2024_AZ_House-1_DEM,DEM,Marlene Galán-Woods,15490,21.2,2,False,galanwoods m
+2024_AZ_House-1_DEM,DEM,Conor O'Callaghan,13539,18.5,2,False,ocallaghan c
 2024_AZ_House-1_DEM,DEM,Andrew Horne,8991,12.3,2,False,horne a
 2024_AZ_House-1_DEM,DEM,Kurt Kroemer,2356,3.2,2,False,kroemer k
 2024_AZ_House-1_REP,REP,David Schweikert,62811,62.7,1,True,schweikert d
@@ -10145,10 +10145,10 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2024_FL_House-25_DEM,DEM,Jen Perelman,7349,16.8,27,False,perelman j
 2024_FL_House-25_REP,REP,Chris Eddy,13246,64.9,28,True,eddy c
 2024_FL_House-25_REP,REP,Bryan Leib,7149,35.1,28,False,leib b
-2024_FL_House-26_REP,REP,Mario Díaz-Balart,38334,83.5,29,True,balart m
+2024_FL_House-26_REP,REP,Mario Díaz-Balart,38334,83.5,29,True,diazbalart m
 2024_FL_House-26_REP,REP,Johnny Fratto,4378,9.5,29,False,fratto j
 2024_FL_House-26_REP,REP,Richard Evans,3178,6.9,29,False,evans r
-2024_FL_House-27_DEM,DEM,Lucia Báez-Geller,18591,54.2,31,True,geller l
+2024_FL_House-27_DEM,DEM,Lucia Báez-Geller,18591,54.2,31,True,baezgeller l
 2024_FL_House-27_DEM,DEM,Mike Davey,15738,45.8,31,False,davey m
 2024_FL_House-27_REP,REP,María Elvira Salazar,38493,88.7,30,True,salazar m
 2024_FL_House-27_REP,REP,Royland Lara,4908,11.3,30,False,lara r
@@ -10226,7 +10226,7 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2024_HI_House-2_DEM,DEM,Jill Tokuda,84978,100.0,4,True,tokuda j
 2024_HI_House-2_REP,REP,Steve Bond,19627,100.0,5,True,bond s
 2024_IA_House-1_DEM,DEM,Christina Bohannan,13870,100.0,2,True,bohannan c
-2024_IA_House-1_REP,REP,Mariannette Miller-Meeks,16529,56.0,1,True,meeks m
+2024_IA_House-1_REP,REP,Mariannette Miller-Meeks,16529,56.0,1,True,millermeeks m
 2024_IA_House-1_REP,REP,David Pautsch,12981,44.0,1,False,pautsch d
 2024_IA_House-2_DEM,DEM,Sarah Corkery,10479,100.0,4,True,corkery s
 2024_IA_House-2_REP,REP,Ashley Hinson,22626,100.0,3,True,hinson a
@@ -10247,7 +10247,7 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2024_IL_House-11_DEM,DEM,Bill Foster,35159,76.6,19,True,foster b
 2024_IL_House-11_DEM,DEM,Qasim Rashid,10754,23.4,19,False,rashid q
 2024_IL_House-11_REP,REP,Jerry Evans,17814,50.7,20,True,evans j
-2024_IL_House-11_REP,REP,Susan Hathaway-Altman,13032,37.1,20,False,altman s
+2024_IL_House-11_REP,REP,Susan Hathaway-Altman,13032,37.1,20,False,hathawayaltman s
 2024_IL_House-11_REP,REP,Kent Mercado,4312,12.3,20,False,mercado k
 2024_IL_House-12_DEM,DEM,Brian Roberts,10775,60.1,22,True,roberts b
 2024_IL_House-12_DEM,DEM,Preston Nelson,7151,39.9,22,False,nelson p
@@ -10406,7 +10406,7 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2024_MD_House-2_DEM,DEM,Johnny Olszewski,65995,78.7,3,True,olszewski j
 2024_MD_House-2_DEM,DEM,Harry Bhandari,7150,8.5,3,False,bhandari h
 2024_MD_House-2_DEM,DEM,Sia Kyriakakos,4080,4.9,3,False,kyriakakos s
-2024_MD_House-2_DEM,DEM,Sharron Reed-Burns,3472,4.1,3,False,burns s
+2024_MD_House-2_DEM,DEM,Sharron Reed-Burns,3472,4.1,3,False,reedburns s
 2024_MD_House-2_DEM,DEM,Jessica Sjoberg,1692,2.0,3,False,sjoberg j
 2024_MD_House-2_DEM,DEM,Clint Spellman Jr.,1466,1.8,3,False,spellman c
 2024_MD_House-2_REP,REP,Kimberly Klacik,25377,63.1,4,True,klacik k
@@ -10514,7 +10514,7 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2024_MI_House-2_DEM,DEM,Michael Lynch,39503,100.0,4,True,lynch m
 2024_MI_House-2_REP,REP,John Moolenaar,94937,100.0,3,True,moolenaar j
 2024_MI_House-3_DEM,DEM,Hillary Scholten,64546,90.6,5,True,scholten h
-2024_MI_House-3_DEM,DEM,Salim Al-Shatel,6665,9.4,5,False,shatel s
+2024_MI_House-3_DEM,DEM,Salim Al-Shatel,6665,9.4,5,False,alshatel s
 2024_MI_House-3_REP,REP,Paul Hudson,39410,54.7,6,True,hudson p
 2024_MI_House-3_REP,REP,Michael Markey,32678,45.3,6,False,markey m
 2024_MI_House-4_DEM,DEM,Jessica Swartz,49169,100.0,8,True,swartz j
@@ -10541,7 +10541,7 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2024_MN_House-2_REP,REP,Tayler Rahm,5290,24.0,4,False,rahm t
 2024_MN_House-4_REP,REP,May Lor Xiong,7777,63.0,6,True,xiong m
 2024_MN_House-4_REP,REP,Gene Rechtzigel,4558,37.0,6,False,rechtzigel g
-2024_MN_House-5_REP,REP,Dalia Al-Aqidi,3380,100.0,8,True,aqidi d
+2024_MN_House-5_REP,REP,Dalia Al-Aqidi,3380,100.0,8,True,alaqidi d
 2024_MN_House-6_REP,REP,Tom Emmer,21624,87.0,9,True,emmer t
 2024_MN_House-6_REP,REP,Chris Corey,3218,13.0,9,False,corey c
 2024_MN_House-7_REP,REP,Michelle Fischbach,30458,64.7,11,True,fischbach m
@@ -10550,12 +10550,12 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2024_MN_House-8_REP,REP,Harry Welty,3874,9.5,13,False,welty h
 2024_MO_House-1_DEM,DEM,Wesley Bell,63521,51.12,1,True,bell w
 2024_MO_House-1_DEM,DEM,Cori Bush,56723,45.65,1,False,bush c
-2024_MO_House-1_DEM,DEM,Maria Chappelle-Nadal,3279,2.64,1,False,nadal m
+2024_MO_House-1_DEM,DEM,Maria Chappelle-Nadal,3279,2.64,1,False,chappellenadal m
 2024_MO_House-1_DEM,DEM,Ron Harshaw,735,0.59,1,False,harshaw r
 2024_MO_House-1_REP,REP,Andrew Jones,4209,26.9,2,True,jones a
 2024_MO_House-1_REP,REP,Stan Hall,4008,25.6,2,False,hall s
 2024_MO_House-1_REP,REP,Mike Hebron,3247,20.7,2,False,hebron m
-2024_MO_House-1_REP,REP,Laura Mitchell-Riley,3215,20.5,2,False,riley l
+2024_MO_House-1_REP,REP,Laura Mitchell-Riley,3215,20.5,2,False,mitchellriley l
 2024_MO_House-1_REP,REP,Timothy Gartin,996,6.4,2,False,gartin t
 2024_MO_House-2_DEM,DEM,Ray Hartmann,42605,77.7,4,True,hartmann r
 2024_MO_House-2_DEM,DEM,Chuck Summers,12200,22.3,4,False,summers c
@@ -10585,7 +10585,7 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2024_MO_House-7_REP,REP,Eric Burlison,79755,83.1,13,True,burlison e
 2024_MO_House-7_REP,REP,Audrey Richards,6444,6.7,13,False,richards a
 2024_MO_House-7_REP,REP,John Adair,6358,6.6,13,False,adair j
-2024_MO_House-7_REP,REP,Camille Lombardi-Olive,3400,3.5,13,False,olive c
+2024_MO_House-7_REP,REP,Camille Lombardi-Olive,3400,3.5,13,False,lombardiolive c
 2024_MO_House-8_DEM,DEM,Randi McCallian,12571,70.4,16,True,mccallian r
 2024_MO_House-8_DEM,DEM,Denny Roth,5283,29.6,16,False,roth d
 2024_MO_House-8_REP,REP,Jason Smith,98171,82.3,15,True,smith j
@@ -10685,7 +10685,7 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2024_NH_House-2_REP,REP,William Harvey,1743,2.8,4,False,harvey w
 2024_NH_House-2_REP,REP,Jay Mercer,1573,2.6,4,False,mercer j
 2024_NH_House-2_REP,REP,Jason Riddle,869,1.4,4,False,riddle j
-2024_NH_House-2_REP,REP,Robert D'Arcy,714,1.2,4,False,arcy r
+2024_NH_House-2_REP,REP,Robert D'Arcy,714,1.2,4,False,darcy r
 2024_NH_House-2_REP,REP,Michael Callis,632,1.0,4,False,callis m
 2024_NH_House-2_REP,REP,Tom Alciere,623,1.0,4,False,alciere t
 2024_NH_House-2_REP,REP,Gerard Belloin,552,0.9,4,False,belloin g
@@ -10721,7 +10721,7 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2024_NJ_House-3_DEM,DEM,Sarah Schoengood,5524,10.0,11,False,schoengood s
 2024_NJ_House-3_DEM,DEM,Brian Schkeeper,1862,3.4,11,False,schkeeper b
 2024_NJ_House-3_REP,REP,Rajesh Mohan,13011,38.1,13,True,mohan r
-2024_NJ_House-3_REP,REP,Shirley Maia-Cusick,10507,30.6,13,False,cusick s
+2024_NJ_House-3_REP,REP,Shirley Maia-Cusick,10507,30.6,13,False,maiacusick s
 2024_NJ_House-3_REP,REP,Michael Faccone,5812,16.9,13,False,faccone m
 2024_NJ_House-3_REP,REP,Gregory Sobocinski,4947,14.3,13,False,sobocinski g
 2024_NJ_House-4_DEM,DEM,Matthew Jenkins,25389,100.0,16,True,jenkins m
@@ -10764,7 +10764,7 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2024_NV_House-3_REP,REP,Drew Johnson,10519,32.0,4,True,johnson d
 2024_NV_House-3_REP,REP,Dan Schwartz,7351,22.3,4,False,schwartz d
 2024_NV_House-3_REP,REP,Elizabeth Helgelien,6784,20.6,4,False,helgelien e
-2024_NV_House-3_REP,REP,Martin O'Donnell,6727,20.4,4,False,donnell m
+2024_NV_House-3_REP,REP,Martin O'Donnell,6727,20.4,4,False,odonnell m
 2024_NV_House-3_REP,REP,Steven Schiffman,594,1.8,4,False,schiffman s
 2024_NV_House-3_REP,REP,Steve London,495,1.5,4,False,london s
 2024_NV_House-3_REP,REP,Brian Nadell,446,1.4,4,False,nadell b
@@ -10776,7 +10776,7 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2024_NY_House-10_DEM,DEM,Dan Goldman,22708,66.1,2,True,goldman d
 2024_NY_House-10_DEM,DEM,Evan Hutchison,8073,23.5,2,False,hutchison e
 2024_NY_House-10_DEM,DEM,Bruno Grandsard,3599,10.5,2,False,grandsard b
-2024_NY_House-14_DEM,DEM,Alexandria Ocasio-Cortez,19070,82.1,3,True,cortez a
+2024_NY_House-14_DEM,DEM,Alexandria Ocasio-Cortez,19070,82.1,3,True,ocasiocortez a
 2024_NY_House-14_DEM,DEM,Marty Dolan,4149,17.9,3,False,dolan m
 2024_NY_House-16_DEM,DEM,George Latimer,45909,58.6,4,True,latimer g
 2024_NY_House-16_DEM,DEM,Jamaal Bowman,32440,41.4,4,False,bowman j
@@ -10812,7 +10812,7 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2024_OH_House-1_REP,REP,Orlando Sonza,43554,100.0,2,True,sonza o
 2024_OH_House-2_DEM,DEM,Samantha Meadows,15022,100.0,4,True,meadows s
 2024_OH_House-2_REP,REP,David Taylor,26247,25.5,3,True,taylor d
-2024_OH_House-2_REP,REP,Tim O'Hara,22626,22.0,3,False,hara t
+2024_OH_House-2_REP,REP,Tim O'Hara,22626,22.0,3,False,ohara t
 2024_OH_House-2_REP,REP,Larry Kidd,19583,19.0,3,False,kidd l
 2024_OH_House-2_REP,REP,Shane Wilkin,9932,9.6,3,False,wilkin s
 2024_OH_House-2_REP,REP,Ron Hood,9020,8.8,3,False,hood r
@@ -10883,8 +10883,8 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2024_OR_House-4_REP,REP,Monique DeSpain,31436,58.4,8,True,despain m
 2024_OR_House-4_REP,REP,Amy Ryan Courser,22418,41.6,8,False,courser a
 2024_OR_House-5_DEM,DEM,Janelle Bynum,55473,69.9,10,True,bynum j
-2024_OR_House-5_DEM,DEM,Jamie McLeod-Skinner,23905,30.1,10,False,skinner j
-2024_OR_House-5_REP,REP,Lori Chavez-DeRemer,54458,100.0,9,True,deremer l
+2024_OR_House-5_DEM,DEM,Jamie McLeod-Skinner,23905,30.1,10,False,mcleodskinner j
+2024_OR_House-5_REP,REP,Lori Chavez-DeRemer,54458,100.0,9,True,chavezderemer l
 2024_OR_House-6_DEM,DEM,Andrea Salinas,52509,87.6,11,True,salinas a
 2024_OR_House-6_DEM,DEM,Cody Reynolds,7463,12.4,11,False,reynolds c
 2024_OR_House-6_REP,REP,Mike Erickson,37497,74.3,12,True,erickson m
@@ -10892,7 +10892,7 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2024_OR_House-6_REP,REP,David Burch,1447,2.9,12,False,burch d
 2024_OR_House-6_REP,REP,Conrad Herold,628,1.2,12,False,herold c
 2024_PA_House-10_DEM,DEM,Janelle Stelson,26591,43.8,19,True,stelson j
-2024_PA_House-10_DEM,DEM,Mike O'Brien,14103,23.3,19,False,brien m
+2024_PA_House-10_DEM,DEM,Mike O'Brien,14103,23.3,19,False,obrien m
 2024_PA_House-10_DEM,DEM,Shamaine Daniels,8773,14.5,19,False,daniels s
 2024_PA_House-10_DEM,DEM,Rick Coplen,5464,9.0,19,False,coplen r
 2024_PA_House-10_DEM,DEM,Blake Lynch,3388,5.6,19,False,lynch b
@@ -10924,7 +10924,7 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2024_PA_House-4_DEM,DEM,Madeleine Dean,78235,100.0,6,True,dean m
 2024_PA_House-4_REP,REP,David Winkler,43625,100.0,7,True,winkler d
 2024_PA_House-5_DEM,DEM,Mary Gay Scanlon,70068,100.0,8,True,scanlon m
-2024_PA_House-5_REP,REP,Alfeia DeVaughn-Goodwin,37361,100.0,9,True,goodwin a
+2024_PA_House-5_REP,REP,Alfeia DeVaughn-Goodwin,37361,100.0,9,True,devaughngoodwin a
 2024_PA_House-6_DEM,DEM,Chrissy Houlahan,58552,100.0,10,True,houlahan c
 2024_PA_House-6_REP,REP,Neil Young Jr.,45072,100.0,11,True,young n
 2024_PA_House-7_DEM,DEM,Susan Wild,55259,100.0,12,True,wild s
@@ -10986,7 +10986,7 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2024_TN_House-8_REP,REP,David Kustoff,55809,100.0,15,True,kustoff d
 2024_TN_House-9_DEM,DEM,Steve Cohen,30042,73.71,17,True,cohen s
 2024_TN_House-9_DEM,DEM,Corey Strong,7258,17.81,17,False,strong c
-2024_TN_House-9_DEM,DEM,Marion Latroy Alexandria-Williams,1936,4.75,17,False,williams m
+2024_TN_House-9_DEM,DEM,Marion Latroy Alexandria-Williams,1936,4.75,17,False,alexandriawilliams m
 2024_TN_House-9_DEM,DEM,Kasandra Smith,1523,3.74,17,False,smith k
 2024_TN_House-9_REP,REP,Charlotte Bergmann,10148,100.0,18,True,bergmann c
 2024_TX_House-10_DEM,DEM,Theresa Boisseau,14702,72.2,19,True,boisseau t
@@ -10997,7 +10997,7 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2024_TX_House-12_DEM,DEM,Trey Hunt,11935,58.0,23,True,hunt t
 2024_TX_House-12_DEM,DEM,Sebastian Gehrig,8638,42.0,23,False,gehrig s
 2024_TX_House-12_REP,REP,Craig Goldman,16787,62.9,22,True,goldman c
-2024_TX_House-12_REP,REP,John O'Shea,9903,37.1,22,False,shea j
+2024_TX_House-12_REP,REP,John O'Shea,9903,37.1,22,False,oshea j
 2024_TX_House-13_REP,REP,Ronny Jackson,81844,100.0,24,True,jackson r
 2024_TX_House-14_DEM,DEM,Rhonda Hart,15357,100.0,26,True,hart r
 2024_TX_House-14_REP,REP,Randy Weber,69321,100.0,25,True,weber r
@@ -11007,7 +11007,7 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2024_TX_House-15_REP,REP,Vangela Churchill,4140,11.8,27,False,churchill v
 2024_TX_House-16_DEM,DEM,Veronica Escobar,28129,86.3,29,True,escobar v
 2024_TX_House-16_DEM,DEM,Leeland White,4470,13.7,29,False,white l
-2024_TX_House-16_REP,REP,Irene Armendariz-Jackson,15553,100.0,30,True,jackson i
+2024_TX_House-16_REP,REP,Irene Armendariz-Jackson,15553,100.0,30,True,armendarizjackson i
 2024_TX_House-17_DEM,DEM,Mark Lorenzen,13925,100.0,32,True,lorenzen m
 2024_TX_House-17_REP,REP,Pete Sessions,67798,84.9,31,True,sessions p
 2024_TX_House-17_REP,REP,Joseph Langone,12052,15.1,31,False,langone j
@@ -11024,7 +11024,7 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2024_TX_House-20_DEM,DEM,Joaquin Castro,25018,100.0,37,True,castro j
 2024_TX_House-21_DEM,DEM,Kristin Hook,28579,100.0,39,True,hook k
 2024_TX_House-21_REP,REP,Chip Roy,96610,100.0,38,True,roy c
-2024_TX_House-22_DEM,DEM,Marquette Greene-Scott,17290,81.7,41,True,scott m
+2024_TX_House-22_DEM,DEM,Marquette Greene-Scott,17290,81.7,41,True,greenescott m
 2024_TX_House-22_DEM,DEM,Wayne Raasch,3877,18.3,41,False,raasch w
 2024_TX_House-22_REP,REP,Troy Nehls,62862,100.0,40,True,nehls t
 2024_TX_House-23_DEM,DEM,Santos Limon,16316,58.5,44,True,limon s
@@ -11142,7 +11142,7 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2024_VA_House-10_DEM,DEM,Suhas Subramanyam,13504,30.4,11,True,subramanyam s
 2024_VA_House-10_DEM,DEM,Dan Helmer,11784,26.6,11,False,helmer d
 2024_VA_House-10_DEM,DEM,Atif Qarni,4768,10.7,11,False,qarni a
-2024_VA_House-10_DEM,DEM,Eileen Filler-Corn,4131,9.3,11,False,corn e
+2024_VA_House-10_DEM,DEM,Eileen Filler-Corn,4131,9.3,11,False,fillercorn e
 2024_VA_House-10_DEM,DEM,Jennifer Boysko,4016,9.0,11,False,boysko j
 2024_VA_House-10_DEM,DEM,David Reid,1419,3.2,11,False,reid d
 2024_VA_House-10_DEM,DEM,Michelle Maldonado,1412,3.2,11,False,maldonado m
