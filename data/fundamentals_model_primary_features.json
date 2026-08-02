@@ -1,0 +1,65 @@
+{
+ "features": [
+  "is_dem_primary",
+  "is_senate",
+  "is_gov",
+  "is_defending_party",
+  "is_pres_party",
+  "bio_office_level",
+  "hist_prior_runs",
+  "hist_prior_wins",
+  "hist_ever_won",
+  "hist_best_general_pct",
+  "hist_last_general_pct",
+  "hist_years_since_last_run",
+  "hist_prior_primary_wins"
+ ],
+ "xgb_params": {
+  "max_depth": 2,
+  "learning_rate": 0.03,
+  "n_estimators": 200,
+  "min_child_weight": 4,
+  "subsample": 0.7,
+  "colsample_bytree": 1.0,
+  "reg_lambda": 20
+ },
+ "model_type": "xgbranker",
+ "objective": "rank:pairwise",
+ "softmax_temp": 0.4,
+ "within_race_varying": [
+  "bio_office_level",
+  "hist_prior_runs",
+  "hist_prior_wins",
+  "hist_ever_won",
+  "hist_best_general_pct",
+  "hist_last_general_pct",
+  "hist_years_since_last_run",
+  "hist_prior_primary_wins",
+  "fund_receipts_ln",
+  "fund_share"
+ ],
+ "target": "won = became the nominee",
+ "trained_on_cycles": [
+  2018,
+  2019,
+  2020,
+  2021,
+  2022,
+  2024
+ ],
+ "note": "NO-POLLING variant. A within-race ranker can only use features that VARY within the race - see within_race_varying.",
+ "eval_expanding_window": {
+  "2022": {
+   "n_races": 65.0,
+   "AUC": 0.8057,
+   "Brier": 0.1213,
+   "race_acc": 0.4923
+  },
+  "2024": {
+   "n_races": 37.0,
+   "AUC": 0.7492,
+   "Brier": 0.1747,
+   "race_acc": 0.3514
+  }
+ }
+}

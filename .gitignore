@@ -78,6 +78,15 @@ venv/
 !data/primary_model_xgb.json
 !data/primary_model_features.json
 
+# Fundamentals-only (no race polling) reference models - fundamentals_model.py. Same
+# static-artifact principle as the production models above: small, deterministic from
+# committed data, and the eval numbers in the _features sidecar are the record of what a
+# poll-free prior can actually do. NOT wired into predict.py or the dashboard.
+!data/fundamentals_model_general.json
+!data/fundamentals_model_general_features.json
+!data/fundamentals_model_primary.json
+!data/fundamentals_model_primary_features.json
+
 # Senate/Governor primary RESULTS (fetch_primary_results_2026.py --hist) - was never
 # actually un-ignored despite being static-data-principle scraped output; found + fixed
 # 2026-07-22 while building the House equivalent below (it was living local-only).
