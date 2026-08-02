@@ -10,8 +10,11 @@ data/*
 # Note: ignore data/* (contents) not data/ (dir) so this un-ignore can take effect.
 !data/macro_monthly.csv
 
-# ...and the generated feature-importance table (small, handy to diff across runs)
+# ...and the generated feature-importance tables (small, handy to diff across runs).
+# Moved beside their models 2026-08-02, so un-ignore the new paths too.
 !feature_importance.csv
+!models/poll/*.csv
+!models/fundamentals/*.csv
 
 # ...and DO commit the FROZEN historical poll snapshots (Internet Archive captures of 538,
 # which never change). Committing them removes the fragile/rate-limited live Wayback dependency.
@@ -77,6 +80,10 @@ venv/
 !data/primary_dates_hist.csv
 !data/primary_model_xgb.json
 !data/primary_model_features.json
+
+# PRIMARY MARGIN model (models/poll/primary_margin_model.py, added 2026-08-02)
+!data/primary_margin_model_xgb.json
+!data/primary_margin_model_features.json
 
 # Fundamentals-only (no race polling) reference models - fundamentals_model.py. Same
 # static-artifact principle as the production models above: small, deterministic from

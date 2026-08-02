@@ -1,0 +1,14 @@
+feature,gain,gain_pct,rank,within_race_varies_pct,usable_by_ranker
+bio_office_level,13.164946556091309,18.323,1,91.5,True
+is_pres_party,7.825878143310547,10.892,2,0.0,False
+hist_last_general_pct,7.192555904388428,10.011,3,75.9,True
+is_defending_party,6.933659553527832,9.65,4,0.0,False
+hist_years_since_last_run,6.038997650146484,8.405,5,72.6,True
+hist_prior_runs,5.866454601287842,8.165,6,74.5,True
+hist_prior_primary_wins,5.407718181610107,7.526,7,17.0,True
+hist_prior_wins,5.222473621368408,7.269,8,62.3,True
+is_senate,5.211155414581299,7.253,9,0.0,False
+hist_best_general_pct,4.911015510559082,6.835,10,75.9,True
+is_dem_primary,4.074362277984619,5.671,11,0.0,False
+is_gov,0.0,0.0,12,0.0,False
+hist_ever_won,0.0,0.0,13,59.4,True
