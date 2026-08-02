@@ -32,9 +32,10 @@ import features as F
 from cycles import natl_env as natl_env_hist
 from macro_features import build_macro
 
-HERE = os.path.dirname(os.path.abspath(__file__))
-POLLING_AGG_RAW = os.path.join(HERE, "..", "Polling Agg",
-                               "Polling agg and Prediction markets", "data", "raw")
+from paths import ROOT, AGG   # one definition for the whole repo (paths.py)
+
+HERE = ROOT
+POLLING_AGG_RAW = os.path.join(AGG, "data", "raw")
 DEFAULT_POLLS = [os.path.join(POLLING_AGG_RAW, "nyt_polls.csv"),
                  os.path.join(POLLING_AGG_RAW, "wikipedia_polls.csv")]
 

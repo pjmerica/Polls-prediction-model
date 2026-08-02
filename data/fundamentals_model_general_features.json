@@ -194,27 +194,27 @@
  "eval_expanding_window": {
   "2018": {
    "n_races": 227.0,
-   "AUC": 0.9142,
-   "Brier": 0.1224,
-   "race_acc": 0.7797
+   "AUC": 0.9176,
+   "Brier": 0.1262,
+   "race_acc": 0.7621
   },
   "2020": {
    "n_races": 151.0,
-   "AUC": 0.8931,
-   "Brier": 0.1315,
-   "race_acc": 0.7285
+   "AUC": 0.8865,
+   "Brier": 0.1368,
+   "race_acc": 0.6821
   },
   "2022": {
    "n_races": 177.0,
-   "AUC": 0.9475,
-   "Brier": 0.0934,
-   "race_acc": 0.8475
+   "AUC": 0.9494,
+   "Brier": 0.0944,
+   "race_acc": 0.8531
   },
   "2024": {
    "n_races": 134.0,
-   "AUC": 0.9551,
-   "Brier": 0.0859,
-   "race_acc": 0.8582
+   "AUC": 0.9566,
+   "Brier": 0.087,
+   "race_acc": 0.8657
   }
  }
 }

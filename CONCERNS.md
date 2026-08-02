@@ -255,3 +255,32 @@ above:
 25. **Wikipedia race pages sometimes omit a candidate's prior office** (Bean's 2022 page
     reads 0 despite 2016 reading 2). Pre-existing source-completeness gap, separate from the
     future-tense leak fixed 2026-08-01; not overridden, still worth a cleanup pass.
+
+## Added 2026-08-02 — thin polling + the fundamentals model
+
+26. **The primary model is overconfident below 3 distinct surveys** — ~9-12 points, held out
+    on 2022+2024, permutation p=0.024 (`analysis/poll_volume_breakpoint.ipynb`). ~33% of its
+    features are NaN there: `poll_momentum` is 100% missing by construction (needs 3+ dated
+    polls), `poll_std` needs 2. The GENERAL model shows no such break at any volume —
+    fundamentals carry it when polls are thin. **Shipped so far: a DISPLAY fix only** (the
+    dashboard's "reliable only (4+ polls)" gate). The model's numbers are unchanged.
+    Options measured, none yet chosen by the user:
+      a. piecewise temperature (T=0.7 below 4 surveys, 0.4 above) — best on metrics
+         (Brier .0218 -> .0206) and it TRANSFERS across cycles, but a cliff at exactly 3
+         surveys is an artifact of these 102 races, not a fact about primaries;
+      b. continuous evidence-scaled temperature — smoother and more defensible in principle,
+         measured neutral-to-worse because it also flattens the well-polled races;
+      c. fix `low_confidence_field` instead — it currently keys only on the leader's margin
+         over a uniform 1/n split, which one poll clears easily; requiring a minimum survey
+         count would LABEL thin races honestly regardless of the number shown.
+    Note that NONE of these rescues 2026_CT_Governor_REP, where the single poll (Stewart 42,
+    Fazio 13) is simply wrong — calibration widens error bars, it cannot reverse a bad input.
+27. **Measure poll volume in DISTINCT SURVEYS, not poll rows.** One survey of an N-candidate
+    primary emits N rows, so `n_polls`/`race_total_polls` conflate "well-polled race" with
+    "crowded field". An early row-based pass put the breakpoint in the wrong place AND
+    reported the 1-survey bucket as the worst; on surveys it is actually UNDER-confident
+    (10/10 called correctly) — a lone poll usually appears in a race so lopsided nobody polled
+    it twice. "Fewer polls = worse" is NOT monotone.
+28. **The fundamentals (no-polling) model is a prototype.** See HANDOFF.md 2026-08-02 for the
+    ordered work list (#5 leakage, #1 re-tune, #2 temperature, #6 thin-race calibration,
+    #7 nondeterminism). Feature selection (#3) deliberately skipped per user.

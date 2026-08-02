@@ -27,20 +27,32 @@ import shutil
 import subprocess
 import sys
 
-HERE = os.path.dirname(os.path.abspath(__file__))
-AGG = os.path.join(HERE, "..", "Polling Agg", "Polling agg and Prediction markets")
+from paths import ROOT, AGG          # noqa: F401  (one definition for the whole repo)
+
+HERE = ROOT
+
+# Script locations after the 2026-08-02 reorganisation. The fetch steps live in
+# pipeline/fetch/; the predict + explain steps stay at the repo ROOT because they are the
+# entrypoints CI and humans call by name. Paths are built with os.path.join so this keeps
+# working on POSIX runners as well as Windows.
+_FETCH = os.path.join(ROOT, "pipeline", "fetch")
 
 STEPS_FEEDS = [
-    ([sys.executable, "fetch_approval.py"], "approval (Gallup/UCSB + VoteHub)"),
-    ([sys.executable, "fetch_generic_ballot.py", "--monthly"], "generic ballot monthly (538 hist + VoteHub)"),
-    ([sys.executable, "fetch_macro.py"], "economy incl. sentiment (BLS API + DBnomics) + merge"),
+    ([sys.executable, os.path.join(_FETCH, "fetch_approval.py")],
+     "approval (Gallup/UCSB + VoteHub)"),
+    ([sys.executable, os.path.join(_FETCH, "fetch_generic_ballot.py"), "--monthly"],
+     "generic ballot monthly (538 hist + VoteHub)"),
+    ([sys.executable, os.path.join(_FETCH, "fetch_macro.py")],
+     "economy incl. sentiment (BLS API + DBnomics) + merge"),
 ]
 STEPS_PREDICT = [
-    ([sys.executable, "predict.py"], "win probabilities"),
-    ([sys.executable, "predict_margin.py"], "margins"),
-    ([sys.executable, "predict_primary.py"], "primary nominee probabilities"),
-    ([sys.executable, "explain_2026.py"], "SHAP explanations (writes polling-agg copy itself)"),
-    ([sys.executable, "explain_primary.py"], "primary SHAP explanations (writes polling-agg copy itself)"),
+    ([sys.executable, os.path.join(ROOT, "predict.py")], "win probabilities"),
+    ([sys.executable, os.path.join(ROOT, "predict_margin.py")], "margins"),
+    ([sys.executable, os.path.join(ROOT, "predict_primary.py")], "primary nominee probabilities"),
+    ([sys.executable, os.path.join(ROOT, "explain_2026.py")],
+     "SHAP explanations (writes polling-agg copy itself)"),
+    ([sys.executable, os.path.join(ROOT, "explain_primary.py")],
+     "primary SHAP explanations (writes polling-agg copy itself)"),
 ]
 
 def run(cmd, label, cwd=HERE):

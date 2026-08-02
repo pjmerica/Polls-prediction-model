@@ -22,7 +22,9 @@ from cycles import natl_env as natl_env_hist
 from macro_features import build_macro
 from predict import DEFAULT_POLLS, load_agg_polls, patch_redistricted_priors
 
-HERE = os.path.dirname(os.path.abspath(__file__))
+from paths import ROOT   # one definition for the whole repo (paths.py)
+
+HERE = ROOT
 
 def main():
     ap = argparse.ArgumentParser()

@@ -4,7 +4,56 @@ For the next agent. Read AGENTS.md first (architecture + rules), CONCERNS.md sec
 (risk register + roadmap). This file: what's mid-flight RIGHT NOW, what's most likely to
 break, and what to do next, in order.
 
-## CURRENT STATE 2026-08-01 (latest) — softmax temp + poll dedup + name join key + bio leakage; all 3 models retrained.
+## CURRENT STATE 2026-08-02 (latest) — repo reorganised; fundamentals model added; thin-poll gate shipped.
+
+**READ STRUCTURE.md FIRST.** The 36-script repo root is gone. Scripts now live in
+`models/poll/`, `models/fundamentals/`, `pipeline/fetch/`, `pipeline/build/`, `tools/`.
+Paths resolve through the new `paths.py` (repo-root-relative), NOT from each script's own
+location — the old `HERE = dirname(__file__)` idiom was correct only while everything sat in
+the root. Bare filenames in the docs below were written pre-move and are kept as history.
+
+What deliberately did NOT move, and why: `refresh_dashboard.py`, the three `predict*.py`, both
+`explain*.py`, and the prediction CSV outputs all stay at the repo root, because the
+polling-agg CI workflow (`model-refresh.yml`) calls `refresh_dashboard.py` there with
+`working-directory: 'Polling prediction model'` and copies `predictions_2026.csv` /
+`primary_predictions_2026.csv` from the root by literal path. **CI therefore needed NO changes**
+— verified by grepping the workflow for every moved filename (zero hits) and by running
+`refresh_dashboard.py --no-feeds` end to end.
+
+Trap hit during the move, worth remembering: an import check that loads modules **by path**
+passes files that would **fail as scripts**, because the root is already on `sys.path`. Three
+scripts looked fine and then died with `ModuleNotFoundError: No module named 'paths'` — the
+injected prelude had the wrong `dirname()` depth for 3-level-deep files. Verify by executing
+each prelude standalone, not by importing.
+
+**Also new this session:**
+- `models/fundamentals/fundamentals_model.py` — NO-POLLING variants of both models. General
+  reaches race_acc .803 (vs .868 with polls); primary only .422, which is BELOW the naive
+  "pick the highest office-level candidate" baseline of .451. That asymmetry is the finding:
+  within one party there is no incumbency edge, no partisan lean, no seat history, so the
+  fundamentals that carry a general election are constant across a primary field and a
+  within-race ranker cannot use a constant.
+- `analysis/poll_volume_breakpoint.ipynb` — the primary model runs ~9-12 points overconfident
+  below **3 distinct surveys** (permutation p=0.024); the general model has NO such break at
+  any volume. Measure volume in SURVEYS, not poll rows.
+- Dashboard: "reliable only (4+ polls)" gate on both model tabs, ON by default, with a
+  tab-specific warning banner when switched off (polling-agg 9ae8560).
+
+**OPEN — the fundamentals model is a prototype, not finished.** In the user's chosen order:
+  5. Fundraising leakage: adding fund_share/receipts lifts the primary variant .422 -> .756.
+     Almost certainly the cycle-end FEC leak (nominees raise most of their money AFTER winning
+     the primary) but PROVE it rather than assume.
+  1. Re-tune hyperparameters — both variants currently reuse params tuned for the PRODUCTION
+     feature sets, violating the standing re-tune rule. Current numbers are a floor.
+  2. Tune the softmax temperature for the primary variant (borrowed from the poll artifact;
+     temperature is fit AFTER hyperparameters, so it moves with them).
+  6. Calibration by poll volume — is the fundamentals model BETTER calibrated than the poll
+     model on <=3-survey races? That is what would justify blending them, and it is the whole
+     reason the model was built.
+  7. Nondeterminism: reruns gave race_acc .803 then .791. Not seed-stable; unchased.
+  (#3 feature selection: SKIPPED per user — the 161-feature general variant stays as is.)
+
+## CURRENT STATE 2026-08-01 — softmax temp + poll dedup + name join key + bio leakage; all 3 models retrained.
 
 Started from the user flagging MI-Sen-DEM again: Abdul El-Sayed reading **57%** despite leading
 every recent poll, with an Explain modal showing only positive drivers. Four distinct bugs came

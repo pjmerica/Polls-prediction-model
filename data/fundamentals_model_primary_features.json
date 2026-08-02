@@ -16,16 +16,16 @@
  ],
  "xgb_params": {
   "max_depth": 2,
-  "learning_rate": 0.03,
+  "learning_rate": 0.1,
   "n_estimators": 200,
-  "min_child_weight": 4,
+  "min_child_weight": 15,
   "subsample": 0.7,
-  "colsample_bytree": 1.0,
+  "colsample_bytree": 0.5,
   "reg_lambda": 20
  },
  "model_type": "xgbranker",
  "objective": "rank:pairwise",
- "softmax_temp": 0.4,
+ "softmax_temp": 0.5,
  "within_race_varying": [
   "bio_office_level",
   "hist_prior_runs",
@@ -51,15 +51,15 @@
  "eval_expanding_window": {
   "2022": {
    "n_races": 65.0,
-   "AUC": 0.8057,
-   "Brier": 0.1213,
-   "race_acc": 0.4923
+   "AUC": 0.8093,
+   "Brier": 0.1186,
+   "race_acc": 0.5077
   },
   "2024": {
    "n_races": 37.0,
-   "AUC": 0.7492,
-   "Brier": 0.1747,
-   "race_acc": 0.3514
+   "AUC": 0.7439,
+   "Brier": 0.1873,
+   "race_acc": 0.3784
   }
  }
 }

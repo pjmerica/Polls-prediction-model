@@ -5876,3 +5876,17 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,REP,Robert Brown,,2002,Senate,GA,brown r,0,0,0
 ,DEM,Max Cleland,incumbent U.S. Senator,2002,Senate,GA,cleland m,4,0,0
 ,OTH,Claude Thomas,,2002,Senate,GA,thomas c,0,0,0
+,REP,Tom Cotton,incumbent U.S. senator,2026,Senate,AR,cotton t,4,0,0
+,DEM,Hallie Shoffner,farmer and entrepreneur,2026,Senate,AR,shoffner h,0,0,0
+,DEM,governor,in 2022  ( running for U.S. House ),2026,Senate,AR,governor,0,0,0
+,DEM,Jeff Wadlin,strategy consultant,2026,Senate,AR,wadlin j,0,0,0
+,REP,Micah Ashby,,2026,Senate,AR,ashby m,0,0,0
+,REP,Jeb Little,,2026,Senate,AR,little j,0,0,0
+,DEM,Ethan Dunbar,,2026,Senate,AR,dunbar e,0,0,0
+,REP,Cindy Hyde-Smith,incumbent U.S. senator,2026,Senate,MS,hydesmith c,4,0,0
+,DEM,Scott Colom,district attorney for the 16th Judicial District of Mississippi (2016–present),2026,Senate,MS,colom s,1,1,0
+,DEM,secretary of state,"in 2023 , and nominee for U.S. Senate in 2024 (running as an Independent)",2026,Senate,MS,state s,0,0,1
+,IND,Secretary of State,in 2023 and U.S. Senate in 2024,2026,Senate,MS,state s,4,0,0
+,REP,Sarah Adlakha,,2026,Senate,MS,adlakha s,0,0,0
+,DEM,Priscilla Williams-Till,,2026,Senate,MS,williamstill p,0,0,0
+,DEM,Albert Littell,,2026,Senate,MS,littell a,0,0,0

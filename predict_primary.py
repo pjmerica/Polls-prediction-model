@@ -42,8 +42,9 @@ import features_primary as FP
 from build_primary_dataset import EXCLUDE_STATES, to_abbr
 from predict import DEFAULT_POLLS, REQUIRED_FEED_COLS, parse_race_id, drop_stale_candidates
 
-HERE = os.path.dirname(os.path.abspath(__file__))
-AGG = os.path.join(HERE, "..", "Polling Agg", "Polling agg and Prediction markets")
+from paths import ROOT, AGG   # one definition for the whole repo (paths.py)
+
+HERE = ROOT
 
 def primary_dates(cycle):
     """{(state, office): Timestamp} + {state: Timestamp} fallbacks."""

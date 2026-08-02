@@ -3,6 +3,15 @@
 Read this first, then HANDOFF.md (in-flight state + breakdown risks + next steps), then CONCERNS.md (ranked risks + improvement roadmap), then METHODOLOGY.md
 (exact windows for every feature). Last full update: **2026-07-06**.
 
+> ## ⚠ FILE LAYOUT CHANGED 2026-08-02 — read STRUCTURE.md
+> Scripts moved out of the repo root into `models/poll/`, `models/fundamentals/`,
+> `pipeline/fetch/`, `pipeline/build/` and `tools/`. **Any bare filename in this file or the
+> other docs may now live in a subfolder** — most references below were written before the
+> move and are kept as-is because they describe history. STRUCTURE.md has the current map and
+> the run commands. Paths now resolve through `paths.py` (repo-root-relative), NOT from each
+> script's own location. The predict/explain scripts and `refresh_dashboard.py` deliberately
+> stayed at the root because the polling-agg CI workflow calls them there.
+
 ## What this project is (one paragraph)
 We predict U.S. downballot elections (Senate / House / Governor) from polls + fundamentals +
 economy: a **win-probability model** and a **completely separate margin model** (user

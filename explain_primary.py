@@ -23,8 +23,9 @@ from explain_2026 import FRIENDLY, DESC, sigmoid, top_shap
 from predict import DEFAULT_POLLS
 from predict_primary import load_primary_feed
 
-HERE = os.path.dirname(os.path.abspath(__file__))
-AGG = os.path.join(HERE, "..", "Polling Agg", "Polling agg and Prediction markets")
+from paths import ROOT, AGG   # one definition for the whole repo (paths.py)
+
+HERE = ROOT
 
 FRIENDLY.update({
     "is_dem_primary": "Democratic primary",

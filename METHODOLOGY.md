@@ -284,7 +284,7 @@ peak office_level onto ALL their rows — a genuine look-ahead leak (a 2010 firs
 later reached the Senate would have wrongly read 4 in 2010). `combine_candidate_bios.py` is
 DEPRECATED (docstring says so; kept, not deleted, per the archive rule). The authoritative
 builder is now **`build_office_level_table.py`** — run it after ANY bio-source change:
-    py -X utf8 build_office_level_table.py     # -> data/candidate_bios.csv (rebuilt fresh)
+    py -X utf8 pipeline/build/build_office_level_table.py   # -> data/candidate_bios.csv (rebuilt fresh)
 Two source kinds, both contributing an as-of-year level:
   - WIKIPEDIA (`candidate_bios_{senate,governor,house}.csv`): already contemporaneous — each
     row was scraped from THAT YEAR's own race page, so its office_level is used as-is and is

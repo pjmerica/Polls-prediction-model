@@ -19,6 +19,9 @@ import unicodedata
 import numpy as np
 import pandas as pd
 
+import paths  # noqa: F401  - side effect: puts the repo root + pipeline folders on sys.path,
+              # so the lazy `import fetch_candidate_bios_ballotpedia` below resolves after the
+              # 2026-08-02 reorganisation moved that script into pipeline/fetch/.
 from cycles import PRES_PARTY
 
 DATA_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "data")

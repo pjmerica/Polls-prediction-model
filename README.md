@@ -1,5 +1,10 @@
 # Polls prediction model
 
+> **Layout changed 2026-08-02** — poll-based models now live in `models/poll/`,
+> no-polling models in `models/fundamentals/`, scrapers in `pipeline/fetch/`, dataset
+> assembly in `pipeline/build/`, one-off repairs in `tools/`. See **STRUCTURE.md** for the
+> map and the run commands. Everything is still run from the repo root.
+
 Predicts U.S. downballot elections — Senate, House, and Governor — from polls plus
 political/economic context. Three separate models: **win probability**, **margin of
 victory**, and (new) **primary nominee**. Trained on **14 cycles, 1998–2024** (~1,970
@@ -97,12 +102,17 @@ fetch (current-cycle info can't be frozen by definition).
 pip install -r requirements.txt
 ```
 
-1. **`build_dataset.ipynb`** — only needed if `polls_long_with_results.csv` is missing
-   (it's committed for CI, so a normal clone doesn't need this step).
-2. **`model.ipynb`**, then **`margin_model.ipynb`**, then **`python primary_model.py`** — run
-   top to bottom. **Run notebooks one at a time**, never concurrently (nbconvert races and
-   overwrites outputs on parallel runs).
-3. **`python refresh_dashboard.py`** — re-predict 2026 and refresh the companion dashboard.
+All commands run from the **repo root** (paths after the 2026-08-02 move — see STRUCTURE.md):
+
+1. **`pipeline/build/build_dataset.ipynb`** — only needed if `polls_long_with_results.csv` is
+   missing (it's gitignored at 15MB, so a fresh clone DOES need this step).
+2. **`models/poll/model.ipynb`**, then **`models/poll/margin_model.ipynb`**, then
+   **`py -X utf8 models/poll/primary_model.py`** — run top to bottom. **Run notebooks one at a
+   time**, never concurrently (nbconvert races and overwrites outputs on parallel runs).
+3. **`py -X utf8 refresh_dashboard.py`** — re-predict 2026 and refresh the companion dashboard.
+
+Optional: **`py -X utf8 models/fundamentals/fundamentals_model.py`** trains the no-polling
+reference models (not shipped to the dashboard; a prior/floor for thin-poll races).
 
 > ⚠️ **Workflow rule:** whenever you change the model's feature set, **re-run the entire
 > notebook end-to-end including the grid search** — never reuse old hyperparameters.
