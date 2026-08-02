@@ -62,6 +62,9 @@ import features as F
 import features_primary as FP
 
 HERE = ROOT   # repo root (paths.py) - this file lives in a subfolder
+# ...and the folder THIS script lives in, for artifacts that belong beside the model
+# rather than in the shared data/ dir (feature-importance CSVs).
+_HERE_DIR = _os.path.dirname(_os.path.abspath(__file__))
 
 # ---- what counts as "poll-derived" (dropped) -------------------------------------------
 _POLL_PREFIXES = ("poll_", "n_polls", "avg_sample", "min_days", "gap_x_recency",
@@ -233,6 +236,40 @@ def eval_primary(c, feats, params, temp, years, label):
     return ev
 
 
+def write_importance(model, feats, out_csv, label, table=None):
+    """Gain-importance -> CSV, mirroring what model.ipynb writes for the poll models.
+
+    For the PRIMARY ranker this also flags features that are CONSTANT within a race. Those
+    can carry non-trivial gain and it is meaningless: a within-race ranker orders candidates
+    against each other, so a value identical for every candidate in the race cannot move the
+    ordering. Measured 2026-08-02 - the five race-level flags held 33.5% of total gain, and
+    dropping them changed race_acc by .007 (.435 -> .428), i.e. they were noise. They are kept
+    (harmless, and they document the race context) but the CSV marks them so nobody reads
+    `is_pres_party` at 10.9% as a finding.
+    """
+    g = model.get_booster().get_score(importance_type="gain")
+    imp = pd.Series({f: g.get(f, 0.0) for f in feats}).sort_values(ascending=False)
+    total = imp.sum()
+    df = pd.DataFrame({"feature": imp.index, "gain": imp.values})
+    df["gain_pct"] = (100 * df["gain"] / total).round(3) if total else 0.0
+    df["rank"] = range(1, len(df) + 1)
+    if table is not None:
+        varies = {f: float((table.groupby("race_id")[f].nunique(dropna=False) > 1).mean())
+                  for f in feats}
+        df["within_race_varies_pct"] = df["feature"].map(
+            lambda f: round(100 * varies.get(f, 0.0), 1))
+        df["usable_by_ranker"] = df["within_race_varies_pct"] > 0
+    df.to_csv(out_csv, index=False)
+    print(f"\nwrote {os.path.basename(out_csv)}  ({len(df)} features)")
+    print(f"  top 10 by gain ({label}):")
+    for r in df.head(10).itertuples():
+        flag = ""
+        if table is not None and not r.usable_by_ranker:
+            flag = "   <-- CONSTANT within race: gain is meaningless for a ranker"
+        print(f"    {r.rank:>2}. {r.feature:<28} {r.gain_pct:>6.2f}%{flag}")
+    return df
+
+
 def main():
     # ---------------- GENERAL ----------------
     c = general_table()
@@ -258,6 +295,8 @@ def main():
     m = xgb.XGBClassifier(**params, random_state=42, n_jobs=-1)
     m.fit(c[FUND], c["won"].astype(int))
     m.save_model(os.path.join(HERE, "data", "fundamentals_model_general.json"))
+    write_importance(m, FUND, os.path.join(_HERE_DIR, "general_feature_importance.csv"),
+                     "general fundamentals")
     with open(os.path.join(HERE, "data", "fundamentals_model_general_features.json"), "w") as f:
         json.dump(dict(features=FUND, xgb_params=params, model_type="xgbclassifier",
                        target="won", trained_on_cycles=sorted(int(y) for y in c["year"].unique()),
@@ -334,6 +373,8 @@ def main():
 
     pm = PM._fit_ranker(cp, PFUND, pparams)
     pm.save_model(os.path.join(HERE, "data", "fundamentals_model_primary.json"))
+    write_importance(pm, PFUND, os.path.join(_HERE_DIR, "primary_feature_importance.csv"),
+                     "primary fundamentals", table=cp)
     with open(os.path.join(HERE, "data", "fundamentals_model_primary_features.json"), "w") as f:
         json.dump(dict(features=PFUND, xgb_params=pparams, model_type="xgbranker",
                        objective="rank:pairwise", softmax_temp=temp,
