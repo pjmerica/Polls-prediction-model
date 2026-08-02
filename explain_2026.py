@@ -83,6 +83,10 @@ FRIENDLY = {
     "fund_party_pct": "Party-committee share of funds",
     "fund_self_pct": "Self-funded share",
     "fund_smalldollar_pct": "Small-dollar donor share",
+    # SHIPPED to the general model 2026-07-29 but never added here, so the Explain modal
+    # rendered it with an empty tooltip (246 occurrences). It lives in the SHARED map rather
+    # than explain_primary's local override because BOTH models use the feature now.
+    "bio_office_level": "Office experience level",
 }
 # one-line plain-English explanations, shown on hover in the dashboard modal
 DESC = {
@@ -148,6 +152,11 @@ DESC = {
                       "winnable races.",
     "fund_self_pct": "Share the candidate gave/loaned themselves.",
     "fund_smalldollar_pct": "Share of individual money from small (<$200) donors.",
+    "bio_office_level": "Highest public office the candidate held BEFORE this election "
+                        "(4 = federal, 3 = statewide, 2 = state legislature, 1 = local, "
+                        "0 = none). A proxy for name recognition and donor networks. "
+                        "As-of-year, so the same person reads a lower level in an earlier "
+                        "cycle - a first-time candidate is 0 even if they later won office.",
 }
 _METRIC = {"unemployment": "Unemployment", "inflation": "Inflation", "cpi_core": "Core CPI",
            "gas": "Gas price", "fed_funds": "Fed funds rate", "unemp_u6": "U-6 underemployment",

@@ -42,7 +42,9 @@ FRIENDLY.update({
     "hist_last_general_pct": "Last general result (%)",
     "hist_years_since_last_run": "Years since last run",
     "hist_prior_primary_wins": "Prior primary wins",
-    "bio_office_level": "Office experience level",
+    # bio_office_level intentionally NOT overridden here (2026-08-02): it now lives in the
+    # shared FRIENDLY/DESC in explain_2026, since BOTH models use the feature. Keeping a
+    # local copy is how the two drifted - the general modal had no description at all.
     "bio_in_office": "Currently holds office",
     "bio_prior_candidacy": "Past candidacies (bio)",
 })
@@ -55,8 +57,7 @@ DESC.update({
     "hist_last_general_pct": "Vote share in their most recent prior general.",
     "hist_years_since_last_run": "Years since their last general-election run.",
     "hist_prior_primary_wins": "Prior primary victories (2018+ scraped results).",
-    "bio_office_level": "From their Wikipedia bio: 4=federal office, 3=statewide, "
-                        "2=state legislature, 1=local office, 0=none detected.",
+    # bio_office_level description lives in explain_2026.DESC - see the note above.
     "bio_in_office": "Bio says they currently hold the office ('present').",
     "bio_prior_candidacy": "Bio mentions past candidacies our archives never tracked.",
 })
@@ -74,6 +75,30 @@ DESC.update({
                         "candidates = N rows, so this exceeds the survey count shown in "
                         "the table). A proxy for how well-measured the race is.",
 })
+
+# SURVEYED-POPULATION SPLITS (labelled 2026-08-02). These 18 features are the same six poll
+# aggregates recomputed per surveyed-population class, so they were generated rather than
+# hand-written - previously ALL of them rendered in the Explain modal as a raw column name
+# with an empty tooltip (poll_last30_lv alone appeared 83 times). A race rarely has all three
+# classes, so the absent ones are NaN and the modal simply omits the value.
+_POP_LABEL = {"lv": "likely voters", "rv": "registered voters", "a": "all adults"}
+_POP_BASE = {
+    "poll_avg":    ("Polling average", "Average of the candidate's polls"),
+    "poll_last":   ("Most recent poll", "The candidate's share in their most recent poll"),
+    "poll_last30": ("Polling avg, final 30 days",
+                    "Average over polls taken in the final 30 days"),
+    "poll_std":    ("Poll-to-poll variability",
+                    "How much the candidate's numbers bounce between surveys"),
+    "n_polls":     ("# of polls", "How many polls include this candidate"),
+    "poll_lead":   ("Polling lead vs best opponent",
+                    "Candidate's average minus the best other candidate's"),
+}
+for _base, (_lab, _desc) in _POP_BASE.items():
+    for _tag, _pop in _POP_LABEL.items():
+        _unit = "" if _base.startswith("n_") else (" (pts)" if "lead" in _base else " (%)")
+        FRIENDLY[f"{_base}_{_tag}"] = f"{_lab} - {_pop}{_unit}"
+        DESC[f"{_base}_{_tag}"] = (f"{_desc}, counting ONLY polls of {_pop}. "
+                                   f"Blank when no poll of this race sampled {_pop}.")
 
 def main():
     ap = argparse.ArgumentParser()

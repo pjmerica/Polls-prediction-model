@@ -159,6 +159,7 @@ grades don't exist for future polls) and no longer appear in the model.
 | `margin_volatility` | 0% | Std of the lead over time (≈0 importance; kept for interpretability). |
 | `n_lead_changes` | 0% | How many times the front-runner flipped in the polls. |
 | `lead_changed` | 0% | 1 if the lead ever changed. |
+| `poll_momentum` | ~35% | Least-squares slope of the candidate's polls over the final 60 days — rising or falling. NaN with fewer than 3 dated polls in that window (never a silent 0, which would read as "flat"). |
 
 ### 2d. Fundamentals
 | feature | missing | meaning |
@@ -166,12 +167,51 @@ grades don't exist for future polls) and no longer appear in the model.
 | `prior_margin_cand` | **4.4%** (updated 2026-07-21; was ~59% before the 14-cycle expansion — most seats now have a matchable prior contest somewhere in 1998–2024) | Prior same-office election margin for the seat, signed to party. NaN when no prior contest anywhere in the 14-cycle window. |
 | `is_incumbent` | 3.3% | 1 if this candidate's party holds the seat and they're running; NaN (not 0) when incumbency is unknown. |
 | `is_inc_party_race` | 0% | 1 if the race has a known incumbent party. |
+| `bias_prior_cand` | ~7% | Prior-cycles polling bias for this STATE, signed toward the candidate: positive = polls here historically overstated their party. Computed leak-free from cycles strictly before the one being predicted (`features.compute_bias_priors`). |
+| `bio_office_level` | **0.0%** general train (100% coverage) / ~13.7% at 2026 serve time; ~21.8% primary train | Highest public office the candidate held **strictly before** this election year: 4 federal, 3 statewide, 2 state legislature, 1 local, 0 none. Proxy for name recognition and donor networks. **Intentionally year-varying** — the same person reads a lower level in an earlier cycle; a first-time candidate is 0 even if they later won office (see METHODOLOGY.md, "leak-free as-of-year office-level table" — do NOT "correct" these). Built by `build_office_level_table.py` from Wikipedia race pages + Ballotpedia + `candidate_bios_manual.csv` hand-codes. |
 
 ### 2e. Identity flags
 | feature | missing | meaning |
 |---|---|---|
 | `is_dem` / `is_rep` | 0% | Party one-hots. |
 | `is_senate` / `is_gov` | 0% | Office one-hots (House = both 0). |
+| `is_dem_primary` | 0% | PRIMARY model only. 1 = Democratic primary, 0 = Republican. The primary pipeline has no `is_dem`/`is_rep` pair because a within-party race has only one party in it. |
+| `is_defending_party` | ~35% | PRIMARY model only. 1 if this party currently holds the seat. NaN when the seat's incumbent party is unknown — never a silent 0. True candidate-level incumbency is not derivable from committed data (no incumbent name); documented gap. |
+| `is_pres_party` | 0% | PRIMARY model only. 1 if the primary belongs to the sitting president's party — establishment vs anti-establishment dynamics differ. |
+
+### 2d-ii. Fundraising (FEC; `fund=True` — ON for the general win + margin models, OFF for the primary model)
+Loaded by `features.load_fec(extended=True)`. **The primary model deliberately excludes
+these** (`feature_list_primary(fund=False)` is the artifact default): FEC totals are
+CYCLE-END, and nominees raise most of their money AFTER winning the primary, so `fund_share`
+partly encodes the training label while a mid-cycle 2026 candidate has no such money yet.
+Measured: dropping fund left primary race-acc identical and cost only Brier .035→.046.
+
+| feature | missing | meaning |
+|---|---|---|
+| `fund_receipts_ln` | ~27% | `log1p` of total receipts. NaN when the candidate has no matched FEC record (never a silent 0). |
+| `fund_share` | ~27% | Candidate's share of ALL money raised in the race — donors as forecasters with skin in the game. In the PRIMARY pipeline this is recomputed WITHIN the party field, so the other party's money can't leak into the denominator. |
+| `fund_indiv_pct` | ~27% | Share of the candidate's receipts from individual donors. |
+| `fund_pac_pct` | ~27% | Share from PACs/committees — PAC money tends to flow to likely winners. |
+| `fund_party_pct` | ~27% | Share from party committees — parties triage toward winnable races. |
+| `fund_self_pct` | ~27% | Share the candidate gave or loaned themselves. |
+| `fund_smalldollar_pct` | ~27% | Share of individual money from small (<$200) donors. |
+
+### 2e-ii. Surveyed-population splits (PRIMARY model only; 18 features)
+The same six poll aggregates recomputed per surveyed-population class, so the model can tell
+a likely-voter read from an all-adults one. `v` (unspecified voters) folds into `rv`; rows
+with no population label are excluded from the splits but still count in the overall
+aggregates. **A race rarely has all three classes — the absent ones are NaN by design and
+XGBoost routes missing.** Added 2026-07-15; deeper per-class variants (momentum, dynamics)
+are too sparse at ~200 training races and are deliberately not built.
+
+| feature family | classes | missing | meaning |
+|---|---|---|---|
+| `poll_avg_{lv,rv,a}` | lv / rv / a | ~30% / ~85% / ~93% | Mean of the candidate's polls of that population only. |
+| `poll_last_{lv,rv,a}` | " | " | Their most recent poll within that class. |
+| `poll_last30_{lv,rv,a}` | " | " | Final-30-day mean within that class. |
+| `poll_std_{lv,rv,a}` | " | " | Poll-to-poll spread within that class (NaN with <2 polls). |
+| `n_polls_{lv,rv,a}` | " | **0%** | Count of polls in that class — 0, never NaN. |
+| `poll_lead_{lv,rv,a}` | " | ~30% / ~85% / ~93% | Lead over the best OTHER candidate *within that class* (fixed 2026-07-21 — this used to be one race-wide constant, so 2nd place always read exactly 0.0). |
 
 ### 2f. National environment & macro/climate (per-cycle; 0% missing — filled for every cycle)
 `is_president_party` = 1 if the candidate's party holds the White House — the interaction key
