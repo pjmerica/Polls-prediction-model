@@ -32,6 +32,16 @@ because a primary is a within-race ordering problem.
 Artifacts are written with a `fund_` prefix so they can never be confused with production:
     data/fundamentals_model_general.json / _general_features.json
     data/fundamentals_model_primary.json / _primary_features.json
+
+DETERMINISM (checked 2026-08-02): this script IS reproducible. Two runs a day apart reported
+race_acc .803 then .791, which looked like seed instability - it was not. XGBoost with a fixed
+random_state is bit-for-bit identical here (verified: 5 back-to-back fits of the same fold
+produced identical probabilities to 8 decimal places). The two runs simply sat on either side
+of commit 457dc1d, which REGENERATED polls_long_with_results.csv and rebuilt the primary
+dataset. Different training data, not a different seed.
+The lesson worth keeping: polls_long_with_results.csv is gitignored, so a metric change across
+runs can come from a silent input change that git does not show you. Compare model numbers
+only within one commit, or regenerate the inputs first.
 """
 
 import os as _os, sys as _sys

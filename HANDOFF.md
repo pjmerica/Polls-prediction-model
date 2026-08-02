@@ -39,7 +39,18 @@ each prelude standalone, not by importing.
 - Dashboard: "reliable only (4+ polls)" gate on both model tabs, ON by default, with a
   tab-specific warning banner when switched off (polling-agg 9ae8560).
 
-**OPEN — the fundamentals model is a prototype, not finished.** In the user's chosen order:
+**RESOLVED 2026-08-02 — the fundamentals work list is CLOSED.** Headline: **do not blend.**
+The fundamentals model loses to the poll model on accuracy in EVERY survey bucket of BOTH
+models, so the thin-poll fix belongs in the poll model's own calibration (CONCERNS #26), not
+in a second model. It stays a reference floor, still not wired into predict.py or the
+dashboard. Full write-up in CONCERNS.md item 28; the head-to-head lives in
+`analysis/fundamentals_vs_polls_thin.py`. Two items were deliberately BACKBURNERED by the
+user: an FEC as-of-primary-date fetcher, and measuring the general/margin models' own FEC
+exposure (their features are mostly ratio-shaped, so the leak should be milder — but that is
+unmeasured, and fund_share ranked 7th by SHAP in the last win-model run).
+
+<details><summary>Original ordered list (all now done — kept for the reasoning)</summary>
+
   5. Fundraising leakage: adding fund_share/receipts lifts the primary variant .422 -> .756.
      Almost certainly the cycle-end FEC leak (nominees raise most of their money AFTER winning
      the primary) but PROVE it rather than assume.
@@ -52,6 +63,7 @@ each prelude standalone, not by importing.
      reason the model was built.
   7. Nondeterminism: reruns gave race_acc .803 then .791. Not seed-stable; unchased.
   (#3 feature selection: SKIPPED per user — the 161-feature general variant stays as is.)
+</details>
 
 ## CURRENT STATE 2026-08-01 — softmax temp + poll dedup + name join key + bio leakage; all 3 models retrained.
 

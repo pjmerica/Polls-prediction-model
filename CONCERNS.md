@@ -281,6 +281,30 @@ above:
     reported the 1-survey bucket as the worst; on surveys it is actually UNDER-confident
     (10/10 called correctly) — a lone poll usually appears in a race so lopsided nobody polled
     it twice. "Fewer polls = worse" is NOT monotone.
-28. **The fundamentals (no-polling) model is a prototype.** See HANDOFF.md 2026-08-02 for the
-    ordered work list (#5 leakage, #1 re-tune, #2 temperature, #6 thin-race calibration,
-    #7 nondeterminism). Feature selection (#3) deliberately skipped per user.
+28. **The fundamentals (no-polling) model — work list CLOSED 2026-08-02.** All items done or
+    resolved; the model stays a reference floor, NOT wired into predict.py or the dashboard.
+      - #5 fundraising leakage: **PROVEN**, not assumed. FEC coverage runs to the year AFTER
+        the cycle (2022 → 2023-01-31), so ~18 months of post-primary money is in the total.
+        The eventual nominee is the top fundraiser **92.4%** of the time vs the poll leader
+        winning 69.6%; nominees hold a median **6.8×** the runner-up's share. Reassuringly,
+        the PRIMARY model has **zero** FEC features, so no primary prediction was affected.
+      - #1 hyperparameters re-tuned (LOCO over old cycles only): general Brier .111 → .105,
+        race_acc .791 → .811; primary Brier .153 → .132.
+      - #2 softmax temperature fit after the params: **T=1.0** for the fundamentals primary
+        (vs 0.4 for the poll model — a flat temperature is right precisely because this model
+        has little signal to sharpen).
+      - #6 **answered: do NOT blend.** `analysis/fundamentals_vs_polls_thin.py` runs both
+        models head to head on the same held-out races. The fundamentals model loses on
+        accuracy in EVERY survey bucket of BOTH models (primary 2-3 surveys: .471 vs .706)
+        and its Brier is worse everywhere. It IS better calibrated on thin primary races
+        (gap −0.004 vs +0.206) but that is worth nothing while it picks the wrong winner more
+        than half the time. **The thin-poll fix therefore belongs in the poll model's own
+        calibration (item 26), not in a second model.**
+      - #7 "nondeterminism" was **not** nondeterminism. XGBoost with a fixed random_state is
+        bit-for-bit identical here (5 back-to-back fits → identical probabilities to 8dp).
+        The .803-vs-.791 difference straddled commit 457dc1d, which regenerated
+        `polls_long_with_results.csv`. Different DATA, not a different seed. **General lesson:
+        that file is gitignored, so a metric change between runs can come from a silent input
+        change git will not show you — compare model numbers only within one commit.**
+      - #3 feature selection: deliberately SKIPPED per user; the 161-feature general variant
+        stays as is.
