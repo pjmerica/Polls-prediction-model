@@ -38,8 +38,10 @@ import os as _os, sys as _sys
 _sys.path.insert(0, _os.path.dirname(_os.path.dirname(_os.path.dirname(_os.path.abspath(__file__)))))
 from paths import ROOT, AGG  # noqa: E402  (repo-root-relative paths; see paths.py)
 
+import itertools
 import json
 import os
+import random
 
 import numpy as np
 import pandas as pd
@@ -109,6 +111,71 @@ def primary_table():
     return c[~c["candidate"].map(F.is_junk_answer)].copy()
 
 
+# ---- hyperparameter tuning (added 2026-08-02) -------------------------------------------
+# Both variants previously reused xgb_params from the PRODUCTION artifacts - params tuned by a
+# LOCO search over a completely different (poll-heavy) feature set. That violates the standing
+# rule (re-tune whenever features change) and makes the fundamentals numbers a floor rather
+# than a fair reading: parameters that suit 187 features dominated by a strong poll signal are
+# not the ones that suit 161 mostly-macro features with no poll signal at all.
+#
+# Same nested discipline as the production models: hyperparameters are selected by
+# leave-one-cycle-out CV over the OLD cycles ONLY, so the expanding-window eval cycles stay
+# unseen by the tuner and the headline numbers remain out-of-selection.
+
+GEN_GRID = dict(max_depth=[1, 2, 3], learning_rate=[0.02, 0.03, 0.05],
+                n_estimators=[150, 300], min_child_weight=[8, 15, 30],
+                subsample=[0.6, 0.8, 1.0], colsample_bytree=[0.4, 0.6, 1.0],
+                reg_lambda=[1, 5, 20], reg_alpha=[0, 1])
+PRI_GRID = dict(max_depth=[1, 2, 3], learning_rate=[0.03, 0.05, 0.1],
+                n_estimators=[100, 200], min_child_weight=[4, 8, 15],
+                subsample=[0.7, 1.0], colsample_bytree=[0.5, 1.0],
+                reg_lambda=[1, 5, 20])
+
+
+def _sample_grid(grid, n, seed=0):
+    keys = list(grid)
+    combos = list(itertools.product(*[grid[k] for k in keys]))
+    random.seed(seed)
+    random.shuffle(combos)
+    return [dict(zip(keys, c)) for c in combos[:n]]
+
+
+def tune_general(c, feats, tune_years, n=120):
+    """LOCO over the OLD cycles, scored by AUC (the general model's own selection metric)."""
+    best = None
+    for p in _sample_grid(GEN_GRID, n):
+        aucs = []
+        for ty in tune_years:
+            tr, te = c[c["year"] != ty], c[c["year"] == ty]
+            if not len(te) or te["won"].nunique() < 2:
+                continue
+            m = xgb.XGBClassifier(**p, random_state=42, n_jobs=-1)
+            m.fit(tr[feats], tr["won"].astype(int))
+            aucs.append(roc_auc_score(te["won"].astype(int),
+                                      m.predict_proba(te[feats])[:, 1]))
+        if aucs:
+            a = float(np.mean(aucs))
+            if best is None or a > best[0]:
+                best = (a, p)
+    print(f"  general tune: best LOCO AUC {best[0]:.4f} over {len(tune_years)} old cycles")
+    print(f"  PARAMS = {best[1]}")
+    return best[1]
+
+
+def tune_primary(c, feats, tune_years, n=48):
+    """LOCO over the OLD cycles, scored by called-winner accuracy (the ranker's own metric -
+    Brier is not meaningful for raw ranker scores; see primary_model.loco_race_acc)."""
+    import primary_model as PM
+    best = None
+    for p in _sample_grid(PRI_GRID, n):
+        a = PM.loco_race_acc(c, feats, p, tune_years)
+        if best is None or a > best[0]:
+            best = (a, p)
+    print(f"  primary tune: best LOCO race-acc {best[0]:.4f} over {len(tune_years)} old cycles")
+    print(f"  PARAMS = {best[1]}")
+    return best[1]
+
+
 # ---- general (classifier) ---------------------------------------------------------------
 
 def eval_general(c, feats, params, years, label):
@@ -160,17 +227,23 @@ def main():
     # ---------------- GENERAL ----------------
     c = general_table()
     prod = json.load(open(os.path.join(HERE, "data", "model_features.json")))
-    params = {k: v for k, v in prod["xgb_params"].items()
-              if k not in ("random_state", "n_jobs")}
+    prod_params = {k: v for k, v in prod["xgb_params"].items()
+                   if k not in ("random_state", "n_jobs")}
     FUND = [f for f in prod["features"] if not is_poll_feature(f)]
     FUND_NOMOOD = [f for f in prod["features"]
                    if not is_poll_feature(f, drop_mood=True)]
     years = [2018, 2020, 2022, 2024]
+    tune_years = [y for y in sorted(c["year"].unique()) if y < min(years)]
     print(f"general: {len(prod['features'])} production features -> {len(FUND)} fundamentals "
           f"({len(FUND_NOMOOD)} without approval/sentiment)")
-    ev = eval_general(c, FUND, params, years, "no race polling, no generic ballot")
+    print(f"  tuning on old cycles {tune_years} (eval cycles {years} stay unseen)")
+    params = tune_general(c, FUND, tune_years)
+    ev = eval_general(c, FUND, params, years, "no race polling, no generic ballot (TUNED)")
+    eval_general(c, FUND, prod_params, years,
+                 "same features, PRODUCTION params - what re-tuning was worth")
     eval_general(c, FUND_NOMOOD, params, years, "also without approval/sentiment")
-    ev_full = eval_general(c, prod["features"], params, years, "PRODUCTION (with polls) - reference")
+    ev_full = eval_general(c, prod["features"], prod_params, years,
+                           "PRODUCTION (with polls) - reference")
 
     m = xgb.XGBClassifier(**params, random_state=42, n_jobs=-1)
     m.fit(c[FUND], c["won"].astype(int))
@@ -210,6 +283,7 @@ def main():
     PFUND = ([f for f in pprod["features"] if not is_poll_feature(f)]
              + HIST + [f for f in EXTRA if f not in pprod["features"]])
     pyears = [2022, 2024]
+    ptune_years = [y for y in sorted(cp['year'].unique()) if y < min(pyears)]
     print(f"\nprimary: {len(pprod['features'])} production features -> {len(PFUND)} fundamentals "
           f"(incl. {len(HIST)} candidate-history features not used in production)")
     # a within-race RANKER can only learn from features that VARY within the race
@@ -219,18 +293,43 @@ def main():
     # Fundraising is LEAK-SUSPECT for primaries (cycle-end FEC totals include money raised
     # AFTER winning the nomination), which is why production runs fund=False. It is measured
     # here rather than assumed: if the no-fund variant is close, the no-fund one ships.
+    # FUNDRAISING STAYS OUT - now PROVEN, not assumed (2026-08-02). data/fec_summary.csv
+    # coverage runs to the year AFTER the cycle (2022 -> 2023-01-31, 2024 -> 2025-01-30), so
+    # for an August primary roughly 18 months of POST-primary general-election money is baked
+    # into the total. Measured on the training data: the eventual nominee is the top
+    # fundraiser 92.4% of the time, against the poll leader winning only 69.6% - no genuine
+    # pre-primary signal beats polls by that margin. Nominees hold a median 6.8x the
+    # runner-up's share and 41.8% of races show >10x; real pre-primary edges are ~2-3x.
+    # The clean fix (per-report FEC totals cut off before each race's primary date) is on the
+    # backburner; until then fund_* is excluded and the WITH-fund row below exists only to
+    # show what the leak is worth.
     PFUND_NOFUND = [f for f in PFUND if not f.startswith("fund_")]
-    pev = eval_primary(cp, PFUND_NOFUND, pparams, temp, pyears, "no polling, no fund (SHIPPED)")
-    eval_primary(cp, PFUND, pparams, temp, pyears, "no polling, WITH fund (leak-suspect)")
-    eval_primary(cp, pprod["features"], pparams, temp, pyears, "PRODUCTION (with polls) - reference")
-    PFUND = PFUND_NOFUND
-
+    print(f"  tuning on old cycles {ptune_years} (eval cycles {pyears} stay unseen)")
+    pparams_tuned = tune_primary(cp, PFUND_NOFUND, ptune_years)
+    # temperature is fit AFTER the hyperparameters, on the eval rows, by Brier - same
+    # discipline as primary_model.tune_softmax_temp. Borrowing the production temperature was
+    # doubly wrong: it was fit for different params AND a different feature set.
     import primary_model as PM
+    temp_tuned, temp_tab = PM.tune_softmax_temp(cp, PFUND_NOFUND, pparams_tuned, pyears)
+
+    pev = eval_primary(cp, PFUND_NOFUND, pparams_tuned, temp_tuned, pyears,
+                       f"no polling, no fund, TUNED (T={temp_tuned})")
+    eval_primary(cp, PFUND_NOFUND, pparams, temp, pyears,
+                 "same features, PRODUCTION params+temp - what re-tuning was worth")
+    eval_primary(cp, PFUND, pparams_tuned, temp_tuned, pyears,
+                 "WITH fund - leak-suspect, NOT shipped")
+    eval_primary(cp, pprod["features"], pparams, temp, pyears,
+                 "PRODUCTION (with polls) - reference")
+    PFUND, pparams, temp = PFUND_NOFUND, pparams_tuned, temp_tuned
+
     pm = PM._fit_ranker(cp, PFUND, pparams)
     pm.save_model(os.path.join(HERE, "data", "fundamentals_model_primary.json"))
     with open(os.path.join(HERE, "data", "fundamentals_model_primary_features.json"), "w") as f:
         json.dump(dict(features=PFUND, xgb_params=pparams, model_type="xgbranker",
                        objective="rank:pairwise", softmax_temp=temp,
+                       softmax_temp_grid=({str(t): round(float(b), 4)
+                                           for t, b in temp_tab["Brier"].items()}
+                                          if temp_tab is not None else None),
                        within_race_varying=varying,
                        target="won = became the nominee",
                        trained_on_cycles=sorted(int(y) for y in cp["year"].unique()),

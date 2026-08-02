@@ -16,16 +16,28 @@
  ],
  "xgb_params": {
   "max_depth": 2,
-  "learning_rate": 0.1,
-  "n_estimators": 200,
+  "learning_rate": 0.05,
+  "n_estimators": 100,
   "min_child_weight": 15,
   "subsample": 0.7,
-  "colsample_bytree": 0.5,
-  "reg_lambda": 20
+  "colsample_bytree": 1.0,
+  "reg_lambda": 1
  },
  "model_type": "xgbranker",
  "objective": "rank:pairwise",
- "softmax_temp": 0.5,
+ "softmax_temp": 1.0,
+ "softmax_temp_grid": {
+  "0.1": 0.181,
+  "0.15": 0.1734,
+  "0.2": 0.1659,
+  "0.25": 0.1587,
+  "0.3": 0.1522,
+  "0.4": 0.142,
+  "0.5": 0.1352,
+  "0.75": 0.1279,
+  "1.0": 0.1266,
+  "1.5": 0.1283
+ },
  "within_race_varying": [
   "bio_office_level",
   "hist_prior_runs",
@@ -51,14 +63,14 @@
  "eval_expanding_window": {
   "2022": {
    "n_races": 65.0,
-   "AUC": 0.8093,
-   "Brier": 0.1186,
-   "race_acc": 0.5077
+   "AUC": 0.8009,
+   "Brier": 0.1165,
+   "race_acc": 0.4923
   },
   "2024": {
    "n_races": 37.0,
-   "AUC": 0.7439,
-   "Brier": 0.1873,
+   "AUC": 0.7642,
+   "Brier": 0.1485,
    "race_acc": 0.3784
   }
  }
