@@ -256,6 +256,38 @@ above:
     reads 0 despite 2016 reading 2). Pre-existing source-completeness gap, separate from the
     future-tense leak fixed 2026-08-01; not overridden, still worth a cleanup pass.
 
+## Added 2026-08-03 — full-repo audit findings
+
+29. **`poll_momentum` is a PRODUCTION general-model feature that is 100% NaN at serve time.**
+    Same structural problem as `poll_last7` (item 23), except this one actually shipped. It
+    needs >=3 dated polls within 60 days of the election; the general election is a fixed date,
+    so on 2026-08-03 the live feed's minimum `days_to_elec` is 95 and **0 of 1,667 rows**
+    qualify. Training coverage is 54.1%, serve coverage 0.0%.
+    It is not harmless: it ranks **12th of 187 by gain**, and it appears in **82 of the
+    dashboard's top-10 SHAP blocks with a null value in every one** — so the Explain modal
+    shows users a driver that contributed nothing.
+    Measured with/without on the held-out cycles:
+        WITH (production)   AUC .9685  Brier .0691  race_acc .8570
+        WITHOUT             AUC .9678  Brier .0697  race_acc .8630
+    Dropping it IMPROVES race-accuracy by 0.6pt and costs ~0.0007 Brier. On that evidence it
+    should probably come out of `feature_list`, but that is a feature change -> full re-tune +
+    retrain of BOTH general models, so it is logged rather than done unilaterally.
+    Note it self-heals in late October, when the 60-day window finally contains polls — which
+    is exactly why it was never noticed: the model is only wrong about it for most of the cycle.
+30. **`sentiment_last12_delta` is also 100% NaN at serve time**, for a different reason: the
+    consumer-sentiment series in `data/macro_monthly.csv` ends **2025-08**, 12 months stale,
+    while every other macro series is current to 2026-06. The `_last12_delta` window cannot be
+    filled, so the feature is correctly NaN (this is the 2026-07-14 silent-zero fix working).
+    `refresh_dashboard.py`'s freshness guard already tolerates it with a 13-month threshold and
+    a "DBnomics mirror lags ~1yr" note, so it is KNOWN — but it ranks 144/187, so the practical
+    cost is low and the honest fix is a better sentiment source, not a code change.
+31. **Audit clean elsewhere.** Checked and found NO problems in: cross-repo duplicated helper
+    functions (only `norm_name` had copies, now fixed); unscoped CSS selectors beyond the
+    `.mv-etab` collision fixed today; `inf` values or all-NaN columns in either primary model's
+    live matrix; unreferenced/dead scripts; model artifacts or importance CSVs being gitignored
+    (all 8 tracked). Redundant recomputation across the refresh chain (house effects + bias
+    priors rebuilt by 4 scripts) measures ~2s total — not worth caching.
+
 ## Added 2026-08-02 — thin polling + the fundamentals model
 
 26. **The primary model is overconfident below 3 distinct surveys** — ~9-12 points, held out
