@@ -49,6 +49,7 @@ STEPS_PREDICT = [
     ([sys.executable, os.path.join(ROOT, "predict.py")], "win probabilities"),
     ([sys.executable, os.path.join(ROOT, "predict_margin.py")], "margins"),
     ([sys.executable, os.path.join(ROOT, "predict_primary.py")], "primary nominee probabilities"),
+    ([sys.executable, os.path.join(ROOT, "predict_primary_margin.py")], "primary margins"),
     ([sys.executable, os.path.join(ROOT, "explain_2026.py")],
      "SHAP explanations (writes polling-agg copy itself)"),
     ([sys.executable, os.path.join(ROOT, "explain_primary.py")],
@@ -106,7 +107,9 @@ def main():
                      ("predictions_2026_meta.json", "model_predictions_meta.json"),
                      ("margin_predictions_2026.csv", "model_margin_predictions_2026.csv"),
                      ("primary_predictions_2026.csv", "model_primary_predictions_2026.csv"),
-                     ("primary_predictions_2026_meta.json", "model_primary_predictions_meta.json")]:
+                     ("primary_predictions_2026_meta.json", "model_primary_predictions_meta.json"),
+                     ("primary_margin_predictions_2026.csv",
+                      "model_primary_margin_predictions_2026.csv")]:
         shutil.copyfile(os.path.join(HERE, src),
                         os.path.join(AGG, "data", "processed", dst))
         print(f"copied {src} -> polling-agg/data/processed/{dst}")
