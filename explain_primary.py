@@ -142,16 +142,32 @@ def main():
 
     out = {}
     for rid, g in cand.groupby("race_id"):
-        i = g["p"].idxmax()          # explain the predicted nominee (top softmax prob)
-        row = cand.loc[i]
-        # SHAP bars are in score space; base = mean score -> shown as the field-average share
-        # (softmax of a flat field = 1/n) so base->pred reads as "generic candidate -> this
-        # candidate's within-race probability". pred is the dashboard's win_prob_norm.
         n = len(g)
-        blk = top_shap(meta["features"], X.loc[i].values, sv.values[cand.index.get_loc(i)],
-                       1.0 / n, float(row["p"]))
-        out[rid] = dict(candidate=row["candidate"], party=row["party"], win=blk,
-                        field_confidence=round(float(field_conf.loc[i]), 4))
+
+        def _blk(i):
+            # SHAP bars are in score space; base = mean score -> shown as the field-average
+            # share (softmax of a flat field = 1/n) so base->pred reads as "generic candidate
+            # -> this candidate's within-race probability". pred is the dashboard's
+            # win_prob_norm.
+            return top_shap(meta["features"], X.loc[i].values,
+                            sv.values[cand.index.get_loc(i)], 1.0 / n, float(cand.loc[i, "p"]))
+
+        top_i = g["p"].idxmax()      # the predicted nominee stays the headline
+        row = cand.loc[top_i]
+        # EVERY candidate gets an explanation (2026-08-03, user request). SHAP was already
+        # computed for the whole table above - `sv = explainer(X)` covers every row - so the
+        # old code was computing all of it and then throwing away everything except the
+        # front-runner. Emitting the rest costs nothing extra at run time and answers the
+        # obvious question the modal could not previously answer: "why is THIS candidate
+        # losing?". Ordered by model probability, so candidates[0] is the same block the
+        # headline `win` key carries (kept for backward compatibility with the existing
+        # dashboard modal).
+        cands = [dict(candidate=cand.loc[i, "candidate"], party=cand.loc[i, "party"],
+                      model=round(float(cand.loc[i, "p"]), 4), win=_blk(i))
+                 for i in g["p"].sort_values(ascending=False).index]
+        out[rid] = dict(candidate=row["candidate"], party=row["party"], win=_blk(top_i),
+                        candidates=cands,
+                        field_confidence=round(float(field_conf.loc[top_i]), 4))
 
     payload = dict(cycle=args.cycle,
                    note="SHAP top-10 for the PRIMARY nominee model, explaining the "
