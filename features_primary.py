@@ -285,13 +285,10 @@ def build_primary_table(d, fec=None, inc_map=None, macro_asof=None, hist=None, b
                 pop_feats[f"poll_last30_{tag}"] = gp30["pct"].mean() if len(gp30) else np.nan
                 pop_feats[f"poll_std_{tag}"] = gp["pct"].std() if len(gp) > 1 else np.nan
                 pop_feats[f"n_polls_{tag}"] = len(gp)
-            last60 = gc[gc["days_to_elec"] <= 60].dropna(subset=["pct", "days_to_elec"])
-            slope = np.nan
-            if len(last60) >= 3:
-                x = -last60["days_to_elec"].values.astype(float)
-                y = last60["pct"].values.astype(float)
-                if np.ptp(x) > 0:
-                    slope = np.polyfit(x, y, 1)[0]
+            # Shared with the general model - see F.poll_momentum_slope. This was a
+            # forked 60-day copy until 2026-08-03; the fork meant the general model's
+            # switch to all-dated-polls silently skipped both primary models.
+            slope = F.poll_momentum_slope(gc)
             fe = fec.get((yr, st, of, di, ck)) if fec is not None else None
             rec = fe["receipts"] if fe else np.nan
             md = dyn.get(ck, {})

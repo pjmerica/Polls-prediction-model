@@ -480,6 +480,39 @@ def count_lead_changes(g):
         prev = leader
     return changes
 
+def poll_momentum_slope(gc):
+    """OLS slope of pct vs time (pts/day) over ALL of a candidate's dated polls.
+
+    THE single definition of poll_momentum - imported by features_primary.py too.
+    Do not re-implement: a forked 60-day copy lived in features_primary.py until
+    2026-08-03 and silently kept both primary models on the old definition through
+    a full retrain, because the retrain was verified against features.py only.
+
+    Changed 2026-08-03 from a 60-day window to all dated polls. The window version
+    was NaN for 100% of 2026 serve rows (the nearest primary was >60 days out), so
+    the trees were splitting on a feature that never exists in production. The two
+    definitions measure the same thing (correlation 0.917 on the 2,396 training rows
+    where both exist): serve coverage goes 0% -> 39%, train coverage 54% -> 60%.
+
+    The held-out difference is NOISE-LEVEL - across 5 seeds the win model reads
+    .8631 (full) vs .8613 (window) with +/-.002 spread, and the margin model mildly
+    prefers the window (MAE 7.39 vs 7.35). The change is justified by SERVE-TIME
+    AVAILABILITY, not by accuracy. Carrying BOTH was tested and is strictly worse on
+    the win model (.8602) - at r=0.92 they are near-duplicates and the spare one just
+    gives the trees a sparser column to overfit.
+
+    NB: callers must NOT reuse their end_date-based `dated` frame here - that one
+    feeds poll_last, and aliasing it would silently change poll_last too.
+    """
+    rows = gc.dropna(subset=["pct", "days_to_elec"])
+    if len(rows) < 3:
+        return np.nan
+    x = -rows["days_to_elec"].values.astype(float)
+    y = rows["pct"].values.astype(float)
+    if np.ptp(x) <= 0:
+        return np.nan
+    return np.polyfit(x, y, 1)[0]
+
 def margin_dynamics(g):
     """Per-candidate margin-vs-best-opponent trajectory stats over the campaign."""
     g = g.dropna(subset=["end_date", "pct"]).sort_values("end_date")
@@ -614,13 +647,13 @@ def build_candidate_table(d, macro, natl_env_map, funds, house_train_years=None,
             incp = inc_map.get((yr, st, of, di))
             pm = prior_margin(margin_map, yr, st, of, di)
 
-            last60 = gc[gc["days_to_elec"] <= 60].dropna(subset=["pct", "days_to_elec"])
-            slope = np.nan
-            if len(last60) >= 3:
-                x = -last60["days_to_elec"].values.astype(float)
-                y = last60["pct"].values.astype(float)
-                if np.ptp(x) > 0:
-                    slope = np.polyfit(x, y, 1)[0]
+            # POLL MOMENTUM: slope of the candidate's polls over time, over ALL dated
+            # polls rather than a final-60-day window. The window version was 0.0%
+            # populated at serve time for the general model (a general election is a
+            # FIXED date, so until ~September nothing is within 60 days of it) yet
+            # ranked 12th of 187 by gain and appeared in 82 dashboard SHAP blocks with
+            # a NULL value in every one. See poll_momentum_slope() for the full record.
+            slope = poll_momentum_slope(gc)
 
             adj = gc["pct"] - gc["pollster"].map(lambda p: sign * house.get(norm_pollster(p), 0.0))
             md = dyn.get(ck, {})

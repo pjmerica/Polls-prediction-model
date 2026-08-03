@@ -258,7 +258,7 @@ above:
 
 ## Added 2026-08-03 — full-repo audit findings
 
-29. **`poll_momentum` is a PRODUCTION general-model feature that is 100% NaN at serve time.**
+29. ~~**`poll_momentum` is a PRODUCTION general-model feature that is 100% NaN at serve time.**~~ **FIXED 2026-08-03** — see the resolution note at the end of this item.
     Same structural problem as `poll_last7` (item 23), except this one actually shipped. It
     needs >=3 dated polls within 60 days of the election; the general election is a fixed date,
     so on 2026-08-03 the live feed's minimum `days_to_elec` is 95 and **0 of 1,667 rows**
@@ -274,6 +274,40 @@ above:
     retrain of BOTH general models, so it is logged rather than done unilaterally.
     Note it self-heals in late October, when the 60-day window finally contains polls — which
     is exactly why it was never noticed: the model is only wrong about it for most of the cycle.
+
+    **RESOLUTION (2026-08-03, user call): `poll_momentum` now uses ALL of a candidate's dated
+    polls instead of a final-60-day window.** Serve coverage 0% → **39.4%**; train coverage
+    54% → 60%. The two definitions measure the same thing (r = 0.917 on the 2,396 training rows
+    where both exist), so nothing is lost.
+    **Justified by serve-time availability, NOT by accuracy** — and that distinction matters,
+    because the single-seed numbers above are misleading. Re-run across 5 seeds:
+        A window (old)  race_acc .8613 ± .0024      MARGIN MAE 7.348 ± .038
+        B all-poll (new) race_acc .8631 ± .0011     MARGIN MAE 7.390 ± .064
+        D BOTH           race_acc .8602 ± .0018     MARGIN MAE 7.348 ± .044
+        C neither        race_acc .8620 ± .0010     MARGIN MAE 7.372 ± .046
+    The between-variant gaps are the same size as the seed spread, and the two models disagree
+    on which they prefer — so on accuracy this feature simply does not matter much. What DOES
+    matter is that the old version was permanently NaN in production and polluting 82 Explain
+    modals with a null driver.
+    **Carrying BOTH was tested at the user's suggestion and is the WORST option for the win
+    model** (.8602, below every alternative): at r = 0.92 they are near-duplicates, so the
+    spare column mainly gives the trees something sparser to overfit.
+    **A FORKED SECOND COPY nearly made this a silent non-change for the primaries.**
+    `features_primary.py` carried its own 60-day implementation, so the first "all four models
+    retrained" pass actually retrained BOTH primary models on the OLD definition. The tell was
+    the primary margin model returning byte-identical results (MAE 17.03, identical
+    hyperparameters) — a retrain that changes nothing means the input changed nothing.
+    There is now ONE definition, `F.poll_momentum_slope()`, called by both feature modules.
+    Lesson: verifying a shared-feature change through one module is not verification. Grep for
+    other call sites first.
+    The primary-side numbers are NOT the general model's, and the near-duplicate argument does
+    NOT transfer: primary coverage 29.1% → **53.1%**, but the old/new correlation is only
+    **r = 0.353** (vs 0.917 general), so for primaries this is a genuinely different feature.
+    Post-fix, honestly retrained: primary nominee race_acc .915 → **.907**, primary margin MAE
+    17.03 → **16.67**. Both moves are inside noise on 102 races / 320 rows — but the primary
+    margin model's weak 2022 fold flipped from a loss to a win vs the calibrated baseline
+    (15.97 → 14.69 vs 15.39), so both folds now beat it.
+    All four models retrained on the new definition (the two primaries twice — see above).
 30. **`sentiment_last12_delta` is also 100% NaN at serve time**, for a different reason: the
     consumer-sentiment series in `data/macro_monthly.csv` ends **2025-08**, 12 months stale,
     while every other macro series is current to 2026-06. The `_last12_delta` window cannot be
