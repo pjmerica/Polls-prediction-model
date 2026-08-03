@@ -258,6 +258,13 @@ VoteHub (2024+); `natl_env_cand` from the same generic-ballot lineage, last-30-d
 > `margin_feature_importance.csv` after each retrain. Data is static (pulled once into
 > `data/macro_monthly.csv`); it is **not** re-downloaded on every model run.
 
+### 2f-ii. PRIMARY MARGIN model target (added 2026-08-03)
+| field | missing | meaning |
+|---|---|---|
+| `vote_margin` | label, not a feature | The PRIMARY MARGIN model's target: the candidate's actual primary vote pct minus the **best OTHER candidate's**, in percentage points (positive = won the primary by that much). Labels come from `data/primary_results_hist.csv` + `data/house_primary_results_hist.csv`. **`best_other` is computed over the RESULTS field, not the polled subset** — the results tables are near-complete (per-race pct sums average 99.8) while the polled subset often omits the actual runner-up, so using the polled max would compare the front-runner against the wrong person. Races whose results field sums to <95 are dropped for the same reason. 611 labelled rows / 199 races. |
+| `pred_margin` | 0% (predict-time) | Model output, same units. Held-out MAE ~17 pts — read as "comfortable vs close", not precise: primary margins are ~2x harder than general ones (target std 40.8, range −92..+100). |
+| `uncontested_field` | 0% (predict-time) | 1 when only ONE candidate in the field was polled. `poll_lead` is then 0.0 by construction and the margin is extrapolated from that candidate's own level rather than measured against an opponent (40 of 213 races in 2026). The dashboard greys these with a leading "~". |
+
 ### 2g. Outcome (label / excluded-from-features)
 | column | meaning |
 |---|---|

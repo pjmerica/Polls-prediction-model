@@ -4,7 +4,72 @@ For the next agent. Read AGENTS.md first (architecture + rules), CONCERNS.md sec
 (risk register + roadmap). This file: what's mid-flight RIGHT NOW, what's most likely to
 break, and what to do next, in order.
 
-## CURRENT STATE 2026-08-02 (latest) — repo reorganised; fundamentals model added; thin-poll gate shipped.
+## CURRENT STATE 2026-08-03 (latest) — FOURTH MODEL (primary margin) + per-candidate explainers + 3 CI/data bugs found by the user.
+
+**There are now FOUR models**, not three. The new one is the PRIMARY MARGIN model
+(`models/poll/primary_margin_model.py` -> `data/primary_margin_model_*.json`), the
+primary-side sibling of `margin_model.ipynb`, wired end-to-end exactly like the general one:
+`predict_primary_margin.py` -> `primary_margin_predictions_2026.csv` ->
+`refresh_dashboard.py` copies it -> `model_compare_primary.py` joins it -> the primary tab
+renders a **Margin** column.
+
+  Held-out (expanding-window):  MAE_model 17.03  vs  MAE_calib 18.54  vs  MAE_poll 19.75
+  -> it BEATS the calibrated-poll baseline, but read that honestly: the 2022 fold LOSES
+     (15.97 vs 15.39) and the mean win comes entirely from 2024. Two eval cycles, one good
+     fold. Primary margins are ~2x harder than general ones (target std 40.8, range -92..+100)
+     on 611 labelled rows vs the general model's ~4,400.
+
+Two primary-specific design points that the general path does not need:
+  - `best_other` is computed over the RESULTS field, not the polled subset. The results
+    archives are near-complete (per-race pct sums average 99.8) while the polled subset often
+    omits the actual runner-up - taking the max over polled candidates would compare the
+    front-runner against the wrong person and inflate apparent accuracy.
+  - UNCONTESTED-FIELD flag: 40 of 213 races have ONE polled candidate, so `poll_lead` is 0.0
+    by construction and the regressor extrapolates from level alone (Husted +98, Cotton +82).
+    Flagged, not dropped; the dashboard greys them with a leading "~".
+
+**EXPLAINERS: every candidate, both models.** `explain_primary.py` used to explain only the
+predicted nominee - while already computing SHAP for the whole field and throwing it away
+(`sv = explainer(X)` covers every row). It now emits a per-candidate block for the entire
+field AND a margin-model block alongside the nominee block, mirroring `explain_2026.py`'s
+dual-model shape. 788 win + 788 margin candidate explanations. The primary Explain modal
+gained the same two-tab switcher the general modal has always had; units switch with the tab
+(log-odds for the ranker, percentage POINTS for the regressor).
+
+### Three bugs the user caught that I had shipped — all now fixed
+
+1. **A THIRD copy of `norm_name`** lived in polling-agg's `model_compare_primary.py` and had
+   drifted from the 2026-08-01 punctuation fix. A market candidate whose key differed from the
+   model's key silently failed to join, and the race then rendered `venue=null` - visually
+   identical to "Kalshi has no market". AZ-Governor-REP had a full 10-candidate book (Biggs at
+   0.90) showing as marketless. Now imports the real function... which then broke CI (see 2).
+2. **CI broke because only ONE of the three workflows checks out the model repo.**
+   `model-refresh.yml` checks out both; `market-refresh.yml` and `refresh.yml` check out only
+   polling-agg and still run both compare scripts, so that import was guaranteed to fail
+   there. Fixed with an import-else-mirror, plus an assert that the mirror still matches
+   whenever both are visible. **A change exercised by only one of three workflows passes every
+   local test and still breaks the other two on their next schedule.**
+3. **`data/raw/*.csv` are gitignored and CI-scraped, so regenerating `docs/*_data.js` LOCALLY
+   silently ships month-old market prices.** The user spotted MI-07 Lawrence at 26% on the page
+   vs ~91% in the Kalshi app; my local CSVs were from July 3, and my push overwrote CI's good
+   data. **Never push a locally-regenerated `docs/*_data.js` without first running
+   `scrapers/kalshi.py` + `scrapers/polymarket.py`.** Model-side outputs are safe to
+   regenerate locally; market-side ones are not.
+
+Also fixed: the retry-with-rebase loop in `refresh.yml` / `market-refresh.yml` did a bare
+`git pull --rebase` with no conflict handling, so a conflict in the GENERATED `docs/*.js`
+halted the rebase and left the tree dirty - every subsequent attempt then failed too (both
+Daily refresh runs on 2026-08-03 died this way). Ported `model-refresh.yml`'s approach: never
+merge-resolve a generated file, take either side to unstick the rebase, then REGENERATE.
+
+**Dashboard also gained** (polling-agg): a "reliable only (4+ polls)" gate on both model tabs,
+ON by default, with a tab-specific warning banner when switched off — the primary banner cites
+the measured overconfidence, the general one says plainly that the general model shows NO such
+break. Note the interaction: a date filter plus two default-on gates can collapse a view to
+one state with no on-screen explanation (the user hit exactly this filtering to Aug 5 and
+seeing only Michigan). A hidden-count in the meta line is still worth adding.
+
+## CURRENT STATE 2026-08-02 — repo reorganised; fundamentals model added; thin-poll gate shipped.
 
 **READ STRUCTURE.md FIRST.** The 36-script repo root is gone. Scripts now live in
 `models/poll/`, `models/fundamentals/`, `pipeline/fetch/`, `pipeline/build/`, `tools/`.

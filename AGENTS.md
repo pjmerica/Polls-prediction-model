@@ -126,6 +126,27 @@ feature builder used by training AND prediction — never fork feature logic out
 - **Dry-run every in-place data repair script** before `--apply`. Both repair scripts added
   2026-08-01 default to dry run for this reason; one of them would have wiped ~600 correct
   hand-coded rows on the first attempt.
+- **NEVER regenerate `docs/*_data.js` locally without re-scraping markets first.**
+  `polling-agg/data/raw/*.csv` (kalshi, polymarket) are GITIGNORED and scraped fresh by CI on
+  every run — a local checkout has whatever vintage this machine last pulled. Regenerating the
+  dashboard JS locally reads those stale CSVs and the push then OVERWRITES CI's correct prices.
+  Found 2026-08-03: the page showed MI-07 Lawrence at 26% while Kalshi had ~91%, from a
+  July-3 local CSV. Run `scrapers/kalshi.py` + `scrapers/polymarket.py` first. Model-side
+  outputs (predictions, explanations) are safe to regenerate locally; market-side ones are not.
+- **The three polling-agg workflows do NOT have the same checkout shape.** `model-refresh.yml`
+  checks out BOTH repos; `market-refresh.yml` and `refresh.yml` check out polling-agg ONLY —
+  and all three run the compare scripts. So anything in `analysis/model_compare*.py` that
+  imports from the model repo must degrade gracefully when it is absent (import-else-mirror).
+  A change exercised by only one workflow passes every local test and still breaks the other
+  two on their next schedule.
+- **Generated files must never be merge-resolved.** `docs/*.js` are regenerated output; a
+  rebase conflict in them must be settled by taking either side to unstick the rebase and then
+  RE-RUNNING the generator. A bare `git pull --rebase` in a push-retry loop leaves the tree
+  dirty on conflict and every later attempt fails (killed both Daily refresh runs 2026-08-03).
+- **`norm_name` has been re-implemented by hand THREE times** (build_dataset.ipynb,
+  model_compare_primary.py, and features.py itself). Every copy drifted. If you find a fourth,
+  import the real one — and when a copy is genuinely unavoidable (see the CI checkout asymmetry
+  above), assert it matches whenever both are visible.
 - "General"-stage feed rows include **hypothetical primary-season matchups**; the
   stale-candidate filter (14d, with guards) removes primary losers (e.g. ME-Sen had 5
   candidates before it).

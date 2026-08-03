@@ -6,8 +6,8 @@
 > map and the run commands. Everything is still run from the repo root.
 
 Predicts U.S. downballot elections — Senate, House, and Governor — from polls plus
-political/economic context. Three separate models: **win probability**, **margin of
-victory**, and (new) **primary nominee**. Trained on **14 cycles, 1998–2024** (~1,970
+political/economic context. **Four** separate models: **win probability**, **margin of
+victory**, **primary nominee**, and **primary margin** (added 2026-08-03). Trained on **14 cycles, 1998–2024** (~1,970
 races); 2026 predictions are published to a companion dashboard and compared against
 Kalshi/Polymarket prices.
 
@@ -36,7 +36,7 @@ nominees**, are where the added features earn their keep.
 
 ## For a data scientist (how it works)
 
-**Three models, all XGBoost, all sharing one feature pipeline (`features.py` /
+**Four models, all XGBoost, all sharing one feature pipeline (`features.py` /
 `features_primary.py`) so training and live prediction can never compute features
 differently:**
 
@@ -44,11 +44,20 @@ differently:**
 |---|---|---|---|
 | **Win** | `won ∈ {0,1}` | `model.ipynb` | AUC .966 / AUC-PR .947 / Brier .072 / race-acc .864 (ties the poll baseline) |
 | **Margin** | signed vote margin vs. best opponent | `margin_model.ipynb` | MAE ~6.5–7.2 vs. ~7.5 calibrated-poll baseline (**beats polls**) |
-| **Primary nominee** | `won ∈ {0,1}` (becomes the party's nominee) | `primary_model.py` | AUC-PR .97 / Brier .02 / race-acc .93 vs. poll-leader .72 baseline |
+| **Primary nominee** | `won ∈ {0,1}` (becomes the party's nominee) | `models/poll/primary_model.py` | AUC-PR .97 / Brier .02 / race-acc .93 vs. poll-leader .72 baseline |
+| **Primary margin** | vote margin vs. best other candidate | `models/poll/primary_margin_model.py` | MAE 17.0 vs. 18.5 calibrated-poll baseline — beats it on the mean, but LOSES the 2022 fold; two eval cycles only |
 
-(Numbers as of the most recent retrain — see `feature_importance.csv` /
-`margin_feature_importance.csv` / `data/primary_model_features.json` for the exact current
-run, and `HANDOFF.md` for the dated history of every retrain.)
+(Numbers as of the most recent retrain — see `models/poll/feature_importance.csv` /
+`models/poll/margin_feature_importance.csv` / `data/primary_model_features.json` for the exact
+current run, and `HANDOFF.md` for the dated history of every retrain.)
+
+A fifth, non-production model exists for reference: `models/fundamentals/fundamentals_model.py`
+trains NO-POLLING variants of the general and primary models. The general one reaches race-acc
+.811 (vs .868 with polls) — most general elections are structurally determined, with
+`is_incumbent` alone carrying 43% of the gain. The primary one only reaches .435, BELOW its own
+naive "pick the highest office-level candidate" baseline of .451, because within one party
+there is no incumbency edge, no partisan lean and no seat history to lean on. It is not blended
+into production — see CONCERNS.md #28.
 
 **Validation:** nested, never random. Hyperparameters are tuned by leave-one-cycle-out CV on
 **older cycles only** (1998–2016 general models; ≤2020 for the primary model); the headline
@@ -84,9 +93,10 @@ the rules learned the hard way) · [HANDOFF.md](HANDOFF.md) (in-flight state + d
 3. model.ipynb              → WIN model: nested tune/eval, final fit on all 14 cycles
    margin_model.ipynb       → MARGIN model (separate artifact, same scheme)
    primary_model.py         → PRIMARY nominee model (script, runs in minutes)
-4. predict.py / predict_margin.py / predict_primary.py
+   primary_margin_model.py  → PRIMARY margin model (script; same data, regression target)
+4. predict.py / predict_margin.py / predict_primary.py / predict_primary_margin.py
                              → score the live 2026 poll feed for each model
-5. refresh_dashboard.py     → one command: feeds → predict all three → copy CSVs to the
+5. refresh_dashboard.py     → one command: feeds → predict all four → copy CSVs to the
                                companion dashboard repo → regenerate its compare pages
 ```
 
@@ -107,7 +117,8 @@ All commands run from the **repo root** (paths after the 2026-08-02 move — see
 1. **`pipeline/build/build_dataset.ipynb`** — only needed if `polls_long_with_results.csv` is
    missing (it's gitignored at 15MB, so a fresh clone DOES need this step).
 2. **`models/poll/model.ipynb`**, then **`models/poll/margin_model.ipynb`**, then
-   **`py -X utf8 models/poll/primary_model.py`** — run top to bottom. **Run notebooks one at a
+   **`py -X utf8 models/poll/primary_model.py`**, then
+   **`py -X utf8 models/poll/primary_margin_model.py`** — run top to bottom. **Run notebooks one at a
    time**, never concurrently (nbconvert races and overwrites outputs on parallel runs).
 3. **`py -X utf8 refresh_dashboard.py`** — re-predict 2026 and refresh the companion dashboard.
 
@@ -118,7 +129,7 @@ reference models (not shipped to the dashboard; a prior/floor for thin-poll race
 > notebook end-to-end including the grid search** — never reuse old hyperparameters.
 > Params tuned for one feature set can make a new set look worse than it is. Let
 > regularization drop non-predictive features rather than hand-curating. Applies to all
-> three models. (More rules + traps in [AGENTS.md](AGENTS.md).)
+> four models. (More rules + traps in [AGENTS.md](AGENTS.md).)
 
 ## Where to look next
 

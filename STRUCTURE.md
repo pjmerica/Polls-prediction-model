@@ -19,6 +19,7 @@ data pipeline and one-off tools.
 ├── predict.py                ── ENTRYPOINTS (stay at the root; CI calls them by name) ──
 ├── predict_margin.py         Live 2026 predictions from the raw poll feed.
 ├── predict_primary.py
+├── predict_primary_margin.py
 ├── explain_2026.py           SHAP explanations powering the dashboard's Explain modal.
 ├── explain_primary.py
 ├── refresh_dashboard.py      Orchestrator: feeds -> predict -> explain -> copy to polling-agg.
@@ -27,8 +28,10 @@ data pipeline and one-off tools.
 ├── models/
 │   ├── poll/                 Models that USE polling (production).
 │   │   ├── model.ipynb           general win model      -> data/model_xgb.json
-│   │   ├── margin_model.ipynb    margin model           -> data/margin_model_xgb.json
-│   │   └── primary_model.py      primary nominee ranker -> data/primary_model_xgb.json
+│   │   ├── margin_model.ipynb    general margin model   -> data/margin_model_xgb.json
+│   │   ├── primary_model.py      primary nominee ranker -> data/primary_model_xgb.json
+│   │   ├── primary_margin_model.py  primary margin      -> data/primary_margin_model_xgb.json
+│   │   └── *_feature_importance.csv   gain tables, written beside the model that made them
 │   └── fundamentals/         Models that use NO race polling (reference priors, not shipped).
 │       └── fundamentals_model.py -> data/fundamentals_model_{general,primary}*.json
 │
@@ -50,6 +53,8 @@ data pipeline and one-off tools.
 │
 ├── analysis/                 Investigations. Notebook + a .py module holding its logic.
 │   ├── poll_volume_breakpoint.{ipynb,py}  where thin polling breaks each model
+│   ├── fundamentals_vs_polls_thin.py      head-to-head: do fundamentals help thin races? (no)
+│   ├── fundamentals_on_unpolled.py        does the no-poll model work where polls don't exist?
 │   └── primary_backtest_2026.ipynb
 │
 └── data/                     All committed inputs + model artifacts.
@@ -61,7 +66,8 @@ Everything is runnable from the **repo root**:
 
 ```bash
 py -X utf8 refresh_dashboard.py --no-feeds      # full predict + explain + dashboard copy
-py -X utf8 models/poll/primary_model.py         # retrain the primary model
+py -X utf8 models/poll/primary_model.py         # retrain the primary nominee model
+py -X utf8 models/poll/primary_margin_model.py  # retrain the primary MARGIN model
 py -X utf8 models/fundamentals/fundamentals_model.py
 py -X utf8 pipeline/build/build_primary_dataset.py
 py -X utf8 tools/scripts_rekey_cand_key.py      # dry run; --apply to write
