@@ -120,6 +120,21 @@ def main():
     model.load_model(os.path.join(HERE, "data", "primary_model_xgb.json"))
     temp = float(meta.get("softmax_temp", 1.0))
 
+    # PRIMARY MARGIN model (2026-08-03), mirroring explain_2026's dual-model structure: the
+    # general modal shows a `win` block and a `margin` block per race, and the primary modal
+    # now does the same. SHAP units differ between them and that difference is the whole point
+    # of showing both - the ranker's bars are in raw SCORE space (direction and relative size
+    # are what matter), while the regressor's are directly in PERCENTAGE POINTS of margin.
+    # Optional: if the margin artifact is missing the modal just renders the win block, exactly
+    # as the general one does.
+    mmeta = mmodel = None
+    mpath = os.path.join(HERE, "data", "primary_margin_model_features.json")
+    if os.path.exists(mpath):
+        with open(mpath) as f:
+            mmeta = json.load(f)
+        mmodel = xgb.XGBRegressor()
+        mmodel.load_model(os.path.join(HERE, "data", "primary_margin_model_xgb.json"))
+
     d = load_primary_feed(args.polls, args.cycle)
     funds = F.load_fundamentals()
     fec = F.load_fec(extended=True)
@@ -140,6 +155,12 @@ def main():
     explainer = shap.TreeExplainer(model)
     sv = explainer(X)
 
+    Xm = sv_m = None
+    if mmodel is not None:
+        Xm = cand.reindex(columns=mmeta["features"])
+        cand["pred_margin"] = mmodel.predict(Xm)
+        sv_m = shap.TreeExplainer(mmodel)(Xm)      # bars already in margin POINTS
+
     out = {}
     for rid, g in cand.groupby("race_id"):
         n = len(g)
@@ -152,6 +173,19 @@ def main():
             return top_shap(meta["features"], X.loc[i].values,
                             sv.values[cand.index.get_loc(i)], 1.0 / n, float(cand.loc[i, "p"]))
 
+        def _mblk(i):
+            """Margin-model block for one candidate, or None if the artifact is absent.
+
+            Unlike the win block, these SHAP values need no transformation: the regressor
+            predicts margin directly, so base and pred are both in percentage points and the
+            bars read as "this feature moved the predicted margin by N points".
+            """
+            if sv_m is None:
+                return None
+            j = cand.index.get_loc(i)
+            return top_shap(mmeta["features"], Xm.loc[i].values, sv_m.values[j],
+                            float(sv_m.base_values[j]), float(cand.loc[i, "pred_margin"]))
+
         top_i = g["p"].idxmax()      # the predicted nominee stays the headline
         row = cand.loc[top_i]
         # EVERY candidate gets an explanation (2026-08-03, user request). SHAP was already
@@ -163,9 +197,13 @@ def main():
         # headline `win` key carries (kept for backward compatibility with the existing
         # dashboard modal).
         cands = [dict(candidate=cand.loc[i, "candidate"], party=cand.loc[i, "party"],
-                      model=round(float(cand.loc[i, "p"]), 4), win=_blk(i))
+                      model=round(float(cand.loc[i, "p"]), 4), win=_blk(i),
+                      margin=_mblk(i),
+                      pred_margin=(round(float(cand.loc[i, "pred_margin"]), 1)
+                                   if sv_m is not None else None))
                  for i in g["p"].sort_values(ascending=False).index]
         out[rid] = dict(candidate=row["candidate"], party=row["party"], win=_blk(top_i),
+                        margin=_mblk(top_i),          # same shape as explain_2026's `margin`
                         candidates=cands,
                         field_confidence=round(float(field_conf.loc[top_i]), 4))
 
