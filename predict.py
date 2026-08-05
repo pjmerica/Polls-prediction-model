@@ -75,6 +75,9 @@ def load_agg_polls(paths, cycle):
         frames.append(df)
     raw = pd.concat(frames, ignore_index=True)
 
+    # Reconcile the two sources' special-election labelling BEFORE parsing, or the same
+    # contest lands under two race_ids (see F.normalize_special_race_id).
+    raw["race_id"] = raw["race_id"].map(F.normalize_special_race_id)
     parsed = raw["race_id"].map(parse_race_id)
     ok = parsed.notna()
     raw = raw[ok].copy()

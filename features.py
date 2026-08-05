@@ -480,6 +480,34 @@ def count_lead_changes(g):
         prev = leader
     return changes
 
+_SPECIAL_SEATS = {(2026, "SEN", "FL"), (2026, "SEN", "OH")}
+
+def normalize_special_race_id(rid):
+    """Add the missing '-S' suffix when a seat is ONLY ever contested as a special.
+
+    The two poll sources disagree on labelling. NYT tags every Florida Senate row
+    '2026-SEN-FL-S'; Wikipedia writes the same contest as '2026-SEN-FL'. parse_race_id
+    correctly treats '-S' as its own race, so the disagreement split ONE contest into
+    two - FL Senate showed up twice on the dashboard with the same candidates and the
+    same date, differing only by "Alex" vs "Alexander" Vindman (found 2026-08-05).
+
+    Only seats in _SPECIAL_SEATS are rewritten, and only when there is no regular race
+    for that seat in the same cycle: FL and OH have NO regular 2026 Senate election, so
+    an unsuffixed id can only be the special. A seat holding both a regular and a special
+    race in one cycle must NOT be listed here - the suffix is the only thing telling them
+    apart, and rewriting would merge two genuinely different contests.
+    """
+    parts = str(rid).split("-")
+    if len(parts) != 3:
+        return rid
+    try:
+        year = int(parts[0])
+    except ValueError:
+        return rid
+    if (year, parts[1].upper(), parts[2].upper()) in _SPECIAL_SEATS:
+        return f"{rid}-S"
+    return rid
+
 def poll_momentum_slope(gc):
     """OLS slope of pct vs time (pts/day) over ALL of a candidate's dated polls.
 

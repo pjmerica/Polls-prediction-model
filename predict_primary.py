@@ -88,6 +88,9 @@ def load_primary_feed(paths, cycle):
         df["_src_priority"] = i
         frames.append(df)
     raw = pd.concat(frames, ignore_index=True)
+    # Same source-labelling reconciliation the general feed does (F.normalize_special_race_id):
+    # NYT's '2026-SEN-FL-S' and Wikipedia's '2026-SEN-FL' are the same primary.
+    raw["race_id"] = raw["race_id"].map(F.normalize_special_race_id)
     parsed = raw["race_id"].map(parse_race_id)
     ok = parsed.notna()
     raw = raw[ok].copy()
@@ -116,11 +119,26 @@ def load_primary_feed(paths, cycle):
     drop_path = os.path.join(HERE, "data", "dropped_out_2026.csv")
     if os.path.exists(drop_path):
         do = pd.read_csv(drop_path)
-        dropped = set(do["cand_key"])
-        n = int(d["cand_key"].isin(dropped).sum())
+        # SCOPED BY RACE. The file has always carried a race_id column but the filter used
+        # to ignore it and drop by cand_key globally - fine while every entry was a true
+        # withdrawal, but wrong for a candidate who left ONE race and is active in another
+        # (Jared Moskowitz: out in FL-23 after redistricting, running in FL-25). A global
+        # drop would have deleted him from both.
+        # The file's race_id omits the party suffix ("2026_FL_House-23"), so match on the
+        # race_id prefix rather than equality.
+        key = d["year"].astype(str) + "_" + d["state"] + "_" + d["office"] + \
+              d["district"].map(lambda x: f"-{x}" if str(x) not in ("", "nan", "None") else "")
+        mask = pd.Series(False, index=d.index)
+        for _, row in do.iterrows():
+            mask |= (d["cand_key"] == row["cand_key"]) & (key == row["race_id"])
+        n = int(mask.sum())
         if n:
             print(f"dropped-out candidates removed: {n} poll rows")
-        d = d[~d["cand_key"].isin(dropped)]
+        unmatched = [r["cand_key"] for _, r in do.iterrows()
+                     if not ((d["cand_key"] == r["cand_key"]) & (key == r["race_id"])).any()]
+        if unmatched:
+            print(f"  NOTE: {len(unmatched)} dropout entries matched no poll rows: {unmatched}")
+        d = d[~mask]
 
     # race_id built BEFORE merge/dedup (both need it) - merge runs before dedup so a
     # cross-source name variant (e.g. NYT "Thomas (Jay) Feely" vs Wikipedia "Jay Feely" for
