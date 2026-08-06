@@ -77,6 +77,19 @@ def primary_dates(cycle):
         with open(cal, encoding="utf-8") as f:
             for st, dt in json.load(f).items():
                 per_state.setdefault(st, pd.Timestamp(dt))
+    # LAST-RESORT static fallback. Both upstream calendars cover 44 states and omit the
+    # same four (AR, IL, MS, OH) - they are early-2026 primaries and the scrapers appear
+    # to list only UPCOMING races, so these silently dropped off once they had been held.
+    # Without a date, days_to_elec is NaN and ALL 14 recency features go NaN with it -
+    # including poll_last30/poll_last/gap_x_recency, 44.8% of the primary margin model's
+    # gain. 22 races were affected (found 2026-08-05).
+    # Dates are cited in the file; IL and OH are corroborated by their own results
+    # reporting. Entries here are only used if no scraper supplied the state.
+    manual = os.path.join(HERE, "data", f"primary_dates_{cycle}_manual.csv")
+    if os.path.exists(manual):
+        md = pd.read_csv(manual)
+        for _, row in md.iterrows():
+            per_state.setdefault(str(row["state"]), pd.Timestamp(row["primary_date"]))
     return per_race, per_state
 
 def load_primary_feed(paths, cycle):

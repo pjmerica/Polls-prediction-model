@@ -68,7 +68,7 @@ FRIENDLY = {
     "gap_x_recency": "Polling lead x recency",
     "natl_env_cand": "National environment (generic ballot, pts)",
     "bias_prior_cand": "Historical state poll bias (pts)",
-    "poll_momentum": "Polling momentum (final-60d slope)",
+    "poll_momentum": "Polling momentum (slope of all polls)",
     "poll_adj": "House-effect-adjusted poll avg (%)",
     "n_lead_changes": "# of lead changes over campaign",
     "lead_changed": "Lead ever changed",
@@ -129,7 +129,10 @@ DESC = {
                      "candidate's party.",
     "bias_prior_cand": "How much polls in this state have historically over/under-stated "
                        "the candidate's party (prior cycles only).",
-    "poll_momentum": "Slope of the candidate's polls over the final 60 days - "
+    # Changed 2026-08-03 from a final-60-day window to ALL dated polls (see
+    # F.poll_momentum_slope). The old label survived the change and kept telling
+    # users "final 60 days" for a feature that no longer works that way.
+    "poll_momentum": "Least-squares slope of ALL the candidate's dated polls - "
                      "rising or falling.",
     # poll_adj dropped as a feature 2026-07-12 (see features.py); label kept harmlessly
     # in case an older artifact is loaded.

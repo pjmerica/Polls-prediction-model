@@ -196,6 +196,29 @@ def main():
     fin["is_winner"] = fin.groupby("race_id")["votes"].transform("max") == fin["votes"]
     fin["cand_key"] = fin["candidate"].map(F.norm_name)
 
+    # ---- drop PARTY CONVENTION / ENDORSEMENT tables masquerading as primary results ----
+    # Wikipedia puts a state party's convention or endorsement vote in the same results
+    # section as the primary, so the "last table" heuristic above happily grabs it. Found
+    # 2026-08-05: CT-Gov-DEM showed Ned Lamont winning with 1,969 total votes and MN-Gov-REP
+    # 17,187 - against statewide primary medians of ~375k (Senate) and ~388k (Governor).
+    # Worse, all four affected races have election dates in the FUTURE (CT/MN vote Aug 11,
+    # MA Sep 1), so the file was asserting outcomes for primaries that had not happened.
+    #
+    # A statewide primary that small is not a primary. House districts legitimately run
+    # small (median ~52k, min ~181 for an uncontested nomination), so the threshold applies
+    # to STATEWIDE races only, where the floor is unambiguous.
+    STATEWIDE_MIN_VOTES = 25_000
+    totals = fin.groupby("race_id")["votes"].sum()
+    statewide = [r for r in totals.index
+                 if ("_Senate" in str(r) or "_Governor" in str(r))]
+    suspect = [r for r in statewide if totals[r] < STATEWIDE_MIN_VOTES]
+    if suspect:
+        print(f"\nDROPPED {len(suspect)} statewide race(s) whose total vote is below "
+              f"{STATEWIDE_MIN_VOTES:,} - convention/endorsement tables, not primaries:")
+        for r in suspect:
+            print(f"   {r}: {int(totals[r]):,} votes")
+        fin = fin[~fin["race_id"].isin(suspect)].copy()
+
     # hand-checked ground truth: hard-fail on regression (these are the exact races the
     # Lieutenant-Governor table bug corrupted, plus a runoff case)
     KNOWN = {"2018_OH_Governor_DEM": "cordray r", "2018_OH_Governor_REP": "dewine m",
