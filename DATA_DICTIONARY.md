@@ -270,3 +270,48 @@ VoteHub (2024+); `natl_env_cand` from the same generic-ballot lineage, last-30-d
 |---|---|
 | `won` | **The classification label (1/0).** |
 | `vote_pct`, `race_winning_pct` | Actual results — **never used as features** (they're the answer). |
+
+## 3. Prediction-output integrity columns (`primary_predictions_2026.csv`)
+
+Not model features — these are emitted by `predict_primary.py` so the *reader* can tell a
+confident prediction from a confidently-stated guess.
+
+| Column | Meaning |
+|---|---|
+| `field_confidence` | `win_prob_norm.max() - 1/n`: how far the leader sits above a uniform field. ~0 means the model cannot separate the candidates; the maximum is `1 - 1/n`, so the ceiling scales with field size. **Definition changed when the model became a ranker** — it was previously the raw probability sum with a 0.30 threshold. |
+| `low_confidence_field` | `field_confidence < 0.10`. The ranking is still honest; the flag says not to trust the *probability* on it. 45 races currently flagged. |
+| `poll_age_days` | Days since the race's **newest** poll. |
+| `stale_polling` | `poll_age_days > 90`. Added 2026-08-05. |
+
+**Why `stale_polling` exists and why it matters more than `n_polls`.** A single poll from last
+week and a single poll from last September both read as `n_polls = 1`, but only the second one
+lets the field change underneath the model — candidates withdraw, new ones enter, and the model
+keeps scoring a snapshot of a race that no longer exists. This is the single largest source of
+confident errors found to date:
+
+- **CT-Gov-REP**: Erin Stewart at **99%** on a **357-day-old** poll. She withdrew in May; the
+  actual nominee sat at 0.4%.
+- Season misses with the same signature: Hogan 100% (MD-Gov-REP), Gowdy 99% (SC-Sen-REP,
+  Graham won), Crenshaw 98% (TX-2).
+
+10 of 54 upcoming races carry the flag; the primary dashboard renders it as an orange
+`STALE {n}d` chip. **The general model has no equivalent yet** (CONCERNS #36).
+
+## 4. Name integrity
+
+| File / function | Purpose |
+|---|---|
+| `data/name_aliases.csv` | Known feed misspellings → correct spelling, applied **before** keying in both feeds. Exact-match only. |
+| `F.apply_name_aliases` | Applies the table. Rewrites the display name too, so the dashboard shows the right spelling. |
+| `warn_near_duplicate_names` | Runs in both loaders every time; prints same-race name pairs ≥0.88 similar **that resolve to different `cand_key`s**. |
+
+`norm_name` deliberately does **not** fuzzy-match — merging two real people (brothers, a
+junior/senior pair) is worse than leaving a split. So a one-character feed typo silently splits
+a candidate into two half-strength entries, invisibly: both halves just look weakly polled.
+Found in six races at once, including `"Josh Elliot"`/`"Josh Elliott"` (7 polls each) six days
+before Connecticut's primary, and Raffensperger split across **two** races.
+
+The detector suppresses pairs `norm_name` already merges — middle initials
+(`"Mark R. Warner"`/`"Mark Warner"`), curly vs straight apostrophes (`"Beto O'Rourke"`). Ten
+such pairs exist in the current feed; warning about them would train the reader to ignore the
+check.

@@ -47,7 +47,8 @@ import xgboost as xgb
 import features as F
 import features_primary as FP
 from build_primary_dataset import EXCLUDE_STATES, to_abbr
-from predict import DEFAULT_POLLS, REQUIRED_FEED_COLS, parse_race_id, drop_stale_candidates
+from predict import (DEFAULT_POLLS, REQUIRED_FEED_COLS, parse_race_id,
+                     drop_stale_candidates, warn_near_duplicate_names)
 
 from paths import ROOT, AGG   # one definition for the whole repo (paths.py)
 
@@ -203,6 +204,7 @@ def load_primary_feed(paths, cycle):
     bad_pct = ~d["pct"].between(0, 100)
     assert bad_pct.mean() < 0.01, "feed pct out of [0,100] - implied_prob scale changed?"
     assert d["race_id"].nunique() >= 10, "suspiciously few primary races parsed"
+    warn_near_duplicate_names(d)
     return d
 
 def main():
@@ -260,6 +262,25 @@ def main():
         lambda g: g.groupby(["pollster", "end_date"]).ngroups, include_groups=False)
     cand["n_surveys"] = cand["race_id"].map(surveys).fillna(0).astype(int)
 
+    # POLL AGE. n_polls alone hides the difference between "1 poll last week" and "1 poll
+    # last September". The latter is where the model's worst calls come from: it scores a
+    # year-old name recognition snapshot as if it were the current field, so a candidate who
+    # has since WITHDRAWN can sit at 99% (CT-Gov-REP had Erin Stewart there on a 357-day-old
+    # poll while the actual nominee showed 0.4%). Season-to-date, this pattern accounts for
+    # several of the model's confident misses - Hogan 100% in MD-Gov-REP, Gowdy 99% in
+    # SC-Sen-REP, Crenshaw 98% in TX-2.
+    # Surfaced as a column so the staleness is visible rather than inferred from n_polls.
+    newest = d.groupby("race_id")["end_date"].max()
+    cand["newest_poll"] = cand["race_id"].map(newest)
+    asof = pd.Timestamp(datetime.date.today())
+    cand["poll_age_days"] = (asof - pd.to_datetime(cand["newest_poll"], errors="coerce")).dt.days
+    cand["stale_polling"] = (cand["poll_age_days"] > 90).astype(int)
+    n_stale = cand.drop_duplicates("race_id")["stale_polling"].sum()
+    if n_stale:
+        print(f"STALE POLLING: {int(n_stale)} races have no poll in the last 90 days - "
+              f"their fields may have changed (withdrawals, new entrants) since the last "
+              f"survey. See the stale_polling / poll_age_days columns.")
+
     n_low_conf = cand.drop_duplicates("race_id")["low_confidence_field"].sum()
     if n_low_conf:
         print(f"low-confidence fields (leader barely above a uniform 1/n split): "
@@ -269,7 +290,8 @@ def main():
     out_cols = ["race_id", "state", "office", "district", "party", "candidate",
                 "election_date", "n_polls", "n_surveys", "poll_avg", "poll_lead",
                 "fund_share", "rank_score", "win_prob", "win_prob_norm",
-                "field_confidence", "low_confidence_field"]
+                "field_confidence", "low_confidence_field",
+                "poll_age_days", "stale_polling"]
     out = cand[out_cols].sort_values(["race_id", "win_prob_norm"], ascending=[True, False])
     out_path = args.out or os.path.join(HERE, f"primary_predictions_{args.cycle}.csv")
     out.to_csv(out_path, index=False)

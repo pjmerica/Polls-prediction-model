@@ -1,8 +1,8 @@
 {
- "generated_at": "2026-08-06T02:29:23",
- "polls_max_end_date": "2026-08-02",
- "n_rows": 806,
- "n_races": 216,
+ "generated_at": "2026-08-06T11:31:47",
+ "polls_max_end_date": "2026-08-04",
+ "n_rows": 811,
+ "n_races": 217,
  "heldout_mae": {
   "2022": {
    "n": 226.0,

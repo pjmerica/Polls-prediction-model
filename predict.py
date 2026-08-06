@@ -180,7 +180,43 @@ def load_agg_polls(paths, cycle):
     assert d["end_date"].notna().mean() > 0.95, "feed end_date mostly unparseable"
     n_races = d["race_id"].nunique()
     assert n_races >= 20, f"only {n_races} general races parsed — race_id/stage format changed?"
+    warn_near_duplicate_names(d)
     return d
+
+def warn_near_duplicate_names(d, threshold=0.88):
+    """Print any two candidates in the SAME race whose names are near-identical.
+
+    norm_name deliberately does not fuzzy-match, so a one-character feed typo silently
+    splits a candidate into two half-strength entries. That is invisible in the output -
+    both halves just look like weakly-polled candidates. Found 2026-08-05 in FOUR races
+    at once ("Josh Elliot"/"Josh Elliott" six days before CT's primary; Raffensperger
+    split across two races), then two more on the general side.
+
+    This only WARNS. Fixing means adding a row to data/name_aliases.csv, which is a human
+    decision: two similar names can be two real people (brothers, a junior/senior pair),
+    and auto-merging them would be worse than the split.
+    """
+    import difflib
+    seen = []
+    for rid, g in d.groupby("race_id" if "race_id" in d.columns else "cand_key"):
+        names = sorted(set(g["candidate"].astype(str)))
+        for i, a in enumerate(names):
+            for b in names[i + 1:]:
+                # Only a DIFFERENT cand_key is a real split. norm_name already collapses
+                # middle initials, punctuation and hyphens ("Mark R. Warner"/"Mark Warner",
+                # "Beto O'Rourke"/"Beto O’Rourke"), so those pairs look near-identical here
+                # but are already one candidate - warning about them would be noise that
+                # trains the reader to ignore this check.
+                if F.norm_name(a) == F.norm_name(b):
+                    continue
+                if difflib.SequenceMatcher(None, a.lower(), b.lower()).ratio() >= threshold:
+                    seen.append((rid, a, b))
+    if seen:
+        print(f"NEAR-DUPLICATE NAMES ({len(seen)}) - likely one candidate split by a feed "
+              f"typo. Add to data/name_aliases.csv if they are the same person:")
+        for rid, a, b in seen:
+            print(f"   {rid}: {a!r} vs {b!r}")
+    return seen
 
 def drop_stale_candidates(d, stale_days=14):
     """Drop candidates who stopped being polled before the race moved on.

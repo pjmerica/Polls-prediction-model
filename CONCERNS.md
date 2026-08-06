@@ -374,3 +374,56 @@ above:
         change git will not show you — compare model numbers only within one commit.**
       - #3 feature selection: deliberately SKIPPED per user; the 161-feature general variant
         stays as is.
+
+## Added 2026-08-05/06 — the roster-integrity pass
+
+The Aug 4 primaries gave the first real scoreboard (135/149 = 90.6% season-to-date,
+calibrated: 94% in the 90%+ band, 80% at 70–90%, 78% below). Reading the 14 misses turned
+up a single dominant failure mode that had nothing to do with the model.
+
+32. ~~**Withdrawn candidates score as live front-runners.**~~ **FIXED** — but read this as a
+    recurring maintenance burden, not a closed bug.
+    **CT-Gov-REP is the worst case found: Erin Stewart at 99% on a 357-day-old poll.** She
+    suspended her campaign on the eve of the May GOP convention; the actual nominee (Ryan
+    Fazio, 92% of delegates) sat at **0.4%** — six days before the primary.
+    The same pattern explains several season misses: Hogan 100% in MD-Gov-REP, Gowdy 99% in
+    SC-Sen-REP (Graham won), Crenshaw 98% in TX-2. In every case a well-known name in one old
+    survey beat the actual candidate.
+    Also removed: Mandela Barnes and Sara Rodriguez (WI-Gov, withdrew 7/30 and 7/17), Missy
+    Hughes (WI-Gov, 6/22 — still ON THE BALLOT, the deadline had passed), and three CT
+    candidates who never cleared the 15% convention threshold.
+    **The list is hand-maintained, so this WILL recur.** `data/dropped_out_2026.csv` is the
+    only thing standing between the model and a stale field.
+
+33. **`poll_age_days` / `stale_polling` added** to make item 32 visible instead of inferred.
+    `n_polls` cannot distinguish "one poll last week" from "one poll last September", and only
+    the second lets the field change underneath the model. Flags races with no poll in 90 days.
+    **10 of 54 upcoming races are flagged**, including HI-1 (296 days, voted 8/8) and
+    CT-Gov-REP (357 days). Surfaced on the primary dashboard as an orange `STALE {n}d` chip.
+
+34. ~~**Junk poll placeholders score as candidates.**~~ **FIXED** — `"A Progressive Challenger"`
+    was the model's **94% front-runner in FL-23-DEM**, beating a real named candidate.
+    `is_junk_answer` only matched `generic X`; it now also catches article-led hypotheticals.
+    Validated against all 1,523 feed names and 1,820 corpus names: 13 flagged, all genuine
+    junk, zero real people.
+
+35. ~~**Feed typos split one candidate into two half-strength entries.**~~ **FIXED.**
+    `norm_name` deliberately does not fuzzy-match, so a one-character misspelling is invisible —
+    both halves just look weakly polled. Found in SIX races: `"Josh Elliot"`/`"Josh Elliott"`
+    (7 polls each, six days before CT's primary), Raffensperger split across TWO races,
+    `"Esther Kim-Varet"`/`"Esther Kim Varet"`, `"Joe Strada"`/`"Joe Stranda"`.
+    Fixed via `data/name_aliases.csv` (exact-match only — auto-merging two real people is worse
+    than a split) plus `warn_near_duplicate_names()`, which now runs in both feeds every time.
+    That detector suppresses pairs `norm_name` already merges ("Mark R. Warner"/"Mark Warner",
+    the two O'Rourke apostrophes) — 10 such pairs exist, and warning about them would train the
+    reader to ignore the check.
+
+36. **OPEN: the general model has no equivalent of the primary staleness flag.** `poll_age_days`
+    is emitted only by `predict_primary.py`. The general side has the same exposure — its feed
+    carries hypothetical matchups for months — and `drop_stale_candidates` (14-day relative
+    rule) does not catch a race where EVERY poll is old.
+
+37. **OPEN: results scraped for races that have not happened.** The convention-vote guard
+    (item 31) fires on statewide races under 25k votes, and caught a fifth race live
+    (ME-Sen-DEM, 571 votes). But the underlying scraper still takes "the last table on the
+    page" with no check that the election date has passed. A date guard would be the real fix.
