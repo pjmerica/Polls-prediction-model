@@ -115,6 +115,14 @@ _JUNK_RX = re.compile(
     r"would not vote|will not vote|not voting|no answer|na|n a)"
     r"(?:\s+(?:or|and)?\s*(?:other|others|undecided|dont know|not sure|no opinion|none))*"
     r"|generic\s+(?:democrat|republican|opponent|candidate|ballot|challenger|dem|rep|gop)"
+    # Article-led hypothetical descriptors: "A Progressive Challenger", "an unnamed
+    # Democrat", "the Republican nominee". These are POLL PLACEHOLDERS for an unnamed
+    # person, not people. Found 2026-08-05: "A Progressive Challenger" was the model's
+    # 94% front-runner in FL-23-DEM, beating a real named candidate.
+    r"|(?:a|an|the)\s+(?:\w+\s+){0,2}"
+    r"(?:challenger|opponent|candidate|democrat|republican|nominee|progressive|"
+    r"moderate|conservative|liberal|independent)"
+    r"|(?:unnamed|generic|hypothetical|any|another)\s+\w+"
     r"|(?:more|less)\s+\w+\s+\w+\s+(?:democrat|republican)"   # "more liberal female Democrat"
     r"|yes|no"                              # approve/disapprove style question answers
     r"|write[- ]?ins?"
@@ -507,6 +515,35 @@ def normalize_special_race_id(rid):
     if (year, parts[1].upper(), parts[2].upper()) in _SPECIAL_SEATS:
         return f"{rid}-S"
     return rid
+
+_ALIASES = None
+
+def load_name_aliases():
+    """{wrong spelling -> correct spelling} from data/name_aliases.csv (cached).
+
+    The two poll sources spell some names differently, and norm_name deliberately does
+    NOT fuzzy-match (that would merge genuinely different people). So a one-character
+    feed typo silently splits a candidate in two and halves both halves' poll counts.
+    Found 2026-08-05: CT-Gov-DEM carried "Josh Elliot" (7 polls) AND "Josh Elliott"
+    (7 polls) as separate candidates six days before the primary; Raffensperger was
+    split in TWO different races.
+
+    Hand-maintained and exact-match only - no automatic fuzzy merging, because the cost
+    of wrongly merging two real people is much higher than leaving a split in place.
+    """
+    global _ALIASES
+    if _ALIASES is None:
+        p = os.path.join(os.path.dirname(os.path.abspath(__file__)), "data", "name_aliases.csv")
+        _ALIASES = {}
+        if os.path.exists(p):
+            a = pd.read_csv(p)
+            _ALIASES = dict(zip(a["wrong"].astype(str), a["correct"].astype(str)))
+    return _ALIASES
+
+def apply_name_aliases(s):
+    """Map a candidate-name Series through the alias table before any keying."""
+    al = load_name_aliases()
+    return s.map(lambda x: al.get(str(x), x)) if al else s
 
 def poll_momentum_slope(gc):
     """OLS slope of pct vs time (pts/day) over ALL of a candidate's dated polls.

@@ -102,6 +102,10 @@ def load_agg_polls(paths, cycle):
         "_src_priority": raw["_src_priority"],
     })
     d["election_date"] = election_date(cycle)
+    # Correct known feed misspellings BEFORE keying, or a one-character typo splits a
+    # candidate into two (see F.load_name_aliases). Rewrites the display name too, so the
+    # dashboard shows the right spelling.
+    d["candidate"] = F.apply_name_aliases(d["candidate"])
     d["cand_key"] = d["candidate"].map(F.norm_name)
     d = d.dropna(subset=["pct", "cand_key"])
 

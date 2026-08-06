@@ -17,16 +17,23 @@ Output: primary_predictions_2026.csv (+ _meta.json sidecar) - one row per candid
 primary race, with win_prob (raw) and win_prob_norm (within-race simplex).
 
 field_confidence / low_confidence_field (added 2026-07-22): win_prob_norm rescales the raw
-per-candidate probabilities to sum to 1 within a race. In a crowded, weak-signal field the
-RAW probabilities can sum to well under 1 (found auditing SD-Governor-REP: Doeden/Rhoden/
-Johnson/Hansen raw win_prob summed to 0.064) - normalizing then manufactures a confident-
-looking leader (Doeden 3.3% raw -> 51.8% normalized) out of a field the model has no strong
-opinion about. field_confidence = that raw sum (how much real signal the model found across
-the WHOLE field); low_confidence_field = 1 when it's below 0.30 (rough cross-check: a
-well-behaved field should sum close to 1). The RANKING win_prob_norm implies is still honest
-(it's the same ordering the raw probabilities gave); the FLAG is what's missing without this
-- treat a normalized leader in a low_confidence_field race as "best guess among weak options,"
-not "the model is confident."
+per-candidate scores to sum to 1 within a race, which ALWAYS produces a leader - even when
+the model cannot separate the field at all. The flag exists to say which of those two is
+happening. Motivating case: SD-Governor-REP, where four candidates' raw probabilities summed
+to 0.064 and normalizing turned a 3.3% candidate into a 51.8% "front-runner."
+
+    field_confidence = win_prob_norm.max() - 1/n        # n = candidates in the race
+    low_confidence_field = field_confidence < 0.10
+
+i.e. how far the leader sits above a uniform field. ~0 means the model is effectively
+guessing; the maximum is 1 - 1/n, so the ceiling scales with field size.
+
+NB the definition CHANGED when the model became a ranker (see _field_conf below): it used to
+be the raw probability sum with a 0.30 threshold, which is what this docstring described
+until 2026-08-05. The RANKING win_prob_norm implies is honest either way - it is the same
+ordering the raw scores gave. The flag is about whether to trust the PROBABILITY attached to
+it: treat a leader in a low_confidence_field race as "best guess among weak options," not
+"the model is confident."
 """
 import argparse
 import datetime
@@ -126,6 +133,10 @@ def load_primary_feed(paths, cycle):
         "pollster": raw["pollster"], "_src_priority": raw["_src_priority"],
     })
     d = d[d["party_std"].isin(["DEM", "REP"])]
+    # Correct known feed misspellings BEFORE keying, or a one-character typo splits a
+    # candidate into two (see F.load_name_aliases). Rewrites the display name too, so the
+    # dashboard shows the right spelling.
+    d["candidate"] = F.apply_name_aliases(d["candidate"])
     d["cand_key"] = d["candidate"].map(F.norm_name)
     d = d.dropna(subset=["pct", "cand_key"])
 
