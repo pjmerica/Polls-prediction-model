@@ -99,6 +99,11 @@ def load_agg_polls(paths, cycle):
         "sample_size": pd.to_numeric(raw["sample_size"], errors="coerce"),
         "pollster": raw["pollster"],
         "poll_id": raw.get("poll_id"),
+        # question_id separates the MATCHUPS inside one poll. A single survey routinely
+        # tests several hypothetical pairings (Glengariff 2025-05-08 tested five), and
+        # without this column every pairing's numbers pool together as if they came from
+        # one question - see drop_dead_matchups().
+        "question_id": raw.get("question_id"),
         "_src_priority": raw["_src_priority"],
     })
     d["election_date"] = election_date(cycle)
@@ -170,6 +175,10 @@ def load_agg_polls(paths, cycle):
 
     d["race_id"] = (d["year"].astype(str) + "_" + d["state"] + "_" + d["office"]
                     + d["district"].map(F.dist_str).radd("-").where(d["district"].map(F.dist_str) != "", ""))
+    # Drop primary losers BEFORE the relative staleness rule. Order matters: the loser
+    # filter is absolute (a called result), the stale filter is relative to the race's
+    # newest poll, and a defeated candidate is never stale by that measure.
+    d = drop_primary_losers(d, cycle)
     d = drop_stale_candidates(F.prepare_polls(d))
 
     # schema sanity: a silent upstream change (pct scale, stage labels, race_id format)
@@ -182,6 +191,69 @@ def load_agg_polls(paths, cycle):
     assert n_races >= 20, f"only {n_races} general races parsed — race_id/stage format changed?"
     warn_near_duplicate_names(d)
     return d
+
+def drop_primary_losers(d, cycle):
+    """Remove DEAD MATCHUPS - questions involving a candidate who lost their primary.
+
+    Operates on whole questions, not rows: a survey asks several separate head-to-heads
+    and each one's numbers are only meaningful against the opponent actually named in it.
+
+    The general feed carries hypothetical matchups polled for months before a primary, so a
+    defeated candidate keeps a full set of recent polls and simply never stops being scored.
+    `drop_stale_candidates` cannot catch this: it is a RELATIVE rule (>14 days behind the
+    race's newest poll) and every candidate in the race, winner and loser alike, is polled
+    right up to primary day. Nobody is stale relative to anybody.
+
+    Found 2026-08-06, two days after Michigan voted: the general model still had Haley
+    Stevens ahead of Abdul El-Sayed in MI-Sen and Perry Johnson ahead of John James in
+    MI-Gov - in both cases ranking the person who LOST the primary above the actual nominee.
+    16 defeated candidates across 12 races.
+
+    Uses data/primary_results_2026.csv, which is authoritative once a primary is called: any
+    candidate flagged is_winner=0 in a party-primary whose general race we are predicting is
+    out of that general election. Winners are untouched, and races with no result yet are
+    untouched, so this is a no-op until a primary is actually decided.
+    """
+    path = os.path.join(HERE, "data", f"primary_results_{cycle}.csv")
+    if not os.path.exists(path):
+        return d
+    r = pd.read_csv(path)
+    if not {"race_id", "cand_key", "is_winner"} <= set(r.columns):
+        return d
+    # primary race_id is "<general_race_id>_<PARTY>"; strip the party suffix to match
+    r["general_race_id"] = r["race_id"].astype(str).str.rsplit("_", n=1).str[0]
+    losers = set(zip(r.loc[~r["is_winner"].astype(bool), "general_race_id"],
+                     r.loc[~r["is_winner"].astype(bool), "cand_key"]))
+    if not losers:
+        return d
+    is_loser = pd.Series([(rid, ck) in losers
+                          for rid, ck in zip(d["race_id"], d["cand_key"])], index=d.index)
+    if not is_loser.any():
+        return d
+
+    # DROP THE WHOLE MATCHUP, not just the loser's row. A survey asks several separate
+    # head-to-heads (question_id); "Stevens 43.7 vs Rogers 44.1" is one question and
+    # "El-Sayed 40.8 vs Rogers 46.9" is another. Deleting only Stevens leaves Rogers'
+    # 44.1 behind - a number measured against an opponent who is no longer running -
+    # and pools it with his real numbers. Rogers polls differently against different
+    # Democrats, so that contaminates his average with a matchup that will never happen.
+    # Fall back to (poll_id, candidate-set) if question_id is absent.
+    if "question_id" in d.columns and d["question_id"].notna().any():
+        qkey = d["race_id"].astype(str) + "|" + d["question_id"].astype(str)
+    else:
+        qkey = d["race_id"].astype(str) + "|" + d["poll_id"].astype(str)
+    dead_q = set(qkey[is_loser])
+    mask = qkey.isin(dead_q)
+
+    gone = d.loc[is_loser, ["race_id", "candidate"]].drop_duplicates()
+    collateral = int(mask.sum() - is_loser.sum())
+    print(f"dead matchups removed from the general feed: {int(mask.sum())} poll rows "
+          f"({len(dead_q)} questions) - {len(gone)} eliminated candidates across "
+          f"{gone['race_id'].nunique()} races, plus {collateral} surviving-candidate rows "
+          f"that were only measured against them")
+    for _, row in gone.head(12).iterrows():
+        print(f"   {row['race_id']}: {row['candidate']}")
+    return d[~mask]
 
 def warn_near_duplicate_names(d, threshold=0.88):
     """Print any two candidates in the SAME race whose names are near-identical.

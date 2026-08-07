@@ -427,3 +427,65 @@ up a single dominant failure mode that had nothing to do with the model.
     (item 31) fires on statewide races under 25k votes, and caught a fifth race live
     (ME-Sen-DEM, 571 votes). But the underlying scraper still takes "the last table on the
     page" with no check that the election date has passed. A date guard would be the real fix.
+
+## Added 2026-08-06 — dead matchups (the biggest training-data fix since the name key)
+
+38. ~~**The general model scored primary LOSERS, and trained on polls measured against
+    opponents who never made the ballot.**~~ **FIXED** — two related bugs, one root cause.
+
+    **Serve side.** Two days after Michigan voted, the general model still had Haley Stevens
+    ahead of Abdul El-Sayed in MI-Sen and Perry Johnson ahead of John James in MI-Gov —
+    ranking the person who LOST the primary above the actual nominee. 42 defeated candidates
+    across 26 races (Cornyn and Crockett in TX-Sen, McGrath and Cameron in KY-Sen, ...).
+    `drop_stale_candidates` could not catch this: it is a RELATIVE rule (>14 days behind the
+    race's newest poll) and pollsters test every plausible matchup right up to primary day,
+    so the loser is never stale relative to the winner. `drop_primary_losers()` now uses
+    `primary_results_2026.csv` as ground truth — a no-op until a primary is actually called.
+
+    **The deeper bug: `question_id` was never loaded.** A single survey asks SEVERAL separate
+    head-to-heads, each its own question (Glengariff 2025-05-08 tested five: Stevens/Huizenga,
+    McMorrow/Huizenga, El-Sayed/Huizenga, Stevens/Rogers, McMorrow/Rogers). Dropping only the
+    loser's ROW leaves the survivor's number from that same question behind — Rogers' 44.1
+    measured against Stevens, pooled with his real El-Sayed numbers. Rogers polls differently
+    against different Democrats, so this is contamination, not extra data.
+    The filter now drops the whole QUESTION. At serve time: 199 rows / 132 questions, of which
+    **63 were surviving-candidate rows** that only existed against eliminated opponents.
+    Mike Rogers went from 21 polls to **8** — two-thirds of his polling was against Democrats
+    who lost.
+
+    **Training had the same contamination: 666 of 8,394 general questions (7.9%)** mix a real
+    nominee with someone who never made the ballot. `has_result == 1` kept the nominee's row
+    and silently dropped the phantom opponent, so the model has been learning from dead
+    matchups since the start. Same filter added to `model.ipynb` AND `margin_model.ipynb`
+    (never-fork), removing 1,570 training rows.
+
+    **Held-out effect — read this honestly.** Only race-accuracy improved; every ranking and
+    calibration metric moved slightly the WRONG way, and all of them are inside the +/-.002
+    seed-noise band measured for `poll_momentum`:
+        race_acc  .8645 -> .8745  (+.0100)
+        AUC       .9682 -> .9672  (-.0010)
+        AUC_PR    .9490 -> .9472  (-.0018)
+        KS        .8142 -> .8142  ( flat )
+        Brier     .0700 -> .0708  (+.0008, worse)
+    The whole race_acc gain comes from **2024 alone** (+.036); 2018/2020/2022 are flat-to-worse
+    on every metric. AUC/Brier score every candidate row while race_acc only asks whether the
+    argmax is right, so they can and did move in opposite directions.
+    **Kept on principle, not on the metric** (user's call): a poll measuring Rogers against
+    Stevens says nothing about Rogers against El-Sayed, regardless of which way a noise-sized
+    delta lands. Do not quote +.010 as an established improvement — it is one cycle.
+
+39. **Not applicable to the primary models, deliberately.** Primary polls are FIELD polls
+    (mean 3.1 candidates per survey), where everyone is measured against the same whole field
+    — there is no "opponent who never ran" to contaminate a pairing. `primary_polls_long.csv`
+    does not even carry `question_id`. The primary models were retrained anyway, because the
+    `is_junk_answer` and name-alias changes live in `features.py`, which `features_primary.py`
+    imports.
+
+40. **OPEN: GitHub Pages can silently serve stale data.** On 2026-08-06 a Pages build sat in
+    `building` for 3h+ (they normally take ~50s) and every later push queued behind it, so the
+    live site served a version WITHOUT the CT-Gov-REP roster fix — a withdrawn candidate at 99%
+    — while git looked clean and green. Also 3 Pages `Timeout reached, aborting` failures and 2
+    `job was not acquired by Runner` failures the same day, all GitHub-side.
+    **Lesson: a green push is not a deploy.** Verify the PUBLISHED file
+    (`https://pjmerica.github.io/polling-agg-2026/primary_model_data.js`) after any deploy that
+    matters, not the commit.
