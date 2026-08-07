@@ -1,0 +1,1397 @@
+race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
+2026_AL_Governor_REP,REP,Tommy Tuberville,421754,85.4,1,True,tuberville t
+2026_AL_Governor_REP,REP,Ken McFeeters,47166,9.6,1,False,mcfeeters k
+2026_AL_Governor_REP,REP,"""Alabama"" Will Santivasci",24456,5.0,1,False,santivasci a
+2026_AL_Governor_DEM,DEM,Doug Jones,286612,78.6,2,True,jones d
+2026_AL_Governor_DEM,DEM,Will Boyd,35267,9.7,2,False,boyd w
+2026_AL_Governor_DEM,DEM,Yolanda Rochelle Flowers,18230,5.0,2,False,flowers y
+2026_AL_Governor_DEM,DEM,Jamel J. Brown,15808,4.3,2,False,brown j
+2026_AL_Governor_DEM,DEM,"Chad ""Chig"" Martin",5765,1.6,2,False,martin c
+2026_AL_Governor_DEM,DEM,"Nathan ""Nate"" Mathis",2953,0.8,2,False,mathis n
+2026_AL_House-1_REP,REP,Jerry Carl,32714,40.3,1,True,carl j
+2026_AL_House-1_REP,REP,Rhett Marques,25235,31.1,1,False,marques r
+2026_AL_House-1_REP,REP,Joshua McKee,7336,9.0,1,False,mckee j
+2026_AL_House-1_REP,REP,Austin Sidwell,5829,7.2,1,False,sidwell a
+2026_AL_House-1_REP,REP,James Dees,4194,5.2,1,False,dees j
+2026_AL_House-1_REP,REP,John Mills,3049,3.8,1,False,mills j
+2026_AL_House-1_REP,REP,James Richardson,2848,3.5,1,False,richardson j
+2026_AL_House-3_REP,REP,Mike Rogers,63144,83.2,4,True,rogers m
+2026_AL_House-3_REP,REP,Terri LaPoint,12769,16.8,4,False,lapoint t
+2026_AL_House-4_REP,REP,Robert Aderholt,72169,77.6,5,True,aderholt r
+2026_AL_House-4_REP,REP,Tommy Barnes,20824,22.4,5,False,barnes t
+2026_AL_House-4_DEM,DEM,Amanda N. Pusczek,9648,62.8,6,True,pusczek a
+2026_AL_House-4_DEM,DEM,Shane Weaver,5719,37.2,6,False,weaver s
+2026_AL_House-5_DEM,DEM,Andrew Sneed,16688,78.4,8,True,sneed a
+2026_AL_House-5_DEM,DEM,Candace Dollar Duvieilh,4607,21.6,8,False,duvieilh c
+2026_AL_House-6_REP,REP,Gary Palmer,59078,80.8,9,True,palmer g
+2026_AL_House-6_REP,REP,Case Dixon,14054,19.2,9,False,dixon c
+2026_AL_Senate_REP,REP,Barry Moore,173674,55.8,2,True,moore b
+2026_AL_Senate_REP,REP,Jared Hudson,137545,44.2,2,False,hudson j
+2026_AL_Senate_DEM,DEM,Everett Wess,49396,54.6,4,True,wess e
+2026_AL_Senate_DEM,DEM,Dakarai Larriett,41065,45.4,4,False,larriett d
+2026_AR_Senate_REP,REP,Tom Cotton,230209,81.64,1,True,cotton t
+2026_AR_Senate_REP,REP,Micah Ashby,26040,9.23,1,False,ashby m
+2026_AR_Senate_REP,REP,Jeb Little,25724,9.12,1,False,little j
+2026_AR_Senate_DEM,DEM,Hallie Shoffner,102289,78.27,2,True,shoffner h
+2026_AR_Senate_DEM,DEM,Ethan Dunbar,28394,21.73,2,False,dunbar e
+2026_AZ_Governor_DEM,DEM,Katie Hobbs,512550,100.0,1,True,hobbs k
+2026_AZ_Governor_REP,REP,Andy Biggs,453819,74.0,2,True,biggs a
+2026_AZ_Governor_REP,REP,David Schweikert,88284,14.4,2,False,schweikert d
+2026_AZ_Governor_REP,REP,Scott Neely,42871,7.0,2,False,neely s
+2026_AZ_Governor_REP,REP,Ken Miceli,28026,4.6,2,False,miceli k
+2026_AZ_House-1_REP,REP,Jay Feely,43709,49.8,1,True,feely j
+2026_AZ_House-1_REP,REP,Joseph Chaplik,31347,35.7,1,False,chaplik j
+2026_AZ_House-1_REP,REP,John Trobough,12718,14.5,1,False,trobough j
+2026_AZ_House-1_DEM,DEM,Amish Shah,29002,39.5,2,True,shah a
+2026_AZ_House-1_DEM,DEM,Marlene Galán-Woods,25267,34.4,2,False,galanwoods m
+2026_AZ_House-1_DEM,DEM,Jonathan Treble,13006,17.7,2,False,treble j
+2026_AZ_House-1_DEM,DEM,Rick McCartney,6248,8.5,2,False,mccartney r
+2026_AZ_House-2_REP,REP,Eli Crane,89205,100.0,4,True,crane e
+2026_AZ_House-2_DEM,DEM,Jonathan Nez,65118,100.0,5,True,nez j
+2026_AZ_House-3_DEM,DEM,Yassamin Ansari,37553,100.0,7,True,ansari y
+2026_AZ_House-3_REP,REP,Nicholas Glenn,437,100.0,8,True,glenn n
+2026_AZ_House-4_DEM,DEM,Greg Stanton,35551,62.3,10,True,stanton g
+2026_AZ_House-4_DEM,DEM,Kai Newkirk,21544,37.7,10,False,newkirk k
+2026_AZ_House-4_REP,REP,Zuhdi Jasser,39431,100.0,11,True,jasser z
+2026_AZ_House-5_REP,REP,Mark Lamb,52352,58.7,13,True,lamb m
+2026_AZ_House-5_REP,REP,Daniel Keenan,36854,41.3,13,False,keenan d
+2026_AZ_House-5_DEM,DEM,Elizabeth Lee,30857,66.0,14,True,lee e
+2026_AZ_House-5_DEM,DEM,Chris James,9703,20.8,14,False,james c
+2026_AZ_House-5_DEM,DEM,Brian Hualde,6171,13.2,14,False,hualde b
+2026_AZ_House-6_REP,REP,Juan Ciscomani,76481,100.0,15,True,ciscomani j
+2026_AZ_House-6_DEM,DEM,JoAnna Mendoza,78310,100.0,16,True,mendoza j
+2026_AZ_House-7_DEM,DEM,Adelita Grijalva,59304,100.0,18,True,grijalva a
+2026_AZ_House-7_REP,REP,Daniel Butierez,21934,100.0,19,True,butierez d
+2026_AZ_House-8_REP,REP,Abraham Hamadeh,69182,100.0,20,True,hamadeh a
+2026_AZ_House-8_DEM,DEM,Bernadette Greene-Placentia,31312,65.7,21,True,greeneplacentia b
+2026_AZ_House-8_DEM,DEM,Raymond Keeler,16324,34.3,21,False,keeler r
+2026_AZ_House-9_REP,REP,Paul Gosar,79336,100.0,22,True,gosar p
+2026_AZ_House-9_DEM,DEM,Danielle Sterbinsky,35700,100.0,23,True,sterbinsky d
+2026_CO_Governor_DEM,DEM,Phil Weiser,505444,56.9,1,True,weiser p
+2026_CO_Governor_DEM,DEM,Michael Bennet,383131,43.1,1,False,bennet m
+2026_CO_Governor_REP,REP,Victor Marx,208455,39.9,2,True,marx v
+2026_CO_Governor_REP,REP,Barbara Kirkmeyer,205990,39.4,2,False,kirkmeyer b
+2026_CO_Governor_REP,REP,Scott Bottoms,108529,20.8,2,False,bottoms s
+2026_CO_House-1_DEM,DEM,Melat Kiros,83855,53.2,1,True,kiros m
+2026_CO_House-1_DEM,DEM,Diana DeGette,62715,39.8,1,False,degette d
+2026_CO_House-1_DEM,DEM,Wanda James,11075,7.0,1,False,james w
+2026_CO_House-1_REP,REP,Christy Peterson,15010,100.0,2,True,peterson c
+2026_CO_House-2_DEM,DEM,Joe Neguse,136146,100.0,3,True,neguse j
+2026_CO_House-2_REP,REP,Kelley Dennison,21584,57.9,4,True,dennison k
+2026_CO_House-2_REP,REP,Christina Blunt,15666,42.1,4,False,blunt c
+2026_CO_House-3_REP,REP,Jeff Hurd,62536,66.4,5,True,hurd j
+2026_CO_House-3_REP,REP,Ron Hanks,31715,33.6,5,False,hanks r
+2026_CO_House-3_DEM,DEM,Dwayne Romero,47848,54.8,6,True,romero d
+2026_CO_House-3_DEM,DEM,Alex Kelloff,39394,45.2,6,False,kelloff a
+2026_CO_House-4_REP,REP,Lauren Boebert,92651,100.0,7,True,boebert l
+2026_CO_House-4_DEM,DEM,Eileen Laubacher,72483,100.0,8,True,laubacher e
+2026_CO_House-5_REP,REP,Jeff Crank,76547,100.0,9,True,crank j
+2026_CO_House-5_DEM,DEM,Jessica Killin,45511,61.2,10,True,killin j
+2026_CO_House-5_DEM,DEM,Joe Reagan,28864,38.8,10,False,reagan j
+2026_CO_House-6_DEM,DEM,Jason Crow,94207,100.0,12,True,crow j
+2026_CO_House-6_REP,REP,Jason Clark,38437,100.0,13,True,clark j
+2026_CO_House-7_DEM,DEM,Brittany Pettersen,113707,100.0,14,True,pettersen b
+2026_CO_House-7_REP,REP,Tim Bennett,58806,100.0,15,True,bennett t
+2026_CO_House-8_REP,REP,Gabe Evans,48012,100.0,16,True,evans g
+2026_CO_House-8_DEM,DEM,Manny Rutinel,50435,62.8,17,True,rutinel m
+2026_CO_House-8_DEM,DEM,Shannon Bird,26122,32.5,17,False,bird s
+2026_CO_House-8_DEM,DEM,Evan Munsing,3717,4.6,17,False,munsing e
+2026_CO_Senate_DEM,DEM,John Hickenlooper,472870,52.8,1,True,hickenlooper j
+2026_CO_Senate_DEM,DEM,Julie Gonzales,422488,47.2,1,False,gonzales j
+2026_CO_Senate_REP,REP,Mark Baisley,445352,100.0,2,True,baisley m
+2026_GA_Governor_REP,REP,Rick Jackson,373543,52.6,2,True,jackson r
+2026_GA_Governor_REP,REP,Burt Jones,336011,47.4,2,False,jones b
+2026_GA_Governor_DEM,DEM,Keisha Lance Bottoms,608264,56.2,3,True,bottoms k
+2026_GA_Governor_DEM,DEM,Jason Esteves,201852,18.7,3,False,esteves j
+2026_GA_Governor_DEM,DEM,Mike Thurmond,139787,12.9,3,False,thurmond m
+2026_GA_Governor_DEM,DEM,Geoff Duncan,75721,7.0,3,False,duncan g
+2026_GA_Governor_DEM,DEM,Derrick Jackson,25050,2.3,3,False,jackson d
+2026_GA_Governor_DEM,DEM,Amanda Duffy,18808,1.7,3,False,duffy a
+2026_GA_Governor_DEM,DEM,Olujimi Brown,12329,1.1,3,False,brown o
+2026_GA_House-1_REP,REP,Jim Kingston,37025,52.4,1,True,kingston j
+2026_GA_House-1_REP,REP,Patrick Farrell,12193,17.2,1,False,farrell p
+2026_GA_House-1_REP,REP,Kandiss Taylor,8875,12.6,1,False,taylor k
+2026_GA_House-1_REP,REP,Brian Montgomery,7088,10.0,1,False,montgomery b
+2026_GA_House-1_REP,REP,Eugene Yu,3083,4.4,1,False,yu e
+2026_GA_House-1_REP,REP,Krista Penn,2428,3.4,1,False,penn k
+2026_GA_House-1_DEM,DEM,Amanda Hollowell,12618,53.0,3,True,hollowell a
+2026_GA_House-1_DEM,DEM,Joyce Griggs,11206,47.0,3,False,griggs j
+2026_GA_House-2_DEM,DEM,Sanford Bishop,72498,100.0,4,True,bishop s
+2026_GA_House-2_REP,REP,Matt Day,42639,100.0,5,True,day m
+2026_GA_House-3_REP,REP,Brian Jack,87643,100.0,6,True,jack b
+2026_GA_House-3_DEM,DEM,Maura Keller,33964,60.8,7,True,keller m
+2026_GA_House-3_DEM,DEM,George Johnson,21881,39.2,7,False,johnson g
+2026_GA_House-4_DEM,DEM,Hank Johnson,81997,79.3,8,True,johnson h
+2026_GA_House-4_DEM,DEM,Ansel Postell,12052,11.7,8,False,postell a
+2026_GA_House-4_DEM,DEM,Ben Truman,9366,9.1,8,False,truman b
+2026_GA_House-4_REP,REP,James Duffie,17390,100.0,9,True,duffie j
+2026_GA_House-5_DEM,DEM,Nikema Williams,118546,88.0,10,True,williams n
+2026_GA_House-5_DEM,DEM,Arnetress Beatty,16186,12.0,10,False,beatty a
+2026_GA_House-5_REP,REP,John Salvesen,9552,100.0,11,True,salvesen j
+2026_GA_House-6_DEM,DEM,Lucy McBath,126663,100.0,12,True,mcbath l
+2026_GA_House-6_REP,REP,Kevin Martin,16878,70.1,13,True,martin k
+2026_GA_House-6_REP,REP,Justin Pinker,7197,29.9,13,False,pinker j
+2026_GA_House-7_REP,REP,Rich McCormick,83746,100.0,14,True,mccormick r
+2026_GA_House-7_DEM,DEM,Anthony Kozycki,11667,67.7,16,True,kozycki a
+2026_GA_House-7_DEM,DEM,Casey Norton,5561,32.3,16,False,norton c
+2026_GA_House-8_REP,REP,Austin Scott,72036,100.0,17,True,scott a
+2026_GA_House-8_DEM,DEM,Kelly Esti,23828,53.5,18,True,esti k
+2026_GA_House-8_DEM,DEM,Justin Lucas,20719,46.5,18,False,lucas j
+2026_GA_House-9_REP,REP,Andrew Clyde,70083,76.0,19,True,clyde a
+2026_GA_House-9_REP,REP,Sam Couvillon,11129,12.1,19,False,couvillon s
+2026_GA_House-9_REP,REP,Gregg Poole,11037,12.0,19,False,poole g
+2026_GA_House-9_DEM,DEM,Caitlyn Gegen,25570,60.0,20,True,gegen c
+2026_GA_House-9_DEM,DEM,Nick Alex,17056,40.0,20,False,alex n
+2026_GA_House-10_REP,REP,Houston Gaines,59895,66.9,21,True,gaines h
+2026_GA_House-10_REP,REP,Ryan Millsap,16149,18.0,21,False,millsap r
+2026_GA_House-10_REP,REP,Jeffrey Baker,13483,15.1,21,False,baker j
+2026_GA_House-10_DEM,DEM,Pamela DeLancy,35058,54.4,22,True,delancy p
+2026_GA_House-10_DEM,DEM,Lexy Doherty,25341,39.3,22,False,doherty l
+2026_GA_House-10_DEM,DEM,John Dority,4022,6.2,22,False,dority j
+2026_GA_House-11_REP,REP,John Cowan,44799,65.0,24,True,cowan j
+2026_GA_House-11_REP,REP,Rob Adkerson,24140,35.0,24,False,adkerson r
+2026_GA_House-11_DEM,DEM,Chris Harden,39204,74.8,25,True,harden c
+2026_GA_House-11_DEM,DEM,Barry Wolfert,13230,25.2,25,False,wolfert b
+2026_GA_House-12_REP,REP,Rick Allen,59576,83.4,26,True,allen r
+2026_GA_House-12_REP,REP,Tori Branum,11884,16.6,26,False,branum t
+2026_GA_House-12_DEM,DEM,Ceretta Smith,16823,55.8,28,True,smith c
+2026_GA_House-12_DEM,DEM,Traci George,13331,44.2,28,False,george t
+2026_GA_House-13_DEM,DEM,Jasmine Clark,61504,56.1,29,True,clark j
+2026_GA_House-13_DEM,DEM,Heavenly Kimes,23537,21.5,29,False,kimes h
+2026_GA_House-13_DEM,DEM,Everton Blair,12733,11.6,29,False,blair e
+2026_GA_House-13_DEM,DEM,Emanuel Jones,8204,7.5,29,False,jones e
+2026_GA_House-13_DEM,DEM,Joe Lester,2046,1.9,29,False,lester j
+2026_GA_House-13_DEM,DEM,Jeff Fauntleroy,1557,1.4,29,False,fauntleroy j
+2026_GA_House-13_REP,REP,Jonathan Chavez,25547,100.0,30,True,chavez j
+2026_GA_House-14_REP,REP,Clay Fuller,66888,81.3,31,True,fuller c
+2026_GA_House-14_REP,REP,Colton Moore,5508,6.7,31,False,moore c
+2026_GA_House-14_REP,REP,Brian Stover,3191,3.9,31,False,stover b
+2026_GA_House-14_REP,REP,Tom Gray,2044,2.5,31,False,gray t
+2026_GA_House-14_REP,REP,Timothy Brown,1489,1.8,31,False,brown t
+2026_GA_House-14_REP,REP,Star Black,1406,1.7,31,False,black s
+2026_GA_House-14_REP,REP,Nicky Lama,1220,1.5,31,False,lama n
+2026_GA_House-14_REP,REP,Reagan Box,560,0.7,31,False,box r
+2026_GA_House-14_DEM,DEM,Shawn Harris,43067,100.0,32,True,harris s
+2026_GA_Senate_DEM,DEM,Jon Ossoff,1042331,100.0,1,True,ossoff j
+2026_GA_Senate_REP,REP,Mike Collins,390174,55.5,3,True,collins m
+2026_GA_Senate_REP,REP,Derek Dooley,312339,44.5,3,False,dooley d
+2026_IA_Governor_REP,REP,Zach Lahn,80765,37.65,1,True,lahn z
+2026_IA_Governor_REP,REP,Randy Feenstra,79113,36.88,1,False,feenstra r
+2026_IA_Governor_REP,REP,Adam Steen,31087,14.49,1,False,steen a
+2026_IA_Governor_REP,REP,Brad Sherman,15076,7.03,1,False,sherman b
+2026_IA_Governor_REP,REP,Eddie Andrews,7694,3.59,1,False,andrews e
+2026_IA_Governor_DEM,DEM,Rob Sand,189442,99.61,2,True,sand r
+2026_IA_House-1_REP,REP,Mariannette Miller-Meeks,35182,71.5,1,True,millermeeks m
+2026_IA_House-1_REP,REP,David Pautsch,13957,28.4,1,False,pautsch d
+2026_IA_House-1_DEM,DEM,Christina Bohannan,42862,81.5,2,True,bohannan c
+2026_IA_House-1_DEM,DEM,Travis Terrell,9761,18.5,2,False,terrell t
+2026_IA_House-2_REP,REP,Joe Mitchell,24413,61.5,4,True,mitchell j
+2026_IA_House-2_REP,REP,Charlie McClintock,15264,38.5,4,False,mcclintock c
+2026_IA_House-2_DEM,DEM,Lindsay James,27717,57.8,5,True,james l
+2026_IA_House-2_DEM,DEM,Clint Twedt-Ball,11529,24.1,5,False,twedtball c
+2026_IA_House-2_DEM,DEM,Kathy Dolter,8669,18.1,5,False,dolter k
+2026_IA_House-3_REP,REP,Zach Nunn,48309,100.0,7,True,nunn z
+2026_IA_House-3_DEM,DEM,Sarah Trone Garriott,54662,100.0,8,True,garriott s
+2026_IA_House-4_REP,REP,Chris McGowan,55077,100.0,10,True,mcgowan c
+2026_IA_House-4_DEM,DEM,David Dawson,11291,39.1,11,True,dawson d
+2026_IA_House-4_DEM,DEM,Stephanie Steiner,8836,30.6,11,False,steiner s
+2026_IA_House-4_DEM,DEM,Ashley WolfTornabane,8782,30.4,11,False,wolftornabane a
+2026_IA_Senate_REP,REP,Ashley Hinson,153059,74.2,1,True,hinson a
+2026_IA_Senate_REP,REP,Jim Carlin,53196,25.8,1,False,carlin j
+2026_IA_Senate_DEM,DEM,Josh Turek,120287,62.7,2,True,turek j
+2026_IA_Senate_DEM,DEM,Zach Wahls,71663,37.3,2,False,wahls z
+2026_IL_Governor_DEM,DEM,JB Pritzker,1197587,100.0,1,True,pritzker j
+2026_IL_Governor_REP,REP,Darren Bailey,304162,53.3,2,True,bailey d
+2026_IL_Governor_REP,REP,Ted Dabrowski Carrie Mendoza,165229,28.9,2,False,mendoza t
+2026_IL_Governor_REP,REP,James Mendrick Robert Renteria,54599,9.6,2,False,renteria j
+2026_IL_Governor_REP,REP,Rick Heidner Christina Neitzke-Troike,46374,8.1,2,False,neitzketroike r
+2026_IL_House-1_DEM,DEM,Jonathan Jackson,89662,100.0,1,True,jackson j
+2026_IL_House-1_REP,REP,Christian Maxwell,12472,64.5,2,True,maxwell c
+2026_IL_House-1_REP,REP,Marcus Lewis,6858,35.5,2,False,lewis m
+2026_IL_House-2_DEM,DEM,Donna Miller,34034,40.4,3,True,miller d
+2026_IL_House-2_DEM,DEM,Jesse Jackson Jr.,24321,28.9,3,False,jackson j
+2026_IL_House-2_DEM,DEM,Robert Peters,10490,12.4,3,False,peters r
+2026_IL_House-2_DEM,DEM,Yumeka Brown,8534,10.1,3,False,brown y
+2026_IL_House-2_DEM,DEM,Willie Preston,2463,2.9,3,False,preston w
+2026_IL_House-2_DEM,DEM,Patrick Keating,1093,1.3,3,False,keating p
+2026_IL_House-2_DEM,DEM,Toni Brown,979,1.2,3,False,brown t
+2026_IL_House-2_DEM,DEM,Sidney Moore,860,1.0,3,False,moore s
+2026_IL_House-2_DEM,DEM,Eric France,837,1.0,3,False,france e
+2026_IL_House-2_DEM,DEM,Adal Regis,685,0.8,3,False,regis a
+2026_IL_House-2_REP,REP,Michael Noack,20598,100.0,4,True,noack m
+2026_IL_House-3_DEM,DEM,Delia Ramirez,72443,100.0,5,True,ramirez d
+2026_IL_House-3_REP,REP,Angel Oakley,13991,100.0,6,True,oakley a
+2026_IL_House-4_DEM,DEM,Patty Garcia,52616,100.0,7,True,garcia p
+2026_IL_House-4_REP,REP,Lupe Castillo,8336,100.0,8,True,castillo l
+2026_IL_House-5_DEM,DEM,Mike Quigley,75319,64.8,9,True,quigley m
+2026_IL_House-5_DEM,DEM,Matt Conroy,28988,24.9,9,False,conroy m
+2026_IL_House-5_DEM,DEM,Ellen Corley,8537,7.3,9,False,corley e
+2026_IL_House-5_DEM,DEM,Anthony Tamez,3344,2.9,9,False,tamez a
+2026_IL_House-5_REP,REP,Tommy Hanson,11921,72.0,10,True,hanson t
+2026_IL_House-5_REP,REP,Barry Wicker,2781,16.8,10,False,wicker b
+2026_IL_House-5_REP,REP,Kimball Ladien,1864,11.3,10,False,ladien k
+2026_IL_House-6_DEM,DEM,Sean Casten,69579,75.8,11,True,casten s
+2026_IL_House-6_DEM,DEM,Joey Ruzevich,22181,24.2,11,False,ruzevich j
+2026_IL_House-6_REP,REP,Niki Conforti,26783,82.2,12,True,conforti n
+2026_IL_House-6_REP,REP,Skylar Duensing,5791,17.8,12,False,duensing s
+2026_IL_House-7_DEM,DEM,La Shawn Ford,24408,23.7,13,True,ford l
+2026_IL_House-7_DEM,DEM,Melissa Conyears Ervin,21120,20.5,13,False,ervin m
+2026_IL_House-7_DEM,DEM,Anthony Driver Jr.,11943,11.6,13,False,driver a
+2026_IL_House-7_DEM,DEM,Kina Collins,9735,9.5,13,False,collins k
+2026_IL_House-7_DEM,DEM,Thomas Fisher,7865,7.6,13,False,fisher t
+2026_IL_House-7_DEM,DEM,Jason Friedman,7559,7.3,13,False,friedman j
+2026_IL_House-7_DEM,DEM,Anabel Mendoza,5610,5.5,13,False,mendoza a
+2026_IL_House-7_DEM,DEM,Reed Showalter,4620,4.5,13,False,showalter r
+2026_IL_House-7_DEM,DEM,Richard Boykin,4173,4.1,13,False,boykin r
+2026_IL_House-7_DEM,DEM,Jazmin Robinson,2760,2.7,13,False,robinson j
+2026_IL_House-7_DEM,DEM,Rory Hoskins,1990,1.9,13,False,hoskins r
+2026_IL_House-7_DEM,DEM,David Ehrlich,756,0.7,13,False,ehrlich d
+2026_IL_House-7_DEM,DEM,Felix Tello,355,0.3,13,False,tello f
+2026_IL_House-7_REP,REP,Chad Koppie,3416,65.0,14,True,koppie c
+2026_IL_House-7_REP,REP,Patricia Easley,1843,35.0,14,False,easley p
+2026_IL_House-8_DEM,DEM,Melissa Bean,22279,31.6,15,True,bean m
+2026_IL_House-8_DEM,DEM,Junaid Ahmed,18954,26.9,15,False,ahmed j
+2026_IL_House-8_DEM,DEM,Dan Tully,8906,12.6,15,False,tully d
+2026_IL_House-8_DEM,DEM,Yasmeen Bankole,6752,9.6,15,False,bankole y
+2026_IL_House-8_DEM,DEM,Kevin Morrison,6377,9.0,15,False,morrison k
+2026_IL_House-8_DEM,DEM,Neil Khot,4683,6.6,15,False,khot n
+2026_IL_House-8_DEM,DEM,Sanjyot Dunung,1773,2.5,15,False,dunung s
+2026_IL_House-8_DEM,DEM,Ryan Vetticad,794,1.1,15,False,vetticad r
+2026_IL_House-8_REP,REP,Jennifer Davis,14635,51.4,16,True,davis j
+2026_IL_House-8_REP,REP,Mark Rice,11437,40.2,16,False,rice m
+2026_IL_House-8_REP,REP,Kevin Ake,1263,4.4,16,False,ake k
+2026_IL_House-8_REP,REP,Herbert Hebein,1111,3.9,16,False,hebein h
+2026_IL_House-9_DEM,DEM,Daniel Biss,38804,29.4,17,True,biss d
+2026_IL_House-9_DEM,DEM,Kat Abughazaleh,34707,26.3,17,False,abughazaleh k
+2026_IL_House-9_DEM,DEM,Laura Fine,26384,20.0,17,False,fine l
+2026_IL_House-9_DEM,DEM,Mike Simmons,9419,7.1,17,False,simmons m
+2026_IL_House-9_DEM,DEM,Phil Andrew,7997,6.1,17,False,andrew p
+2026_IL_House-9_DEM,DEM,Bushra Amiwala,6692,5.1,17,False,amiwala b
+2026_IL_House-9_DEM,DEM,Hoan Huynh,2343,1.8,17,False,huynh h
+2026_IL_House-9_DEM,DEM,Patricia Brown,1675,1.3,17,False,brown p
+2026_IL_House-9_DEM,DEM,Jeff Cohen,1078,0.8,17,False,cohen j
+2026_IL_House-9_DEM,DEM,Justin Ford,793,0.6,17,False,ford j
+2026_IL_House-9_DEM,DEM,Bethany Johnson,635,0.5,17,False,johnson b
+2026_IL_House-9_DEM,DEM,Sam Polan,528,0.4,17,False,polan s
+2026_IL_House-9_DEM,DEM,Howard Rosenblum,312,0.2,17,False,rosenblum h
+2026_IL_House-9_DEM,DEM,Nick Pyati,241,0.2,17,False,pyati n
+2026_IL_House-9_DEM,DEM,Mark Fredrickson,232,0.2,17,False,fredrickson m
+2026_IL_House-9_REP,REP,John Elleson,7545,48.9,18,True,elleson j
+2026_IL_House-9_REP,REP,Paul Friedman,5185,33.6,18,False,friedman p
+2026_IL_House-9_REP,REP,Rocío Cleveland,1469,9.5,18,False,cleveland r
+2026_IL_House-9_REP,REP,Mark Su,1245,8.1,18,False,su m
+2026_IL_House-10_DEM,DEM,Brad Schneider,56353,78.8,19,True,schneider b
+2026_IL_House-10_DEM,DEM,Morgan Coghill,15152,21.2,19,False,coghill m
+2026_IL_House-10_REP,REP,Carl Lambrecht,18857,100.0,20,True,lambrecht c
+2026_IL_House-11_DEM,DEM,Bill Foster,69637,100.0,21,True,foster b
+2026_IL_House-11_REP,REP,Jeff Walter,13877,42.6,22,True,walter j
+2026_IL_House-11_REP,REP,Michael Pierce,12653,38.8,22,False,pierce m
+2026_IL_House-11_REP,REP,Charles Kim,4197,12.9,22,False,kim c
+2026_IL_House-11_REP,REP,Tedora Brown,1856,5.7,22,False,brown t
+2026_IL_House-12_REP,REP,Mike Bost,81400,100.0,23,True,bost m
+2026_IL_House-12_DEM,DEM,Julie Fortier,26791,100.0,24,True,fortier j
+2026_IL_House-13_DEM,DEM,Nikki Budzinski,44763,75.1,25,True,budzinski n
+2026_IL_House-13_DEM,DEM,Dylan Blaha,14850,24.9,25,False,blaha d
+2026_IL_House-13_REP,REP,Jeff Wilson,22291,67.5,26,True,wilson j
+2026_IL_House-13_REP,REP,Joshua Loyd,10733,32.5,26,False,loyd j
+2026_IL_House-14_DEM,DEM,Lauren Underwood,56414,100.0,27,True,underwood l
+2026_IL_House-14_REP,REP,James Marter,23312,74.9,28,True,marter j
+2026_IL_House-14_REP,REP,Gary Vician,7794,25.1,28,False,vician g
+2026_IL_House-15_REP,REP,Mary Miller,64855,73.6,29,True,miller m
+2026_IL_House-15_REP,REP,Ryan Tebrugge,13045,14.8,29,False,tebrugge r
+2026_IL_House-15_REP,REP,Judy Bowlby,10194,11.6,29,False,bowlby j
+2026_IL_House-15_DEM,DEM,Jennifer Todd,13708,45.7,30,True,todd j
+2026_IL_House-15_DEM,DEM,Paul Davis,10117,33.7,30,False,davis p
+2026_IL_House-15_DEM,DEM,Randy Raley,3422,11.4,30,False,raley r
+2026_IL_House-15_DEM,DEM,Kyle Nudo,2734,9.1,30,False,nudo k
+2026_IL_House-16_REP,REP,Darin LaHood,52914,100.0,31,True,lahood d
+2026_IL_House-16_DEM,DEM,Paul Nolley,38665,100.0,32,True,nolley p
+2026_IL_House-17_DEM,DEM,Eric Sorensen,47743,100.0,33,True,sorensen e
+2026_IL_House-17_REP,REP,Dillan Vancil,19535,58.4,34,True,vancil d
+2026_IL_House-17_REP,REP,Julie Bickelhaupt,13903,41.6,34,False,bickelhaupt j
+2026_IL_Senate_DEM,DEM,Juliana Stratton,507689,40.4,1,True,stratton j
+2026_IL_Senate_DEM,DEM,Raja Krishnamoorthi,411150,32.7,1,False,krishnamoorthi r
+2026_IL_Senate_DEM,DEM,Robin Kelly,229788,18.3,1,False,kelly r
+2026_IL_Senate_DEM,DEM,Kevin Ryan,61914,4.9,1,False,ryan k
+2026_IL_Senate_DEM,DEM,Bryan Maxwell,10070,0.8,1,False,maxwell b
+2026_IL_Senate_DEM,DEM,Sean Brown,8122,0.6,1,False,brown s
+2026_IL_Senate_DEM,DEM,Awisi Bustos,8020,0.6,1,False,bustos a
+2026_IL_Senate_DEM,DEM,Christopher Swann,7896,0.6,1,False,swann c
+2026_IL_Senate_DEM,DEM,Jonathan Dean,6762,0.5,1,False,dean j
+2026_IL_Senate_DEM,DEM,Steve Botsford,5411,0.4,1,False,botsford s
+2026_IL_Senate_REP,REP,Don Tracy,215523,40.0,2,True,tracy d
+2026_IL_Senate_REP,REP,Jeannie Evans,122840,22.8,2,False,evans j
+2026_IL_Senate_REP,REP,Casey Chlebek,60222,11.2,2,False,chlebek c
+2026_IL_Senate_REP,REP,R. Cary Capparelli,56907,10.6,2,False,capparelli r
+2026_IL_Senate_REP,REP,Pamela Denise Long,53810,10.0,2,False,long p
+2026_IL_Senate_REP,REP,Jimmy Lee Tillman,30042,5.6,2,False,tillman j
+2026_KS_Governor_DEM,DEM,Cindy Holscher,107061,48.6,1,True,holscher c
+2026_KS_Governor_DEM,DEM,Ethan Corson,85570,38.8,1,False,corson e
+2026_KS_Governor_DEM,DEM,Curt Skoog,27816,12.6,1,False,skoog c
+2026_KS_Governor_REP,REP,Ty Masterson,146093,43.2,2,True,masterson t
+2026_KS_Governor_REP,REP,Philip Sarnecki,75870,22.4,2,False,sarnecki p
+2026_KS_Governor_REP,REP,Vicki Schmidt,46350,13.7,2,False,schmidt v
+2026_KS_Governor_REP,REP,Scott Schwab,37071,10.9,2,False,schwab s
+2026_KS_Governor_REP,REP,Charlotte O'Hara,14398,4.3,2,False,ohara c
+2026_KS_Governor_REP,REP,Stacy Rogers,11695,3.5,2,False,rogers s
+2026_KS_Governor_REP,REP,Nick Reinecker,7076,2.1,2,False,reinecker n
+2026_KS_Senate_REP,REP,Roger Marshall,266135,79.9,1,True,marshall r
+2026_KS_Senate_REP,REP,Pond Naramore,66919,20.1,1,False,naramore p
+2026_KS_Senate_DEM,DEM,Adam Hamilton,76105,34.9,2,True,hamilton a
+2026_KS_Senate_DEM,DEM,Christy Davis,30996,14.2,2,False,davis c
+2026_KS_Senate_DEM,DEM,Noah Taylor,29398,13.5,2,False,taylor n
+2026_KS_Senate_DEM,DEM,Anne Parelkar,16340,7.5,2,False,parelkar a
+2026_KS_Senate_DEM,DEM,Erik Murray,14669,6.7,2,False,murray e
+2026_KS_Senate_DEM,DEM,Patrick Schmidt,13073,6.0,2,False,schmidt p
+2026_KS_Senate_DEM,DEM,Sandy Spidel Neumann,12377,5.7,2,False,neumann s
+2026_KS_Senate_DEM,DEM,Jason Hart,11844,5.4,2,False,hart j
+2026_KS_Senate_DEM,DEM,Damon Anderson,5744,2.6,2,False,anderson d
+2026_KS_Senate_DEM,DEM,Kevin Latz,4004,1.8,2,False,latz k
+2026_KS_Senate_DEM,DEM,Michael Soetaert,3608,1.7,2,False,soetaert m
+2026_KY_House-1_REP,REP,James R. Comer,77678,88.1,1,True,comer j
+2026_KY_House-1_REP,REP,David Sims,5068,5.7,1,False,sims d
+2026_KY_House-1_REP,REP,Robert James Sutherby,2774,3.1,1,False,sutherby r
+2026_KY_House-1_REP,REP,Penny Arcos,2645,3.0,1,False,arcos p
+2026_KY_House-2_REP,REP,S. Brett Guthrie,65176,85.4,2,True,guthrie s
+2026_KY_House-2_REP,REP,Joshua M. Ferguson,7187,9.4,2,False,ferguson j
+2026_KY_House-2_REP,REP,"G. ""Shay"" Perry-Adelmann",3963,5.2,2,False,perryadelmann g
+2026_KY_House-2_DEM,DEM,Megan Wingfield,16330,40.7,3,True,wingfield m
+2026_KY_House-2_DEM,DEM,Hank Linderman,8401,20.9,3,False,linderman h
+2026_KY_House-2_DEM,DEM,David S. Hatfield,8254,20.6,3,False,hatfield d
+2026_KY_House-2_DEM,DEM,William Dakota Compton,7126,17.8,3,False,compton w
+2026_KY_House-3_REP,REP,Maria Teresa Rodriguez,15855,48.2,4,True,rodriguez m
+2026_KY_House-3_REP,REP,David Joseph Nichter,6807,20.7,4,False,nichter d
+2026_KY_House-3_REP,REP,Daniel Cobble,5893,17.9,4,False,cobble d
+2026_KY_House-3_REP,REP,Donald Pay,4313,13.1,4,False,pay d
+2026_KY_House-4_REP,REP,Ed Gallrein,57822,54.9,5,True,gallrein e
+2026_KY_House-4_REP,REP,Thomas Massie,47539,45.1,5,False,massie t
+2026_KY_House-4_DEM,DEM,Melissa Claire Strange,30108,72.4,6,True,strange m
+2026_KY_House-4_DEM,DEM,Jesse Russell Brewer,11461,27.6,6,False,brewer j
+2026_KY_House-5_REP,REP,Hal Rogers,81554,77.4,7,True,rogers h
+2026_KY_House-5_REP,REP,Kevin Smith,12312,11.7,7,False,smith k
+2026_KY_House-5_REP,REP,Benjamin Hurley,5537,5.3,7,False,hurley b
+2026_KY_House-5_REP,REP,Brandon R. Monhollon,3458,3.3,7,False,monhollon b
+2026_KY_House-5_REP,REP,Jerry Lee Shelton,2464,2.3,7,False,shelton j
+2026_KY_House-6_REP,REP,Ralph Alvarado,36217,56.5,8,True,alvarado r
+2026_KY_House-6_REP,REP,Ryan Dotson,16897,26.4,8,False,dotson r
+2026_KY_House-6_REP,REP,Gregory George Plucinski,5670,8.8,8,False,plucinski g
+2026_KY_House-6_REP,REP,Steve Shannon,3980,6.2,8,False,shannon s
+2026_KY_House-6_REP,REP,Adam Perez Arquette,1332,2.1,8,False,arquette a
+2026_KY_House-6_DEM,DEM,Zach Dembo,26858,39.6,9,True,dembo z
+2026_KY_House-6_DEM,DEM,Cherlynn Stevenson,21312,31.5,9,False,stevenson c
+2026_KY_House-6_DEM,DEM,Erin Petrey,10703,15.8,9,False,petrey e
+2026_KY_House-6_DEM,DEM,David Kloiber,3041,4.5,9,False,kloiber d
+2026_KY_House-6_DEM,DEM,Corey Edwards,2952,4.4,9,False,edwards c
+2026_KY_House-6_DEM,DEM,Harvey Carroll Jr.,1958,2.9,9,False,carroll h
+2026_KY_House-6_DEM,DEM,Jimmy Clifton Ausbrooks,940,1.4,9,False,ausbrooks j
+2026_KY_Senate_REP,REP,Andy Barr,283833,60.5,1,True,barr a
+2026_KY_Senate_REP,REP,Daniel Cameron,144592,30.8,1,False,cameron d
+2026_KY_Senate_REP,REP,Michael James Faris,11219,2.4,1,False,faris m
+2026_KY_Senate_REP,REP,George Washington,7190,1.5,1,False,washington g
+2026_KY_Senate_REP,REP,"Valerie ""Dr Val"" Fredrick",5267,1.1,1,False,fredrick v
+2026_KY_Senate_REP,REP,Anissa Catlett,4892,1.0,1,False,catlett a
+2026_KY_Senate_REP,REP,James D. Duncan,3773,0.8,1,False,duncan j
+2026_KY_Senate_REP,REP,Jonathan M. Holliday,3757,0.8,1,False,holliday j
+2026_KY_Senate_REP,REP,A. Nick Shelley,2771,0.6,1,False,shelley a
+2026_KY_Senate_REP,REP,Other Donald Wenzel,1014,0.2,1,False,wenzel o
+2026_KY_Senate_REP,REP,Jimmy I. Leon,864,0.2,1,False,leon j
+2026_KY_Senate_DEM,DEM,Charles Booker,155577,46.8,2,True,booker c
+2026_KY_Senate_DEM,DEM,Amy McGrath,119296,35.9,2,False,mcgrath a
+2026_KY_Senate_DEM,DEM,Pamela Stevenson,20610,6.2,2,False,stevenson p
+2026_KY_Senate_DEM,DEM,Dale Lewis Romans,13696,4.1,2,False,romans d
+2026_KY_Senate_DEM,DEM,Logan Forsythe,9648,2.9,2,False,forsythe l
+2026_KY_Senate_DEM,DEM,Vincent Anthony Thompson,6962,2.1,2,False,thompson v
+2026_KY_Senate_DEM,DEM,Joshua Blanton Sr.,6948,2.1,2,False,blanton j
+2026_MD_Governor_DEM,DEM,Wes Moore,558768,88.3,1,True,moore w
+2026_MD_Governor_DEM,DEM,Eric Felber LaTrece Hawkins Lytes,74312,11.7,1,False,lytes e
+2026_MD_Governor_REP,REP,Dan Cox,89982,43.3,2,True,cox d
+2026_MD_Governor_REP,REP,Ed Hale,74877,36.0,2,False,hale e
+2026_MD_Governor_REP,REP,Brenda Thiam,13200,6.4,2,False,thiam b
+2026_MD_Governor_REP,REP,Carl Brunner Kevin Rhodes,12700,6.1,2,False,rhodes c
+2026_MD_Governor_REP,REP,Shannon Wright Reba Hawkins,4907,2.4,2,False,hawkins s
+2026_MD_Governor_REP,REP,L. D. Burkindine Jeremy Shifflett,3746,1.8,2,False,shifflett l
+2026_MD_Governor_REP,REP,"Nancy Taylor† Rachael ""Mohawk"" Swift",3690,1.8,2,False,swift n
+2026_MD_Governor_REP,REP,Michael Oakes Ronald Abend,2583,1.2,2,False,abend m
+2026_MD_Governor_REP,REP,Douglas Larcomb Martina Duncan,2132,1.0,2,False,duncan d
+2026_MD_House-1_REP,REP,Andy Harris,54122,79.7,1,True,harris a
+2026_MD_House-1_REP,REP,Chris Bruneau,13788,20.3,1,False,bruneau c
+2026_MD_House-1_DEM,DEM,Dan Schwartz,19821,46.3,2,True,schwartz d
+2026_MD_House-1_DEM,DEM,Randi White,15723,36.7,2,False,white r
+2026_MD_House-1_DEM,DEM,Victor Allen Guidice,4274,10.0,2,False,guidice v
+2026_MD_House-1_DEM,DEM,George Walish,3006,7.0,2,False,walish g
+2026_MD_House-2_DEM,DEM,Johnny Olszewski,65646,84.5,3,True,olszewski j
+2026_MD_House-2_DEM,DEM,"Clint Spellman, Jr.",12019,15.5,3,False,spellman c
+2026_MD_House-2_REP,REP,Dave Wallace,27136,88.9,4,True,wallace d
+2026_MD_House-2_REP,REP,Nnabu Eze,3404,11.2,4,False,eze n
+2026_MD_House-3_DEM,DEM,Sarah Elfreth,55784,74.7,5,True,elfreth s
+2026_MD_House-3_DEM,DEM,Austin Dyches,7999,10.7,5,False,dyches a
+2026_MD_House-3_DEM,DEM,Jennifer Cross,6178,8.3,5,False,cross j
+2026_MD_House-3_DEM,DEM,Sean Hammond,2744,3.7,5,False,hammond s
+2026_MD_House-3_DEM,DEM,Robert Gerald Morrison,1961,2.6,5,False,morrison r
+2026_MD_House-3_REP,REP,Berney Flowers,10428,48.9,6,True,flowers b
+2026_MD_House-3_REP,REP,John White,5491,25.8,6,False,white j
+2026_MD_House-3_REP,REP,Ray Bly,3241,15.2,6,False,bly r
+2026_MD_House-3_REP,REP,Felix M. Seier,2156,10.1,6,False,seier f
+2026_MD_House-4_DEM,DEM,Glenn Ivey,60099,79.2,7,True,ivey g
+2026_MD_House-4_DEM,DEM,Jakeya Johnson,8475,11.2,7,False,johnson j
+2026_MD_House-4_DEM,DEM,Shavonne N. Hedgepeth,3697,4.9,7,False,hedgepeth s
+2026_MD_House-4_DEM,DEM,Jonathan D. White,1814,2.4,7,False,white j
+2026_MD_House-4_DEM,DEM,Joseph Gomes,1793,2.4,7,False,gomes j
+2026_MD_House-4_REP,REP,George McDermott,1923,100.0,8,True,mcdermott g
+2026_MD_House-5_DEM,DEM,Adrian Boafo,33081,32.7,9,True,boafo a
+2026_MD_House-5_DEM,DEM,Quincy Bareebe,17515,17.3,9,False,bareebe q
+2026_MD_House-5_DEM,DEM,Harry Dunn,14189,14.0,9,False,dunn h
+2026_MD_House-5_DEM,DEM,Wala Blegay,11258,11.1,9,False,blegay w
+2026_MD_House-5_DEM,DEM,Rushern Baker,10588,10.5,9,False,baker r
+2026_MD_House-5_DEM,DEM,Arthur Ellis,2883,2.9,9,False,ellis a
+2026_MD_House-5_DEM,DEM,"Reuben B. Collins, II",1640,1.6,9,False,collins r
+2026_MD_House-5_DEM,DEM,Harry Jarin,1515,1.5,9,False,jarin h
+2026_MD_House-5_DEM,DEM,Nicole A. Williams,1445,1.4,9,False,williams n
+2026_MD_House-5_DEM,DEM,Alexis S. Solis,949,0.9,9,False,solis a
+2026_MD_House-5_DEM,DEM,Dave Sundberg,898,0.9,9,False,sundberg d
+2026_MD_House-5_DEM,DEM,Leigha Messick,795,0.8,9,False,messick l
+2026_MD_House-5_DEM,DEM,Mark Arness,617,0.6,9,False,arness m
+2026_MD_House-5_DEM,DEM,Walter Kirkland,505,0.5,9,False,kirkland w
+2026_MD_House-5_DEM,DEM,Tracy Starr,502,0.5,9,False,starr t
+2026_MD_House-5_DEM,DEM,Jerry Lightfoot,460,0.5,9,False,lightfoot j
+2026_MD_House-5_DEM,DEM,Terry Jackson II,403,0.4,9,False,jackson t
+2026_MD_House-5_DEM,DEM,Heather Luper,377,0.4,9,False,luper h
+2026_MD_House-5_DEM,DEM,Harold Tolbert,373,0.4,9,False,tolbert h
+2026_MD_House-5_DEM,DEM,Ellis D. Colvin,286,0.3,9,False,colvin e
+2026_MD_House-5_DEM,DEM,Elldwnia English,257,0.3,9,False,english e
+2026_MD_House-5_DEM,DEM,Keith Salkowski,203,0.2,9,False,salkowski k
+2026_MD_House-5_DEM,DEM,Kenneth Simons,160,0.2,9,False,simons k
+2026_MD_House-5_DEM,DEM,"James Anderson Makle, Jr.",149,0.2,9,False,makle j
+2026_MD_House-5_REP,REP,Chris Chaffee,11536,51.2,10,True,chaffee c
+2026_MD_House-5_REP,REP,Michelle Talkington,7866,34.9,10,False,talkington m
+2026_MD_House-5_REP,REP,Bryan DuVal,3145,14.0,10,False,duval b
+2026_MD_House-6_DEM,DEM,April McClain Delaney,27819,44.0,11,True,delaney a
+2026_MD_House-6_DEM,DEM,David Trone,23383,37.0,11,False,trone d
+2026_MD_House-6_DEM,DEM,Alexis Goldstein,6201,9.8,11,False,goldstein a
+2026_MD_House-6_DEM,DEM,Ethan Wechtaluk,3469,5.5,11,False,wechtaluk e
+2026_MD_House-6_DEM,DEM,George Gluck,933,1.5,11,False,gluck g
+2026_MD_House-6_DEM,DEM,"Kiambo ""Bo"" White",670,1.1,11,False,white k
+2026_MD_House-6_DEM,DEM,A. Mark Wilks,556,0.9,11,False,wilks a
+2026_MD_House-6_DEM,DEM,Daniel Krakower,187,0.3,11,False,krakower d
+2026_MD_House-6_REP,REP,Robin Ficker,16284,41.8,12,True,ficker r
+2026_MD_House-6_REP,REP,Chris Burnett,14562,37.4,12,False,burnett c
+2026_MD_House-6_REP,REP,Mariela Roca,8115,20.8,12,False,roca m
+2026_MD_House-7_DEM,DEM,Kweisi Mfume,57793,70.1,13,True,mfume k
+2026_MD_House-7_DEM,DEM,Mark Conway,20197,24.5,13,False,conway m
+2026_MD_House-7_DEM,DEM,Tashi Davis,2904,3.5,13,False,davis t
+2026_MD_House-7_DEM,DEM,Theo Gillespie,1573,1.9,13,False,gillespie t
+2026_MD_House-7_REP,REP,Scott Collier,5749,100.0,14,True,collier s
+2026_MD_House-8_DEM,DEM,Jamie Raskin,98179,92.7,15,True,raskin j
+2026_MD_House-8_DEM,DEM,Boris Velasquez,2767,2.6,15,False,velasquez b
+2026_MD_House-8_DEM,DEM,J. D. Kumar,2538,2.4,15,False,kumar j
+2026_MD_House-8_DEM,DEM,Stephen Alan Leon,2453,2.3,15,False,leon s
+2026_MD_House-8_REP,REP,Cheryl Riley,3495,43.3,16,True,riley c
+2026_MD_House-8_REP,REP,Anita Cox,2123,26.3,16,False,cox a
+2026_MD_House-8_REP,REP,Donald Lech,1376,17.0,16,False,lech d
+2026_MD_House-8_REP,REP,Michael Yadeta,1087,13.5,16,False,yadeta m
+2026_ME_Governor_DEM,DEM,Hannah Pingree,50552,23.3,1,False,pingree h
+2026_ME_Governor_DEM,DEM,Nirav Shah,58606,26.8,1,True,shah n
+2026_ME_Governor_DEM,DEM,Troy Jackson,45959,21.1,1,False,jackson t
+2026_ME_Governor_DEM,DEM,Shenna Bellows,44770,20.6,1,False,bellows s
+2026_ME_Governor_DEM,DEM,Angus King III,17860,8.3,1,False,king a
+2026_ME_Governor_REP,REP,Robert Charles,49129,38.0,3,True,charles r
+2026_ME_Governor_REP,REP,Ben Midgley,25880,20.0,3,False,midgley b
+2026_ME_Governor_REP,REP,Jonathan Bush,25449,19.7,3,False,bush j
+2026_ME_Governor_REP,REP,Garrett Mason,14820,11.4,3,False,mason g
+2026_ME_Governor_REP,REP,Owen McCarthy,5033,3.9,3,False,mccarthy o
+2026_ME_Governor_REP,REP,David Jones,3740,2.9,3,False,jones d
+2026_ME_Governor_REP,REP,Robert Wessels,3525,2.7,3,False,wessels r
+2026_ME_Governor_REP,REP,James Libby,1831,1.4,3,False,libby j
+2026_ME_House-1_DEM,DEM,Chellie Pingree,128257,100.0,1,True,pingree c
+2026_ME_House-1_REP,REP,Ronald Russell,27059,53.5,2,True,russell r
+2026_ME_House-1_REP,REP,Joshua Pietrowicz,23485,46.5,2,False,pietrowicz j
+2026_ME_House-2_DEM,DEM,Matthew Dunlap,22933,29.1,3,False,dunlap m
+2026_ME_House-2_DEM,DEM,Joe Baldacci,24966,31.7,3,True,baldacci j
+2026_ME_House-2_DEM,DEM,Jordan Wood,22712,28.8,3,False,wood j
+2026_ME_House-2_DEM,DEM,Paige Loud,8194,10.4,3,False,loud p
+2026_ME_House-2_REP,REP,Paul LePage,69233,100.0,4,True,lepage p
+2026_ME_Senate_REP,REP,Susan Collins,126398,100.0,1,True,collins s
+2026_MI_Governor_DEM,DEM,Jocelyn Benson,1228937,83.1,1,True,benson j
+2026_MI_Governor_DEM,DEM,Chris Swanson,250168,16.9,1,False,swanson c
+2026_MI_Governor_REP,REP,John James,465170,50.0,2,True,james j
+2026_MI_Governor_REP,REP,Perry Johnson,327320,35.2,2,False,johnson p
+2026_MI_Governor_REP,REP,Mike Cox,120741,13.0,2,False,cox m
+2026_MI_Governor_REP,REP,Aric Nesbitt,16265,1.7,2,False,nesbitt a
+2026_MI_House-1_REP,REP,Jack Bergman,80607,74.3,1,True,bergman j
+2026_MI_House-1_REP,REP,Matthew DenOtter,14248,13.1,1,False,denotter m
+2026_MI_House-1_REP,REP,Justin Michal,13616,12.6,1,False,michal j
+2026_MI_House-1_DEM,DEM,Callie Barr,62091,58.4,2,True,barr c
+2026_MI_House-1_DEM,DEM,Kyle Blomquist,37998,35.7,2,False,blomquist k
+2026_MI_House-1_DEM,DEM,Wayne Stiles,6226,5.9,2,False,stiles w
+2026_MI_House-2_DEM,DEM,Benjamin Ambrose,32439,44.3,4,True,ambrose b
+2026_MI_House-2_DEM,DEM,Jamie Hill,30946,42.3,4,False,hill j
+2026_MI_House-2_DEM,DEM,Clyde Welford,9802,13.4,4,False,welford c
+2026_MI_House-3_REP,REP,Terri DeBoer,53864,78.6,5,True,deboer t
+2026_MI_House-3_REP,REP,Ryan Cushman,14695,21.4,5,False,cushman r
+2026_MI_House-4_REP,REP,Bill Huizenga,71633,85.0,6,True,huizenga b
+2026_MI_House-4_REP,REP,Phil Tanis,12646,15.0,6,False,tanis p
+2026_MI_House-4_DEM,DEM,Sean McCann,65486,65.7,7,True,mccann s
+2026_MI_House-4_DEM,DEM,Diop Harris,34195,34.3,7,False,harris d
+2026_MI_House-7_DEM,DEM,William Lawrence,55921,43.7,13,True,lawrence w
+2026_MI_House-7_DEM,DEM,Bridget Brink,36870,28.8,13,False,brink b
+2026_MI_House-7_DEM,DEM,Matt Maasdam,35307,27.6,13,False,maasdam m
+2026_MI_House-8_REP,REP,Thomas J. Smith,31149,50.4,15,True,smith t
+2026_MI_House-8_REP,REP,Amir Hassan,20506,33.2,15,False,hassan a
+2026_MI_House-8_REP,REP,Alfred Lemmo,10115,16.4,15,False,lemmo a
+2026_MI_House-10_REP,REP,Michael Bouchard Jr.,45473,72.2,18,True,bouchard m
+2026_MI_House-10_REP,REP,Justin Kirk,11388,18.1,18,False,kirk j
+2026_MI_House-10_REP,REP,Robert Lulgjuraj,3676,5.8,18,False,lulgjuraj r
+2026_MI_House-10_REP,REP,Steffan Demetropoulos,2430,3.9,18,False,demetropoulos s
+2026_MI_House-10_DEM,DEM,Christina Hines,46993,47.0,19,True,hines c
+2026_MI_House-10_DEM,DEM,Eric Chung,29650,29.7,19,False,chung e
+2026_MI_House-10_DEM,DEM,Tim Greimel,23307,23.3,19,False,greimel t
+2026_MI_House-11_DEM,DEM,Jeremy Moss,73140,49.5,20,True,moss j
+2026_MI_House-11_DEM,DEM,Aisha Farooqi,46950,31.8,20,False,farooqi a
+2026_MI_House-11_DEM,DEM,John Torres,15410,10.4,20,False,torres j
+2026_MI_House-11_DEM,DEM,Don Ufford,12332,8.3,20,False,ufford d
+2026_MI_House-12_DEM,DEM,Rashida Tlaib,97164,74.3,22,True,tlaib r
+2026_MI_House-12_DEM,DEM,Shanelle Jackson,21378,16.3,22,False,jackson s
+2026_MI_House-12_DEM,DEM,Byron Nolen,12302,9.4,22,False,nolen b
+2026_MI_House-13_DEM,DEM,Donavan McKinney,57714,51.9,24,True,mckinney d
+2026_MI_House-13_DEM,DEM,Shri Thanedar,53494,48.1,24,False,thanedar s
+2026_MI_Senate_DEM,DEM,Abdul El-Sayed,740963,48.48,1,True,elsayed a
+2026_MI_Senate_DEM,DEM,Haley Stevens,726065,47.51,1,False,stevens h
+2026_MI_Senate_DEM,DEM,Mallory McMorrow,61252,4.01,1,False,mcmorrow m
+2026_MI_Senate_REP,REP,Mike Rogers,807120,100.0,2,True,rogers m
+2026_MO_House-1_DEM,DEM,Wesley Bell,83663,59.2,1,True,bell w
+2026_MO_House-1_DEM,DEM,Cori Bush,52083,36.9,1,False,bush c
+2026_MO_House-1_DEM,DEM,Alissa Murphy,3250,2.3,1,False,murphy a
+2026_MO_House-1_DEM,DEM,Carl Harris,1565,1.1,1,False,harris c
+2026_MO_House-1_DEM,DEM,Carl E. Henderson,724,0.5,1,False,henderson c
+2026_MO_House-1_REP,REP,Paul Berry,7037,53.5,2,True,berry p
+2026_MO_House-1_REP,REP,Andrew Jones,6125,46.5,2,False,jones a
+2026_MO_House-2_REP,REP,Ann Wagner,63637,73.9,4,True,wagner a
+2026_MO_House-2_REP,REP,Peter Pfeifer,6847,7.9,4,False,pfeifer p
+2026_MO_House-2_REP,REP,Brandon Wilkinson,6046,7.0,4,False,wilkinson b
+2026_MO_House-2_REP,REP,Matthew Grant,5547,6.4,4,False,grant m
+2026_MO_House-2_REP,REP,Elizabeth Sparks-Holmes,4091,4.7,4,False,sparksholmes e
+2026_MO_House-2_DEM,DEM,Fred Wellman,39327,45.8,5,True,wellman f
+2026_MO_House-2_DEM,DEM,Joan VonDras,36906,43.0,5,False,vondras j
+2026_MO_House-2_DEM,DEM,Tim Bilash,9547,11.1,5,False,bilash t
+2026_MO_House-3_REP,REP,Bob Onder,66668,66.3,7,True,onder b
+2026_MO_House-3_REP,REP,John G. Fraser,33853,33.7,7,False,fraser j
+2026_MO_House-3_DEM,DEM,Bethany Mann,39279,69.1,8,True,mann b
+2026_MO_House-3_DEM,DEM,Tommy Holstein,10049,17.7,8,False,holstein t
+2026_MO_House-3_DEM,DEM,Paul Wilson,7519,13.2,8,False,wilson p
+2026_MO_House-4_REP,REP,Mark Alford,72325,77.7,10,True,alford m
+2026_MO_House-4_REP,REP,Heather Shelton,15922,17.1,10,False,shelton h
+2026_MO_House-4_REP,REP,Scott Vera,4888,5.2,10,False,vera s
+2026_MO_House-4_DEM,DEM,Jordan Herrera,19850,30.4,11,True,herrera j
+2026_MO_House-4_DEM,DEM,Hartzell Gray,18055,27.7,11,False,gray h
+2026_MO_House-4_DEM,DEM,Jeanette Cass,9581,14.7,11,False,cass j
+2026_MO_House-4_DEM,DEM,Ashleigh Rogers,9000,13.8,11,False,rogers a
+2026_MO_House-4_DEM,DEM,Randy Miller,4871,7.5,11,False,miller r
+2026_MO_House-4_DEM,DEM,Wayne Russell,3213,4.9,11,False,russell w
+2026_MO_House-4_DEM,DEM,G Rick,626,1.0,11,False,rick g
+2026_MO_House-5_DEM,DEM,Emanuel Cleaver,54936,100.0,13,True,cleaver e
+2026_MO_House-5_REP,REP,Rick Brattin,34853,45.0,14,True,brattin r
+2026_MO_House-5_REP,REP,Taylor Burks,20438,26.4,14,False,burks t
+2026_MO_House-5_REP,REP,Brad Patty,8049,10.4,14,False,patty b
+2026_MO_House-5_REP,REP,Brett Hueffmeier,7677,9.9,14,False,hueffmeier b
+2026_MO_House-5_REP,REP,Micah Beebe,4875,6.3,14,False,beebe m
+2026_MO_House-5_REP,REP,Berton A. Knox,1609,2.1,14,False,knox b
+2026_MO_House-6_REP,REP,Chris Stigall,43158,44.1,16,True,stigall c
+2026_MO_House-6_REP,REP,Nathan Willett,33576,34.3,16,False,willett n
+2026_MO_House-6_REP,REP,Jim Ingram,8820,9.0,16,False,ingram j
+2026_MO_House-6_REP,REP,Nathanael Schultz,8475,8.7,16,False,schultz n
+2026_MO_House-6_REP,REP,Cody J. Oshel,3822,3.9,16,False,oshel c
+2026_MO_House-6_DEM,DEM,Josh Smead,25359,47.7,17,True,smead j
+2026_MO_House-6_DEM,DEM,Matt Levine,16077,30.2,17,False,levine m
+2026_MO_House-6_DEM,DEM,Scot Pondelick,11734,22.1,17,False,pondelick s
+2026_MO_House-7_REP,REP,Eric Burlison,76021,73.8,19,True,burlison e
+2026_MO_House-7_REP,REP,Grayson Hunt,13590,13.2,19,False,hunt g
+2026_MO_House-7_REP,REP,John Casey,13422,13.0,19,False,casey j
+2026_MO_House-7_DEM,DEM,Missi Hesketh,33451,100.0,20,True,hesketh m
+2026_MO_House-8_REP,REP,Jason Smith,94468,86.0,22,True,smith j
+2026_MO_House-8_REP,REP,Gordon Heslop,15367,14.0,22,False,heslop g
+2026_MO_House-8_DEM,DEM,Christopher Reichard,15334,54.1,23,True,reichard c
+2026_MO_House-8_DEM,DEM,Frank Barnitz,12999,45.9,23,False,barnitz f
+2026_MS_Senate_REP,REP,Cindy Hyde-Smith,127852,80.8,1,True,hydesmith c
+2026_MS_Senate_REP,REP,Sarah Adlakha,30344,19.2,1,False,adlakha s
+2026_MS_Senate_DEM,DEM,Scott Colom,109817,72.9,2,True,colom s
+2026_MS_Senate_DEM,DEM,Priscilla Williams-Till,28075,18.6,2,False,williamstill p
+2026_MS_Senate_DEM,DEM,Albert Littell,12749,8.5,2,False,littell a
+2026_MT_House-1_REP,REP,Aaron Flint,41170,50.1,1,True,flint a
+2026_MT_House-1_REP,REP,Christi Jacobsen,18877,23.0,1,False,jacobsen c
+2026_MT_House-1_REP,REP,Al Olszewski,16686,20.3,1,False,olszewski a
+2026_MT_House-1_REP,REP,Ray Curtis,5479,6.7,1,False,curtis r
+2026_MT_House-1_DEM,DEM,Sam Forstag,26276,37.3,2,True,forstag s
+2026_MT_House-1_DEM,DEM,Ryan Busse,23196,33.1,2,False,busse r
+2026_MT_House-1_DEM,DEM,Russell Cleveland,15238,21.7,2,False,cleveland r
+2026_MT_House-1_DEM,DEM,Matt Rains,5518,7.9,2,False,rains m
+2026_MT_House-2_REP,REP,Troy Downing,82088,100.0,5,True,downing t
+2026_MT_House-2_DEM,DEM,Brian Miller,24033,55.7,6,True,miller b
+2026_MT_House-2_DEM,DEM,Sam Lux,11759,27.2,6,False,lux s
+2026_MT_House-2_DEM,DEM,Jonathan Windy Boy,7484,17.2,6,False,boy j
+2026_MT_Senate_REP,REP,Kurt Alme,128716,76.1,1,True,alme k
+2026_MT_Senate_REP,REP,Lee Calhoun,23872,14.1,1,False,calhoun l
+2026_MT_Senate_REP,REP,Charles WalkingChild,16474,9.7,1,False,walkingchild c
+2026_MT_Senate_DEM,DEM,Alani Bankhead,48772,43.6,2,True,bankhead a
+2026_MT_Senate_DEM,DEM,Reilly Neill,36880,33.0,2,False,neill r
+2026_MT_Senate_DEM,DEM,Michael Black Wolf,14678,13.1,2,False,wolf m
+2026_MT_Senate_DEM,DEM,Christopher Kehoe,7108,6.4,2,False,kehoe c
+2026_MT_Senate_DEM,DEM,Michael Hummert,4305,3.9,2,False,hummert m
+2026_NC_House-1_REP,REP,Laurie Buckhout,26624,39.5,1,True,buckhout l
+2026_NC_House-1_REP,REP,Asa Buck,23227,34.5,1,False,buck a
+2026_NC_House-1_REP,REP,Bobby Hanig,10924,16.2,1,False,hanig b
+2026_NC_House-1_REP,REP,Eric Rouse,3626,5.4,1,False,rouse e
+2026_NC_House-1_REP,REP,Ashley-Nicole Russell,2975,4.4,1,False,russell a
+2026_NC_House-3_DEM,DEM,Raymond Smith Jr.,23552,56.7,3,True,smith r
+2026_NC_House-3_DEM,DEM,Allison Jaslow,18020,43.3,3,False,jaslow a
+2026_NC_House-4_DEM,DEM,Valerie Foushee,61776,49.2,4,True,foushee v
+2026_NC_House-4_DEM,DEM,Nida Allam,60605,48.2,4,False,allam n
+2026_NC_House-4_DEM,DEM,Mary Patterson,3274,2.6,4,False,patterson m
+2026_NC_House-5_REP,REP,Virginia Foxx,53627,74.5,5,True,foxx v
+2026_NC_House-5_REP,REP,Joey Osborne,7934,11.0,5,False,osborne j
+2026_NC_House-5_REP,REP,Steve Girard,6404,8.9,5,False,girard s
+2026_NC_House-5_REP,REP,"Roman ""Chad"" Williams",3979,5.5,5,False,williams r
+2026_NC_House-5_DEM,DEM,Chuck Hubbard,25655,56.7,6,True,hubbard c
+2026_NC_House-5_DEM,DEM,Kyah Creekmore,19585,43.3,6,False,creekmore k
+2026_NC_House-6_DEM,DEM,Cyril Jefferson,15274,39.2,7,True,jefferson c
+2026_NC_House-6_DEM,DEM,Alysa Kassay,13316,34.1,7,False,kassay a
+2026_NC_House-6_DEM,DEM,Keith Davenport,6569,16.8,7,False,davenport k
+2026_NC_House-6_DEM,DEM,Beau Blair,3848,9.9,7,False,blair b
+2026_NC_House-7_REP,REP,David Rouzer,43577,80.5,8,True,rouzer d
+2026_NC_House-7_REP,REP,David Buzzard,10562,19.5,8,False,buzzard d
+2026_NC_House-8_DEM,DEM,Colby Watson,18272,47.9,9,True,watson c
+2026_NC_House-8_DEM,DEM,Kevin Clark,14167,37.2,9,False,clark k
+2026_NC_House-8_DEM,DEM,Jesse Oppenheim,5693,14.9,9,False,oppenheim j
+2026_NC_House-9_DEM,DEM,Richard Ojeda,18469,41.8,10,True,ojeda r
+2026_NC_House-9_DEM,DEM,Nigel Bristow,11824,26.7,10,False,bristow n
+2026_NC_House-9_DEM,DEM,Lent Carr,6968,15.8,10,False,carr l
+2026_NC_House-9_DEM,DEM,Loren Bibler,6960,15.7,10,False,bibler l
+2026_NC_House-10_REP,REP,Pat Harrigan,46270,87.7,11,True,harrigan p
+2026_NC_House-10_REP,REP,Matt Sin,6509,12.3,11,False,sin m
+2026_NC_House-10_DEM,DEM,Ashley Bell,19472,47.3,12,True,bell a
+2026_NC_House-10_DEM,DEM,West Caudle,6404,15.6,12,False,caudle w
+2026_NC_House-10_DEM,DEM,Harry Morley,4672,11.4,12,False,morley h
+2026_NC_House-10_DEM,DEM,Marcus Pearson,4070,9.9,12,False,pearson m
+2026_NC_House-10_DEM,DEM,Mir Yarfitz,3952,9.6,12,False,yarfitz m
+2026_NC_House-10_DEM,DEM,Ralph Scott Jr.,2591,6.3,12,False,scott r
+2026_NC_House-11_REP,REP,Chuck Edwards,47795,70.1,13,True,edwards c
+2026_NC_House-11_REP,REP,Adam Smith,20389,29.9,13,False,smith a
+2026_NC_House-11_DEM,DEM,Jamie Ager,49193,64.7,14,True,ager j
+2026_NC_House-11_DEM,DEM,Richard Hudspeth,12063,15.9,14,False,hudspeth r
+2026_NC_House-11_DEM,DEM,Zelda Briarwood,9893,13.0,14,False,briarwood z
+2026_NC_House-11_DEM,DEM,Paul Maddox,3857,5.1,14,False,maddox p
+2026_NC_House-11_DEM,DEM,Lee Whipple,1078,1.4,14,False,whipple l
+2026_NC_House-12_DEM,DEM,Alma Adams,54630,78.9,15,True,adams a
+2026_NC_House-12_DEM,DEM,Monaca Johnson-Williamson,14589,21.1,15,False,johnsonwilliamson m
+2026_NC_House-12_REP,REP,Jack Codiga,6569,67.4,16,True,codiga j
+2026_NC_House-12_REP,REP,Addul Ali,3183,32.6,16,False,ali a
+2026_NC_House-13_REP,REP,Brad Knott,44038,89.9,17,True,knott b
+2026_NC_House-13_REP,REP,Sid Sharma,4935,10.1,17,False,sharma s
+2026_NC_House-13_DEM,DEM,Paul Barringer,29743,59.1,18,True,barringer p
+2026_NC_House-13_DEM,DEM,Frank Pierce,14794,29.4,18,False,pierce f
+2026_NC_House-13_DEM,DEM,Alexander Nicholi,5800,11.5,18,False,nicholi a
+2026_NC_House-14_REP,REP,Tim Moore,42545,83.0,19,True,moore t
+2026_NC_House-14_REP,REP,Kate Barr,8699,17.0,19,False,barr k
+2026_NC_House-14_DEM,DEM,LaKesha Womack,20641,52.2,20,True,womack l
+2026_NC_House-14_DEM,DEM,Brent Caldwell,16513,41.8,20,False,caldwell b
+2026_NC_House-14_DEM,DEM,Ahmid Kargbo,2361,6.0,20,False,kargbo a
+2026_NC_Senate_REP,REP,Michael Whatley,405140,64.6,1,True,whatley m
+2026_NC_Senate_REP,REP,Don Brown,97891,15.6,1,False,brown d
+2026_NC_Senate_REP,REP,Thomas Johnson,35534,5.7,1,False,johnson t
+2026_NC_Senate_REP,REP,Michele Morrow,35065,5.6,1,False,morrow m
+2026_NC_Senate_REP,REP,Elizabeth Temple,23892,3.8,1,False,temple e
+2026_NC_Senate_REP,REP,Richard Dansie,14996,2.4,1,False,dansie r
+2026_NC_Senate_REP,REP,Margot Dupre,14886,2.4,1,False,dupre m
+2026_NC_Senate_DEM,DEM,Roy Cooper,761345,92.0,2,True,cooper r
+2026_NC_Senate_DEM,DEM,Justin Dues,22295,2.7,2,False,dues j
+2026_NC_Senate_DEM,DEM,Marcus Williams,20336,2.5,2,False,williams m
+2026_NC_Senate_DEM,DEM,Daryl Farrow,9727,1.2,2,False,farrow d
+2026_NC_Senate_DEM,DEM,Orrick Quick,7275,0.9,2,False,quick o
+2026_NC_Senate_DEM,DEM,Robert Colon,6777,0.8,2,False,colon r
+2026_NE_House-1_REP,REP,Mike Flood,53094,100.0,1,True,flood m
+2026_NE_House-1_DEM,DEM,Chris Backemeyer,26523,57.6,2,True,backemeyer c
+2026_NE_House-1_DEM,DEM,Eric Moyer,19508,42.4,2,False,moyer e
+2026_NE_House-2_REP,REP,Brinker Harding,39689,100.0,4,True,harding b
+2026_NE_House-2_DEM,DEM,Denise Powell,22516,38.8,5,True,powell d
+2026_NE_House-2_DEM,DEM,John Cavanaugh,21115,36.4,5,False,cavanaugh j
+2026_NE_House-2_DEM,DEM,Crystal Rhoades,8180,14.1,5,False,rhoades c
+2026_NE_House-2_DEM,DEM,Kishla Askins,3499,6.0,5,False,askins k
+2026_NE_House-2_DEM,DEM,Melanie Williams,2222,3.8,5,False,williams m
+2026_NE_House-2_DEM,DEM,James Leuschen,320,0.6,5,False,leuschen j
+2026_NE_House-2_DEM,DEM,Van Argyrakis,152,0.3,5,False,argyrakis v
+2026_NE_House-3_REP,REP,Adrian Smith,60549,64.7,8,True,smith a
+2026_NE_House-3_REP,REP,David Huebner,33020,35.3,8,False,huebner d
+2026_NE_House-3_DEM,DEM,Becky Stille,18113,100.0,9,True,stille b
+2026_NJ_House-1_DEM,DEM,Donald Norcross,66059,100.0,1,True,norcross d
+2026_NJ_House-1_REP,REP,Damon Galdo,16265,100.0,2,True,galdo d
+2026_NJ_House-2_REP,REP,Jeff Van Drew,35602,100.0,4,True,drew j
+2026_NJ_House-2_DEM,DEM,Zack Mullock,17698,39.8,7,True,mullock z
+2026_NJ_House-2_DEM,DEM,Tim Alexander,12168,27.4,7,False,alexander t
+2026_NJ_House-2_DEM,DEM,Bayly Winder,9846,22.2,7,False,winder b
+2026_NJ_House-2_DEM,DEM,Terri Reese,4733,10.6,7,False,reese t
+2026_NJ_House-3_DEM,DEM,Herb Conaway,50437,100.0,9,True,conaway h
+2026_NJ_House-3_REP,REP,Michael McGuire,14810,57.9,12,True,mcguire m
+2026_NJ_House-3_REP,REP,Jason Cullen,6238,24.4,12,False,cullen j
+2026_NJ_House-3_REP,REP,Justin Barbera,4519,17.7,12,False,barbera j
+2026_NJ_House-4_REP,REP,Chris Smith,34110,100.0,14,True,smith c
+2026_NJ_House-4_DEM,DEM,Rachel Peace,20782,72.8,16,True,peace r
+2026_NJ_House-4_DEM,DEM,John Blake,7761,27.2,16,False,blake j
+2026_NJ_House-5_DEM,DEM,Josh Gottheimer,38077,100.0,18,True,gottheimer j
+2026_NJ_House-5_REP,REP,Sean Kirrane,19529,100.0,20,True,kirrane s
+2026_NJ_House-6_DEM,DEM,Frank Pallone,32761,65.7,22,True,pallone f
+2026_NJ_House-6_DEM,DEM,John Hsu,13304,26.7,22,False,hsu j
+2026_NJ_House-6_DEM,DEM,Katie Bansil,3837,7.7,22,False,bansil k
+2026_NJ_House-6_REP,REP,Hillary Herzig,13055,100.0,23,True,herzig h
+2026_NJ_House-7_REP,REP,Thomas Kean Jr.,35080,100.0,25,True,kean t
+2026_NJ_House-7_DEM,DEM,Rebecca Bennett,27525,45.3,32,True,bennett r
+2026_NJ_House-7_DEM,DEM,Tina Shah,12146,20.0,32,False,shah t
+2026_NJ_House-7_DEM,DEM,Brian Varela,11614,19.1,32,False,varela b
+2026_NJ_House-7_DEM,DEM,Michael Roth,9452,15.6,32,False,roth m
+2026_NJ_House-8_DEM,DEM,Rob Menendez,28509,68.8,33,True,menendez r
+2026_NJ_House-8_DEM,DEM,Mussab Ali,12930,31.2,33,False,ali m
+2026_NJ_House-9_DEM,DEM,Nellie Pou,27790,100.0,35,True,pou n
+2026_NJ_House-9_REP,REP,Rosie Pino,6711,51.3,37,True,pino r
+2026_NJ_House-9_REP,REP,Tiffany Burress,6366,48.7,37,False,burress t
+2026_NJ_House-10_DEM,DEM,LaMonica McIver,38769,84.8,39,True,mciver l
+2026_NJ_House-10_DEM,DEM,Lawrence Poster,6935,15.2,39,False,poster l
+2026_NJ_House-10_REP,REP,Carmen Bucco,4359,100.0,40,True,bucco c
+2026_NJ_House-11_DEM,DEM,Analilia Mejia,52908,81.7,42,True,mejia a
+2026_NJ_House-11_DEM,DEM,Donald Cresitello,4443,6.9,42,False,cresitello d
+2026_NJ_House-11_DEM,DEM,Justin Strickland,3929,6.1,42,False,strickland j
+2026_NJ_House-11_DEM,DEM,Joseph Lewis,3507,5.4,42,False,lewis j
+2026_NJ_House-11_REP,REP,Joe Hathaway,23961,100.0,43,True,hathaway j
+2026_NJ_House-12_DEM,DEM,Adam Hamawy,22265,28.6,48,True,hamawy a
+2026_NJ_House-12_DEM,DEM,Brad Cohen,11353,14.6,48,False,cohen b
+2026_NJ_House-12_DEM,DEM,Sam Wang,7286,9.4,48,False,wang s
+2026_NJ_House-12_DEM,DEM,Shanel Robinson,6905,8.9,48,False,robinson s
+2026_NJ_House-12_DEM,DEM,Verlina Reynolds-Jackson,6858,8.8,48,False,reynoldsjackson v
+2026_NJ_House-12_DEM,DEM,Sue Altman,6595,8.5,48,False,altman s
+2026_NJ_House-12_DEM,DEM,Squire Servance,4273,5.5,48,False,servance s
+2026_NJ_House-12_DEM,DEM,Adrian Mapp,3389,4.4,48,False,mapp a
+2026_NJ_House-12_DEM,DEM,Sujit Singh,3045,3.9,48,False,singh s
+2026_NJ_House-12_DEM,DEM,Jay Vaingankar,2348,3.0,48,False,vaingankar j
+2026_NJ_House-12_DEM,DEM,Matt Adams,1613,2.1,48,False,adams m
+2026_NJ_House-12_DEM,DEM,Elijah Dixon,1150,1.5,48,False,dixon e
+2026_NJ_House-12_DEM,DEM,Kyle Little,674,0.9,48,False,little k
+2026_NJ_House-12_REP,REP,Gregg Mele,13298,100.0,51,True,mele g
+2026_NM_Governor_DEM,DEM,Deb Haaland,158713,72.3,1,True,haaland d
+2026_NM_Governor_DEM,DEM,Sam Bregman,60619,27.7,1,False,bregman s
+2026_NM_Governor_REP,REP,Gregg Hull,56708,47.0,2,True,hull g
+2026_NM_Governor_REP,REP,Doug Turner,44480,36.9,2,False,turner d
+2026_NM_Governor_REP,REP,Duke Rodriguez,19393,16.1,2,False,rodriguez d
+2026_NM_Senate_DEM,DEM,Ben Ray Luján,182360,84.2,1,True,lujan b
+2026_NM_Senate_DEM,DEM,Matt Dodson,34289,15.8,1,False,dodson m
+2026_NM_Senate_REP,REP,Larry Marker,31220,100.0,2,True,marker l
+2026_NV_Governor_REP,REP,Joe Lombardo,172150,90.8,1,True,lombardo j
+2026_NV_Governor_REP,REP,Irina Hansen,4114,2.2,1,False,hansen i
+2026_NV_Governor_REP,REP,Matthew Winterhawk,3452,1.8,1,False,winterhawk m
+2026_NV_Governor_REP,REP,Donald J. Beaudry Jr.,2482,1.3,1,False,beaudry d
+2026_NV_Governor_REP,REP,M. Kameron Hawkins,1230,0.7,1,False,hawkins m
+2026_NV_Governor_REP,REP,Jose M. Zalaya,1095,0.6,1,False,zalaya j
+2026_NV_Governor_REP,REP,Barak Zilberberg,744,0.4,1,False,zilberberg b
+2026_NV_Governor_DEM,DEM,Aaron Ford,118831,63.3,2,True,ford a
+2026_NV_Governor_DEM,DEM,Alexis Hill,44849,23.9,2,False,hill a
+2026_NV_Governor_DEM,DEM,James Cooper,6657,3.5,2,False,cooper j
+2026_NV_Governor_DEM,DEM,Sunshine Arterburn,5012,2.7,2,False,arterburn s
+2026_NV_Governor_DEM,DEM,Emile Bouari,2795,1.5,2,False,bouari e
+2026_NV_Governor_DEM,DEM,Miqehl Bayfield,2172,1.2,2,False,bayfield m
+2026_NV_House-1_DEM,DEM,Dina Titus,33605,75.9,1,True,titus d
+2026_NV_House-1_DEM,DEM,Joy Hoover,5782,13.1,1,False,hoover j
+2026_NV_House-1_DEM,DEM,Gabriel Cornejo,3883,8.8,1,False,cornejo g
+2026_NV_House-1_DEM,DEM,Luis Paniagua,1022,2.3,1,False,paniagua l
+2026_NV_House-1_REP,REP,Carrie Buck,24680,77.7,2,True,buck c
+2026_NV_House-1_REP,REP,Jim Blockey,3551,11.2,2,False,blockey j
+2026_NV_House-1_REP,REP,Michael Boris,1873,5.9,2,False,boris m
+2026_NV_House-1_REP,REP,Marie Encar Arnold,1230,3.9,2,False,arnold m
+2026_NV_House-1_REP,REP,Rick Saga,410,1.3,2,False,saga r
+2026_NV_House-2_REP,REP,David Flippo,38174,46.9,3,True,flippo d
+2026_NV_House-2_REP,REP,James Settelmeyer,28131,34.5,3,False,settelmeyer j
+2026_NV_House-2_REP,REP,George Forbush,3337,4.1,3,False,forbush g
+2026_NV_House-2_REP,REP,Mike Smith,2762,3.4,3,False,smith m
+2026_NV_House-2_REP,REP,Tom Doyle,1717,2.1,3,False,doyle t
+2026_NV_House-2_REP,REP,Fred Simon,1616,2.0,3,False,simon f
+2026_NV_House-2_REP,REP,Jennifer Billat,1464,1.8,3,False,billat j
+2026_NV_House-2_REP,REP,Jesse Watts,1264,1.6,3,False,watts j
+2026_NV_House-2_REP,REP,Andrea Lowe,1130,1.4,3,False,lowe a
+2026_NV_House-2_REP,REP,Rick Shepherd,720,0.9,3,False,shepherd r
+2026_NV_House-2_REP,REP,Jerry Olsen,608,0.7,3,False,olsen j
+2026_NV_House-2_REP,REP,Sherman Tylawsky,278,0.3,3,False,tylawsky s
+2026_NV_House-2_REP,REP,Bruce Grego,223,0.3,3,False,grego b
+2026_NV_House-2_DEM,DEM,Teresa Benitez-Thompson,23706,45.6,4,True,benitezthompson t
+2026_NV_House-2_DEM,DEM,Greg Kidd,11714,22.5,4,False,kidd g
+2026_NV_House-2_DEM,DEM,Kathy Durham,5973,11.5,4,False,durham k
+2026_NV_House-2_DEM,DEM,Morgan Wadsworth,4877,9.4,4,False,wadsworth m
+2026_NV_House-2_DEM,DEM,Matthew Fonken,3204,6.2,4,False,fonken m
+2026_NV_House-2_DEM,DEM,Gamaliel Zavala Enriquez,863,1.7,4,False,enriquez g
+2026_NV_House-2_DEM,DEM,Josh Hebert,421,0.8,4,False,hebert j
+2026_NV_House-2_DEM,DEM,Johnny E. Kerns,375,0.7,4,False,kerns j
+2026_NV_House-2_DEM,DEM,Mark Jolle,357,0.7,4,False,jolle m
+2026_NV_House-2_DEM,DEM,Samuel White,320,0.6,4,False,white s
+2026_NV_House-2_DEM,DEM,Gerold Gorman,221,0.4,4,False,gorman g
+2026_NV_House-3_DEM,DEM,Susie Lee,31712,69.2,6,True,lee s
+2026_NV_House-3_DEM,DEM,James Lally,9324,20.4,6,False,lally j
+2026_NV_House-3_DEM,DEM,Terrill Robinson,2996,6.5,6,False,robinson t
+2026_NV_House-3_DEM,DEM,Brandon West,1776,3.9,6,False,west b
+2026_NV_House-3_REP,REP,Martin O'Donnell,14892,42.3,7,True,odonnell m
+2026_NV_House-3_REP,REP,Tera Anderson,8482,24.1,7,False,anderson t
+2026_NV_House-3_REP,REP,Jeff Gunter,6879,19.5,7,False,gunter j
+2026_NV_House-3_REP,REP,Aury Nagy,4945,14.0,7,False,nagy a
+2026_NV_House-4_REP,REP,Cody Whipple,22103,61.8,8,True,whipple c
+2026_NV_House-4_REP,REP,Ronda Kennedy,8062,22.5,8,False,kennedy r
+2026_NV_House-4_REP,REP,Anthony Snowden,5597,15.7,8,False,snowden a
+2026_NY_House-1_DEM,DEM,Chris Gallant,12132,62.9,1,True,gallant c
+2026_NY_House-1_DEM,DEM,Lukas Ventouras,7130,37.0,1,False,ventouras l
+2026_NY_House-1_DEM,DEM,Write-in,30,0.2,1,False,writein
+2026_NY_House-3_DEM,DEM,Tom Suozzi,20820,79.6,2,True,suozzi t
+2026_NY_House-3_DEM,DEM,Danielle Welch,5263,20.1,2,False,welch d
+2026_NY_House-3_DEM,DEM,Write-in,63,0.2,2,False,writein
+2026_NY_House-3_REP,REP,Mike LiPetri,10898,81.9,3,True,lipetri m
+2026_NY_House-3_REP,REP,Greg Hach,2294,17.2,3,False,hach g
+2026_NY_House-3_REP,REP,Write-in,117,0.9,3,False,writein
+2026_NY_House-4_REP,REP,Jeanine Driscoll,12892,90.8,4,True,driscoll j
+2026_NY_House-4_REP,REP,Marvin Williams,1258,8.9,4,False,williams m
+2026_NY_House-4_REP,REP,Write-in,53,0.4,4,False,writein
+2026_NY_House-6_DEM,DEM,Grace Meng,18134,56.8,5,True,meng g
+2026_NY_House-6_DEM,DEM,Chuck Park,13674,42.9,5,False,park c
+2026_NY_House-6_DEM,DEM,Write-in,91,0.3,5,False,writein
+2026_NY_House-7_DEM,DEM,Claire Valdez,37531,56.1,6,True,valdez c
+2026_NY_House-7_DEM,DEM,Antonio Reynoso,23960,35.8,6,False,reynoso a
+2026_NY_House-7_DEM,DEM,Julie Won,4231,6.3,6,False,won j
+2026_NY_House-7_DEM,DEM,Vichal Kumar,1134,1.7,6,False,kumar v
+2026_NY_House-7_DEM,DEM,Write-in,97,0.1,6,False,writein
+2026_NY_House-9_DEM,DEM,Yvette Clarke,29670,68.6,7,True,clarke y
+2026_NY_House-9_DEM,DEM,Michael Goldfarb,6686,15.4,7,False,goldfarb m
+2026_NY_House-9_DEM,DEM,Joshua Bristol,6372,14.7,7,False,bristol j
+2026_NY_House-9_DEM,DEM,Write-in,550,1.3,7,False,writein
+2026_NY_House-10_DEM,DEM,Brad Lander,55060,65.8,8,True,lander b
+2026_NY_House-10_DEM,DEM,Dan Goldman,28445,34.0,8,False,goldman d
+2026_NY_House-10_DEM,DEM,Write-in,156,0.2,8,False,writein
+2026_NY_House-11_DEM,DEM,Michael DeCillis,10001,61.0,10,True,decillis m
+2026_NY_House-11_DEM,DEM,Allison Ziogas,6140,37.5,10,False,ziogas a
+2026_NY_House-11_DEM,DEM,Write-in,241,1.5,10,False,writein
+2026_NY_House-12_DEM,DEM,Micah Lasher,40106,39.1,11,True,lasher m
+2026_NY_House-12_DEM,DEM,Alex Bores,35822,35.0,11,False,bores a
+2026_NY_House-12_DEM,DEM,Jack Schlossberg,11036,10.8,11,False,schlossberg j
+2026_NY_House-12_DEM,DEM,Nina Schwalbe,7266,7.1,11,False,schwalbe n
+2026_NY_House-12_DEM,DEM,George Conway,6212,6.1,11,False,conway g
+2026_NY_House-12_DEM,DEM,Laura Dunn,1361,1.3,11,False,dunn l
+2026_NY_House-12_DEM,DEM,Patrick Timmins,306,0.3,11,False,timmins p
+2026_NY_House-12_DEM,DEM,Chris Diep,194,0.2,11,False,diep c
+2026_NY_House-12_DEM,DEM,Write-in,160,0.2,11,False,writein
+2026_NY_House-13_DEM,DEM,Darializa Avila Chevalier,32790,49.4,13,True,chevalier d
+2026_NY_House-13_DEM,DEM,Adriano Espaillat,30464,45.9,13,False,espaillat a
+2026_NY_House-13_DEM,DEM,Oscar Romero,2340,3.5,13,False,romero o
+2026_NY_House-13_DEM,DEM,Theo Chino-Tavarez,532,0.8,13,False,chinotavarez t
+2026_NY_House-13_DEM,DEM,Write-in,253,0.4,13,False,writein
+2026_NY_House-14_DEM,DEM,Alexandria Ocasio-Cortez,30189,86.9,14,True,ocasiocortez a
+2026_NY_House-14_DEM,DEM,Felipe Garcia,2336,6.7,14,False,garcia f
+2026_NY_House-14_DEM,DEM,Marty Dolan,2058,5.9,14,False,dolan m
+2026_NY_House-14_DEM,DEM,Write-in,141,0.4,14,False,writein
+2026_NY_House-15_DEM,DEM,Ritchie Torres,23531,71.9,15,True,torres r
+2026_NY_House-15_DEM,DEM,Michael Blake,7132,21.8,15,False,blake m
+2026_NY_House-15_DEM,DEM,Jose Vega,1824,5.6,15,False,vega j
+2026_NY_House-15_DEM,DEM,Write-in,218,0.7,15,False,writein
+2026_NY_House-17_DEM,DEM,Cait Conley,22749,49.5,16,True,conley c
+2026_NY_House-17_DEM,DEM,Beth Davidson,14671,31.9,16,False,davidson b
+2026_NY_House-17_DEM,DEM,Effie Phillips-Staley,7012,15.3,16,False,phillipsstaley e
+2026_NY_House-17_DEM,DEM,Michael Sacks,742,1.6,16,False,sacks m
+2026_NY_House-17_DEM,DEM,John Cappello,740,1.6,16,False,cappello j
+2026_NY_House-17_DEM,DEM,Write-in,44,0.1,16,False,writein
+2026_NY_House-19_REP,REP,Peter Oberacker,13387,77.6,17,True,oberacker p
+2026_NY_House-19_REP,REP,Alexander Portelli,3779,21.9,17,False,portelli a
+2026_NY_House-19_REP,REP,Write-in,77,0.4,17,False,writein
+2026_NY_House-21_REP,REP,Anthony Constantino,26565,59.3,18,True,constantino a
+2026_NY_House-21_REP,REP,Robert Smullen,18028,40.2,18,False,smullen r
+2026_NY_House-21_REP,REP,Write-in,216,0.5,18,False,writein
+2026_NY_House-21_DEM,DEM,Blake Gendebien,15186,64.7,19,True,gendebien b
+2026_NY_House-21_DEM,DEM,Stuart Amoriell,8189,34.9,19,False,amoriell s
+2026_NY_House-21_DEM,DEM,Write-in,105,0.4,19,False,writein
+2026_NY_House-23_DEM,DEM,Aaron Gies,13703,71.6,20,True,gies a
+2026_NY_House-23_DEM,DEM,Kevin Stocker,5376,28.1,20,False,stocker k
+2026_NY_House-23_DEM,DEM,Write-in,51,0.3,20,False,writein
+2026_NY_House-24_DEM,DEM,Alissa Ellman,9927,61.7,21,True,ellman a
+2026_NY_House-24_DEM,DEM,Diana Kastenbaum,6117,38.0,21,False,kastenbaum d
+2026_NY_House-24_DEM,DEM,Write-in,33,0.2,21,False,writein
+2026_NY_House-25_DEM,DEM,Joseph Morelle,24085,63.3,22,True,morelle j
+2026_NY_House-25_DEM,DEM,Robin Wilt,11516,30.3,22,False,wilt r
+2026_NY_House-25_DEM,DEM,Sherita Traywick,2273,6.0,22,False,traywick s
+2026_NY_House-25_DEM,DEM,Write-in,151,0.4,22,False,writein
+2026_OH_Governor_REP,REP,Vivek Ramaswamy,676562,82.43,1,True,ramaswamy v
+2026_OH_Governor_REP,REP,Casey Putsch Kim Georgeton,144184,17.57,1,False,georgeton c
+2026_OH_Governor_DEM,DEM,Amy Acton,767360,100.0,2,True,acton a
+2026_OH_House-1_DEM,DEM,Greg Landsman,36984,67.9,1,True,landsman g
+2026_OH_House-1_DEM,DEM,Damon Lynch IV,17483,32.1,1,False,lynch d
+2026_OH_House-1_REP,REP,Eric Conroy,25603,71.88,2,True,conroy e
+2026_OH_House-1_REP,REP,Holly Adams,7020,19.71,2,False,adams h
+2026_OH_House-1_REP,REP,Rosemary Oglesby-Henry,2994,8.41,2,False,oglesbyhenry r
+2026_OH_House-2_REP,REP,David Taylor,51885,74.97,4,True,taylor d
+2026_OH_House-2_REP,REP,Bob Carr,17321,25.03,4,False,carr b
+2026_OH_House-2_DEM,DEM,Jennifer Mazzuckelli,15381,53.29,5,True,mazzuckelli j
+2026_OH_House-2_DEM,DEM,Todd Wilson,13484,46.71,5,False,wilson t
+2026_OH_House-3_DEM,DEM,Joyce Beatty,62851,79.33,6,True,beatty j
+2026_OH_House-3_DEM,DEM,Joe Gerard,16381,20.67,6,False,gerard j
+2026_OH_House-3_REP,REP,Cleophus Dulaney,15779,100.0,7,True,dulaney c
+2026_OH_House-4_REP,REP,Jim Jordan,75210,100.0,8,True,jordan j
+2026_OH_House-4_DEM,DEM,Joshua Kolasinski,26406,100.0,9,True,kolasinski j
+2026_OH_House-5_REP,REP,Bob Latta,58056,100.0,10,True,latta b
+2026_OH_House-5_DEM,DEM,Brian Shaver,11914,28.69,11,True,shaver b
+2026_OH_House-5_DEM,DEM,Martin Heberling III,10706,25.78,11,False,heberling m
+2026_OH_House-5_DEM,DEM,Daniel Burket,10145,24.43,11,False,burket d
+2026_OH_House-5_DEM,DEM,Scott Tabor,8759,21.09,11,False,tabor s
+2026_OH_House-6_REP,REP,Michael Rulli,47868,76.21,13,True,rulli m
+2026_OH_House-6_REP,REP,Jullie Kelley,14945,23.79,13,False,kelley j
+2026_OH_House-6_DEM,DEM,Elizabeth Kirtley,12318,31.53,14,True,kirtley e
+2026_OH_House-6_DEM,DEM,Adrian Vitus,8602,22.02,14,False,vitus a
+2026_OH_House-6_DEM,DEM,Sean Connolly,8053,20.61,14,False,connolly s
+2026_OH_House-6_DEM,DEM,Brent Hanni,3765,9.64,14,False,hanni b
+2026_OH_House-6_DEM,DEM,Malcolm Ritchie,3520,9.01,14,False,ritchie m
+2026_OH_House-6_DEM,DEM,Charles DiPalma,2797,7.16,14,False,dipalma c
+2026_OH_House-6_DEM,DEM,Christopher Lafont,12,0.03,14,False,lafont c
+2026_OH_House-7_REP,REP,Max Miller,50345,100.0,15,True,miller m
+2026_OH_House-7_DEM,DEM,Brian Poindexter,23167,37.0,16,True,poindexter b
+2026_OH_House-7_DEM,DEM,Ed FitzGerald,13505,21.57,16,False,fitzgerald e
+2026_OH_House-7_DEM,DEM,Laura Rodriguez-Carbone,7719,12.33,16,False,rodriguezcarbone l
+2026_OH_House-7_DEM,DEM,Michael Eisner,7361,11.76,16,False,eisner m
+2026_OH_House-7_DEM,DEM,Ann Marie Donegan,6562,10.48,16,False,donegan a
+2026_OH_House-7_DEM,DEM,Scott Schulz,2698,4.31,16,False,schulz s
+2026_OH_House-7_DEM,DEM,John Butchko,907,1.45,16,False,butchko j
+2026_OH_House-7_DEM,DEM,Keith Mundy,697,1.11,16,False,mundy k
+2026_OH_House-8_REP,REP,Warren Davidson,52629,100.0,19,True,davidson w
+2026_OH_House-8_DEM,DEM,Vanessa Enoch,32336,74.46,20,True,enoch v
+2026_OH_House-8_DEM,DEM,Madaris Grant,11091,25.54,20,False,grant m
+2026_OH_House-9_DEM,DEM,Marcy Kaptur,45827,100.0,21,True,kaptur m
+2026_OH_House-9_REP,REP,Derek Merrin,25092,44.08,22,True,merrin d
+2026_OH_House-9_REP,REP,Josh Williams,14419,25.33,22,False,williams j
+2026_OH_House-9_REP,REP,Madison Sheahan,11501,20.21,22,False,sheahan m
+2026_OH_House-9_REP,REP,Alea Nadeem,3109,5.46,22,False,nadeem a
+2026_OH_House-9_REP,REP,Anthony Campbell,2800,4.92,22,False,campbell a
+2026_OH_House-10_REP,REP,Mike Turner,44286,100.0,24,True,turner m
+2026_OH_House-10_DEM,DEM,Kristina Knickerbocker,14824,32.67,25,True,knickerbocker k
+2026_OH_House-10_DEM,DEM,Janice Beckett,11766,25.93,25,False,beckett j
+2026_OH_House-10_DEM,DEM,David Esrati,5829,12.84,25,False,esrati d
+2026_OH_House-10_DEM,DEM,Jan Kinner,5601,12.34,25,False,kinner j
+2026_OH_House-10_DEM,DEM,Tony Pombo,3754,8.27,25,False,pombo t
+2026_OH_House-10_DEM,DEM,Manuel Foggie,3606,7.95,25,False,foggie m
+2026_OH_House-11_DEM,DEM,Shontel Brown,70357,85.48,27,True,brown s
+2026_OH_House-11_DEM,DEM,Ardelia Holmes,6529,7.93,27,False,holmes a
+2026_OH_House-11_DEM,DEM,Sean Freeman,5421,6.59,27,False,freeman s
+2026_OH_House-11_REP,REP,Mike Kirchner,6949,65.58,28,True,kirchner m
+2026_OH_House-11_REP,REP,James Hemphill,3648,34.42,28,False,hemphill j
+2026_OH_House-12_REP,REP,Troy Balderson,64907,100.0,29,True,balderson t
+2026_OH_House-12_DEM,DEM,Jerrad Christian,15961,46.39,30,True,christian j
+2026_OH_House-12_DEM,DEM,Daniel Crawford,11546,33.56,30,False,crawford d
+2026_OH_House-12_DEM,DEM,Jason Reynard,6899,20.05,30,False,reynard j
+2026_OH_House-13_DEM,DEM,Emilia Sykes,62768,100.0,31,True,sykes e
+2026_OH_House-13_REP,REP,Carey Coleman,20322,47.26,32,True,coleman c
+2026_OH_House-13_REP,REP,Kevin Siembida,8062,18.75,32,False,siembida k
+2026_OH_House-13_REP,REP,Margaret Briem,7274,16.92,32,False,briem m
+2026_OH_House-13_REP,REP,Neil Patel,6238,14.51,32,False,patel n
+2026_OH_House-13_REP,REP,Sanjin Drakovac,1105,2.57,32,False,drakovac s
+2026_OH_House-14_REP,REP,David Joyce,49119,70.31,33,True,joyce d
+2026_OH_House-14_REP,REP,Nicole Frenchko,20744,29.69,33,False,frenchko n
+2026_OH_House-14_DEM,DEM,Maria Jukic,25119,50.75,34,True,jukic m
+2026_OH_House-14_DEM,DEM,Bill O'Neill,17726,35.81,34,False,oneill b
+2026_OH_House-14_DEM,DEM,Carl Setzer,6651,13.44,34,False,setzer c
+2026_OH_House-15_REP,REP,Mike Carey,39446,100.0,35,True,carey m
+2026_OH_House-15_DEM,DEM,Don Leonard,23798,52.91,36,True,leonard d
+2026_OH_House-15_DEM,DEM,Adam Miller,21179,47.09,36,False,miller a
+2026_OH_Senate_REP,REP,Jon Husted,736413,100.0,1,True,husted j
+2026_OH_Senate_DEM,DEM,Sherrod Brown,712106,89.4,2,True,brown s
+2026_OH_Senate_DEM,DEM,Ron Kincaid,84405,10.6,2,False,kincaid r
+2026_OK_Governor_REP,REP,Gentner Drummond,105832,26.3,1,True,drummond g
+2026_OK_Governor_REP,REP,Mike Mazzei,104691,26.0,1,False,mazzei m
+2026_OK_Governor_REP,REP,Chip Keating,74379,18.5,1,False,keating c
+2026_OK_Governor_REP,REP,Jake A. Merrick,58341,14.5,1,False,merrick j
+2026_OK_Governor_REP,REP,Charles McCall,47519,11.8,1,False,mccall c
+2026_OK_Governor_REP,REP,Leisa Mitchell Haynes,4121,1.0,1,False,haynes l
+2026_OK_Governor_REP,REP,Jennifer Domenico,3796,0.9,1,False,domenico j
+2026_OK_Governor_REP,REP,Kenneth Sturgell,2935,0.7,1,False,sturgell k
+2026_OK_Governor_REP,REP,Calup Anthony Taylor,1485,0.4,1,False,taylor c
+2026_OK_Governor_DEM,DEM,Cyndi Munson,129225,74.9,3,True,munson c
+2026_OK_Governor_DEM,DEM,Constance Johnson,38414,22.3,3,False,johnson c
+2026_OK_Governor_DEM,DEM,Arya Azma,4824,2.8,3,False,azma a
+2026_OK_Senate_REP,REP,Kevin Hern,267222,69.8,1,True,hern k
+2026_OK_Senate_REP,REP,Gary Ty England,51875,13.5,1,False,england g
+2026_OK_Senate_REP,REP,William Sean Buckner,26444,6.9,1,False,buckner w
+2026_OK_Senate_REP,REP,Brian Ragain,22478,5.9,1,False,ragain b
+2026_OK_Senate_REP,REP,Nick Hankins,15066,3.9,1,False,hankins n
+2026_OK_Senate_DEM,DEM,Jasmine Thomas,76330,45.2,2,True,thomas j
+2026_OK_Senate_DEM,DEM,Jim Priest,40290,23.9,2,False,priest j
+2026_OK_Senate_DEM,DEM,Troy Green,33492,19.8,2,False,green t
+2026_OK_Senate_DEM,DEM,Ervin Yen,11363,6.7,2,False,yen e
+2026_OK_Senate_DEM,DEM,R.O. Joe Cassity Jr.,7421,4.4,2,False,cassity r
+2026_OR_Governor_DEM,DEM,Tina Kotek,385999,83.6,1,True,kotek t
+2026_OR_Governor_DEM,DEM,Brittany N. Jones,13939,3.0,1,False,jones b
+2026_OR_Governor_DEM,DEM,"Forest ""Fora"" Alexander",12684,2.8,1,False,alexander f
+2026_OR_Governor_DEM,DEM,Miranda Weigler,10161,2.2,1,False,weigler m
+2026_OR_Governor_DEM,DEM,Tristan Sheppard,6006,1.3,1,False,sheppard t
+2026_OR_Governor_DEM,DEM,James Atkinson IV,5902,1.3,1,False,atkinson j
+2026_OR_Governor_DEM,DEM,David Beem,4863,1.1,1,False,beem d
+2026_OR_Governor_DEM,DEM,Steve Laible,3692,0.8,1,False,laible s
+2026_OR_Governor_DEM,DEM,Cal Kishawi,2422,0.5,1,False,kishawi c
+2026_OR_Governor_DEM,DEM,Donnie Beckwith,1799,0.4,1,False,beckwith d
+2026_OR_Governor_DEM,DEM,Write-in,14228,3.1,1,False,writein
+2026_OR_Governor_REP,REP,Christine Drazan,172474,40.5,2,True,drazan c
+2026_OR_Governor_REP,REP,Ed Diehl,140458,33.0,2,False,diehl e
+2026_OR_Governor_REP,REP,Chris Dudley,71929,16.9,2,False,dudley c
+2026_OR_Governor_REP,REP,David Medina,21742,5.1,2,False,medina d
+2026_OR_Governor_REP,REP,Danielle Bethell,9629,2.3,2,False,bethell d
+2026_OR_Governor_REP,REP,Brad Peters,1827,0.4,2,False,peters b
+2026_OR_Governor_REP,REP,Paul Romero,1615,0.4,2,False,romero p
+2026_OR_Governor_REP,REP,Kyle Duyck,1562,0.4,2,False,duyck k
+2026_OR_Governor_REP,REP,Robert Neuman,680,0.2,2,False,neuman r
+2026_OR_Governor_REP,REP,Martin Ward,539,0.1,2,False,ward m
+2026_OR_Governor_REP,REP,Hope Dalrymple,534,0.1,2,False,dalrymple h
+2026_OR_Governor_REP,REP,DeAngelo Turner,377,0.1,2,False,turner d
+2026_OR_Governor_REP,REP,Wen Waddell,321,0.1,2,False,waddell w
+2026_OR_Governor_REP,REP,Tim Youker,248,0.1,2,False,youker t
+2026_OR_Governor_REP,REP,Write-in,1622,0.4,2,False,writein
+2026_PA_Governor_DEM,DEM,Josh Shapiro,1116960,100.0,1,True,shapiro j
+2026_PA_Governor_REP,REP,Stacy Garrity,641534,100.0,2,True,garrity s
+2026_PA_House-1_REP,REP,Brian Fitzpatrick,44365,100.0,1,True,fitzpatrick b
+2026_PA_House-1_DEM,DEM,Bob Harvie,52094,65.1,2,True,harvie b
+2026_PA_House-1_DEM,DEM,Lucia Simonelli,27884,34.9,2,False,simonelli l
+2026_PA_House-2_DEM,DEM,Brendan Boyle,53043,100.0,4,True,boyle b
+2026_PA_House-2_REP,REP,Jessica Arriaga,6328,100.0,5,True,arriaga j
+2026_PA_House-3_DEM,DEM,Chris Rabb,65782,44.6,6,True,rabb c
+2026_PA_House-3_DEM,DEM,Sharif Street,43137,29.3,6,False,street s
+2026_PA_House-3_DEM,DEM,Ala Stanford,35452,24.0,6,False,stanford a
+2026_PA_House-3_DEM,DEM,Shaun Griffith,3042,2.1,6,False,griffith s
+2026_PA_House-4_DEM,DEM,Madeleine Dean,88286,100.0,7,True,dean m
+2026_PA_House-4_REP,REP,Aurora Stuski,35116,100.0,8,True,stuski a
+2026_PA_House-5_DEM,DEM,Mary Gay Scanlon,76009,100.0,9,True,scanlon m
+2026_PA_House-5_REP,REP,Nicholas Manganaro,25075,100.0,10,True,manganaro n
+2026_PA_House-6_DEM,DEM,Chrissy Houlahan,63022,100.0,11,True,houlahan c
+2026_PA_House-6_REP,REP,Marty Young,33376,100.0,12,True,young m
+2026_PA_House-7_REP,REP,Ryan Mackenzie,35048,100.0,13,True,mackenzie r
+2026_PA_House-7_DEM,DEM,Bob Brooks,28232,41.0,14,True,brooks b
+2026_PA_House-7_DEM,DEM,Ryan Crosswell,14660,21.3,14,False,crosswell r
+2026_PA_House-7_DEM,DEM,Lamont McClure,13736,19.9,14,False,mcclure l
+2026_PA_House-7_DEM,DEM,Carol Obando-Derstine,12237,17.8,14,False,obandoderstine c
+2026_PA_House-8_REP,REP,Rob Bresnahan,38075,100.0,16,True,bresnahan r
+2026_PA_House-8_DEM,DEM,Paige Cognetti,58726,100.0,17,True,cognetti p
+2026_PA_House-9_REP,REP,Dan Meuser,62527,100.0,19,True,meuser d
+2026_PA_House-9_DEM,DEM,Rachel Wallace,34503,100.0,20,True,wallace r
+2026_PA_House-10_REP,REP,Scott Perry,45900,100.0,21,True,perry s
+2026_PA_House-10_DEM,DEM,Janelle Stelson,42397,67.4,22,True,stelson j
+2026_PA_House-10_DEM,DEM,Justin Douglas,20467,32.6,22,False,douglas j
+2026_PA_House-11_REP,REP,Lloyd Smucker,54169,100.0,24,True,smucker l
+2026_PA_House-11_DEM,DEM,Nancy Mannion,41107,100.0,25,True,mannion n
+2026_PA_House-12_DEM,DEM,Summer Lee,75298,81.2,26,True,lee s
+2026_PA_House-12_DEM,DEM,William Parker,17437,18.8,26,False,parker w
+2026_PA_House-12_REP,REP,James Hayes,23760,100.0,27,True,hayes j
+2026_PA_House-13_REP,REP,John Joyce,58992,100.0,28,True,joyce j
+2026_PA_House-13_DEM,DEM,Beth Farnham,32428,100.0,29,True,farnham b
+2026_PA_House-14_REP,REP,Guy Reschenthaler,52583,100.0,30,True,reschenthaler g
+2026_PA_House-14_DEM,DEM,Alan Bradstock,48774,100.0,31,True,bradstock a
+2026_PA_House-15_REP,REP,Glenn Thompson,53352,100.0,32,True,thompson g
+2026_PA_House-15_DEM,DEM,Ray Bilger,34963,100.0,33,True,bilger r
+2026_PA_House-16_REP,REP,Mike Kelly,44236,100.0,34,True,kelly m
+2026_PA_House-16_DEM,DEM,Justin Wagner,49371,100.0,35,True,wagner j
+2026_PA_House-17_DEM,DEM,Chris Deluzio,83791,100.0,36,True,deluzio c
+2026_PA_House-17_REP,REP,Tony Guy,19581,53.3,37,True,guy t
+2026_PA_House-17_REP,REP,Jesse James Vodvarka,17183,46.7,37,False,vodvarka j
+2026_SC_Governor_REP,REP,Alan Wilson,218569,68.6,2,True,wilson a
+2026_SC_Governor_REP,REP,Pamela Evette,100227,31.4,2,False,evette p
+2026_SC_Governor_DEM,DEM,Jermaine Johnson,221951,59.7,3,True,johnson j
+2026_SC_Governor_DEM,DEM,Billy Webster,110303,29.7,3,False,webster b
+2026_SC_Governor_DEM,DEM,William Mullins McLeod Jr.,39739,10.7,3,False,mcleod w
+2026_SC_House-1_REP,REP,Jenny Costa Honeycutt,24035,53.7,2,True,honeycutt j
+2026_SC_House-1_REP,REP,Mark Smith,20724,46.3,2,False,smith m
+2026_SC_House-1_DEM,DEM,Nancy Lacore,12825,52.1,4,True,lacore n
+2026_SC_House-1_DEM,DEM,Mac Deford,11773,47.9,4,False,deford m
+2026_SC_House-2_REP,REP,Joe Wilson,46588,74.2,6,True,wilson j
+2026_SC_House-2_REP,REP,Hamp Redmond,8731,13.9,6,False,redmond h
+2026_SC_House-2_REP,REP,Sam Gibbons,7440,11.9,6,False,gibbons s
+2026_SC_House-2_DEM,DEM,Zyon Khalifa,3069,53.8,8,True,khalifa z
+2026_SC_House-2_DEM,DEM,David Robinson,2636,46.2,8,False,robinson d
+2026_SC_House-3_DEM,DEM,Eunice Lehmacher,16730,53.4,9,True,lehmacher e
+2026_SC_House-3_DEM,DEM,Ernest Mackins,14612,46.6,9,False,mackins e
+2026_SC_House-4_REP,REP,William Timmons,47895,65.8,10,True,timmons w
+2026_SC_House-4_REP,REP,David Atchley,14188,19.5,10,False,atchley d
+2026_SC_House-4_REP,REP,Robert Lee,10663,14.7,10,False,lee r
+2026_SC_House-5_DEM,DEM,Mallory Dittmer,25428,55.8,11,True,dittmer m
+2026_SC_House-5_DEM,DEM,Andrew Clough,20138,44.2,11,False,clough a
+2026_SC_House-6_DEM,DEM,Jim Clyburn,75411,90.3,12,True,clyburn j
+2026_SC_House-6_DEM,DEM,Frederick Goodwin,8145,9.7,12,False,goodwin f
+2026_SC_House-6_REP,REP,John Peterson,22169,74.0,13,True,peterson j
+2026_SC_House-6_REP,REP,Maurice Washington,7781,26.0,13,False,washington m
+2026_SC_Senate_REP,REP,Lindsey Graham,264091,56.8,1,True,graham l
+2026_SC_Senate_REP,REP,Mark Lynch,134360,28.9,1,False,lynch m
+2026_SC_Senate_REP,REP,Thomas Dismukes,24164,5.2,1,False,dismukes t
+2026_SC_Senate_REP,REP,Pat Herrmann,17448,3.8,1,False,herrmann p
+2026_SC_Senate_REP,REP,Calvin Cowen,14171,3.0,1,False,cowen c
+2026_SC_Senate_REP,REP,Darius Mitchell,10842,2.3,1,False,mitchell d
+2026_SC_Senate_DEM,DEM,Annie Andrews,226075,61.5,2,True,andrews a
+2026_SC_Senate_DEM,DEM,Brandon Brown,110962,30.2,2,False,brown b
+2026_SC_Senate_DEM,DEM,Kyle Freeman,30374,8.3,2,False,freeman k
+2026_SD_Governor_REP,REP,Larry Rhoden,83582,70.8,2,True,rhoden l
+2026_SD_Governor_REP,REP,Toby Doeden,34430,29.2,2,False,doeden t
+2026_SD_Senate_REP,REP,Mike Rounds,101284,75.8,1,True,rounds m
+2026_SD_Senate_REP,REP,Justin McNeal,32341,24.2,1,False,mcneal j
+2026_TX_Governor_REP,REP,Greg Abbott,1764924,81.8,1,True,abbott g
+2026_TX_Governor_REP,REP,"Pete ""Doc"" Chambers",240640,11.2,1,False,chambers p
+2026_TX_Governor_REP,REP,Evelyn Brooks,44142,2.0,1,False,brooks e
+2026_TX_Governor_REP,REP,Arturo Espinosa,23444,1.1,1,False,espinosa a
+2026_TX_Governor_REP,REP,Charles Andrew Crouch,15405,0.7,1,False,crouch c
+2026_TX_Governor_REP,REP,Kenneth Hyde,14941,0.7,1,False,hyde k
+2026_TX_Governor_REP,REP,Nathaniel Welch,12057,0.6,1,False,welch n
+2026_TX_Governor_REP,REP,Mark V. Goloby,10991,0.5,1,False,goloby m
+2026_TX_Governor_REP,REP,Stephen Samuelson,10864,0.5,1,False,samuelson s
+2026_TX_Governor_REP,REP,Ronnie Tullos,10352,0.5,1,False,tullos r
+2026_TX_Governor_REP,REP,"R.F. ""Bob"" Achgill",9119,0.4,1,False,achgill r
+2026_TX_Governor_DEM,DEM,Gina Hinojosa,1289576,58.5,2,True,hinojosa g
+2026_TX_Governor_DEM,DEM,Chris Bell,216787,9.8,2,False,bell c
+2026_TX_Governor_DEM,DEM,"Angela ""Tia Angie"" Villescaz",150752,6.8,2,False,villescaz a
+2026_TX_Governor_DEM,DEM,Patricia Abrego,128632,5.8,2,False,abrego p
+2026_TX_Governor_DEM,DEM,Andrew White,117392,5.3,2,False,white a
+2026_TX_Governor_DEM,DEM,Bobby Cole,112675,5.1,2,False,cole b
+2026_TX_Governor_DEM,DEM,Jose Navarro Balbuena,65826,3.0,2,False,balbuena j
+2026_TX_Governor_DEM,DEM,Carlton W. Hart,63278,2.9,2,False,hart c
+2026_TX_Governor_DEM,DEM,Zach Vance,58753,2.7,2,False,vance z
+2026_TX_House-1_REP,REP,Nathaniel Moran,80547,100.0,1,True,moran n
+2026_TX_House-1_DEM,DEM,Yolanda Prince,5240,72.3,3,True,prince y
+2026_TX_House-1_DEM,DEM,Dax Alexander,2011,27.7,3,False,alexander d
+2026_TX_House-2_REP,REP,Steve Toth,36830,55.8,4,True,toth s
+2026_TX_House-2_REP,REP,Dan Crenshaw,26859,40.7,4,False,crenshaw d
+2026_TX_House-2_REP,REP,Martin Etwop,1216,1.8,4,False,etwop m
+2026_TX_House-2_REP,REP,Nicholas Lee Plumb,1106,1.7,4,False,plumb n
+2026_TX_House-2_DEM,DEM,Shaun Finnie,48700,100.0,5,True,finnie s
+2026_TX_House-3_REP,REP,Keith Self,63747,80.2,6,True,self k
+2026_TX_House-3_REP,REP,Mark Newgent,15761,19.8,6,False,newgent m
+2026_TX_House-3_DEM,DEM,Evan Hunt,48800,100.0,7,True,hunt e
+2026_TX_House-4_REP,REP,Pat Fallon,59828,80.6,8,True,fallon p
+2026_TX_House-4_REP,REP,Don Horn,14383,19.4,8,False,horn d
+2026_TX_House-4_DEM,DEM,Jason Pearce,23552,52.0,9,True,pearce j
+2026_TX_House-4_DEM,DEM,Andrew Rubell,21779,48.0,9,False,rubell a
+2026_TX_House-5_REP,REP,Lance Gooden,50424,100.0,10,True,gooden l
+2026_TX_House-5_DEM,DEM,Chelsey Hockett,5665,53.0,12,True,hockett c
+2026_TX_House-5_DEM,DEM,Ruth Torres,5023,47.0,12,False,torres r
+2026_TX_House-6_REP,REP,Jake Ellzey,42230,66.3,13,True,ellzey j
+2026_TX_House-6_REP,REP,James Buford,12660,19.9,13,False,buford j
+2026_TX_House-6_REP,REP,Brian Stahl,8813,13.8,13,False,stahl b
+2026_TX_House-6_DEM,DEM,Danny Minton,45306,100.0,14,True,minton d
+2026_TX_House-7_DEM,DEM,Lizzie Fletcher,61930,100.0,15,True,fletcher l
+2026_TX_House-7_REP,REP,Alexander Hale,11164,64.3,17,True,hale a
+2026_TX_House-7_REP,REP,Tina Blum Cohen,6195,35.7,17,False,cohen t
+2026_TX_House-8_REP,REP,Jessica Steinmann,42636,68.0,19,True,steinmann j
+2026_TX_House-8_REP,REP,Brett Jensen,7936,12.6,19,False,jensen b
+2026_TX_House-8_REP,REP,Nick Tran,7663,12.2,19,False,tran n
+2026_TX_House-8_REP,REP,Stephen Long,2069,3.3,19,False,long s
+2026_TX_House-8_REP,REP,Jay Fondren,1553,2.5,19,False,fondren j
+2026_TX_House-8_REP,REP,Deddrick Wilmer,883,1.4,19,False,wilmer d
+2026_TX_House-8_DEM,DEM,Laura Jones,27865,65.7,20,True,jones l
+2026_TX_House-8_DEM,DEM,Keith Coleman,14560,34.3,20,False,coleman k
+2026_TX_House-9_DEM,DEM,Leticia Gutierrez,18703,53.6,21,True,gutierrez l
+2026_TX_House-9_DEM,DEM,Earnest Clayton,5673,16.3,21,False,clayton e
+2026_TX_House-9_DEM,DEM,Terry Virts,5095,14.6,21,False,virts t
+2026_TX_House-9_DEM,DEM,Todd Ivey,2462,7.1,21,False,ivey t
+2026_TX_House-9_DEM,DEM,Marty Rocha,2374,6.8,21,False,rocha m
+2026_TX_House-9_DEM,DEM,Peter Filler,558,1.6,21,False,filler p
+2026_TX_House-9_REP,REP,Alex Mealer,15625,68.3,23,True,mealer a
+2026_TX_House-9_REP,REP,Briscoe Cain,7257,31.7,23,False,cain b
+2026_TX_House-10_REP,REP,Chris Gober,38541,51.2,24,True,gober c
+2026_TX_House-10_REP,REP,Ben Bius,10507,14.0,24,False,bius b
+2026_TX_House-10_REP,REP,Rob Altman,5660,7.5,24,False,altman r
+2026_TX_House-10_REP,REP,Jessica Karlsruher,5352,7.1,24,False,karlsruher j
+2026_TX_House-10_REP,REP,Scott MacLeod,5051,6.7,24,False,macleod s
+2026_TX_House-10_REP,REP,Jeremy Story,3401,4.5,24,False,story j
+2026_TX_House-10_REP,REP,Kara King,2147,2.9,24,False,king k
+2026_TX_House-10_REP,REP,Jenny Garcia Sharon,1790,2.4,24,False,sharon j
+2026_TX_House-10_REP,REP,Rob Brown,1778,2.4,24,False,brown r
+2026_TX_House-10_REP,REP,Brandon Hawbraker,977,1.3,24,False,hawbraker b
+2026_TX_House-10_DEM,DEM,Caitlin Rourk,32716,60.8,25,True,rourk c
+2026_TX_House-10_DEM,DEM,Dawn Marshall,12184,22.6,25,False,marshall d
+2026_TX_House-10_DEM,DEM,Bernardo Reyna,8893,16.5,25,False,reyna b
+2026_TX_House-11_REP,REP,August Pfluger,59885,100.0,26,True,pfluger a
+2026_TX_House-11_DEM,DEM,Claire Reynolds,21787,57.6,27,True,reynolds c
+2026_TX_House-11_DEM,DEM,Pedro Ruiz,16054,42.4,27,False,ruiz p
+2026_TX_House-12_REP,REP,Craig Goldman,54931,100.0,28,True,goldman c
+2026_TX_House-12_DEM,DEM,Angela Rodriguez Prilliman,30878,59.8,29,True,prilliman a
+2026_TX_House-12_DEM,DEM,Kenneth Morgan-Aguilera,20770,40.2,29,False,morganaguilera k
+2026_TX_House-13_REP,REP,Ronny Jackson,71554,89.5,30,True,jackson r
+2026_TX_House-13_REP,REP,Chasity Wedgeworth,8414,10.5,30,False,wedgeworth c
+2026_TX_House-13_DEM,DEM,Mark Nair,28198,100.0,31,True,nair m
+2026_TX_House-14_REP,REP,Randy Weber,55800,88.6,32,True,weber r
+2026_TX_House-14_REP,REP,Jessica Forgy,7215,11.4,32,False,forgy j
+2026_TX_House-14_DEM,DEM,Thurman Bartie,7148,51.0,34,True,bartie t
+2026_TX_House-14_DEM,DEM,Richard Davis,6881,49.0,34,False,davis r
+2026_TX_House-15_REP,REP,Monica De La Cruz,30083,100.0,35,True,cruz m
+2026_TX_House-15_DEM,DEM,Bobby Pulido,36957,67.5,36,True,pulido b
+2026_TX_House-15_DEM,DEM,Ada Cuellar,17757,32.5,36,False,cuellar a
+2026_TX_House-16_DEM,DEM,Veronica Escobar,54031,100.0,38,True,escobar v
+2026_TX_House-16_REP,REP,Adam Bauman,7752,68.5,40,True,bauman a
+2026_TX_House-16_REP,REP,Manuel Barraza,3557,31.5,40,False,barraza m
+2026_TX_House-17_REP,REP,Pete Sessions,59724,100.0,41,True,sessions p
+2026_TX_House-17_DEM,DEM,Casey Shepard,5122,59.9,43,True,shepard c
+2026_TX_House-17_DEM,DEM,Milah Flores,3432,40.1,43,False,flores m
+2026_TX_House-18_DEM,DEM,Christian Menefee,34090,69.3,45,True,menefee c
+2026_TX_House-18_DEM,DEM,Al Green,15101,30.7,45,False,green a
+2026_TX_House-18_REP,REP,Ronald Whitfield,5280,55.1,46,True,whitfield r
+2026_TX_House-18_REP,REP,Elizabeth Vences,4301,44.9,46,False,vences e
+2026_TX_House-19_REP,REP,Tom Sell,32243,64.3,48,True,sell t
+2026_TX_House-19_REP,REP,Abraham Enriquez,17939,35.7,48,False,enriquez a
+2026_TX_House-19_DEM,DEM,Kyle Rable,22513,100.0,49,True,rable k
+2026_TX_House-20_DEM,DEM,Joaquin Castro,58260,88.2,50,True,castro j
+2026_TX_House-20_DEM,DEM,Kendra Wilkerson,6191,9.4,50,False,wilkerson k
+2026_TX_House-20_DEM,DEM,John Atwood,1633,2.5,50,False,atwood j
+2026_TX_House-20_REP,REP,Edgardo Baez,9240,100.0,51,True,baez e
+2026_TX_House-21_REP,REP,Mark Teixeira,58180,60.9,52,True,teixeira m
+2026_TX_House-21_REP,REP,Jason Cahill,9043,9.5,52,False,cahill j
+2026_TX_House-21_REP,REP,Trey Trainor,8497,8.9,52,False,trainor t
+2026_TX_House-21_REP,REP,Michael Wheeler,6593,6.9,52,False,wheeler m
+2026_TX_House-21_REP,REP,Weston Martinez,2320,2.4,52,False,martinez w
+2026_TX_House-21_REP,REP,Kyle Sinclair,1947,2.0,52,False,sinclair k
+2026_TX_House-21_REP,REP,Daniel Betts,1941,2.0,52,False,betts d
+2026_TX_House-21_REP,REP,Peggy Wardlaw,1872,2.0,52,False,wardlaw p
+2026_TX_House-21_REP,REP,Heather Tessmer,1575,1.7,52,False,tessmer h
+2026_TX_House-21_REP,REP,Paul Rojas,1559,1.6,52,False,rojas p
+2026_TX_House-21_REP,REP,Zeke Enriquez,1302,1.4,52,False,enriquez z
+2026_TX_House-21_REP,REP,Jacques DuBose,673,0.7,52,False,dubose j
+2026_TX_House-21_DEM,DEM,Kristin Hook,39779,60.1,53,True,hook k
+2026_TX_House-21_DEM,DEM,Regina Vanburg,18614,28.1,53,False,vanburg r
+2026_TX_House-21_DEM,DEM,Gary Taylor,7847,11.8,53,False,taylor g
+2026_TX_House-22_REP,REP,Trever Nehls,47839,75.7,54,True,nehls t
+2026_TX_House-22_REP,REP,Rebecca Clark,15379,24.3,54,False,clark r
+2026_TX_House-22_DEM,DEM,Marquette Greene-Scott,26280,54.6,55,True,greenescott m
+2026_TX_House-22_DEM,DEM,Chris Fernandez,8931,18.5,55,False,fernandez c
+2026_TX_House-22_DEM,DEM,Robert Thomas,7269,15.1,55,False,thomas r
+2026_TX_House-22_DEM,DEM,Pearl Vuorinen,3093,6.4,55,False,vuorinen p
+2026_TX_House-22_DEM,DEM,Sterling Gadison,2574,5.3,55,False,gadison s
+2026_TX_House-23_REP,REP,Brandon Herrera,23932,43.3,56,True,herrera b
+2026_TX_House-23_REP,REP,Tony Gonzales,23073,41.8,56,False,gonzales t
+2026_TX_House-23_REP,REP,Keith Barton,4696,8.5,56,False,barton k
+2026_TX_House-23_REP,REP,Quico Canseco,3562,6.4,56,False,canseco q
+2026_TX_House-23_DEM,DEM,Katy Padilla Stout,30828,52.1,57,True,stout k
+2026_TX_House-23_DEM,DEM,Santos Limon,16077,27.1,57,False,limon s
+2026_TX_House-23_DEM,DEM,Bruce Richardson,6968,11.8,57,False,richardson b
+2026_TX_House-23_DEM,DEM,Gretel Enck,5349,9.0,57,False,enck g
+2026_TX_House-24_REP,REP,Beth Van Duyne,71506,100.0,59,True,duyne b
+2026_TX_House-24_DEM,DEM,Kevin Burge,10656,78.1,61,True,burge k
+2026_TX_House-24_DEM,DEM,TJ Ware,2983,21.9,61,False,ware t
+2026_TX_House-25_REP,REP,Roger Williams,60296,100.0,62,True,williams r
+2026_TX_House-25_DEM,DEM,Dione Sims,32388,60.5,63,True,sims d
+2026_TX_House-25_DEM,DEM,William Marks,21135,39.5,63,False,marks w
+2026_TX_House-26_REP,REP,Brandon Gill,73610,91.1,64,True,gill b
+2026_TX_House-26_REP,REP,Robert Chick,7169,8.9,64,False,chick r
+2026_TX_House-26_DEM,DEM,Steven Shook,29172,51.1,65,True,shook s
+2026_TX_House-26_DEM,DEM,Ernest Lineberger,27964,48.9,65,False,lineberger e
+2026_TX_House-27_REP,REP,Michael Cloud,49156,73.0,66,True,cloud m
+2026_TX_House-27_REP,REP,Chris Hatley,18215,27.0,66,False,hatley c
+2026_TX_House-27_DEM,DEM,Tanya Lloyd,35729,63.1,67,True,lloyd t
+2026_TX_House-27_DEM,DEM,Eustaquio Castro-Mendoza,16657,29.4,67,False,castromendoza e
+2026_TX_House-27_DEM,DEM,Wayne Raasch,4227,7.5,67,False,raasch w
+2026_TX_House-28_DEM,DEM,Henry Cuellar,39228,58.1,68,True,cuellar h
+2026_TX_House-28_DEM,DEM,Ricardo Villarreal,24968,37.0,68,False,villarreal r
+2026_TX_House-28_DEM,DEM,Andrew Vantine,3375,5.0,68,False,vantine a
+2026_TX_House-28_REP,REP,Tano Tijerina,12514,74.3,69,True,tijerina t
+2026_TX_House-28_REP,REP,Eileen Day,4319,25.7,69,False,day e
+2026_TX_House-29_DEM,DEM,Sylvia Garcia,30803,58.2,70,True,garcia s
+2026_TX_House-29_DEM,DEM,Jarvis Johnson,18881,35.7,70,False,johnson j
+2026_TX_House-29_DEM,DEM,Robert Slater,3200,6.1,70,False,slater r
+2026_TX_House-29_REP,REP,Martha Fierro,9633,100.0,71,True,fierro m
+2026_TX_House-30_DEM,DEM,Frederick Haynes III,76701,72.6,72,True,haynes f
+2026_TX_House-30_DEM,DEM,Barbara Mallory Caraway,24370,23.1,72,False,caraway b
+2026_TX_House-30_DEM,DEM,Rodney LaBruce,4546,4.3,72,False,labruce r
+2026_TX_House-30_REP,REP,Everett Jackson,4960,57.5,74,True,jackson e
+2026_TX_House-30_REP,REP,Sholdon Daniels,3664,42.5,74,False,daniels s
+2026_TX_House-31_REP,REP,John Carter,45834,59.7,76,True,carter j
+2026_TX_House-31_REP,REP,Valentina Gomez,8401,10.9,76,False,gomez v
+2026_TX_House-31_REP,REP,Abhiram Garapati,5036,6.6,76,False,garapati a
+2026_TX_House-31_REP,REP,Steve Dowell,4729,6.2,76,False,dowell s
+2026_TX_House-31_REP,REP,Raymond Hamden,4530,5.9,76,False,hamden r
+2026_TX_House-31_REP,REP,Vince Offer,3187,4.2,76,False,offer v
+2026_TX_House-31_REP,REP,William Abel,1931,2.5,76,False,abel w
+2026_TX_House-31_REP,REP,David Berry,1739,2.3,76,False,berry d
+2026_TX_House-31_REP,REP,Edward Ewald,790,1.0,76,False,ewald e
+2026_TX_House-31_REP,REP,Elvis Lossa,571,0.7,76,False,lossa e
+2026_TX_House-31_DEM,DEM,Justin Early,31881,57.6,77,True,early j
+2026_TX_House-31_DEM,DEM,Stuart Whitlow,23467,42.4,77,False,whitlow s
+2026_TX_House-32_DEM,DEM,Dan Barrios,34759,60.4,78,True,barrios d
+2026_TX_House-32_DEM,DEM,Anthony Bridges,22762,39.6,78,False,bridges a
+2026_TX_House-32_REP,REP,Jace Yarbrough,33874,49.0,79,True,yarbrough j
+2026_TX_House-32_REP,REP,Ryan Binkley,15028,21.7,79,False,binkley r
+2026_TX_House-32_REP,REP,Paul Bondar,9586,13.9,79,False,bondar p
+2026_TX_House-32_REP,REP,Darrell Day,4030,5.8,79,False,day d
+2026_TX_House-32_REP,REP,James Ussery,1959,2.8,79,False,ussery j
+2026_TX_House-32_REP,REP,Aimee Carrasco,1834,2.7,79,False,carrasco a
+2026_TX_House-32_REP,REP,Gordon Heslop,1470,2.1,79,False,heslop g
+2026_TX_House-32_REP,REP,Monty Montanez,867,1.3,79,False,montanez m
+2026_TX_House-32_REP,REP,Abteen Vaziri,541,0.8,79,False,vaziri a
+2026_TX_House-33_DEM,DEM,Colin Allred,11354,54.0,81,True,allred c
+2026_TX_House-33_DEM,DEM,Julie Johnson,9677,46.0,81,False,johnson j
+2026_TX_House-33_REP,REP,Patrick Gillespie,5020,57.1,83,True,gillespie p
+2026_TX_House-33_REP,REP,John Sims,3771,42.9,83,False,sims j
+2026_TX_House-34_DEM,DEM,Vicente Gonzalez,35342,62.7,84,True,gonzalez v
+2026_TX_House-34_DEM,DEM,Etienne Rosas,20993,37.3,84,False,rosas e
+2026_TX_House-34_REP,REP,Eric Flores,20726,56.7,85,True,flores e
+2026_TX_House-34_REP,REP,Mayra Flores,8652,23.7,85,False,flores m
+2026_TX_House-34_REP,REP,Luis Buentello,1943,5.3,85,False,buentello l
+2026_TX_House-34_REP,REP,Scott Mandel,1638,4.5,85,False,mandel s
+2026_TX_House-34_REP,REP,Fred Hinojosa,1395,3.8,85,False,hinojosa f
+2026_TX_House-34_REP,REP,Keith Allen,1378,3.8,85,False,allen k
+2026_TX_House-34_REP,REP,Gregory Kunkle,690,1.9,85,False,kunkle g
+2026_TX_House-34_REP,REP,Jay Nagy,159,0.4,85,False,nagy j
+2026_TX_House-35_DEM,DEM,Johnny Garcia,13017,63.8,87,True,garcia j
+2026_TX_House-35_DEM,DEM,Maureen Galindo,7374,36.2,87,False,galindo m
+2026_TX_House-35_REP,REP,Carlos De La Cruz,18927,57.6,89,True,cruz c
+2026_TX_House-35_REP,REP,John Lujan,13925,42.4,89,False,lujan j
+2026_TX_House-36_REP,REP,Brian Babin,51074,81.1,91,True,babin b
+2026_TX_House-36_REP,REP,Jonathan Mitchell,11896,18.9,91,False,mitchell j
+2026_TX_House-36_DEM,DEM,Rhonda Hart,30587,64.2,92,True,hart r
+2026_TX_House-36_DEM,DEM,Doug Rogers,17041,35.8,92,False,rogers d
+2026_TX_House-37_DEM,DEM,Greg Casar,105917,80.7,93,True,casar g
+2026_TX_House-37_DEM,DEM,Esther Fleharty,25252,19.3,93,False,fleharty e
+2026_TX_House-37_REP,REP,Lauren Peña,6567,58.2,95,True,pena l
+2026_TX_House-37_REP,REP,Ge'Neill Gary,4724,41.8,95,False,gary g
+2026_TX_House-38_REP,REP,Jon Bonck,31855,64.8,97,True,bonck j
+2026_TX_House-38_REP,REP,Shelly deZevallos,17340,35.3,97,False,dezevallos s
+2026_TX_House-38_DEM,DEM,Melissa McDonough,27073,51.6,98,True,mcdonough m
+2026_TX_House-38_DEM,DEM,Marvalette Hunter,14828,28.3,98,False,hunter m
+2026_TX_House-38_DEM,DEM,Theresa Courts,10517,20.1,98,False,courts t
+2026_TX_Senate_REP,REP,Ken Paxton,888196,63.8,2,True,paxton k
+2026_TX_Senate_REP,REP,John Cornyn,503438,36.2,2,False,cornyn j
+2026_TX_Senate_DEM,DEM,James Talarico,1216412,52.4,3,True,talarico j
+2026_TX_Senate_DEM,DEM,Jasmine Crockett,1071900,46.2,3,False,crockett j
+2026_TX_Senate_DEM,DEM,Ahmad Hassan,30875,1.3,3,False,hassan a
+2026_UT_House-1_DEM,DEM,Ben McAdams,29737,51.9,3,True,mcadams b
+2026_UT_House-1_DEM,DEM,Nate Blouin,15771,27.5,3,False,blouin n
+2026_UT_House-1_DEM,DEM,Liban Mohamed,9542,16.7,3,False,mohamed l
+2026_UT_House-1_DEM,DEM,Michael Farrell,2245,3.9,3,False,farrell m
+2026_UT_House-2_REP,REP,Blake Moore,52673,56.7,5,True,moore b
+2026_UT_House-2_REP,REP,Karianne Lisonbee,40271,43.3,5,False,lisonbee k
+2026_UT_House-3_REP,REP,Celeste Maloy,67135,65.7,8,True,maloy c
+2026_UT_House-3_REP,REP,Phil Lyman,35034,34.3,8,False,lyman p
+2026_VA_House-1_DEM,DEM,Shannon Taylor,24912,53.1,1,True,taylor s
+2026_VA_House-1_DEM,DEM,Salaam Bhatti,9223,19.7,1,False,bhatti s
+2026_VA_House-1_DEM,DEM,Jason Knapp,4695,10.0,1,False,knapp j
+2026_VA_House-1_DEM,DEM,Elizabeth Dempsey Beggs,3351,7.1,1,False,beggs e
+2026_VA_House-1_DEM,DEM,Mel Tull,2016,4.3,1,False,tull m
+2026_VA_House-1_DEM,DEM,Tim Cywinski,1402,3.0,1,False,cywinski t
+2026_VA_House-1_DEM,DEM,Ericka Kopp,1307,2.8,1,False,kopp e
+2026_VA_House-2_DEM,DEM,Elaine Luria,32884,80.4,2,True,luria e
+2026_VA_House-2_DEM,DEM,Nila Devanath,6623,16.2,2,False,devanath n
+2026_VA_House-2_DEM,DEM,Bill Fleming,830,2.0,2,False,fleming b
+2026_VA_House-2_DEM,DEM,Patrick Mosolf,552,1.4,2,False,mosolf p
+2026_VA_House-5_REP,REP,John McGuire,41258,84.4,3,True,mcguire j
+2026_VA_House-5_REP,REP,Melanie Lucero,7648,15.6,3,False,lucero m
+2026_VA_House-5_DEM,DEM,Tom Perriello,29549,79.9,4,True,perriello t
+2026_VA_House-5_DEM,DEM,Suzanne Kryzanowski,5327,14.4,4,False,kryzanowski s
+2026_VA_House-5_DEM,DEM,Robert Tracinski,2130,5.8,4,False,tracinski r
+2026_VA_House-7_REP,REP,Doug Ollivant,13337,56.6,5,True,ollivant d
+2026_VA_House-7_REP,REP,Phillip Harding,7229,30.7,5,False,harding p
+2026_VA_House-7_REP,REP,Ricky Smithers,3005,12.8,5,False,smithers r
+2026_VA_House-8_DEM,DEM,Don Beyer,39714,67.6,6,True,beyer d
+2026_VA_House-8_DEM,DEM,Mo Seifeldein,10351,17.6,6,False,seifeldein m
+2026_VA_House-8_DEM,DEM,Adam Dunigan,5267,9.0,6,False,dunigan a
+2026_VA_House-8_DEM,DEM,Michael Duffin,1901,3.2,6,False,duffin m
+2026_VA_House-8_DEM,DEM,Lorena Thorne Bruner,1516,2.6,6,False,bruner l
+2026_VA_House-9_DEM,DEM,Joy Powers,9400,51.7,7,True,powers j
+2026_VA_House-9_DEM,DEM,Adam Murphy,6571,36.1,7,False,murphy a
+2026_VA_House-9_DEM,DEM,Doug Crockett,2227,12.2,7,False,crockett d
+2026_VA_House-10_REP,REP,Dave Beckwith,13092,72.5,8,True,beckwith d
+2026_VA_House-10_REP,REP,Julie Perry,3684,20.4,8,False,perry j
+2026_VA_House-10_REP,REP,Anthony Suttles,1000,5.53,8,False,suttles a
+2026_VA_House-10_REP,REP,Sam Wong,292,1.6,8,False,wong s
+2026_VA_Senate_REP,REP,Bert Mizusawa,122056,51.5,1,True,mizusawa b
+2026_VA_Senate_REP,REP,David Williams,68501,28.9,1,False,williams d
+2026_VA_Senate_REP,REP,Kim Farington,46501,19.6,1,False,farington k

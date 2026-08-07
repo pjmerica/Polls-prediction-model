@@ -1,0 +1,8 @@
+wrong,correct,note
+Josh Elliot,Josh Elliott,"CT-Gov-DEM 2026: feed typo split his 14 polls into two 7-poll candidates. Correct spelling confirmed by CT Mirror / CT Public (two Ts)."
+Brad Raffersperger,Brad Raffensperger,"GA-Gov-REP 2026: transposed 'ns'->'rs'. Georgia SoS, correct spelling has 'ns'."
+Brad Raffensberger,Brad Raffensperger,"GA-Sen-REP 2026: 'b' for 'p'. Same person as the GA-Gov entry."
+Charles WalkingChild,Charles Walking Child,"MT-Sen-REP 2026: missing space in surname."
+Shelley deZavallos,Shelly deZevallos,"TX-House-38-REP 2026: two vowel differences in one feed."
+Esther Kim-Varet,Esther Kim Varet,"CA-40 general 2026: hyphenated variant split her from herself. Unhyphenated is the form used by her own campaign site and Wikipedia. NOTE norm_name joins hyphens, so 'Kim-Varet'->'kimvaret e' but 'Kim Varet'->'varet e' - the hyphen rule makes these two different keys."
+Joe Stranda,Joe Strada,"FL-11 general 2026: trailing-letter typo. Two rows for the same candidate, 42.1 and 42.0 in the same poll."

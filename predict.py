@@ -216,6 +216,15 @@ def drop_primary_losers(d, cycle):
     """
     path = os.path.join(HERE, "data", f"primary_results_{cycle}.csv")
     if not os.path.exists(path):
+        # LOUD, not silent. This file is the ONLY thing that keeps defeated primary
+        # candidates out of the general-election feed, and data/*.csv is gitignored by
+        # default - so when it was not force-added, CI checked out a tree without it,
+        # this function returned unchanged, and the nightly refresh put Haley Stevens
+        # and Perry Johnson back into MI-Sen/MI-Gov. Twice. A silent return made a
+        # data-availability problem look like a modelling one.
+        print(f"WARNING: {path} not found - primary losers CANNOT be filtered. "
+              f"Defeated candidates will be scored as if still running. "
+              f"(Is the file committed? data/*.csv is gitignored by default.)")
         return d
     r = pd.read_csv(path)
     if not {"race_id", "cand_key", "is_winner"} <= set(r.columns):
