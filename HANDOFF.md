@@ -1014,3 +1014,45 @@ same-surname cases were triaged, the rest are unexamined. 6 races have no winner
 independent who won was never polled (#46, deliberately left). The general model still has no
 staleness flag (#36). The results scraper still has no election-date guard (#37). Wikipedia-
 sourced polls have no source URL (the NYT ones now do).
+
+---
+
+## NEXT TASK (top of the queue, 2026-08-08): get current consumer-sentiment data
+
+**The problem.** `data/macro_monthly.csv`'s `sentiment` series ends **2025-08** — twelve
+months stale, while every other macro series in the same file runs to **2026-07**. That
+staleness makes `sentiment_last12_delta` 100% NaN at serve time (CONCERNS #30), and eight
+`sentiment_*` features feed the general model's artifact.
+
+**Current source and why it is failing.** `pipeline/fetch/fetch_macro.py` pulls UMich
+consumer sentiment from DBnomics, trying series `SCSMICH` / `MICS` / `ICS`. Two distinct
+failure modes seen:
+  1. **Stale data** - the mirror simply has not advanced past 2025-08 for these codes.
+  2. **Timeouts** - on 2026-08-08 the pull failed with
+     `HTTPSConnectionPool(host='api.db.nomics.world') Read timed out`.
+
+**The trap, and it is a real one.** `fetch_macro.py` SKIPS a failed series and still rewrites
+`macro_monthly.csv`, so a timeout silently DELETES the whole `sentiment` metric from the file.
+On 2026-08-08 that turned a network blip into a missing feature block; `predict.py`'s
+artifact-feature assert caught it and refused to run:
+
+    AssertionError: artifact expects features absent from the built table:
+      ['sentiment_avg_12mo', 'sentiment_avg_3mo', ...]
+
+That assert is the only thing that stopped a run serving 8 silently-empty features. **Recovery
+is `git checkout -- data/macro_monthly.csv` then `refresh_dashboard.py --no-feeds`.** Consider
+making fetch_macro.py refuse to drop a metric it previously had, rather than skipping quietly.
+
+**Suggested fix, in order of preference:**
+  1. **University of Michigan directly** - the Surveys of Consumers publish the Index of
+     Consumer Sentiment monthly as a CSV/table (`sca.isr.umich.edu`). No key, authoritative,
+     and it is the actual source DBnomics mirrors.
+  2. **FRED** series `UMCSENT` (monthly, current). Needs a free API key, same shape as the
+     existing BLS overlay pattern already in fetch_macro.py.
+  3. **Conference Board Consumer Confidence** as a substitute series - different index, would
+     need a retrain rather than a drop-in, so only if 1 and 2 both fail.
+
+**Definition of done:** `sentiment` runs to within ~2 months of today in
+`data/macro_monthly.csv`; `sentiment_last12_delta` has non-zero serve coverage (measure it,
+do not infer it - see CONCERNS #43); then a full four-model retrain, because this changes
+feature VALUES on a shipped feature block.

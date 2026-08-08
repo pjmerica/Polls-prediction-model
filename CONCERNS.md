@@ -308,7 +308,9 @@ above:
     margin model's weak 2022 fold flipped from a loss to a win vs the calibrated baseline
     (15.97 → 14.69 vs 15.39), so both folds now beat it.
     All four models retrained on the new definition (the two primaries twice — see above).
-30. **`sentiment_last12_delta` is also 100% NaN at serve time**, for a different reason: the
+30. **[NEXT TASK 2026-08-08 - see HANDOFF for the full brief, including the recommended
+    sources and the fetch_macro.py trap that silently deletes the metric on a timeout]**
+    **`sentiment_last12_delta` is also 100% NaN at serve time**, for a different reason: the
     consumer-sentiment series in `data/macro_monthly.csv` ends **2025-08**, 12 months stale,
     while every other macro series is current to 2026-06. The `_last12_delta` window cannot be
     filled, so the feature is correctly NaN (this is the 2026-07-14 silent-zero fix working).
