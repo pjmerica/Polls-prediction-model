@@ -19,12 +19,17 @@ import unicodedata
 import numpy as np
 import pandas as pd
 
+import os as _os, sys as _sys  # noqa: E402  - bootstrap: this file lives in src/,
+_sys.path.insert(0, _os.path.dirname(_os.path.dirname(_os.path.abspath(__file__))))
+# ...so the repo ROOT (which holds paths.py) must go on sys.path before importing it.
 import paths  # noqa: F401  - side effect: puts the repo root + pipeline folders on sys.path,
               # so the lazy `import fetch_candidate_bios_ballotpedia` below resolves after the
               # 2026-08-02 reorganisation moved that script into pipeline/fetch/.
 from cycles import PRES_PARTY
 
-DATA_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "data")
+# Resolved from the REPO ROOT (paths.py), not this file's directory: features.py moved
+# into src/ on 2026-08-08 and the old __file__-relative form would point at src/data/.
+DATA_DIR = paths.DATA
 
 # ---------------------------------------------------------------- small parsers
 
@@ -599,7 +604,7 @@ def load_name_aliases():
     """
     global _ALIASES
     if _ALIASES is None:
-        p = os.path.join(os.path.dirname(os.path.abspath(__file__)), "data", "name_aliases.csv")
+        p = paths.data("name_aliases.csv")
         _ALIASES = {}
         if os.path.exists(p):
             a = pd.read_csv(p)

@@ -23,7 +23,12 @@ from explain_2026 import FRIENDLY, DESC, sigmoid, top_shap
 from predict import DEFAULT_POLLS
 from predict_primary import load_primary_feed
 
+import os as _os, sys as _sys  # noqa: E402  - bootstrap: this file lives in src/,
+_sys.path.insert(0, _os.path.dirname(_os.path.dirname(_os.path.abspath(__file__))))
+# ...so the repo ROOT (which holds paths.py) must go on sys.path before importing it.
 from paths import ROOT, AGG   # one definition for the whole repo (paths.py)
+import paths as _paths   # module handle: `out` is a very common local
+                         # variable name in this repo, so never import it bare
 
 HERE = ROOT
 
@@ -211,7 +216,7 @@ def main():
                    note="SHAP top-10 for the PRIMARY nominee model, explaining the "
                         "predicted nominee. Log-odds bars; base/pred as probabilities.",
                    generated_at=pd.Timestamp.now().isoformat(), races=out)
-    p1 = os.path.join(HERE, f"primary_explanations_{args.cycle}.json")
+    p1 = _paths.out(f"primary_explanations_{args.cycle}.json")
     p2 = os.path.join(AGG, "data", "processed", f"model_primary_explanations_{args.cycle}.json")
     for p in (p1, p2):
         with open(p, "w", encoding="utf-8") as f:

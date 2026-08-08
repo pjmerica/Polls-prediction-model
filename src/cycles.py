@@ -7,6 +7,11 @@ Cycles are even-year general elections. Coverage starts 1998 because that's wher
 frozen 538 raw_polls file (data/raw_polls_538.csv) starts. Odd-year races (VA/NJ etc.)
 are intentionally excluded (tiny poll counts, their own macro windows — not worth it).
 """
+import os as _os, sys as _sys  # noqa: E402  - bootstrap: this file lives in src/,
+_sys.path.insert(0, _os.path.dirname(_os.path.dirname(_os.path.abspath(__file__))))
+# ...so the repo ROOT (which holds paths.py) must go on sys.path before importing it.
+import paths as _P
+
 import os
 import pandas as pd
 
@@ -51,8 +56,11 @@ def macro_cutoff(cycle):
 #            of the 538 generic-ballot average; the daily file above ends in 2016.
 # 2026+:     must be supplied at predict time (e.g. RealClearPolling average) — no free
 #            machine-readable source is wired up yet.
-_GB_HIST = os.path.join(os.path.dirname(os.path.abspath(__file__)),
-                        "data", "generic_ballot_hist_538.csv")
+# Resolved from the REPO ROOT via paths.py, not from this file's own directory. The old
+# `dirname(__file__)/data/...` form was correct only while cycles.py sat in the repo root;
+# once it moved into src/ it pointed at src/data/ and crashed (2026-08-08). This is exactly
+# the failure paths.py exists to prevent - see its docstring.
+_GB_HIST = _P.data("generic_ballot_hist_538.csv")
 _NATL_ENV_FROZEN = {2018: 7.8, 2020: 7.5, 2022: 0.7, 2024: 0.1}
 
 def natl_env():

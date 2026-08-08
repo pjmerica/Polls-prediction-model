@@ -32,7 +32,12 @@ from cycles import natl_env as natl_env_hist
 from macro_features import build_macro
 from predict import DEFAULT_POLLS, load_agg_polls, patch_redistricted_priors
 
+import os as _os, sys as _sys  # noqa: E402  - bootstrap: this file lives in src/,
+_sys.path.insert(0, _os.path.dirname(_os.path.dirname(_os.path.abspath(__file__))))
+# ...so the repo ROOT (which holds paths.py) must go on sys.path before importing it.
 from paths import ROOT, AGG   # one definition for the whole repo (paths.py)
+import paths as _paths   # module handle: `out` is a very common local
+                         # variable name in this repo, so never import it bare
 
 HERE = ROOT
 
@@ -284,7 +289,7 @@ def main():
                         "(or overall leader if no Democrat). Win model in log-odds "
                         "(base/pred shown as probabilities); margin model in points.",
                    generated_at=pd.Timestamp.now().isoformat(), races=out)
-    p1 = os.path.join(HERE, f"model_explanations_{args.cycle}.json")
+    p1 = _paths.out(f"model_explanations_{args.cycle}.json")
     with open(p1, "w", encoding="utf-8") as f:
         json.dump(payload, f)
     p2 = os.path.join(AGG, "data", "processed", f"model_explanations_{args.cycle}.json")

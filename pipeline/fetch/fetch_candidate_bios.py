@@ -24,6 +24,8 @@ bios. Office LEVEL - the feature - rarely changes from such edits.
 import os as _os, sys as _sys
 _sys.path.insert(0, _os.path.dirname(_os.path.dirname(_os.path.dirname(_os.path.abspath(__file__)))))
 from paths import ROOT, AGG  # noqa: E402  (repo-root-relative paths; see paths.py)
+import paths as _paths   # module handle: `out` is a very common local
+                         # variable name in this repo, so never import it bare
 
 import os
 import re
@@ -445,7 +447,7 @@ def main():
              & (r["cycle"] >= 1998) & (r["cycle"] % 2 == 0)]   # even-year cycles only
         for cyc, st in zip(r["cycle"], r["state_abbrev"]):
             bucket.add((int(cyc), st))
-    preds = pd.read_csv(os.path.join(HERE, "primary_predictions_2026.csv"))
+    preds = pd.read_csv(_paths.out("primary_predictions_2026.csv"))
     for r in preds.drop_duplicates(["state", "office"]).itertuples():
         if r.office == "Senate":
             sen_targets.add((2026, r.state))

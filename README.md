@@ -1,9 +1,11 @@
 # Polls prediction model
 
-> **Layout changed 2026-08-02** — poll-based models now live in `models/poll/`,
+> **Layout changed 2026-08-08** — all first-party Python now lives in `src/`, generated
+> predictions in `outputs/`, deep docs in `docs/`; the repo root holds 5 files.
+> Poll-based models live in `models/poll/`,
 > no-polling models in `models/fundamentals/`, scrapers in `pipeline/fetch/`, dataset
-> assembly in `pipeline/build/`, one-off repairs in `tools/`. See **STRUCTURE.md** for the
-> map and the run commands. Everything is still run from the repo root.
+> assembly in `pipeline/build/`, one-off repairs in `tools/`. See **[docs/STRUCTURE.md](docs/STRUCTURE.md)**
+> for the map and the run commands. Everything is still run from the repo root.
 
 Predicts U.S. downballot elections — Senate, House, and Governor — from polls plus
 political/economic context. **Four** separate models: **win probability**, **margin of
@@ -71,13 +73,13 @@ bios/history for the primary model). The **future-proofing rule**: production in
 raw polls + economic data only — nothing that only exists inside a defunct 538 file, since
 2026+ can't get it. See `AGENTS.md` rule 6.
 
-📄 **Deep docs:** [AGENTS.md](AGENTS.md) (start here if you're contributing — architecture +
-the rules learned the hard way) · [HANDOFF.md](HANDOFF.md) (in-flight state + dated history)
-· [CONCERNS.md](CONCERNS.md) (the living risk register + improvement roadmap) ·
-[METHODOLOGY.md](METHODOLOGY.md) (**exact time windows for every feature**) ·
-[DATA_SOURCES.md](DATA_SOURCES.md) (every URL + how found) ·
-[DATA_DICTIONARY.md](DATA_DICTIONARY.md) (every variable) ·
-[MISSINGNESS_REPORT.md](MISSINGNESS_REPORT.md).
+📄 **Deep docs:** [AGENTS.md](docs/AGENTS.md) (start here if you're contributing — architecture +
+the rules learned the hard way) · [HANDOFF.md](docs/HANDOFF.md) (in-flight state + dated history)
+· [CONCERNS.md](docs/CONCERNS.md) (the living risk register + improvement roadmap) ·
+[METHODOLOGY.md](docs/METHODOLOGY.md) (**exact time windows for every feature**) ·
+[DATA_SOURCES.md](docs/DATA_SOURCES.md) (every URL + how found) ·
+[DATA_DICTIONARY.md](docs/DATA_DICTIONARY.md) (every variable) ·
+[MISSINGNESS_REPORT.md](docs/MISSINGNESS_REPORT.md).
 
 ---
 
@@ -95,9 +97,9 @@ the rules learned the hard way) · [HANDOFF.md](HANDOFF.md) (in-flight state + d
    margin_model.ipynb       → MARGIN model (separate artifact, same scheme)
    primary_model.py         → PRIMARY nominee model (script, runs in minutes)
    primary_margin_model.py  → PRIMARY margin model (script; same data, regression target)
-4. predict.py / predict_margin.py / predict_primary.py / predict_primary_margin.py
+4. src/predict.py / predict_margin.py / predict_primary.py / predict_primary_margin.py
                              → score the live 2026 poll feed for each model
-5. refresh_dashboard.py     → one command: feeds → predict all four → copy CSVs to the
+5. src/refresh_dashboard.py → one command: feeds → predict all four → copy CSVs to the
                                companion dashboard repo → regenerate its compare pages
 ```
 
@@ -122,7 +124,8 @@ All commands run from the **repo root** (paths after the 2026-08-02 move — see
    **`py -X utf8 models/poll/primary_model.py`**, then
    **`py -X utf8 models/poll/primary_margin_model.py`** — run top to bottom. **Run notebooks one at a
    time**, never concurrently (nbconvert races and overwrites outputs on parallel runs).
-3. **`py -X utf8 refresh_dashboard.py`** — re-predict 2026 and refresh the companion dashboard.
+3. **`py -X utf8 src/refresh_dashboard.py`** — re-predict 2026 and refresh the companion dashboard.
+   (The root `refresh_dashboard.py` is a shim to the same thing, kept for the CI workflow.)
 
 Optional: **`py -X utf8 models/fundamentals/fundamentals_model.py`** trains the no-polling
 reference models (not shipped to the dashboard; a prior/floor for thin-poll races).
@@ -131,7 +134,7 @@ reference models (not shipped to the dashboard; a prior/floor for thin-poll race
 > notebook end-to-end including the grid search** — never reuse old hyperparameters.
 > Params tuned for one feature set can make a new set look worse than it is. Let
 > regularization drop non-predictive features rather than hand-curating. Applies to all
-> four models. (More rules + traps in [AGENTS.md](AGENTS.md).)
+> four models. (More rules + traps in [AGENTS.md](docs/AGENTS.md).)
 
 ## Where to look next
 

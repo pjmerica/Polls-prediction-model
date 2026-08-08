@@ -26,7 +26,7 @@ import pandas as pd  # noqa: E402
 
 POLLS = os.path.join(ROOT, "polls_long_with_results.csv")
 FEATS = data("candidate_table_2026.csv")
-OUT = os.path.join(ROOT, "MISSINGNESS_REPORT.md")
+OUT = os.path.join(ROOT, "docs", "MISSINGNESS_REPORT.md")   # docs/ since the 2026-08-08 move
 
 
 def table(df):

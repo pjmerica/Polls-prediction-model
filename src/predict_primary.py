@@ -50,7 +50,12 @@ from build_primary_dataset import EXCLUDE_STATES, to_abbr
 from predict import (DEFAULT_POLLS, REQUIRED_FEED_COLS, parse_race_id,
                      drop_stale_candidates, warn_near_duplicate_names)
 
+import os as _os, sys as _sys  # noqa: E402  - bootstrap: this file lives in src/,
+_sys.path.insert(0, _os.path.dirname(_os.path.dirname(_os.path.abspath(__file__))))
+# ...so the repo ROOT (which holds paths.py) must go on sys.path before importing it.
 from paths import ROOT, AGG   # one definition for the whole repo (paths.py)
+import paths as _paths   # module handle: `out` is a very common local
+                         # variable name in this repo, so never import it bare
 
 HERE = ROOT
 
@@ -293,7 +298,7 @@ def main():
                 "field_confidence", "low_confidence_field",
                 "poll_age_days", "stale_polling"]
     out = cand[out_cols].sort_values(["race_id", "win_prob_norm"], ascending=[True, False])
-    out_path = args.out or os.path.join(HERE, f"primary_predictions_{args.cycle}.csv")
+    out_path = args.out or _paths.out(f"primary_predictions_{args.cycle}.csv")
     out.to_csv(out_path, index=False)
 
     with open(os.path.splitext(out_path)[0] + "_meta.json", "w") as f:

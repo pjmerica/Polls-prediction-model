@@ -22,7 +22,12 @@ from cycles import natl_env as natl_env_hist
 from macro_features import build_macro
 from predict import DEFAULT_POLLS, load_agg_polls, patch_redistricted_priors
 
+import os as _os, sys as _sys  # noqa: E402  - bootstrap: this file lives in src/,
+_sys.path.insert(0, _os.path.dirname(_os.path.dirname(_os.path.abspath(__file__))))
+# ...so the repo ROOT (which holds paths.py) must go on sys.path before importing it.
 from paths import ROOT   # one definition for the whole repo (paths.py)
+import paths as _paths   # module handle: `out` is a very common local
+                         # variable name in this repo, so never import it bare
 
 HERE = ROOT
 
@@ -99,7 +104,7 @@ def main():
                 "prior_margin_cand", "is_incumbent", "pred_margin",
                 "pred_margin_R3", "pred_margin_D3"]
     out = cand[out_cols].sort_values(["race_id", "pred_margin"], ascending=[True, False])
-    out_path = args.out or os.path.join(HERE, f"margin_predictions_{args.cycle}.csv")
+    out_path = args.out or _paths.out(f"margin_predictions_{args.cycle}.csv")
     out.to_csv(out_path, index=False)
 
     picks = out.loc[out.groupby("race_id")["pred_margin"].idxmax()]

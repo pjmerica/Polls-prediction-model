@@ -29,7 +29,12 @@ import xgboost as xgb
 
 import features as F
 import features_primary as FP
+import os as _os, sys as _sys  # noqa: E402  - bootstrap: this file lives in src/,
+_sys.path.insert(0, _os.path.dirname(_os.path.dirname(_os.path.abspath(__file__))))
+# ...so the repo ROOT (which holds paths.py) must go on sys.path before importing it.
 from paths import ROOT, AGG   # noqa: F401  (one definition for the whole repo)
+import paths as _paths   # module handle: `out` is a very common local
+                         # variable name in this repo, so never import it bare
 from predict import DEFAULT_POLLS
 from predict_primary import load_primary_feed
 
@@ -95,7 +100,7 @@ def main():
                 "election_date", "n_polls", "n_surveys", "poll_avg", "poll_lead",
                 "pred_margin", "margin_pick", "n_polled_cands", "uncontested_field"]
     out = cand[out_cols].sort_values(["race_id", "pred_margin"], ascending=[True, False])
-    out_path = args.out or os.path.join(HERE, f"primary_margin_predictions_{args.cycle}.csv")
+    out_path = args.out or _paths.out(f"primary_margin_predictions_{args.cycle}.csv")
     out.to_csv(out_path, index=False)
 
     with open(os.path.splitext(out_path)[0] + "_meta.json", "w") as f:

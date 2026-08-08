@@ -15,6 +15,11 @@ small) and cross-state political moves are missed (accepted).
 Used by the PRIMARY model (candidate quality matters most in primaries); the general
 model already carries incumbency/prior-margin at the SEAT level.
 """
+import os as _os, sys as _sys  # noqa: E402  - bootstrap: this file lives in src/,
+_sys.path.insert(0, _os.path.dirname(_os.path.dirname(_os.path.abspath(__file__))))
+# ...so the repo ROOT (which holds paths.py) must go on sys.path before importing it.
+import paths as _P  # noqa: E402
+
 import os
 from collections import defaultdict
 
@@ -23,8 +28,9 @@ import pandas as pd
 
 import features as F
 
-HERE = os.path.dirname(os.path.abspath(__file__))
-DATA = os.path.join(HERE, "data")
+# repo-root-relative (paths.py); this file lives in src/ since 2026-08-08
+HERE = _P.ROOT
+DATA = _P.DATA
 
 def _general_rows():
     frames = []

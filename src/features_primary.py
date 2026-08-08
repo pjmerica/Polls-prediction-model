@@ -20,6 +20,11 @@ Design notes vs the general pipeline (features.py):
   True candidate-level incumbency isn't derivable from committed data (no incumbent name);
   documented gap.
 """
+import os as _os, sys as _sys  # noqa: E402  - bootstrap: this file lives in src/,
+_sys.path.insert(0, _os.path.dirname(_os.path.dirname(_os.path.abspath(__file__))))
+# ...so the repo ROOT (which holds paths.py) must go on sys.path before importing it.
+import paths as _P  # noqa: E402
+
 import numpy as np
 import pandas as pd
 
@@ -168,8 +173,7 @@ def load_candidate_bios(path=None):
     Wikipedia race-page candidate descriptors classified into office levels
     (fetch_candidate_bios.py). district = '' for statewide."""
     import os
-    path = path or os.path.join(os.path.dirname(os.path.abspath(__file__)),
-                                "data", "candidate_bios.csv")
+    path = path or _P.data("candidate_bios.csv")
     if not os.path.exists(path):
         return {}
     b = pd.read_csv(path, low_memory=False)

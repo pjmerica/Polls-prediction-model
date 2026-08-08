@@ -32,7 +32,12 @@ import features as F
 from cycles import natl_env as natl_env_hist
 from macro_features import build_macro
 
+import os as _os, sys as _sys  # noqa: E402  - bootstrap: this file lives in src/,
+_sys.path.insert(0, _os.path.dirname(_os.path.dirname(_os.path.abspath(__file__))))
+# ...so the repo ROOT (which holds paths.py) must go on sys.path before importing it.
 from paths import ROOT, AGG   # one definition for the whole repo (paths.py)
+import paths as _paths   # module handle: `out` is a very common local
+                         # variable name in this repo, so never import it bare
 
 HERE = ROOT
 POLLING_AGG_RAW = os.path.join(AGG, "data", "raw")
@@ -461,7 +466,7 @@ def main():
                 "is_incumbent", "win_prob", "win_prob_norm",
                 "win_prob_R3", "win_prob_D3", "bias_fragile"]
     out = cand[out_cols].sort_values(["race_id", "win_prob"], ascending=[True, False])
-    out_path = args.out or os.path.join(HERE, f"predictions_{args.cycle}.csv")
+    out_path = args.out or _paths.out(f"predictions_{args.cycle}.csv")
     out.to_csv(out_path, index=False)
 
     # meta sidecar: what the model actually consumed. The dashboard shows polls_max_end_date

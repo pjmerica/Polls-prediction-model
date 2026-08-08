@@ -31,6 +31,16 @@ import sys
 ROOT = os.path.dirname(os.path.abspath(__file__))
 DATA = os.path.join(ROOT, "data")
 
+# Generated prediction artifacts. Moved out of the repo root into outputs/ on 2026-08-08.
+# Everything that writes or reads a prediction CSV/JSON goes through out() so the location is
+# defined ONCE - the previous layout had the same nine filenames spelled out in predict*.py,
+# explain*.py, refresh_dashboard.py AND a `cp` in the polling-agg workflow.
+OUTPUTS = os.path.join(ROOT, "outputs")
+
+# Source tree. Scripts live in src/ but are still RUN from the repo root ("py src/predict.py"),
+# and they resolve data/ + outputs/ through this module, never relative to their own location.
+SRC = os.path.join(ROOT, "src")
+
 # The sibling polling-agg repo (dashboard + raw poll/market feeds). Kept as ONE definition
 # because 11 scripts used to spell this out with their own "..", each of which would break at
 # a different depth. Overridable for CI/testing via POLLING_AGG_DIR.
@@ -49,7 +59,8 @@ if ROOT not in sys.path:
 # a package and touching far more code than the reorganisation warrants. Putting the folders on
 # the path keeps `import fetch_candidate_bios` working from anywhere, exactly as it did when
 # every file sat in the repo root.
-for _sub in ("pipeline/fetch", "pipeline/build", "models/poll", "models/fundamentals", "tools"):
+for _sub in ("src", "pipeline/fetch", "pipeline/build", "models/poll", "models/fundamentals",
+             "tools"):
     _p = os.path.join(ROOT, *_sub.split("/"))
     if os.path.isdir(_p) and _p not in sys.path:
         sys.path.append(_p)
@@ -63,6 +74,16 @@ def root(*parts):
 def data(*parts):
     """Path inside data/."""
     return os.path.join(DATA, *parts)
+
+
+def out(*parts):
+    """Path inside outputs/ (generated predictions, meta sidecars, SHAP explanations).
+
+    Creates the directory on first use: outputs/ is gitignored in full, so a fresh clone or a
+    CI checkout has no such folder and the first predict.py write would otherwise crash.
+    """
+    os.makedirs(OUTPUTS, exist_ok=True)
+    return os.path.join(OUTPUTS, *parts)
 
 
 def agg(*parts):

@@ -47,10 +47,10 @@ relative paths in `predict.py` (POLLING_AGG_RAW) and `refresh_dashboard.py` (AGG
                             final fit on ALL cycles -> data/model_xgb.json + model_features.json
    margin_model.ipynb    -> MARGIN model (separate): same scheme, target = vote margin
                             -> data/margin_model_xgb.json + margin_model_features.json
-4. predict.py            -> 2026 win probs   -> predictions_2026.csv
+4. src/predict.py        -> 2026 win probs   -> outputs/predictions_2026.csv
    predict_margin.py     -> 2026 margins     -> margin_predictions_2026.csv
    (both read polling-agg raw polls; auto-fetch natl_env; apply stale-candidate filter)
-5. refresh_dashboard.py  -> ONE command: feeds -> predict both -> copy CSVs to polling-agg ->
+5. src/refresh_dashboard.py -> ONE command: feeds -> predict both -> copy CSVs to polling-agg ->
                             model_compare.py. Then commit+push polling-agg to publish.
 ```
 Shared modules: **cycles.py** (ALL cycle constants: CYCLES, PRES_PARTY, eve/prior_eve,
@@ -65,21 +65,21 @@ feature builder used by training AND prediction — never fork feature logic out
 
 | file | what |
 |---|---|
-| `features.py` | Shared feature pipeline (train + predict) for the GENERAL + margin models. Plain raw-poll averages, NaN-not-zero missing, `norm_pollster`, `dist_str`, `is_junk_answer`. |
-| `features_primary.py` | The same job for the two PRIMARY models. **Grep both when changing a shared feature** — they are the classic fork risk. |
-| `paths.py` | THE path module. Every subfolder script resolves `data/` and the sibling polling-agg repo through it. Import before anything else. |
-| `cycles.py` | Cycle constants + natl_env (computed 1998-2016, frozen 2018-24, live-fetched 2026+). |
+| `src/features.py` | Shared feature pipeline (train + predict) for the GENERAL + margin models. Plain raw-poll averages, NaN-not-zero missing, `norm_pollster`, `dist_str`, `is_junk_answer`. |
+| `src/features_primary.py` | The same job for the two PRIMARY models. **Grep both when changing a shared feature** — they are the classic fork risk. |
+| `paths.py` (root) | THE path module. Every subfolder script resolves `data/` and the sibling polling-agg repo through it. Import before anything else. |
+| `src/cycles.py` | Cycle constants + natl_env (computed 1998-2016, frozen 2018-24, live-fetched 2026+). |
 | `models/poll/model.ipynb` / `margin_model.ipynb` | The two GENERAL models. SEPARATE by user requirement. |
 | `models/poll/primary_model.py` / `primary_margin_model.py` | The two PRIMARY models (plain scripts, run in minutes). |
 | `models/fundamentals/fundamentals_model.py` | No-polling reference models. NOT shipped to the dashboard. |
-| `predict.py` / `predict_margin.py` | Score 2026 from the polling-agg feed. Stale-candidate filter + `drop_primary_losers` (dead-matchup removal) live in predict.py (imported by predict_margin). Also applies the two override files below + emits `n_surveys`, `display_party`, bias-sweep cols. |
-| `predict_primary.py` / `predict_primary_margin.py` | The primary-side equivalents. |
-| `explain_2026.py` | SHAP top-10 per race for BOTH general models -> `model_explanations_2026.json` (dashboard Explain modal). Friendly names + hover descriptions — **these strings are PUBLIC**, so they must match what the feature actually computes. |
-| `explain_primary.py` | Same for the two primary models -> `primary_explanations_2026.json`. |
+| `src/predict.py` / `predict_margin.py` | Score 2026 from the polling-agg feed. Stale-candidate filter + `drop_primary_losers` (dead-matchup removal) live in predict.py (imported by predict_margin). Also applies the two override files below + emits `n_surveys`, `display_party`, bias-sweep cols. |
+| `src/predict_primary.py` / `predict_primary_margin.py` | The primary-side equivalents. |
+| `src/explain_2026.py` | SHAP top-10 per race for BOTH general models -> `model_explanations_2026.json` (dashboard Explain modal). Friendly names + hover descriptions — **these strings are PUBLIC**, so they must match what the feature actually computes. |
+| `src/explain_primary.py` | Same for the two primary models -> `primary_explanations_2026.json`. |
 | `tools/build_missingness_report.py` | Regenerates `MISSINGNESS_REPORT.md` from current data (it is a GENERATED file — don't hand-edit). |
 | `data/candidate_party_overrides.csv` | Hand-maintained party fixes. **Two columns**: `model_party` (what the model treats them as — fills the two-party slot) and `display_party` (real affiliation shown on the dashboard). E.g. Dan Osborn: model_party=DEM (de-facto challenger vs Ricketts), display_party=IND. |
 | `data/dropped_out_2026.csv` | Candidates whose stale poll rows to remove (withdrew, or fringe also-rans diluting a race). E.g. Duggan (MI-Gov withdrew), NE-Sen fringe Dems. |
-| `refresh_dashboard.py` | One-command refresh (header documents every variable's feed). Runs all four predicts + both explainers + copies to polling-agg. **The thing CI runs.** |
+| `src/refresh_dashboard.py` | One-command refresh (header documents every variable's feed). Runs all four predicts + both explainers + copies to polling-agg. **The thing CI runs.** |
 | `pipeline/fetch/fetch_macro.py` / `fetch_approval.py` / `fetch_generic_ballot.py` | Data feeds (BLS API+DBnomics / UCSB+VoteHub / Wikipedia aggregators). |
 | `pipeline/build/build_dataset.ipynb` | Polls+results join. All inputs committed; offline. |
 | `pipeline/build/build_office_level_table.py` | THE builder of `data/candidate_bios.csv` (leak-free, as-of-year office levels). Not `combine_candidate_bios.py` — that one is deprecated and now refuses to run. |
@@ -188,8 +188,21 @@ feature builder used by training AND prediction — never fork feature logic out
   `data/candidate_bios.csv` as `build_office_level_table.py` but with a frozen, leak-prone
   `office_level`. Use `pipeline/build/build_office_level_table.py`.
 - **Scraper logs go in `logs/` (ignored as a directory), not the repo root.** Name-based
-  ignore patterns silently committed 10 of 20 logs. STRUCTURE.md has the closed list of what
-  may live in the root.
+  ignore patterns silently committed 10 of 20 logs. docs/STRUCTURE.md has the closed list of
+  what may live in the root - it is FIVE entries, and Python is not one of them.
+- **Never build a data path from `__file__`** (`dirname(abspath(__file__))/"data"`). It is
+  correct only while the file sits in the repo root; from `src/` it silently resolves to
+  `src/data/`. Use `paths.data(...)` / `paths.out(...)`. The 2026-08-08 move surfaced four
+  live instances, `features.DATA_DIR` among them.
+- **Import `paths` as a module, never `from paths import out`.** `out` is a very common local
+  variable name here, so a bare import gets shadowed and fails with
+  `TypeError: 'DataFrame' object is not callable` at the END of a long run.
+- **The two repos are checked out separately and can sit at different commits.** polling-agg
+  looks for this repo's modules in `src/` then the root, and predictions in `outputs/` then
+  the root; the root keeps a `refresh_dashboard.py` shim. Keep all three fallbacks working -
+  a break here surfaces at 13:15 UTC, not in front of you. During the 2026-08-08 move,
+  polling-agg's `from features import norm_name` silently fell back to a local mirror and
+  disabled its own drift-assert, announcing it with one line of "note:".
 
 ## Current state
 See HANDOFF.md for the dated log of every retrain and its numbers — this section is
