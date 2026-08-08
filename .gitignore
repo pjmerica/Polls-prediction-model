@@ -56,6 +56,10 @@ data/*
 # Haley Stevens and Perry Johnson (both primary LOSERS) back in their general-election races,
 # overwriting the local fix twice before anyone noticed.
 !data/primary_results_2026.csv
+# The deep Senate/Governor archive (1998-2024, added 2026-08-07). load_primary_results()
+# reads it, so leaving it ignored makes primary_margin silently sparser in CI than locally -
+# the same shape as the bug that reverted the MI-Sen roster fix twice.
+!data/primary_results_deep_hist.csv
 !data/name_aliases.csv
 !data/primary_dates_2026_manual.csv
 
