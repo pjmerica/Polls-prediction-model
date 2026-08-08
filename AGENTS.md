@@ -59,18 +59,30 @@ feature builder used by training AND prediction — never fork feature logic out
 **macro_features.py** (per-cycle macro stats).
 
 ## Files
+> Paths are as of the 2026-08-02 reorganisation — **STRUCTURE.md is the full map**, and it
+> also lists what may live in the repo root. (This table listed bare root filenames until
+> 2026-08-08, long after the models moved into `models/poll/`.)
+
 | file | what |
 |---|---|
-| `features.py` | Shared feature pipeline (train + predict). Plain raw-poll averages, NaN-not-zero missing, `norm_pollster`, `dist_str`. |
+| `features.py` | Shared feature pipeline (train + predict) for the GENERAL + margin models. Plain raw-poll averages, NaN-not-zero missing, `norm_pollster`, `dist_str`, `is_junk_answer`. |
+| `features_primary.py` | The same job for the two PRIMARY models. **Grep both when changing a shared feature** — they are the classic fork risk. |
+| `paths.py` | THE path module. Every subfolder script resolves `data/` and the sibling polling-agg repo through it. Import before anything else. |
 | `cycles.py` | Cycle constants + natl_env (computed 1998-2016, frozen 2018-24, live-fetched 2026+). |
-| `model.ipynb` / `margin_model.ipynb` | The two models. SEPARATE by user requirement. |
-| `predict.py` / `predict_margin.py` | Score 2026 from the polling-agg feed. Stale-candidate filter lives in predict.py (imported by predict_margin). Also applies the two override files below + emits `n_surveys`, `display_party`, bias-sweep cols. |
-| `explain_2026.py` | SHAP top-10 per race for BOTH models -> `model_explanations_2026.json` (dashboard Explain modal). Friendly names + hover descriptions. |
+| `models/poll/model.ipynb` / `margin_model.ipynb` | The two GENERAL models. SEPARATE by user requirement. |
+| `models/poll/primary_model.py` / `primary_margin_model.py` | The two PRIMARY models (plain scripts, run in minutes). |
+| `models/fundamentals/fundamentals_model.py` | No-polling reference models. NOT shipped to the dashboard. |
+| `predict.py` / `predict_margin.py` | Score 2026 from the polling-agg feed. Stale-candidate filter + `drop_primary_losers` (dead-matchup removal) live in predict.py (imported by predict_margin). Also applies the two override files below + emits `n_surveys`, `display_party`, bias-sweep cols. |
+| `predict_primary.py` / `predict_primary_margin.py` | The primary-side equivalents. |
+| `explain_2026.py` | SHAP top-10 per race for BOTH general models -> `model_explanations_2026.json` (dashboard Explain modal). Friendly names + hover descriptions — **these strings are PUBLIC**, so they must match what the feature actually computes. |
+| `explain_primary.py` | Same for the two primary models -> `primary_explanations_2026.json`. |
+| `tools/build_missingness_report.py` | Regenerates `MISSINGNESS_REPORT.md` from current data (it is a GENERATED file — don't hand-edit). |
 | `data/candidate_party_overrides.csv` | Hand-maintained party fixes. **Two columns**: `model_party` (what the model treats them as — fills the two-party slot) and `display_party` (real affiliation shown on the dashboard). E.g. Dan Osborn: model_party=DEM (de-facto challenger vs Ricketts), display_party=IND. |
 | `data/dropped_out_2026.csv` | Candidates whose stale poll rows to remove (withdrew, or fringe also-rans diluting a race). E.g. Duggan (MI-Gov withdrew), NE-Sen fringe Dems. |
-| `refresh_dashboard.py` | One-command refresh (header documents every variable's feed). Runs predict + predict_margin + explain_2026. |
-| `fetch_macro.py` / `fetch_approval.py` / `fetch_generic_ballot.py` | Data feeds (BLS API+DBnomics / UCSB+VoteHub / Wikipedia aggregators). |
-| `build_dataset.ipynb` | Polls+results join. All inputs committed; offline. |
+| `refresh_dashboard.py` | One-command refresh (header documents every variable's feed). Runs all four predicts + both explainers + copies to polling-agg. **The thing CI runs.** |
+| `pipeline/fetch/fetch_macro.py` / `fetch_approval.py` / `fetch_generic_ballot.py` | Data feeds (BLS API+DBnomics / UCSB+VoteHub / Wikipedia aggregators). |
+| `pipeline/build/build_dataset.ipynb` | Polls+results join. All inputs committed; offline. |
+| `pipeline/build/build_office_level_table.py` | THE builder of `data/candidate_bios.csv` (leak-free, as-of-year office levels). Not `combine_candidate_bios.py` — that one is deprecated and now refuses to run. |
 | `CONCERNS.md` | **Ranked risks + improvement roadmap. The living audit doc.** |
 | `METHODOLOGY.md` | Exact time windows per feature. |
 | `data/` | ALL inputs committed (polls, results, races.csv, macro, approval, generic ballot, model artifacts). |
@@ -157,8 +169,27 @@ feature builder used by training AND prediction — never fork feature logic out
   `gh run rerun <id>`.
 - RCP is Cloudflare-walled (403 to scripts) — generic ballot comes from Wikipedia's
   aggregator table instead; approval polls from VoteHub's open API (`api.votehub.com/polls`).
-- The polls dataset (`polls_long_with_results.csv`) is gitignored (12MB) — regenerate via
-  build_dataset.ipynb (offline) on a fresh clone BEFORE running models/predict.
+- The polls dataset (`polls_long_with_results.csv`) is **COMMITTED** (~14MB, force-added past
+  the `*.csv` ignore rule so CI can see it) — a fresh clone does NOT need to rebuild it. Run
+  build_dataset.ipynb only to extend/rebuild. (Three docs claimed it was gitignored, at three
+  different sizes; corrected 2026-08-08.)
+- **`is_incumbent` is PARTY-level, not personal** — it is `incumbent_party == candidate party`
+  and nothing else, because `races.csv` has an incumbent PARTY column and no incumbent NAME.
+  So several candidates in one race can all read 1 (16 of 114 general races in 2026; AK-Gov 3,
+  SC-Sen 7), and a House member running for Governor reads 1. Don't "fix" the data — it is
+  computing what it can. Don't describe it to users as personal incumbency either (that bug
+  shipped to 128 live explanations). Renaming it ⇒ retrain.
+- **Junk poll answers must be matched WHOLE-STRING, never by substring.** `Mike Rounds` and
+  `Tony Knowles` are real officeholders that a `round`/`know` substring rule would delete. The
+  slash-joined forms (`"Don't know/Someone else"`) are handled by splitting on `/` and
+  requiring EVERY part to be a non-answer — 8 of these were being scored as real candidates
+  until 2026-08-08.
+- **`combine_candidate_bios.py` is deprecated and now refuses to run.** It writes the same
+  `data/candidate_bios.csv` as `build_office_level_table.py` but with a frozen, leak-prone
+  `office_level`. Use `pipeline/build/build_office_level_table.py`.
+- **Scraper logs go in `logs/` (ignored as a directory), not the repo root.** Name-based
+  ignore patterns silently committed 10 of 20 logs. STRUCTURE.md has the closed list of what
+  may live in the root.
 
 ## Current state
 See HANDOFF.md for the dated log of every retrain and its numbers — this section is

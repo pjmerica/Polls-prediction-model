@@ -128,6 +128,36 @@ _JUNK_RX = re.compile(
     r"|write[- ]?ins?"
     r")$")
 
+# Slash-joined compound non-answers: "Don't know/Someone else", "Don't know/Would not vote",
+# "Neither/would not vote". Found 2026-08-08 auditing published predictions - 7 of these were
+# scored as candidates in the 2026 general feed and 1 in the primary feed, each carrying a
+# real poll share (one at 22%) that normalisation then converted into win probability stolen
+# from the REAL candidates in that race.
+#
+# Why _JUNK_RX missed them: it strips punctuation to spaces, so the string arrives as
+# "dont know someone else", and its only join clause is `(or|and)` over a short token list -
+# it never allowed a bare space to join two full non-answer phrases.
+#
+# Handled as a SEPARATE pass rather than by loosening _JUNK_RX, because the safe rule here is
+# "EVERY slash-separated part is itself a non-answer". Loosening the main regex to match a
+# non-answer phrase followed by arbitrary words would swallow real people - "Mike Rounds"
+# (a sitting senator, and the reason 'round' can never be a substring rule) and "Tony
+# Knowles" (a real former governor, vs "know") both survive only because matching is
+# whole-string. Each part is re-checked with the full is_junk_answer logic, so this also
+# covers slash-joins of anything the main regex already knows.
+_NONANSWER_PART_RX = re.compile(
+    r"^(?:dont know|do not know|not sure|no opinion|undecided|someone else|other|others|"
+    r"neither|none|refused|skipped|no answer|would not vote|will not vote|not voting|"
+    r"no one|nobody|no preference|unsure|dk|na)$")
+
+def _is_nonanswer_part(part):
+    # Drop apostrophes with NO space ("don't" -> "dont", matching the regexes' spelling)
+    # before turning the remaining punctuation into spaces. Doing it in the other order
+    # yields "don t", which matches nothing.
+    p = part.strip().lower().replace("'", "").replace("’", "")
+    p = re.sub(r"\s+", " ", re.sub(r"[^a-z0-9\s]", " ", p)).strip()
+    return bool(p) and (bool(_NONANSWER_PART_RX.match(p)) or bool(_JUNK_RX.match(p)))
+
 def is_junk_answer(name):
     """True for poll RESPONSE OPTIONS that are not candidates. These must never become
     candidate rows: they carry real poll percentages, so a missed one both trains as a fake
@@ -135,9 +165,25 @@ def is_junk_answer(name):
     s = str(name).strip().lower()
     if s in JUNK_ANSWERS:
         return True
+    # Slash/pipe-joined compounds ("Don't know/Someone else") - junk only when EVERY part is
+    # itself a non-answer, so a real hyphenated or slashed person's name is never caught.
+    if re.search(r"[/|]", s):
+        parts = [p for p in re.split(r"[/|]", s) if p.strip()]
+        if len(parts) > 1 and all(_is_nonanswer_part(p) for p in parts):
+            return True
+    # Bare "Round" / "Round 2": an RCV tabulation label the Wikipedia primary parser emits as
+    # a candidate. Whole-string only - "Mike Rounds" (plural, and a real senator) is safe.
+    if re.match(r"^round\s*\d*$", s):
+        return True
     s = re.sub(r"[^a-z0-9\s]", " ", s)       # "other / undecided" -> "other   undecided"
     s = re.sub(r"\s+", " ", s).strip()
-    return bool(_JUNK_RX.match(s))
+    if _JUNK_RX.match(s):
+        return True
+    # Bare trailing-noun variants the anchored regex can't reach: "Other named candidates",
+    # "RCV round" (a tabulation artifact, not a person). Deliberately narrow and whole-string.
+    return bool(re.match(r"^(?:other named candidates?|all other candidates?|"
+                         r"(?:rcv|ranked choice|instant runoff) round \d*|rcv round|"
+                         r"someone else entirely|another candidate)$", s))
 
 def best_other(s):
     """Per-row 'best OTHER value in the group' (NaN-safe): for the top value, the runner-up's

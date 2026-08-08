@@ -37,6 +37,21 @@ import os
 
 import pandas as pd
 
+# HARD STOP (added 2026-08-08). The docstring has said DEPRECATED since 2026-07-25, but the
+# script still ran to completion and overwrote data/candidate_bios.csv - the SAME path
+# build_office_level_table.py writes - with the old frozen-office_level merge. That silently
+# reintroduces the look-ahead leak (a first-time candidate reading the office level they only
+# reached years later) into a file 3 consumers read, with no error and no diff to notice.
+# Four fetch_* docstrings still told readers to run this; those now point at the replacement.
+# Kept runnable for reference only, behind an explicit opt-in.
+if __name__ == "__main__" and os.environ.get("ALLOW_DEPRECATED_BIO_COMBINE") != "1":
+    raise SystemExit(
+        "combine_candidate_bios.py is DEPRECATED (2026-07-25) and refuses to run.\n"
+        "It writes data/candidate_bios.csv with a FROZEN office_level (look-ahead leak).\n"
+        "Use the leak-free replacement instead:\n"
+        "    py -X utf8 pipeline/build/build_office_level_table.py\n"
+        "To run this anyway (reference/debugging only), set ALLOW_DEPRECATED_BIO_COMBINE=1.")
+
 HERE = ROOT   # repo root (paths.py) - this file lives in a subfolder
 # WIKIPEDIA sources share the full (year,office,state,district,party,cand_key) schema and
 # concat directly. BALLOTPEDIA (candidate_bios_ballotpedia.csv, added 2026-07-24) is

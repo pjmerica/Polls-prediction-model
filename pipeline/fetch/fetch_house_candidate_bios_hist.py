@@ -21,9 +21,11 @@ reading whatever candidate_bios.csv happened to contain at that moment, silently
 started its "existing data" read from a version of the file that predated this script's
 House rows. Fix: Senate, Governor, and House each get their OWN output file
 (candidate_bios_senate.csv / _governor.csv / _house.csv), written ONLY by the script(s)
-that scrape that office. combine_candidate_bios.py concatenates all three into
+that scrape that office. pipeline/build/build_office_level_table.py assembles all three into
 candidate_bios.csv (what every consumer actually reads) as an explicit, separate, manual
-step - no script ever overwrites another's output again.
+step - no script ever overwrites another's output again. (combine_candidate_bios.py did this
+job until 2026-07-25 and is now DEPRECATED - it writes the same path with a FROZEN, leak-prone
+office_level, so running it would quietly undo the leak-free table.)
 
 COVERAGE: within Senate/Governor candidates specifically, the existing bios already matched
 39.1% of general-model candidate rows (2018-2024) - real signal, not the ~15% that looked
@@ -33,8 +35,9 @@ one found scraping House primary RESULTS - see that script's docstring; expect i
 
     py -X utf8 fetch_house_candidate_bios_hist.py
 Writes data/candidate_bios_house.csv (safe to re-run - resumes from THIS file only, deduped
-by (year,office,state,district,party,cand_key)). Run combine_candidate_bios.py afterward to
-rebuild the merged candidate_bios.csv every consumer reads.
+by (year,office,state,district,party,cand_key)). Run
+`py -X utf8 pipeline/build/build_office_level_table.py` afterward to rebuild the merged
+candidate_bios.csv every consumer reads.
 """
 
 import os as _os, sys as _sys

@@ -1,111 +1,292 @@
 # Missingness report
 
-_Generated from the committed data. Long file: 22,546 rows._
+> **Generated file — do not hand-edit.** Rebuild with
+> `py -X utf8 tools/build_missingness_report.py` after any change to the training data.
+
+_Source: `polls_long_with_results.csv`, **35,052 rows**, 63 columns. Cycles: 1998–2026 (18 present). Rows with a joined result (`has_result=1`, what actually trains): **32,260**._
 
 ## `polls_long_with_results.csv` (long poll file)
+
+One row per candidate per poll. High missingness in the 538-era metadata columns
+(`pollster_id`, `sponsors`, `numeric_grade`, …) is EXPECTED and not a defect: the
+1998–2016 archive carries far less metadata than the 2018+ feed, and none of those
+columns are model features. Check `METHODOLOGY.md` before treating any number here
+as a problem.
 
 | column | dtype | % missing | # missing |
 |---|---|---|---|
 | `poll_id` | str | 0.0% | 0 |
-| `pollster_id` | str | 0.0% | 0 |
+| `pollster_id` | str | 45.9% | 16,082 |
 | `pollster` | str | 0.0% | 0 |
-| `sponsor_ids` | str | 53.0% | 11,945 |
-| `sponsors` | str | 53.0% | 11,945 |
-| `display_name` | str | 0.0% | 0 |
-| `pollster_rating_id` | float64 | 2.0% | 446 |
-| `pollster_rating_name` | str | 2.2% | 489 |
-| `numeric_grade` | float64 | 21.7% | 4,903 |
-| `pollscore` | float64 | 18.9% | 4,259 |
-| `methodology` | str | 14.1% | 3,168 |
-| `transparency_score` | float64 | 43.8% | 9,881 |
+| `sponsor_ids` | str | 74.4% | 26,094 |
+| `sponsors` | str | 74.4% | 26,094 |
+| `display_name` | str | 45.9% | 16,082 |
+| `pollster_rating_id` | float64 | 46.4% | 16,258 |
+| `pollster_rating_name` | str | 46.4% | 16,270 |
+| `numeric_grade` | float64 | 54.8% | 19,199 |
+| `pollscore` | float64 | 53.2% | 18,644 |
+| `methodology` | str | 18.0% | 6,300 |
+| `transparency_score` | float64 | 66.4% | 23,275 |
 | `state` | str | 0.0% | 0 |
-| `start_date` | str | 0.0% | 0 |
+| `start_date` | str | 45.9% | 16,082 |
 | `end_date` | str | 0.0% | 0 |
-| `sponsor_candidate_id` | float64 | 91.7% | 20,678 |
-| `sponsor_candidate` | str | 89.3% | 20,143 |
-| `sponsor_candidate_party` | str | 89.3% | 20,143 |
+| `sponsor_candidate_id` | float64 | 95.3% | 33,396 |
+| `sponsor_candidate` | str | 94.7% | 33,184 |
+| `sponsor_candidate_party` | str | 94.7% | 33,184 |
 | `question_id` | str | 0.0% | 0 |
-| `sample_size` | float64 | 0.9% | 213 |
-| `population` | str | 0.1% | 33 |
-| `subpopulation` | str | 93.8% | 21,157 |
-| `population_full` | str | 0.1% | 33 |
-| `tracking` | object | 98.6% | 22,234 |
-| `created_at` | str | 0.0% | 0 |
-| `notes` | str | 95.0% | 21,425 |
-| `url` | str | 0.2% | 49 |
-| `url_article` | str | 70.4% | 15,864 |
-| `url_topline` | str | 81.6% | 18,396 |
-| `url_crosstab` | str | 78.7% | 17,750 |
-| `source` | str | 52.2% | 11,772 |
-| `internal` | object | 76.2% | 17,176 |
-| `partisan` | str | 74.4% | 16,769 |
+| `sample_size` | float64 | 0.2% | 69 |
+| `population` | str | 46.0% | 16,115 |
+| `subpopulation` | str | 100.0% | 35,044 |
+| `population_full` | str | 46.0% | 16,115 |
+| `tracking` | object | 99.1% | 34,740 |
+| `created_at` | str | 45.9% | 16,082 |
+| `notes` | str | 97.7% | 34,245 |
+| `url` | str | 46.0% | 16,131 |
+| `url_article` | str | 81.9% | 28,694 |
+| `url_topline` | str | 88.9% | 31,156 |
+| `url_crosstab` | str | 87.4% | 30,640 |
+| `source` | str | 73.8% | 25,866 |
+| `internal` | object | 86.1% | 30,195 |
+| `partisan` | str | 79.2% | 27,757 |
 | `year` | int64 | 0.0% | 0 |
-| `office_type` | str | 0.0% | 0 |
-| `seat_name` | str | 37.4% | 8,425 |
-| `seat_number` | float64 | 10.7% | 2,419 |
-| `election_date` | str | 1.9% | 424 |
-| `stage` | str | 0.0% | 0 |
+| `office_type` | str | 45.9% | 16,082 |
+| `seat_name` | str | 64.3% | 22,533 |
+| `seat_number` | float64 | 49.6% | 17,401 |
+| `election_date` | str | 0.0% | 0 |
+| `stage` | str | 45.9% | 16,082 |
 | `poll_party` | str | 0.0% | 0 |
 | `pct` | float64 | 0.0% | 0 |
-| `answer` | str | 0.0% | 0 |
+| `answer` | str | 45.9% | 16,082 |
 | `candidate` | str | 0.0% | 0 |
-| `candidate_id` | str | 0.0% | 0 |
+| `candidate_id` | str | 45.9% | 16,082 |
 | `race_id` | str | 0.0% | 0 |
-| `nationwide_match` | float64 | 100.0% | 22,546 |
-| `ranked_choice_reallocated` | float64 | 13.7% | 3,099 |
-| `hypothetical` | float64 | 13.7% | 3,099 |
+| `nationwide_match` | float64 | 100.0% | 35,052 |
+| `ranked_choice_reallocated` | float64 | 50.3% | 17,617 |
+| `hypothetical` | float64 | 50.3% | 17,617 |
 | `office` | str | 0.0% | 0 |
-| `district` | float64 | 78.6% | 17,729 |
+| `district` | str | 74.1% | 25,976 |
 | `cand_key` | str | 0.0% | 0 |
 | `party_std` | str | 0.0% | 0 |
-| `endorsed_candidate_id` | float64 | 100.0% | 22,542 |
-| `endorsed_candidate_name` | str | 100.0% | 22,542 |
-| `endorsed_candidate_party` | str | 100.0% | 22,542 |
-| `nationwide_batch` | object | 13.7% | 3,099 |
-| `ranked_choice_round` | float64 | 97.6% | 21,998 |
-| `won` | float64 | 24.4% | 5,509 |
-| `vote_pct` | float64 | 24.4% | 5,509 |
-| `res_party` | str | 24.4% | 5,509 |
-| `res_candidate` | str | 24.4% | 5,509 |
-| `race_winning_pct` | float64 | 24.4% | 5,509 |
+| `endorsed_candidate_id` | float64 | 100.0% | 35,048 |
+| `endorsed_candidate_name` | str | 100.0% | 35,048 |
+| `endorsed_candidate_party` | str | 100.0% | 35,048 |
+| `nationwide_batch` | object | 50.3% | 17,617 |
+| `ranked_choice_round` | float64 | 98.5% | 34,531 |
+| `won` | float64 | 8.0% | 2,792 |
+| `vote_pct` | float64 | 8.0% | 2,792 |
+| `res_party` | str | 8.0% | 2,792 |
+| `res_candidate` | str | 8.0% | 2,792 |
+| `race_winning_pct` | float64 | 8.0% | 2,792 |
 | `has_result` | int64 | 0.0% | 0 |
 
-## Model feature table (collapsed candidate-level, 2018–2024)
+## Live 2026 feature table (`data/candidate_table_2026.csv`)
 
-_1,859 candidate-races. Only columns with notable missingness or that are engineered are shown; macro features are 0% (filled per cycle)._
+_317 candidate-rows — the SERVE-time table, which is where train/serve
+skew shows up. A feature that is well-populated in training but mostly NaN here
+is the failure mode that got `poll_adj` dropped (CONCERNS.md) and that keeps
+`poll_last7` out of the general model._
 
-| feature | % missing | # missing |
-|---|---|---|
-| `poll_avg` | 0.0% | 0 |
-| `poll_wavg` | 0.0% | 0 |
-| `poll_std` | 27.4% | 509 |
-| `avg_grade` | 5.3% | 99 |
-| `avg_pollscore` | 4.6% | 85 |
-| `avg_sample` | 0.2% | 4 |
-| `lean_cand` | 59.4% | 1,105 |
-| `prior_margin_cand` | 59.4% | 1,105 |
-| `approval_eve` | 0.0% | 0 |
-| `approval_max` | 0.0% | 0 |
-| `approval_mean` | 0.0% | 0 |
-| `approval_std` | 0.0% | 0 |
-| `approval_trend` | 0.0% | 0 |
-| `gas_eve` | 0.0% | 0 |
-| `gas_max` | 0.0% | 0 |
-| `gas_mean` | 0.0% | 0 |
-| `gas_std` | 0.0% | 0 |
-| `gas_trend` | 0.0% | 0 |
-| `gdp_eve` | 0.0% | 0 |
-| `gdp_max` | 0.0% | 0 |
-| `gdp_mean` | 0.0% | 0 |
-| `gdp_std` | 0.0% | 0 |
-| `gdp_trend` | 0.0% | 0 |
-| `inflation_eve` | 0.0% | 0 |
-| `inflation_max` | 0.0% | 0 |
-| `inflation_mean` | 0.0% | 0 |
-| `inflation_std` | 0.0% | 0 |
-| `inflation_trend` | 0.0% | 0 |
-| `unemployment_eve` | 0.0% | 0 |
-| `unemployment_max` | 0.0% | 0 |
-| `unemployment_mean` | 0.0% | 0 |
-| `unemployment_std` | 0.0% | 0 |
-| `unemployment_trend` | 0.0% | 0 |
+| column | dtype | % missing | # missing |
+|---|---|---|---|
+| `race_id` | str | 0.0% | 0 |
+| `year` | int64 | 0.0% | 0 |
+| `state` | str | 0.0% | 0 |
+| `office` | str | 0.0% | 0 |
+| `district` | str | 46.7% | 148 |
+| `cand_key` | str | 0.0% | 0 |
+| `candidate` | str | 0.0% | 0 |
+| `party` | str | 0.0% | 0 |
+| `display_party` | str | 0.0% | 0 |
+| `won` | float64 | 100.0% | 317 |
+| `vote_pct` | float64 | 100.0% | 317 |
+| `poll_avg` | float64 | 0.0% | 0 |
+| `poll_last` | float64 | 0.0% | 0 |
+| `poll_last30` | float64 | 0.0% | 0 |
+| `poll_std` | float64 | 39.7% | 126 |
+| `n_polls` | int64 | 0.0% | 0 |
+| `n_polls_over50` | int64 | 0.0% | 0 |
+| `avg_sample` | float64 | 4.1% | 13 |
+| `min_days` | int64 | 0.0% | 0 |
+| `prior_margin_cand` | float64 | 1.6% | 5 |
+| `is_incumbent` | float64 | 2.5% | 8 |
+| `is_inc_party_race` | int64 | 0.0% | 0 |
+| `natl_env_cand` | float64 | 0.0% | 0 |
+| `bias_prior_cand` | float64 | 12.0% | 38 |
+| `poll_momentum` | float64 | 100.0% | 317 |
+| `poll_adj` | float64 | 1.9% | 6 |
+| `n_lead_changes` | int64 | 0.0% | 0 |
+| `lead_changed` | int64 | 0.0% | 0 |
+| `avg_margin_over_time` | float64 | 0.0% | 0 |
+| `margin_volatility` | float64 | 0.0% | 0 |
+| `min_margin` | float64 | 0.0% | 0 |
+| `margin_trend` | float64 | 0.0% | 0 |
+| `is_president_party` | int64 | 0.0% | 0 |
+| `primary_margin` | float64 | 100.0% | 317 |
+| `primary_uncontested` | float64 | 100.0% | 317 |
+| `bio_office_level` | float64 | 4.1% | 13 |
+| `fund_receipts_ln` | float64 | 39.7% | 126 |
+| `fund_indiv_pct` | float64 | 39.7% | 126 |
+| `fund_pac_pct` | float64 | 39.7% | 126 |
+| `fund_party_pct` | float64 | 39.7% | 126 |
+| `fund_self_pct` | float64 | 39.7% | 126 |
+| `fund_smalldollar_pct` | float64 | 52.4% | 166 |
+| `approval_eve` | float64 | 0.0% | 0 |
+| `approval_mean` | float64 | 0.0% | 0 |
+| `approval_max` | float64 | 0.0% | 0 |
+| `approval_min` | float64 | 0.0% | 0 |
+| `approval_std` | float64 | 0.0% | 0 |
+| `approval_trend` | float64 | 0.0% | 0 |
+| `approval_last12_delta` | float64 | 0.0% | 0 |
+| `approval_avg_3mo` | float64 | 0.0% | 0 |
+| `approval_max_3mo` | float64 | 0.0% | 0 |
+| `approval_trend_3mo` | float64 | 0.0% | 0 |
+| `approval_avg_6mo` | float64 | 0.0% | 0 |
+| `approval_max_6mo` | float64 | 0.0% | 0 |
+| `approval_trend_6mo` | float64 | 0.0% | 0 |
+| `approval_avg_12mo` | float64 | 0.0% | 0 |
+| `approval_max_12mo` | float64 | 0.0% | 0 |
+| `approval_trend_12mo` | float64 | 0.0% | 0 |
+| `inflation_eve` | float64 | 0.0% | 0 |
+| `inflation_mean` | float64 | 0.0% | 0 |
+| `inflation_max` | float64 | 0.0% | 0 |
+| `inflation_min` | float64 | 0.0% | 0 |
+| `inflation_std` | float64 | 0.0% | 0 |
+| `inflation_trend` | float64 | 0.0% | 0 |
+| `inflation_last12_delta` | float64 | 0.0% | 0 |
+| `inflation_avg_3mo` | float64 | 0.0% | 0 |
+| `inflation_max_3mo` | float64 | 0.0% | 0 |
+| `inflation_trend_3mo` | float64 | 0.0% | 0 |
+| `inflation_avg_6mo` | float64 | 0.0% | 0 |
+| `inflation_max_6mo` | float64 | 0.0% | 0 |
+| `inflation_trend_6mo` | float64 | 0.0% | 0 |
+| `inflation_avg_12mo` | float64 | 0.0% | 0 |
+| `inflation_max_12mo` | float64 | 0.0% | 0 |
+| `inflation_trend_12mo` | float64 | 0.0% | 0 |
+| `cpi_core_eve` | float64 | 0.0% | 0 |
+| `cpi_core_mean` | float64 | 0.0% | 0 |
+| `cpi_core_max` | float64 | 0.0% | 0 |
+| `cpi_core_min` | float64 | 0.0% | 0 |
+| `cpi_core_std` | float64 | 0.0% | 0 |
+| `cpi_core_trend` | float64 | 0.0% | 0 |
+| `cpi_core_last12_delta` | float64 | 0.0% | 0 |
+| `cpi_core_avg_3mo` | float64 | 0.0% | 0 |
+| `cpi_core_max_3mo` | float64 | 0.0% | 0 |
+| `cpi_core_trend_3mo` | float64 | 0.0% | 0 |
+| `cpi_core_avg_6mo` | float64 | 0.0% | 0 |
+| `cpi_core_max_6mo` | float64 | 0.0% | 0 |
+| `cpi_core_trend_6mo` | float64 | 0.0% | 0 |
+| `cpi_core_avg_12mo` | float64 | 0.0% | 0 |
+| `cpi_core_max_12mo` | float64 | 0.0% | 0 |
+| `cpi_core_trend_12mo` | float64 | 0.0% | 0 |
+| `fed_funds_eve` | float64 | 0.0% | 0 |
+| `fed_funds_mean` | float64 | 0.0% | 0 |
+| `fed_funds_max` | float64 | 0.0% | 0 |
+| `fed_funds_min` | float64 | 0.0% | 0 |
+| `fed_funds_std` | float64 | 0.0% | 0 |
+| `fed_funds_trend` | float64 | 0.0% | 0 |
+| `fed_funds_last12_delta` | float64 | 0.0% | 0 |
+| `fed_funds_avg_3mo` | float64 | 0.0% | 0 |
+| `fed_funds_max_3mo` | float64 | 0.0% | 0 |
+| `fed_funds_trend_3mo` | float64 | 0.0% | 0 |
+| `fed_funds_avg_6mo` | float64 | 0.0% | 0 |
+| `fed_funds_max_6mo` | float64 | 0.0% | 0 |
+| `fed_funds_trend_6mo` | float64 | 0.0% | 0 |
+| `fed_funds_avg_12mo` | float64 | 0.0% | 0 |
+| `fed_funds_max_12mo` | float64 | 0.0% | 0 |
+| `fed_funds_trend_12mo` | float64 | 0.0% | 0 |
+| `gas_eve` | float64 | 0.0% | 0 |
+| `gas_mean` | float64 | 0.0% | 0 |
+| `gas_max` | float64 | 0.0% | 0 |
+| `gas_min` | float64 | 0.0% | 0 |
+| `gas_std` | float64 | 0.0% | 0 |
+| `gas_trend` | float64 | 0.0% | 0 |
+| `gas_last12_delta` | float64 | 0.0% | 0 |
+| `gas_avg_3mo` | float64 | 0.0% | 0 |
+| `gas_max_3mo` | float64 | 0.0% | 0 |
+| `gas_trend_3mo` | float64 | 0.0% | 0 |
+| `gas_avg_6mo` | float64 | 0.0% | 0 |
+| `gas_max_6mo` | float64 | 0.0% | 0 |
+| `gas_trend_6mo` | float64 | 0.0% | 0 |
+| `gas_avg_12mo` | float64 | 0.0% | 0 |
+| `gas_max_12mo` | float64 | 0.0% | 0 |
+| `gas_trend_12mo` | float64 | 0.0% | 0 |
+| `generic_ballot_eve` | float64 | 0.0% | 0 |
+| `generic_ballot_mean` | float64 | 0.0% | 0 |
+| `generic_ballot_max` | float64 | 0.0% | 0 |
+| `generic_ballot_min` | float64 | 0.0% | 0 |
+| `generic_ballot_std` | float64 | 0.0% | 0 |
+| `generic_ballot_trend` | float64 | 0.0% | 0 |
+| `generic_ballot_last12_delta` | float64 | 0.0% | 0 |
+| `generic_ballot_avg_3mo` | float64 | 0.0% | 0 |
+| `generic_ballot_max_3mo` | float64 | 0.0% | 0 |
+| `generic_ballot_trend_3mo` | float64 | 0.0% | 0 |
+| `generic_ballot_avg_6mo` | float64 | 0.0% | 0 |
+| `generic_ballot_max_6mo` | float64 | 0.0% | 0 |
+| `generic_ballot_trend_6mo` | float64 | 0.0% | 0 |
+| `generic_ballot_avg_12mo` | float64 | 0.0% | 0 |
+| `generic_ballot_max_12mo` | float64 | 0.0% | 0 |
+| `generic_ballot_trend_12mo` | float64 | 0.0% | 0 |
+| `sentiment_eve` | float64 | 0.0% | 0 |
+| `sentiment_mean` | float64 | 0.0% | 0 |
+| `sentiment_max` | float64 | 0.0% | 0 |
+| `sentiment_min` | float64 | 0.0% | 0 |
+| `sentiment_std` | float64 | 0.0% | 0 |
+| `sentiment_trend` | float64 | 0.0% | 0 |
+| `sentiment_last12_delta` | float64 | 100.0% | 317 |
+| `sentiment_avg_3mo` | float64 | 0.0% | 0 |
+| `sentiment_max_3mo` | float64 | 0.0% | 0 |
+| `sentiment_trend_3mo` | float64 | 0.0% | 0 |
+| `sentiment_avg_6mo` | float64 | 0.0% | 0 |
+| `sentiment_max_6mo` | float64 | 0.0% | 0 |
+| `sentiment_trend_6mo` | float64 | 0.0% | 0 |
+| `sentiment_avg_12mo` | float64 | 0.0% | 0 |
+| `sentiment_max_12mo` | float64 | 0.0% | 0 |
+| `sentiment_trend_12mo` | float64 | 0.0% | 0 |
+| `unemp_u6_eve` | float64 | 0.0% | 0 |
+| `unemp_u6_mean` | float64 | 0.0% | 0 |
+| `unemp_u6_max` | float64 | 0.0% | 0 |
+| `unemp_u6_min` | float64 | 0.0% | 0 |
+| `unemp_u6_std` | float64 | 0.0% | 0 |
+| `unemp_u6_trend` | float64 | 0.0% | 0 |
+| `unemp_u6_last12_delta` | float64 | 0.0% | 0 |
+| `unemp_u6_avg_3mo` | float64 | 0.0% | 0 |
+| `unemp_u6_max_3mo` | float64 | 0.0% | 0 |
+| `unemp_u6_trend_3mo` | float64 | 0.0% | 0 |
+| `unemp_u6_avg_6mo` | float64 | 0.0% | 0 |
+| `unemp_u6_max_6mo` | float64 | 0.0% | 0 |
+| `unemp_u6_trend_6mo` | float64 | 0.0% | 0 |
+| `unemp_u6_avg_12mo` | float64 | 0.0% | 0 |
+| `unemp_u6_max_12mo` | float64 | 0.0% | 0 |
+| `unemp_u6_trend_12mo` | float64 | 0.0% | 0 |
+| `unemployment_eve` | float64 | 0.0% | 0 |
+| `unemployment_mean` | float64 | 0.0% | 0 |
+| `unemployment_max` | float64 | 0.0% | 0 |
+| `unemployment_min` | float64 | 0.0% | 0 |
+| `unemployment_std` | float64 | 0.0% | 0 |
+| `unemployment_trend` | float64 | 0.0% | 0 |
+| `unemployment_last12_delta` | float64 | 0.0% | 0 |
+| `unemployment_avg_3mo` | float64 | 0.0% | 0 |
+| `unemployment_max_3mo` | float64 | 0.0% | 0 |
+| `unemployment_trend_3mo` | float64 | 0.0% | 0 |
+| `unemployment_avg_6mo` | float64 | 0.0% | 0 |
+| `unemployment_max_6mo` | float64 | 0.0% | 0 |
+| `unemployment_trend_6mo` | float64 | 0.0% | 0 |
+| `unemployment_avg_12mo` | float64 | 0.0% | 0 |
+| `unemployment_max_12mo` | float64 | 0.0% | 0 |
+| `unemployment_trend_12mo` | float64 | 0.0% | 0 |
+| `fund_share` | float64 | 39.7% | 126 |
+| `field_best` | float64 | 0.0% | 0 |
+| `poll_lead` | float64 | 0.0% | 0 |
+| `poll_share` | float64 | 0.0% | 0 |
+| `n_cands` | int64 | 0.0% | 0 |
+| `race_total_polls` | int64 | 0.0% | 0 |
+| `frac_polls_over50` | float64 | 0.0% | 0 |
+| `is_dem` | int64 | 0.0% | 0 |
+| `is_rep` | int64 | 0.0% | 0 |
+| `is_senate` | int64 | 0.0% | 0 |
+| `is_gov` | int64 | 0.0% | 0 |
+| `twoparty_margin_cand` | float64 | 3.8% | 12 |
+| `abs_gap` | float64 | 3.8% | 12 |
+| `tossup` | int64 | 0.0% | 0 |
+| `undecided` | float64 | 0.0% | 0 |
+| `gap_x_recency` | float64 | 0.0% | 0 |

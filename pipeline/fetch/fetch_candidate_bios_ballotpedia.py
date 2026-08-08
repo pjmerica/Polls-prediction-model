@@ -26,8 +26,10 @@ A page counts as a real profile only if its infobox mentions the candidate's own
 (guards against landing on a different same-named person).
 
     py -X utf8 fetch_candidate_bios_ballotpedia.py
-Writes data/candidate_bios_ballotpedia.csv (own file - combine_candidate_bios.py merges it,
-Wikipedia preferred on conflict). Safe to re-run: resumes from its own output.
+Writes data/candidate_bios_ballotpedia.csv (own file - pipeline/build/build_office_level_table.py
+merges it, Wikipedia preferred on conflict). Safe to re-run: resumes from its own output.
+NOTE: combine_candidate_bios.py is DEPRECATED (2026-07-25) - do not run it, it writes the same
+candidate_bios.csv with a leak-prone frozen office_level.
 """
 
 import os as _os, sys as _sys

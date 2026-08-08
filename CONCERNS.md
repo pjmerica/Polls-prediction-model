@@ -564,3 +564,54 @@ up a single dominant failure mode that had nothing to do with the model.
     cases above are the tractable slice. The rest are unexamined - some are third-party
     also-rans who genuinely have no result row, but the Menendez/Young pattern says others
     may be real join failures. A candidate polled but never matched is invisible to training.
+
+## Added 2026-08-08 — data/organisation audit
+
+48. **FIXED: slash-joined non-answers were scored as candidates.** `is_junk_answer` stripped
+    punctuation to spaces and only allowed `or`/`and` to join two non-answer phrases, so
+    `"Don't know/Someone else"`, `"Don't know/Would not vote"`, `"Neither/would not vote"`,
+    `"Other named candidates"` and `"RCV round"` all read as real people. **7 rows were
+    scored and published in the 2026 general feed and 1 in the primary feed** (one polling
+    22% in TN-Gov); because `win_prob_norm` normalises within a race, each stole 1–1.3
+    points of win probability from the REAL candidates. Fixed with a separate
+    slash-split pass (junk only when EVERY part is a non-answer) plus a whole-string rule
+    for `Round`/`RCV round`. Whole-string matching is what keeps **Mike Rounds** and
+    **Tony Knowles** (real officeholders) out of the filter — never make this a substring
+    rule. Verified against all 4,708 distinct names in the three poll files: 10 caught, all
+    genuine junk, zero real candidates. Training impact was small (8 rows), so **no retrain
+    was triggered**; predict/explain were re-run.
+
+49. **FIXED (docs): `is_incumbent` is PARTY-level and was documented as personal.**
+    `features.py` computes it as `incumbent_party == candidate party` — `races.csv` carries
+    `incumbent_party` and **no incumbent name**, so per-person incumbency does not exist in
+    the inputs at all. Every candidate of the holding party therefore reads 1: **16 of 114
+    races in the 2026 general feed have >1 "incumbent"** (AK-Gov 3, SC-Sen 7, TX-18 4), and
+    Byron Donalds (a House member running for Governor) reads 1. The feature is *fine as a
+    party-hold signal* and the model is not wrong to use it — but `DATA_DICTIONARY.md` said
+    "this candidate's party holds the seat **and they're running**" and the public explainer
+    shipped **"1 if the candidate currently holds this seat"** to 128 live race
+    explanations. Both corrected; `METHODOLOGY.md` was already right. **The name is still a
+    misnomer** — renaming it to `is_inc_party_cand` would be clearer but is a feature-name
+    change, so it needs a retrain (see rule 1 in AGENTS.md) and is deliberately deferred.
+
+50. **OPEN: pre-primary multi-matchup pooling inflates race-level features.** A single survey
+    routinely tests one candidate against several hypothetical opponents; those pool into one
+    race until the primary is called. 105 of 613 polls in the 2026 feed sum to >100.5% (ME-Sen
+    hits **305%** — Collins tested against 6 different Democrats). Consequence: `undecided` is
+    clipped to 0 in **33 of 114 races**, and `poll_share` / `poll_lead` are computed against
+    opponents who will never all be on the ballot (Collins shows share 0.139 and a *negative*
+    lead in a race she is favoured in). `drop_primary_losers()` already solves this **but only
+    after a primary is decided** — it is a no-op before then, which is exactly when the
+    pooling is worst. Fixing it properly means making the general path matchup-aware
+    (`question_id`-scoped features), the same treatment `drop_dead_matchups` applies. Not
+    attempted here: it changes training features and so forces a full retrain.
+
+51. **OPEN (housekeeping): stale/duplicated artefacts.** (a) `MISSINGNESS_REPORT.md` reports
+    **22,546 rows** for a `polls_long_with_results.csv` that now has **35,052** — it predates
+    the 4→14-cycle expansion and should be regenerated or dated. (b) `data/dataset_2026_meta.json`
+    records `natl_env_used: 5.57` while the live run uses **6.75**; it is a frozen snapshot,
+    which is legitimate, but nothing says so on the tin. (c) 20 scraper run-logs sit in the
+    repo root, **10 tracked and 10 gitignored** by near-identical names — the `backfill_*` /
+    `ballotpedia_*` patterns cover one set and miss `candidate_bios_rescrape_log*` /
+    `house_*_log*`. (d) Three root CSVs (`missing_2026_bio.csv`, `missing_2026_real.csv`,
+    `office_level_handcode_worklist.csv`) have **no consumer anywhere in the repo**.

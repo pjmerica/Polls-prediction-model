@@ -48,7 +48,10 @@ import features as F  # noqa: E402
 # ~9,500 already-scraped House rows. Root cause: multiple scripts writing to ONE shared
 # file, each with its own "resume from what's there" logic that assumes it's the only
 # writer. Fix: each office gets its OWN file, written only by the script(s) that scrape
-# that office; combine_candidate_bios.py concatenates them into candidate_bios.csv (the
+# that office; pipeline/build/build_office_level_table.py assembles them into candidate_bios.csv
+# (NOT combine_candidate_bios.py - that is DEPRECATED as of 2026-07-25 and writes the same
+# path with a leaky frozen office_level; running it would silently overwrite the good table)
+# (the
 # file every consumer - features.py, features_primary.py, check_officeholder.py - reads)
 # as an explicit, separate, manual step. No script ever silently overwrites another's
 # output again.

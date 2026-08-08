@@ -86,7 +86,8 @@ the rules learned the hard way) · [HANDOFF.md](HANDOFF.md) (in-flight state + d
 ```
 1. build_dataset.ipynb      → polls (1998-2016 raw_polls_538 + 2018-24 historical, all
                                committed) joined with results → polls_long_with_results.csv
-                               (14MB, committed for CI; regenerate via this notebook if missing)
+                               (~14MB, COMMITTED for CI — force-added past the `*.csv`
+                               ignore rule; regenerate via this notebook only to extend it)
 2. fetch_approval.py        → approval feed (Gallup/UCSB 1993-2025 + VoteHub API 2025+)
    fetch_macro.py           → economy: DBnomics history + BLS-API overlay (current)
    fetch_generic_ballot.py  → generic-ballot monthly (re-run to EXTEND; committed, static otherwise)
@@ -115,7 +116,8 @@ pip install -r requirements.txt
 All commands run from the **repo root** (paths after the 2026-08-02 move — see STRUCTURE.md):
 
 1. **`pipeline/build/build_dataset.ipynb`** — only needed if `polls_long_with_results.csv` is
-   missing (it's gitignored at 15MB, so a fresh clone DOES need this step).
+   missing. It **is committed** (~14MB, force-added past the `*.csv` rule so CI can see it),
+   so a fresh clone does NOT need this step; run it only to rebuild or extend the file.
 2. **`models/poll/model.ipynb`**, then **`models/poll/margin_model.ipynb`**, then
    **`py -X utf8 models/poll/primary_model.py`**, then
    **`py -X utf8 models/poll/primary_margin_model.py`** — run top to bottom. **Run notebooks one at a

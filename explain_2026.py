@@ -59,7 +59,7 @@ FRIENDLY = {
     "is_senate": "Senate race",
     "is_gov": "Governor race",
     "prior_margin_cand": "Party's margin here last election (pts)",
-    "is_incumbent": "Incumbent",
+    "is_incumbent": "Candidate's party holds this seat",
     "is_inc_party_race": "Seat has a party incumbent",
     "twoparty_margin_cand": "Two-party polled margin (pts)",
     "abs_gap": "Polled gap size (pts)",
@@ -117,7 +117,15 @@ DESC = {
     "is_gov": "1 if this is a Governor race.",
     "prior_margin_cand": "How much the candidate's party won/lost this seat by last time "
                          "(redrawn districts use 2x the new map's Cook PVI instead).",
-    "is_incumbent": "1 if the candidate currently holds this seat.",
+    # NOT person-level incumbency. features.py computes this as
+    # (incumbent_party == candidate's party), because races.csv carries incumbent_PARTY and
+    # no incumbent NAME - there is no per-person incumbency anywhere in the inputs. So every
+    # candidate of the holding party reads 1, including primary fields where 3-7 candidates
+    # of that party are all flagged. The label and this text must not promise more than that
+    # (fixed 2026-08-08; the old text said "the candidate currently holds this seat", which
+    # shipped to 128 live race explanations).
+    "is_incumbent": "1 if the candidate's PARTY currently holds this seat (party-level, "
+                    "not personal incumbency).",
     "is_inc_party_race": "1 if either candidate's party currently holds the seat.",
     "twoparty_margin_cand": "Polled Dem-minus-Rep margin, signed toward this candidate.",
     "abs_gap": "Size of the polled gap between the two parties, ignoring direction.",
