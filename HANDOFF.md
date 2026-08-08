@@ -960,3 +960,57 @@ races' freshest poll is median 6d pre-election vs ~112d for 2026 predictions, so
 numbers do NOT describe July forecasts), race-level two-party reframe, shipping the α≈0.5
 blend, has_result selection bias, is_incumbent still wrong-district in redrawn states,
 grid-search selects on AUC not Brier, edge/uncertainty weighting, backtest logging schema.
+
+---
+
+## 2026-08-07 — dead matchups, roster integrity, the deep primary archive
+
+Read CONCERNS #38-47 for detail. The short version for whoever picks this up:
+
+**1. THE DEAD-MATCHUP FILTER IS THE BIG ONE (#38).** A general-election poll asks several
+separate head-to-heads, each its own `question_id`. The pipeline never loaded that column,
+so "Rogers 44.1 vs Stevens" pooled with "Rogers 40.8 vs El-Sayed" as if they measured the
+same thing. `drop_primary_losers()` in predict.py drops whole dead QUESTIONS (not rows -
+deleting only the loser leaves the survivor's number from a matchup that will never happen),
+and both notebooks apply the same filter in training, where 666 of 8,394 general questions
+were contaminated. Mike Rogers went from 21 polls to 8.
+Held-out effect: race_acc .8645 -> .8745 but every other metric moved slightly the WRONG way,
+all inside seed noise, and the whole gain is 2024 alone. **Kept on principle, not on the
+metric** - a poll against an opponent who lost says nothing about the real matchup.
+
+**2. THREE FILES CI COULD NOT SEE (#38 fallout).** `data/*.csv` is gitignored with 41 files
+force-added past it. `primary_results_2026.csv`, `name_aliases.csv` and
+`primary_dates_2026_manual.csv` were not among them, so CI checked out a tree without them,
+`drop_primary_losers()` silently returned unchanged, and the nightly refresh put Haley Stevens
+and Perry Johnson (primary LOSERS) back into MI-Sen/MI-Gov - twice - while the model repo
+looked correct. **Any new data file a filter reads must be force-added.** The missing-file
+branch now prints a loud WARNING instead of returning silently.
+
+**3. A GREEN PUSH IS NOT A DEPLOY (#40).** GitHub Pages sat in `building` for 3h+ one day and
+served a stale site while git looked clean; the `pages/builds/latest` API also lags behind the
+workflow list. Verify the PUBLISHED file:
+    https://pjmerica.github.io/polling-agg-2026/model_data.js
+
+**4. THE PRIMARY-STRENGTH BLOCK IS IN PRODUCTION AND UNUSED (#41).** `primary_margin`,
+`opp_primary_margin`, `primary_margin_diff`. Trained gain **0.00000 for all three**. Three
+independent ablations agree. Kept by user request; do not cite as predictive.
+
+**5. NEW PERMANENT DATA: `data/primary_results_deep_hist.csv`** (1,085 Senate/Governor
+party-primaries, 1998-2024). Fills a gap where those offices were 0.0% populated pre-2018.
+Regenerate: `py -X utf8 pipeline/fetch/fetch_primary_results_2026.py --deep`.
+
+**6. FIVE BUGS FOUND BY AUDITING THE NEW FEATURES, not by tests** (#42-45): a missing dedup
+that made 232 primary margins read 0.0; `predict.py` not passing `primary_results` (train/serve
+skew the feature-presence assert cannot catch, because the columns exist and are merely empty);
+my own notebook-rewrite truncating 5 cells; and a nickname split that cost 4 races their winner.
+**The lesson is that adding a feature is when you find the bugs in its inputs.**
+The fifth is the sharpest: after wiring `primary_results` into predict.py I ASSUMED the skew
+was fixed. Measuring showed serve coverage still 0.0% - `load_primary_results()` read only
+HISTORICAL files, never the current cycle. **Always measure serve coverage after adding a
+feature; never infer it from the code path.**
+
+**7. STILL OPEN:** 811 polled candidate-races never matched a result (#47) - the 16
+same-surname cases were triaged, the rest are unexamined. 6 races have no winner because the
+independent who won was never polled (#46, deliberately left). The general model still has no
+staleness flag (#36). The results scraper still has no election-date guard (#37). Wikipedia-
+sourced polls have no source URL (the NYT ones now do).

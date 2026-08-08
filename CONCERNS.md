@@ -489,3 +489,76 @@ up a single dominant failure mode that had nothing to do with the model.
     **Lesson: a green push is not a deploy.** Verify the PUBLISHED file
     (`https://pjmerica.github.io/polling-agg-2026/primary_model_data.js`) after any deploy that
     matters, not the commit.
+
+## Added 2026-08-07 — primary-strength features, the deep archive, and four bugs found auditing them
+
+41. **The primary-strength block is IN PRODUCTION but the model does not use it** (user call).
+    `primary_margin` (own primary win margin), `opp_primary_margin` (the general-election
+    opponent's), `primary_margin_diff` (the difference). `primary_uncontested` deliberately
+    EXCLUDED - near-zero importance in the July ablation.
+    **Trained model gain: 0.00000 for all three - it never split on them once across 190
+    features.** Three independent tests now agree:
+      2026-07-23  own-primary only, pre-dead-matchup data   -> null (race-acc -0.0031)
+      2026-08-07  +opponent/diff, 15% coverage              -> null (race-acc +-0.0000)
+      2026-08-07  +opponent/diff, 26% coverage (deep scrape)-> null (race-acc +-0.0000)
+    The standing reading holds: by general-election time polls have already priced in
+    whatever a bruising primary cost a candidate. Kept because the user asked for them and
+    they cost nothing; **do not cite them as predictive**.
+
+42. ~~**`primary_margin` was 0.0 for 232 candidate-rows.**~~ **FIXED, and it was silent.**
+    `load_primary_results()` concatenated overlapping archives with NO dedup, so 2018-2024
+    Senate/Governor races appeared twice. The runner-up lookup then found the WINNER's own
+    second copy: Kay Ivey won the 2018 AL-Gov primary 56.1-24.9 and was recorded as winning
+    by **nothing**. A comment claimed "later files win on a duplicate key" - nothing enforced
+    it. Now `drop_duplicates(["race_id","candidate"], keep="last")`. Zero-margins 232 -> 1.
+    **Adding a new source to a concat-based loader is a dedup question every time.**
+
+43. ~~**Serve-time skew on the primary block - TWO separate causes, both fixed.**~~
+    The model trained on real values and served 100% NaN. The feature-presence assert CANNOT
+    catch this: the columns exist, they are merely empty.
+    **Cause 1:** `predict.py` never passed `primary_results` to either builder call. Fixed.
+    **Cause 2 (found only by MEASURING, after cause 1 was fixed):** `load_primary_results()`
+    read three HISTORICAL files and never `data/primary_results_2026.csv`, so the current
+    cycle had zero keys. Serve coverage was still 0.0% with the wiring "fixed". Now reads the
+    current-cycle file too: serve coverage 0.0% -> 26.9% / 31.4% / 18.0%.
+    **The lesson is the second cause, not the first.** Wiring a loader through is not the
+    same as the loader having data for the cycle you are predicting. After adding any feature,
+    MEASURE its serve-time coverage - do not infer it from the code path. Two of this
+    session's bugs (#43 here, and poll_momentum on 2026-08-03) were columns that existed,
+    passed every assert, and were empty in production.
+
+44. **DEEP PRIMARY ARCHIVE: `data/primary_results_deep_hist.csv` (1,085 party-races,
+    1998-2024).** `--hist` took its target pages from `primary_polls_wikipedia.csv`, which
+    only ever covered 2018+, so Senate and Governor primary results were **0.0% populated for
+    every pre-2018 cycle** while House (a different script) went back to 1998. Results never
+    depended on the polls file. New `fetch_primary_results_2026.py --deep` reads the training
+    races directly. Coverage: primary_margin 24.8% -> 39.9%, opp 30.9% -> 47.5%, diff
+    15.0% -> 26.4%. Committed and force-added past .gitignore.
+
+45. ~~**Four races had a winner the model could never pick: a NICKNAME split.**~~ **FIXED.**
+    NJ-Sen 2006+2012 polled "Robert Menendez", results filed "Bob Menendez" (`menendez r` vs
+    `menendez b`); FL-House-10 2008 + FL-13 2012 polled "Charles William Young", results
+    "Bill Young". He won those seats with 57.2% and 58.9% - polled the whole time, unable to
+    join to his own victory. Added to `data/name_aliases.csv`.
+    **NEAR MISS worth reading:** a same-surname scan found 16 candidates, and only those 2
+    are the same person. Roy Moore vs Barry Moore, Doug Collins vs Mike Collins, Chris Bell
+    vs Adrienne Bell are DIFFERENT PEOPLE. An automated surname+state merge would have
+    corrupted 12+ races. The alias file is exact-match and hand-curated for this reason.
+
+46. **RESOLVED-AS-NOT-A-BUG: independents are already handled.** 489 OTH candidate-rows train
+    the model, including 6 winners (Sanders x3, King x2, Walker). They are scored on their own
+    merits - the model correctly ranks Sanders at 65% and King at 51%. Re-labelling them DEM
+    would LOSE information (King caucuses with Democrats; Walker did not), and an explicit
+    `is_ind` flag would be perfectly collinear with `1 - is_dem - is_rep`, both of which are
+    already features.
+    **6 races (0.3%) still have no winner labelled** - 1998 ME/MN-Gov, 2006 CT-Sen, 2010
+    AK-Sen + RI-Gov, 2012 ME-Sen - because the independent who won (Ventura, King, Lieberman,
+    Murkowski, Chafee) was NEVER POLLED, zero rows under any party. The labels on the rows
+    that DO exist are correct (both major-party candidates really did lose). Fixing this means
+    synthesizing candidates with NaN for every poll-derived feature; all 6 are pre-2018 and
+    outside the eval window. **Deliberately left alone.**
+
+47. **OPEN: 811 polled candidate-races never matched a result at all.** The 16 same-surname
+    cases above are the tractable slice. The rest are unexamined - some are third-party
+    also-rans who genuinely have no result row, but the Menendez/Young pattern says others
+    may be real join failures. A candidate polled but never matched is invisible to training.

@@ -240,13 +240,33 @@ def load_primary_results():
     Only the WINNER of each primary is attributed a value (only nominees reach the general
     election, which is the only place this feature is consumed)."""
     frames = []
-    for fn in ("data/house_primary_results_hist.csv", "data/primary_results_hist.csv"):
+    # Order matters on the merge below: LATER files win on a duplicate (year,state,office,
+    # party) key. primary_results_deep_hist.csv (2026-08-07) is the widest archive - every
+    # Senate/Governor primary 1998-2024 - and supersedes the 2018-only hist file where they
+    # overlap. Before it existed, Senate and Governor were 0.0% populated for EVERY pre-2018
+    # cycle, because the --hist scrape took its targets from a primary-POLLS file that only
+    # went back to 2018. Results never depended on polls; the deep scrape asks the training
+    # races directly.
+    # primary_results_2026.csv is the CURRENT cycle and MUST be here, or the block is
+    # 100% NaN at serve time while the model trained on real values - train/serve skew that
+    # the feature-presence assert in predict.py cannot catch (the columns exist, they are
+    # just empty). Found 2026-08-07 by measuring serve coverage directly after wiring
+    # primary_results into predict.py and still getting 0.0%.
+    for fn in ("data/house_primary_results_hist.csv", "data/primary_results_hist.csv",
+               "data/primary_results_deep_hist.csv", "data/primary_results_2026.csv"):
         p = os.path.join(os.path.dirname(DATA_DIR), fn)
         if os.path.exists(p):
             frames.append(pd.read_csv(p, low_memory=False))
     if not frames:
         return {}
     pr = pd.concat(frames, ignore_index=True)
+    # DEDUPE BY race_id. The archives OVERLAP - 2018-2024 Senate/Governor races appear in
+    # both primary_results_hist.csv and the newer deep archive - and concatenating them
+    # duplicated every candidate row. The runner-up lookup below then found the WINNER's
+    # own second copy, so primary_margin came out 0.0 for 232 candidate-rows: Kay Ivey won
+    # the 2018 AL-Gov primary 56.1-24.9 and was recorded as winning by nothing.
+    # Keep the LAST file's copy (deep archive supersedes), matching the load order above.
+    pr = pr.drop_duplicates(subset=["race_id", "candidate"], keep="last")
     parts = pr["race_id"].str.split("_", n=3, expand=True)
     pr["year"] = parts[0].astype(int)
     pr["state"] = parts[1]
@@ -836,6 +856,42 @@ def build_candidate_table(d, macro, natl_env_map, funds, house_train_years=None,
     # final-week polls - never a silent 0, which would read as "tied".
     c["poll_lead_last7"] = c["poll_last7"] - c.groupby("race_id")["poll_last7"].transform(
         best_other)
+    # OPPONENT primary strength (2026-08-07, user request). primary_margin above describes
+    # how a candidate won their OWN primary; these describe the person across the ballot,
+    # and the differential between the two.
+    #
+    # Why opponent-facing rather than own-facing: the July 2026-07-23 ablation of the
+    # own-primary features was a null result on both models (win race-acc -0.0031, margin
+    # MAE +0.019), with the recorded reading that "polls already price in primary-contest
+    # weakness by general-election time." An ABSOLUTE fact about your own primary is largely
+    # redundant with your polling. A RELATIVE one - you cruised while your opponent barely
+    # survived - is not obviously priced in the same way, and is what the differential below
+    # measures.
+    #
+    # Leak-safe by construction: a primary always precedes its general election, so nothing
+    # here is knowable only after the outcome being predicted.
+    # NaN, never 0, when the opponent has no primary-results match: unknown is not
+    # "uncontested" (same rule as primary_margin itself - see load_primary_results).
+    if "primary_margin" in c.columns:
+        # best_other over primary_margin is wrong here (it maximizes); we want the margin
+        # belonging to the single strongest-polling OTHER candidate - the real opponent.
+        opp_idx = (c.sort_values("poll_avg", ascending=False)
+                    .groupby("race_id")["cand_key"].apply(list).to_dict())
+        pm_by = {(r, k): v for r, k, v in
+                 zip(c["race_id"], c["cand_key"], c["primary_margin"])}
+
+        def _opp_margin(row):
+            order = opp_idx.get(row["race_id"], [])
+            for k in order:                      # strongest-polling other candidate first
+                if k != row["cand_key"]:
+                    return pm_by.get((row["race_id"], k), np.nan)
+            return np.nan
+
+        c["opp_primary_margin"] = c.apply(_opp_margin, axis=1)
+        # Positive = this candidate had the easier primary of the two. This is the feature
+        # the request was really about, and the only one of the set that is purely relative.
+        c["primary_margin_diff"] = c["primary_margin"] - c["opp_primary_margin"]
+
     c["poll_share"] = c["poll_avg"] / c.groupby("race_id")["poll_avg"].transform("sum")
     c["n_cands"] = c.groupby("race_id")["cand_key"].transform("count")
     c["race_total_polls"] = c.groupby("race_id")["n_polls"].transform("sum")
@@ -859,14 +915,24 @@ def build_candidate_table(d, macro, natl_env_map, funds, house_train_years=None,
 def feature_list(macro_feats, fund=False, primary_results=False, candidate_bios=False):
     """The model's input columns. Everything here is available for future races.
     fund=True appends the FEC fundraising features (pass fec=load_fec() to the builder).
-    primary_results=True appends primary_margin/primary_uncontested (2026-07-22; pass
-    primary_results=load_primary_results() to the builder) - ablate before trusting, same
-    discipline as poll_adj (dropped 2026-07-12 despite high raw importance). DROPPED from
-    production 2026-07-23 (honest null result on both win and margin models).
+    primary_results=True appends the primary-strength block (pass
+    primary_results=load_primary_results() to the builder):
+      primary_margin       - how this candidate won their own primary   (2026-07-22)
+      opp_primary_margin   - how their general-election OPPONENT won theirs (2026-08-07)
+      primary_margin_diff  - the difference; positive = easier primary than the opponent
+    primary_uncontested was part of the original block but is EXCLUDED here (user call
+    2026-08-07): it had near-zero importance in both models in the July ablation.
+    HISTORY: the own-primary-only version was ablated 2026-07-23 and dropped - a null
+    result on both models (win race-acc -0.0031, margin MAE +0.019), read at the time as
+    "polls already price in primary-contest weakness by general-election time." The
+    opponent-facing and differential columns are new and were never part of that test, and
+    the training data has since changed (dead-matchup filter, 2026-08-06), so this needs a
+    FRESH ablation - do not assume either verdict carries over.
     candidate_bios=True appends bio_office_level (2026-07-23; pass
     candidate_bios=load_candidate_bios() to the builder) - ablate before trusting."""
     return (([] if not fund else list(FUND_FEATS_EXT))
-           + ([] if not primary_results else ["primary_margin", "primary_uncontested"])
+           + ([] if not primary_results else ["primary_margin", "opp_primary_margin",
+                                               "primary_margin_diff"])
            + ([] if not candidate_bios else ["bio_office_level"])) + [
         "poll_avg", "poll_last", "poll_last30", "poll_std", "n_polls",
         # poll_last7 / n_polls_last7 / poll_lead_last7 are BUILT in build_candidate_table but

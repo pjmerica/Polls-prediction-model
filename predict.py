@@ -406,8 +406,13 @@ def main():
     # data/candidate_bios.csv the training run used. (The feature-presence assert below would
     # otherwise fire, since the artifact now expects bio_office_level.)
     bios = F.load_candidate_bios()
+    # primary_results MUST be passed here too, or primary_margin/opp_primary_margin/
+    # primary_margin_diff are all-NaN at serve time while the artifact was trained on real
+    # values - train/serve skew of exactly the kind the feature-presence assert below cannot
+    # catch (the COLUMNS would exist, just empty). Same reasoning as candidate_bios above.
+    primres = F.load_primary_results()
     cand = F.build_candidate_table(d, macro, ne, funds, house=house, fec=fec, bias_priors=bias,
-                                   candidate_bios=bios)
+                                   candidate_bios=bios, primary_results=primres)
     cand = patch_redistricted_priors(cand)
 
     # guard: every feature the artifact expects must exist in the built table — reindex
@@ -426,7 +431,7 @@ def main():
         ds["pct"] = ds["pct"] + sgn * dem_shift / 2
         cs = patch_redistricted_priors(
             F.build_candidate_table(ds, macro, ne, funds, house=house, fec=fec, bias_priors=bias,
-                                    candidate_bios=bios))
+                                    candidate_bios=bios, primary_results=primres))
         cs["p"] = model.predict_proba(cs.reindex(columns=meta["features"]))[:, 1]
         m = cs.set_index(["race_id", "cand_key"])["p"]
         cand[f"win_prob_{label}"] = [m.get((r, c)) for r, c in

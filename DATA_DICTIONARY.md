@@ -315,3 +315,48 @@ The detector suppresses pairs `norm_name` already merges — middle initials
 (`"Mark R. Warner"`/`"Mark Warner"`), curly vs straight apostrophes (`"Beto O'Rourke"`). Ten
 such pairs exist in the current feed; warning about them would train the reader to ignore the
 check.
+
+## 5. Primary-strength block (general model, production 2026-08-07)
+
+Built by `F.load_primary_results()` + `feature_list(primary_results=True)`.
+
+| Column | Coverage | Meaning |
+|---|---|---|
+| `primary_margin` | 39.9% | Winner's pct minus runner-up's, in this candidate's OWN primary. NaN (not 0) for a one-candidate primary — there is no contest to measure. |
+| `opp_primary_margin` | 47.5% | The same quantity for the strongest-polling OTHER candidate in the general — i.e. the person across the ballot. |
+| `primary_margin_diff` | 26.4% | `primary_margin - opp_primary_margin`. Positive = easier primary than the opponent. The only purely RELATIVE member of the block. |
+
+`primary_uncontested` exists in the loader but is **excluded** from the feature list (user
+call): near-zero importance in the July 2026-07-23 ablation.
+
+**These features are in production but the model does not use them.** Trained gain is
+**0.00000 for all three** — across 190 features it never split on any of them. Three
+independent tests (2026-07-23, and twice on 2026-08-07 at 15% then 26% coverage) all
+returned the same null. Standing interpretation: by general-election time polls have
+already priced in whatever a bruising primary cost a candidate. **Do not present these as
+predictive.**
+
+Leak-safety is structural: a primary always precedes its general election.
+
+Coverage is capped by how many races have primary results for BOTH sides — `opp_primary_margin`
+needs the opponent matched, and `primary_margin_diff` needs both, which is why it is the
+sparsest of the three despite being the most interesting.
+
+### Data sources behind the block
+
+| File | Scope |
+|---|---|
+| `data/house_primary_results_hist.csv` | House, 1998–2024 |
+| `data/primary_results_hist.csv` | Senate/Governor, **2018–2024 only** |
+| `data/primary_results_deep_hist.csv` | Senate/Governor, **1998–2024** (added 2026-08-07) |
+| `data/primary_results_2026.csv` | current cycle |
+
+The archives **overlap** — 2018–2024 Senate/Governor is in two of them — so
+`load_primary_results()` dedupes on `(race_id, candidate)` keeping the LAST file. Without
+that dedupe the runner-up lookup found the winner's own duplicate row and returned
+`primary_margin = 0.0` for 232 candidate-rows (CONCERNS #42). **Adding a fourth source is a
+dedup question, not just a path.**
+
+The deep archive exists because `--hist` derived its target pages from a primary-POLLS file
+that only covered 2018+, leaving Senate and Governor at 0.0% for every pre-2018 cycle.
+Regenerate with `py -X utf8 pipeline/fetch/fetch_primary_results_2026.py --deep`.

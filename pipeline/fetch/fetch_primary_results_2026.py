@@ -131,8 +131,26 @@ def parse_results_tables(html, base_race_id, house=False, at_large=False):
                              votes=votes, pct=pct, table_seq=seq))
     return rows
 
-def page_targets(hist):
-    """[(year, st, office)] - 2026 from the predictions CSV, hist from the polls scrape."""
+def page_targets(hist, deep=False):
+    """[(year, st, office)] - 2026 from the predictions CSV, hist from the polls scrape.
+
+    deep=True (2026-08-07): every Senate/Governor race the GENERAL model actually trains on,
+    back to 1998, taken from polls_long_with_results.csv instead of the primary-polls file.
+    The --hist mode derives its targets from primary_polls_wikipedia.csv, which only ever
+    covered 2018+, so Senate and Governor primary results were 0.0% populated for EVERY
+    pre-2018 cycle while House (scraped by a different script) went back to 1998. That gap
+    is why primary_margin covered only 24.8% of the candidate table. Results do not depend
+    on the polls file at all - only on the race existing - so this mode asks the training
+    data directly.
+    """
+    if deep:
+        import features as _F
+        d = pd.read_csv(os.path.join(HERE, "polls_long_with_results.csv"), low_memory=False)
+        d = d[d["office"].isin(["Senate", "Governor"])]
+        d = d[pd.to_numeric(d["year"], errors="coerce").between(1998, 2024)]
+        out = {(int(y), st, of) for y, st, of in
+               zip(d["year"], d["state"], d["office"]) if isinstance(st, str) and len(st) == 2}
+        return sorted(out)
     if not hist:
         preds = pd.read_csv(os.path.join(HERE, "primary_predictions_2026.csv"))
         need = set()
@@ -153,12 +171,19 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--hist", action="store_true",
                     help="scrape 2018-2024 results for the historical training pages")
+    ap.add_argument("--deep", action="store_true",
+                    help="scrape ALL Senate/Governor primaries 1998-2024 from the training "
+                         "races (fills the pre-2018 gap --hist never covered)")
     args = ap.parse_args()
+    # --deep writes its own file so a partial/failed deep run can never damage the two
+    # existing committed archives. build_primary_dataset / load_primary_results read all
+    # three, and a later (year,state,office) simply supersedes an earlier one on merge.
     out_path = os.path.join(HERE, "data",
-                            "primary_results_hist.csv" if args.hist
+                            "primary_results_deep_hist.csv" if args.deep
+                            else "primary_results_hist.csv" if args.hist
                             else "primary_results_2026.csv")
 
-    pages = page_targets(args.hist)
+    pages = page_targets(args.hist, deep=args.deep)
     print(f"{len(pages)} pages to scrape")
 
     allrows = []

@@ -7,6 +7,9 @@
   "fund_party_pct",
   "fund_self_pct",
   "fund_smalldollar_pct",
+  "primary_margin",
+  "opp_primary_margin",
+  "primary_margin_diff",
   "bio_office_level",
   "poll_avg",
   "poll_last",
@@ -352,14 +355,14 @@
   2024
  ],
  "xgb_params": {
-  "max_depth": 3,
-  "learning_rate": 0.02,
+  "max_depth": 2,
+  "learning_rate": 0.03,
   "n_estimators": 400,
-  "min_child_weight": 8,
+  "min_child_weight": 15,
   "subsample": 0.6,
   "colsample_bytree": 0.4,
   "reg_lambda": 1,
-  "reg_alpha": 1,
+  "reg_alpha": 0,
   "objective": "reg:squarederror",
   "random_state": 42
  }
