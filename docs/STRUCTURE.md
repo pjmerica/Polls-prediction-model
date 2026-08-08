@@ -15,6 +15,32 @@ moving the last loose files out too, leaving **4 files in the repo root**.
 Everything else now lives in a folder. Run commands are unchanged in spirit — still from the
 repo root — but the entrypoints are spelled `src/…`:
 
+## Every folder has a README
+
+Added 2026-08-08. **The folder's README is the authoritative description of what is in it** —
+this file is the map, those are the detail. Start with the one nearest the code you're
+touching.
+
+| folder | what's in it |
+|---|---|
+| [`../src/`](../src/README.md) | all first-party Python — entrypoints + shared feature modules |
+| [`../data/`](../data/README.md) | every committed input + trained model artifact |
+| [`../outputs/`](../outputs/README.md) | generated predictions (gitignored, regenerated every run) |
+| [`../models/`](../models/README.md) | training code — [`poll/`](../models/poll/README.md) (4 shipped) · [`fundamentals/`](../models/fundamentals/README.md) (not shipped) |
+| [`../pipeline/`](../pipeline/README.md) | [`fetch/`](../pipeline/fetch/README.md) (the only network code) · [`build/`](../pipeline/build/README.md) (offline assembly) |
+| [`../tools/`](../tools/README.md) | audits, fact-checks, one-off repairs |
+| [`../analysis/`](../analysis/README.md) | investigations + [`worklists/`](../analysis/worklists/README.md) |
+| [`../archive/`](../archive/README.md) | superseded data snapshots (archive-don't-delete) |
+| [`../data_samples/`](../data_samples/README.md) | tiny committed extracts, for documentation |
+| [`../logs/`](../logs/README.md) | scraper run-logs (gitignored as a directory) |
+| `docs/` | this folder — see [README.md](README.md) for the reading order |
+
+**A README is only useful if it survives a fresh clone.** `data/`, `outputs/`, `logs/` and
+`archive/` ignore their contents wholesale, so each needed an explicit un-ignore. Note the
+idiom this forces: ignore `folder/*`, never `folder/`, because **git never looks inside an
+excluded directory** — a `!folder/README.md` under a bare `folder/` rule silently does
+nothing. `logs/scrape/` needed its parent re-included first for the same reason.
+
 ```
 .
 ├── paths.py                  THE path module - every script resolves data/, outputs/ and the

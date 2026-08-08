@@ -36,7 +36,7 @@ Key fields the project uses: `state_abbrev`, `office_seat_name` (House district)
 column is all-null; the real party is in `ballot_party`**), `percent`, and **`winner`**
 (the 1/0 outcome label).
 
-A small representative sample of each file is committed under [`data_samples/`](data_samples/)
+A small representative sample of each file is committed under [`data_samples/`](../data_samples/README.md)
 so the schema and content are visible in the repo without downloading the full ~6 MB.
 
 ### Mirrors / fallbacks
@@ -190,7 +190,7 @@ calibration and for a future *margin* model.
 ## Reproducing the full dataset
 
 Everything is downloaded and cached by `build_dataset.ipynb` (into a gitignored
-`data/` folder). The committed [`data_samples/`](data_samples/) files are illustrative
+`data/` folder). The committed [`data_samples/`](../data_samples/README.md) files are illustrative
 only — run the notebook to fetch the complete, current data.
 
 ```bash

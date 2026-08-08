@@ -2,6 +2,13 @@
 data/*
 *.csv
 
+# Every folder carries a README.md explaining what is in it (added 2026-08-08); those must
+# survive a fresh clone. data/ and outputs/ are the only two folders whose contents are
+# ignored wholesale, so they are the only two whose README needs an explicit un-ignore
+# (outputs/ has its own, next to the outputs/* rule below). Every other folder is tracked
+# normally and its README needs no rule at all.
+!data/README.md
+
 # ...but DO commit the small illustrative result samples
 !data_samples/
 !data_samples/*.csv
@@ -80,8 +87,12 @@ data/*
 # covers every scraper log regardless of what a future scraper names its output.
 logs/*
 !logs/README.md
-# ...but keep logs/README.md itself, so a fresh clone still explains what the folder is for
-# (ignore logs/* not logs/, or the un-ignore above cannot take effect - same idiom as data/*)
+# Keep the READMEs. Note the middle rule: git never looks INSIDE an excluded directory, so
+# `!logs/scrape/README.md` alone does nothing - logs/scrape must be re-included first, and
+# its contents re-excluded, before the README can be un-ignored.
+!logs/scrape/
+logs/scrape/*
+!logs/scrape/README.md
 # legacy root-level patterns, kept so an old checkout or a re-run from the root still ignores
 ballotpedia_scrape*.txt
 backfill_*_scrape_log.txt
@@ -97,7 +108,10 @@ backfill_*_log.txt
 # refresh_dashboard run and are copied into polling-agg (which commits its own copy under
 # data/processed/, and that is the one the dashboard actually serves). Keeping a second
 # committed copy here only produced merge conflicts on a file nothing reads from this side.
-outputs/
+outputs/*
+!outputs/README.md
+# (ignore outputs/* not outputs/, or the un-ignore above cannot take effect - same idiom as
+# data/* and logs/*)
 
 # Python
 __pycache__/
@@ -175,5 +189,8 @@ venv/
 
 # local archive of pre-change data copies (archive-don't-delete rule is a LOCAL backup
 # discipline — these are point-in-time snapshots, not repo content; never committed, same
-# as the earlier archive/candidate_bios_<timestamp> files documented in METHODOLOGY)
-archive/
+# as the earlier archive/candidate_bios_<timestamp> files documented in METHODOLOGY).
+# Ignore archive/* not archive/, so the README un-ignore below can take effect: git never
+# looks inside an excluded DIRECTORY. Same idiom as data/*, outputs/* and logs/*.
+archive/*
+!archive/README.md

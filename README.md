@@ -81,6 +81,13 @@ the rules learned the hard way) · [HANDOFF.md](docs/HANDOFF.md) (in-flight stat
 [DATA_DICTIONARY.md](docs/DATA_DICTIONARY.md) (every variable) ·
 [MISSINGNESS_REPORT.md](docs/MISSINGNESS_REPORT.md).
 
+📁 **Every folder has its own README** explaining what is in it and the traps specific to it —
+that is usually the fastest way in. [`src/`](src/README.md) (the code) ·
+[`data/`](data/README.md) (the inputs) · [`models/`](models/README.md) (training) ·
+[`pipeline/`](pipeline/README.md) (fetch + build) · [`outputs/`](outputs/README.md) ·
+[`tools/`](tools/README.md) · [`analysis/`](analysis/README.md) ·
+[`docs/`](docs/README.md) (reading order for the deep docs).
+
 ---
 
 ## Pipeline (run order)

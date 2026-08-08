@@ -3,14 +3,22 @@
 Read this first, then HANDOFF.md (in-flight state + breakdown risks + next steps), then CONCERNS.md (ranked risks + improvement roadmap), then METHODOLOGY.md
 (exact windows for every feature). Last full update: **2026-07-06**.
 
-> ## ⚠ FILE LAYOUT CHANGED 2026-08-02 — read STRUCTURE.md
-> Scripts moved out of the repo root into `models/poll/`, `models/fundamentals/`,
-> `pipeline/fetch/`, `pipeline/build/` and `tools/`. **Any bare filename in this file or the
-> other docs may now live in a subfolder** — most references below were written before the
-> move and are kept as-is because they describe history. STRUCTURE.md has the current map and
-> the run commands. Paths now resolve through `paths.py` (repo-root-relative), NOT from each
-> script's own location. The predict/explain scripts and `refresh_dashboard.py` deliberately
-> stayed at the root because the polling-agg CI workflow calls them there.
+> ## ⚠ FILE LAYOUT CHANGED — read [STRUCTURE.md](STRUCTURE.md)
+> **2026-08-02:** scripts moved out of the repo root into `models/poll/`,
+> `models/fundamentals/`, `pipeline/fetch/`, `pipeline/build/` and `tools/`.
+> **2026-08-08:** the rest followed — **all first-party Python is now in `src/`**, generated
+> predictions in `outputs/`, and every deep doc (including this one) in `docs/`. The repo root
+> is down to five files.
+>
+> **Any bare filename in this file or the other docs may live in a subfolder** — many
+> references below were written before the moves and are kept as-is because they describe
+> history. [STRUCTURE.md](STRUCTURE.md) has the current map and the run commands, and **every
+> folder now carries its own README** describing what is in it.
+>
+> Paths resolve through `paths.py` (repo-root-relative), **never** from a script's own
+> location — `paths.data(...)` and `paths.out(...)`, never `dirname(__file__)`.
+> `refresh_dashboard.py` remains at the root as a 3-line shim to `src/refresh_dashboard.py`,
+> because the polling-agg CI workflow may still call the old path.
 
 ## What this project is (one paragraph)
 We predict U.S. downballot elections (Senate / House / Governor) from polls + fundamentals +

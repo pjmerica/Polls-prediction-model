@@ -4,7 +4,46 @@ For the next agent. Read AGENTS.md first (architecture + rules), CONCERNS.md sec
 (risk register + roadmap). This file: what's mid-flight RIGHT NOW, what's most likely to
 break, and what to do next, in order.
 
-## CURRENT STATE 2026-08-08 (latest) — DATA/ORGANISATION AUDIT: one real scoring bug, one docs bug, root cleanup
+## CURRENT STATE 2026-08-08 (latest) — SECOND REORG + a README in every folder
+
+Follow-on to the audit entry below. Two changes, both structural; **no model retrained**, and
+the prediction CSVs came out byte-identical, which is the proof that nothing about the models
+moved.
+
+**1. Second reorganisation — the repo root is now FIVE files.**
+`src/` holds all first-party Python, `outputs/` the generated predictions, `docs/` every deep
+doc. The root keeps only README.md, paths.py, requirements.txt, the training CSV, and a
+3-line `refresh_dashboard.py` shim.
+
+The entrypoints and outputs were previously pinned to the root by polling-agg's
+`model-refresh.yml`, which runs on a SCHEDULE — so a mistake here does not fail in front of
+you, it fails at 13:15 UTC and serves stale predictions. They were moved only after making
+**both sides accept either layout**: the root shim, polling-agg searching `src/` then root and
+`outputs/` then root, and the workflow's push-retry `cp` trying both. CI was then triggered
+manually and passed (131 races) rather than waiting for the schedule.
+
+Four bugs surfaced during the move — all now traps in AGENTS.md and STRUCTURE.md:
+  - `__file__`-relative data paths (4 live instances, incl. `features.DATA_DIR`) silently
+    resolve to `src/data/` once the file is not in the root.
+  - `from paths import out` gets shadowed by the very common local `out = pd.DataFrame(...)`,
+    failing at the END of a long run.
+  - Files in `src/` need a 2-line `sys.path` prelude to `import paths` at all.
+  - polling-agg's `from features import norm_name` fell back to a local mirror and **disabled
+    its own drift-assert**, announcing it with one line of "note:".
+
+**2. Every folder now has a README.** 18 of them, each describing what is in the folder and
+the traps specific to it, indexed from STRUCTURE.md and the root README.
+
+The gitignore idiom this forced is worth knowing: **ignore `folder/*`, never `folder/`**. Git
+does not look inside an excluded DIRECTORY, so `!folder/README.md` under a bare `folder/` rule
+silently does nothing — `archive/` and `logs/scrape/` both hit this, and `logs/scrape/` needed
+its parent re-included before its own README could be un-ignored. Verified both directions:
+all 18 READMEs are tracked, and every data/log/archive/output file is still ignored.
+
+Also fixed here: `tools/build_missingness_report.py` was still writing to the repo root, so it
+recreated `MISSINGNESS_REPORT.md` there after the doc had moved to `docs/`.
+
+## CURRENT STATE 2026-08-08 (earlier) — DATA/ORGANISATION AUDIT: one real scoring bug, one docs bug, root cleanup
 
 A senior-data-engineer pass over the repo + the deployed pages. **No model was retrained** —
 nothing here changed a training feature enough to warrant it (see "retrain?" below).
@@ -66,7 +105,7 @@ already fixes exactly this, but only AFTER a primary is decided — it is a no-o
 which is when the pooling is worst. Fixing it means making the general path `question_id`-aware,
 which changes training features => full retrain. Not attempted here.
 
-## CURRENT STATE 2026-08-03 (latest) — FOURTH MODEL (primary margin) + per-candidate explainers + 3 CI/data bugs found by the user.
+## CURRENT STATE 2026-08-03 — FOURTH MODEL (primary margin) + per-candidate explainers + 3 CI/data bugs found by the user.
 
 **There are now FOUR models**, not three. The new one is the PRIMARY MARGIN model
 (`models/poll/primary_margin_model.py` -> `data/primary_margin_model_*.json`), the
