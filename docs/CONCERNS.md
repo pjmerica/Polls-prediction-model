@@ -308,15 +308,28 @@ above:
     margin model's weak 2022 fold flipped from a loss to a win vs the calibrated baseline
     (15.97 → 14.69 vs 15.39), so both folds now beat it.
     All four models retrained on the new definition (the two primaries twice — see above).
-30. **[NEXT TASK 2026-08-08 - see HANDOFF for the full brief, including the recommended
-    sources and the fetch_macro.py trap that silently deletes the metric on a timeout]**
-    **`sentiment_last12_delta` is also 100% NaN at serve time**, for a different reason: the
+30. **RESOLVED 2026-08-08. `sentiment_last12_delta` was 100% NaN at serve time**, for a different reason: the
     consumer-sentiment series in `data/macro_monthly.csv` ends **2025-08**, 12 months stale,
     while every other macro series is current to 2026-06. The `_last12_delta` window cannot be
     filled, so the feature is correctly NaN (this is the 2026-07-14 silent-zero fix working).
     `refresh_dashboard.py`'s freshness guard already tolerates it with a 13-month threshold and
     a "DBnomics mirror lags ~1yr" note, so it is KNOWN — but it ranks 144/187, so the practical
     cost is low and the honest fix is a better sentiment source, not a code change.
+    **Resolution:** FRED's `UMCSENT` (the same UMich index, no API key) now overlays the stale
+    DBnomics mirror in `fetch_macro.py`. Verified identical where they overlap — 664 months,
+    max absolute difference **exactly 0.0** — so this adds months without redefining the
+    series. It is an OVERLAY, not a replacement: our file carries 302 pre-1978 rows that
+    FRED's monthly series lacks (UMich surveyed quarterly before 1978), and a replace would
+    have silently dropped 25 years of history. `sentiment` now runs to **2026-06** (was
+    2025-08) and 2026 serve-time coverage is **16/16 features populated**, measured not
+    inferred, with `sentiment_last12_delta` = -11.2.
+    **Worth knowing before spending more on this feature block:** the staleness was NOT why
+    these features score ~0. Checked directly — all 14 training cycles had complete 12-month
+    sentiment coverage and 0/16 NaN, with real values (58.6 in 2022, 100.9 in 1998). The win
+    model still assigns all 16 a gain of exactly 0.0 (ranks 143–160 of 190); the margin model
+    uses 6 of 16, best `sentiment_avg_6mo` at 0.0093 vs `poll_share` 0.137. So consumer
+    sentiment genuinely carries almost no signal here once polls are in the model — it is now
+    current and correct, but do not expect it to move results.
 31. **Audit clean elsewhere.** Checked and found NO problems in: cross-repo duplicated helper
     functions (only `norm_name` had copies, now fixed); unscoped CSS selectors beyond the
     `.mv-etab` collision fixed today; `inf` values or all-NaN columns in either primary model's
@@ -640,3 +653,63 @@ up a single dominant failure mode that had nothing to do with the model.
     before its own README could be un-ignored. Verify any new un-ignore in BOTH directions
     with `git check-ignore -v` — that the file you want is tracked, AND that its siblings are
     still ignored.
+
+54. **FIXED 2026-08-08: `fetch_macro.py` could DELETE a metric on a network blip.** It skipped
+    a failed series and still rewrote `data/macro_monthly.csv` from the successful frames
+    only — so one read timeout wiped the entire `sentiment` history and its 16 features. That
+    is what happened on 2026-08-08; nothing failed loudly, and the only thing that caught it
+    was `predict.py`'s artifact-feature assert refusing to run.
+    Two guards now: **(a) carry-forward** — any metric present in the previous file but not
+    fetched this run keeps its existing rows, with a loud STALE notice; **(b) shrink warning**
+    — a metric that comes back with FEWER rows than before is flagged, because a partial or
+    truncated response is otherwise indistinguishable from success.
+    Guard (b) earned its keep within the hour: the BLS API was returning **503**, which
+    silently truncated `cpi`, `cpi_core`, `unemp_u6` and `unemployment` from 2026-06/07 back
+    to **2025-01**. The old code would have committed that regression without a word.
+    `sentiment` also now has a committed fallback cache (`data/umcsent_fred.csv`) because FRED
+    is intermittently unreachable — measured within one hour: 3 timeouts, then 10/10 successes
+    averaging 0.7s, then more timeouts. A once-a-month series should not depend on a flaky
+    fetch, and committing it matches the repo's static-data principle.
+
+55. **OPEN (transient, 2026-08-08): the BLS API is returning 503.** `fetch_macro.py`'s BLS
+    overlay is what keeps `cpi`, `cpi_core`, `unemp_u6` and `unemployment` current past the
+    DBnomics mirror's 2025-01 stall. While BLS is down those four series would regress by ~18
+    months. The shrink guard now WARNS about this rather than committing it silently, but the
+    warning is not a block — **check for `!! ... SHRANK` in the output before committing
+    `macro_monthly.csv`**, and re-run once BLS is back. Consider promoting the shrink warning
+    to a hard failure for the BLS-backed series specifically.
+
+56. **MEASURED 2026-08-08: the win model is UNDER-confident at both extremes.** Decile
+    calibration on the 4,230 out-of-fold rows (2000-2024, `data/oof_predictions.csv`):
+
+        predicted   n     pred    actual
+        0.0-0.1    1509   0.028   0.013   *
+        0.1-0.2     240   0.148   0.108   *
+        0.2-0.3     214   0.250   0.201
+        0.3-0.4     188   0.351   0.351
+        0.4-0.5     201   0.450   0.433
+        0.5-0.6     205   0.549   0.571
+        0.6-0.7     188   0.650   0.660
+        0.7-0.8     216   0.750   0.806   *
+        0.8-0.9     250   0.853   0.896   *
+        0.9-1.0    1019   0.965   0.974
+        (* = predicted rate outside the 95% binomial CI of the actual rate)
+
+    Aggregate calibration is GOOD - mean predicted .445 vs actual .443, Brier .0821, and the
+    .3-.7 tossup band predicts .500 / delivers .504. The defect is directional and consistent:
+    below .2 the actual rate is LOWER than predicted, above .8 it is HIGHER. Both say the same
+    thing - true probabilities are more extreme than the model claims. It holds per cycle (10
+    of 13 show it at the high end), so it is structural, not one bad year.
+
+    **Honest size of the fix:** fitting a single sharpening temperature on <=2016 and scoring
+    on 2018-2024 (never fit on what it scores) gives **T = 0.893** and held-out Brier
+    **.0671 -> .0664, +1.14%**. Real, modest, and currently the cheapest available improvement
+    given #17 ("the page's currency is probabilities").
+    **Counter-argument before shipping it:** sharpening makes confident calls MORE confident,
+    and the model already loses 26 of the 1,019 races it calls >90%. A calibration layer also
+    adds a second place where train and serve can drift apart. Not implemented; decide
+    deliberately rather than because the Brier number is green.
+
+    Note 59% of rows sit in the two extreme deciles - expected for downballot races, most of
+    which are safe seats - so aggregate Brier is dominated by easy calls. In the tossup band,
+    calling everything >.5 gets only **61%**.

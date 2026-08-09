@@ -70,6 +70,22 @@ data/*
 !data/name_aliases.csv
 !data/primary_dates_2026_manual.csv
 
+# FRED UMCSENT cache (2026-08-08). MUST be committed: fetch_macro.py falls back to it when
+# FRED is unreachable, and CI checks this repo out fresh - leaving it ignored would make the
+# fallback a no-op there, which is the same shape as the primary_results_2026.csv bug above.
+# It is also the static-data principle: this series changes once a month, so committing it
+# makes the macro build reproducible offline like every other input.
+!data/umcsent_fred.csv
+
+# FRED mirrors of the BLS-backed series (2026-08-08). Same reasoning as umcsent_fred.csv:
+# fetch_macro.py falls back to these when the BLS API is down (it returned 503 all of
+# 2026-08-08) AND the DBnomics mirror is ~18 months behind. Uncommitted, they would not exist
+# in CI and the fallback would be a silent no-op there - the primary_results_2026.csv failure
+# shape again. Verified identical to our committed values: max |diff| 0.0000 across
+# unemployment/cpi/cpi_core/unemp_u6/fed_funds, 0.0025 on gas (weekly->monthly rounding).
+!data/fred_cache/
+!data/fred_cache/*.csv
+
 # ...and the trained production model artifacts (predict.py / predict_margin.py load these)
 !data/model_xgb.json
 !data/model_features.json

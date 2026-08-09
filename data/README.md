@@ -35,9 +35,20 @@ The 14MB joined training file, `polls_long_with_results.csv`, lives in the **rep
 here — it is force-added past the `*.csv` rule so CI can see it.
 
 ### Context features
-`macro_monthly.csv` (economy), `approval_monthly.csv`, `generic_ballot_monthly.csv` +
-`generic_ballot_hist_538.csv`, `lean_states.csv` / `lean_districts.csv`,
-`district_pvi_current.csv`, `redistricted_2026.csv`.
+`macro_monthly.csv` (economy — long format: `date,value,metric`, 9 metrics),
+`approval_monthly.csv`, `generic_ballot_monthly.csv` + `generic_ballot_hist_538.csv`,
+`lean_states.csv` / `lean_districts.csv`, `district_pvi_current.csv`, `redistricted_2026.csv`.
+
+`umcsent_fred.csv` is a **committed fallback cache** of FRED's `UMCSENT` (UMich consumer
+sentiment), refreshed on every successful fetch and read when FRED is unreachable — which it
+intermittently is. It exists because the DBnomics mirror of this series stalled at 2025-08 and
+left 16 model features NaN at serve time. See
+[../pipeline/fetch/README.md](../pipeline/fetch/README.md) for the three-source arrangement.
+
+> **Before committing `macro_monthly.csv`, read the fetch output.** `fetch_macro.py` now warns
+> `!! <metric> SHRANK <old> -> <new>` when a source returns fewer rows than last time. That is
+> usually an upstream outage mid-truncation (the BLS API returning 503 rolled four series back
+> ~18 months on 2026-08-08), not real data.
 
 ### Money
 `fec_summary.csv`, `fec_detail.csv`, `governor_finance.csv`.
