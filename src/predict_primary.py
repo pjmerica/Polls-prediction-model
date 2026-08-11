@@ -196,6 +196,11 @@ def load_primary_feed(paths, cycle):
     if n_before - len(d):
         print(f"cross-source duplicate poll rows dropped: {n_before - len(d)}")
 
+    # ...then a second pass on SURVEY IDENTITY, which catches what the name key cannot: the
+    # same poll filed under two genuinely different organisation names ('St. Anselm' vs
+    # 'Saint Anselm College', 'KSTP / SurveyUSA' vs 'SurveyUSA'). See F.drop_duplicate_surveys.
+    d, _ = F.drop_duplicate_surveys(d, label="primary feed")
+
     per_race, per_state = primary_dates(cycle)
     d["election_date"] = [per_race.get((st, of), per_state.get(st))
                           for st, of in zip(d["state"], d["office"])]

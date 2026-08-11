@@ -49,9 +49,9 @@
  ],
  "xgb_params": {
   "max_depth": 3,
-  "learning_rate": 0.05,
-  "n_estimators": 200,
-  "min_child_weight": 4,
+  "learning_rate": 0.1,
+  "n_estimators": 300,
+  "min_child_weight": 8,
   "subsample": 0.7,
   "colsample_bytree": 0.5,
   "reg_lambda": 1
@@ -72,18 +72,18 @@
   "2022": {
    "n": 226.0,
    "n_races": 63.0,
-   "MAE_model": 14.6861,
+   "MAE_model": 15.2664,
    "MAE_poll": 16.3316,
    "MAE_calib": 15.3885,
-   "R2": 0.7742
+   "R2": 0.7606
   },
   "2024": {
    "n": 94.0,
    "n_races": 34.0,
-   "MAE_model": 18.6533,
+   "MAE_model": 18.963,
    "MAE_poll": 23.1767,
    "MAE_calib": 21.6909,
-   "R2": 0.6704
+   "R2": 0.6407
   }
  }
 }

@@ -713,3 +713,81 @@ up a single dominant failure mode that had nothing to do with the model.
     Note 59% of rows sit in the two extreme deciles - expected for downballot races, most of
     which are safe seats - so aggregate Brier is dominated by easy calls. In the tossup band,
     calling everything >.5 gets only **61%**.
+
+57. **FIXED 2026-08-08 (found investigating Francesca Hong's 99.97%): the pollster
+    de-duplicator misses NAME VARIANTS of the same shop.** `predict_primary.py` dedups on
+    `F.norm_pollster`, but that only lowercases/normalises punctuation - it does not know that
+    "Marquette Law School", "Marquette University" and "Marquette University Law School" are
+    one pollster. All three normalise to different keys, so a single survey enters the average
+    two or three times.
+
+    Measured on the live 2026 primary feed by matching (race, candidate, end_date, pct,
+    sample_size) across differing pollster names: **740 poll rows across 55 races**. ~28
+    distinct alias pairs, most of them unmistakable - `Remington` / `Remington Research
+    Group`, `Tarrance Group` / `The Tarrance Group`, `St. Anselm` / `Saint Anselm College`,
+    `Tyson Group` / `The Tyson Group`, `UT Tyler` / `University of Texas at Tyler Center for
+    Opinion Research`, `University of Houston` / `University of Houston Hobby School of Public
+    Affairs`, `NextGenP` / `Nextgen P`, `Mason-Dixon Polling & Research, Inc.` /
+    `Mason-Dixon Polling & Strategy`.
+
+    **Effect is real but usually small**, because a duplicated survey is duplicated for EVERY
+    candidate in it - it re-weights the average toward that pollster rather than toward one
+    candidate. In WI-Gov-DEM, deduping moves Hong 25.38 -> 26.88 and her lead 15.66 -> 16.42
+    (i.e. it would have made her look STRONGER, not weaker). The risk case is a race where one
+    house polls very differently from the field and gets double weight.
+
+    Fix shape: a hand-curated pollster-alias table (same pattern as `data/name_aliases.csv`
+    for candidates - exact-match, hand-curated, NOT fuzzy: `Fabrizio, Lee & Associates` vs
+    `McLaughlin & Associates` are genuinely different firms and a fuzzy matcher would merge
+    them). Applies to `predict.py`, `predict_primary.py` AND `build_primary_dataset.py` -
+    the same three-way never-fork as the existing dedup key. Changes training features =>
+    full retrain.
+
+58. **VALIDATED 2026-08-08: extreme primary probabilities are earned, on the evidence we
+    have.** Prompted by "is Hong at 99.97% valid?". On the 102 held-out primary races
+    (2022+2024): every one of the **36 races called >99% was won** (36/36), and >95% went
+    98.5% (65/66). Calibration by race closeness is also sound - favourites in <5pt races are
+    called at .887 and win .905.
+    The model discriminates rather than being blanket-confident: among 10-20pt leaders it got
+    5 wrong, and it had flagged them - **losers averaged p=.736 vs winners p=.925**. Only one
+    of the five (Mitch Daniels, .968) was a high-confidence miss.
+    Caveat to keep: this is 102 races over two cycles, and >99% is a claim the data can
+    support only weakly at that sample size. Treat 36/36 as "no counter-evidence", not proof.
+
+    **Resolution (2026-08-08):** fixed by IDENTITY, not by a name-alias table -
+    `features.drop_duplicate_surveys()`, a second dedup pass keyed on
+    (race_id, cand_key, end_date, pct, sample_size). Two rows are the same survey when they
+    report the same number for the same candidate on the same date from the same sample,
+    whatever the source calls the pollster. Runs in all three places (never-fork):
+    `predict.py`, `predict_primary.py`, `build_primary_dataset.py`.
+
+    **Why not the alias table you would expect:** the names are the unreliable part, and a
+    table would have been WRONG here. `Barbara Jordan Public Policy Research and Survey
+    Center` and `Texas Southern University` publish identical numbers where n matches (one
+    survey, sponsor name + field house) but differ by up to **14 points** on 2025-08-12 where
+    n ALSO matches - different matchup questions inside one poll. A name-alias merge collapses
+    those; keying on the reported value keeps them apart. Sample size is what makes it safe.
+    Unit-tested for exactly this: differing pct survives, differing sample_size survives,
+    missing sample_size is untouched.
+
+    **Live effect:** primary feed -397 rows, general feed -46 rows, both now at ZERO remaining
+    duplicates. Race counts unchanged (131 general / 225 primary).
+
+59. **FIXED 2026-08-08: CONCERNS #21 (nickname duplicates in the GENERAL feed) is closed.**
+    Ported `features_primary.merge_nickname_aliases` into `predict.py` - **24 merges** in the
+    live feed. Found while fixing #57 because the two defects COMPOUND: "David W. Jolly" and
+    "David Jolly" (or "Edward J. Markey" / "Ed Markey") get different cand_keys, so 33
+    duplicate rows survived BOTH dedup passes purely because the candidate name differed.
+    Fixing the pollster side alone would have left those. `race_id` is now built before the
+    merge and both dedup passes, since all three are race-scoped.
+
+60. **MEASURED: the TRAINING data barely has this problem.** General training file: **21
+    duplicate rows of 34,983 keyed (0.06%)**, 11 races. Primary training file: **ZERO**
+    (build_primary_dataset.py's dedup already handled it).
+    More important, most of those 21 are NOT aliases - they are genuinely different firms
+    whose numbers coincided: `Monmouth`/`Susquehanna`, `SurveyUSA`/`Scott Rasmussen`,
+    `Rasmussen`/`RMG Research`, `Harris Insights`/`University of Wisconsin Survey Center`.
+    Removing them is defensible (identical numbers same day at the same n contribute nothing
+    twice) but it is a coin-flip which row survives, and the effect on training is negligible.
+    **Left alone deliberately** rather than retraining four models for 0.06% of rows. The fix
+    IS wired into build_primary_dataset.py, so it applies on the next rebuild of that dataset.

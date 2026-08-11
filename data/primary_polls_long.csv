@@ -725,14 +725,12 @@ year,state,office,district,party_std,candidate,cand_key,pct,pollster,sample_size
 2018,MD,Governor,,DEM,Richard Madaleno,madaleno r,2.0,Goucher College,324.0,,9/18/17,2018-06-26,2018_MD_Governor_DEM,0
 2018,MD,Governor,,DEM,Jim Shea,shea j,2.0,Goucher College,324.0,,9/18/17,2018-06-26,2018_MD_Governor_DEM,0
 2018,MD,Governor,,DEM,Krish Vignarajah,vignarajah k,1.0,Goucher College,324.0,,9/18/17,2018-06-26,2018_MD_Governor_DEM,0
-2018,ME,Governor,,REP,RCV round,round r,1.0,SurveyUSA,546.0,,5/1/18,2018-06-12,2018_ME_Governor_REP,0
 2018,ME,Governor,,REP,Ken Fredette,fredette k,10.0,SurveyUSA,546.0,,5/1/18,2018-06-12,2018_ME_Governor_REP,0
 2018,ME,Governor,,REP,Garrett Mason,mason g,15.0,SurveyUSA,546.0,,5/1/18,2018-06-12,2018_ME_Governor_REP,0
 2018,ME,Governor,,REP,Mary Mayhew,mayhew m,19.0,SurveyUSA,546.0,,5/1/18,2018-06-12,2018_ME_Governor_REP,0
 2018,ME,Governor,,REP,Shawn Moody,moody s,34.0,SurveyUSA,546.0,,5/1/18,2018-06-12,2018_ME_Governor_REP,1
 2018,ME,Governor,,REP,Susan Collins,collins s,33.0,Public Policy Polling,672.0,,8/2/17,2018-06-12,2018_ME_Governor_REP,0
 2018,ME,Governor,,REP,Mary Mayhew,mayhew m,44.0,Public Policy Polling,672.0,,8/2/17,2018-06-12,2018_ME_Governor_REP,0
-2018,ME,Governor,,DEM,RCV round,round r,1.0,SurveyUSA,649.0,,5/1/18,2018-06-12,2018_ME_Governor_DEM,0
 2018,ME,Governor,,DEM,Adam Cote,cote a,9.0,SurveyUSA,649.0,,5/1/18,2018-06-12,2018_ME_Governor_DEM,0
 2018,ME,Governor,,DEM,Donna Dion,dion d,2.0,SurveyUSA,649.0,,5/1/18,2018-06-12,2018_ME_Governor_DEM,0
 2018,ME,Governor,,DEM,Mark Dion,dion m,10.0,SurveyUSA,649.0,,5/1/18,2018-06-12,2018_ME_Governor_DEM,0

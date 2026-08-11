@@ -29,6 +29,7 @@ import pandas as pd
 import xgboost as xgb
 
 import features as F
+import features_primary as FP   # merge_nickname_aliases - shared with the primary path
 from cycles import natl_env as natl_env_hist
 from macro_features import build_macro
 
@@ -170,16 +171,37 @@ def load_agg_polls(paths, cycle):
     # surveys); the general feed had the same bug, 46 rows. Same key as predict_primary.py
     # and build_primary_dataset.py - keeping them in sync is the never-fork rule.
     before = len(d)
+
+    # race_id FIRST, because the nickname merge and both dedup passes are race-scoped.
+    # (It used to be built after dedup; moved up 2026-08-08 with the nickname port below.)
+    d["race_id"] = (d["year"].astype(str) + "_" + d["state"] + "_" + d["office"]
+                    + d["district"].map(F.dist_str).radd("-")
+                      .where(d["district"].map(F.dist_str) != "", ""))
+
+    # Nickname/variant merge, ported from the primary path 2026-08-08 (CONCERNS #21).
+    # The same person arrives from two sources as "David W. Jolly" / "David Jolly" and
+    # "Edward J. Markey" / "Ed Markey", which splits their polls across two cand_keys. That
+    # both DILUTES a leading candidate's poll_avg and defeats dedup: two rows reporting the
+    # identical survey no longer share a key, so they double-count. Found while fixing the
+    # duplicate-survey bug - the two defects compound, and 33 duplicate rows in the general
+    # feed survived both dedup passes purely because the candidate name differed.
+    d, n_merged = FP.merge_nickname_aliases(d)
+    if n_merged:
+        print(f"nickname-alias merges: {n_merged} candidate name variants unified")
+
     d["_pollster_key"] = d["pollster"].map(F.norm_pollster)
     d = (d.sort_values("_src_priority")
            .drop_duplicates(subset=["_pollster_key", "end_date", "year", "state",
                                     "office", "district", "cand_key"], keep="first")
            .drop(columns=["_src_priority", "_pollster_key"]))
+    # ...then survey-identity dedup, for the same survey filed under two different
+    # organisation NAMES (see F.drop_duplicate_surveys). Never-fork: the identical second
+    # pass runs in predict_primary.py and build_primary_dataset.py.
+    d, _ = F.drop_duplicate_surveys(d, label="general feed")
     print(f"polls loaded: {before} rows -> {len(d)} after dedup "
           f"({before - len(d)} duplicates removed)")
 
-    d["race_id"] = (d["year"].astype(str) + "_" + d["state"] + "_" + d["office"]
-                    + d["district"].map(F.dist_str).radd("-").where(d["district"].map(F.dist_str) != "", ""))
+    # (race_id is already built above, before the nickname merge and both dedup passes.)
     # Drop primary losers BEFORE the relative staleness rule. Order matters: the loser
     # filter is absolute (a called result), the stale filter is relative to the race's
     # newest poll, and a defeated candidate is never stale by that measure.

@@ -190,6 +190,54 @@ def is_junk_answer(name):
                          r"(?:rcv|ranked choice|instant runoff) round \d*|rcv round|"
                          r"someone else entirely|another candidate)$", s))
 
+def drop_duplicate_surveys(d, label=""):
+    """Second-pass dedup keyed on SURVEY IDENTITY, not on the pollster's name.
+
+    Added 2026-08-08. `norm_pollster` collapses spelling variants ("Glengariff Group, Inc."
+    vs "Glengariff Group"), but it cannot know that two genuinely DIFFERENT strings name the
+    same organisation. The live feed is full of these:
+
+        'Saint Anselm College'  ==  'St. Anselm'
+        'Remington'             ==  'Remington Research Group'
+        'Marquette Law School'  ==  'Marquette University'  ==  'Marquette University Law School'
+        'KSTP / SurveyUSA'      ==  'SurveyUSA'
+        'UT Tyler'              ==  'University of Texas at Tyler Center for Opinion Research'
+
+    37 such pairs were measurable in the 2026 primary feed, double-counting 740 poll rows
+    across 55 races (found 2026-08-08 investigating why Francesca Hong read 99.97% in
+    WI-Gov-DEM; the duplicates were not the cause there, but the bug is real).
+
+    WHY NOT A NAME-ALIAS TABLE: because names are the unreliable part. Two rows are the same
+    survey when they report the SAME percentage for the SAME candidate in the SAME race on the
+    SAME end_date from the SAME sample size - regardless of what the source calls the pollster.
+    Sample size is what makes this safe, and it is doing real work: 'Barbara Jordan Public
+    Policy Research and Survey Center' and 'Texas Southern University' publish IDENTICAL
+    numbers where n matches (that is one survey under a sponsor's name and the field house's
+    name) but differ by up to 14 points on 2025-08-12 where n also matches - different
+    matchup questions in one poll, which must NOT be merged. Keying on the reported value
+    itself keeps those apart, where a name-alias table would have silently merged them.
+
+    Deliberately conservative: rows missing sample_size are left alone (no key, no dedup), and
+    the pct must match exactly. This only ever removes a row that is byte-identical in the
+    fields that define a survey's result.
+    """
+    need = {"end_date", "pct", "sample_size", "race_id", "cand_key"}
+    if not need.issubset(d.columns):
+        return d, 0
+    keyed = d["sample_size"].notna() & d["pct"].notna()
+    if not keyed.any():
+        return d, 0
+    sub = d[keyed]
+    dup = sub.duplicated(subset=["race_id", "cand_key", "end_date", "pct", "sample_size"],
+                         keep="first")
+    n = int(dup.sum())
+    if n:
+        d = d.drop(index=sub.index[dup])
+        if label:
+            print(f"duplicate SURVEYS dropped ({label}): {n} rows - same race/candidate/date/"
+                  f"pct/sample-size under a different pollster NAME")
+    return d, n
+
 def best_other(s):
     """Per-row 'best OTHER value in the group' (NaN-safe): for the top value, the runner-up's
     value; for everyone else, the top value. Ties broken by position (first occurrence of the

@@ -100,6 +100,10 @@ def load_wiki_polls():
                                       "party_std", "cand_key"]).drop(columns="_pollster_key")
     if n_before - len(out):
         print(f"  cross-source duplicate poll rows dropped: {n_before - len(out)}")
+    # ...then survey-identity dedup (2026-08-08), for the same survey filed under two
+    # different organisation NAMES rather than two spellings of one. Never-fork: the identical
+    # second pass runs in predict.py and predict_primary.py. See F.drop_duplicate_surveys.
+    out, _ = F.drop_duplicate_surveys(out, label="primary training build")
     return out
 
 def nominee_sets():
