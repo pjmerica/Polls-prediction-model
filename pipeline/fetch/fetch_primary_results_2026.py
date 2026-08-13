@@ -53,6 +53,34 @@ URL_HOUSE = ("https://en.wikipedia.org/wiki/{year}_United_States_House_of_Repres
 
 PARTY_ROW = {"republican": "REP", "democratic": "DEM"}
 
+# State affiliates whose Wikipedia party label is NOT the bare national name. Exact-match on
+# PARTY_ROW silently skipped these, and a skipped party table means the whole race is absent
+# from primary_results_2026.csv - which makes drop_primary_losers() a SILENT NO-OP for it.
+#
+# Found 2026-08-12: Minnesota labels its rows "Democratic (DFL)" (Democratic-Farmer-Labor),
+# so the MN-Sen DFL primary never parsed. Flanagan beat Craig 59.0-39.4 on 2026-08-11, and
+# the general-election model kept scoring the DEFEATED Craig at 47.6% the next day. North
+# Dakota's "Democratic (NPL)" (Nonpartisan League) has the same shape.
+_PARTY_PREFIX = (
+    ("republican", "REP"),
+    ("democratic", "DEM"),   # covers "Democratic (DFL)", "Democratic (NPL)", "Democratic"
+    ("democratic-farmer-labor", "DEM"),
+    ("democratic–farmer–labor", "DEM"),   # en-dash spelling
+    ("dfl", "DEM"),
+)
+
+def party_from_label(cell):
+    """'Democratic (DFL)' -> 'DEM'. Prefix match, so state affiliates resolve to their
+    national party instead of being dropped. Returns None for anything unrecognised (a
+    third party, or a non-party cell), which callers treat as 'not a primary results row'."""
+    s = str(cell).strip().lower()
+    if s in PARTY_ROW:
+        return PARTY_ROW[s]
+    for pre, code in _PARTY_PREFIX:
+        if s.startswith(pre):
+            return code
+    return None
+
 def parse_results_tables(html, base_race_id, house=False, at_large=False):
     """[{race_id(+party), party, candidate, votes, pct, table_seq}] for every
     primary-context results table. race_id gets '-<district>' inserted for House.
@@ -104,7 +132,7 @@ def parse_results_tables(html, base_race_id, house=False, at_large=False):
             cells = [c.get_text(" ", strip=True) for c in els]
             if len(cells) < 4:
                 continue
-            party = PARTY_ROW.get(cells[1].strip().lower())
+            party = party_from_label(cells[1])   # prefix-aware: handles 'Democratic (DFL)'
             if party is None:
                 continue
             # TICKET cells: states electing Governor+LG jointly list 'Richard Cordray and

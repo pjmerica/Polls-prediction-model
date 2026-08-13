@@ -791,3 +791,58 @@ up a single dominant failure mode that had nothing to do with the model.
     twice) but it is a coin-flip which row survives, and the effect on training is negligible.
     **Left alone deliberately** rather than retraining four models for 0.06% of rows. The fix
     IS wired into build_primary_dataset.py, so it applies on the next rebuild of that dataset.
+
+61. **2026-08-11 primary post-mortem: 3 of 6 scoreable races MISSED, two at >=98.7%.**
+    | race | pick | p | actual |
+    |---|---|---|---|
+    | MN-Sen-REP | Tafoya | .999 | Tafoya (HIT) |
+    | WI-Gov-REP | Tiffany | .999 | Tiffany (HIT) |
+    | VT-Gov-DEM | Janoo | .858 | Janoo (HIT) |
+    | WI-Gov-DEM | Hong | **.999** | **Crowley** |
+    | MN-Gov-REP | Lindell | **.987** | **Demuth** (Lindell 3rd) |
+    | MN-Sen-DEM | Craig | .638 | **Flanagan** (by 19.6pts) |
+    Brier on the favourite: **0.40** - worse than a coin flip. Against the held-out record
+    (36/36 on calls >99%) this is a real break, not variance in the tail.
+
+    Three DIFFERENT failure modes, none of which the feature set can represent:
+    - **Late consolidation.** Crowley polled ~16% and won with 39.8% (+23.5pts). Mandela
+      Barnes withdrew 12 days out and his 18.7% went almost entirely to Crowley, not
+      proportionally. Nothing in the model represents "who inherits a withdrawn rival's vote".
+    - **Final-week collapse.** Lindell polled 34% in the last SurveyUSA and finished THIRD at
+      17.7%. `poll_last7` exists and is a PRIMARY-model feature, so this one is at least
+      partly measurable - worth checking whether it would have caught it.
+    - **Fundamentals overriding correct polls.** Craig trailed Flanagan 35.6-43.0 and the
+      model still picked Craig at .638. The poll-leader baseline would have got this right.
+
+    Note the roster question the user raised: Barnes/Rodriguez/Hughes were manually excluded
+    as withdrawn but REMAINED ON THE BALLOT (WI's deadline had passed) and took 8.6% between
+    them. That is real, but it is a footnote next to a 23.5pt swing - the exclusion did not
+    cause the miss.
+
+62. **FIXED 2026-08-12: `norm_name` turned a trailing party label into the SURNAME.**
+    "Amy Klobuchar (DFL)" keyed as `dfl a` - so it did not merge with "Amy Klobuchar"
+    (`klobuchar a`), AND it collided with "Angie Craig (DFL)", which also keyed `dfl a`.
+    Live effect: MN-Gov and MN-Sen each carried a phantom duplicate of their own front-runner
+    as a separate OTH candidate, splitting its probability (Klobuchar .62 + .28; Craig and
+    Flanagan each split ~.49 across two rows).
+    Fixed by stripping a trailing `(xxxx)` in `norm_name`. **Measured before shipping: 0 of
+    41,112 cached training keys change** (13 rows / 4 names, live feed only, all Minnesota),
+    so this is a serve-time fix and needed NO retrain and no re-key.
+
+63. **FIXED 2026-08-12: the results scraper dropped state party affiliates.**
+    `PARTY_ROW` exact-matched "republican"/"democratic", so Minnesota's **"Democratic (DFL)"**
+    rows never parsed - the MN-Sen DFL primary was simply absent from
+    `primary_results_2026.csv`. Consequence: `drop_primary_losers()` had no result rows for
+    that race and correctly no-opped, so the general model kept scoring **Angie Craig at
+    47.6% the day after she lost by 19.6 points**. North Dakota's "Democratic (NPL)" has the
+    same shape. Now prefix-matched via `party_from_label()`; MN Senate went from 1 party-race
+    parsed to 2, and the general race is now correctly Flanagan vs Tafoya.
+    **This is the third instance of the same failure shape** (#? primary_results missing in
+    CI, #57 pollster aliases, this): a lookup that silently yields nothing turns a filter into
+    a no-op, and nothing errors. Prefer prefix/normalised matching + a loud count over exact
+    dict lookups on scraped strings.
+
+    **Still open:** MN-Gov-REP remains absent because Wikipedia's table was a PARTIAL count
+    (17,187 votes) and the <25,000 guard correctly rejected it. The general model therefore
+    still scores Qualls and Lindell, who both lost to Demuth. Re-run the scraper once the
+    count completes.

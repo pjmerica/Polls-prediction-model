@@ -86,6 +86,17 @@ def norm_name(s):
     if pd.isna(s):
         return None
     s = unicodedata.normalize("NFKD", str(s)).encode("ascii", "ignore").decode().lower()
+    # Strip a TRAILING parenthetical party/label: "Amy Klobuchar (DFL)" -> "Amy Klobuchar".
+    # Added 2026-08-12. Without this the parenthetical became the last token and therefore the
+    # SURNAME, so "Amy Klobuchar (DFL)" keyed as 'dfl a' and "Angie Craig (DFL)" ALSO keyed as
+    # 'dfl a' - both a split (one person scored as two candidates, splitting their probability)
+    # and a collision (two different people sharing one key). Live effect: MN-Gov and MN-Sen
+    # each carried a phantom duplicate of their own front-runner.
+    # Anchored to the END and only for a short token, so a real parenthetical nickname used as
+    # a name (handled elsewhere by _cross_name_equiv) is untouched, and it never empties the
+    # string. Measured before shipping: 0 rows in either training file, 13 rows / 4 names in
+    # the live feed - so this is a serve-time fix and does NOT re-key training data.
+    s = re.sub(r"\s*\([a-z]{1,4}\)\s*$", " ", s)
     # collapse intra-word punctuation BEFORE the catch-all, so "o'rourke"/"o’rourke" and
     # "smith-jones"/"smith – jones" all land on one spelling instead of several.
     s = _HYPHEN_JOIN.sub("", s)     # hyphens join their two halves into one token
