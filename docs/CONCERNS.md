@@ -846,3 +846,43 @@ up a single dominant failure mode that had nothing to do with the model.
     (17,187 votes) and the <25,000 guard correctly rejected it. The general model therefore
     still scores Qualls and Lindell, who both lost to Demuth. Re-run the scraper once the
     count completes.
+
+64. **NULL RESULT 2026-08-14: fixing `undecided` does not help. Verdict: do not ship.**
+    The shipped feature is `100 - sum(poll_avg over candidates)`, clipped at 0, and the
+    diagnosis of it is correct and unchanged:
+    - It averages each candidate over ALL polls first and subtracts once, which is only valid
+      when every candidate appears in every poll. Where a pollster tests several separate
+      head-to-heads the per-candidate averages sum far past 100 (ME-Sen 2026: **315.7**,
+      MI-Sen: 172.7), and the clip drops those races onto exactly 0.0 - indistinguishable
+      from a race with genuinely no undecideds.
+    - **29% of 2026 races clip to 0 vs 0.6% of training races.** Correlation between the
+      shipped feature and a correct per-question version is **0.948 in training but 0.399 on
+      the 2026 feed** - they agree where the model LEARNED and disagree where it PREDICTS.
+
+    So a per-question replacement was built (`features.undecided_per_question`, computing
+    undecided inside each question then averaging, with a completeness guard requiring >=2
+    candidates and a 70-102 total). The guard is not optional: without it the 2026 mean came
+    out at 27.4% because 306 of 829 live questions carry only ONE candidate - rows whose
+    opponent an upstream filter removed. With it, the 2026 mean is **12.6 against a training
+    mean of 12.5**, which is the main evidence it measures the right quantity.
+
+    **It still did not help.** `analysis/undecided_ablation.py`, expanding window, mean over
+    2018-2024:
+
+        arm                       WIN Brier   WIN acc    MARGIN MAE   MARGIN R2
+        A current `undecided`      0.0702      .8666       7.0072      .8613
+        B corrected `undecided_q`  0.0703      .8623       7.0459      .8593
+        C both                     0.0703      .8623       6.9775      .8612
+        D NEITHER                  0.0702      .8655       6.9767      .8611
+
+    B is WORSE than A on margin, and the best margin arm is **D - dropping undecided
+    entirely**. The prior (that this would help MARGIN, since undecideds move the leader's
+    poll error monotonically from +1.2pts to +10.8pts) was wrong about the mechanism: the
+    model already reads that pool through `poll_share` / `poll_avg` / `poll_lead`, because a
+    candidate at 45% in a race summing to 90 already encodes it. That redundancy is also why
+    `undecided` scores ~0 gain in both models - it was never a broken-formula problem.
+
+    All arms are within 0.04 MAE on 4 eval cycles, so picking a winner fits noise. **No
+    retrain, no production change.** `undecided_q` stays in the codebase but OUT of
+    `feature_list()`, per the analysis/README rule that negative results stay so the decision
+    does not look arbitrary and nobody redoes the work.

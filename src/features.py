@@ -794,6 +794,68 @@ def candidate_poll_adj(d, house):
 
 # ---------------------------------------------------------------- main builder
 
+def undecided_per_question(d, min_cands=2, lo=70.0, hi=102.0):
+    """{race_id: mean undecided %} computed PER QUESTION, then averaged over the race.
+
+    Added 2026-08-14 as the ablation candidate against the existing `undecided`, which is
+
+        100 - sum(poll_avg over candidates), clipped at 0
+
+    and has two structural faults:
+
+    1. WRONG UNIT. "Undecided" only means anything inside ONE question. Averaging each
+       candidate over all polls first, then subtracting once, is equivalent only when every
+       candidate appears in every poll. In races where a pollster tests several separate
+       head-to-heads, the per-candidate averages sum far past 100: ME-Senate 2026 sums to
+       315.7 (Collins polled against six different Democrats), MI-Senate to 172.7.
+    2. THE CLIP HIDES IT. Those races land on exactly 0.0, indistinguishable from a race
+       with genuinely no undecideds. 29% of 2026 races were clipped vs 0.6% of training
+       races - a serve-time distribution the model never saw while fitting.
+
+    Computing per question is immune to pooling: each head-to-head sums to ~100 on its own.
+
+    THE COMPLETENESS GUARD IS NOT OPTIONAL. A first attempt without it returned a 27.4% mean
+    (vs 12.5% in training) because 306 of 829 live questions carry only ONE candidate and 39%
+    sum under 60 - rows whose opponent was dropped by an upstream filter. Those read as
+    enormous fake undecided. Requiring >=2 candidates and a plausible total (70-102) brings
+    the 2026 mean to 12.6 against a training mean of 12.5, which is the main evidence this
+    version is measuring the right thing.
+
+    Returns NaN for a race with no usable question - never 0. Zero is a real value here
+    ("everyone has decided"); absence is not (see the NaN-not-zero rule in AGENTS.md).
+
+    ABLATED 2026-08-14 AND NOT SHIPPED. `analysis/undecided_ablation.py`, expanding window,
+    four arms x both models. Mean over 2018-2024:
+
+        arm                       WIN Brier   WIN acc    MARGIN MAE   MARGIN R2
+        A current `undecided`      0.0702      .8666       7.0072      .8613
+        B corrected `undecided_q`  0.0703      .8623       7.0459      .8593
+        C both                     0.0703      .8623       6.9775      .8612
+        D NEITHER                  0.0702      .8655       6.9767      .8611
+
+    The corrected version is not better - it is slightly WORSE than the current one on
+    margin. And the best margin arm is D, dropping the feature entirely. The prior was that
+    fixing the formula would help margin, because undecideds have a clean monotonic effect on
+    the leader's poll error (+1.2pts at 0-5% undecided rising to +10.8pts above 25%). They do
+    - but the model already reads that through poll_share / poll_avg / poll_lead: a candidate
+    at 45% in a race summing to 90 already encodes a large undecided pool. The explicit
+    feature is redundant, which is also why `undecided` scores ~0 gain in both models.
+
+    All arms sit within 0.04 MAE of each other on 4 eval cycles, so choosing a winner would
+    be fitting noise. Kept in the codebase, out of feature_list(): the DIAGNOSIS still stands
+    (the shipped `undecided` really is broken at serve time - correlation with this version is
+    0.948 in training but 0.399 on the 2026 feed, and 29% of 2026 races clip to a meaningless
+    0 vs 0.6% of training races), so if pooling worsens or someone revisits this, the correct
+    implementation and its evidence are already here.
+    """
+    if "question_id" in d.columns and d["question_id"].notna().any():
+        key = ["race_id", "question_id"]
+    else:                                   # pre-538 archives / any feed without it
+        key = ["race_id", "poll_id"]
+    q = d.groupby(key)["pct"].agg(["sum", "size"])
+    ok = q[(q["size"] >= min_cands) & q["sum"].between(lo, hi)]
+    return (100.0 - ok["sum"]).clip(0, 100).groupby(level="race_id").mean()
+
 def build_candidate_table(d, macro, natl_env_map, funds, house_train_years=None, house=None,
                           fec=None, bias_priors=None, primary_results=None,
                           candidate_bios=None):
@@ -1019,6 +1081,7 @@ def build_candidate_table(d, macro, natl_env_map, funds, house_train_years=None,
     c["abs_gap"] = c["race_id"].map(tp.abs())
     c["tossup"] = (c["abs_gap"] < 3).astype(int)
     c["undecided"] = (100 - c.groupby("race_id")["poll_avg"].transform("sum")).clip(lower=0)
+    c["undecided_q"] = c["race_id"].map(undecided_per_question(d))
     c["gap_x_recency"] = c["poll_lead"] * (1.0 / (1.0 + c["min_days"].clip(lower=0) / 30.0))
     return c
 

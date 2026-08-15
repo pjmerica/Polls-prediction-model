@@ -11,6 +11,7 @@ testable rather than trapped in cells.
 |---|---|---|
 | `fundamentals_vs_polls_thin.py` | Do the no-polling models beat the poll models on thin-poll races? | **No.** |
 | `fundamentals_on_unpolled.py` | Does the fundamentals model work where polls don't exist at all? | see script |
+| `undecided_ablation.py` | Does a correctly-computed per-question `undecided` beat the shipped one? | **No.** Neither helps; dropping it entirely is the best margin arm. CONCERNS #64 |
 | `poll_volume_breakpoint.{ipynb,py}` | At what poll count does each model break down? | see notebook |
 | `primary_backtest_2026.ipynb` | Backtest of the primary model on 2026 | — |
 | `score_candidate_history.py` | Out-of-fold win + margin predictions per candidate → CSV | — |
