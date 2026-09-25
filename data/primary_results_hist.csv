@@ -285,11 +285,6 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2018_OR_Governor_REP,REP,Keenan Bohach,787,0.3,2,False,bohach k
 2018_OR_Governor_REP,REP,Brett Hyland,755,0.2,2,False,hyland b
 2018_OR_Governor_REP,REP,Jack W. Tacy,512,0.2,2,False,tacy j
-2018_PA_Governor_DEM,DEM,John Fetterman,288229,38.0,2,True,fetterman j
-2018_PA_Governor_DEM,DEM,Nina Ahmad,182309,23.8,2,False,ahmad n
-2018_PA_Governor_DEM,DEM,Kathi Cozzone,142410,18.6,2,False,cozzone k
-2018_PA_Governor_DEM,DEM,Mike Stack,127259,16.6,2,False,stack m
-2018_PA_Governor_DEM,DEM,Ray Sosa,27427,3.6,2,False,sosa r
 2018_PA_Governor_REP,REP,Jeff Bartos,317619,46.8,4,True,bartos j
 2018_PA_Governor_REP,REP,Kathy Coder,147805,21.8,4,False,coder k
 2018_PA_Governor_REP,REP,Diana Irey Vaughan,119400,17.6,4,False,vaughan d
@@ -320,8 +315,8 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2018_TN_Governor_REP,REP,Kay White,3215,0.41,1,False,white k
 2018_TN_Governor_REP,REP,Basil Marceaux,1264,0.16,1,False,marceaux b
 2018_TN_Governor_DEM,DEM,Karl Dean,280553,75.14,2,True,dean k
-2018_TN_Governor_DEM,DEM,Craig Fitzhugh,72553,23.42,2,False,fitzhugh c
-2018_TN_Governor_DEM,DEM,Mezianne Vale Payne,20284,5.44,2,False,payne m
+2018_TN_Governor_DEM,DEM,Craig Fitzhugh,72553,19.43,2,False,fitzhugh c
+2018_TN_Governor_DEM,DEM,Mezianne Vale Payne,20284,5.43,2,False,payne m
 2018_TN_Senate_REP,REP,Marsha Blackburn,613513,84.48,1,True,blackburn m
 2018_TN_Senate_REP,REP,Aaron Pettigrew,112705,15.52,1,False,pettigrew a
 2018_TN_Senate_DEM,DEM,Phil Bredesen,349718,91.51,2,True,bredesen p

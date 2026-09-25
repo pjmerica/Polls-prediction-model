@@ -1304,25 +1304,25 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2008_NJ_House-8_REP,REP,Roland Straten,5859,100.0,16,True,straten r
 2008_NJ_House-9_DEM,DEM,Steve Rothman,25418,100.0,17,True,rothman s
 2008_NJ_House-9_REP,REP,Vincent Micco,5797,100.0,18,True,micco v
-2008_NM_House-1_DEM,DEM,Martin T. Heinrich,22344,44.0,1,True,heinrich m
-2008_NM_House-1_DEM,DEM,Rebecca D. Vigil-Giron,12659,25.0,1,False,vigilgiron r
-2008_NM_House-1_DEM,DEM,Michelle Lujan Grisham,12073,24.0,1,False,grisham m
-2008_NM_House-1_DEM,DEM,Robert L. Pidcock,4272,8.0,1,False,pidcock r
+2008_NM_House-1_DEM,DEM,Martin T. Heinrich,22344,43.51,1,True,heinrich m
+2008_NM_House-1_DEM,DEM,Rebecca D. Vigil-Giron,12659,24.65,1,False,vigilgiron r
+2008_NM_House-1_DEM,DEM,Michelle Lujan Grisham,12073,23.51,1,False,grisham m
+2008_NM_House-1_DEM,DEM,Robert L. Pidcock,4272,8.32,1,False,pidcock r
 2008_NM_House-1_REP,REP,Darren White,57878,88.0,2,True,white d
 2008_NM_House-1_REP,REP,Joseph J. Carraro,8244,12.0,2,False,carraro j
 2008_NM_House-2_DEM,DEM,Harry Teague,20206,52.0,3,True,teague h
 2008_NM_House-2_DEM,DEM,Bill McCamley,18489,48.0,3,False,mccamley b
-2008_NM_House-2_REP,REP,Edward R. Tinsley III,11469,32.0,4,True,tinsley e
-2008_NM_House-2_REP,REP,Monty Newman,7476,21.0,4,False,newman m
-2008_NM_House-2_REP,REP,Aubrey Dunn,7331,20.0,4,False,dunn a
-2008_NM_House-2_REP,REP,Greg Sowards,6427,18.0,4,False,sowards g
-2008_NM_House-2_REP,REP,C. Earl Greer,3606,10.0,4,False,greer c
-2008_NM_House-3_DEM,DEM,Ben R. Luján,26776,42.0,5,True,lujan b
-2008_NM_House-3_DEM,DEM,Don Wiviott,16497,26.0,5,False,wiviott d
-2008_NM_House-3_DEM,DEM,Benny J. Shendo Jr,10148,16.0,5,False,shendo b
-2008_NM_House-3_DEM,DEM,Harry Montoya,7234,11.0,5,False,montoya h
-2008_NM_House-3_DEM,DEM,Jon Adams,1979,3.0,5,False,adams j
-2008_NM_House-3_DEM,DEM,Rudy Martin,1845,3.0,5,False,martin r
+2008_NM_House-2_REP,REP,Edward R. Tinsley III,11469,31.59,4,True,tinsley e
+2008_NM_House-2_REP,REP,Monty Newman,7476,20.59,4,False,newman m
+2008_NM_House-2_REP,REP,Aubrey Dunn,7331,20.19,4,False,dunn a
+2008_NM_House-2_REP,REP,Greg Sowards,6427,17.7,4,False,sowards g
+2008_NM_House-2_REP,REP,C. Earl Greer,3606,9.93,4,False,greer c
+2008_NM_House-3_DEM,DEM,Ben R. Luján,26776,41.53,5,True,lujan b
+2008_NM_House-3_DEM,DEM,Don Wiviott,16497,25.59,5,False,wiviott d
+2008_NM_House-3_DEM,DEM,Benny J. Shendo Jr,10148,15.74,5,False,shendo b
+2008_NM_House-3_DEM,DEM,Harry Montoya,7234,11.22,5,False,montoya h
+2008_NM_House-3_DEM,DEM,Jon Adams,1979,3.07,5,False,adams j
+2008_NM_House-3_DEM,DEM,Rudy Martin,1845,2.86,5,False,martin r
 2008_NM_House-3_REP,REP,Daniel East,14767,54.0,6,True,east d
 2008_NM_House-3_REP,REP,Marco Gonzales,12634,46.0,6,False,gonzales m
 2008_NV_House-1_DEM,DEM,Shelley Berkley,19444,89.7,1,True,berkley s
@@ -1743,7 +1743,7 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2010_MO_House-7_REP,REP,Billy Long,38218,36.56,12,True,long b
 2010_MO_House-7_REP,REP,Jack Goodman,30401,29.08,12,False,goodman j
 2010_MO_House-7_REP,REP,Gary Nodler,14561,13.93,12,False,nodler g
-2010_MO_House-7_REP,REP,Darrell Moore,9312,13.93,12,False,moore d
+2010_MO_House-7_REP,REP,Darrell Moore,9312,8.91,12,False,moore d
 2010_MO_House-7_REP,REP,Jeff Wisdom,4552,4.35,12,False,wisdom j
 2010_MO_House-7_REP,REP,Mike Moon,4473,4.28,12,False,moon m
 2010_MO_House-7_REP,REP,Steve Hunter,2173,2.08,12,False,hunter s
@@ -2298,8 +2298,8 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2012_GA_House-13_REP,REP,Shahid Malik,28693,100.0,27,True,malik s
 2012_GA_House-14_DEM,DEM,Danny Grant,10228,100.0,29,True,grant d
 2012_GA_House-14_REP,REP,Tom Graves,65873,100.0,28,True,graves t
-2012_GA_House-1_DEM,DEM,Nathan C. Russo,55880,45.7,2,True,russo n
-2012_GA_House-1_DEM,DEM,Lesli Rae Messinger,15390,54.3,2,False,messinger l
+2012_GA_House-1_DEM,DEM,Nathan C. Russo,55880,78.41,2,True,russo n
+2012_GA_House-1_DEM,DEM,Lesli Rae Messinger,15390,21.59,2,False,messinger l
 2012_GA_House-1_REP,REP,Jack Kingston,61353,100.0,1,True,kingston j
 2012_GA_House-2_DEM,DEM,Sanford Bishop,68981,100.0,3,True,bishop s
 2012_GA_House-2_REP,REP,John House,2705,55.0,5,True,house j
@@ -2456,14 +2456,14 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2012_IN_House-4_REP,REP,Todd Rokita,73089,100.0,7,True,rokita t
 2012_IN_House-5_DEM,DEM,Scott Reske,13175,63.1,10,True,reske s
 2012_IN_House-5_DEM,DEM,Tony Long,7692,36.9,10,False,long t
-2012_IN_House-5_REP,REP,Susan Brooks,31185,30.2,9,True,brooks s
-2012_IN_House-5_REP,REP,David McIntosh,30175,29.2,9,False,mcintosh d
-2012_IN_House-5_REP,REP,John McGoff,23773,23.0,9,False,mcgoff j
-2012_IN_House-5_REP,REP,Wayne Seybold,11874,11.5,9,False,seybold w
-2012_IN_House-5_REP,REP,Jack Lugar,4758,4.6,9,False,lugar j
-2012_IN_House-5_REP,REP,Jason Anderson,1036,1.0,9,False,anderson j
-2012_IN_House-5_REP,REP,Bill Salin,869,0.8,9,False,salin b
-2012_IN_House-5_REP,REP,Matthew Mount,453,0.4,9,False,mount m
+2012_IN_House-5_REP,REP,Susan Brooks,31185,29.95,9,True,brooks s
+2012_IN_House-5_REP,REP,David McIntosh,30175,28.98,9,False,mcintosh d
+2012_IN_House-5_REP,REP,John McGoff,23773,22.83,9,False,mcgoff j
+2012_IN_House-5_REP,REP,Wayne Seybold,11874,11.4,9,False,seybold w
+2012_IN_House-5_REP,REP,Jack Lugar,4758,4.57,9,False,lugar j
+2012_IN_House-5_REP,REP,Jason Anderson,1036,0.99,9,False,anderson j
+2012_IN_House-5_REP,REP,Bill Salin,869,0.83,9,False,salin b
+2012_IN_House-5_REP,REP,Matthew Mount,453,0.44,9,False,mount m
 2012_IN_House-6_DEM,DEM,Bradley T. Bookout,8278,30.9,12,True,bookout b
 2012_IN_House-6_DEM,DEM,Susan Hall Heitzman,7077,26.5,12,False,heitzman s
 2012_IN_House-6_DEM,DEM,Jim Crone,5611,21.0,12,False,crone j
@@ -2539,10 +2539,10 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2012_MA_House-3_REP,REP,Jonathan Golnik,12928,66.3,4,True,golnik j
 2012_MA_House-3_REP,REP,Thomas Weaver,6527,33.5,4,False,weaver t
 2012_MA_House-3_REP,REP,Write-ins,38,0.2,4,False,writeins
-2012_MA_House-4_DEM,DEM,"Joseph P. Kennedy, III",36557,90.0,5,True,kennedy j
-2012_MA_House-4_DEM,DEM,Herb Robinson,6059,3.4,5,False,robinson h
-2012_MA_House-4_DEM,DEM,Rachel Brown,2635,6.5,5,False,brown r
-2012_MA_House-4_DEM,DEM,Write-ins,73,0.1,5,False,writeins
+2012_MA_House-4_DEM,DEM,"Joseph P. Kennedy, III",36557,80.66,5,True,kennedy j
+2012_MA_House-4_DEM,DEM,Herb Robinson,6059,13.37,5,False,robinson h
+2012_MA_House-4_DEM,DEM,Rachel Brown,2635,5.81,5,False,brown r
+2012_MA_House-4_DEM,DEM,Write-ins,73,0.16,5,False,writeins
 2012_MA_House-4_REP,REP,Sean Bielat,14834,73.2,6,True,bielat s
 2012_MA_House-4_REP,REP,Elizabeth Childs,2735,13.5,6,False,childs e
 2012_MA_House-4_REP,REP,David L. Steinhof,2669,13.2,6,False,steinhof d
@@ -3221,10 +3221,6 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2012_TX_House-25_REP,REP,Wes Riddle,19210,42.0,45,False,riddle w
 2012_TX_House-26_DEM,DEM,David Sanchez,3682,100.0,48,True,sanchez d
 2012_TX_House-26_REP,REP,Michael Burgess,33605,100.0,47,True,burgess m
-2012_TX_House-27_DEM,DEM,Jerry Trevino,8231,39.8,50,True,trevino j
-2012_TX_House-27_DEM,DEM,Rose Meza Harrison,7024,60.6,50,False,harrison r
-2012_TX_House-27_DEM,DEM,Ronnie McDonald,5682,27.5,50,False,mcdonald r
-2012_TX_House-27_DEM,DEM,Murphy Alade Junaid,432,2.1,50,False,junaid m
 2012_TX_House-27_REP,REP,Blake Farenthold,28058,70.8,49,True,farenthold b
 2012_TX_House-27_REP,REP,Trey Roberts,4653,11.7,49,False,roberts t
 2012_TX_House-27_REP,REP,Don Al Middlebrook,3676,9.3,49,False,middlebrook d
@@ -3248,17 +3244,17 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2012_TX_House-33_DEM,DEM,Domingo Garcia,9653,47.27,60,False,garcia d
 2012_TX_House-33_REP,REP,Chuck Bradley,3706,63.78,61,True,bradley c
 2012_TX_House-33_REP,REP,Charles King,2104,36.21,61,False,king c
-2012_TX_House-34_DEM,DEM,Filemon Vela Jr.,18233,40.5,62,True,vela f
-2012_TX_House-34_DEM,DEM,Denise Blanchard,7824,33.4,62,False,blanchard d
-2012_TX_House-34_DEM,DEM,Ramiro Garza Jr.,5575,12.4,62,False,garza r
-2012_TX_House-34_DEM,DEM,Salomon Torres,4745,10.5,62,False,torres s
-2012_TX_House-34_DEM,DEM,Armando Villalobos,3926,8.7,62,False,villalobos a
-2012_TX_House-34_DEM,DEM,Anthony Troiani,3638,8.1,62,False,troiani a
-2012_TX_House-34_DEM,DEM,Juan Angel Guerra,2200,4.9,62,False,guerra j
-2012_TX_House-34_DEM,DEM,Elmo Aycock,935,2.1,62,False,aycock e
-2012_TX_House-34_REP,REP,Jessica Bradshaw,5309,55.3,63,True,bradshaw j
-2012_TX_House-34_REP,REP,Adela Garza,4632,36.3,63,False,garza a
-2012_TX_House-34_REP,REP,Paul Haring,3710,29.1,63,False,haring p
+2012_TX_House-34_DEM,DEM,Filemon Vela Jr.,18233,38.73,62,True,vela f
+2012_TX_House-34_DEM,DEM,Denise Blanchard,7824,16.62,62,False,blanchard d
+2012_TX_House-34_DEM,DEM,Ramiro Garza Jr.,5575,11.84,62,False,garza r
+2012_TX_House-34_DEM,DEM,Salomon Torres,4745,10.08,62,False,torres s
+2012_TX_House-34_DEM,DEM,Armando Villalobos,3926,8.34,62,False,villalobos a
+2012_TX_House-34_DEM,DEM,Anthony Troiani,3638,7.73,62,False,troiani a
+2012_TX_House-34_DEM,DEM,Juan Angel Guerra,2200,4.67,62,False,guerra j
+2012_TX_House-34_DEM,DEM,Elmo Aycock,935,1.99,62,False,aycock e
+2012_TX_House-34_REP,REP,Jessica Bradshaw,5309,38.89,63,True,bradshaw j
+2012_TX_House-34_REP,REP,Adela Garza,4632,33.93,63,False,garza a
+2012_TX_House-34_REP,REP,Paul Haring,3710,27.18,63,False,haring p
 2012_TX_House-35_DEM,DEM,Lloyd Doggett,14559,73.3,64,True,doggett l
 2012_TX_House-35_DEM,DEM,Sylvia Romo,4212,21.2,64,False,romo s
 2012_TX_House-35_DEM,DEM,Maria Alvarado,1105,5.6,64,False,alvarado m
@@ -3987,8 +3983,8 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2014_NY_House-13_DEM,DEM,Adriano Espaillat,21477,43.1,8,False,espaillat a
 2014_NY_House-13_DEM,DEM,"Michael A. Walrond, Jr.",3954,7.9,8,False,walrond m
 2014_NY_House-13_DEM,DEM,Yolanda Garcia,597,1.2,8,False,garcia y
-2014_NY_House-15_DEM,DEM,Jose E. Serrano,10346,91.9,9,True,serrano j
-2014_NY_House-15_DEM,DEM,Sam Sloan,1004,8.8,9,False,sloan s
+2014_NY_House-15_DEM,DEM,Jose E. Serrano,10346,91.15,9,True,serrano j
+2014_NY_House-15_DEM,DEM,Sam Sloan,1004,8.85,9,False,sloan s
 2014_NY_House-1_REP,REP,Lee Zeldin,10283,61.3,1,True,zeldin l
 2014_NY_House-1_REP,REP,George Demos,6482,38.7,1,False,demos g
 2014_NY_House-21_REP,REP,Elise Stefanik,16489,60.8,11,True,stefanik e
@@ -9289,13 +9285,13 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2022_NC_House-3_REP,REP,Eric Earhart,3274,4.9,4,False,earhart e
 2022_NC_House-3_REP,REP,George Papastrat,1789,2.7,4,False,papastrat g
 2022_NC_House-3_REP,REP,Brian Michael Friend,1698,2.6,4,False,friend b
-2022_NC_House-4_DEM,DEM,Valerie Foushee,40806,46.07,6,True,foushee v
-2022_NC_House-4_DEM,DEM,Nida Allam,32731,36.95,6,False,allam n
+2022_NC_House-4_DEM,DEM,Valerie Foushee,40806,46.08,6,True,foushee v
+2022_NC_House-4_DEM,DEM,Nida Allam,32731,36.96,6,False,allam n
 2022_NC_House-4_DEM,DEM,Clay Aiken,6529,7.37,6,False,aiken c
 2022_NC_House-4_DEM,DEM,Ashley Ward,4767,5.38,6,False,ward a
 2022_NC_House-4_DEM,DEM,Richard Watkins III,1155,1.3,6,False,watkins r
 2022_NC_House-4_DEM,DEM,Crystal Cavalier,1116,1.26,6,False,cavalier c
-2022_NC_House-4_DEM,DEM,Stephen Valentine,1023,1.55,6,False,valentine s
+2022_NC_House-4_DEM,DEM,Stephen Valentine,1023,1.16,6,False,valentine s
 2022_NC_House-4_DEM,DEM,Matt Grooms,435,0.49,6,False,grooms m
 2022_NC_House-4_REP,REP,Courtney Geels,19645,64.5,7,True,geels c
 2022_NC_House-4_REP,REP,Robert Thomas,10793,35.5,7,False,thomas r

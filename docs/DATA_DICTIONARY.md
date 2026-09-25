@@ -100,10 +100,11 @@ missing `stage` there doesn't mean "unknown."
 |---|---|---|---|
 | `has_result` | int | 0.0% | **1 if this poll-candidate matched an election result, else 0.** Filter to 1 to model. |
 | `won` | float | 24.4% | **The label: 1 if the candidate won the (general) race, else 0.** Null when `has_result==0` (e.g. 2026 future races, name-match misses). |
-| `vote_pct` | float | 24.4% | Candidate's actual vote share. *Outcome — never a feature.* |
+| `vote_pct` | float | 24.4% | Candidate's actual vote share: the SUM of their fusion ballot lines (NY/CT/SC) in RCV ROUND 1 (ME/AK), from `src/results_labels.py`. Before 2026-09-25 it was one arbitrary line/round (Murphy CT-Sen 2024 read 2.75, not 58.58). *Outcome — never a feature.* |
 | `res_candidate` | str | 24.4% | Candidate name as it appears in the results file. |
 | `res_party` | str | 24.4% | Normalized party from results (from `ballot_party`). |
-| `race_winning_pct` | float | 24.4% | Winning candidate's vote share in that race. *Outcome — never a feature.* |
+| `race_winning_pct` | float | 24.4% | Top candidate's (aggregated) vote share in that race. *Outcome — never a feature.* |
+| `best_other_pct` | float | 24.4% | Best OTHER candidate's (aggregated) vote share over the whole RESULTS field, not the polled subset. The margin model's target is `vote_pct - best_other_pct`. Added 2026-09-25. *Outcome — never a feature.* |
 
 > The 24.4% missingness on the result columns = poll-candidates with no matched result: almost
 > entirely **2026 (future, no result yet)** plus a small share of name-match misses. Among

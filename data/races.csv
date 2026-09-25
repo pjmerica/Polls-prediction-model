@@ -1467,7 +1467,7 @@ id,type,state_abbrev,State,office_id,office_name,office_seat_name,cycle,stage,pa
 1475,SenateRace,CT,Connecticut,106,U.S. Senate,Class I,2012,general,,false,IND,11/6/12,DEM,2/12/19 01:20,10/14/21 11:14
 1512,SenateRace,CT,Connecticut,107,U.S. Senate,Class III,2010,general,,false,DEM,11/2/10,DEM,2/12/19 01:20,10/14/21 11:14
 1549,SenateRace,DE,Delaware,111,U.S. Senate,Class II,2008,general,,false,DEM,11/4/08,DEM,2/12/19 01:20,10/14/21 11:14
-1513,SenateRace,DE,Delaware,111,U.S. Senate,Class II,2010,general,,true,vacant,11/2/10,DEM,2/12/19 01:20,10/14/21 11:14
+1513,SenateRace,DE,Delaware,111,U.S. Senate,Class II,2010,general,,true,DEM,11/2/10,DEM,2/12/19 01:20,10/14/21 11:14
 1477,SenateRace,FL,Florida,138,U.S. Senate,Class I,2012,general,,false,DEM,11/6/12,DEM,2/12/19 01:20,10/14/21 11:14
 1514,SenateRace,FL,Florida,139,U.S. Senate,Class III,2010,general,,false,REP,11/2/10,REP,2/12/19 01:20,10/14/21 11:14
 1550,SenateRace,GA,Georgia,154,U.S. Senate,Class II,2008,general,,false,REP,11/4/08,REP,2/12/19 01:20,10/14/21 11:14
@@ -1476,8 +1476,8 @@ id,type,state_abbrev,State,office_id,office_name,office_seat_name,cycle,stage,pa
 1516,SenateRace,HI,Hawaii,160,U.S. Senate,Class III,2010,general,,false,DEM,11/2/10,DEM,2/12/19 01:20,10/14/21 11:14
 1521,SenateRace,IA,Iowa,168,U.S. Senate,Class III,2010,general,,false,REP,11/2/10,REP,2/12/19 01:20,10/14/21 11:14
 1517,SenateRace,ID,Idaho,173,U.S. Senate,Class III,2010,general,,false,REP,11/2/10,REP,2/12/19 01:20,10/14/21 11:14
-1518,SenateRace,IL,Illinois,195,U.S. Senate,Class III,2010,general,,false,vacant,11/2/10,REP,2/12/19 01:20,10/14/21 11:14
-1519,SenateRace,IL,Illinois,195,U.S. Senate,Class III,2010,general,,true,vacant,11/2/10,REP,2/12/19 01:20,10/14/21 11:14
+1518,SenateRace,IL,Illinois,195,U.S. Senate,Class III,2010,general,,false,DEM,11/2/10,REP,2/12/19 01:20,10/14/21 11:14
+1519,SenateRace,IL,Illinois,195,U.S. Senate,Class III,2010,general,,true,DEM,11/2/10,REP,2/12/19 01:20,10/14/21 11:14
 1479,SenateRace,IN,Indiana,206,U.S. Senate,Class I,2012,general,,false,REP,11/6/12,DEM,2/12/19 01:20,10/14/21 11:14
 1520,SenateRace,IN,Indiana,207,U.S. Senate,Class III,2010,general,,false,DEM,11/2/10,REP,2/12/19 01:20,10/14/21 11:14
 1522,SenateRace,KS,Kansas,214,U.S. Senate,Class III,2010,general,,false,REP,11/2/10,REP,2/12/19 01:20,10/14/21 11:14
@@ -1499,7 +1499,7 @@ id,type,state_abbrev,State,office_id,office_name,office_seat_name,cycle,stage,pa
 1488,SenateRace,NE,Nebraska,339,U.S. Senate,Class I,2012,general,,false,DEM,11/6/12,REP,2/12/19 01:20,10/14/21 11:14
 1529,SenateRace,NH,New Hampshire,345,U.S. Senate,Class III,2010,general,,false,REP,11/2/10,REP,2/12/19 01:20,10/14/21 11:14
 1490,SenateRace,NJ,New Jersey,360,U.S. Senate,Class I,2012,general,,false,DEM,11/6/12,DEM,2/12/19 01:20,10/14/21 11:14
-1471,SenateRace,NJ,New Jersey,361,U.S. Senate,Class II,2013,general,,true,vacant,10/16/13,DEM,2/12/19 01:20,10/14/21 11:14
+1471,SenateRace,NJ,New Jersey,361,U.S. Senate,Class II,2013,general,,true,REP,10/16/13,DEM,2/12/19 01:20,10/14/21 11:14
 1491,SenateRace,NM,New Mexico,366,U.S. Senate,Class I,2012,general,,false,DEM,11/6/12,DEM,2/12/19 01:20,10/14/21 11:14
 1489,SenateRace,NV,Nevada,372,U.S. Senate,Class I,2012,general,,false,REP,11/6/12,REP,2/12/19 01:20,10/14/21 11:14
 1528,SenateRace,NV,Nevada,373,U.S. Senate,Class III,2010,general,,false,DEM,11/2/10,DEM,2/12/19 01:20,10/14/21 11:14
@@ -8537,7 +8537,7 @@ id,type,state_abbrev,State,office_id,office_name,office_seat_name,cycle,stage,pa
 8936,SenateRace,MO,Missouri,303,U.S. Senate,Class III,2022,general,,false,REP,11/8/22,REP,1/20/21 13:14,1/20/21 13:14
 8937,SenateRace,NV,Nevada,373,U.S. Senate,Class III,2022,general,,false,DEM,11/8/22,DEM,1/20/21 13:14,1/20/21 13:14
 8938,SenateRace,NH,New Hampshire,345,U.S. Senate,Class III,2022,general,,false,DEM,11/8/22,DEM,1/20/21 13:14,1/20/21 13:14
-8939,SenateRace,NY,New York,405,U.S. Senate,Class III,2022,general,,false,REP,11/8/22,DEM,1/20/21 13:14,1/20/21 13:14
+8939,SenateRace,NY,New York,405,U.S. Senate,Class III,2022,general,,false,DEM,11/8/22,DEM,1/20/21 13:14,1/20/21 13:14
 8940,SenateRace,NC,North Carolina,330,U.S. Senate,Class III,2022,general,,false,REP,11/8/22,REP,1/20/21 13:14,1/20/21 13:14
 8941,SenateRace,ND,North Dakota,334,U.S. Senate,Class III,2022,general,,false,REP,11/8/22,REP,1/20/21 13:14,1/20/21 13:14
 8942,SenateRace,OH,Ohio,426,U.S. Senate,Class III,2022,general,,false,REP,11/8/22,REP,1/20/21 13:14,1/20/21 13:14
@@ -9121,7 +9121,7 @@ id,type,state_abbrev,State,office_id,office_name,office_seat_name,cycle,stage,pa
 5346,HouseRace,AZ,Arizona,30,U.S. House,District 7,2014,general,,false,DEM,11/4/14,DEM,2/12/19 01:22,10/14/21 11:14
 3168,HouseRace,AZ,Arizona,31,U.S. House,District 8,2004,general,,false,REP,11/2/04,REP,2/12/19 01:21,10/14/21 11:14
 5784,HouseRace,AZ,Arizona,31,U.S. House,District 8,2016,general,,false,REP,11/8/16,REP,2/12/19 01:22,10/14/21 11:14
-6268,SenateRace,AZ,Arizona,33,U.S. Senate,Class III,2020,general,,true,vacant,11/3/20,DEM,8/20/19 16:26,10/14/21 11:14
+6268,SenateRace,AZ,Arizona,33,U.S. Senate,Class III,2020,general,,true,REP,11/3/20,DEM,8/20/19 16:26,10/14/21 11:14
 2300,HouseRace,CA,California,35,U.S. House,District 1,2000,general,,false,DEM,11/7/00,DEM,2/12/19 01:21,10/14/21 11:14
 1823,HouseRace,CA,California,39,U.S. House,District 5,2005,jungle primary,,true,vacant,3/8/05,DEM,2/12/19 01:20,10/14/21 11:14
 1876,HouseRace,CA,California,46,U.S. House,District 12,1998,general,,false,DEM,11/3/98,DEM,2/12/19 01:21,10/14/21 11:14
@@ -9303,7 +9303,7 @@ id,type,state_abbrev,State,office_id,office_name,office_seat_name,cycle,stage,pa
 2165,HouseRace,OK,Oklahoma,428,U.S. House,District 1,1998,general,,false,REP,11/3/98,REP,2/12/19 01:21,10/14/21 11:14
 5649,HouseRace,OK,Oklahoma,429,U.S. House,District 2,2014,general,,false,REP,11/4/14,REP,2/12/19 01:22,10/14/21 11:14
 4783,HouseRace,OK,Oklahoma,430,U.S. House,District 3,2010,general,,false,REP,11/2/10,REP,2/12/19 01:22,10/14/21 11:14
-35,SenateRace,OK,Oklahoma,434,U.S. Senate,Class III,2014,general,,true,vacant,11/4/14,REP,10/5/14 21:07,10/14/21 11:14
+35,SenateRace,OK,Oklahoma,434,U.S. Senate,Class III,2014,general,,true,REP,11/4/14,REP,10/5/14 21:07,10/14/21 11:14
 2606,HouseRace,OR,Oregon,436,U.S. House,District 1,2000,general,,false,DEM,11/7/00,DEM,2/12/19 01:21,10/14/21 11:14
 3918,HouseRace,OR,Oregon,438,U.S. House,District 3,2006,general,,false,DEM,11/7/06,DEM,2/12/19 01:22,10/14/21 11:14
 4353,HouseRace,OR,Oregon,438,U.S. House,District 3,2008,general,,false,DEM,11/4/08,DEM,2/12/19 01:22,10/14/21 11:14
@@ -16024,7 +16024,7 @@ id,type,state_abbrev,State,office_id,office_name,office_seat_name,cycle,stage,pa
 16185,GubernatorialRace,AL,Alabama,6,Governor,,2026,general,,false,REP,11/3/26,,11/4/24 14:00,11/4/24 14:00
 16186,GubernatorialRace,AK,Alaska,2,Governor,,2026,general,,false,REP,11/3/26,,11/4/24 14:00,11/4/24 14:00
 16187,GubernatorialRace,AZ,Arizona,23,Governor,,2026,general,,false,DEM,11/3/26,,11/4/24 14:00,11/4/24 14:00
-16188,GubernatorialRace,AR,Arkansas,16,Governor,,2026,general,,false,DEM,11/3/26,,11/4/24 14:00,11/4/24 14:00
+16188,GubernatorialRace,AR,Arkansas,16,Governor,,2026,general,,false,REP,11/3/26,,11/4/24 14:00,11/4/24 14:00
 16189,GubernatorialRace,CO,Colorado,90,Governor,,2026,general,,false,DEM,11/3/26,,11/4/24 14:00,11/4/24 14:00
 16190,GubernatorialRace,CT,Connecticut,100,Governor,,2026,general,,false,DEM,11/3/26,,11/4/24 14:00,11/4/24 14:00
 16191,GubernatorialRace,GA,Georgia,140,Governor,,2026,general,,false,REP,11/3/26,,11/4/24 14:00,11/4/24 14:00
@@ -16054,7 +16054,7 @@ id,type,state_abbrev,State,office_id,office_name,office_seat_name,cycle,stage,pa
 16217,GubernatorialRace,AL,Alabama,6,Governor,,2026,primary,DEM,false,REP,,,11/4/24 14:02,11/4/24 14:02
 16218,GubernatorialRace,AK,Alaska,2,Governor,,2026,top four primary,,false,REP,,,11/4/24 14:02,11/4/24 14:02
 16219,GubernatorialRace,AZ,Arizona,23,Governor,,2026,primary,DEM,false,DEM,,,11/4/24 14:02,11/4/24 14:02
-16220,GubernatorialRace,AR,Arkansas,16,Governor,,2026,primary,DEM,false,DEM,,,11/4/24 14:02,11/4/24 14:02
+16220,GubernatorialRace,AR,Arkansas,16,Governor,,2026,primary,DEM,false,REP,,,11/4/24 14:02,11/4/24 14:02
 16221,GubernatorialRace,CO,Colorado,90,Governor,,2026,primary,DEM,false,DEM,,,11/4/24 14:02,11/4/24 14:02
 16222,GubernatorialRace,CT,Connecticut,100,Governor,,2026,primary,DEM,false,DEM,,,11/4/24 14:02,11/4/24 14:02
 16223,GubernatorialRace,GA,Georgia,140,Governor,,2026,primary,DEM,false,REP,,,11/4/24 14:02,11/4/24 14:02
@@ -16083,7 +16083,7 @@ id,type,state_abbrev,State,office_id,office_name,office_seat_name,cycle,stage,pa
 16248,GubernatorialRace,WY,Wyoming,583,Governor,,2026,primary,DEM,false,REP,,,11/4/24 14:03,11/4/24 14:03
 16249,GubernatorialRace,AL,Alabama,6,Governor,,2026,primary,REP,false,REP,,,11/4/24 14:03,11/4/24 14:03
 16250,GubernatorialRace,AZ,Arizona,23,Governor,,2026,primary,REP,false,DEM,,,11/4/24 14:03,11/4/24 14:03
-16251,GubernatorialRace,AR,Arkansas,16,Governor,,2026,primary,REP,false,DEM,,,11/4/24 14:03,11/4/24 14:03
+16251,GubernatorialRace,AR,Arkansas,16,Governor,,2026,primary,REP,false,REP,,,11/4/24 14:03,11/4/24 14:03
 16252,GubernatorialRace,CO,Colorado,90,Governor,,2026,primary,REP,false,DEM,,,11/4/24 14:03,11/4/24 14:03
 16253,GubernatorialRace,CT,Connecticut,100,Governor,,2026,primary,REP,false,DEM,,,11/4/24 14:03,11/4/24 14:03
 16254,GubernatorialRace,GA,Georgia,140,Governor,,2026,primary,REP,false,REP,,,11/4/24 14:03,11/4/24 14:03
@@ -17525,3 +17525,6 @@ id,type,state_abbrev,State,office_id,office_name,office_seat_name,cycle,stage,pa
 17698,HouseRace,WI,Wisconsin,574,U.S. House,District 8,2024,general,,true,vacant,11/5/24,,12/5/24 15:23,12/5/24 15:23
 17699,HouseRace,NJ,New Jersey,356,U.S. House,District 10,2024,general,,true,vacant,9/18/24,DEM,12/5/24 15:23,12/5/24 15:23
 17700,HouseRace,NY,New York,400,U.S. House,District 26,2024,general,,true,vacant,4/30/24,DEM,12/5/24 15:24,12/5/24 15:24
+17701,SenateRace,FL,Florida,139,U.S. Senate,Class III,2026,general,,true,REP,11/3/26,,9/25/26 12:00,9/25/26 12:00
+17702,SenateRace,FL,Florida,139,U.S. Senate,Class III,2026,primary,REP,true,REP,,,9/25/26 12:00,9/25/26 12:00
+17703,SenateRace,FL,Florida,139,U.S. Senate,Class III,2026,primary,DEM,true,REP,,,9/25/26 12:00,9/25/26 12:00

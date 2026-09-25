@@ -4,7 +4,65 @@ For the next agent. Read AGENTS.md first (architecture + rules), CONCERNS.md sec
 (risk register + roadmap). This file: what's mid-flight RIGHT NOW, what's most likely to
 break, and what to do next, in order.
 
-## CURRENT STATE 2026-08-08 (latest) — SECOND REORG + a README in every folder
+## CURRENT STATE 2026-09-25 (latest) - TRAINING-DATA AUDIT: labels, fundamentals, roster
+
+Goal set by the user: the data fed to the model must be ACCURATE; metrics are only a
+"nothing broke" check, never the verdict. All four models retrained on the corrected data.
+
+**Training labels (`polls_long_with_results.csv`, repaired via `tools/repair_result_labels.py`)**
+  - Fusion lines: results are one row per BALLOT LINE; the build kept one arbitrary line.
+    218 candidate vote shares were wrong (Schumer 2016 0.62 -> 70.18, Murphy CT 2024 2.75
+    -> 58.58). Now summed per person (`src/results_labels.py`, shared by the notebook,
+    the repair tool and `load_fundamentals`).
+  - RCV (ME/AK): rounds were mixed within a race; now round 1 for everyone.
+  - Nicknames: 4 winners unlabelled (Bob/Robert Menendez x2, Bill/Charles W. Young x2).
+    DEM/REP same-surname fallback.
+  - Margin target: best opponent over the RESULTS field (`best_other_pct`), not the
+    polled subset. sign(margin) vs won: 0.972 -> 0.9995.
+  - Specials/runoffs: 344 poll rows (36 races) of House specials and Senate runoffs were
+    labelled with the November result (HI-1 2010, FL-13 2014, AZ-8 2018, NY-3 2024, GA
+    runoff 2008 ...). Dropped by election date (`drop_off_date_polls`).
+  - 21 survey-identity duplicates removed (predict already dropped them).
+  - Cross-check: every 1998-2016 vote share agrees with 538's own `cand*_actual` except NY
+    fusion rows, where 538 counts the major line only and ours is the true total.
+
+**Fundamentals**
+  - `load_fundamentals` prior margins now use per-candidate totals (fusion, round 1, and
+    specials no longer merged into the regular race: FL-13 2014, AL-Sen 1978).
+  - `inc_map` keyed specials as '' so every special (19 training, FL-S/OH-S live) had
+    is_incumbent NaN. Now 'S'.
+  - `races.csv`: AR-Gov 2026 DEM->REP; NY-Sen 2022 REP->DEM; FL-Sen special 2026 added;
+    six appointee seats coded `vacant` -> their party (DE/IL 2010, NJ 2013, OK 2014, AZ 2020).
+    Validated: every Senate/Gov incumbent vs the seat's previous winner.
+
+**Primary data**
+  - `tools/repair_primary_pct.py`: 17 tables had impossible pct (swapped / >100%) while
+    votes were right; pct recomputed from votes. Winner flags all verified = top votes.
+  - "2018_PA_Governor_DEM" was the LT. GOV primary (Fetterman/Stack) - removed from the
+    results archives and (via build_primary_dataset.py) from primary training.
+  - `primary_results_2026.csv` re-scraped: +107 party primaries (FL, MA, MN, NH, WI, CT,
+    RI...). SD/VT/WY at-large House pages fail to fetch (different Wikipedia title) - open.
+
+**Live roster**
+  - predict.py: primary-loser drop now runs BEFORE the pollster/date dedup. The dedup kept
+    one row per candidate per survey, so a nominee polled in two questions could keep only
+    the one vs a defeated opponent and then vanish (FL-25: Moskowitz, the DEM nominee).
+  - Junk answers: "Generic Nebraska Working People Party", "Republican nominee",
+    "Trump-endorsed Republican", "Another Democratic candidate", "Undecided / Not Ranked".
+  - dropped_out: CA-40 Kim Varet (R-v-R general per every post-primary poll - CONFIRM vs
+    CA SoS), NC-3 "Raymond J. Writz" (NYT feed duplicate of Smith's 41%).
+  - polling-agg's NYT scraper no longer files 2025/2027/2028 polls as 2026, so NJ-Gov and
+    VA-Gov (decided Nov 2025) and a phantom PA-Sen are gone from predictions.
+
+**Held-out, before -> after (sanity only):** win AUC .967->.967, Brier .071->.071,
+race-acc .877->.871; margin MAE 7.01->4.88 (the old target was partly garbage);
+primary margin MAE 17.03->16.52.
+
+**Open:** 2024 NE-Sen trains Osborn as OTH while 2026 Osborn is modelled DEM-slot
+(rule 9) - consistency question, not a data error. CA-03 Kiley: polling-agg says IND,
+races.csv says REP - unverified. Wikipedia matchup pooling (CONCERNS #50).
+
+## CURRENT STATE 2026-08-08 — SECOND REORG + a README in every folder
 
 Follow-on to the audit entry below. Two changes, both structural; **no model retrained**, and
 the prediction CSVs came out byte-identical, which is the proof that nothing about the models

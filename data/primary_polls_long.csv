@@ -1078,12 +1078,6 @@ year,state,office,district,party_std,candidate,cand_key,pct,pollster,sample_size
 2018,OR,Governor,,REP,Knute Buehler,buehler k,28.000000000000004,iCitizen,168.0,,9/28/17,2018-05-15,2018_OR_Governor_REP,1
 2018,OR,Governor,,REP,Lori Chavez-DeRemer,chavezderemer l,8.0,iCitizen,168.0,,9/28/17,2018-05-15,2018_OR_Governor_REP,0
 2018,OR,Governor,,REP,Greg Wooldridge,wooldridge g,31.0,iCitizen,168.0,,9/28/17,2018-05-15,2018_OR_Governor_REP,0
-2018,PA,Governor,,DEM,Aryanna Berringer,berringer a,2.0,"Independence Communications & Campaigns, LLC",467.0,,2/4/18,2018-05-15,2018_PA_Governor_DEM,0
-2018,PA,Governor,,DEM,Kathi Cozzone,cozzone k,10.0,"Independence Communications & Campaigns, LLC",467.0,,2/4/18,2018-05-15,2018_PA_Governor_DEM,0
-2018,PA,Governor,,DEM,Madeleine Dean,dean m,4.0,"Independence Communications & Campaigns, LLC",467.0,,2/4/18,2018-05-15,2018_PA_Governor_DEM,0
-2018,PA,Governor,,DEM,John Fetterman,fetterman j,20.0,"Independence Communications & Campaigns, LLC",467.0,,2/4/18,2018-05-15,2018_PA_Governor_DEM,1
-2018,PA,Governor,,DEM,Craig Lehman,lehman c,1.0,"Independence Communications & Campaigns, LLC",467.0,,2/4/18,2018-05-15,2018_PA_Governor_DEM,0
-2018,PA,Governor,,DEM,Mike Stack,stack m,8.0,"Independence Communications & Campaigns, LLC",467.0,,2/4/18,2018-05-15,2018_PA_Governor_DEM,0
 2018,RI,Governor,,REP,Allan Fung,fung a,44.0,National Research Inc. (R-Morgan),400.0,,7/24/18,2018-09-12,2018_RI_Governor_REP,1
 2018,RI,Governor,,REP,Patricia Morgan,morgan p,33.0,National Research Inc. (R-Morgan),400.0,,7/24/18,2018-09-12,2018_RI_Governor_REP,0
 2018,RI,Governor,,REP,Allan Fung,fung a,62.0,Public Opinion Strategies (R-Fung),400.0,,7/14/18,2018-09-12,2018_RI_Governor_REP,1

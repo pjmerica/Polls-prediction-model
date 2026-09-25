@@ -189,6 +189,14 @@ def load_agg_polls(paths, cycle):
     if n_merged:
         print(f"nickname-alias merges: {n_merged} candidate name variants unified")
 
+    # Drop dead matchups (questions naming a primary loser) BEFORE the pollster/date dedup
+    # below (2026-09-25). That dedup keeps ONE row per candidate per survey, so a candidate
+    # polled in two questions of one survey keeps whichever came first - and if that was the
+    # question against a now-defeated opponent, the loser filter then deleted the candidate
+    # entirely. FL-25: Beacon asked Moskowitz-v-Singer AND Moskowitz-v-Moraitis; the dedup
+    # kept the Moraitis row, Moraitis lost the primary, and the DEM NOMINEE vanished.
+    d = drop_primary_losers(d, cycle)
+
     d["_pollster_key"] = d["pollster"].map(F.norm_pollster)
     d = (d.sort_values("_src_priority")
            .drop_duplicates(subset=["_pollster_key", "end_date", "year", "state",
@@ -201,11 +209,9 @@ def load_agg_polls(paths, cycle):
     print(f"polls loaded: {before} rows -> {len(d)} after dedup "
           f"({before - len(d)} duplicates removed)")
 
-    # (race_id is already built above, before the nickname merge and both dedup passes.)
-    # Drop primary losers BEFORE the relative staleness rule. Order matters: the loser
-    # filter is absolute (a called result), the stale filter is relative to the race's
-    # newest poll, and a defeated candidate is never stale by that measure.
-    d = drop_primary_losers(d, cycle)
+    # Primary losers were dropped above, BEFORE the relative staleness rule. Order matters:
+    # the loser filter is absolute (a called result), the stale filter is relative to the
+    # race's newest poll, and a defeated candidate is never stale by that measure.
     d = drop_stale_candidates(F.prepare_polls(d))
 
     # schema sanity: a silent upstream change (pct scale, stage labels, race_id format)

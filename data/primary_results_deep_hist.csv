@@ -143,7 +143,7 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 1998_NE_Governor_REP,REP,Lavern Bartels,1908,0.87,2,False,bartels l
 1998_NE_Governor_REP,REP,Write-ins,285,0.13,2,False,writeins
 1998_NH_Senate_REP,REP,Judd Gregg,63729,85.48,2,True,gregg j
-1998_NH_Senate_REP,REP,Phil Weber,10784,38.21,2,False,weber p
+1998_NH_Senate_REP,REP,Phil Weber,10784,14.46,2,False,weber p
 1998_NH_Senate_REP,REP,Write-ins,42,0.06,2,False,writeins
 1998_NM_Governor_DEM,DEM,Martin J. Chávez,82147,48.11,1,True,chavez m
 1998_NM_Governor_DEM,DEM,Gary K. King,51847,30.37,1,False,king g
@@ -830,8 +830,8 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2006_GA_Governor_DEM,DEM,Cathy Cox,211978,44.3,1,False,cox c
 2006_GA_Governor_DEM,DEM,Bill Bolton,10552,1.7,1,False,bolton b
 2006_GA_Governor_DEM,DEM,Mac McCarley,10399,0.6,1,False,mccarley m
-2006_GA_Governor_REP,REP,Sonny Perdue,370756,88.4,2,True,perdue s
-2006_GA_Governor_REP,REP,Ray McBerry,48498,12.6,2,False,mcberry r
+2006_GA_Governor_REP,REP,Sonny Perdue,370756,88.43,2,True,perdue s
+2006_GA_Governor_REP,REP,Ray McBerry,48498,11.57,2,False,mcberry r
 2006_IA_Governor_DEM,DEM,Chet Culver,58131,39.08,1,True,culver c
 2006_IA_Governor_DEM,DEM,Mike Blouin,50728,34.1,1,False,blouin m
 2006_IA_Governor_DEM,DEM,Ed Fallon,38253,25.72,1,False,fallon e
@@ -2040,18 +2040,18 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2014_NC_Senate_REP,REP,Ted Alexander,9258,1.89,2,False,alexander t
 2014_NC_Senate_REP,REP,Alex Lee Bradshaw,3528,0.72,2,False,bradshaw a
 2014_NC_Senate_REP,REP,Edward Kryn,1853,0.38,2,False,kryn e
-2014_NE_Governor_REP,REP,Pete Ricketts,58671,26.91,1,True,ricketts p
-2014_NE_Governor_REP,REP,Jon Bruning,56324,25.84,1,False,bruning j
-2014_NE_Governor_REP,REP,Beau McCoy,46196,21.19,1,False,mccoy b
-2014_NE_Governor_REP,REP,Mike Foley,42394,19.44,1,False,foley m
-2014_NE_Governor_REP,REP,Tom Carlson,9080,4.17,1,False,carlson t
-2014_NE_Governor_REP,REP,Bryan Slone,8265,3.79,1,False,slone b
+2014_NE_Governor_REP,REP,Pete Ricketts,58671,26.56,1,True,ricketts p
+2014_NE_Governor_REP,REP,Jon Bruning,56324,25.49,1,False,bruning j
+2014_NE_Governor_REP,REP,Beau McCoy,46196,20.91,1,False,mccoy b
+2014_NE_Governor_REP,REP,Mike Foley,42394,19.19,1,False,foley m
+2014_NE_Governor_REP,REP,Tom Carlson,9080,4.11,1,False,carlson t
+2014_NE_Governor_REP,REP,Bryan Slone,8265,3.74,1,False,slone b
 2014_NE_Governor_DEM,DEM,Chuck Hassebrook,65620,100.0,2,True,hassebrook c
-2014_NE_Senate_REP,REP,Ben Sasse,110802,50.44,1,True,sasse b
-2014_NE_Senate_REP,REP,Sid Dinsdale,50494,22.99,1,False,dinsdale s
-2014_NE_Senate_REP,REP,Shane Osborn,47338,21.56,1,False,osborn s
-2014_NE_Senate_REP,REP,Bart McLeay,12840,5.85,1,False,mcleay b
-2014_NE_Senate_REP,REP,Clifton R. Johnson,3310,1.51,1,False,johnson c
+2014_NE_Senate_REP,REP,Ben Sasse,110802,49.29,1,True,sasse b
+2014_NE_Senate_REP,REP,Sid Dinsdale,50494,22.46,1,False,dinsdale s
+2014_NE_Senate_REP,REP,Shane Osborn,47338,21.06,1,False,osborn s
+2014_NE_Senate_REP,REP,Bart McLeay,12840,5.71,1,False,mcleay b
+2014_NE_Senate_REP,REP,Clifton R. Johnson,3310,1.47,1,False,johnson c
 2014_NE_Senate_DEM,DEM,Dave Domina,45648,67.57,2,True,domina d
 2014_NE_Senate_DEM,DEM,Larry Marvin,21904,32.43,2,False,marvin l
 2014_NH_Governor_DEM,DEM,Maggie Hassan,39115,93.07,1,True,hassan m
@@ -2747,11 +2747,6 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2018_OR_Governor_REP,REP,Keenan Bohach,787,0.3,2,False,bohach k
 2018_OR_Governor_REP,REP,Brett Hyland,755,0.2,2,False,hyland b
 2018_OR_Governor_REP,REP,Jack W. Tacy,512,0.2,2,False,tacy j
-2018_PA_Governor_DEM,DEM,John Fetterman,288229,38.0,2,True,fetterman j
-2018_PA_Governor_DEM,DEM,Nina Ahmad,182309,23.8,2,False,ahmad n
-2018_PA_Governor_DEM,DEM,Kathi Cozzone,142410,18.6,2,False,cozzone k
-2018_PA_Governor_DEM,DEM,Mike Stack,127259,16.6,2,False,stack m
-2018_PA_Governor_DEM,DEM,Ray Sosa,27427,3.6,2,False,sosa r
 2018_PA_Governor_REP,REP,Jeff Bartos,317619,46.8,4,True,bartos j
 2018_PA_Governor_REP,REP,Kathy Coder,147805,21.8,4,False,coder k
 2018_PA_Governor_REP,REP,Diana Irey Vaughan,119400,17.6,4,False,vaughan d
@@ -2782,8 +2777,8 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2018_TN_Governor_REP,REP,Kay White,3215,0.41,1,False,white k
 2018_TN_Governor_REP,REP,Basil Marceaux,1264,0.16,1,False,marceaux b
 2018_TN_Governor_DEM,DEM,Karl Dean,280553,75.14,2,True,dean k
-2018_TN_Governor_DEM,DEM,Craig Fitzhugh,72553,23.42,2,False,fitzhugh c
-2018_TN_Governor_DEM,DEM,Mezianne Vale Payne,20284,5.44,2,False,payne m
+2018_TN_Governor_DEM,DEM,Craig Fitzhugh,72553,19.43,2,False,fitzhugh c
+2018_TN_Governor_DEM,DEM,Mezianne Vale Payne,20284,5.43,2,False,payne m
 2018_TN_Senate_REP,REP,Marsha Blackburn,613513,84.48,1,True,blackburn m
 2018_TN_Senate_REP,REP,Aaron Pettigrew,112705,15.52,1,False,pettigrew a
 2018_TN_Senate_DEM,DEM,Phil Bredesen,349718,91.51,2,True,bredesen p

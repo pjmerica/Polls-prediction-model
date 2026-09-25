@@ -138,8 +138,15 @@ _JUNK_RX = re.compile(
     r"|(?:a|an|the)\s+(?:\w+\s+){0,2}"
     r"(?:challenger|opponent|candidate|democrat|republican|nominee|progressive|"
     r"moderate|conservative|liberal|independent)"
-    r"|(?:unnamed|generic|hypothetical|any|another)\s+\w+"
+    # up to 5 words after the keyword (2026-09-25): one word let "Another Democratic
+    # candidate" and "Generic Nebraska Working People Party" through - the latter was scored
+    # as a NE-Gov candidate on the live dashboard. No real person's name starts with these.
+    r"|(?:unnamed|generic|hypothetical|any|another)(?:\s+\w+){1,5}"
     r"|(?:more|less)\s+\w+\s+\w+\s+(?:democrat|republican)"   # "more liberal female Democrat"
+    # bare party placeholders: "Republican", "Republican nominee", "Trump-endorsed Republican"
+    r"|(?:democrat|democratic|republican|gop)(?:\s+(?:nominee|candidate))?"
+    r"|\w+\s+endorsed\s+(?:democrat|democratic|republican|candidate)"
+    r"|undecided\s+not\s+ranked"            # RCV-style ballot test: "Undecided / Not Ranked"
     r"|yes|no"                              # approve/disapprove style question answers
     r"|write[- ]?ins?"
     r")$")
@@ -287,23 +294,24 @@ def load_fundamentals():
     rc["district"] = ""
     hm = rc["office"] == "House"
     rc.loc[hm, "district"] = rc.loc[hm, "office_seat_name"].map(pdist)
+    # a non-House SPECIAL is its own race, district 'S' - the same key the poll/results side
+    # uses (2026-09-25). Keyed '' it never matched, so every special election (19 training
+    # races, and FL-S / OH-S live) had is_incumbent = NaN, and a same-year special silently
+    # overwrote the REGULAR race's incumbent party.
+    sp = rc["special"].astype(str).str.lower().isin(["true", "1"]) & ~hm
+    rc.loc[sp, "district"] = "S"
     inc_map = {(r.cycle, r.state, r.office, r.district): npar(r.incumbent_party)
                for r in rc[rc["office"].notna()].itertuples()
                if pd.notna(r.incumbent_party)}
 
-    def _load_res(fn, office):
-        r = pd.read_csv(os.path.join(DATA_DIR, fn), low_memory=False)
-        r = r[r["stage"].astype(str).str.lower().str.contains("general", na=False)]
-        r["office"] = office
-        r["state"] = r["state_abbrev"].str.upper()
-        r["district"] = "" if office != "House" else r["office_seat_name"].map(pdist)
-        r["p"] = r["ballot_party"].map(npar)   # 'party' col is null in these files
-        r["pct"] = pd.to_numeric(r["percent"], errors="coerce")
-        return r[["cycle", "state", "office", "district", "p", "pct"]]
-
-    allres = pd.concat([_load_res("res_senate.csv", "Senate"),
-                        _load_res("res_house.csv", "House"),
-                        _load_res("res_governor.csv", "Governor")])
+    # Per-CANDIDATE totals from the shared aggregation (2026-09-25). This used to take the
+    # biggest single DEM/REP ballot LINE, which dropped fusion lines (a NY Republican's
+    # Conservative line, a CT Democrat's WFP line) and took the FINAL RCV round in ME/AK while
+    # every other race is plurality. Specials are keyed district 'S', never merged with the
+    # regular same-state race.
+    import results_labels as RL
+    allres = RL.aggregate_candidates(RL.load_result_lines(DATA_DIR)).rename(
+        columns={"year": "cycle", "res_party": "p", "vote_pct": "pct"})
     piv = (allres[allres["p"].isin(["DEM", "REP"])]
            .groupby(["cycle", "state", "office", "district", "p"])["pct"].max().unstack("p"))
     for col in ["DEM", "REP"]:
@@ -958,6 +966,11 @@ def build_candidate_table(d, macro, natl_env_map, funds, house_train_years=None,
                 # actual vote share — LABEL for the margin model, never a feature
                 vote_pct=(pd.to_numeric(gc["vote_pct"], errors="coerce").iloc[0]
                           if "vote_pct" in gc.columns else np.nan),
+                # best OTHER candidate's actual share over the whole RESULTS field, not the
+                # polled subset - LABEL passenger for the margin target, never a feature
+                # (results_labels.py, 2026-09-25)
+                best_other_pct=(pd.to_numeric(gc["best_other_pct"], errors="coerce").iloc[0]
+                                if "best_other_pct" in gc.columns else np.nan),
                 poll_avg=gc["pct"].mean(),
                 poll_last=(dated["pct"].iloc[-1] if len(dated) else gc["pct"].mean()),
                 poll_last30=(last30["pct"].mean() if len(last30) else gc["pct"].mean()),

@@ -126,6 +126,34 @@ feature builder used by training AND prediction — never fork feature logic out
 - CSV round-trips turn House districts into floats (`'1'`→`1.0`) — `features.dist_str`
   normalizes; a hard assert in model.ipynb guards House fundamentals coverage.
 - The results files' `party` column is all-null — use `ballot_party`.
+- **The results files are one row per BALLOT LINE and per RCV ROUND, not per candidate.**
+  Fusion states (NY, CT, SC) list a candidate once per line; ME/AK list them once per round.
+  Never `drop_duplicates` a candidate out of them - that kept one arbitrary row and trained
+  the margin model on Schumer 2016 = 0.62% (his WFP line) until 2026-09-25. Go through
+  `src/results_labels.py` (sums lines, takes round 1, reports same-key collisions); training
+  labels, `load_fundamentals` prior margins and the build notebook all use it. Repair an
+  existing training CSV with `tools/repair_result_labels.py` (dry run by default).
+- **The margin target's `best_other` is over the RESULTS field, never the polled subset.**
+  538's pre-2018 file is top-two only, so the real winner can be missing (Angus King 1998):
+  `best_other_pct` rides in the training CSV for this.
+- **Specials are district `'S'` in EVERY lookup keyed (cycle, state, office, district)** -
+  polls, results, `inc_map`, `margin_map`. `inc_map` was keyed `''`, so all 21 specials
+  (19 training, FL-S/OH-S live) had `is_incumbent` = NaN until 2026-09-25.
+- **Both poll sources file House SPECIALS and Senate RUNOFFS under the November race key.**
+  538 tags them `House-G`/`Sen-G`; only the race string / `election_date` tells them apart.
+  Their polls were labelled with November's result (HI-1 2010: Hanabusa "won" the May
+  special Djou won). `results_labels.drop_off_date_polls` drops any poll whose election date
+  is not that cycle's November general, except Senate/Gov specials ('S', their own race) and
+  `POSTPONED_GENERALS` (LA 2008, Hurricane Gustav). 344 rows / 36 races on 2026-09-25.
+- **Primary results `pct` can be a misparsed column; `votes` are reliable.** GA-1-DEM 2012
+  had pct swapped, NH-Sen-REP 1998 summed to 124%. `tools/repair_primary_pct.py` recomputes
+  pct from votes only where pct is IMPOSSIBLE (sum >100.5 or order inverted vs votes) - a
+  table under 100% is usually a real omitted "None of these"/blank line, leave it. Wikipedia
+  governor pages also carry the LT. GOVERNOR primary: 2018 PA-Gov-DEM in training was the
+  Fetterman/Stack Lt. Gov race (removed).
+- **`races.csv` is hand-fixable data, not gospel.** 2026-09-25 fixed AR-Gov 2026 (said DEM;
+  Sanders), NY-Sen 2022 (said REP; Schumer), a missing FL-S 2026, and six appointee seats
+  538 coded `vacant` while every other appointee seat carries its party.
 - The polling-agg feed has internal + cross-source duplicate polls — predict.py dedups
   **on the NORMALIZED pollster** (`F.norm_pollster`), not the raw string: the same survey is
   filed under two spellings ("Glengariff Group, Inc." vs "Glengariff Group") and the raw key
