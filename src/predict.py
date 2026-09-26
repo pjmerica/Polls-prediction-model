@@ -127,6 +127,22 @@ def load_agg_polls(paths, cycle):
     #                    modeled DEM here.
     #   display_party -> their REAL affiliation, shown on the dashboard (Osborn = IND).
     # `display_party` rides through as a separate column; party_std stays the model party.
+    # ONE party per candidate: the MAJORITY tag across their poll rows (2026-09-25). Features
+    # read the party off a single row, so one mis-tagged row decided it: Seth Bodnar (IND,
+    # MT-Sen) is tagged IND in 36 rows and DEM in one NYT row, and was modelled - and shown on
+    # the dashboard - as the Democrat. Ties keep the first-seen tag. Overrides still win below.
+    _key = (d["year"].astype(str) + "|" + d["state"] + "|" + d["office"] + "|"
+            + d["district"].astype(str) + "|" + d["cand_key"])
+
+    def _majority(s):
+        vc = s.value_counts()
+        return vc.index[0] if len(vc) == 1 or vc.iloc[0] > vc.iloc[1] else s.iloc[0]
+    _fixed = _key.map(d.groupby(_key)["party_std"].agg(_majority))
+    _chg = _fixed != d["party_std"]
+    if _chg.any():
+        print(f"party majority vote: {int(_chg.sum())} minority-tagged poll rows re-tagged "
+              f"across {_key[_chg].nunique()} candidates")
+    d["party_std"] = _fixed
     d["display_party"] = d["party_std"]
     ov_path = os.path.join(HERE, "data", "candidate_party_overrides.csv")
     if os.path.exists(ov_path):

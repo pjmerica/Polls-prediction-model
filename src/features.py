@@ -445,12 +445,15 @@ def load_candidate_bios():
     if not os.path.exists(path):
         return {}
     b = pd.read_csv(path, low_memory=False)
-    out = {}
+    out, prior = {}, {}
     for r in b.itertuples():
         di = dist_str(r.district)
         party = npar(r.party)
         out[(int(r.year), r.office, r.state, di, party, r.cand_key)] = dict(
             bio_office_level=int(r.office_level))
+        prior.setdefault((r.cand_key, r.state, r.office, party), []).append(
+            (int(r.year), int(r.office_level)))
+    out["__prior_levels__"] = prior
 
     # PERSON-LEVEL as-of-year fallback (2026-07-29): the exact-key map above is built from
     # candidate_bios.csv, whose rows exist only for races in the TRAINING poll file. Live
@@ -523,12 +526,14 @@ def load_fec(path=None, extended=False):
                      for o, di in zip(f["office"], f["district"])]
     f = f.sort_values("receipts", ascending=False).drop_duplicates(
         ["cycle", "state", "office", "district", "cand_key"])
-    out, by_id = {}, {}
+    out, by_id, by_race = {}, {}, {}
     for r in f.itertuples():
         k = (r.cycle, r.state, r.office, r.district, r.cand_key)
         out[k] = dict(receipts=r.receipts, indiv=r.indiv_contrib, pac=r.pac_contrib,
                       party=r.party_contrib, self=r.self_fund, small=np.nan)
         by_id[(r.cycle, r.cand_id)] = k
+        by_race.setdefault(k[:4], []).append((_name_tokens(r.cand_name), npar(r.party), k))
+    out["__by_race__"] = by_race
     if not extended:
         return out
 
@@ -549,10 +554,82 @@ def load_fec(path=None, extended=False):
             ["cycle", "state", "cand_key"])
         for r in g.itertuples():
             if pd.notna(r.receipts):
-                out.setdefault((r.cycle, r.state, "Governor", "", r.cand_key),
-                               dict(receipts=float(r.receipts), indiv=np.nan, pac=np.nan,
-                                    party=np.nan, self=np.nan, small=np.nan))
+                k = (r.cycle, r.state, "Governor", "", r.cand_key)
+                if k not in out:
+                    out[k] = dict(receipts=float(r.receipts), indiv=np.nan, pac=np.nan,
+                                  party=np.nan, self=np.nan, small=np.nan)
+                    by_race.setdefault(k[:4], []).append(
+                        (_name_tokens(r.cand_name), npar(r.party), k))
     return out
+
+
+def _name_tokens(name):
+    """Every name word, punctuation deleted the way norm_name does ('OCASIO-CORTEZ,
+    ALEXANDRIA' -> {'ocasiocortez', 'alexandria'}), for the surname fallback below."""
+    s = unicodedata.normalize("NFKD", str(name)).encode("ascii", "ignore").decode().lower()
+    s = re.sub(r"\(.*?\)", " ", s)
+    s = re.sub(r"\s*[-‐-―]\s*", "", s)
+    s = re.sub(r"[.'`]", "", s)
+    return set(re.findall(r"[a-z]+", s))
+
+
+# nickname -> initial of the legal first name, for the FEC surname fallback's first-name check
+_NICK_INITIAL = {"bob": "r", "bobby": "r", "rob": "r", "robbie": "r", "beto": "r", "bo": "r",
+                 "bill": "w", "billy": "w", "will": "w", "liz": "e", "lizzie": "e", "beth": "e",
+                 "betsy": "e", "betty": "e", "peggy": "m", "meg": "m", "peg": "m", "jim": "j",
+                 "tony": "a", "dick": "r", "rick": "r", "becky": "r", "ginny": "v", "gene": "e",
+                 "ted": "e", "chuck": "c", "jack": "j", "hank": "h", "ned": "e", "sandy": "a",
+                 "patty": "p", "tricia": "p", "chip": "c", "ron": "r", "dan": "d", "don": "d"}
+_NAME_NOISE = {"jr", "sr", "ii", "iii", "iv", "mr", "mrs", "ms", "dr", "sen", "rep", "md"}
+
+
+def _first_names_compatible(poll_name, fec_tokens, surname):
+    """False only when the poll's and FEC's given names clearly belong to DIFFERENT people
+    (Chris vs John Sununu, Jim vs Evelyn Rogers). Same initial, a nickname (Peggy ->
+    Margaret, Bob -> Robert) or a prefix (Doug/Douglas) is compatible; no given name on
+    either side is compatible (no evidence against)."""
+    P = {t for t in _name_tokens(poll_name) if t != surname and t not in _NAME_NOISE}
+    Fz = {t for t in fec_tokens if t != surname and t not in _NAME_NOISE}
+    if not P or not Fz:
+        return True
+    ini = lambda T: {t[0] for t in T} | {_NICK_INITIAL[t] for t in T if t in _NICK_INITIAL}
+    if ini(P) & ini(Fz):
+        return True
+    return any(len(a) >= 3 and len(b) >= 3 and (a.startswith(b) or b.startswith(a))
+               for a in P for b in Fz)
+
+
+def fec_lookup(fec, yr, st, of, di, ck, party=None, name=None):
+    """Money record for one candidate, or None (2026-09-25).
+
+    The exact (cycle, state, office, district, cand_key) join missed whenever the FEC files a
+    candidate under a LEGAL name: 'OSSOFF, T. JONATHAN' keys 'ossoff t' against the polls'
+    'ossoff j' (Jon); likewise Paxton (Warren Kenneth), Flanagan (Margaret = Peggy), Barr
+    (Garland Andy), and married names ('ARENHOLZ, ASHLEY HINSON'). And FEC files Senate
+    SPECIALS as ordinary Senate (district '') while our races key them 'S', so every special
+    missed. Found auditing live features: 15 of 60 live Senate nominees had no money data.
+
+    Fallbacks, in order: the special's '' key; then the ONE candidate in the same race whose
+    FEC name contains the poll surname (party breaks a tie) and whose given names are
+    compatible with the poll's (`name`). Two matches -> None, never a guess.
+    """
+    if fec is None:
+        return None
+    dis = [di] + ([""] if di == "S" else [])
+    for d_ in dis:
+        fe = fec.get((yr, st, of, d_, ck))
+        if fe:
+            return fe
+    sn = str(ck).split(" ")[0]
+    by_race = fec.get("__by_race__", {})
+    for d_ in dis:
+        cands = [(toks, p, k) for toks, p, k in by_race.get((yr, st, of, d_), [])
+                 if sn in toks and (name is None or _first_names_compatible(name, toks, sn))]
+        if len(cands) > 1 and party:
+            cands = [c for c in cands if c[1] == party]
+        if len(cands) == 1:
+            return fec.get(cands[0][2])
+    return None
 
 FUND_FEATS = ["fund_receipts_ln", "fund_share", "fund_indiv_pct", "fund_pac_pct",
               "fund_party_pct", "fund_self_pct"]
@@ -943,8 +1020,19 @@ def build_candidate_table(d, macro, natl_env_map, funds, house_train_years=None,
                     lvl = _person_asof_level(poff[(ck, st)], yr)
                     if lvl is not None:
                         bio = dict(bio_office_level=lvl)
+            # CARRY-FORWARD fallback (2026-09-25): the same person's level in an EARLIER race
+            # for the same office, state and party. Highest-office-held never goes down, and
+            # only strictly earlier years count, so this is leak-free. The bio table has no row
+            # for a race whose Wikipedia page was scraped before its candidates were listed -
+            # 59 of 315 live DEM/REP candidates were NaN, most of them SITTING officeholders
+            # (Cotton, Sullivan, Matsui, Little, Hyde-Smith) the table already knew from 2014-24.
+            if bio is None and candidate_bios is not None:
+                prev = [lv for y, lv in candidate_bios.get("__prior_levels__", {})
+                        .get((ck, st, of, party), []) if y < yr]
+                if prev:
+                    bio = dict(bio_office_level=max(prev))
 
-            fe = fec.get((yr, st, of, di, ck)) if fec is not None else None
+            fe = fec_lookup(fec, yr, st, of, di, ck, party, gc["candidate"].iloc[0])
             rec = fe["receipts"] if fe else np.nan
             fund = dict(
                 fund_receipts_ln=(np.log1p(rec) if fe and rec > 0 else np.nan),

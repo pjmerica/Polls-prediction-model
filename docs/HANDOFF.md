@@ -4,7 +4,42 @@ For the next agent. Read AGENTS.md first (architecture + rules), CONCERNS.md sec
 (risk register + roadmap). This file: what's mid-flight RIGHT NOW, what's most likely to
 break, and what to do next, in order.
 
-## CURRENT STATE 2026-09-25 (latest) - TRAINING-DATA AUDIT: labels, fundamentals, roster
+## CURRENT STATE 2026-09-25 (later, latest) - STALENESS + CROSS-SOURCE AUDIT
+
+Second pass, same day: every input checked for freshness and against a live source.
+
+| input | was through | now through | source / note |
+|---|---|---|---|
+| approval_monthly | 2026-06 (July MISSING) | 2026-09 | VoteHub stalled after June (0 polls Jul, 7 Aug, 0 Sep). Thin months (<15 polls) now = Wikipedia aggregator mean as of month end (`pipeline/fetch/wiki_asof.py`). Sep 36.8 vs the page's own 36.9 average. |
+| generic_ballot_monthly | 2026-06 | 2026-09 | same VoteHub stall (1/5/2 polls); same fill. Sep D+8.2. Rebuild needs `fetch_generic_ballot.py --monthly`. |
+| macro: sentiment | 2026-06 | 2026-09 | FRED times out from this network; UMich's own `tbmics.csv` added as a live source (identical where they overlap). |
+| macro: BLS series | 2026-08 | 2026-08 | current (September prints publish in October). |
+| fec_summary | pulled 08-06 | 09-25 | 2,845 2026 candidates; Q3 reports are due 10-15. |
+| governor_finance | 1998-2002 | 1998-2002 | **BLOCKED**: FollowTheMoney account "reached its free API call limit pending Institute review" - they say they will contact within 2 business days. 2004-2026 governors have NO money data (train and live). Fetcher now stops loudly on an API error instead of logging "0 candidates" per year. Also: it only fetches even years (odd-year governors never covered). |
+| redistricted_2026 | 11 states | 10 + status column | **VA removed** - VA Supreme Court voided the referendum 2026-05-08, 2021 map in use. **MO contested** - MO Sup. Ct. ordered the 2022 map (09-03), 8th Cir. ordered the 2025 map (09-21), SCOTUS pending. Kept as redrawn (the operative order); re-check. Copied to polling-agg. |
+| candidate_bios | 08-02 | 08-02 | see bio carry-forward below |
+
+**Join fixes (train + serve):**
+  - FEC: `fec_lookup` - special races ('S' vs FEC's ''), and a surname fallback for legal
+    names (OSSOFF T. JONATHAN, PAXTON WARREN KENNETH, FLANAGAN MARGARET, ARENHOLZ ASHLEY
+    HINSON) with a first-name compatibility check (rejects Chris-vs-John Sununu and
+    Jim-vs-Evelyn Rogers). 254 candidate-races gained money data (232 labelled). Live
+    Senate missing 25% -> 7%. All 254 were listed and reviewed.
+  - Bios: carry-forward of the same person's level from an EARLIER race for the same
+    office/state/party (leak-free). Live bio missing: Senate 17->8%, House 22->16%, Gov 11->5%.
+    Sitting senators/governors (Cotton, Sullivan, Little, Hyde-Smith) had been NaN.
+  - predict.py: party = MAJORITY tag across a candidate's rows; one NYT row tagging Seth
+    Bodnar (IND, MT-Sen) as DEM had made him the model's Democrat. 8 candidates re-tagged.
+
+**Checked, no problem:** cross-race duplicate candidates (all hypothetical polls, unlabelled,
+or different people); question pct sums (none >105); sample sizes.
+
+**Open (human):** FollowTheMoney approval; Sarah Huckabee Sanders' bio level is 4 (press
+secretary classified as federal office) - classification question; Julia Letlow (House ->
+Senate) has no bio (cross-office carry-forward deliberately not done: AK has two Dan
+Sullivans); MO map after SCOTUS rules.
+
+## CURRENT STATE 2026-09-25 - TRAINING-DATA AUDIT: labels, fundamentals, roster
 
 Goal set by the user: the data fed to the model must be ACCURATE; metrics are only a
 "nothing broke" check, never the verdict. All four models retrained on the corrected data.

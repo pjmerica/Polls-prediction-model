@@ -293,7 +293,7 @@ def build_primary_table(d, fec=None, inc_map=None, macro_asof=None, hist=None, b
             # forked 60-day copy until 2026-08-03; the fork meant the general model's
             # switch to all-dated-polls silently skipped both primary models.
             slope = F.poll_momentum_slope(gc)
-            fe = fec.get((yr, st, of, di, ck)) if fec is not None else None
+            fe = F.fec_lookup(fec, yr, st, of, di, ck, party, g["candidate"].iloc[0])
             rec = fe["receipts"] if fe else np.nan
             md = dyn.get(ck, {})
             rows.append(dict(

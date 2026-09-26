@@ -79,6 +79,8 @@ def get_natl_env(cycle=2026, verbose=False):
 #   with the Internet Archive) -> those months are simply absent (NaN features downstream).
 # Value = monthly mean of per-poll (DEM% - REP%).
 # ---------------------------------------------------------------------------
+MIN_POLLS = 15   # below this a month is too thin to trust (thin-month fill)
+
 def build_monthly(out="data/generic_ballot_monthly.csv"):
     # base layer: 538's DAILY estimates 1995-2016 (dense + smooth), monthly means
     daily = pd.read_csv("data/generic_ballot_hist_538.csv", low_memory=False)
@@ -122,6 +124,25 @@ def build_monthly(out="data/generic_ballot_monthly.csv"):
     polled = allp.set_index("end")["margin"].resample("MS").mean()
     # daily-estimate base (dense, 1995-2016) wins where present; per-poll months fill the rest
     monthly = base.combine_first(polled).dropna().round(2)
+    # THIN-MONTH FILL (2026-09-25): VoteHub stalled after June 2026 (1, 5, 2 polls in Jul-Sep).
+    # A VoteHub-era month with < MIN_POLLS polls takes the Wikipedia AGGREGATOR mean as of the
+    # month's end (wiki_asof.py) - the same aggregator table get_natl_env() reads live.
+    if len(vh):
+        counts = vh.set_index("end")["margin"].resample("MS").size()
+        import wiki_asof as W
+        for ms, when in W.month_ends(vh["end"].min()):
+            if counts.get(ms, 0) >= MIN_POLLS:
+                continue
+            try:
+                v, n, ts = W.generic_ballot_asof(when)
+            except Exception as e:
+                print(f"  !! {ms:%Y-%m}: aggregator fetch failed ({type(e).__name__})")
+                continue
+            if v is not None and n >= 3:
+                print(f"  FILL {ms:%Y-%m}: {int(counts.get(ms, 0))} VoteHub polls -> "
+                      f"aggregator mean {v:+.2f} ({n} aggregators, as of {ts})")
+                monthly.loc[ms] = round(v, 2)
+        monthly = monthly.sort_index()
     outdf = monthly.reset_index()
     outdf.columns = ["date", "value"]
     outdf["metric"] = "generic_ballot"

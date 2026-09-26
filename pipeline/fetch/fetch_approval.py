@@ -80,6 +80,8 @@ def fetch_votehub():
     t = pd.DataFrame(rows, columns=["end", "value"])
     return t[t["end"] >= "2025-01-20"]          # second-term polls only
 
+MIN_POLLS = 15   # below this, a month is too thin to trust (see the thin-month fill)
+
 def build():
     frames = []
     for name, slugs in PRESIDENTS.items():
@@ -101,6 +103,26 @@ def build():
     allp = pd.concat(frames, ignore_index=True).sort_values("end")
     # monthly = mean of all Gallup readings whose END date falls in that month
     monthly = (allp.set_index("end")["value"].resample("MS").mean().dropna().round(1))
+    # THIN-MONTH FILL (2026-09-25): VoteHub stalled after June 2026 (0 polls in July, 7 in
+    # August). A current-term month with < MIN_POLLS polls takes the Wikipedia AGGREGATOR
+    # average as of that month's end instead (see wiki_asof.py). Only months after UCSB's
+    # series ends are eligible, so no training cycle is touched.
+    counts = allp.set_index("end")["value"].resample("MS").size()
+    import wiki_asof as W
+    for ms, when in W.month_ends(ucsb_end + pd.offsets.MonthBegin(1)):
+        if counts.get(ms, 0) >= MIN_POLLS:
+            continue
+        try:
+            v, n, ts = W.approval_asof(when)
+        except Exception as e:
+            print(f"  !! {ms:%Y-%m}: {int(counts.get(ms, 0))} polls and the aggregator "
+                  f"fetch failed ({type(e).__name__}) - month left as is")
+            continue
+        if v is not None and n >= 3:
+            print(f"  FILL {ms:%Y-%m}: {int(counts.get(ms, 0))} VoteHub polls -> "
+                  f"aggregator mean {v:.1f} ({n} aggregators, as of {ts})")
+            monthly.loc[ms] = round(v, 1)
+    monthly = monthly.sort_index()
     out = monthly.reset_index()
     out.columns = ["date", "value"]
     out["metric"] = "approval"

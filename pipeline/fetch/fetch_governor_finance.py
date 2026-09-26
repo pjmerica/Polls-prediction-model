@@ -46,6 +46,11 @@ def fetch_year(year, key):
                                  "p": page, "mode": "json", "APIKey": key},
                          timeout=90)
         j = json.loads(r.text)
+        if "error" in j:
+            # an ACCOUNT error (e.g. 2026-09-25: "reached its free API call limit pending
+            # Institute review") used to read as an empty year - three 90s back-offs per
+            # cycle, then "0 governor candidates" for every year. Stop and say why.
+            raise SystemExit(f"FollowTheMoney API error: {j['error']}")
         recs = j.get("records", [])
         if not recs or recs[0] == "No Records":
             # FTM soft-blocks bursts: empty result may be a throttle, not real absence

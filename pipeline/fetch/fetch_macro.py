@@ -99,6 +99,7 @@ def fetch_bls_recent(series_ids, years_back=9, timeout=60):
 # series does not carry (UMich surveyed quarterly before 1978), so a replace would silently
 # drop 25 years of history. combine_first keeps ours and adds FRED's newer months.
 FRED_SENTIMENT_URL = "https://fred.stlouisfed.org/graph/fredgraph.csv?id=UMCSENT"
+UMICH_SENTIMENT_URL = "https://www.sca.isr.umich.edu/files/tbmics.csv"   # same index, at source
 
 # FRED also mirrors every BLS-backed series we use, which makes it a complete fallback for the
 # BLS API - not just a sentiment source. Added 2026-08-08 after the BLS API went "Temporarily
@@ -211,6 +212,27 @@ def fetch_fred_sentiment(timeout=60, attempts=3, use_cache=True):
             last = e
             if i < attempts - 1:
                 time.sleep(2 * (i + 1))
+    # SECOND LIVE SOURCE (2026-09-25): the University of Michigan's own monthly file - the
+    # series FRED mirrors. FRED timed out on every attempt that day and the cache stopped at
+    # 2026-06 while UMich had published July-September. Verified identical to the cache where
+    # they overlap (2026-04..06: 49.8 / 44.8 / 49.5). Overlaid on the cache, never replacing
+    # it, and the cache is refreshed so the next offline run carries the new months.
+    try:
+        r = requests.get(UMICH_SENTIMENT_URL, timeout=timeout, headers=H)
+        r.raise_for_status()
+        u = pd.read_csv(io.StringIO(r.text))
+        u["date"] = pd.to_datetime(u["Month"].astype(str) + " " + u["YYYY"].astype(str),
+                                   format="%B %Y", errors="coerce")
+        um = u.dropna(subset=["date"]).set_index("date")["ICS_ALL"].astype(float).sort_index()
+        base = (_parse_umcsent(open(FRED_SENTIMENT_CACHE, encoding="utf-8").read())
+                if os.path.exists(FRED_SENTIMENT_CACHE) else pd.Series(dtype=float))
+        s = um.combine_first(base).sort_index()
+        s.rename("UMCSENT").rename_axis("observation_date").to_csv(FRED_SENTIMENT_CACHE)
+        print(f"  FRED unreachable ({type(last).__name__}) - UMich direct file used "
+              f"(through {s.index.max().date()}), cache refreshed")
+        return s
+    except Exception as ue:
+        print(f"  UMich direct file also unavailable ({type(ue).__name__})")
     if use_cache and os.path.exists(FRED_SENTIMENT_CACHE):
         s = _parse_umcsent(open(FRED_SENTIMENT_CACHE, encoding="utf-8").read())
         print(f"  FRED unreachable ({type(last).__name__}) - using committed cache "
