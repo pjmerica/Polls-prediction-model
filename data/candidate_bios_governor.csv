@@ -77,7 +77,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,DEM,Christine Gregoire,incumbent Governor,2012,Governor,WA,gregoire c,3,0,0
 ,DEM,Jim McIntire,State Treasurer ( ran for reelection ),2012,Governor,WA,mcintire j,3,0,0
 ,DEM,Aaron Reardon,Snohomish County Executive,2012,Governor,WA,reardon a,1,0,0
-,DEM,Ron Sims,former King County Executive and Deputy Secretary of Housing and Urban Development,2012,Governor,WA,sims r,1,0,0
+,DEM,Ron Sims,former King County Executive and Deputy Secretary of Housing and Urban Development,2012,Governor,WA,sims r,4,0,0
 ,DEM,Brian Sonntag,State Auditor,2012,Governor,WA,sonntag b,3,0,0
 ,REP,Shahram Hadian,pastor and small business owner,2012,Governor,WA,hadian s,0,0,0
 ,REP,Rob McKenna,Attorney General of Washington,2012,Governor,WA,mckenna r,3,0,0
@@ -117,7 +117,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,REP,Mike Hubbard,Speaker of the Alabama House of Representatives (ran for re-election),2014,Governor,AL,hubbard m,2,1,0
 ,REP,Alabama State Board of Education,(ran for re-election),2014,Governor,AL,education a,0,0,0
 ,REP,Kay Ivey,Lieutenant Governor of Alabama ( ran for re-election ),2014,Governor,AL,ivey k,3,0,0
-,REP,Tim James,"businessman, son of former Governor Fob James and candidate for Governor in 2002 and 2010",2014,Governor,AL,james t,3,0,1
+,REP,Tim James,"businessman, son of former Governor Fob James and candidate for Governor in 2002 and 2010",2014,Governor,AL,james t,0,0,1
 ,REP,Del Marsh,President Pro Tempore of the Alabama Senate (ran for re-election),2014,Governor,AL,marsh d,2,0,0
 ,REP,Roy Moore,Chief Justice of the Alabama Supreme Court and candidate for Governor in 2006 and 2010,2014,Governor,AL,moore r,0,0,1
 ,REP,Tony Petelos,Jefferson County Manager and former Mayor of Hoover,2014,Governor,AL,petelos t,1,0,0
@@ -139,7 +139,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,DEM,Dustin McDaniel,Arkansas Attorney General,2014,Governor,AR,mcdaniel d,3,0,0
 ,DEM,Shane Broadway,interim director of the Department of Higher Education and former state senator,2014,Governor,AR,broadway s,2,0,0
 ,DEM,John Burkhalter,former State Highway Commissioner ( running for Lieutenant Governor ),2014,Governor,AR,burkhalter j,0,0,0
-,DEM,Conner Eldridge,U.S. Attorney for the Western District of Arkansas,2014,Governor,AR,eldridge c,0,0,0
+,DEM,Conner Eldridge,U.S. Attorney for the Western District of Arkansas,2014,Governor,AR,eldridge c,4,0,0
 ,DEM,G. David Gearhart,chancellor of the University of Arkansas,2014,Governor,AR,gearhart g,0,0,0
 ,DEM,Pat Hays,former mayor of North Little Rock ( running for U.S. House ),2014,Governor,AR,hays p,1,0,0
 ,DEM,Keith Ingram,state senator ( endorsed Ross ),2014,Governor,AR,ingram k,2,0,0
@@ -207,7 +207,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,DEM,Antonio Villaraigosa,former Mayor of Los Angeles,2014,Governor,CA,villaraigosa a,1,0,0
 ,REP,Glenn Champ,businessman and engineer,2014,Governor,CA,champ g,0,0,0
 ,REP,Tim Donnelly,state assemblyman and Minuteman founder,2014,Governor,CA,donnelly t,2,0,0
-,REP,Neel Kashkari,former acting assistant secretary of the Treasury for financial stability,2014,Governor,CA,kashkari n,0,0,0
+,REP,Neel Kashkari,former acting assistant secretary of the Treasury for financial stability,2014,Governor,CA,kashkari n,4,0,0
 ,REP,Dennis Jackson,manufacturer,2014,Governor,CA,jackson d,0,0,0
 ,REP,Abel Maldonado,"former lieutenant governor of California , candidate for controller in 2006 , and candidate for CA-24 in 2012",2014,Governor,CA,maldonado a,3,0,1
 ,REP,Kevin McCarthy,U.S. representative and House Majority Whip,2014,Governor,CA,mccarthy k,4,1,0
@@ -250,7 +250,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,DEM,Dannel Malloy,incumbent Governor,2014,Governor,CT,malloy d,3,0,0
 ,DEM,Connecticut's 4th congressional district,in 2008 and candidate for the U.S. Senate in 2010 and 2012,2014,Governor,CT,district c,0,0,1
 ,DEM,Nancy Wyman,incumbent Lieutenant Governor,2014,Governor,CT,wyman n,3,0,0
-,REP,Thomas C. Foley,former U.S. Ambassador to Ireland and nominee for governor in 2010,2014,Governor,CT,foley t,0,0,1
+,REP,Thomas C. Foley,former U.S. Ambassador to Ireland and nominee for governor in 2010,2014,Governor,CT,foley t,4,0,1
 ,REP,John P. McKinney,Minority Leader of the Connecticut Senate,2014,Governor,CT,mckinney j,2,0,0
 ,REP,Toni Boucher,state senator,2014,Governor,CT,boucher t,2,0,0
 ,REP,Mark Boughton,Mayor of Danbury and nominee for lieutenant governor in 2010,2014,Governor,CT,boughton m,1,0,1
@@ -369,7 +369,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,DEM,Kwame Raoul,state senator,2014,Governor,IL,raoul k,2,0,0
 ,REP,Bill Brady,"state senator, candidate for governor in 2006 and nominee for governor in 2010  Running mate: Maria Rodriguez, former Village President of Long Grove",2014,Governor,IL,brady b,2,0,1
 ,REP,Kirk Dillard,"state senator and candidate for governor in 2010  Running mate: Jil Tracy , state representative",2014,Governor,IL,dillard k,2,1,1
-,REP,Bruce Rauner,"businessman and former chairman of GTCR  Running mate: Evelyn Sanguinetti , Wheaton City Councilwoman",2014,Governor,IL,rauner b,1,0,0
+,REP,Bruce Rauner,"businessman and former chairman of GTCR  Running mate: Evelyn Sanguinetti , Wheaton City Councilwoman",2014,Governor,IL,rauner b,0,0,0
 ,REP,Dan Rutherford,"Illinois Treasurer  Running mate: Steve Kim, Attorney and nominee for Illinois Attorney General in 2010",2014,Governor,IL,rutherford d,0,0,1
 ,REP,Jil Tracy,state representative,2014,Governor,IL,tracy j,2,1,0
 ,REP,Evelyn Sanguinetti,Wheaton City Councilwoman,2014,Governor,IL,sanguinetti e,1,0,0
@@ -391,7 +391,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,REP,Former running mate: Ethan McCord,Iraq War veteran,2014,Governor,KS,mccord f,0,0,0
 ,REP,Kris Kobach,secretary of state of Kansas ( ran for re-election ),2014,Governor,KS,kobach k,3,0,0
 ,REP,Steve Morris,former president of the Kansas Senate,2014,Governor,KS,morris s,2,0,0
-,REP,Sandy Praeger,Kansas Insurance Commissioner (endorsed Paul Davis),2014,Governor,KS,praeger s,0,0,0
+,REP,Sandy Praeger,Kansas Insurance Commissioner (endorsed Paul Davis),2014,Governor,KS,praeger s,3,0,0
 ,DEM,Paul Davis,minority leader of the Kansas House of Representatives,2014,Governor,KS,davis p,2,1,0
 ,DEM,Kansas Board of Regents,and nominee for the U.S. Senate in 1996 (running for lieutenant governor ),2014,Governor,KS,regents k,0,0,1
 ,DEM,Carl Brewer,mayor of Wichita,2014,Governor,KS,brewer c,1,0,0
@@ -399,7 +399,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,DEM,Deb Miller,former secretary of the Kansas Department of Transportation,2014,Governor,KS,miller d,0,0,0
 ,DEM,Stephen Morris,former Republican president of the Kansas Senate,2014,Governor,KS,morris s,2,0,0
 ,DEM,Mark Parkinson,"former governor , president and CEO of the American Health Care Association and the National Center for Assisted Living",2014,Governor,KS,parkinson m,3,0,0
-,DEM,Sandy Praeger,Republican Kansas Insurance Commissioner,2014,Governor,KS,praeger s,0,0,0
+,DEM,Sandy Praeger,Republican Kansas Insurance Commissioner,2014,Governor,KS,praeger s,3,0,0
 ,DEM,Joe Reardon,former mayor of Kansas City,2014,Governor,KS,reardon j,1,0,0
 ,DEM,Joshua Svaty,vice president of The Land Institute and former Secretary of Agriculture of Kansas,2014,Governor,KS,svaty j,0,0,0
 ,DEM,Keen Umbehr,attorney,2014,Governor,KS,umbehr k,0,0,0
@@ -417,9 +417,9 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,DEM,Robert DeLeo,speaker of the Massachusetts House of Representatives,2014,Governor,MA,deleo r,2,1,0
 ,DEM,Barney Frank,former U.S. representative,2014,Governor,MA,frank b,4,1,0
 ,DEM,Therese Murray,president of the Massachusetts Senate,2014,Governor,MA,murray t,2,0,0
-,DEM,Carmen Ortiz,U.S. attorney for the District of Massachusetts,2014,Governor,MA,ortiz c,0,0,0
+,DEM,Carmen Ortiz,U.S. attorney for the District of Massachusetts,2014,Governor,MA,ortiz c,4,0,0
 ,DEM,Deval Patrick,incumbent governor of Massachusetts,2014,Governor,MA,patrick d,3,0,0
-,DEM,Rick Sullivan,chief of staff to Governor Deval Patrick and former secretary of Energy and Environmental Affairs and mayor of Westfield,2014,Governor,MA,sullivan r,3,0,0
+,DEM,Rick Sullivan,chief of staff to Governor Deval Patrick and former secretary of Energy and Environmental Affairs and mayor of Westfield,2014,Governor,MA,sullivan r,1,0,0
 ,DEM,Leland Cheung,Cambridge city councilor and board member of the Massachusetts Technology Collaborative,2014,Governor,MA,cheung l,1,0,0
 ,DEM,Steve Kerrigan,former CEO of the Democratic National Convention,2014,Governor,MA,kerrigan s,0,0,0
 ,DEM,Michael Lake,candidate for state auditor in 2010,2014,Governor,MA,lake m,0,0,1
@@ -478,7 +478,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,DEM,Mark Eves,speaker of the Maine House of Representatives,2014,Governor,ME,eves m,2,1,0
 ,DEM,Jeremy Fischer,former state representative,2014,Governor,ME,fischer j,2,1,0
 ,DEM,Janet T. Mills,Maine attorney general,2014,Governor,ME,mills j,3,0,0
-,DEM,Karen Mills,administrator of the Small Business Administration,2014,Governor,ME,mills k,0,0,0
+,DEM,Karen Mills,administrator of the Small Business Administration,2014,Governor,ME,mills k,4,0,0
 ,DEM,Chellie Pingree,U.S. representative,2014,Governor,ME,pingree c,4,1,0
 ,DEM,Hannah Pingree,former speaker of the Maine House of Representatives,2014,Governor,ME,pingree h,2,1,0
 ,IND,David Slagger,"former Maliseet representative to the Maine House of Representatives (originally declared as a Democrat, switched parties, then unenrolled)",2014,Governor,ME,slagger d,2,1,0
@@ -584,7 +584,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,REP,Andy Sanborn,state senator,2014,Governor,NH,sanborn a,2,0,0
 ,REP,Kevin H. Smith,"conservative activist, former state representative and candidate for governor in 2012",2014,Governor,NH,smith k,2,1,1
 ,REP,John Stephen,former Commissioner of the New Hampshire Department of Health & Human Services and nominee for governor in 2010,2014,Governor,NH,stephen j,3,0,1
-,REP,Christopher Sununu,"Executive Councillor , son of former governor John H. Sununu and brother of former U.S. senator John E. Sununu (ran for re-election)",2014,Governor,NH,sununu c,4,0,0
+,REP,Christopher Sununu,"Executive Councillor , son of former governor John H. Sununu and brother of former U.S. senator John E. Sununu (ran for re-election)",2014,Governor,NH,sununu c,0,0,0
 ,REP,John E. Sununu,former U.S. senator,2014,Governor,NH,sununu j,4,0,0
 ,REP,Susana Martínez,incumbent governor,2014,Governor,NM,martinez s,3,0,0
 ,REP,Gary Johnson,"former governor of New Mexico , businessman and Libertarian Party nominee for president in 2012 and 2016",2014,Governor,NM,johnson g,3,0,1
@@ -625,7 +625,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,DEM,Dina Titus,U.S. Representative and nominee for governor in 2006 (ran for re-election and won),2014,Governor,NV,titus d,4,1,1
 ,IND,David Lory VanDerBeek,family therapist and nominee for the Nevada Assembly in 2010 and the U.S. Senate in 2012,2014,Governor,NV,vanderbeek d,0,0,1
 ,IND,Democratic,candidate for governor in 2010,2014,Governor,NV,democratic,0,0,1
-,DEM,Andrew Cuomo,"incumbent governor  Running mate: Kathy Hochul , former U.S. representative",2014,Governor,NY,cuomo a,4,1,0
+,DEM,Andrew Cuomo,"incumbent governor  Running mate: Kathy Hochul , former U.S. representative",2014,Governor,NY,cuomo a,3,1,0
 ,DEM,Randy Credico,"comedian, activist, Libertarian nominee for the U.S. Senate in 2010 and Tax Wall Street nominee for Mayor of New York City in 2013  No running mate",2014,Governor,NY,credico r,0,0,1
 ,DEM,Zephyr Teachout,"associate professor of law at Fordham University  Running mate: Tim Wu , professor of law at Columbia University",2014,Governor,NY,teachout z,0,0,0
 ,DEM,Kathy Hochul,former U.S. representative,2014,Governor,NY,hochul k,4,1,0
@@ -645,7 +645,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,REP,Brian Jones,"teacher, activist and actor from New York City",2014,Governor,NY,jones b,0,0,0
 ,REP,Andrew Cuomo,incumbent governor,2014,Governor,NY,cuomo a,3,0,0
 ,REP,Zephyr Teachout,law professor at Fordham University,2014,Governor,NY,teachout z,0,0,0
-,REP,Diane Ravitch,former Assistant Secretary of Education,2014,Governor,NY,ravitch d,0,0,0
+,REP,Diane Ravitch,former Assistant Secretary of Education,2014,Governor,NY,ravitch d,4,0,0
 ,REP,Bill Samuels,"activist.  Samuels instead announced his intent to pursue the lieutenant governor line in the Democratic primary, a position he also considered pursuing in 2010.  Samuels dropped out of the race after Teachout lost the WFP nomination to Cuomo, thus implying that Samuels was planning to be Teachout's running mate.",2014,Governor,NY,samuels b,3,0,0
 ,REP,New York's 3rd congressional district,"in 2012  Running mate: Chris Edes, nominee for the U.S. Senate in 2012",2014,Governor,NY,district n,0,0,1
 ,REP,Randy Credico,"comedian, activist, Libertarian nominee for the U.S. Senate in 2010 and Tax Wall Street nominee for Mayor of New York City in 2013",2014,Governor,NY,credico r,0,0,1
@@ -665,7 +665,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,DEM,Ohio's 7th congressional district,in 2008 and for Ohio's 10th congressional district in 2012,2014,Governor,OH,district o,0,0,0
 ,DEM,Todd Portune,Hamilton County Commissioner,2014,Governor,OH,portune t,1,0,0
 ,DEM,Michael B. Coleman,mayor of Columbus,2014,Governor,OH,coleman m,1,0,0
-,DEM,Richard Cordray,director of the Consumer Financial Protection Bureau and former Ohio Attorney General,2014,Governor,OH,cordray r,3,0,0
+,DEM,Richard Cordray,director of the Consumer Financial Protection Bureau and former Ohio Attorney General,2014,Governor,OH,cordray r,4,0,0
 ,DEM,Tim Ryan,U.S. representative,2014,Governor,OH,ryan t,4,1,0
 ,DEM,Ted Strickland,former governor,2014,Governor,OH,strickland t,3,0,0
 ,DEM,Betty Sutton,former U.S. representative,2014,Governor,OH,sutton b,4,1,0
@@ -711,11 +711,11 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,DEM,Jo Ellen Litz,Lebanon County Commissioner (failed to qualify),2014,Governor,PA,litz j,1,0,0
 ,DEM,Max Myers,businessman and former pastor,2014,Governor,PA,myers m,0,0,0
 ,DEM,Ed Pawlowski,Mayor of Allentown,2014,Governor,PA,pawlowski e,1,0,0
-,DEM,Jack Wagner,"former Pennsylvania Auditor General , candidate for governor in 2010 and candidate for Mayor of Pittsburgh in 2013",2014,Governor,PA,wagner j,0,0,1
+,DEM,Jack Wagner,"former Pennsylvania Auditor General , candidate for governor in 2010 and candidate for Mayor of Pittsburgh in 2013",2014,Governor,PA,wagner j,3,0,1
 ,DEM,Bob Casey Jr.,U.S. Senator,2014,Governor,PA,casey b,4,0,0
 ,DEM,Scott Conklin,state representative and nominee for lieutenant governor in 2010,2014,Governor,PA,conklin s,2,1,1
 ,DEM,Kathy Dahlkemper,former U.S. Representative,2014,Governor,PA,dahlkemper k,4,1,0
-,DEM,Eugene DePasquale,Pennsylvania Auditor General,2014,Governor,PA,depasquale e,0,0,0
+,DEM,Eugene DePasquale,Pennsylvania Auditor General,2014,Governor,PA,depasquale e,3,0,0
 ,DEM,Kathleen Kane,Pennsylvania Attorney General,2014,Governor,PA,kane k,3,0,0
 ,DEM,Tom Knox,"businessman, candidate for Mayor of Philadelphia in 2007 and candidate for governor in 2010",2014,Governor,PA,knox t,0,0,1
 ,DEM,Daylin Leach,state senator (running for Congress),2014,Governor,PA,leach d,2,0,0
@@ -941,7 +941,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,DEM,Ken Fortenberry,"newspaper publisher, author, journalist and Republican candidate for North Carolina's 10th congressional district in 2012",2016,Governor,NC,fortenberry k,0,0,1
 ,DEM,Sean Haugh,pizza delivery man and nominee for the U.S. Senate in 2002 and 2014 ( running for U.S. Senate ),2016,Governor,NC,haugh s,0,0,1
 ,DEM,Daniel Orr,navy veteran,2016,Governor,NC,orr d,0,0,0
-,REP,Doug Burgum,"former senior vice president of Microsoft and former chairman & CEO of Great Plains Software  Running mate: Brent Sanford , Watford City mayor",2016,Governor,ND,burgum d,1,0,0
+,REP,Doug Burgum,"former senior vice president of Microsoft and former chairman & CEO of Great Plains Software  Running mate: Brent Sanford , Watford City mayor",2016,Governor,ND,burgum d,0,0,0
 ,REP,Paul Sorum,"architect Running mate: Michael Coachman, human resources executive",2016,Governor,ND,sorum p,0,0,0
 ,REP,Brent Sanford,Watford City mayor,2016,Governor,ND,sanford b,1,0,0
 ,REP,Running mate: Michael Coachman,human resources executive,2016,Governor,ND,coachman r,0,0,0
@@ -970,14 +970,14 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,DEM,Ann McLane Kuster,U.S. representative (running for re-election),2016,Governor,NH,kuster a,4,1,0
 ,DEM,running for NH-01,),2016,Governor,NH,nh r,0,0,0
 ,DEM,Chris Pappas,Executive Councilor,2016,Governor,NH,pappas c,0,0,0
-,DEM,Portsmouth,City Councilor and daughter of U.S. senator Jeanne Shaheen,2016,Governor,NH,portsmouth,4,0,0
+,DEM,Portsmouth,City Councilor and daughter of U.S. senator Jeanne Shaheen,2016,Governor,NH,portsmouth,1,0,0
 ,DEM,Carol Shea-Porter,former U.S. representative ( running for NH-01 ),2016,Governor,NH,sheaporter c,4,1,0
 ,DEM,Donna Soucy,state senator,2016,Governor,NH,soucy d,2,0,0
 ,DEM,Mike Vlacich,campaign manager for Senator Shaheen,2016,Governor,NH,vlacich m,0,0,0
 ,REP,Frank Edelblut,state representative,2016,Governor,NH,edelblut f,2,1,0
 ,REP,Jeanie Forrester,state senator,2016,Governor,NH,forrester j,2,0,0
 ,REP,Ted Gatsas,Mayor of Manchester,2016,Governor,NH,gatsas t,1,0,0
-,REP,Chris Sununu,"Executive Councilor , son of former governor John H. Sununu and brother of former U.S. senator John E. Sununu",2016,Governor,NH,sununu c,4,0,0
+,REP,Chris Sununu,"Executive Councilor , son of former governor John H. Sununu and brother of former U.S. senator John E. Sununu",2016,Governor,NH,sununu c,0,0,0
 ,REP,Jeb Bradley,Majority Leader of the State Senate and former U.S. representative,2016,Governor,NH,bradley j,4,1,0
 ,REP,Walt Havenstein,businessman and nominee for governor in 2014,2016,Governor,NH,havenstein w,0,0,1
 ,REP,Donnalee Lozeau,Mayor of Nashua,2016,Governor,NH,lozeau d,1,0,0
@@ -1009,7 +1009,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,IND,Betsy Johnson,Democratic state senator,2016,Governor,OR,johnson b,2,0,0
 ,DEM,Matt Dunne,"former state senator, Google executive, and candidate for governor in 2010",2016,Governor,VT,dunne m,2,0,1
 ,DEM,Cris Ericson,perennial candidate (also running for the U.S. Senate),2016,Governor,VT,ericson c,0,0,0
-,DEM,Peter W. Galbraith,former state senator and former United States Ambassador to Croatia,2016,Governor,VT,galbraith p,2,0,0
+,DEM,Peter W. Galbraith,former state senator and former United States Ambassador to Croatia,2016,Governor,VT,galbraith p,4,0,0
 ,DEM,Sue Minter,former secretary of the Vermont Agency of Transportation and former state representative,2016,Governor,VT,minter s,2,1,0
 ,DEM,H. Brooke Paige,"former CEO of Remington News Service, candidate for governor and attorney general in 2014 and Republican candidate for the U.S. Senate in 2012 (also ran for attorney general)",2016,Governor,VT,paige h,0,0,1
 ,DEM,Shap Smith,Speaker of the Vermont House of Representatives   (running for lieutenant governor),2016,Governor,VT,smith s,2,1,0
@@ -1030,7 +1030,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,REP,Rob McKenna,former Attorney General of Washington and candidate for governor in 2012,2016,Governor,WA,mckenna r,3,0,1
 ,REP,Dave Reichert,U.S. Representative for Washington's 8th congressional district ( ran for reelection ),2016,Governor,WA,reichert d,4,1,0
 ,IND,Randy Dorn,State Superintendent of Public Instruction,2016,Governor,WA,dorn r,3,0,0
-,DEM,Booth Goodwin,former United States attorney for the Southern District of West Virginia,2016,Governor,WV,goodwin b,0,0,0
+,DEM,Booth Goodwin,former United States attorney for the Southern District of West Virginia,2016,Governor,WV,goodwin b,4,0,0
 ,DEM,Jim Justice,coal baron,2016,Governor,WV,justice j,0,0,0
 ,DEM,Jeff Kessler,"minority leader of the West Virginia Senate , former president of the West Virginia Senate and candidate for governor in 2011",2016,Governor,WV,kessler j,2,0,1
 ,DEM,Glen Gainer III,West Virginia state auditor and nominee for West Virginia's 1st congressional district in 2014,2016,Governor,WV,gainer g,3,0,1
@@ -1065,7 +1065,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,REP,Joe Miller,former magistrate judge and perennial candidate,2018,Governor,AK,miller j,1,0,0
 ,REP,Frank Murkowski,former governor of Alaska and U.S. Senator,2018,Governor,AK,murkowski f,4,0,0
 ,REP,Sean Parnell,former governor of Alaska  (endorsed Mike Dunleavy),2018,Governor,AK,parnell s,3,0,0
-,REP,Ben Stevens,"former president of the Alaska State Senate, son of former president pro tempore of the U.S. Senate, Solicitor of the Interior Department & U.S. Attorney Ted Stevens",2018,Governor,AK,stevens b,4,0,0
+,REP,Ben Stevens,"former president of the Alaska State Senate, son of former president pro tempore of the U.S. Senate, Solicitor of the Interior Department & U.S. Attorney Ted Stevens",2018,Governor,AK,stevens b,2,0,0
 ,REP,Dan Sullivan,former mayor of Anchorage and nominee for lieutenant governor in 2014   (endorsed Mike Dunleavy),2018,Governor,AK,sullivan d,1,0,1
 ,REP,Bill Walker,incumbent Independent governor (running for re-election as an Independent),2018,Governor,AK,walker b,3,0,0
 ,REP,Lynn Gattis,former state representative and candidate for the state senate in 2016,2018,Governor,AK,gattis l,2,1,1
@@ -1176,7 +1176,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,REP,West Hartford,councilman and independent candidate for governor in 2014 (ran for U.S. Senate ),2018,Governor,CT,hartford w,0,0,1
 ,REP,Toni Boucher,state senator,2018,Governor,CT,boucher t,2,0,0
 ,REP,Len Fasano,"state senator, president pro tempore of the Connecticut Senate",2018,Governor,CT,fasano l,2,0,0
-,REP,Tom Foley,former U.S. Ambassador to Ireland and nominee for governor in 2010 and 2014,2018,Governor,CT,foley t,0,0,1
+,REP,Tom Foley,former U.S. Ambassador to Ireland and nominee for governor in 2010 and 2014,2018,Governor,CT,foley t,4,0,1
 ,REP,Tony Hwang,state senator,2018,Governor,CT,hwang t,2,0,0
 ,REP,Rob Kane,Auditor of Public Accounts and former state senator,2018,Governor,CT,kane r,2,0,0
 ,REP,Themis Klarides,Minority Leader of the Connecticut House of Representatives,2018,Governor,CT,klarides t,2,1,0
@@ -1259,9 +1259,9 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,REP,Bob McDermott,state representative and nominee for HI-02 in 2002,2018,Governor,HI,mcdermott b,2,1,1
 ,REP,Kim Reynolds,incumbent governor of Iowa,2018,Governor,IA,reynolds k,3,0,0
 ,REP,Ron Corbett,mayor of Cedar Rapids,2018,Governor,IA,corbett r,1,0,0
-,REP,Terry Branstad,United States Ambassador to China and former governor,2018,Governor,IA,branstad t,3,0,0
+,REP,Terry Branstad,United States Ambassador to China and former governor,2018,Governor,IA,branstad t,4,0,0
 ,REP,Steve King,U.S. representative,2018,Governor,IA,king s,4,1,0
-,REP,Bill Northey,U.S. Under Secretary of Agriculture for Farm and Foreign Agricultural Services and former Secretary of Agriculture of Iowa,2018,Governor,IA,northey b,0,0,0
+,REP,Bill Northey,U.S. Under Secretary of Agriculture for Farm and Foreign Agricultural Services and former Secretary of Agriculture of Iowa,2018,Governor,IA,northey b,4,0,0
 ,REP,Bob Vander Plaats,"president and CEO of The Family Leader , candidate for governor of Iowa in 2002 , 2006 and 2010 and nominee for lieutenant governor of Iowa in 2006",2018,Governor,IA,plaats b,0,0,1
 ,DEM,Fred Hubbell,businessman,2018,Governor,IA,hubbell f,0,0,0
 ,DEM,Nate Boulton,state senator,2018,Governor,IA,boulton n,2,0,0
@@ -1383,7 +1383,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,REP,Anne Arundel County,Councilman,2018,Governor,MD,county a,0,0,0
 ,DEM,Ben Jealous,"former president and CEO of the NAACP  Running mate: Susie Turnbull , former chair of the Maryland Democratic Party and former vice chair of the Democratic National Committee",2018,Governor,MD,jealous b,0,0,0
 ,DEM,Susie Turnbull,former chair of the Maryland Democratic Party and former vice chair of the Democratic National Committee,2018,Governor,MD,turnbull s,0,0,0
-,DEM,Maya Rockeymoore Cummings,policy consultant and wife of U.S. Representative Elijah Cummings,2018,Governor,MD,cummings m,4,1,0
+,DEM,Maya Rockeymoore Cummings,policy consultant and wife of U.S. Representative Elijah Cummings,2018,Governor,MD,cummings m,0,1,0
 ,DEM,Baltimore County Board of Education,and small businesswoman,2018,Governor,MD,education b,0,0,0
 ,DEM,John Delaney,"U.S. Representative (ran for President in 2020 ,)",2018,Governor,MD,delaney j,4,1,0
 ,DEM,Peter Franchot,State Comptroller,2018,Governor,MD,franchot p,3,0,0
@@ -1444,8 +1444,8 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,DEM,Geoffrey Fieger,attorney and nominee for governor in 1998,2018,Governor,MI,fieger g,0,0,1
 ,DEM,Mark Hackel,Macomb County Executive,2018,Governor,MI,hackel m,1,0,0
 ,DEM,Dan Kildee,U.S. representative,2018,Governor,MI,kildee d,4,1,0
-,DEM,Andy Levin,energy consultant and son of Congressman Sander Levin  (running for Congress in MI-9),2018,Governor,MI,levin a,4,0,0
-,DEM,Barbara McQuade,former United States Attorney for the Eastern District of Michigan,2018,Governor,MI,mcquade b,0,0,0
+,DEM,Andy Levin,energy consultant and son of Congressman Sander Levin  (running for Congress in MI-9),2018,Governor,MI,levin a,0,0,0
+,DEM,Barbara McQuade,former United States Attorney for the Eastern District of Michigan,2018,Governor,MI,mcquade b,4,0,0
 ,DEM,Gary Peters,U.S. senator,2018,Governor,MI,peters g,4,0,0
 ,DEM,Bart Stupak,former U.S. representative,2018,Governor,MI,stupak b,4,1,0
 ,DEM,Jennifer Kurland,president of the Redford Union School Board,2018,Governor,MI,kurland j,1,0,0
@@ -1469,7 +1469,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,REP,Keith Downey,former chairman of the Republican Party of Minnesota and former state representative,2018,Governor,MN,downey k,2,1,0
 ,REP,Ramsey County,Commissioner,2018,Governor,MN,county r,0,0,0
 ,REP,David Osmek,state senator,2018,Governor,MN,osmek d,2,0,0
-,REP,Mary Giuliani Stephens,"mayor of Woodbury   Running mate: Jeff Backer , state representative",2018,Governor,MN,stephens m,2,1,0
+,REP,Mary Giuliani Stephens,"mayor of Woodbury   Running mate: Jeff Backer , state representative",2018,Governor,MN,stephens m,1,1,0
 ,REP,Jeff Backer,state representative,2018,Governor,MN,backer j,2,1,0
 ,REP,Sarah Anderson,state representative,2018,Governor,MN,anderson s,2,1,0
 ,REP,Michele Bachmann,former U.S. representative and candidate for president in 2012,2018,Governor,MN,bachmann m,4,1,1
@@ -1536,9 +1536,9 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,REP,Mark Amodei,U.S. representative (ran for re-election and won),2018,Governor,NV,amodei m,4,1,0
 ,REP,Joe Heck,former U.S. representative and nominee for U.S. Senate in 2016,2018,Governor,NV,heck j,4,1,1
 ,REP,Dean Heller,U.S. senator (endorsed Laxalt and ran for re-election and lost),2018,Governor,NV,heller d,4,0,0
-,REP,Steve Hill,former executive director of the Nevada Governor's Office of Economic Development,2018,Governor,NV,hill s,3,0,0
+,REP,Steve Hill,former executive director of the Nevada Governor's Office of Economic Development,2018,Governor,NV,hill s,0,0,0
 ,REP,Mark Hutchison,lieutenant governor (endorsed Laxalt),2018,Governor,NV,hutchison m,3,0,0
-,REP,Ron Knecht,Nevada State Controller (ran for re-election and lost),2018,Governor,NV,knecht r,0,0,0
+,REP,Ron Knecht,Nevada State Controller (ran for re-election and lost),2018,Governor,NV,knecht r,3,0,0
 ,REP,Brian Krolicki,former lieutenant governor,2018,Governor,NV,krolicki b,3,0,0
 ,DEM,Steve Sisolak,chair of the Clark County Commission,2018,Governor,NV,sisolak s,0,0,0
 ,DEM,Aaron Ford,Majority Leader of the Nevada Senate (ran for attorney general and won),2018,Governor,NV,ford a,2,0,0
@@ -1549,7 +1549,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,DEM,Andrew Cuomo,governor of New York,2018,Governor,NY,cuomo a,3,0,0
 ,DEM,Randy Credico,perennial candidate (endorsed Nixon),2018,Governor,NY,credico r,0,0,0
 ,DEM,Terry Gipson,former state senator,2018,Governor,NY,gipson t,2,0,0
-,DEM,Preet Bharara,former United States Attorney for the Southern District of New York,2018,Governor,NY,bharara p,0,0,0
+,DEM,Preet Bharara,former United States Attorney for the Southern District of New York,2018,Governor,NY,bharara p,4,0,0
 ,DEM,Byron Brown,mayor of Buffalo and chairman of the New York State Democratic Party,2018,Governor,NY,brown b,1,0,0
 ,DEM,Hillary Clinton,67th US Secretary of State ; former U.S. senator from NY; former First Lady of the United States ; 2008 Democratic presidential candidate ; Democratic nominee for president in 2016 (endorsed Cuomo),2018,Governor,NY,clinton h,4,0,1
 ,DEM,Thomas DiNapoli,Comptroller of New York (ran for reelection),2018,Governor,NY,dinapoli t,0,0,0
@@ -1683,8 +1683,8 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,REP,Joe Carr,"former state representative , perennial candidate",2018,Governor,TN,carr j,2,1,0
 ,REP,Bob Corker,U.S. senator,2018,Governor,TN,corker b,4,0,0
 ,REP,Stephen Fincher,former U.S. representative,2018,Governor,TN,fincher s,4,1,0
-,REP,Alberto Gonzales,dean of the Belmont University School of Law and former U.S. attorney general,2018,Governor,TN,gonzales a,3,0,0
-,REP,Bill Hagerty,United States Ambassador to Japan and former Tennessee cabinet official,2018,Governor,TN,hagerty b,0,0,0
+,REP,Alberto Gonzales,dean of the Belmont University School of Law and former U.S. attorney general,2018,Governor,TN,gonzales a,4,0,0
+,REP,Bill Hagerty,United States Ambassador to Japan and former Tennessee cabinet official,2018,Governor,TN,hagerty b,4,0,0
 ,REP,Tre Hargett,Tennessee Secretary of State,2018,Governor,TN,hargett t,3,0,0
 ,REP,Rob Mitchell,Rutherford County property assessor,2018,Governor,TN,mitchell r,0,0,0
 ,REP,Mark Norris,"majority leader of the Tennessee Senate , appointed as judge to the United States District Court for the Western District of Tennessee",2018,Governor,TN,norris m,2,0,0
@@ -1803,7 +1803,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,DEM,Ryan Busse,businessman,2020,Governor,MT,busse r,0,0,0
 ,DEM,Wilmot Collins,mayor of Helena and former 2020 candidate for the U.S. Senate,2020,Governor,MT,collins w,1,0,1
 ,DEM,Montana's at-large congressional district,in 2018,2020,Governor,MT,district m,0,0,0
-,DEM,Michael Punke,writer and former U.S. ambassador to the World Trade Organization,2020,Governor,MT,punke m,0,0,0
+,DEM,Michael Punke,writer and former U.S. ambassador to the World Trade Organization,2020,Governor,MT,punke m,4,0,0
 ,DEM,Brian Schweitzer,former governor of Montana (endorsed Williams),2020,Governor,MT,schweitzer b,3,0,0
 ,DEM,Kathleen Williams,former state representative and nominee for Montana's at-large congressional district in 2018 ( running for the U.S. House ),2020,Governor,MT,williams k,2,1,1
 ,REP,Greg Gianforte,incumbent U.S. representative for Montana's at-large congressional district and nominee for governor of Montana in 2016,2020,Governor,MT,gianforte g,4,1,1
@@ -1822,8 +1822,8 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,REP,Doug Burgum,"incumbent governor  Running mate: Brent Sanford , incumbent lieutenant governor",2020,Governor,ND,burgum d,3,0,0
 ,REP,Brent Sanford,incumbent lieutenant governor,2020,Governor,ND,sanford b,3,0,0
 ,REP,Wayne Stenehjem,North Dakota Attorney General,2020,Governor,ND,stenehjem w,3,0,0
-,REP,Drew Wrigley,U.S. Attorney for the District of North Dakota,2020,Governor,ND,wrigley d,0,0,0
-,DEM,Killdeer,"school board member  Running mate: Ben Vig , former state representative",2020,Governor,ND,killdeer,2,1,0
+,REP,Drew Wrigley,U.S. Attorney for the District of North Dakota,2020,Governor,ND,wrigley d,4,0,0
+,DEM,Killdeer,"school board member  Running mate: Ben Vig , former state representative",2020,Governor,ND,killdeer,1,1,0
 ,DEM,Ben Vig,former state representative,2020,Governor,ND,vig b,2,1,0
 ,DEM,Joshua Boschee,minority leader of the North Dakota House of Representatives,2020,Governor,ND,boschee j,2,1,0
 ,DEM,Heidi Heitkamp,former U.S. senator,2020,Governor,ND,heitkamp h,4,0,0
@@ -1864,7 +1864,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,DEM,Ben McAdams,U.S. representative  ( running for re-election ),2020,Governor,UT,mcadams b,4,1,0
 ,DEM,Jim Winder,former Salt Lake County Sheriff,2020,Governor,UT,winder j,1,0,0
 ,IND,Bariatric Surgeon,"Running mate: Barry Short, businessman and Vice Chair of the Libertarian Party of Utah",2020,Governor,UT,surgeon b,0,0,0
-,REP,Jon Huntsman Jr.,"former United States Ambassador to Russia , China and Singapore , former governor of Utah , and candidate for president in 2012",2020,Governor,UT,huntsman j,3,0,1
+,REP,Jon Huntsman Jr.,"former United States Ambassador to Russia , China and Singapore , former governor of Utah , and candidate for president in 2012",2020,Governor,UT,huntsman j,4,0,1
 ,REP,Phil Scott,incumbent governor of Vermont,2020,Governor,VT,scott p,3,0,0
 ,DEM,David Zuckerman,"Lieutenant Governor of Vermont , former member of the Vermont Senate , former member of the Vermont House of Representatives , farmer, businessman, environmentalist [ a ]  (Zuckerman elected to use the Progressive Party ballot line in the general election, listing the Democratic Party as a secondary nomination under Vermont's electoral fusion system.)",2020,Governor,VT,zuckerman d,3,1,0
 ,DEM,T. J. Donovan,Attorney General of Vermont  (running for re-election),2020,Governor,VT,donovan t,3,0,0
@@ -1882,7 +1882,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,REP,David McKinley,incumbent U.S. Representative for West Virginia's 1st congressional district (running for re-election ),2020,Governor,WV,mckinley d,4,1,0
 ,REP,Mac Warner,Secretary of State of West Virginia ( running for re-election ),2020,Governor,WV,warner m,3,0,0
 ,DEM,Kanawha County,commissioner,2020,Governor,WV,county k,0,0,0
-,DEM,Booth Goodwin,former United States Attorney and candidate for Governor of West Virginia in 2016,2020,Governor,WV,goodwin b,0,0,1
+,DEM,Booth Goodwin,former United States Attorney and candidate for Governor of West Virginia in 2016,2020,Governor,WV,goodwin b,4,0,1
 ,DEM,Joe Manchin,incumbent U.S. Senator and former Governor of West Virginia,2020,Governor,WV,manchin j,4,0,0
 ,DEM,Daniel Lutz,"Eastern Panhandle Conservation District Supervisor representing Jefferson County, and commissioned U.S. Air Force veteran",2020,Governor,WV,lutz d,0,1,0
 ,DEM,Erika Kolenich,trial attorney,2020,Governor,WV,kolenich e,0,0,0
@@ -1899,7 +1899,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,DEM,Mike Navarre,former mayor of the Kenai Peninsula Borough and former state representative (endorsed Walker),2022,Governor,AK,navarre m,2,1,0
 ,IND,Bill Walker,"former governor  Running mate: Heidi Drygas, former commissioner of the Alaska Department of Labor and Workforce Development",2022,Governor,AK,walker b,3,0,0
 ,IND,Alyse Galvin,public education advocate and candidate for Alaska's at-large congressional district in 2018 and 2020  ( running for state house ),2022,Governor,AK,galvin a,0,0,1
-,IND,Al Gross,"orthopedic surgeon, commercial fisherman, son of former Alaska Attorney General Avrum Gross , and candidate for U.S. Senate in 2020   ( ran for U.S. House )",2022,Governor,AK,gross a,3,0,1
+,IND,Al Gross,"orthopedic surgeon, commercial fisherman, son of former Alaska Attorney General Avrum Gross , and candidate for U.S. Senate in 2020   ( ran for U.S. House )",2022,Governor,AK,gross a,0,0,1
 ,REP,Kay Ivey,incumbent governor of Alabama,2022,Governor,AL,ivey k,3,0,0
 ,REP,Will Ainsworth,incumbent lieutenant governor (seeking re-election),2022,Governor,AL,ainsworth w,3,0,0
 ,REP,Mo Brooks,U.S. representative (running for U.S. Senate ),2022,Governor,AL,brooks m,4,1,0
@@ -1920,7 +1920,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,REP,Steve Gaynor,businessman and nominee for Arizona Secretary of State in 2018,2022,Governor,AZ,gaynor s,0,0,1
 ,REP,Matt Salmon,former U.S. representative for Arizona's 1st congressional district and nominee for governor in 2002 (endorsed Robson),2022,Governor,AZ,salmon m,4,1,1
 ,REP,Kimberly Yee,Arizona State Treasurer ( running for re-election ),2022,Governor,AZ,yee k,3,0,0
-,REP,Kirk Adams,former Chief of Staff to Governor Doug Ducey and former Speaker of the Arizona House of Representatives,2022,Governor,AZ,adams k,3,1,0
+,REP,Kirk Adams,former Chief of Staff to Governor Doug Ducey and former Speaker of the Arizona House of Representatives,2022,Governor,AZ,adams k,2,1,0
 ,REP,Andy Biggs,U.S. representative for Arizona's 5th congressional district (endorsed Salmon),2022,Governor,AZ,biggs a,4,1,0
 ,REP,Mark Brnovich,Arizona Attorney General ( ran for the U.S. Senate ),2022,Governor,AZ,brnovich m,3,0,0
 ,REP,David Schweikert,U.S. representative for Arizona's 6th congressional district (endorsed Salmon),2022,Governor,AZ,schweikert d,4,1,0
@@ -2027,7 +2027,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,REP,Scott Schluter,"veteran, diesel technician, and chair of the Southern Illinois Libertarian Party  Running mate: John Phillips",2022,Governor,IL,schluter s,0,0,0
 ,IND,Mancow Muller,radio personality,2022,Governor,IL,muller m,0,0,0
 ,DEM,Laura Kelly,"incumbent governor (2019–present)  Running mate: David Toland , incumbent lieutenant governor (2021–present) and Secretary of Commerce (2019–present)",2022,Governor,KS,kelly l,3,1,0
-,DEM,David Toland,incumbent lieutenant governor (2021–present) and Secretary of Commerce (2019–present),2022,Governor,KS,toland d,3,1,0
+,DEM,David Toland,incumbent lieutenant governor (2021–present) and Secretary of Commerce (2019–present),2022,Governor,KS,toland d,4,1,0
 ,REP,Derek Schmidt,"Kansas Attorney General (2011–2023)  Running mate: Katie Sawyer, political staffer",2022,Governor,KS,schmidt d,3,0,0
 ,REP,Running mate: Katie Sawyer,political staffer,2022,Governor,KS,sawyer r,0,0,0
 ,REP,Jeff Colyer,former governor (2018–2019) and former lieutenant governor (2011–2018) (endorsed Schmidt),2022,Governor,KS,colyer j,3,0,0
@@ -2043,7 +2043,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,REP,Charlie Baker,governor of Massachusetts (2015–2023),2022,Governor,MA,baker c,3,0,0
 ,REP,Scott Brown,"former U.S. senator from Massachusetts (2010–2013), former U.S. ambassador to New Zealand and Samoa (2017–2020), and nominee for U.S. Senate from New Hampshire in 2014",2022,Governor,MA,brown s,4,0,1
 ,REP,Mike Kennealy,secretary of housing and economic development for the Commonwealth of Massachusetts,2022,Governor,MA,kennealy m,0,0,0
-,REP,Andrew Lelling,former U.S. attorney for the District of Massachusetts (2017–2021),2022,Governor,MA,lelling a,0,0,0
+,REP,Andrew Lelling,former U.S. attorney for the District of Massachusetts (2017–2021),2022,Governor,MA,lelling a,4,0,0
 ,REP,Scott Lively,"anti-gay activist, independent candidate for governor in 2014 and Republican candidate for governor in 2018",2022,Governor,MA,lively s,0,0,1
 ,REP,Shaunna O'Connell,mayor of Taunton (2020–present) and former state representative (2011–2020),2022,Governor,MA,oconnell s,2,1,0
 ,REP,Patrick O'Connor,state senator (2016–present),2022,Governor,MA,oconnor p,2,1,0
@@ -2090,7 +2090,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,REP,Kim Klacik,radio talk show host and nominee for Maryland's 7th congressional district in 2020 ( endorsed Cox ),2022,Governor,MD,klacik k,0,0,1
 ,REP,Boyd Rutherford,lieutenant governor of Maryland (2015–2023)  ( endorsed Schulz ),2022,Governor,MD,rutherford b,3,0,0
 ,REP,Michael Steele,"former Republican National Committee chairman (2009–2011), nominee for the U.S. Senate in 2006 , and former lieutenant governor of Maryland (2003–2007)",2022,Governor,MD,steele m,3,0,1
-,DEM,Wes Moore,"author and former CEO of the Robin Hood Foundation   Running mate: Aruna Miller , former state delegate for the 15th district (2010–2019) and candidate for MD-06 in 2018",2022,Governor,MD,moore w,2,0,1
+,DEM,Wes Moore,"author and former CEO of the Robin Hood Foundation   Running mate: Aruna Miller , former state delegate for the 15th district (2010–2019) and candidate for MD-06 in 2018",2022,Governor,MD,moore w,0,0,1
 ,DEM,Aruna Miller,former state delegate for the 15th district (2010–2019) and candidate for MD-06 in 2018,2022,Governor,MD,miller a,2,0,1
 ,DEM,Rushern Baker,"former Prince George's County executive (2010–2018) and candidate for governor in 2018   Running mate: Nancy Navarro , Montgomery County councilmember (2009–2022)",2022,Governor,MD,baker r,1,0,1
 ,DEM,Laura Neuman,former Republican Anne Arundel County executive (2013–2014)   ( endorsed Franchot ),2022,Governor,MD,neuman l,1,0,0
@@ -2121,7 +2121,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,IND,Thomas Saviello,former state senator (2010–2018),2022,Governor,ME,saviello t,2,0,0
 ,DEM,Gretchen Whitmer,"incumbent governor (2019–present) and vice chair of the Democratic National Committee (2021–present)  Running mate: Garlin Gilchrist , incumbent lieutenant governor (2019–present)",2022,Governor,MI,whitmer g,3,1,0
 ,DEM,Garlin Gilchrist,incumbent lieutenant governor (2019–present),2022,Governor,MI,gilchrist g,3,1,0
-,REP,Tudor Dixon,"conservative media personality    Running mate: Shane Hernandez , former state representative from the 83rd district (2017–2021) and candidate for Michigan's 10th congressional district in 2020",2022,Governor,MI,dixon t,2,1,1
+,REP,Tudor Dixon,"conservative media personality    Running mate: Shane Hernandez , former state representative from the 83rd district (2017–2021) and candidate for Michigan's 10th congressional district in 2020",2022,Governor,MI,dixon t,0,1,1
 ,REP,Shane Hernandez,former state representative from the 83rd district (2017–2021) and candidate for Michigan's 10th congressional district in 2020,2022,Governor,MI,hernandez s,2,1,1
 ,REP,Detroit,document specialist ( ran unsuccessfully for Michigan's 13th congressional district ),2022,Governor,MI,detroit,0,0,0
 ,REP,Austin Chenge,businessman and U.S. Army veteran,2022,Governor,MI,chenge a,0,0,0
@@ -2147,7 +2147,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,REP,Minnesota's 3rd congressional district,in 2020,2022,Governor,MN,district m,0,0,0
 ,REP,Neil Shah,physician and business owner,2022,Governor,MN,shah n,0,0,0
 ,REP,Rich Stanek,former Hennepin County sheriff,2022,Governor,MN,stanek r,1,0,0
-,REP,Jennifer Carnahan,former chair of the Minnesota Republican Party (2017–2021) and widow of U.S. Representative Jim Hagedorn  (unsuccessfully ran for Congress in a 2022 special election ),2022,Governor,MN,carnahan j,4,1,0
+,REP,Jennifer Carnahan,former chair of the Minnesota Republican Party (2017–2021) and widow of U.S. Representative Jim Hagedorn  (unsuccessfully ran for Congress in a 2022 special election ),2022,Governor,MN,carnahan j,0,1,0
 ,REP,Karin Housley,state senator and nominee for the U.S. Senate in 2018  (ran for reelection),2022,Governor,MN,housley k,2,0,1
 ,REP,Mike Lindell,"inventor of My Pillow , businessman",2022,Governor,MN,lindell m,0,0,0
 ,REP,Carla Nelson,state senator  (ran for reelection),2022,Governor,MN,nelson c,2,0,0
@@ -2161,7 +2161,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,IND,Christopher Chamberlin,"candidate for governor, senate, and house in 2018",2022,Governor,MN,chamberlin c,0,0,1
 ,IND,Richard Painter,"University of Minnesota Law School professor, former chief White House ethics lawyer, and DFL candidate for U.S. Senate in 2018 (ran for Congress )",2022,Governor,MN,painter r,4,0,1
 ,REP,Jim Pillen,"member and former chair of the University of Nebraska Board of Regents  Running mate: Joe Kelly , former U.S. Attorney for the District of Nebraska",2022,Governor,NE,pillen j,0,0,0
-,REP,Joe Kelly,former U.S. Attorney for the District of Nebraska,2022,Governor,NE,kelly j,0,0,0
+,REP,Joe Kelly,former U.S. Attorney for the District of Nebraska,2022,Governor,NE,kelly j,4,0,0
 ,REP,Don Bacon,U.S. representative for Nebraska's 2nd congressional district ( successfully ran for re-election ),2022,Governor,NE,bacon d,4,1,0
 ,REP,Deb Fischer,U.S. senator,2022,Governor,NE,fischer d,4,0,0
 ,REP,Mike Flood,"state senator , former Speaker of the Nebraska Legislature , and candidate for governor in 2014",2022,Governor,NE,flood m,2,0,1
@@ -2169,7 +2169,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,REP,Jeff Fortenberry,former U.S. representative for Nebraska's 1st congressional district,2022,Governor,NE,fortenberry j,4,1,0
 ,REP,Dave Heineman,former governor,2022,Governor,NE,heineman d,3,0,0
 ,REP,Mike Hilgers,Speaker of the Nebraska Legislature ( successfully ran for Attorney General ),2022,Governor,NE,hilgers m,0,0,0
-,REP,Greg Ibach,former U.S. Under Secretary of Agriculture for Marketing and Regulatory Programs and former Nebraska Director of Agriculture,2022,Governor,NE,ibach g,0,0,0
+,REP,Greg Ibach,former U.S. Under Secretary of Agriculture for Marketing and Regulatory Programs and former Nebraska Director of Agriculture,2022,Governor,NE,ibach g,4,0,0
 ,REP,Adrian Smith,U.S. representative for Nebraska's 3rd congressional district ( successfully ran for re-election ),2022,Governor,NE,smith a,4,1,0
 ,REP,John Stinner,state senator,2022,Governor,NE,stinner j,2,0,0
 ,REP,Jean Stothert,Mayor of Omaha (endorsed Lindstrom),2022,Governor,NE,stothert j,1,0,0
@@ -2382,7 +2382,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,DEM,Brendan Johnson,former U.S. Attorney for the District of South Dakota and son of former U.S. Senator Tim Johnson,2022,Governor,SD,johnson b,4,0,0
 ,DEM,Peri Pourier,state representative,2022,Governor,SD,pourier p,2,1,0
 ,DEM,Stephanie Herseth Sandlin,president of Augustana University and former U.S. representative for South Dakota's at-large congressional district,2022,Governor,SD,sandlin s,4,1,0
-,DEM,Randy Seiler,"chair of the South Dakota Democratic Party , former U.S. Attorney for the District of South Dakota , and nominee for attorney general in 2018",2022,Governor,SD,seiler r,0,0,1
+,DEM,Randy Seiler,"chair of the South Dakota Democratic Party , former U.S. Attorney for the District of South Dakota , and nominee for attorney general in 2018",2022,Governor,SD,seiler r,4,0,1
 ,DEM,Billie Sutton,former Minority Leader of the South Dakota Senate and nominee for governor in 2018,2022,Governor,SD,sutton b,2,0,1
 ,DEM,Tracey Quint,coordinator  Running mate: Ashley Strand,2022,Governor,SD,quint t,0,0,0
 ,IND,Lora Hubbel,"former state representative , former chair of the Minnehaha County Republican Party and the South Dakota Constitution Party , and candidate for governor in 2014 and 2018  ( running for State Senate )",2022,Governor,SD,hubbel l,2,1,1
@@ -2468,7 +2468,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,REP,Mike Ramone,Minority Leader of the Delaware House of Representatives (2023–2024) from the 21st district (2008–2024),2024,Governor,DE,ramone m,2,1,0
 ,REP,Julianne Murray,"chair of the Delaware Republican Party , nominee for governor in 2020 , and nominee for attorney general in 2022",2024,Governor,DE,murray j,0,0,1
 ,REP,Mike Braun,U.S. senator (2019–2025),2024,Governor,IN,braun m,4,0,0
-,REP,Mitch Daniels,"former governor (2005–2013), former president of Purdue University (2013–2022), and former director of the Office of Management and Budget (2001–2003)",2024,Governor,IN,daniels m,3,0,0
+,REP,Mitch Daniels,"former governor (2005–2013), former president of Purdue University (2013–2022), and former director of the Office of Management and Budget (2001–2003)",2024,Governor,IN,daniels m,4,0,0
 ,REP,Todd Rokita,"Indiana attorney general (2021–present), former U.S. representative from Indiana's 4th congressional district (2011–2019), former Indiana Secretary of State (2002–2010), and candidate for U.S. Senate in 2018 ( ran for re-election )",2024,Governor,IN,rokita t,4,1,1
 ,REP,Micah Beckwith,"pastor, former Noblesville public library trustee, and candidate for Indiana's 5th congressional district in 2020",2024,Governor,IN,beckwith m,0,0,1
 ,REP,Julie McGuire,state representative from the 93rd district (2022–present),2024,Governor,IN,mcguire j,2,1,0
@@ -2488,8 +2488,8 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,IND,Libertarian,"), former chair of the Missouri Libertarian Party , perennial candidate, and nominee for governor in 2020",2024,Governor,MO,libertarian,0,0,1
 ,REP,Greg Gianforte,"incumbent governor (2021–present)  Running mate: Kristen Juras , incumbent lieutenant governor (2021–present)",2024,Governor,MT,gianforte g,3,1,0
 ,REP,Kristen Juras,incumbent lieutenant governor (2021–present),2024,Governor,MT,juras k,3,1,0
-,DEM,Ryan Busse,"author and former vice president of sales at Kimber Manufacturing  Running mate: Raph Graybill , former chief legal counsel to Governor Steve Bullock and nominee for Attorney General in 2020",2024,Governor,MT,busse r,3,0,1
-,DEM,Raph Graybill,former chief legal counsel to Governor Steve Bullock and nominee for Attorney General in 2020,2024,Governor,MT,graybill r,3,0,1
+,DEM,Ryan Busse,"author and former vice president of sales at Kimber Manufacturing  Running mate: Raph Graybill , former chief legal counsel to Governor Steve Bullock and nominee for Attorney General in 2020",2024,Governor,MT,busse r,0,0,1
+,DEM,Raph Graybill,former chief legal counsel to Governor Steve Bullock and nominee for Attorney General in 2020,2024,Governor,MT,graybill r,0,0,1
 ,DEM,Shawn White Wolf,perennial candidate,2024,Governor,MT,wolf s,0,0,0
 ,DEM,Kaiser Leib,"software engineer  Running mate: Matt Campbell, transportation engineer",2024,Governor,MT,leib k,0,0,0
 ,DEM,Running mate: Matt Campbell,transportation engineer,2024,Governor,MT,campbell r,0,0,0
@@ -2557,7 +2557,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,REP,2020,"(endorsed Reichert, ran for U.S. Senate )",2024,Governor,WA,,0,0,0
 ,REP,Bruce Dammeier,Pierce County Executive (2017–present) and former state senator (2013–2017)  (endorsed Reichert),2024,Governor,WA,dammeier b,2,1,0
 ,REP,Jaime Herrera Beutler,former U.S. representative for Washington's 3rd congressional district (2011–2023) ( ran for Public Lands Commissioner ),2024,Governor,WA,beutler j,4,1,0
-,REP,Loren Culp,"former Republic police chief, runner-up for governor in 2020 , and candidate for Washington's 4th congressional district in 2022 (endorsed Bird)",2024,Governor,WA,culp l,3,0,1
+,REP,Loren Culp,"former Republic police chief, runner-up for governor in 2020 , and candidate for Washington's 4th congressional district in 2022 (endorsed Bird)",2024,Governor,WA,culp l,0,0,1
 ,REP,Drew MacEwen,"state senator ( ran for U.S. House , endorsed Reichert)",2024,Governor,WA,macewen d,2,0,0
 ,REP,J.T. Wilcox,state representative and former Minority Leader of the Washington House of Representatives,2024,Governor,WA,wilcox j,2,1,0
 ,REP,Patrick Morrisey,West Virginia Attorney General (2013–2025) and nominee for U.S. Senate in 2018,2024,Governor,WV,morrisey p,3,0,1
@@ -2573,7 +2573,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,IND,Joe Manchin,U.S. senator (2010–2025) and former governor (2005–2010) (endorsed Williams),2024,Governor,WV,manchin j,4,0,0
 ,REP,Tommy Tuberville,U.S. senator (2021–present),2026,Governor,AL,tuberville t,4,1,0
 ,REP,Will Ainsworth,lieutenant governor of Alabama (2019–present)  (endorsed Tuberville),2026,Governor,AL,ainsworth w,3,1,0
-,REP,Lynda Blanchard,former U.S. ambassador to Slovenia (2019–2021) and candidate for governor in 2022  (nominated for Ambassador to the Food and Agriculture Organization ),2026,Governor,AL,blanchard l,0,0,1
+,REP,Lynda Blanchard,former U.S. ambassador to Slovenia (2019–2021) and candidate for governor in 2022  (nominated for Ambassador to the Food and Agriculture Organization ),2026,Governor,AL,blanchard l,4,0,1
 ,REP,Mo Brooks,former U.S. representative from Alabama's 5th congressional district (2011–2023),2026,Governor,AL,brooks m,4,1,0
 ,REP,Steve Marshall,attorney general of Alabama (2017–present)  ( ran for U.S Senate ),2026,Governor,AL,marshall s,3,1,0
 ,REP,Rick Pate,commissioner of the Alabama department of agriculture and industries (2019–present) ( ran for lieutenant governor ),2026,Governor,AL,pate r,3,1,0
@@ -2638,7 +2638,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,DEM,David Jolly,"former Republican U.S. representative from Florida's 13th congressional district (2014–2017)  Running mate: Gwen Graham , former Assistant Secretary of Education (2021–2025), former U.S. representative from Florida's 2nd congressional district (2015–2017), and candidate for governor in 2018  ; daughter of former Gov. and U.S. Senator Bob Graham (1936-2024)",2026,Governor,FL,jolly d,4,1,1
 ,DEM,Dotie Joseph,state representative from the 108th district (2018–present),2026,Governor,FL,joseph d,2,1,0
 ,DEM,Gwen Graham,"former Assistant Secretary of Education (2021–2025), former U.S. representative from Florida's 2nd congressional district (2015–2017), and candidate for governor in 2018  ; daughter of former Gov. and U.S. Senator Bob Graham (1936-2024)",2026,Governor,FL,graham g,4,1,1
-,DEM,Jerry Demings,mayor of Orange County (2018–present) and husband of former U.S. representative Val Demings,2026,Governor,FL,demings j,4,1,0
+,DEM,Jerry Demings,mayor of Orange County (2018–present) and husband of former U.S. representative Val Demings,2026,Governor,FL,demings j,1,1,0
 ,DEM,Jessica Vernekar,social media influencer,2026,Governor,FL,vernekar j,0,0,0
 ,DEM,Nikki Fried,"chair of the Florida Democratic Party (2023–present), former Florida Commissioner of Agriculture (2019–2023), and candidate for governor in 2022",2026,Governor,FL,fried n,3,1,1
 ,DEM,Fentrice Driskell,minority leader of the state House of Representatives (2022–present) ( running for state senate ),2026,Governor,FL,driskell f,2,1,0
@@ -2656,14 +2656,14 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,DEM,Keisha Lance Bottoms,former director of the Office of Public Engagement (2022–2023) and former mayor of Atlanta (2018–2022),2026,Governor,GA,bottoms k,1,0,0
 ,DEM,Ruwa Romman,state representative from the 97th district (2023–present) ( running for state senate ),2026,Governor,GA,romman r,2,1,0
 ,DEM,Stacey Abrams,former minority leader of the Georgia House of Representatives (2011–2017) and nominee for governor in 2018 and 2022,2026,Governor,GA,abrams s,2,1,1
-,DEM,Jason Carter,"former state senator from the 42nd district (2010–2015), grandson of former governor and president Jimmy Carter , and nominee for governor in 2014  (endorsed Esteves)",2026,Governor,GA,carter j,3,0,1
+,DEM,Jason Carter,"former state senator from the 42nd district (2010–2015), grandson of former governor and president Jimmy Carter , and nominee for governor in 2014  (endorsed Esteves)",2026,Governor,GA,carter j,2,0,1
 ,DEM,Lucy McBath,U.S. representative from Georgia's 6th congressional district (2019–present),2026,Governor,GA,mcbath l,4,1,0
 ,IND,Chase Oliver,"former chair of the Atlanta Libertarian Party, perennial candidate, and nominee for president in 2024",2026,Governor,GA,oliver c,0,0,1
 ,REP,Derek Wulf,state representative from the 76th district (2023–present),2026,Governor,IA,wulf d,2,1,0
 ,REP,Brenna Bird,attorney general of Iowa (2023–present) ( running for re-election ),2026,Governor,IA,bird b,3,1,0
 ,REP,Mike Bousselot,state senator from the 21st district (2023–present) ( running for re-election ),2026,Governor,IA,bousselot m,2,1,0
 ,REP,Chris Cournoyer,lieutenant governor of Iowa (2024–present) ( running for state auditor ; endorsed Feenstra),2026,Governor,IA,cournoyer c,3,1,0
-,REP,Pat Grassley,speaker of the Iowa House of Representatives (2020–present) from the 57th district (2007–present) and grandson of U.S. Senator Chuck Grassley ( running for re-election ),2026,Governor,IA,grassley p,4,1,0
+,REP,Pat Grassley,speaker of the Iowa House of Representatives (2020–present) from the 57th district (2007–present) and grandson of U.S. Senator Chuck Grassley ( running for re-election ),2026,Governor,IA,grassley p,2,1,0
 ,REP,Ashley Hinson,U.S. representative from Iowa's 2nd congressional district (2021–present)  ( running for U.S. Senate ),2026,Governor,IA,hinson a,4,1,0
 ,REP,Bobby Kaufmann,state representative from the 82nd district (2013–present) ( running for re-election ),2026,Governor,IA,kaufmann b,2,1,0
 ,REP,Kari Lake,senior advisor to the U.S. Agency for Global Media (2025–present) and nominee for governor of Arizona in 2022 and U.S. senator in 2024,2026,Governor,IA,lake k,0,1,1
@@ -2672,7 +2672,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,REP,Zach Nunn,U.S. representative from Iowa's 3rd congressional district (2023–present) ( running for re-election ),2026,Governor,IA,nunn z,4,1,0
 ,REP,Kim Reynolds,incumbent governor (2017–present),2026,Governor,IA,reynolds k,3,1,0
 ,REP,Bob Vander Plaats,"president and CEO of The Family Leader , nominee for lieutenant governor in 2006 , and candidate for governor in 2002 , 2006 , and 2010  (endorsed Steen)",2026,Governor,IA,plaats b,0,0,1
-,DEM,Rob Sand,"Iowa auditor of state (2019–present)  Running mate: Dave Muhlbauer, Crawford County supervisor (2017–2021, 2023–present) and candidate for U.S. Senate in 2022",2026,Governor,IA,sand r,1,1,1
+,DEM,Rob Sand,"Iowa auditor of state (2019–present)  Running mate: Dave Muhlbauer, Crawford County supervisor (2017–2021, 2023–present) and candidate for U.S. Senate in 2022",2026,Governor,IA,sand r,3,1,1
 ,DEM,Crawford County,"supervisor (2017–2021, 2023–present) and candidate for U.S. Senate in 2022",2026,Governor,IA,county c,0,1,1
 ,DEM,Paul Dahl,bus driver and perennial candidate,2026,Governor,IA,dahl p,0,0,0
 ,DEM,Lone Tree,city councilor and nominee for Iowa's 1st congressional district in 2024,2026,Governor,IA,tree l,1,0,1
@@ -2703,7 +2703,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,REP,Ty Masterson,"president of the Kansas Senate (2021–present) from the 16th district (2009–present)  Running mate: Jeff Klemp , state senator from the 5th district (2025–present)",2026,Governor,KS,masterson t,2,1,0
 ,REP,Charlotte O'Hara,"former Johnson County commissioner (2021–2025) and former state representative from the 17th district (2011–2013)  Running mate: Michelle Dombrosky, member of the Kansas State Board of Education",2026,Governor,KS,ohara c,2,1,0
 ,REP,Wichita Schools,board member (2013–2018),2026,Governor,KS,schools w,0,0,0
-,REP,Vicki Schmidt,"Kansas Insurance Commissioner (2019–present)  Running mate: Joe Newland , president of the Kansas Farm Bureau (2022–present) and former state representative from the 13th district (2019–2022)",2026,Governor,KS,schmidt v,2,1,0
+,REP,Vicki Schmidt,"Kansas Insurance Commissioner (2019–present)  Running mate: Joe Newland , president of the Kansas Farm Bureau (2022–present) and former state representative from the 13th district (2019–2022)",2026,Governor,KS,schmidt v,3,1,0
 ,REP,Scott Schwab,"Kansas Secretary of State (2019–present)  Running mate: Ken Rahjes , state representative from the 110th district (2016–present)",2026,Governor,KS,schwab s,3,1,0
 ,REP,Jeff Klemp,state senator from the 5th district (2025–present),2026,Governor,KS,klemp j,2,1,0
 ,REP,Joe Newland,president of the Kansas Farm Bureau (2022–present) and former state representative from the 13th district (2019–2022),2026,Governor,KS,newland j,2,1,0
@@ -2738,9 +2738,9 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,IND,Green,"), former co-chair of the Maryland Green Party and candidate for Maryland House of Delegates in 2018  Running mate: Owen Silverman Andrews, teacher",2026,Governor,MD,green,0,0,1
 ,IND,Working Class Party,"), nominee for lieutenant governor in 2022  Running mate: Cathy Permut",2026,Governor,MD,party w,0,0,1
 ,IND,Running mate: Owen Silverman Andrews,teacher,2026,Governor,MD,andrews r,0,0,0
-,DEM,Hannah Pingree,"former director of the Maine Governor's Office of Policy Innovation, former Speaker of the Maine House of Representatives (2008–2010) from the 36th district (2002–2010), and daughter of U.S. Representative Chellie Pingree",2026,Governor,ME,pingree h,4,1,0
+,DEM,Hannah Pingree,"former director of the Maine Governor's Office of Policy Innovation, former Speaker of the Maine House of Representatives (2008–2010) from the 36th district (2002–2010), and daughter of U.S. Representative Chellie Pingree",2026,Governor,ME,pingree h,2,1,0
 ,DEM,2024,( ran for State House ),2026,Governor,ME,,0,0,0
-,DEM,Joe Baldacci,"state senator (2020–present) and brother of former governor John Baldacci ( ran for U.S. House , endorsed Jackson)",2026,Governor,ME,baldacci j,3,1,0
+,DEM,Joe Baldacci,"state senator (2020–present) and brother of former governor John Baldacci ( ran for U.S. House , endorsed Jackson)",2026,Governor,ME,baldacci j,2,1,0
 ,DEM,Jared Golden,U.S. representative from Maine's 2nd congressional district (2019–present),2026,Governor,ME,golden j,4,1,0
 ,DEM,ran for U.S. Senate,),2026,Governor,ME,senate r,0,0,0
 ,DEM,Adam Lee,car dealer,2026,Governor,ME,lee a,0,0,0
@@ -2847,7 +2847,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,REP,Steve Lanier,state senator from the 2nd district (2025–present),2026,Governor,NM,lanier s,2,1,0
 ,REP,John Block,state representative from the 51st district (2023–present),2026,Governor,NM,block j,2,1,0
 ,REP,Crystal Brantley,state senator from the 35th district (2021–present),2026,Governor,NM,brantley c,2,1,0
-,REP,Bridgewater Associates,"daughter of former U.S. Senator Pete Domenici , and nominee for U.S. Senate in 2024",2026,Governor,NM,associates b,4,0,1
+,REP,Bridgewater Associates,"daughter of former U.S. Senator Pete Domenici , and nominee for U.S. Senate in 2024",2026,Governor,NM,associates b,0,0,1
 ,REP,Mark Murphy,state representative from the 59th district (2025–present),2026,Governor,NM,murphy m,2,1,0
 ,REP,Judith Nakamura,former Chief Justice of the New Mexico Supreme Court (2017–2020),2026,Governor,NM,nakamura j,0,0,0
 ,REP,David Gallegos,state senator from the 41st district (2021–present),2026,Governor,NM,gallegos d,2,1,0
@@ -2867,7 +2867,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,DEM,Ritchie Torres,U.S. representative from New York's 15th congressional district (2021–present)  ( running for re-election ; endorsed Hochul),2026,Governor,NY,torres r,4,1,0
 ,REP,Bruce Blakeman,"Nassau County executive (2021–present)  Running mate: Todd Hood, Madison County sheriff (2018–present)",2026,Governor,NY,blakeman b,1,1,0
 ,REP,Madison County,sheriff (2018–present),2026,Governor,NY,county m,1,1,0
-,REP,Larry Sharpe,"business training company founder and perennial candidate   Running mate: Mike Carpinelli, Lewis County sheriff (2006–present)",2026,Governor,NY,sharpe l,1,1,0
+,REP,Larry Sharpe,"business training company founder and perennial candidate   Running mate: Mike Carpinelli, Lewis County sheriff (2006–present)",2026,Governor,NY,sharpe l,0,1,0
 ,REP,Pat Hahn,union leader,2026,Governor,NY,hahn p,0,0,0
 ,REP,David Tulley,cannabis shop owner,2026,Governor,NY,tulley d,0,0,0
 ,REP,Lewis County,sheriff (2006–present),2026,Governor,NY,county l,1,1,0
@@ -2884,7 +2884,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,REP,Jon Husted,"U.S. senator (2025–present), former lieutenant governor (2019–2025), and candidate for governor in 2018  ( endorsed Ramaswamy,  running for U.S. Senate )",2026,Governor,OH,husted j,4,1,1
 ,REP,Frank LaRose,"Ohio secretary of state (2019–present) and candidate for U.S. Senate in 2024 (endorsed Ramaswamy,  running for state auditor )",2026,Governor,OH,larose f,3,1,1
 ,REP,Jim Tressel,lieutenant governor of Ohio (2025–present),2026,Governor,OH,tressel j,3,1,0
-,DEM,Amy Acton,"former director of the Ohio Department of Health (2019–2020)   Running mate: David Pepper , former chair of Ohio Democratic Party (2015–2020), former Hamilton County commissioner (2007–2011), nominee for state auditor in 2010 , and nominee for attorney general in 2014",2026,Governor,OH,acton a,1,0,1
+,DEM,Amy Acton,"former director of the Ohio Department of Health (2019–2020)   Running mate: David Pepper , former chair of Ohio Democratic Party (2015–2020), former Hamilton County commissioner (2007–2011), nominee for state auditor in 2010 , and nominee for attorney general in 2014",2026,Governor,OH,acton a,0,0,1
 ,DEM,David Pepper,"former chair of Ohio Democratic Party (2015–2020), former Hamilton County commissioner (2007–2011), nominee for state auditor in 2010 , and nominee for attorney general in 2014",2026,Governor,OH,pepper d,1,0,1
 ,DEM,Sherrod Brown,"former U.S. senator (2007–2025) ( running for U.S. Senate , endorsed Acton)",2026,Governor,OH,brown s,4,0,0
 ,DEM,Greg Landsman,U.S. representative from Ohio's 1st congressional district (2023–present) ( running for re-election ),2026,Governor,OH,landsman g,4,1,0
@@ -2922,7 +2922,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,REP,Constitution Party,and Erie County attorney,2026,Governor,PA,party c,1,0,0
 ,REP,Lawrence County,Constitution Party,2026,Governor,PA,county l,0,0,0
 ,REP,Alan R. Goodrich,"Sr., principal",2026,Governor,PA,goodrich a,0,0,0
-,DEM,Helena Foulkes,"former CVS executive, niece of former U.S. senator Chris Dodd , and candidate for governor in 2022",2026,Governor,RI,foulkes h,4,0,1
+,DEM,Helena Foulkes,"former CVS executive, niece of former U.S. senator Chris Dodd , and candidate for governor in 2022",2026,Governor,RI,foulkes h,0,0,1
 ,DEM,Wil Gregersen,librarian,2026,Governor,RI,gregersen w,0,0,0
 ,DEM,Dan McKee,incumbent governor (2021–present),2026,Governor,RI,mckee d,3,1,0
 ,DEM,Gregory Stevens,restaurateur,2026,Governor,RI,stevens g,0,0,0
@@ -2937,7 +2937,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,REP,Kenneth Hopkins,mayor of Cranston (2021–present),2026,Governor,RI,hopkins k,1,1,0
 ,IND,Ken Block,"founder of the Moderate Party of Rhode Island , Moderate Party nominee for governor in 2010 and Republican candidate in 2014",2026,Governor,RI,block k,0,0,1
 ,IND,Rhode Island’s 1st congressional district,),2026,Governor,RI,district r,0,0,0
-,IND,Helena Foulkes,"former CVS executive, candidate for governor in 2022 , granddaughter of former U.S. senator Thomas Dodd and niece of former U.S. senator Chris Dodd  (running as a Democrat)",2026,Governor,RI,foulkes h,4,0,1
+,IND,Helena Foulkes,"former CVS executive, candidate for governor in 2022 , granddaughter of former U.S. senator Thomas Dodd and niece of former U.S. senator Chris Dodd  (running as a Democrat)",2026,Governor,RI,foulkes h,0,0,1
 ,REP,Alan Wilson,"attorney general of South Carolina (2011–present)  Running mate: Mike Reichenbach , state senator from the 31st district (2022–present)",2026,Governor,SC,wilson a,3,1,0
 ,REP,Mike Reichenbach,state senator from the 31st district (2022–present),2026,Governor,SC,reichenbach m,2,1,0
 ,REP,Josh Kimbrell,"state senator from the 11th district (2020–present)  (endorsed Wilson, remained on ballot)",2026,Governor,SC,kimbrell j,2,1,0
@@ -3097,7 +3097,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,DEM,Bernie Buescher,former Executive Director of the Colorado Department of Health Care Policy and Financing,1998,Governor,CO,buescher b,0,0,0
 ,REP,Bill Owens,Colorado State Treasurer,1998,Governor,CO,owens b,3,0,0
 ,REP,President,of the Colorado State Senate,1998,Governor,CO,president,2,0,0
-,REP,Joe Rogers,"former Chief Counsel to U.S. Senator Hank Brown , 1996 Republican nominee for Colorado's 1st congressional district",1998,Governor,CO,rogers j,4,0,1
+,REP,Joe Rogers,"former Chief Counsel to U.S. Senator Hank Brown , 1996 Republican nominee for Colorado's 1st congressional district",1998,Governor,CO,rogers j,0,0,1
 ,REP,Jim Congrove,State Senator,1998,Governor,CO,congrove j,2,0,0
 ,DEM,Mike Feeley,,1998,Governor,CO,feeley m,0,0,0
 ,REP,Tom Norton,,1998,Governor,CO,norton t,0,0,0
@@ -3111,7 +3111,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,OTH,Ned Vare,,1998,Governor,CT,vare n,0,0,0
 ,,Term Limits,,1998,Governor,CT,limits t,0,0,0
 ,DEM,Buddy MacKay,incumbent Lieutenant Governor of Florida,1998,Governor,FL,mackay b,3,0,0
-,REP,Jeb Bush,"Businessman, 1994 Republican nominee for governor, Son of Former U.S. President George HW Bush , Brother of then Governor George W. Bush of Texas and Grandson of Former U.S. Senator Prescott Bush",1998,Governor,FL,bush j,4,0,1
+,REP,Jeb Bush,"Businessman, 1994 Republican nominee for governor, Son of Former U.S. President George HW Bush , Brother of then Governor George W. Bush of Texas and Grandson of Former U.S. Senator Prescott Bush",1998,Governor,FL,bush j,0,0,1
 ,DEM,Roy Barnes,State Representative from Marietta,1998,Governor,GA,barnes r,2,1,0
 ,DEM,Lewis A. Massey,Georgia Secretary of State,1998,Governor,GA,massey l,3,0,0
 ,DEM,David Poythress,Georgia Commissioner of Labor,1998,Governor,GA,poythress d,3,0,0
@@ -3151,7 +3151,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,DEM,Jack Wayne Chappell,,1998,Governor,ID,chappell j,0,0,0
 ,DEM,Donald McMurrian,,1998,Governor,ID,mcmurrian d,0,0,0
 ,OTH,Peter Rickards,,1998,Governor,ID,rickards p,0,0,0
-,DEM,Jim Burns,"former United States Attorney for the Northern District of Illinois (1993–1997), Democratic nominee for Lieutenant Governor of Illinois in 1990",1998,Governor,IL,burns j,0,0,1
+,DEM,Jim Burns,"former United States Attorney for the Northern District of Illinois (1993–1997), Democratic nominee for Lieutenant Governor of Illinois in 1990",1998,Governor,IL,burns j,4,0,1
 ,DEM,Roland Burris,former Attorney General of Illinois (1991–1995) and candidate for the Democratic nomination for Governor in 1994,1998,Governor,IL,burris r,3,0,1
 ,DEM,Glenn Poshard,U.S. Representative (1989–1999),1998,Governor,IL,poshard g,4,1,0
 ,DEM,John Schmidt,former United States Associate Attorney General (1994–1997),1998,Governor,IL,schmidt j,3,0,0
@@ -3222,7 +3222,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,,Johnni Matthew III (write-in),,1998,Governor,MI,writein j,0,0,0
 ,DEM,Skip Humphrey,"Attorney General of Minnesota and son of former Vice President of the United States Hubert Humphrey and former U.S. Senator Muriel Humphrey Running mate: Roger Moe , Minnesota Senate Majority Leader from the 2nd district",1998,Governor,MN,humphrey s,4,0,0
 ,DEM,Roger Moe,Minnesota Senate Majority Leader from the 2nd district,1998,Governor,MN,moe r,2,0,0
-,REP,Norm Coleman,"mayor of St. Paul Running mate: Gen Olson , State Senator from the 34th district",1998,Governor,MN,coleman n,2,0,0
+,REP,Norm Coleman,"mayor of St. Paul Running mate: Gen Olson , State Senator from the 34th district",1998,Governor,MN,coleman n,1,0,0
 ,REP,Gen Olson,State Senator from the 34th district,1998,Governor,MN,olson g,2,0,0
 ,REP,Joanne Benson,lieutenant governor of Minnesota ( endorsed Coleman ),1998,Governor,MN,benson j,3,0,0
 ,REP,Dick Borrell,businessman,1998,Governor,MN,borrell d,0,0,0
@@ -3264,7 +3264,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,REP,Jay Lucas,,1998,Governor,NH,lucas j,0,0,0
 ,OTH,Ken Blevens,,1998,Governor,NH,blevens k,0,0,0
 ,DEM,Martin Chávez,Mayor of Albuquerque,1998,Governor,NM,chavez m,1,0,0
-,DEM,Gary K. King,State Representative and son of former Governor Bruce King,1998,Governor,NM,king g,3,1,0
+,DEM,Gary K. King,State Representative and son of former Governor Bruce King,1998,Governor,NM,king g,2,1,0
 ,DEM,Jerry Apodaca,former Governor of New Mexico and former Chairman of the President's Council on Physical Fitness and Sports,1998,Governor,NM,apodaca j,3,0,0
 ,DEM,Robert E. Vigil,incumbent New Mexico State Auditor,1998,Governor,NM,vigil r,3,0,0
 ,DEM,Reese P. Fullerton,attorney,1998,Governor,NM,fullerton r,0,0,0
@@ -3439,7 +3439,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,DEM,Jeanne Shaheen,incumbent governor of New Hampshire,2000,Governor,NH,shaheen j,3,0,0
 ,DEM,Mark Fernald,New Hampshire state senator,2000,Governor,NH,fernald m,2,0,0
 ,REP,Gordon J. Humphrey,former U.S. senator,2000,Governor,NH,humphrey g,4,0,0
-,REP,Jeffrey R. Howard,"former attorney general of New Hampshire , former United States Attorney for the District of New Hampshire",2000,Governor,NH,howard j,3,0,0
+,REP,Jeffrey R. Howard,"former attorney general of New Hampshire , former United States Attorney for the District of New Hampshire",2000,Governor,NH,howard j,4,0,0
 ,REP,Fred Bramante,perennial candidate,2000,Governor,NH,bramante f,0,0,0
 ,DEM,Jeanne Shaheen (inc.),,2000,Governor,NH,inc j,0,0,0
 ,REP,Jim Squires,,2000,Governor,NH,squires j,0,0,0
@@ -3537,13 +3537,13 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,DEM,Rollie Heath,businessman,2002,Governor,CO,heath r,0,0,0
 ,OTH,Ronald Forthofer,,2002,Governor,CO,forthofer r,0,0,0
 ,OTH,Ralph Shnelvar,,2002,Governor,CO,shnelvar r,0,0,0
-,DEM,Bill Curry,"Counselor to the President under Clinton Administration, nominee in 1994 Running mate: George Jepsen , Connecticut state senator",2002,Governor,CT,curry b,2,0,0
+,DEM,Bill Curry,"Counselor to the President under Clinton Administration, nominee in 1994 Running mate: George Jepsen , Connecticut state senator",2002,Governor,CT,curry b,0,0,0
 ,DEM,George Jepsen,Connecticut state senator,2002,Governor,CT,jepsen g,2,0,0
 ,REP,John G. Rowland,"incumbent governor of Connecticut Running mate: Jodi Rell , incumbent lieutenant governor of Connecticut",2002,Governor,CT,rowland j,3,0,0
 ,REP,Jodi Rell,incumbent lieutenant governor of Connecticut,2002,Governor,CT,rell j,3,0,0
 ,DEM,Daryl Jones,State Senator from Miami,2002,Governor,FL,jones d,2,0,0
 ,DEM,Bill McBride,Tampa attorney,2002,Governor,FL,mcbride b,0,0,0
-,DEM,Janet Reno,former United States Attorney General,2002,Governor,FL,reno j,3,0,0
+,DEM,Janet Reno,former United States Attorney General,2002,Governor,FL,reno j,4,0,0
 ,DEM,Lois Frankel,State Representative from West Palm Beach,2002,Governor,FL,frankel l,2,1,0
 ,DEM,Jeb Bush,incumbent Governor (Republican),2002,Governor,FL,bush j,3,0,0
 ,DEM,Bob Kunst,gay rights activist (Independent),2002,Governor,FL,kunst b,0,0,0
@@ -3600,10 +3600,10 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,OTH,Cal Skinner,,2002,Governor,IL,skinner c,0,0,0
 ,OTH,Marisellis Brown,,2002,Governor,IL,brown m,0,0,0
 ,,Peter Dale Kauss,,2002,Governor,IL,kauss p,0,0,0
-,DEM,Kathleen Sebelius,Kansas Insurance Commissioner,2002,Governor,KS,sebelius k,0,0,0
+,DEM,Kathleen Sebelius,Kansas Insurance Commissioner,2002,Governor,KS,sebelius k,3,0,0
 ,REP,Tim Shallenburger,"Kansas State Treasurer (1999–present) and former state representative (1987–1998) Running mate : Dave Lindstrom , former Kansas City Chiefs defensive end and businessman",2002,Governor,KS,shallenburger t,3,1,0
 ,REP,Kansas State Senator,"Running mate : Mary Birch, former president of the Overland Park Chamber of Commerce (1984–2002)",2002,Governor,KS,senator k,0,0,0
-,REP,Bob Knight,"Mayor of Wichita, Kansas Running mate : Kent Glasscock , Speaker of the Kansas House of Representatives (2001–2003) and state representative (1991–2003), was Carla Stovall's running mate until she dropped out.",2002,Governor,KS,knight b,2,1,0
+,REP,Bob Knight,"Mayor of Wichita, Kansas Running mate : Kent Glasscock , Speaker of the Kansas House of Representatives (2001–2003) and state representative (1991–2003), was Carla Stovall's running mate until she dropped out.",2002,Governor,KS,knight b,1,1,0
 ,REP,Eudora,"school district  Running mate : Eric Bloom, architectural engineering student",2002,Governor,KS,eudora,0,0,0
 ,REP,Dave Lindstrom,former Kansas City Chiefs defensive end and businessman,2002,Governor,KS,lindstrom d,0,0,0
 ,REP,Overland Park,Chamber of Commerce (1984–2002),2002,Governor,KS,park o,0,0,0
@@ -3663,7 +3663,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,REP,Dick Posthumus,Lieutenant Governor of Michigan,2002,Governor,MI,posthumus d,3,0,0
 ,REP,Joe Schwarz,state senator from Battle Creek,2002,Governor,MI,schwarz j,2,0,0
 ,DEM,David Bonior,U.S. representative from Mount Clemens and House Minority Whip,2002,Governor,MI,bonior d,4,1,0
-,DEM,James J. Blanchard,former governor of Michigan (1983–91) and U.S. Ambassador to Canada,2002,Governor,MI,blanchard j,3,0,0
+,DEM,James J. Blanchard,former governor of Michigan (1983–91) and U.S. Ambassador to Canada,2002,Governor,MI,blanchard j,4,0,0
 ,DEM,Jennifer Granholm,Michigan Attorney General and former Corporation Counsel for Wayne County (1994–98),2002,Governor,MI,granholm j,3,0,0
 ,DEM,Ferndale,engineer and staffer for the Ralph Nader 2000 presidential campaign (Green),2002,Governor,MI,ferndale,0,0,0
 ,DEM,Capac,resident and candidate for U.S. representative in 2000 (U.S. Taxpayers),2002,Governor,MI,capac,0,1,1
@@ -3744,7 +3744,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,OTH,Scott Jeffrey,,2002,Governor,NY,jeffrey s,0,0,0
 ,DEM,Tim Hagan,former Cuyahoga County Commissioner and candidate for Cleveland Mayor in 1989,2002,Governor,OH,hagan t,1,0,1
 ,DEM,Sherrod Brown,"U.S. Representative from Ohio's 13th congressional district since 1993, Ohio Secretary of State , 1983-1991",2002,Governor,OH,brown s,4,1,0
-,DEM,Richard Celeste,"U.S. Ambassador to India 1997–2001, former Governor of Ohio, 1983-1991",2002,Governor,OH,celeste r,3,0,0
+,DEM,Richard Celeste,"U.S. Ambassador to India 1997–2001, former Governor of Ohio, 1983-1991",2002,Governor,OH,celeste r,4,0,0
 ,REP,Bob Taft,incumbent Governor of Ohio,2002,Governor,OH,taft b,3,0,0
 ,OTH,John Eastman,,2002,Governor,OH,eastman j,0,0,0
 ,DEM,Vince Orza,,2002,Governor,OK,orza v,0,0,0
@@ -3776,7 +3776,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,OTH,Mike Morrill,,2002,Governor,PA,morrill m,0,0,0
 ,REP,Donald Carcieri,businessman,2002,Governor,RI,carcieri d,0,0,0
 ,DEM,Rhode Island state representative,.,2002,Governor,RI,representative r,0,0,0
-,DEM,Sheldon Whitehouse,"Attorney General of Rhode Island , former U.S. attorney for the District of Rhode Island",2002,Governor,RI,whitehouse s,3,0,0
+,DEM,Sheldon Whitehouse,"Attorney General of Rhode Island , former U.S. attorney for the District of Rhode Island",2002,Governor,RI,whitehouse s,4,0,0
 ,DEM,Myrth York,"former Rhode Island senator , 1994 and 1998 Democratic nominee for governor",2002,Governor,RI,york m,2,0,1
 ,REP,James S. Bennett,,2002,Governor,RI,bennett j,0,0,0
 ,DEM,Antonio J. Pires,,2002,Governor,RI,pires a,0,0,0
@@ -3846,7 +3846,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,REP,Margaret A. Farrow,incumbent lieutenant governor,2002,Governor,WI,farrow m,3,0,0
 ,DEM,Jim Doyle,"incumbent Attorney General of Wisconsin , former District Attorney of Dane County.",2002,Governor,WI,doyle j,3,0,0
 ,DEM,Barbara Lawton,nominee for lieutenant Governor in 1998,2002,Governor,WI,lawton b,0,0,1
-,DEM,Ed Thompson,"former Mayor of Tomah, Wisconsin (2000–2002), brother of former Governor Tommy Thompson",2002,Governor,WI,thompson e,3,0,0
+,DEM,Ed Thompson,"former Mayor of Tomah, Wisconsin (2000–2002), brother of former Governor Tommy Thompson",2002,Governor,WI,thompson e,1,0,0
 ,DEM,Marty Reynolds,member of Wisconsin State Assembly,2002,Governor,WI,reynolds m,2,0,0
 ,IND,Alan D. Eisenberg,lawyer and real estate dealer,2002,Governor,WI,eisenberg a,0,0,0
 ,IND,Jim Doyle & Barbara Lawton,Democratic,2002,Governor,WI,lawton j,0,0,0
@@ -3863,7 +3863,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,OTH,Mike Mangan,,2002,Governor,WI,mangan m,0,0,0
 ,OTH,Aneb Jah Rasta,,2002,Governor,WI,rasta a,0,0,0
 ,OTH,Mike Managan,,2002,Governor,WI,managan m,0,0,0
-,DEM,Dave Freudenthal,former United States Attorney for the District of Wyoming,2002,Governor,WY,freudenthal d,0,0,0
+,DEM,Dave Freudenthal,former United States Attorney for the District of Wyoming,2002,Governor,WY,freudenthal d,4,0,0
 ,DEM,governor,John J. Hickey,2002,Governor,WY,governor,0,0,0
 ,DEM,Toby Simpson,construction worker,2002,Governor,WY,simpson t,0,0,0
 ,REP,Eli Bebout,former Speaker of the Wyoming House of Representatives,2002,Governor,WY,bebout e,2,1,0
@@ -3905,7 +3905,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,REP,Bob Brown,"Secretary of State of Montana (2001–2005), former State Representative (1970–1974) and former State Senator (1974–1996) Running mate : Dave Lewis , State Representative (2001–2005)",2004,Governor,MT,brown b,3,1,0
 ,REP,Glacier National Park,(1994–1999) and Yosemite National Park (1999–2002) for the National Park Service and former adviser to Marc Racicot,2004,Governor,MT,park g,0,0,0
 ,REP,Ken Miller,"former State Senator (1995–2003) and former Montana Republican Party Chairman (2001–2003) Running mate : Wayne Buchanan, former executive secretary for the Montana Board of Public Education",2004,Governor,MT,miller k,2,0,0
-,REP,State Senator,"(1981–2001) Running mate : Matt Brainard, Montana Public Service Commissioner and former State Representative (1995–2001)",2004,Governor,MT,senator s,2,1,0
+,REP,State Senator,"(1981–2001) Running mate : Matt Brainard, Montana Public Service Commissioner and former State Representative (1995–2001)",2004,Governor,MT,senator s,0,1,0
 ,REP,Dave Lewis,State Representative (2001–2005),2004,Governor,MT,lewis d,2,1,0
 ,REP,Montana Public Service Commissioner,and former State Representative (1995–2001),2004,Governor,MT,commissioner m,2,1,0
 ,REP,Pat Davison,,2004,Governor,MT,davison p,0,0,0
@@ -3935,7 +3935,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,REP,New Castle,selectman,2004,Governor,NH,castle n,1,0,0
 ,REP,Charles Tarbell,,2004,Governor,NH,tarbell c,0,0,0
 ,REP,"Jon Huntsman, Jr.","(R), Trade Ambassador for President Bush's administration and former CEO of Huntsman Chemical Corporation",2004,Governor,UT,huntsman j,0,0,0
-,REP,"Scott Matheson, Jr.","(D), U.S. Attorney",2004,Governor,UT,matheson s,0,0,0
+,REP,"Scott Matheson, Jr.","(D), U.S. Attorney",2004,Governor,UT,matheson s,4,0,0
 ,REP,Nolan Karras,,2004,Governor,UT,karras n,0,0,0
 ,REP,Fred Lampropoulos,,2004,Governor,UT,lampropoulos f,0,0,0
 ,REP,Olene Walker,incumbent Governor,2004,Governor,UT,walker o,3,0,0
@@ -3957,7 +3957,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,DEM,Christine Gregoire,,2004,Governor,WA,gregoire c,0,0,0
 ,OTH,Ruth Bennett,,2004,Governor,WA,bennett r,0,0,0
 ,DEM,Louis J. Davis,candidate in 1996,2004,Governor,WV,davis l,0,0,0
-,DEM,Phillip Frye,husband of incumbent governor's mistress,2004,Governor,WV,frye p,3,0,0
+,DEM,Phillip Frye,husband of incumbent governor's mistress,2004,Governor,WV,frye p,0,0,0
 ,DEM,Lloyd G. Jackson II,former State Senator,2004,Governor,WV,jackson l,2,0,0
 ,DEM,1996,and 2000,2004,Governor,WV,,0,0,0
 ,DEM,Joe Manchin,West Virginia Secretary of State and candidate for governor in 1996,2004,Governor,WV,manchin j,3,0,1
@@ -4145,10 +4145,10 @@ additional terms may apply. By using this site, you agree to the Terms of Use an
 ,OTH,Rich Whitney,,2006,Governor,IL,whitney r,0,0,0
 ,DEM,Kathleen Sebelius,incumbent Governor of Kansas,2006,Governor,KS,sebelius k,3,0,0
 ,REP,Jim Barnett,"State Senator Running mate : Susan Wagle , state senator (2001–present) and former state representative (1991–2001)",2006,Governor,KS,barnett j,2,1,0
-,REP,Ken R. Canfield,"author and founder of the National Center for Fathering Running mate : Kathe Decker, state representative (1993–present)",2006,Governor,KS,canfield k,2,1,0
+,REP,Ken R. Canfield,"author and founder of the National Center for Fathering Running mate : Kathe Decker, state representative (1993–present)",2006,Governor,KS,canfield k,0,1,0
 ,REP,State Representative,Running mate : Brian Shepherd,2006,Governor,KS,representative s,0,0,0
 ,REP,Libertarian,"nominee for Governor in 2002 Running mate : Bret D. Landrith, attorney",2006,Governor,KS,libertarian,0,0,1
-,REP,Kansas House of Representatives,"Running mate : Dennis Wilson, state senator (2005–present) and former state representative (1995–1999)",2006,Governor,KS,representatives k,2,1,0
+,REP,Kansas House of Representatives,"Running mate : Dennis Wilson, state senator (2005–present) and former state representative (1995–1999)",2006,Governor,KS,representatives k,0,1,0
 ,REP,Timothy V. Pickell,attorney Running mate : Jeffrey McCalmon,2006,Governor,KS,pickell t,0,0,0
 ,REP,perennial candidate,Running mate : Helen Kanzig,2006,Governor,KS,candidate p,0,0,0
 ,REP,Susan Wagle,state senator (2001–present) and former state representative (1991–2001),2006,Governor,KS,wagle s,2,1,0
@@ -4491,7 +4491,7 @@ additional terms may apply. By using this site, you agree to the Terms of Use an
 ,OTH,Billy Toien,,2010,Governor,AK,toien b,0,0,0
 ,REP,Robert J. Bentley,state representative,2010,Governor,AL,bentley r,2,1,0
 ,REP,Bradley Byrne,"former state two-year college chancellor , former state senator and former member of the Alabama State Board of Education",2010,Governor,AL,byrne b,2,0,0
-,REP,Tim James,"businessman, son of former Governor Fob James and candidate for governor in 2002",2010,Governor,AL,james t,3,0,1
+,REP,Tim James,"businessman, son of former Governor Fob James and candidate for governor in 2002",2010,Governor,AL,james t,0,0,1
 ,REP,Birmingham,City Councilman,2010,Governor,AL,birmingham,1,0,0
 ,REP,Roy Moore,former Chief Justice of the Alabama Supreme Court and candidate for governor in 2006,2010,Governor,AL,moore r,0,0,1
 ,REP,James Potts,perennial candidate,2010,Governor,AL,potts j,0,0,0
@@ -4528,7 +4528,7 @@ additional terms may apply. By using this site, you agree to the Terms of Use an
 ,REP,Ken Miller,former broadcast manager,2010,Governor,CA,miller k,0,0,0
 ,REP,Lawrence Naritelli,accountant and controller,2010,Governor,CA,naritelli l,0,0,0
 ,REP,Robert Newman,psychologist and farmer,2010,Governor,CA,newman r,0,0,0
-,REP,Steve Poizner,businessman and then- California Insurance Commissioner,2010,Governor,CA,poizner s,0,0,0
+,REP,Steve Poizner,businessman and then- California Insurance Commissioner,2010,Governor,CA,poizner s,3,0,0
 ,REP,Meg Whitman,"businesswoman, former CEO of eBay",2010,Governor,CA,whitman m,0,0,0
 ,DEM,Richard Aguirre,businessman,2010,Governor,CA,aguirre r,0,0,0
 ,DEM,Jerry Brown,incumbent California Attorney General and former Governor of California,2010,Governor,CA,brown j,3,0,0
@@ -4575,10 +4575,10 @@ additional terms may apply. By using this site, you agree to the Terms of Use an
 ,OTH,Jason R. Clark,,2010,Governor,CO,clark j,0,0,0
 ,OTH,Paul Noel Fiorino,,2010,Governor,CO,fiorino p,0,0,0
 ,REP,Michael Fedele,incumbent lieutenant governor,2010,Governor,CT,fedele m,3,0,0
-,REP,Thomas C. Foley,former United States Ambassador to Ireland,2010,Governor,CT,foley t,0,0,0
+,REP,Thomas C. Foley,former United States Ambassador to Ireland,2010,Governor,CT,foley t,4,0,0
 ,REP,Oz Griebel,president and CEO of the MetroHartford Alliance,2010,Governor,CT,griebel o,0,0,0
 ,REP,Jodi Rell,incumbent governor,2010,Governor,CT,rell j,3,0,0
-,REP,Kevin J. O'Connor,former U.S. Attorney for the District of Connecticut,2010,Governor,CT,oconnor k,0,0,0
+,REP,Kevin J. O'Connor,former U.S. Attorney for the District of Connecticut,2010,Governor,CT,oconnor k,4,0,0
 ,REP,"Lawrence F. ""Larry"" Cafero",State House Republican Leader,2010,Governor,CT,cafero l,2,0,0
 ,REP,Chris Shays,former U.S. Representative,2010,Governor,CT,shays c,4,1,0
 ,REP,John P. McKinney,State Senate Republican Leader,2010,Governor,CT,mckinney j,2,0,0
@@ -4617,7 +4617,7 @@ additional terms may apply. By using this site, you agree to the Terms of Use an
 ,REP,Nathan Deal,U.S. representative,2010,Governor,GA,deal n,4,1,0
 ,REP,Karen Handel,Secretary of State of Georgia,2010,Governor,GA,handel k,3,0,0
 ,REP,Eric Johnson,former state senator,2010,Governor,GA,johnson e,2,0,0
-,REP,John Oxendine,insurance commissioner,2010,Governor,GA,oxendine j,0,0,0
+,REP,John Oxendine,insurance commissioner,2010,Governor,GA,oxendine j,3,0,0
 ,REP,Johnny Isakson,incumbent U.S. senator,2010,Governor,GA,isakson j,4,0,0
 ,DEM,Thurbert Baker,Attorney General of Georgia,2010,Governor,GA,baker t,3,0,0
 ,DEM,Roy Barnes,former governor of Georgia,2010,Governor,GA,barnes r,3,0,0
@@ -4719,7 +4719,7 @@ additional terms may apply. By using this site, you agree to the Terms of Use an
 ,REP,Kerry Healey,former Lieutenant Governor and nominee in 2006,2010,Governor,MA,healey k,3,0,0
 ,REP,Bob Hedlund,state senator from Weymouth,2010,Governor,MA,hedlund b,2,0,0
 ,REP,Joe Malone,former state treasurer  (ran for U.S. representative),2010,Governor,MA,malone j,3,1,0
-,REP,Michael Sullivan,former U.S. attorney for the District of Massachusetts,2010,Governor,MA,sullivan m,0,0,0
+,REP,Michael Sullivan,former U.S. attorney for the District of Massachusetts,2010,Governor,MA,sullivan m,4,0,0
 ,REP,Richard Tisei,minority Leader of the Massachusetts State Senate,2010,Governor,MA,tisei r,2,0,0
 ,REP,Tim Cahill,state treasurer and receiver-general  (Independent),2010,Governor,MA,cahill t,3,0,0
 ,REP,Paul Loscocco,former Republican state representative,2010,Governor,MA,loscocco p,2,1,0
@@ -4757,7 +4757,7 @@ additional terms may apply. By using this site, you agree to the Terms of Use an
 ,REP,Peter Mills,State Senator and candidate for governor in 2006,2010,Governor,ME,mills p,2,0,1
 ,REP,Les Otten,founder of American Skiing Company and former Boston Red Sox co-owner,2010,Governor,ME,otten l,0,0,0
 ,REP,Bruce Poliquin,business owner/manager and economist,2010,Governor,ME,poliquin b,0,0,0
-,REP,Peter Cianchette,United States Ambassador to Costa Rica and 2002 Republican nominee for governor,2010,Governor,ME,cianchette p,0,0,1
+,REP,Peter Cianchette,United States Ambassador to Costa Rica and 2002 Republican nominee for governor,2010,Governor,ME,cianchette p,4,0,1
 ,REP,Kevin Raye,State Senate Minority Leader,2010,Governor,ME,raye k,2,0,0
 ,REP,Josh Tardy,State House Minority Leader,2010,Governor,ME,tardy j,2,0,0
 ,IND,Eliot Cutler,"attorney, former staff member for U.S. Senator Edmund Muskie , and former adviser to President Jimmy Carter",2010,Governor,ME,cutler e,4,0,0
@@ -4867,7 +4867,7 @@ additional terms may apply. By using this site, you agree to the Terms of Use an
 ,DEM,Diane Denish,lieutenant governor,2010,Governor,NM,denish d,3,0,0
 ,DEM,Val Kilmer,"actor, activist",2010,Governor,NM,kilmer v,0,0,0
 ,REP,Janice Arnold-Jones,state representative,2010,Governor,NM,arnoldjones j,2,1,0
-,REP,Pete Domenici,"Jr., attorney and son of former U.S. Senator Pete Domenici",2010,Governor,NM,domenici p,4,0,0
+,REP,Pete Domenici,"Jr., attorney and son of former U.S. Senator Pete Domenici",2010,Governor,NM,domenici p,0,0,0
 ,REP,Susana Martínez,Doña Ana County district attorney,2010,Governor,NM,martinez s,1,0,0
 ,REP,Governor of New Mexico,Gary Johnson,2010,Governor,NM,mexico g,0,0,0
 ,REP,Allen Weh,former chairman of the Republican Party of New Mexico,2010,Governor,NM,weh a,0,0,0
@@ -4892,7 +4892,7 @@ additional terms may apply. By using this site, you agree to the Terms of Use an
 ,OTH,"Arthur Forest Lampitt, Jr.",,2010,Governor,NV,lampitt a,0,0,0
 ,OTH,David Scott Curtis,,2010,Governor,NV,curtis d,0,0,0
 ,OTH,Aaron Y. Honig,,2010,Governor,NV,honig a,0,0,0
-,DEM,Andrew Cuomo,"Attorney General of New York , Former Secretary of Housing and Urban Development , and son of former governor Mario Cuomo",2010,Governor,NY,cuomo a,3,0,0
+,DEM,Andrew Cuomo,"Attorney General of New York , Former Secretary of Housing and Urban Development , and son of former governor Mario Cuomo",2010,Governor,NY,cuomo a,4,0,0
 ,DEM,David Paterson,"incumbent Governor of New York (withdrew February 26, 2010)",2010,Governor,NY,paterson d,3,0,0
 ,DEM,Jimmy McMillan,founder of the Rent Is Too Damn High Party,2010,Governor,NY,mcmillan j,0,0,0
 ,DEM,Joel Tyner,Dutchess County legislator,2010,Governor,NY,tyner j,0,0,0
@@ -4921,7 +4921,7 @@ additional terms may apply. By using this site, you agree to the Terms of Use an
 ,DEM,John Kitzhaber,former governor of Oregon,2010,Governor,OR,kitzhaber j,3,0,0
 ,DEM,Bill Bradbury,former Oregon secretary of state,2010,Governor,OR,bradbury b,3,0,0
 ,REP,Chris Dudley,former professional basketball player,2010,Governor,OR,dudley c,0,0,0
-,REP,Allen Alley,businessman and deputy chief of staff to Governor Ted Kulongoski,2010,Governor,OR,alley a,3,0,0
+,REP,Allen Alley,businessman and deputy chief of staff to Governor Ted Kulongoski,2010,Governor,OR,alley a,0,0,0
 ,REP,Clark Colvin,business executive,2010,Governor,OR,colvin c,0,0,0
 ,REP,Darren Karr,small business owner,2010,Governor,OR,karr d,0,0,0
 ,REP,John Lim,former Oregon State Senator and unsuccessful nominee for the U.S. Senate in 1998,2010,Governor,OR,lim j,2,0,1
@@ -4941,7 +4941,7 @@ additional terms may apply. By using this site, you agree to the Terms of Use an
 ,OTH,Greg Kord,,2010,Governor,OR,kord g,0,0,0
 ,OTH,Wes Wagner,,2010,Governor,OR,wagner w,0,0,0
 ,DEM,Dan Onorato,Allegheny County Chief Executive (from Pittsburgh ),2010,Governor,PA,onorato d,0,0,0
-,DEM,Jack Wagner,Auditor General (from Pittsburgh),2010,Governor,PA,wagner j,0,0,0
+,DEM,Jack Wagner,Auditor General (from Pittsburgh),2010,Governor,PA,wagner j,3,0,0
 ,DEM,Anthony Williams,State Senator (from Philadelphia ),2010,Governor,PA,williams a,2,0,0
 ,DEM,Joe Hoeffel,"Montgomery County Commissioner and former U.S. Representative (from Abington Township, Montgomery County )",2010,Governor,PA,hoeffel j,4,1,0
 ,DEM,Chris Doherty,Mayor of Scranton,2010,Governor,PA,doherty c,1,0,0
@@ -4949,7 +4949,7 @@ additional terms may apply. By using this site, you agree to the Terms of Use an
 ,REP,Tom Corbett,attorney general (from Shaler Township ),2010,Governor,PA,corbett t,3,0,0
 ,REP,Sam Rohrer,state representative (from Robeson Township ),2010,Governor,PA,rohrer s,2,1,0
 ,REP,Jim Gerlach,U.S. Representative,2010,Governor,PA,gerlach j,4,1,0
-,REP,Pat Meehan,Former United States Attorney for the Eastern District of Pennsylvania  ( Ran for and won race for U.S. Representative from Pennsylvania's 7th congressional district ),2010,Governor,PA,meehan p,0,1,0
+,REP,Pat Meehan,Former United States Attorney for the Eastern District of Pennsylvania  ( Ran for and won race for U.S. Representative from Pennsylvania's 7th congressional district ),2010,Governor,PA,meehan p,4,1,0
 ,REP,Dan Onorato,"(D), Allegheny County Executive",2010,Governor,PA,onorato d,1,0,0
 ,DEM,Frank Caprio,State Treasurer,2010,Governor,RI,caprio f,3,0,0
 ,REP,Victor Moffitt,former state representative,2010,Governor,RI,moffitt v,2,1,0
@@ -4978,7 +4978,7 @@ additional terms may apply. By using this site, you agree to the Terms of Use an
 ,REP,Basil Marceaux,Soddy Daisy resident,2010,Governor,TN,marceaux b,0,0,0
 ,REP,Ron Ramsey,Lieutenant Governor,2010,Governor,TN,ramsey r,3,0,0
 ,REP,Zach Wamp,"U.S. representative, 3rd district",2010,Governor,TN,wamp z,4,1,0
-,DEM,Mike McWherter,"businessman, former attorney, son of former governor Ned McWherter",2010,Governor,TN,mcwherter m,3,0,0
+,DEM,Mike McWherter,"businessman, former attorney, son of former governor Ned McWherter",2010,Governor,TN,mcwherter m,0,0,0
 ,OTH,Carl Twofeathers Whitaker,,2010,Governor,TN,whitaker c,0,0,0
 ,OTH,Brandon Dodds,,2010,Governor,TN,dodds b,0,0,0
 ,OTH,Bayron Binkley,,2010,Governor,TN,binkley b,0,0,0
@@ -5002,7 +5002,7 @@ additional terms may apply. By using this site, you agree to the Terms of Use an
 ,DEM,Star Locke,homebuilder,2010,Governor,TX,locke s,0,0,0
 ,DEM,Farouk Shami,businessman,2010,Governor,TX,shami f,0,0,0
 ,DEM,Bill White,former mayor of Houston,2010,Governor,TX,white b,1,0,0
-,DEM,Tom Schieffer,former U.S. Ambassador to Japan & U.S. Ambassador to Australia,2010,Governor,TX,schieffer t,0,0,0
+,DEM,Tom Schieffer,former U.S. Ambassador to Japan & U.S. Ambassador to Australia,2010,Governor,TX,schieffer t,4,0,0
 ,DEM,write-in,"), orthodontist",2010,Governor,TX,writein,0,0,0
 ,DEM,Kathie Glass (L),attorney,2010,Governor,TX,l k,0,0,0
 ,DEM,Rick Perry,"(R), incumbent governor",2010,Governor,TX,perry r,3,0,0
@@ -5067,7 +5067,7 @@ additional terms may apply. By using this site, you agree to the Terms of Use an
 ,DEM,Paul Hickey,attorney,2010,Governor,WY,hickey p,0,0,0
 ,DEM,Mike Massie,State Senator  (ran for Superintendent of Public Instruction ),2010,Governor,WY,massie m,2,0,0
 ,REP,Alan Kousoulos,19-year WYDOT supervisor,2010,Governor,WY,kousoulos a,0,0,0
-,REP,Matt Mead,former U.S. attorney,2010,Governor,WY,mead m,0,0,0
+,REP,Matt Mead,former U.S. attorney,2010,Governor,WY,mead m,4,0,0
 ,REP,Rita Meyer,Wyoming state auditor,2010,Governor,WY,meyer r,3,0,0
 ,REP,Ron Micheli,former state representative and former director of the Wyoming Department of Agriculture,2010,Governor,WY,micheli r,2,1,0
 ,REP,2002,and 2006,2010,Governor,WY,,0,0,0

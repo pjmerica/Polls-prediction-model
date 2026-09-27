@@ -51,7 +51,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 1.0,DEM,Mark Robert Gordon,attorney and Democratic National Committee member,2026,House,AZ,gordon m,0,0,0
 1.0,DEM,Daniel Lucio,system engineer,2026,House,AZ,lucio d,0,0,0
 1.0,DEM,Victor Weintraub,retired businessman,2026,House,AZ,weintraub v,0,0,0
-1.0,DEM,158th Infantry Regiment,and son of former Republican U.S. senator John McCain,2026,House,AZ,regiment t,4,0,0
+1.0,DEM,158th Infantry Regiment,and son of former Republican U.S. senator John McCain,2026,House,AZ,regiment t,0,0,0
 1.0,IND,Libertarian Party,),2026,House,AZ,party l,0,0,0
 1.0,IND,Green Party,),2026,House,AZ,party g,0,0,0
 2.0,REP,Eli Crane,incumbent U.S. representative,2026,House,AZ,crane e,4,1,0
@@ -231,16 +231,16 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 8.0,DEM,Paul Dellinger,community organizer,2026,House,FL,dellinger p,0,0,0
 8.0,DEM,Young Democrats,"of Indian River,  as well as the former Representative to the General Youth Council  of The Christian Church (Disciples of Christ) in the U.S. and Canada for the Florida Region (2018-20).",2026,House,FL,democrats y,0,1,0
 9.0,DEM,Darren Soto,incumbent U.S. representative,2026,House,FL,soto d,4,1,0
-9.0,DEM,Jerry Demings,Mayor of Orange County (2018–present) and husband of former U.S. representative Val Demings  ( ran for governor ),2026,House,FL,demings j,4,1,0
+9.0,DEM,Jerry Demings,Mayor of Orange County (2018–present) and husband of former U.S. representative Val Demings  ( ran for governor ),2026,House,FL,demings j,1,1,0
 9.0,REP,South Florida Water Management District,governing board,2026,House,FL,district s,0,0,0
 9.0,REP,Osceola,School Board Member and nominee for this district in 2024,2026,House,FL,osceola,1,0,1
-9.0,REP,Dan Green,former Deputy Assistant Secretary of Defense for Strategy and Force Development and Navy reserve officer,2026,House,FL,green d,0,0,0
+9.0,REP,Dan Green,former Deputy Assistant Secretary of Defense for Strategy and Force Development and Navy reserve officer,2026,House,FL,green d,4,0,0
 9.0,REP,Jorge Martinez,businessman,2026,House,FL,martinez j,0,0,0
 9.0,REP,Air Force,veteran,2026,House,FL,force a,0,0,0
 9.0,REP,Marine Corps,officer,2026,House,FL,corps m,0,0,0
 9.0,REP,Robbie Brackett,state representative from the 34th district (2022–present) ( running for re-election ),2026,House,FL,brackett r,2,1,0
 10.0,DEM,Maxwell Frost,incumbent U.S. representative,2026,House,FL,frost m,4,1,0
-10.0,DEM,Jerry Demings,Mayor of Orange County (2018–present) and husband of former U.S. representative Val Demings  ( running for governor ),2026,House,FL,demings j,4,1,0
+10.0,DEM,Jerry Demings,Mayor of Orange County (2018–present) and husband of former U.S. representative Val Demings  ( running for governor ),2026,House,FL,demings j,1,1,0
 10.0,DEM,Darren Soto,incumbent U.S. representative from the 9th district (running for re-election),2026,House,FL,soto d,4,1,0
 10.0,REP,Stuart Farber,physician,2026,House,FL,farber s,0,0,0
 10.0,REP,Willie Montague,nonprofit leader,2026,House,FL,montague w,0,0,0
@@ -291,7 +291,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 15.0,DEM,Jose Engell,college student,2026,House,FL,engell j,0,0,0
 15.0,DEM,Florida Air National Guard,(running in the 12th district),2026,House,FL,guard f,0,0,0
 15.0,DEM,Hillsborough County,commissioner (running in the 12th district),2026,House,FL,county h,0,0,0
-16.0,REP,New College of Florida,Foundation and wife of state senator and chair of the Republican National Committee Joe Gruters,2026,House,FL,florida n,2,0,0
+16.0,REP,New College of Florida,Foundation and wife of state senator and chair of the Republican National Committee Joe Gruters,2026,House,FL,florida n,0,0,0
 16.0,REP,Navy,veteran,2026,House,FL,navy,0,0,0
 16.0,REP,2024,(running in the 16th district),2026,House,FL,,0,0,0
 16.0,REP,Jim Boyd,majority leader of the Florida Senate (2024–present) from the 20th district (2020–present),2026,House,FL,boyd j,2,1,0
@@ -502,7 +502,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 2.0,REP,Ashley Hinson,incumbent U.S. representative  ( running for U.S. Senate ),2026,House,IA,hinson a,4,1,0
 2.0,REP,Shannon Lundgren,state representative from the 65th district (2017–present) ( running for re-election ),2026,House,IA,lundgren s,2,1,0
 2.0,DEM,Lindsay James,state representative from the 71st district (2019–present),2026,House,IA,james l,2,1,0
-2.0,DEM,Kevin Techau,former U.S. Attorney for the Northern District of Iowa (2014–2017)  (endorsed James),2026,House,IA,techau k,0,0,0
+2.0,DEM,Kevin Techau,former U.S. Attorney for the Northern District of Iowa (2014–2017)  (endorsed James),2026,House,IA,techau k,4,0,0
 2.0,DEM,Libertarian,"nominee for governor of Iowa in 2022 , U.S. Senate in 2020 , Secretary of Agriculture of Iowa in 2018 , and independent candidate for U.S. Senate in 2014 .",2026,House,IA,libertarian,4,0,1
 2.0,IND,Dave Bushaw,community organizer,2026,House,IA,bushaw d,0,0,0
 3.0,REP,Zach Nunn,incumbent U.S. representative,2026,House,IA,nunn z,4,1,0
@@ -722,7 +722,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 6.0,DEM,Debbie Dingell,incumbent U.S. representative (2015–present),2026,House,MI,dingell d,4,1,0
 6.0,REP,2020,and this district in 2024,2026,House,MI,,0,0,0
 7.0,REP,Tom Barrett,incumbent U.S. representative (2025–present),2026,House,MI,barrett t,4,1,0
-7.0,DEM,Bridget Brink,former U.S. Ambassador to Ukraine (2022–2025) and Slovakia (2019–2022),2026,House,MI,brink b,0,0,0
+7.0,DEM,Bridget Brink,former U.S. Ambassador to Ukraine (2022–2025) and Slovakia (2019–2022),2026,House,MI,brink b,4,0,0
 7.0,DEM,William Lawrence,co-founder of Sunrise Movement,2026,House,MI,lawrence w,0,0,0
 7.0,DEM,U.S. Special Operations Command,at the National Counterterrorism Center,2026,House,MI,command u,0,0,0
 7.0,DEM,Michigan State University,(endorsed Brink),2026,House,MI,university m,0,0,0
@@ -736,7 +736,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 9.0,DEM,Ray Pooley,CNC machinist and programmer,2026,House,MI,pooley r,0,0,0
 9.0,IND,Jasen Cartwright,IT technician,2026,House,MI,cartwright j,0,0,0
 9.0,IND,Fernando Valdez,retired electronic technician,2026,House,MI,valdez f,0,0,0
-10.0,REP,Army National Guard,Captain and son of Oakland County Sheriff Mike Bouchard,2026,House,MI,guard a,1,0,0
+10.0,REP,Army National Guard,Captain and son of Oakland County Sheriff Mike Bouchard,2026,House,MI,guard a,0,0,0
 10.0,REP,Steffan Demetropoulous,project manager,2026,House,MI,demetropoulous s,0,0,0
 10.0,REP,Justin Kirk,attorney,2026,House,MI,kirk j,0,0,0
 10.0,REP,Macomb County,assistant prosecuting attorney (2025–present) (remained on ballot),2026,House,MI,county m,0,1,0
@@ -901,7 +901,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 2.0,DEM,Brian Miller,attorney,2026,House,MT,miller b,0,0,0
 2.0,IND,Michael Eisenhauer,cardiologist,2026,House,MT,eisenhauer m,0,0,0
 1.0,DEM,Don Davis,incumbent U.S. representative,2026,House,NC,davis d,4,1,0
-1.0,REP,Laurie Buckhout,former acting Assistant Secretary of Defense for Cyber Policy (2025) and nominee for this district in 2024,2026,House,NC,buckhout l,0,0,1
+1.0,REP,Laurie Buckhout,former acting Assistant Secretary of Defense for Cyber Policy (2025) and nominee for this district in 2024,2026,House,NC,buckhout l,4,0,1
 1.0,REP,Rocky Mount,(2019–present) and candidate for this district in 2022,2026,House,NC,mount r,0,1,1
 1.0,REP,Greg Murphy,incumbent U.S. representative from the 3rd district (running in the 3rd district),2026,House,NC,murphy g,4,1,0
 1.0,REP,2020,"and 2022 , and candidate in 2024",2026,House,NC,,0,0,0
@@ -920,7 +920,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 4.0,REP,Max Ganorkar,home building contractor and perennial candidate,2026,House,NC,ganorkar m,0,0,0
 4.0,REP,Guy Meilleur,arborist and perennial candidate,2026,House,NC,meilleur g,0,0,0
 5.0,REP,Virginia Foxx,incumbent U.S. representative,2026,House,NC,foxx v,4,1,0
-5.0,REP,Rockingham County,board of commissioners and son of state senator Phil Berger,2026,House,NC,county r,2,0,0
+5.0,REP,Rockingham County,board of commissioners and son of state senator Phil Berger,2026,House,NC,county r,0,0,0
 5.0,DEM,Robert Luffman,truck driver,2026,House,NC,luffman r,0,0,0
 5.0,IND,David Clayton,digital marketing consultant,2026,House,NC,clayton d,0,0,0
 5.0,IND,Shatarra Smith,realtor,2026,House,NC,smith s,0,0,0
@@ -977,9 +977,9 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 1.0,DEM,Bill Conlin,former state representative from the Strafford 15th district (2022–2024),2026,House,NH,conlin b,2,1,0
 1.0,DEM,Matthew Emerson,organizer,2026,House,NH,emerson m,0,0,0
 1.0,DEM,Heath Howard,state representative from the Strafford 4th district (2022–present),2026,House,NH,howard h,2,1,0
-1.0,DEM,Portsmouth,city councilor and daughter of U.S. Senator Jeanne Shaheen,2026,House,NH,portsmouth,4,0,0
+1.0,DEM,Portsmouth,city councilor and daughter of U.S. Senator Jeanne Shaheen,2026,House,NH,portsmouth,1,0,0
 1.0,DEM,libertarian,activist and journalist,2026,House,NH,libertarian,0,0,0
-1.0,DEM,Maura Sullivan,"vice chair of the New Hampshire Democratic Party , former Assistant to the Secretary of Defense for Public Affairs (2015), and candidate for this district in 2018",2026,House,NH,sullivan m,0,0,1
+1.0,DEM,Maura Sullivan,"vice chair of the New Hampshire Democratic Party , former Assistant to the Secretary of Defense for Public Affairs (2015), and candidate for this district in 2018",2026,House,NH,sullivan m,4,0,1
 1.0,DEM,Army National Guard,captain,2026,House,NH,guard a,0,0,0
 1.0,DEM,Debra Altschiller,state senator from the 24th district (2022–present) (running for re-election),2026,House,NH,altschiller d,2,1,0
 1.0,DEM,mayor,of Portsmouth and candidate for this district in 2018  (endorsed Shaheen),2026,House,NH,mayor,0,0,1
@@ -1050,7 +1050,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 11.0,DEM,U.S. Army,"veteran, venture capitalist, and candidate for this district in the April special election",2026,House,NJ,army u,0,0,1
 11.0,DEM,J-L Cauvin,"attorney, comedian, and candidate for this district in the April special election  (endorsed Mejia)",2026,House,NJ,cauvin j,0,0,1
 11.0,DEM,April special election,(endorsed Mejia),2026,House,NJ,election a,0,0,0
-11.0,DEM,Essex County,"commissioner , husband of state assemblymember Alixon Collazos-Gill , candidate for New Jersey's 27th assembly district in 2023 , and candidate for this district in the April special election (endorsed Mejia)",2026,House,NJ,county e,2,0,1
+11.0,DEM,Essex County,"commissioner , husband of state assemblymember Alixon Collazos-Gill , candidate for New Jersey's 27th assembly district in 2023 , and candidate for this district in the April special election (endorsed Mejia)",2026,House,NJ,county e,0,0,1
 11.0,DEM,Tom Malinowski,"former chair of the Hunterdon County Democratic Party (2024–2025), former U.S. representative from the 7th district (2019–2023), and candidate for this district in the April special election (endorsed Mejia)",2026,House,NJ,malinowski t,4,1,1
 11.0,DEM,Tahesha Way,former lieutenant governor (2023–2026) and secretary of state of New Jersey (2018–2026) and candidate for this district in the April special election,2026,House,NJ,way t,3,0,1
 11.0,REP,Randolph,"Township Council member, former mayor, and nominee in the April special election",2026,House,NJ,randolph,1,0,0
@@ -1082,14 +1082,14 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 2.0,REP,Mark Amodei,incumbent U.S. representative (2011–present)  (endorsed Settelmeyer),2026,House,NV,amodei m,4,1,0
 2.0,REP,"Modesto, California",city councilor (1997–2003) and candidate for U.S. Senate in 2022 and 2024,2026,House,NV,california m,1,0,1
 2.0,REP,Eureka County,"sheriff (endorsed Settelmeyer, remained on ballot)",2026,House,NV,county e,1,0,0
-2.0,REP,Sam Brown,"Under Secretary of Veterans Affairs for Memorial Affairs (2025–present), nominee for U.S. Senate in 2024 , and candidate in 2022",2026,House,NV,brown s,0,1,1
+2.0,REP,Sam Brown,"Under Secretary of Veterans Affairs for Memorial Affairs (2025–present), nominee for U.S. Senate in 2024 , and candidate in 2022",2026,House,NV,brown s,4,1,1
 2.0,REP,Paul Enos,trade association executive  (endorsed Settelmeyer),2026,House,NV,enos p,0,0,0
 2.0,REP,Joey Gilbert,"attorney, former boxer, and candidate for governor in 2022  (endorsed Flippo)",2026,House,NV,gilbert j,0,0,1
 2.0,REP,Reno Air Races,"director of flight operations, candidate for lieutenant governor in 2022 , and candidate for U.S. Senate in 2024",2026,House,NV,races r,0,0,1
 2.0,REP,Ken Gray,advisor to the National Cemetery Administration (2025–present) and former state assemblymember from the 39th district (2022–2025) ( running for state assembly ),2026,House,NV,gray k,2,1,0
 2.0,REP,Ira Hansen,state senator from the 14th district (2018–present),2026,House,NV,hansen i,2,1,0
 2.0,REP,Adam Laxalt,"former Nevada Attorney General (2015–2019), nominee for governor in 2018 , and nominee for U.S. Senate in 2022",2026,House,NV,laxalt a,3,0,1
-2.0,REP,Andy Matthews,Nevada State Controller (2023–present) ( running for re-election ),2026,House,NV,matthews a,0,1,0
+2.0,REP,Andy Matthews,Nevada State Controller (2023–present) ( running for re-election ),2026,House,NV,matthews a,3,1,0
 2.0,REP,Danny Tarkanian,Douglas County commissioner (2021–present) and candidate for this district in 2022 ( running for attorney general ),2026,House,NV,tarkanian d,1,1,1
 2.0,REP,Robin Titus,minority leader of the Nevada Senate (2024–present) from the 17th district (2022–present) ( running for re-election ),2026,House,NV,titus r,2,1,0
 2.0,DEM,Teresa Benitez-Thompson,chief of staff to Nevada Attorney General Aaron Ford and former majority leader of the Nevada Assembly (2016–2022) from the 27th district (2010–2022),2026,House,NV,benitezthompson t,3,0,0
@@ -1167,7 +1167,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 12.0,DEM,Alan Pardee,private equity firm executive,2026,House,NY,pardee a,0,0,0
 12.0,DEM,Mathew Shurka,activist (endorsed Bores),2026,House,NY,shurka m,0,0,0
 12.0,DEM,2020,and candidate for Manhattan Borough President in 2021 (ran for city council),2026,House,NY,,0,0,1
-12.0,DEM,Chelsea Clinton,writer and daughter of former U.S. Senator Hillary Clinton and former president Bill Clinton,2026,House,NY,clinton c,4,0,0
+12.0,DEM,Chelsea Clinton,writer and daughter of former U.S. Senator Hillary Clinton and former president Bill Clinton,2026,House,NY,clinton c,0,0,0
 12.0,DEM,Andrew Cuomo,former Governor and candidate for mayor in 2025,2026,House,NY,cuomo a,3,0,1
 12.0,DEM,Dan Goldman,incumbent U.S. representative from the 10th district (running for re-election),2026,House,NY,goldman d,4,1,0
 12.0,DEM,Molly Jong-Fast,journalist and author,2026,House,NY,jongfast m,0,0,0
@@ -1317,7 +1317,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 11.0,DEM,Nancy Mannion,registered nurse,2026,House,PA,mannion n,0,0,0
 11.0,DEM,Sarah Klimm,equity consultant,2026,House,PA,klimm s,0,0,0
 12.0,DEM,Summer Lee,incumbent U.S. representative,2026,House,PA,lee s,4,1,0
-12.0,DEM,Eugene DePasquale,"former Pennsylvania Auditor General (2013–2021), nominee for the 10th district in 2020 , and nominee for attorney general in 2024",2026,House,PA,depasquale e,0,0,1
+12.0,DEM,Eugene DePasquale,"former Pennsylvania Auditor General (2013–2021), nominee for the 10th district in 2020 , and nominee for attorney general in 2024",2026,House,PA,depasquale e,3,0,1
 13.0,REP,John Joyce,incumbent U.S. representative,2026,House,PA,joyce j,4,1,0
 13.0,DEM,Conewago Valley School District,Board member and nominee for this district in 2024,2026,House,PA,district c,0,0,1
 14.0,REP,Guy Reschenthaler,incumbent U.S. representative,2026,House,PA,reschenthaler g,4,1,0
@@ -1802,7 +1802,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 1.0,REP,Gil Gutknecht,incumbent U.S. representative,2000,House,MN,gutknecht g,4,1,0
 1.0,REP,Winona State University,and nominee for this seat in 1998,2000,House,MN,university w,0,0,1
 2.0,REP,Mark Kennedy,business executive,2000,House,MN,kennedy m,0,0,0
-2.0,REP,Gerald Brekke,retired professor at Gustavus Adolphus College and Republican nominee for U.S. Senate in 1976 and for Minnesota secretary of state in 1978,2000,House,MN,brekke g,3,0,1
+2.0,REP,Gerald Brekke,retired professor at Gustavus Adolphus College and Republican nominee for U.S. Senate in 1976 and for Minnesota secretary of state in 1978,2000,House,MN,brekke g,0,0,1
 2.0,REP,Ron Helwig,software engineer,2000,House,MN,helwig r,0,0,0
 2.0,REP,Dennis Burda,computer network specialist,2000,House,MN,burda d,0,0,0
 3.0,REP,Jim Ramstad,incumbent U.S. representative,2000,House,MN,ramstad j,4,1,0
@@ -1828,7 +1828,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 2.0,DEM,U.S. Air Force,major,2000,House,NE,force u,0,0,0
 2.0,DEM,John J. Graziano,salesman,2000,House,NE,graziano j,0,0,0
 3.0,REP,Tom Osborne,former University of Nebraska head football coach,2000,House,NE,osborne t,0,0,0
-3.0,REP,John A. Gale,"attorney, former aide to U.S. Senator Roman Hruska",2000,House,NE,gale j,4,0,0
+3.0,REP,John A. Gale,"attorney, former aide to U.S. Senator Roman Hruska",2000,House,NE,gale j,0,0,0
 3.0,DEM,Roland E. Reynolds,real estate investor,2000,House,NE,reynolds r,0,0,0
 3.0,DEM,U.S. Marine Corps,"veteran, 1998 Libertarian candidate for Congress",2000,House,NE,corps u,0,0,1
 1.0,DEM,Rob Andrews,incumbent Representative from Haddon Heights since 1990,2000,House,NJ,andrews r,4,1,0
@@ -1846,7 +1846,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 6.0,REP,Brian T. Kennedy,former state senator and assemblyman from Sea Girt and candidate for U.S. Senate in 1994,2000,House,NJ,kennedy b,2,0,1
 6.0,REP,Mike Ferguson,Brookdale College teacher and nominee for this district in 1998 ( ran for 7th district ),2000,House,NJ,ferguson m,0,0,1
 7.0,REP,Mike Ferguson,Brookdale College teacher and nominee for New Jersey's 6th congressional district in 1998,2000,House,NJ,ferguson m,0,0,1
-7.0,REP,Thomas Kean Jr.,former aide to Bob Franks and son of former governor Thomas Kean,2000,House,NJ,kean t,3,0,0
+7.0,REP,Thomas Kean Jr.,former aide to Bob Franks and son of former governor Thomas Kean,2000,House,NJ,kean t,0,0,0
 7.0,REP,Patrick Morrissey,deputy staff director and chief health counsel for the United States House Committee on Energy and Commerce,2000,House,NJ,morrissey p,4,0,0
 7.0,REP,Joel Weingarten,assemblyman from Millburn,2000,House,NJ,weingarten j,0,0,0
 7.0,REP,Woodbridge Township,Council and chair of the Woodbridge Republican Party,2000,House,NJ,township w,0,0,0
@@ -2029,7 +2029,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 7.0,DEM,Ben Jones,actor and former U.S. Representative from Georgia,2002,House,VA,jones b,4,1,0
 8.0,DEM,Jim Moran,incumbent U.S. Representative,2002,House,VA,moran j,4,1,0
 8.0,REP,Scott Tate,internet consultant,2002,House,VA,tate s,0,0,0
-8.0,REP,Joe McCain,"actor, newspaper reporter, and brother of U.S. Senator John McCain",2002,House,VA,mccain j,4,0,0
+8.0,REP,Joe McCain,"actor, newspaper reporter, and brother of U.S. Senator John McCain",2002,House,VA,mccain j,0,0,0
 8.0,REP,Ron Crickenberger,national political director of the United States Libertarian Party and nominee for this seat in 2000,2002,House,VA,crickenberger r,0,0,1
 9.0,DEM,Rick Boucher,incumbent U.S. Representative,2002,House,VA,boucher r,4,1,0
 9.0,REP,Jay Katzen,"diplomat, former state delegate and nominee for Lieutenant Governor in 2001",2002,House,VA,katzen j,2,0,1
@@ -2179,10 +2179,10 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 8.0,DEM,Leslie Byrne,state senator and former U.S. Representative,2004,House,VA,byrne l,4,1,0
 8.0,REP,Dick Cheney,),2004,House,VA,cheney d,0,0,0
 8.0,REP,Melissa Helmbrecht,entrepreneur and youth activist,2004,House,VA,helmbrecht m,0,0,0
-8.0,REP,Andre Hollis,former Deputy Assistant Secretary of Defense for Counternarcotics,2004,House,VA,hollis a,0,0,0
+8.0,REP,Andre Hollis,former Deputy Assistant Secretary of Defense for Counternarcotics,2004,House,VA,hollis a,4,0,0
 8.0,REP,Robb Rourke,house parent,2004,House,VA,rourke r,0,0,0
-8.0,REP,Joe McCain,"actor, newspaper reporter, and brother of U.S. Senator John McCain",2004,House,VA,mccain j,4,0,0
-8.0,REP,Kyle E. McSlarrow,United States Deputy Secretary of Energy and nominee for this seat in 1992 and 1994,2004,House,VA,mcslarrow k,0,0,1
+8.0,REP,Joe McCain,"actor, newspaper reporter, and brother of U.S. Senator John McCain",2004,House,VA,mccain j,0,0,0
+8.0,REP,Kyle E. McSlarrow,United States Deputy Secretary of Energy and nominee for this seat in 1992 and 1994,2004,House,VA,mcslarrow k,4,0,1
 9.0,DEM,Rick Boucher,incumbent U.S. Representative,2004,House,VA,boucher r,4,1,0
 10.0,REP,Frank Wolf,incumbent U.S. Representative,2004,House,VA,wolf f,4,1,0
 11.0,REP,Tom Davis,incumbent U.S. Representative,2004,House,VA,davis t,4,1,0
@@ -2255,7 +2255,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 1.0,DEM,Dennis Spivack,attorney,2006,House,DE,spivack d,0,0,0
 1.0,REP,Bill Sali,Idaho State Representative,2006,House,ID,sali b,2,1,0
 1.0,REP,Canyon County,Commissioner,2006,House,ID,county c,0,0,0
-1.0,REP,Keith Johnson,Idaho State Controller,2006,House,ID,johnson k,0,0,0
+1.0,REP,Keith Johnson,Idaho State Controller,2006,House,ID,johnson k,3,0,0
 1.0,REP,Norm Semanko,attorney,2006,House,ID,semanko n,0,0,0
 1.0,REP,Skip Brandt,Idaho State Senator,2006,House,ID,brandt s,2,0,0
 1.0,REP,Gil Gutknecht,incumbent U.S. Representative,2006,House,MN,gutknecht g,4,1,0
@@ -2323,7 +2323,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 1.0,REP,Jim Duensing,radio talk show host and nominee for this seat in 2004,2006,House,NV,duensing j,0,0,1
 1.0,IND,1998,& 2002,2006,House,NV,,0,0,0
 2.0,REP,Dean Heller,Secretary of State of Nevada,2006,House,NV,heller d,3,0,0
-2.0,REP,Kathy Augustine,Nevada State Controller,2006,House,NV,augustine k,0,0,0
+2.0,REP,Kathy Augustine,Nevada State Controller,2006,House,NV,augustine k,3,0,0
 2.0,REP,Jim Gibbons,incumbent U.S. Representative and nominee for Governor in 1994 ( running for Governor ),2006,House,NV,gibbons j,4,1,1
 2.0,REP,Brian Krolicki,Nevada State Treasurer ( running for Lieutenant Governor ),2006,House,NV,krolicki b,3,0,0
 2.0,DEM,Jill Derby,Regent for the University and Community College System of Nevada,2006,House,NV,derby j,0,0,0
@@ -2459,7 +2459,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 1.0,DEM,Ellen Simon,"civil rights attorney and nominee for the seat in 2006   (dropped out in May 2007, citing personal reasons)",2008,House,AZ,simon e,0,0,1
 1.0,DEM,George Cordova,businessman and nominee for the seat in 2002,2008,House,AZ,cordova g,0,0,1
 1.0,DEM,Jim Ledbetter,attorney,2008,House,AZ,ledbetter j,0,0,0
-1.0,DEM,Casa Grande,(brother of Democratic Congressman Harry Mitchell ),2008,House,AZ,grande c,4,0,0
+1.0,DEM,Casa Grande,(brother of Democratic Congressman Harry Mitchell ),2008,House,AZ,grande c,0,0,0
 1.0,DEM,Jim Pederson,"real estate developer, former chair of the Arizona Democratic Party and nominee for U.S. Senate in 2006",2008,House,AZ,pederson j,0,0,1
 1.0,DEM,Pinal County,attorney,2008,House,AZ,county p,0,0,0
 1.0,DEM,Steve Owens,Arizona Department of Environmental Quality director and nominee for the 6th district in 1996 & 1998,2008,House,AZ,owens s,0,0,1
@@ -2614,7 +2614,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 6.0,DEM,Frank Pallone,incumbent Representative from Long Branch since 1988,2008,House,NJ,pallone f,4,1,0
 6.0,REP,citation needed,],2008,House,NJ,needed c,0,0,0
 7.0,REP,A.D. Amar,Seton Hall University professor,2008,House,NJ,amar a,0,0,0
-7.0,REP,Kate Whitman,former ice hockey player and daughter of former Governor of New Jersey Christine Todd Whitman,2008,House,NJ,whitman k,3,0,0
+7.0,REP,Kate Whitman,former ice hockey player and daughter of former Governor of New Jersey Christine Todd Whitman,2008,House,NJ,whitman k,0,0,0
 7.0,REP,Summit,council president,2008,House,NJ,summit,0,0,0
 7.0,REP,Leonard Lance,State Senator from Clinton and former Senate Minority Leader (Republican),2008,House,NJ,lance l,2,0,0
 7.0,REP,Union,and Essex assistant county prosecutor,2008,House,NJ,union,0,0,0
@@ -2689,7 +2689,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 6.0,REP,Bob Goodlatte,incumbent U.S. Representative,2008,House,VA,goodlatte b,4,1,0
 6.0,DEM,Sam Rasoul,small business entrepreneur,2008,House,VA,rasoul s,0,0,0
 7.0,REP,Eric Cantor,incumbent U.S. Representative,2008,House,VA,cantor e,4,1,0
-7.0,DEM,Anita Hartke,"real estate broker, chair of the Culpeper County Democratic Committee and daughter of former Indiana US Senator Vance Hartke",2008,House,VA,hartke a,4,0,0
+7.0,DEM,Anita Hartke,"real estate broker, chair of the Culpeper County Democratic Committee and daughter of former Indiana US Senator Vance Hartke",2008,House,VA,hartke a,0,0,0
 8.0,DEM,Jim Moran,incumbent U.S. Representative,2008,House,VA,moran j,4,1,0
 9.0,DEM,Rick Boucher,incumbent U.S. Representative,2008,House,VA,boucher r,4,1,0
 10.0,REP,Frank Wolf,incumbent U.S. Representative,2008,House,VA,wolf f,4,1,0
@@ -2706,7 +2706,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 1.0,REP,Mark Gordon,"rancher, former Chairman of the Wyoming Environmental Qualify Council",2008,House,WY,gordon m,0,0,0
 1.0,REP,2006,Republican candidate for the U.S. House,2008,House,WY,,0,0,1
 1.0,REP,Green River,physician,2008,House,WY,river g,0,0,0
-1.0,REP,Matt Mead,former U.S. Attorney for the District of Wyoming,2008,House,WY,mead m,0,0,0
+1.0,REP,Matt Mead,former U.S. Attorney for the District of Wyoming,2008,House,WY,mead m,4,0,0
 1.0,REP,Cheyenne,inspirational speaker,2008,House,WY,cheyenne,0,0,0
 1.0,REP,Tom Sansonetti,former United States Assistant Attorney General for the Environment and Natural Resources Division,2008,House,WY,sansonetti t,3,0,0
 1.0,REP,Colin M. Simpson,State Representative,2008,House,WY,simpson c,2,1,0
@@ -2727,7 +2727,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 6.0,REP,Spencer Bachus,incumbent Congressman,2010,House,AL,bachus s,4,0,0
 6.0,REP,Stan Cooke,"pastor, antiquities dealer",2010,House,AL,cooke s,0,0,0
 7.0,DEM,Martha Bozeman,attorney,2010,House,AL,bozeman m,0,0,0
-7.0,DEM,Earl Hilliard Jr.,"State Representative, son of former Congressman Earl Hilliard Sr.",2010,House,AL,hilliard e,4,1,0
+7.0,DEM,Earl Hilliard Jr.,"State Representative, son of former Congressman Earl Hilliard Sr.",2010,House,AL,hilliard e,2,1,0
 7.0,DEM,Terri Sewell,attorney,2010,House,AL,sewell t,0,0,0
 7.0,DEM,Sheila Smoot,Jefferson County Commissioner,2010,House,AL,smoot s,1,0,0
 7.0,REP,Don Chamberlain,"U.S. Marine Corps veteran, retiree",2010,House,AL,chamberlain d,0,0,0
@@ -2807,7 +2807,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 1.0,DEM,Tim Walz,incumbent U.S. Representative,2010,House,MN,walz t,4,1,0
 1.0,REP,Randy Demmer,state representative and candidate for this seat in 2008,2010,House,MN,demmer r,2,1,1
 1.0,REP,Minnesota Army National Guard,Lieutenant Colonel and Iraq veteran,2010,House,MN,guard m,0,0,0
-1.0,REP,Jim Hagedorn,former congressional affairs officer for the Bureau of Engraving and Printing and son of former U.S. Representative Tom Hagedorn,2010,House,MN,hagedorn j,4,1,0
+1.0,REP,Jim Hagedorn,former congressional affairs officer for the Bureau of Engraving and Printing and son of former U.S. Representative Tom Hagedorn,2010,House,MN,hagedorn j,0,1,0
 1.0,REP,Frank McKinzie,veteran,2010,House,MN,mckinzie f,0,0,0
 1.0,REP,Allen Quist,former state representative and candidate for governor in 1994 & 1998,2010,House,MN,quist a,2,1,1
 1.0,REP,state senator,in 2006,2010,House,MN,senator s,0,0,0
@@ -2923,12 +2923,12 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 6.0,DEM,Manan Trivedi,physician and Iraq War veteran,2010,House,PA,trivedi m,0,0,0
 6.0,REP,Jim Gerlach,incumbent U.S. Representative,2010,House,PA,gerlach j,4,1,0
 7.0,DEM,Bryan Lentz,State Representative,2010,House,PA,lentz b,2,1,0
-7.0,REP,Pat Meehan,former United States Attorney for the Eastern District of Pennsylvania,2010,House,PA,meehan p,0,0,0
+7.0,REP,Pat Meehan,former United States Attorney for the Eastern District of Pennsylvania,2010,House,PA,meehan p,4,0,0
 8.0,DEM,Patrick Murphy,incumbent U.S. Representative,2010,House,PA,murphy p,4,1,0
 8.0,REP,Mike Fitzpatrick,former U.S. Representative (2005 – 2007),2010,House,PA,fitzpatrick m,4,1,0
 9.0,REP,Bill Shuster,incumbent U.S. Representative,2010,House,PA,shuster b,4,1,0
 10.0,DEM,Chris Carney,incumbent U.S. Representative,2010,House,PA,carney c,4,1,0
-10.0,REP,Tom Marino,former United States Attorney for the Middle District of Pennsylvania,2010,House,PA,marino t,0,0,0
+10.0,REP,Tom Marino,former United States Attorney for the Middle District of Pennsylvania,2010,House,PA,marino t,4,0,0
 11.0,DEM,Paul Kanjorski,incumbent U.S. Representative,2010,House,PA,kanjorski p,4,1,0
 11.0,REP,Lou Barletta,mayor of Hazleton,2010,House,PA,barletta l,1,0,0
 12.0,DEM,Mark Critz,incumbent U.S. Representative,2010,House,PA,critz m,4,1,0
@@ -3064,7 +3064,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 3.0,DEM,Libertarian Party of Arkansas,Vice Chairman,2012,House,AR,arkansas l,0,0,0
 4.0,DEM,Gene Jeffress,state senator,2012,House,AR,jeffress g,2,0,0
 4.0,DEM,Robin Carroll,prosecutor and former legal counsel to the Democratic Party;,2012,House,AR,carroll r,0,0,0
-4.0,DEM,Conner Eldridge,U.S. Attorney for the Western District of Arkansas,2012,House,AR,eldridge c,0,0,0
+4.0,DEM,Conner Eldridge,U.S. Attorney for the Western District of Arkansas,2012,House,AR,eldridge c,4,0,0
 4.0,DEM,Steve Faris,former state senator,2012,House,AR,faris s,2,0,0
 4.0,DEM,Greg Hale,consultant for The Markham Group;,2012,House,AR,hale g,0,0,0
 4.0,DEM,Steve Harrelson,state senator,2012,House,AR,harrelson s,2,0,0
@@ -3292,7 +3292,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 9.0,DEM,Alan Grayson,former U.S. representative,2012,House,FL,grayson a,4,1,0
 9.0,REP,2008,& 2010,2012,House,FL,,0,0,0
 10.0,REP,Daniel Webster,incumbent U.S. representative,2012,House,FL,webster d,4,1,0
-10.0,DEM,Val Demings,former chief of the Orlando Police Department and wife of the Orange County sheriff,2012,House,FL,demings v,1,0,0
+10.0,DEM,Val Demings,former chief of the Orlando Police Department and wife of the Orange County sheriff,2012,House,FL,demings v,0,0,0
 10.0,DEM,Alan Grayson,former U.S. representative,2012,House,FL,grayson a,4,1,0
 11.0,REP,Rich Nugent,incumbent U.S. representative,2012,House,FL,nugent r,4,1,0
 12.0,REP,Gus Bilirakis,incumbent U.S. representative,2012,House,FL,bilirakis g,4,1,0
@@ -3512,7 +3512,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 4.0,REP,Todd Rokita,incumbent U.S. Representative,2012,House,IN,rokita t,4,1,0
 4.0,DEM,information technology,project manager,2012,House,IN,technology i,0,0,0
 4.0,DEM,Benjamin Gehlhausen,economics and professional flight technology major at Purdue University,2012,House,IN,gehlhausen b,0,0,0
-5.0,REP,Susan Brooks,former United States Attorney for the Southern District of Indiana,2012,House,IN,brooks s,0,0,0
+5.0,REP,Susan Brooks,former United States Attorney for the Southern District of Indiana,2012,House,IN,brooks s,4,0,0
 5.0,REP,Dan Burton,incumbent U.S. Representative,2012,House,IN,burton d,4,1,0
 5.0,REP,Mike Delph,state senator,2012,House,IN,delph m,2,0,0
 5.0,DEM,Scott Reske,"state representative ,",2012,House,IN,reske s,2,1,0
@@ -3757,7 +3757,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 1.0,DEM,"William Lacy Clay, Jr.",incumbent U.S. representative,2012,House,MO,clay w,4,1,0
 1.0,DEM,Francis Slay,mayor of St. Louis (endorse Clay),2012,House,MO,slay f,1,0,0
 1.0,REP,2010,.,2012,House,MO,,0,0,0
-2.0,REP,Ann Wagner,former U.S. Ambassador to Luxembourg and former chair of the Missouri Republican Party,2012,House,MO,wagner a,0,0,0
+2.0,REP,Ann Wagner,former U.S. Ambassador to Luxembourg and former chair of the Missouri Republican Party,2012,House,MO,wagner a,4,0,0
 2.0,REP,Ed Martin,lawyer and nominee for the 3rd district in 2010  (running for state attorney general ),2012,House,MO,martin e,0,0,1
 2.0,REP,Todd Akin,incumbent U.S. representative,2012,House,MO,akin t,4,1,0
 2.0,REP,Jane Cunningham,state senator,2012,House,MO,cunningham j,2,0,0
@@ -3824,7 +3824,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 2.0,DEM,Jim Whelan,state senator,2012,House,NJ,whelan j,2,0,0
 3.0,REP,Jon Runyan,incumbent U.S. Representative,2012,House,NJ,runyan j,4,1,0
 3.0,REP,Tabernacle Township,Committee Member and candidate for this seat in 2010,2012,House,NJ,township t,0,0,1
-3.0,DEM,Shelley Adler,attorney and the widow of former U.S. Representative John Adler,2012,House,NJ,adler s,4,1,0
+3.0,DEM,Shelley Adler,attorney and the widow of former U.S. Representative John Adler,2012,House,NJ,adler s,0,1,0
 3.0,DEM,Thomas Sacks-Wilner,physician,2012,House,NJ,sackswilner t,0,0,0
 4.0,REP,Chris Smith,incumbent U.S. Representative,2012,House,NJ,smith c,4,1,0
 4.0,DEM,Brian Froelich,retired executive and business consultant,2012,House,NJ,froelich b,0,0,0
@@ -3848,7 +3848,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 9.0,DEM,Bill Pascrell,incumbent U.S. Representative for the 8th District,2012,House,NJ,pascrell b,4,1,0
 9.0,DEM,Michael Wildes,former mayor of Englewood ( Endorsed Rothman ),2012,House,NJ,wildes m,1,0,0
 9.0,REP,Shmuley Boteach,"rabbi, author, and radio talk show host",2012,House,NJ,boteach s,0,0,0
-10.0,DEM,Donald Payne Jr.,"president of the Newark Municipal Council, member of the Essex County Board of Chosen Freeholders , and son of former U.S. Representative Donald M. Payne",2012,House,NJ,payne d,4,1,0
+10.0,DEM,Donald Payne Jr.,"president of the Newark Municipal Council, member of the Essex County Board of Chosen Freeholders , and son of former U.S. Representative Donald M. Payne",2012,House,NJ,payne d,0,1,0
 11.0,REP,Rodney Frelinghuysen,incumbent U.S. Representative,2012,House,NJ,frelinghuysen r,4,1,0
 12.0,DEM,Rush Holt,incumbent U.S. Representative,2012,House,NJ,holt r,4,1,0
 12.0,REP,Scott Sipprelle,venture capitalist and nominee for this seat in 2010,2012,House,NJ,sipprelle s,0,0,1
@@ -3922,7 +3922,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 16.0,DEM,Eliot Engel,incumbent U.S. representative,2012,House,NY,engel e,4,1,0
 16.0,REP,Army reservist,and candidate for this seat in 2010,2012,House,NY,reservist a,0,0,1
 17.0,DEM,Nita Lowey,incumbent U.S. representative,2012,House,NY,lowey n,4,1,0
-17.0,DEM,Chelsea Clinton,daughter of former President Bill Clinton and Secretary of State Hillary Rodham Clinton,2012,House,NY,clinton c,3,0,0
+17.0,DEM,Chelsea Clinton,daughter of former President Bill Clinton and Secretary of State Hillary Rodham Clinton,2012,House,NY,clinton c,0,0,0
 17.0,REP,Rye,"town supervisor, and candidate for senate in 2012",2012,House,NY,rye,0,0,1
 17.0,REP,Army reservist,and candidate for this seat in 2010,2012,House,NY,reservist a,0,0,1
 18.0,REP,Nan Hayworth,incumbent U.S. representative,2012,House,NY,hayworth n,4,1,0
@@ -4008,7 +4008,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 12.0,REP,Jack Brosch,business owner,2012,House,NC,brosch j,0,0,0
 13.0,DEM,state senate's,15th district in 2010 .,2012,House,NC,senates s,0,0,0
 13.0,DEM,Brad Miller,incumbent U.S. representative,2012,House,NC,miller b,4,1,0
-13.0,REP,George Holding,former U.S. attorney for the Eastern District of North Carolina,2012,House,NC,holding g,0,0,0
+13.0,REP,George Holding,former U.S. attorney for the Eastern District of North Carolina,2012,House,NC,holding g,4,0,0
 13.0,REP,Phil Berger Jr.,Rockingham County district attorney,2012,House,NC,berger p,1,0,0
 13.0,REP,B.J. Lawson,"entrepreneur, chief software architect and nominee for the 4th district in 2008 and 2010",2012,House,NC,lawson b,0,0,1
 13.0,REP,Winston-Salem,city council member and nominee for this district in 2006 (running in the 8th district),2012,House,NC,winstonsalem,1,0,1
@@ -4372,7 +4372,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 4.0,REP,Randy Forbes,incumbent U.S. representative,2012,House,VA,forbes r,4,1,0
 4.0,DEM,Chesapeake,City Council member,2012,House,VA,chesapeake,1,0,0
 5.0,REP,Robert Hurt,incumbent U.S. representative,2012,House,VA,hurt r,4,1,0
-5.0,DEM,John Douglass,retired United States Air Force brigadier general and former Assistant Secretary of the Navy,2012,House,VA,douglass j,0,0,0
+5.0,DEM,John Douglass,retired United States Air Force brigadier general and former Assistant Secretary of the Navy,2012,House,VA,douglass j,4,0,0
 5.0,DEM,Tom Perriello,former U.S. representative,2012,House,VA,perriello t,4,1,0
 6.0,REP,Bob Goodlatte,incumbent U.S. representative,2012,House,VA,goodlatte b,4,1,0
 6.0,DEM,Andy Schmookler,author and radio talk show host,2012,House,VA,schmookler a,0,0,0
@@ -4386,7 +4386,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 9.0,DEM,Anthony Flaccavento,farmer and sustainability consultant,2012,House,VA,flaccavento a,0,0,0
 10.0,REP,Frank Wolf,incumbent U.S. representative,2012,House,VA,wolf f,4,1,0
 10.0,DEM,Kristin Cabral,attorney,2012,House,VA,cabral k,0,0,0
-10.0,DEM,John Douglass,retired United States Air Force brigadier general and former Assistant Secretary of the Navy  (running in the 5th district),2012,House,VA,douglass j,0,0,0
+10.0,DEM,John Douglass,retired United States Air Force brigadier general and former Assistant Secretary of the Navy  (running in the 5th district),2012,House,VA,douglass j,4,0,0
 10.0,DEM,colonel,and nominee for this seat in 2010 .,2012,House,VA,colonel,0,0,1
 11.0,DEM,Gerry Connolly,incumbent U.S. representative,2012,House,VA,connolly g,4,1,0
 11.0,REP,Army,colonel,2012,House,VA,army,0,0,0
@@ -4436,7 +4436,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 10.0,REP,Dennis Kucinich,incumbent U.S. Representative from Ohio's 10th congressional district,2012,House,WA,kucinich d,4,1,0
 1.0,REP,David McKinley,incumbent U.S. Representative,2012,House,WV,mckinley d,4,1,0
 1.0,DEM,Sue Thorn,former community organizer,2012,House,WV,thorn s,0,0,0
-1.0,DEM,Tim Manchin,state delegate and cousin of U.S. Senator Joe Manchin,2012,House,WV,manchin t,4,0,0
+1.0,DEM,Tim Manchin,state delegate and cousin of U.S. Senator Joe Manchin,2012,House,WV,manchin t,2,0,0
 1.0,DEM,Alan Mollohan,former U.S. Representative,2012,House,WV,mollohan a,4,1,0
 1.0,DEM,Mike Oliverio,former state senator and nominee for this seat in 2010,2012,House,WV,oliverio m,2,0,1
 2.0,REP,Shelley Moore Capito,incumbent U.S. Representative,2012,House,WV,capito s,4,1,0
@@ -4483,7 +4483,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 6.0,REP,Jefferson County,Commission,2014,House,AL,county j,0,0,0
 6.0,REP,Steve French,former state senator,2014,House,AL,french s,2,0,0
 6.0,REP,Tony Petelos,Jefferson County Manager,2014,House,AL,petelos t,0,0,0
-6.0,REP,Rob Riley,attorney and son of former governor Riley,2014,House,AL,riley r,3,0,0
+6.0,REP,Rob Riley,attorney and son of former governor Riley,2014,House,AL,riley r,0,0,0
 6.0,REP,Cliff Sims,blogger,2014,House,AL,sims c,0,0,0
 6.0,REP,David Standridge,state representative and candidate for this seat in 2012,2014,House,AL,standridge d,2,1,1
 6.0,REP,Cam Ward,state senator,2014,House,AL,ward c,2,0,0
@@ -4527,7 +4527,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 1.0,DEM,Joe Jett,State Representative,2014,House,AR,jett j,2,1,0
 1.0,DEM,Dustin McDaniel,Arkansas Attorney General,2014,House,AR,mcdaniel d,3,0,0
 1.0,DEM,AR-01,in 2010,2014,House,AR,ar,0,0,0
-1.0,DEM,Chris Thyer,United States Attorney for the Eastern District of Arkansas,2014,House,AR,thyer c,0,0,0
+1.0,DEM,Chris Thyer,United States Attorney for the Eastern District of Arkansas,2014,House,AR,thyer c,4,0,0
 1.0,DEM,Zac White,attorney,2014,House,AR,white z,0,0,0
 1.0,DEM,Marshall Wright,state representative,2014,House,AR,wright m,2,1,0
 2.0,REP,French Hill,businessman and former White House aide for President George H. W. Bush,2014,House,AR,hill f,4,0,0
@@ -4563,7 +4563,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 4.0,REP,Matthew Shepherd,state representative,2014,House,AR,shepherd m,2,1,0
 4.0,DEM,James Lee Witt,former director of the Federal Emergency Management Agency,2014,House,AR,witt j,0,0,0
 4.0,DEM,Janice Percefull,college instructor and author (running as write-in),2014,House,AR,percefull j,0,0,0
-4.0,DEM,Conner Eldridge,United States Attorney for the Western District of Arkansas,2014,House,AR,eldridge c,0,0,0
+4.0,DEM,Conner Eldridge,United States Attorney for the Western District of Arkansas,2014,House,AR,eldridge c,4,0,0
 4.0,DEM,Bruce Maloch,state senator,2014,House,AR,maloch b,2,0,0
 4.0,DEM,Bobby Pierce,state senator,2014,House,AR,pierce b,2,0,0
 4.0,DEM,Leslee Milam Post,former state representative,2014,House,AR,post l,2,1,0
@@ -4718,7 +4718,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 45.0,REP,Steven Choi,Mayor of Irvine,2014,House,CA,choi s,1,0,0
 45.0,REP,Christopher Cox,former U.S. representative,2014,House,CA,cox c,4,1,0
 45.0,REP,Diane Harkey,state assembly member,2014,House,CA,harkey d,2,0,0
-45.0,REP,Neel Kashkari,former Assistant Secretary of the Treasury for International Affairs,2014,House,CA,kashkari n,0,0,0
+45.0,REP,Neel Kashkari,former Assistant Secretary of the Treasury for International Affairs,2014,House,CA,kashkari n,4,0,0
 45.0,REP,Jeff Lalloway,Irvine Council member,2014,House,CA,lalloway j,0,0,0
 45.0,REP,Allan Mansoor,state assembly member,2014,House,CA,mansoor a,2,0,0
 45.0,REP,Gary Miller,incumbent U.S. representative from the 45th District,2014,House,CA,miller g,4,1,0
@@ -4728,7 +4728,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 45.0,REP,Todd Spitzer,Orange County Supervisor,2014,House,CA,spitzer t,1,0,0
 45.0,REP,Michelle Steel,member of the California State Board of Equalization,2014,House,CA,steel m,0,0,0
 45.0,REP,Tom Tait,mayor of Anaheim,2014,House,CA,tait t,1,0,0
-45.0,REP,Gaddi Vasquez,United States Ambassador to the United Nations Agencies for Food and Agriculture,2014,House,CA,vasquez g,0,0,0
+45.0,REP,Gaddi Vasquez,United States Ambassador to the United Nations Agencies for Food and Agriculture,2014,House,CA,vasquez g,4,0,0
 45.0,REP,Donald P. Wagner,state assembly member,2014,House,CA,wagner d,2,0,0
 45.0,REP,Fred Whitaker,Orange Council member,2014,House,CA,whitaker f,0,0,0
 45.0,DEM,Drew Leavens,businessman,2014,House,CA,leavens d,0,0,0
@@ -4986,7 +4986,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 3.0,REP,Jake Chapman,state senator,2014,House,IA,chapman j,2,0,0
 3.0,REP,Peter Cownie,state representative,2014,House,IA,cownie p,2,1,0
 3.0,REP,Joni Ernst,state senator (running for the U.S. Senate),2014,House,IA,ernst j,2,0,0
-3.0,REP,Brenna Findley,legal counsel for Governor Branstad and nominee for attorney general in 2010,2014,House,IA,findley b,3,0,1
+3.0,REP,Brenna Findley,legal counsel for Governor Branstad and nominee for attorney general in 2010,2014,House,IA,findley b,0,0,1
 3.0,REP,Chris Hagenow,state representative,2014,House,IA,hagenow c,2,1,0
 3.0,REP,Mary Ann Hanusa,state representative,2014,House,IA,hanusa m,2,1,0
 3.0,REP,Reliant Energy,(running for the U.S. Senate),2014,House,IA,energy r,0,0,0
@@ -4999,7 +4999,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 3.0,REP,Matt Strawn,former chairman of the Republican Party of Iowa,2014,House,IA,strawn m,0,0,0
 3.0,REP,Rob Taylor,state representative,2014,House,IA,taylor r,2,1,0
 3.0,REP,Bob Vander Plaats,"social conservative activist, candidate for governor in 2002 , 2006 and 2010 and nominee for lieutenant governor in 2006",2014,House,IA,plaats b,0,0,1
-3.0,REP,Matthew Whitaker,former U.S. Attorney for the Southern District of Iowa and nominee for Treasurer of Iowa in 2002 (running for the U.S. Senate),2014,House,IA,whitaker m,0,0,1
+3.0,REP,Matthew Whitaker,former U.S. Attorney for the Southern District of Iowa and nominee for Treasurer of Iowa in 2002 (running for the U.S. Senate),2014,House,IA,whitaker m,4,0,1
 3.0,REP,Jack Whitver,state senator,2014,House,IA,whitver j,2,0,0
 3.0,DEM,Staci Appel,former state senator,2014,House,IA,appel s,2,0,0
 3.0,DEM,Gabriel De La Cerda,former tire factory worker,2014,House,IA,cerda g,0,0,0
@@ -5486,7 +5486,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 13.0,REP,George Holding,incumbent U.S. Representative,2014,House,NC,holding g,4,1,0
 13.0,DEM,Brenda Cleary,registered nurse and former executive director of the North Carolina Center for Nursing,2014,House,NC,cleary b,0,0,0
 1.0,REP,Kevin Cramer,incumbent U.S. Representative,2014,House,ND,cramer k,4,1,0
-1.0,DEM,George B. Sinner,state senator and son of former governor of North Dakota George A. Sinner,2014,House,ND,sinner g,3,0,0
+1.0,DEM,George B. Sinner,state senator and son of former governor of North Dakota George A. Sinner,2014,House,ND,sinner g,2,0,0
 1.0,DEM,Tom Fiebiger,former state senator,2014,House,ND,fiebiger t,2,0,0
 1.0,DEM,Jasper Schneider,state director of the USDA Rural Development and former state representative,2014,House,ND,schneider j,2,1,0
 1.0,DEM,Mac Schneider,Minority Leader of the North Dakota Senate,2014,House,ND,schneider m,2,0,0
@@ -5660,7 +5660,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 1.0,REP,Louie Gohmert,incumbent U.S. Representative,2014,House,TX,gohmert l,4,1,0
 2.0,REP,Ted Poe,incumbent U.S. Representative,2014,House,TX,poe t,4,1,0
 3.0,REP,Sam Johnson,incumbent U.S. Representative,2014,House,TX,johnson s,4,1,0
-4.0,REP,John Ratcliffe,former United States Attorney for the Eastern District of Texas and former mayor of Heath,2014,House,TX,ratcliffe j,1,0,0
+4.0,REP,John Ratcliffe,former United States Attorney for the Eastern District of Texas and former mayor of Heath,2014,House,TX,ratcliffe j,4,0,0
 5.0,REP,Jeb Hensarling,incumbent U.S. Representative,2014,House,TX,hensarling j,4,1,0
 6.0,REP,Joe Barton,incumbent U.S. Representative,2014,House,TX,barton j,4,1,0
 7.0,REP,John Culberson,incumbent U.S. Representative,2014,House,TX,culberson j,4,1,0
@@ -5729,7 +5729,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 7.0,DEM,Randolph-Macon College,professor,2014,House,VA,college r,0,0,0
 7.0,DEM,James Carr (Libertarian),financial analyst,2014,House,VA,libertarian j,0,0,0
 7.0,DEM,Tareq Salahi,"(Independent Green), television personality and write-in candidate for governor in 2013 (declared as a Republican, then switched parties).     Originally, Joe Oddo, the state chair for the Independent Greens, was listed as the 7th district's candidate.  However, Salahi failed to file the required 1,000 signatures to get on the ballot.",2014,House,VA,salahi t,0,0,1
-8.0,DEM,Don Beyer,"former lieutenant governor (1990–1998), nominee for governor in 1997 , and former United States Ambassador to Switzerland and Liechtenstein (2009–2013)",2014,House,VA,beyer d,3,0,1
+8.0,DEM,Don Beyer,"former lieutenant governor (1990–1998), nominee for governor in 1997 , and former United States Ambassador to Switzerland and Liechtenstein (2009–2013)",2014,House,VA,beyer d,4,0,1
 8.0,DEM,Charniele Herring,state delegate and former chair of the Democratic Party of Virginia,2014,House,VA,herring c,2,0,0
 8.0,DEM,Satish Korpe,businessman,2014,House,VA,korpe s,0,0,0
 8.0,DEM,Alfonso H. Lopez,state delegate,2014,House,VA,lopez a,2,0,0
@@ -5893,7 +5893,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 2.0,DEM,Tucson,City Councilman,2016,House,AZ,tucson,1,0,0
 2.0,DEM,Bruce Wheeler,state representative,2016,House,AZ,wheeler b,2,1,0
 2.0,DEM,Paula Aboud,former state senator,2016,House,AZ,aboud p,2,0,0
-2.0,DEM,Mark Kelly,retired astronaut and husband of former U.S. representative Gabby Giffords,2016,House,AZ,kelly m,4,1,0
+2.0,DEM,Mark Kelly,retired astronaut and husband of former U.S. representative Gabby Giffords,2016,House,AZ,kelly m,0,1,0
 3.0,DEM,Raúl Grijalva,incumbent U.S. Representative,2016,House,AZ,grijalva r,4,1,0
 3.0,DEM,Raytheon,and University of Arizona instructor,2016,House,AZ,raytheon,0,0,0
 3.0,REP,Edna San Miguel,artist and former teacher,2016,House,AZ,miguel e,0,0,0
@@ -6178,13 +6178,13 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 18.0,REP,Gayle Harrell,state representative and candidate for 16th district in 2008,2016,House,FL,harrell g,2,1,1
 18.0,REP,Reed Hartman,former president of the Florida Farm Bureau's State Young Farmers and Ranchers Leadership Group,2016,House,FL,hartman r,0,0,0
 18.0,REP,K.C. Ingram Traylor,radio show host and community advocate,2016,House,FL,traylor k,0,0,0
-18.0,REP,"Patrick Rooney, Jr.",state Representative and brother of U.S. Representative Tom Rooney,2016,House,FL,rooney p,4,1,0
+18.0,REP,"Patrick Rooney, Jr.",state Representative and brother of U.S. Representative Tom Rooney,2016,House,FL,rooney p,2,1,0
 18.0,REP,Rob Siedlecki,attorney and 2014 State House candidate,2016,House,FL,siedlecki r,2,0,0
 18.0,REP,Martin County,Commissioner,2016,House,FL,county m,0,0,0
 18.0,REP,William Snyder,Martin County sheriff and former state representative,2016,House,FL,snyder w,2,1,0
 18.0,REP,Tequesta,Councilman and candidate for the seat in 2014,2016,House,FL,tequesta,0,0,1
 18.0,REP,Gary Uber,businessman,2016,House,FL,uber g,0,0,0
-19.0,REP,Francis Rooney,businessman and former U.S. ambassador to the Vatican,2016,House,FL,rooney f,0,0,0
+19.0,REP,Francis Rooney,businessman and former U.S. ambassador to the Vatican,2016,House,FL,rooney f,4,0,0
 19.0,REP,Tom Grady,former state representative,2016,House,FL,grady t,2,1,0
 19.0,REP,Paige Kreegel,state representative and candidate for this seat in 2012,2016,House,FL,kreegel p,2,1,1
 19.0,REP,Tom Leonardo,Fort Myers Council member,2016,House,FL,leonardo t,0,0,0
@@ -6306,7 +6306,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 2.0,REP,Mark Chelgren,state senator,2016,House,IA,chelgren m,2,0,0
 3.0,REP,David Young,incumbent U.S. Representative,2016,House,IA,young d,4,1,0
 3.0,REP,Brad Zaun,state senator and candidate for the seat in 2010 and 2014,2016,House,IA,zaun b,2,0,1
-3.0,DEM,Iowa Democratic Party,"former special assistant to the United States Under Secretary of the Army , and nominee for 4th district in 2014",2016,House,IA,party i,0,0,1
+3.0,DEM,Iowa Democratic Party,"former special assistant to the United States Under Secretary of the Army , and nominee for 4th district in 2014",2016,House,IA,party i,4,0,1
 3.0,DEM,Staci Appel,former state senator and nominee for this seat in 2014,2016,House,IA,appel s,2,0,1
 3.0,DEM,Des Moines,"School Board member, Assistant Iowa Attorney General and 2014 State Senate candidate",2016,House,IA,moines d,3,0,0
 3.0,DEM,Chet Culver,former Governor of Iowa,2016,House,IA,culver c,3,0,0
@@ -6350,7 +6350,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 1.0,REP,Mark Holbrook,professional counselor,2016,House,ME,holbrook m,0,0,0
 2.0,REP,Bruce Poliquin,incumbent U.S. representative,2016,House,ME,poliquin b,4,1,0
 2.0,DEM,Emily Cain,former state senator and nominee for this seat in 2014,2016,House,ME,cain e,2,0,1
-2.0,DEM,Joe Baldacci,Bangor city councilor and brother of former Governor of Maine and U.S. Representative John Baldacci,2016,House,ME,baldacci j,4,1,0
+2.0,DEM,Joe Baldacci,Bangor city councilor and brother of former Governor of Maine and U.S. Representative John Baldacci,2016,House,ME,baldacci j,1,1,0
 2.0,DEM,Troy Jackson,"Democratic National Committee member, former state senator, candidate for the seat in 2014 (running for state senate)",2016,House,ME,jackson t,2,0,1
 2.0,DEM,Jeff McCabe,majority leader of the Maine House of Representatives,2016,House,ME,mccabe j,2,1,0
 2.0,DEM,Ben Sprague,Bangor city councilor,2016,House,ME,sprague b,1,0,0
@@ -6580,7 +6580,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 1.0,DEM,Andrew Hosmer,state senator,2016,House,NH,hosmer a,2,0,0
 1.0,DEM,Terie Norelli,state representative and former speaker of the New Hampshire House of Representatives,2016,House,NH,norelli t,2,1,0
 1.0,DEM,Chris Pappas,executive councilor,2016,House,NH,pappas c,0,0,0
-1.0,DEM,Portsmouth,city councilor and daughter of U.S. Senator Jeanne Shaheen,2016,House,NH,portsmouth,4,0,0
+1.0,DEM,Portsmouth,city councilor and daughter of U.S. Senator Jeanne Shaheen,2016,House,NH,portsmouth,1,0,0
 1.0,DEM,Donna Soucy,state senator,2016,House,NH,soucy d,2,0,0
 2.0,DEM,Ann McLane Kuster,incumbent U.S. representative,2016,House,NH,kuster a,4,1,0
 2.0,DEM,Jim Bouley,mayor of Concord,2016,House,NH,bouley j,1,0,0
@@ -6703,7 +6703,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 22.0,DEM,David Gordon,former Oneida County legislator,2016,House,NY,gordon d,0,0,0
 22.0,DEM,Anthony Brindisi,state assembly member,2016,House,NY,brindisi a,2,0,0
 23.0,REP,Tom Reed,incumbent U.S. representative,2016,House,NY,reed t,4,1,0
-23.0,DEM,John F. Plumb,"aerospace engineer, United States Navy Reserve captain and former acting deputy Assistant Secretary of Defense for Space Policy",2016,House,NY,plumb j,0,0,0
+23.0,DEM,John F. Plumb,"aerospace engineer, United States Navy Reserve captain and former acting deputy Assistant Secretary of Defense for Space Policy",2016,House,NY,plumb j,4,0,0
 24.0,REP,John Katko,incumbent U.S. representative,2016,House,NY,katko j,4,1,0
 24.0,DEM,U.S. Senator,Kirsten Gillibrand 's Syracuse office,2016,House,NY,senator u,0,0,0
 24.0,DEM,Dan Maffei,former U.S. Representative,2016,House,NY,maffei d,4,1,0
@@ -6819,7 +6819,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 7.0,DEM,Mary Ellen Balchunis,college professor and nominee for this seat in 2014,2016,House,PA,balchunis m,0,0,1
 7.0,DEM,Lindy Li,financial analyst (running for PA-06),2016,House,PA,li l,0,0,0
 7.0,DEM,Dave Naples,"database administrator, 2007 candidate for Skippack Township Board of Supervisors and 2014 write-in candidate for governor (running for state house)",2016,House,PA,naples d,0,0,1
-8.0,REP,Brian Fitzpatrick,retired FBI agent and brother of Congressman Mike Fitzpatrick,2016,House,PA,fitzpatrick b,4,0,0
+8.0,REP,Brian Fitzpatrick,retired FBI agent and brother of Congressman Mike Fitzpatrick,2016,House,PA,fitzpatrick b,0,0,0
 8.0,REP,Scott Petri,state representative,2016,House,PA,petri s,2,1,0
 8.0,REP,Brian Thomas,marketing consultant,2016,House,PA,thomas b,0,0,0
 8.0,REP,Jim Cawley,former lieutenant governor,2016,House,PA,cawley j,3,0,0
@@ -6884,7 +6884,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 6.0,DEM,David Kent,manufacturing industry manager,2016,House,TN,kent d,0,0,0
 7.0,REP,Marsha Blackburn,incumbent U.S. Representative,2016,House,TN,blackburn m,4,1,0
 7.0,DEM,Tharon Chandler,journalist,2016,House,TN,chandler t,0,0,0
-8.0,REP,David Kustoff,former United States Attorney for the Western District of Tennessee,2016,House,TN,kustoff d,0,0,0
+8.0,REP,David Kustoff,former United States Attorney for the Western District of Tennessee,2016,House,TN,kustoff d,4,0,0
 8.0,REP,Shelby County,Commissioner,2016,House,TN,county s,0,0,0
 8.0,REP,Stephen Fincher,incumbent U.S. Representative,2016,House,TN,fincher s,4,1,0
 8.0,REP,Scott Golden,district director for Congressman Fincher and member of the Tennessee Republican State Executive Committee,2016,House,TN,golden s,4,0,0
@@ -6967,7 +6967,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 35.0,DEM,Lloyd Doggett,incumbent U.S. representative,2016,House,TX,doggett l,4,1,0
 35.0,REP,San Marcos,and nominee for this seat in 2012 & 2014,2016,House,TX,marcos s,0,0,1
 36.0,REP,Brian Babin,incumbent U.S. representative,2016,House,TX,babin b,4,1,0
-36.0,REP,Cleveland,candidate for U.S. Senate in 2014 and the Texas House of Representatives in 2012 (suspended campaign in December 2015),2016,House,TX,cleveland,2,1,1
+36.0,REP,Cleveland,candidate for U.S. Senate in 2014 and the Texas House of Representatives in 2012 (suspended campaign in December 2015),2016,House,TX,cleveland,0,1,1
 1.0,REP,Rob Bishop,incumbent U.S. Representative,2016,House,UT,bishop r,4,1,0
 2.0,REP,Chris Stewart,incumbent U.S. Representative,2016,House,UT,stewart c,4,1,0
 3.0,REP,Jason Chaffetz,incumbent U.S. Representative,2016,House,UT,chaffetz j,4,1,0
@@ -7004,7 +7004,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 5.0,DEM,Albemarle County,Board of Supervisors (2014–15) and Supervisor for Scottsville Magisterial District (2013–15),2016,House,VA,county a,0,0,0
 5.0,DEM,Ericke Cage,former congressional aide,2016,House,VA,cage e,0,0,0
 5.0,DEM,Ward Armstrong,former House Minority Leader,2016,House,VA,armstrong w,0,0,0
-5.0,DEM,Todd Haymore,Secretary of Agriculture and Forestry and former congressional aide,2016,House,VA,haymore t,0,0,0
+5.0,DEM,Todd Haymore,Secretary of Agriculture and Forestry and former congressional aide,2016,House,VA,haymore t,4,0,0
 6.0,REP,Bob Goodlatte,incumbent U.S. Representative,2016,House,VA,goodlatte b,4,1,0
 6.0,DEM,Tom Howarth,Warren County Democratic Party Chair,2016,House,VA,howarth t,0,0,0
 6.0,DEM,Chris Hurst,reporter for WDBJ,2016,House,VA,hurst c,0,0,0
@@ -7068,12 +7068,12 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 7.0,DEM,Kirk Bangstad,political consultant,2016,House,WI,bangstad k,0,0,0
 7.0,DEM,Ethel Quisler,independent contractor,2016,House,WI,quisler e,0,0,0
 7.0,DEM,Ashland,City Council member and nominee for this seat in 2014,2016,House,WI,ashland,1,0,1
-8.0,REP,Mike Gallagher,retired U.S. Marine and former advisor to Governor Scott Walker,2016,House,WI,gallagher m,3,0,0
+8.0,REP,Mike Gallagher,retired U.S. Marine and former advisor to Governor Scott Walker,2016,House,WI,gallagher m,0,0,0
 8.0,REP,Hilbert village,board member,2016,House,WI,village h,0,0,0
 8.0,REP,Andre Jacque,state representative from the 2nd district (2011–2019),2016,House,WI,jacque a,2,1,0
 8.0,REP,John Macco,state representative from the 88th district (2015–present),2016,House,WI,macco j,2,1,0
 8.0,REP,John Nygren,state representative from the 89th district (2007–2020),2016,House,WI,nygren j,2,1,0
-8.0,REP,Roger Roth,state senator from the 19th district (2015–2023) and nephew of former U.S. representative Toby Roth,2016,House,WI,roth r,4,1,0
+8.0,REP,Roger Roth,state senator from the 19th district (2015–2023) and nephew of former U.S. representative Toby Roth,2016,House,WI,roth r,2,1,0
 8.0,REP,David Steffen,state representative from the 4th district (2015–present),2016,House,WI,steffen d,2,1,0
 8.0,REP,Jim Steineke,Majority Leader of State Assembly (2015–2022) and state representative from the 5th district (2011–2022),2016,House,WI,steineke j,2,1,0
 8.0,REP,Chad Weininger,former state representative from the 4th district (2011–2015),2016,House,WI,weininger c,2,1,0
@@ -7349,7 +7349,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 6.0,DEM,David Aarestad,attorney and former candidate for the Cherry Creek School District,2018,House,CO,aarestad d,0,0,1
 6.0,DEM,Bernie Sanders,delegate to the 2016 Democratic National Convention (endorsed Tillemann),2018,House,CO,sanders b,0,0,0
 7.0,DEM,Ed Perlmutter,incumbent U.S. representative,2018,House,CO,perlmutter e,4,1,0
-7.0,DEM,Daniel Baer,former U.S. ambassador to the Organization for Security and Co-operation in Europe,2018,House,CO,baer d,0,0,0
+7.0,DEM,Daniel Baer,former U.S. ambassador to the Organization for Security and Co-operation in Europe,2018,House,CO,baer d,4,0,0
 7.0,DEM,Andy Kerr,state senator,2018,House,CO,kerr a,2,0,0
 7.0,DEM,Dominick Moreno,state senator,2018,House,CO,moreno d,2,0,0
 7.0,DEM,Brittany Pettersen,state representative,2018,House,CO,pettersen b,2,1,0
@@ -7429,7 +7429,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 27.0,REP,Maria Elvira Salazar,journalist,2018,House,FL,salazar m,0,0,0
 27.0,REP,Stephen Marks,"political consultant (endorsed Donna Shalala, remained on ballot)",2018,House,FL,marks s,0,0,0
 27.0,REP,Miami-Dade School Board,member and candidate for Mayor of Miami-Dade County in 2016,2018,House,FL,board m,0,0,1
-27.0,REP,Jeb Bush,"Jr., son of former governor Jeb Bush",2018,House,FL,bush j,3,0,0
+27.0,REP,Jeb Bush,"Jr., son of former governor Jeb Bush",2018,House,FL,bush j,0,0,0
 27.0,REP,Carlos Curbelo,incumbent  U.S. Representative for the 26th district,2018,House,FL,curbelo c,4,1,0
 27.0,REP,Miguel Díaz de la Portilla,former state senator,2018,House,FL,portilla m,2,0,0
 27.0,REP,José Félix Díaz,state representative,2018,House,FL,diaz j,2,1,0
@@ -7613,7 +7613,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 3.0,DEM,Jeffrey Ballinger,labor organizer,2018,House,MA,ballinger j,0,0,0
 3.0,DEM,Alexandra Chandler,former Naval Intelligence officer,2018,House,MA,chandler a,0,0,0
 3.0,DEM,Beej Das,president and CEO of Troca Hotels,2018,House,MA,das b,0,0,0
-3.0,DEM,Rufus Gifford,former United States Ambassador to Denmark and financial director in Barack Obama 's 2012 reelection campaign,2018,House,MA,gifford r,0,0,0
+3.0,DEM,Rufus Gifford,former United States Ambassador to Denmark and financial director in Barack Obama 's 2012 reelection campaign,2018,House,MA,gifford r,4,0,0
 3.0,DEM,Stow,Democratic Town Committee and former Stow selectman,2018,House,MA,stow,1,0,0
 3.0,DEM,Daniel Koh,former chief of staff to Boston mayor Marty Walsh,2018,House,MA,koh d,1,0,0
 3.0,DEM,Barbara L'Italien,state senator,2018,House,MA,litalien b,2,0,0
@@ -7631,7 +7631,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 3.0,DEM,Barry Finegold,"former state senator, candidate for MA-05 in 2007 and candidate for state treasurer in 2014",2018,House,MA,finegold b,2,0,1
 3.0,DEM,Haverhill,(Endorsed Koh),2018,House,MA,haverhill,0,0,0
 3.0,DEM,Lowell School Committee,member,2018,House,MA,committee l,0,0,0
-3.0,DEM,Ellen Murphy Meehan,hospital consultant and ex-wife of former congressman Martin Meehan,2018,House,MA,meehan e,4,0,0
+3.0,DEM,Ellen Murphy Meehan,hospital consultant and ex-wife of former congressman Martin Meehan,2018,House,MA,meehan e,0,0,0
 3.0,DEM,David Nangle,state representative,2018,House,MA,nangle d,2,1,0
 3.0,DEM,Steven Panagiotakos,former state senator,2018,House,MA,panagiotakos s,2,0,0
 3.0,DEM,Lawrence,(endorsed Matias),2018,House,MA,lawrence,0,0,0
@@ -7661,7 +7661,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 7.0,REP,Tim Walberg,incumbent U.S. representative,2018,House,MI,walberg t,4,1,0
 7.0,DEM,Gretchen Driskell,"former state representative, former Saline mayor and nominee for this seat in 2016",2018,House,MI,driskell g,2,1,1
 8.0,REP,Mike Bishop,incumbent U.S. representative,2018,House,MI,bishop m,4,1,0
-8.0,DEM,Elissa Slotkin,former acting Assistant Secretary of Defense for International Security Affairs and former United States National Security Council official,2018,House,MI,slotkin e,0,0,0
+8.0,DEM,Elissa Slotkin,former acting Assistant Secretary of Defense for International Security Affairs and former United States National Security Council official,2018,House,MI,slotkin e,4,0,0
 9.0,DEM,Andy Levin,"former director of the Michigan Department of Energy, Labor and Economic Growth and son of incumbent Sander Levin",2018,House,MI,levin a,0,0,0
 9.0,DEM,Steve Bieda,state senator,2018,House,MI,bieda s,2,0,0
 9.0,DEM,Sander Levin,incumbent representative,2018,House,MI,levin s,4,1,0
@@ -7682,12 +7682,12 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 11.0,REP,Dave Trott,incumbent U.S. representative,2018,House,MI,trott d,4,1,0
 11.0,DEM,Haley Stevens,former chief of staff for the Presidential Task Force on the Auto Industry,2018,House,MI,stevens h,0,0,0
 11.0,DEM,2014,and nominee in 2016,2018,House,MI,,0,0,0
-11.0,DEM,Barbara McQuade,former United States Attorney for the Eastern District of Michigan,2018,House,MI,mcquade b,0,0,0
+11.0,DEM,Barbara McQuade,former United States Attorney for the Eastern District of Michigan,2018,House,MI,mcquade b,4,0,0
 12.0,DEM,Debbie Dingell,incumbent U.S. representative,2018,House,MI,dingell d,4,1,0
 13.0,DEM,Rashida Tlaib,former state representative,2018,House,MI,tlaib r,2,1,0
 13.0,REP,David A. Dudenhoefer,district GOP chair,2018,House,MI,dudenhoefer d,0,0,0
 14.0,DEM,Brenda Lawrence,incumbent U.S. representative,2018,House,MI,lawrence b,4,1,0
-1.0,DEM,Dan Feehan,Army veteran and former Acting Assistant Secretary of Defense for Readiness,2018,House,MN,feehan d,0,0,0
+1.0,DEM,Dan Feehan,Army veteran and former Acting Assistant Secretary of Defense for Readiness,2018,House,MN,feehan d,4,0,0
 1.0,DEM,Johnny Akzam,personal coach and website developer,2018,House,MN,akzam j,0,0,0
 1.0,DEM,John Austinson,teacher,2018,House,MN,austinson j,0,0,0
 1.0,DEM,Vicki Jensen,former state senator (endorsed Feehan),2018,House,MN,jensen v,2,0,0
@@ -7711,7 +7711,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 4.0,DEM,Fasil Moghul,landlord,2018,House,MN,moghul f,0,0,0
 5.0,DEM,Ilhan Omar,state representative,2018,House,MN,omar i,2,1,0
 5.0,DEM,Keith Ellison,"incumbent U.S. Representative, running for Attorney General in 2018",2018,House,MN,ellison k,4,1,0
-5.0,DEM,Julie Sabo,former state senator and daughter of former Congressman Martin Olav Sabo,2018,House,MN,sabo j,4,0,0
+5.0,DEM,Julie Sabo,former state senator and daughter of former Congressman Martin Olav Sabo,2018,House,MN,sabo j,2,0,0
 5.0,REP,Jennifer Zielinski,health care worker and Republican activist,2018,House,MN,zielinski j,0,0,0
 5.0,REP,Les Lester,author and teacher (Write-in),2018,House,MN,lester l,0,0,0
 6.0,REP,Tom Emmer,incumbent U.S. Representative,2018,House,MN,emmer t,4,1,0
@@ -7830,7 +7830,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 6.0,DEM,Frank Pallone,incumbent U.S. Representative,2018,House,NJ,pallone f,4,1,0
 7.0,REP,Leonard Lance,incumbent U.S. Representative,2018,House,NJ,lance l,4,1,0
 7.0,REP,Rosemary Becchi,attorney,2018,House,NJ,becchi r,0,0,0
-7.0,DEM,Tom Malinowski,"former Assistant Secretary of State for Democracy, Human Rights, and Labor",2018,House,NJ,malinowski t,3,0,0
+7.0,DEM,Tom Malinowski,"former Assistant Secretary of State for Democracy, Human Rights, and Labor",2018,House,NJ,malinowski t,4,0,0
 7.0,DEM,Lisa Mandelblatt,"teacher and attorney  (withdrew February 2018, endorsed Malinowski)",2018,House,NJ,mandelblatt l,0,0,0
 7.0,DEM,David Pringle,environmental activist,2018,House,NJ,pringle d,0,0,0
 7.0,DEM,Scott Salmon,"attorney  (withdrew February 2018, endorsed Malinowski)",2018,House,NJ,salmon s,0,0,0
@@ -7872,7 +7872,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 12.0,REP,LD-17,) in 2017,2018,House,NJ,ld,0,0,0
 1.0,DEM,Deb Haaland,former chair of the New Mexico Democratic Party and nominee for lieutenant governor of New Mexico in 2014,2018,House,NM,haaland d,0,0,1
 1.0,DEM,Damian Lara,attorney,2018,House,NM,lara d,0,0,0
-1.0,DEM,Damon Martinez,former United States Attorney for the District of New Mexico,2018,House,NM,martinez d,0,0,0
+1.0,DEM,Damon Martinez,former United States Attorney for the District of New Mexico,2018,House,NM,martinez d,4,0,0
 1.0,DEM,Antoinette Sedillo Lopez,"former law professor and executive director of Enlace Comunitario, an anti-domestic violence non-profit",2018,House,NM,lopez a,0,0,0
 1.0,DEM,Sandia National Laboratories,government relations official,2018,House,NM,laboratories s,0,0,0
 1.0,DEM,Albuquerque city councilman,(endorsed Haaland),2018,House,NM,councilman a,0,0,0
@@ -8011,7 +8011,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 1.0,DEM,Robert Barr,rabbi,2018,House,OH,barr r,0,0,0
 1.0,DEM,Laura Ann Weaver,dentist,2018,House,OH,weaver l,0,0,0
 1.0,DEM,Eric Elias,businessman,2018,House,OH,elias e,0,0,0
-1.0,DEM,Mark W. Lippert,former United States Ambassador to South Korea,2018,House,OH,lippert m,0,0,0
+1.0,DEM,Mark W. Lippert,former United States Ambassador to South Korea,2018,House,OH,lippert m,4,0,0
 1.0,DEM,Todd Portune,Hamilton County Commissioner,2018,House,OH,portune t,1,0,0
 1.0,DEM,Alicia Reece,state representative,2018,House,OH,reece a,2,1,0
 1.0,DEM,P.G. Sittenfeld,Member of Cincinnati City Council and candidate for U.S. Senate in 2016,2018,House,OH,sittenfeld p,1,0,1
@@ -8063,10 +8063,10 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 16.0,DEM,Betty Sutton,former administrator of the Saint Lawrence Seaway Development Corporation and former U.S. Representative (running for lieutenant governor),2018,House,OH,sutton b,4,1,0
 1.0,REP,Kevin Hern,businessman,2018,House,OK,hern k,0,0,0
 1.0,REP,Dewey F. Bartlett Jr.,former mayor of Tulsa,2018,House,OK,bartlett d,1,0,0
-1.0,REP,John D. Doak,Oklahoma Insurance Commissioner,2018,House,OK,doak j,0,0,0
+1.0,REP,John D. Doak,Oklahoma Insurance Commissioner,2018,House,OK,doak j,3,0,0
 1.0,REP,Dan Newberry,state senator,2018,House,OK,newberry d,2,0,0
 1.0,REP,Everett Piper,Oklahoma Wesleyan University president,2018,House,OK,piper e,0,0,0
-1.0,REP,Scott Pruitt,"Administrator of the Environmental Protection Agency , former State Attorney General and candidate for this seat in 2002",2018,House,OK,pruitt s,3,0,1
+1.0,REP,Scott Pruitt,"Administrator of the Environmental Protection Agency , former State Attorney General and candidate for this seat in 2002",2018,House,OK,pruitt s,4,0,1
 1.0,REP,T.W. Shannon,former Speaker of the Oklahoma House of Representatives,2018,House,OK,shannon t,2,1,0
 1.0,DEM,Oklahoma State Board of Education,member,2018,House,OK,education o,0,0,0
 1.0,DEM,Kathy Taylor,former mayor of Tulsa,2018,House,OK,taylor k,1,0,0
@@ -8135,7 +8135,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 17.0,REP,Keith Rothfus,incumbent U.S. representative,2018,House,PA,rothfus k,4,1,0
 17.0,DEM,Conor Lamb,incumbent U.S. representative,2018,House,PA,lamb c,4,1,0
 18.0,DEM,Michael F. Doyle,incumbent U.S. representative,2018,House,PA,doyle m,4,1,0
-1.0,REP,Dusty Johnson,former chairman of the South Dakota Public Utilities Commission and former chief of staff to Governor Dennis Daugaard,2018,House,SD,johnson d,3,0,0
+1.0,REP,Dusty Johnson,former chairman of the South Dakota Public Utilities Commission and former chief of staff to Governor Dennis Daugaard,2018,House,SD,johnson d,0,0,0
 1.0,REP,Shantel Krebs,Secretary of State of South Dakota,2018,House,SD,krebs s,3,0,0
 1.0,REP,Neal Tapio,"state senator, businessman and former Trump campaign director for South Dakota",2018,House,SD,tapio n,2,0,0
 1.0,REP,Kristi Noem,incumbent U.S. representative ( running for governor ),2018,House,SD,noem k,4,1,0
@@ -8144,7 +8144,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 1.0,DEM,Shawn Bordeaux,state representative,2018,House,SD,bordeaux s,2,1,0
 1.0,DEM,Troy Heinert,state senator,2018,House,SD,heinert t,2,0,0
 1.0,DEM,Mike Huether,mayor of Sioux Falls (switched to Independent),2018,House,SD,huether m,1,0,0
-1.0,DEM,Brendan Johnson,former United States Attorney for the District of South Dakota,2018,House,SD,johnson b,0,0,0
+1.0,DEM,Brendan Johnson,former United States Attorney for the District of South Dakota,2018,House,SD,johnson b,4,0,0
 1.0,DEM,J.R. LaPlante,former South Dakota Secretary of Tribal Relations and State House candidate in 2016,2018,House,SD,laplante,2,0,0
 1.0,DEM,Stephanie Herseth Sandlin,former U.S. representative,2018,House,SD,sandlin s,4,1,0
 1.0,DEM,Billie Sutton,Minority Leader of the South Dakota Senate ( running for governor ),2018,House,SD,sutton b,2,0,0
@@ -8656,7 +8656,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 7.0,REP,Scott Hilton,former state representative,2020,House,GA,hilton s,2,1,0
 7.0,REP,Todd Jones,state representative,2020,House,GA,jones t,2,1,0
 7.0,REP,P. K. Martin IV,state senator,2020,House,GA,martin p,2,0,0
-7.0,REP,B. J. Pak,U.S. attorney for the Northern District of Georgia,2020,House,GA,pak b,0,0,0
+7.0,REP,B. J. Pak,U.S. attorney for the Northern District of Georgia,2020,House,GA,pak b,4,0,0
 7.0,REP,Narender Reddy,businessman and Georgia Regional Transportation Authority board member,2020,House,GA,reddy n,0,0,0
 7.0,REP,Mike Royal,state school board member and former chair of the Gwinnett County Republican Party,2020,House,GA,royal m,1,0,0
 7.0,REP,David Shafer,former state senator,2020,House,GA,shafer d,2,0,0
@@ -8784,7 +8784,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 15.0,REP,Alex Walker,U.S. Air Force veteran,2020,House,IL,walker a,0,0,0
 15.0,REP,Erika Harold,nominee for Illinois Attorney General in 2018 and former Miss America,2020,House,IL,harold e,0,0,1
 15.0,REP,Mike Marron,state representative,2020,House,IL,marron m,2,1,0
-15.0,REP,Kyle McCarter,U.S. Ambassador to Kenya and former state senator,2020,House,IL,mccarter k,2,0,0
+15.0,REP,Kyle McCarter,U.S. Ambassador to Kenya and former state senator,2020,House,IL,mccarter k,4,0,0
 15.0,REP,Dale Righter,state senator,2020,House,IL,righter d,2,0,0
 15.0,REP,Chapin Rose,state senator,2020,House,IL,rose c,2,0,0
 15.0,REP,John Shimkus,incumbent U.S. representative,2020,House,IL,shimkus j,4,1,0
@@ -8989,7 +8989,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 6.0,REP,Neil Parrott,state delegate,2020,House,MD,parrott n,2,0,0
 7.0,DEM,T. Dan Baker,high school math teacher,2020,House,MD,baker t,0,0,0
 7.0,DEM,Jill P. Carter,state senator,2020,House,MD,carter j,2,0,0
-7.0,DEM,Maya Rockeymoore Cummings,former chairwoman of the Maryland Democratic Party and widow of U.S. Representative Elijah Cummings,2020,House,MD,cummings m,4,1,0
+7.0,DEM,Maya Rockeymoore Cummings,former chairwoman of the Maryland Democratic Party and widow of U.S. Representative Elijah Cummings,2020,House,MD,cummings m,0,1,0
 7.0,DEM,Darryl Gonzalez,author,2020,House,MD,gonzalez d,0,0,0
 7.0,DEM,Maryland's 3rd congressional district,in 1994  and 1996,2020,House,MD,district m,0,0,0
 7.0,DEM,Jay Jalisi,state delegate,2020,House,MD,jalisi j,2,0,0
@@ -9294,7 +9294,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 2.0,DEM,House Oversight Committee,and candidate for New Jersey's 2nd congressional district in 2018,2020,House,NJ,committee h,0,0,1
 2.0,DEM,West Cape May,commissioner,2020,House,NJ,may w,0,0,0
 2.0,DEM,Brigid Callahan Harrison,political science professor at Montclair State University,2020,House,NJ,harrison b,0,0,0
-2.0,DEM,Amy Kennedy,mental health advocate and wife of former U.S. Representative Patrick J. Kennedy,2020,House,NJ,kennedy a,4,1,0
+2.0,DEM,Amy Kennedy,mental health advocate and wife of former U.S. Representative Patrick J. Kennedy,2020,House,NJ,kennedy a,0,1,0
 2.0,DEM,FBI,agent and Republican candidate for New Jersey's 2nd congressional district in 2018,2020,House,NJ,fbi,0,0,1
 2.0,DEM,Atlantic County,freeholder,2020,House,NJ,county a,0,0,0
 2.0,DEM,New Jersey Superior Court,judge,2020,House,NJ,court n,1,0,0
@@ -9382,7 +9382,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 2.0,REP,Leland Gould,lobbyist,2020,House,NM,gould l,0,0,0
 2.0,REP,New Mexico Republican Party,"former mayor of Hobbs , and candidate for New Mexico's 2nd congressional district in 2018",2020,House,NM,party n,1,0,1
 2.0,REP,Steve Pearce,"chair of the New Mexico Republican Party , former U.S. representative, and nominee for governor of New Mexico in 2018",2020,House,NM,pearce s,4,1,1
-3.0,DEM,Teresa Leger Fernandez,attorney and daughter of former state senator Ray Leger,2020,House,NM,fernandez t,2,0,0
+3.0,DEM,Teresa Leger Fernandez,attorney and daughter of former state senator Ray Leger,2020,House,NM,fernandez t,0,0,0
 3.0,DEM,United States Department of Agriculture,regional official,2020,House,NM,agriculture u,0,0,0
 3.0,DEM,Colfax County,Democratic Party (endorsed Serna),2020,House,NM,county c,0,0,0
 3.0,DEM,Hector Balderas,attorney general of New Mexico,2020,House,NM,balderas h,3,0,0
@@ -9434,7 +9434,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 2.0,REP,Kate Murray,Hempstead town clerk,2020,House,NY,murray k,0,0,0
 2.0,REP,Joseph Saladino,Oyster Bay town supervisor,2020,House,NY,saladino j,0,0,0
 2.0,REP,Douglas M. Smith,state assemblyman,2020,House,NY,smith d,2,0,0
-2.0,REP,Hempstead,town councilwoman and daughter of U.S. representative Peter T. King,2020,House,NY,hempstead,4,1,0
+2.0,REP,Hempstead,town councilwoman and daughter of U.S. representative Peter T. King,2020,House,NY,hempstead,0,1,0
 2.0,REP,Donald Trump Jr.,businessman and son of President Donald Trump,2020,House,NY,trump d,0,0,0
 2.0,REP,Lara Trump,campaign advisor and daughter-in-law of President Donald Trump,2020,House,NY,trump l,0,0,0
 2.0,DEM,Babylon,town councilwoman and U.S. Army veteran,2020,House,NY,babylon,0,0,0
@@ -9471,7 +9471,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 9.0,DEM,Michael Hiller,plaintiff litigator,2020,House,NY,hiller m,0,0,0
 9.0,DEM,Alex Hubbard,data scientist,2020,House,NY,hubbard a,0,0,0
 9.0,REP,Constantin Jean-Pierre,nonprofit executive,2020,House,NY,jeanpierre c,0,0,0
-10.0,DEM,Lindsey Boylan,former Deputy Secretary for Economic Development and Special Advisor to the Governor,2020,House,NY,boylan l,3,0,0
+10.0,DEM,Lindsey Boylan,former Deputy Secretary for Economic Development and Special Advisor to the Governor,2020,House,NY,boylan l,0,0,0
 10.0,DEM,Harvard Law School,student and former staffer for Andrew Yang 's presidential campaign,2020,House,NY,school h,0,0,0
 10.0,DEM,Jerry Nadler,incumbent U.S. representative,2020,House,NY,nadler j,4,1,0
 10.0,DEM,Darryl Hendricks,personal trainer,2020,House,NY,hendricks d,0,0,0
@@ -9546,7 +9546,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 17.0,DEM,David Buchwald,state assemblyman,2020,House,NY,buchwald d,2,0,0
 17.0,DEM,David Carlucci,state senator,2020,House,NY,carlucci d,2,0,0
 17.0,DEM,Asha Castleberry-Hernandez,U.S. Army veteran and national security expert,2020,House,NY,castleberryhernandez a,0,0,0
-17.0,DEM,Evelyn Farkas,"former Deputy Assistant Secretary of Defense for Russia, Ukraine, and Eurasia",2020,House,NY,farkas e,0,0,0
+17.0,DEM,Evelyn Farkas,"former Deputy Assistant Secretary of Defense for Russia, Ukraine, and Eurasia",2020,House,NY,farkas e,4,0,0
 17.0,DEM,Mondaire Jones,attorney,2020,House,NY,jones m,0,0,0
 17.0,DEM,Catherine Borgia,Westchester County legislator (endorsed Buchwald),2020,House,NY,borgia c,0,0,0
 17.0,DEM,Buchanan,trustee and candidate for New York's 18th congressional district in 2012,2020,House,NY,buchanan,0,0,1
@@ -9664,7 +9664,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 8.0,REP,Warren Davidson,incumbent U.S. representative,2020,House,OH,davidson w,4,1,0
 9.0,DEM,Marcy Kaptur,incumbent U.S. Representative,2020,House,OH,kaptur m,4,1,0
 10.0,REP,Mike Turner,incumbent U.S. representative,2020,House,OH,turner m,4,1,0
-10.0,DEM,Desiree Tims,attorney and former political aide to U.S. Senators Sherrod Brown and Kirsten Gillibrand,2020,House,OH,tims d,4,0,0
+10.0,DEM,Desiree Tims,attorney and former political aide to U.S. Senators Sherrod Brown and Kirsten Gillibrand,2020,House,OH,tims d,0,0,0
 11.0,DEM,Marcia Fudge,incumbent U.S. Representative,2020,House,OH,fudge m,4,1,0
 11.0,REP,Laverne Gore,community activist,2020,House,OH,gore l,0,0,0
 12.0,REP,Troy Balderson,incumbent U.S. representative,2020,House,OH,balderson t,4,1,0
@@ -9776,7 +9776,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 9.0,DEM,Gary Wegman,dentist,2020,House,PA,wegman g,0,0,0
 10.0,REP,Scott Perry,incumbent U.S. representative,2020,House,PA,perry s,4,1,0
 10.0,REP,Bobby Jeffries,logistics director,2020,House,PA,jeffries b,0,0,0
-10.0,DEM,Eugene DePasquale,Pennsylvania auditor general,2020,House,PA,depasquale e,0,0,0
+10.0,DEM,Eugene DePasquale,Pennsylvania auditor general,2020,House,PA,depasquale e,3,0,0
 10.0,DEM,non-primary source needed,]  [ non-primary source needed ],2020,House,PA,needed n,0,0,0
 10.0,DEM,Pennsylvania's 10th congressional district,"in 2018  (running for PA Senate, District 15 )",2020,House,PA,district p,0,0,0
 11.0,REP,Lloyd Smucker,incumbent U.S. representative,2020,House,PA,smucker l,4,1,0
@@ -10025,7 +10025,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 7.0,DEM,Abigail Spanberger,incumbent U.S. representative,2020,House,VA,spanberger a,4,1,0
 7.0,REP,Nick Freitas,state delegate and candidate for U.S. Senate in 2018,2020,House,VA,freitas n,2,0,1
 7.0,REP,Virginia's 7th congressional district,in 2014,2020,House,VA,district v,0,0,0
-7.0,REP,Andrew Knaggs,former Deputy Assistant Secretary of Defense for Special Operations and Combating Terrorism (2017–2019),2020,House,VA,knaggs a,0,0,0
+7.0,REP,Andrew Knaggs,former Deputy Assistant Secretary of Defense for Special Operations and Combating Terrorism (2017–2019),2020,House,VA,knaggs a,4,0,0
 7.0,REP,John McGuire,state delegate,2020,House,VA,mcguire j,2,0,0
 7.0,REP,Jason Roberge,attorney,2020,House,VA,roberge j,0,0,0
 7.0,REP,Mike Dickinson,businessman,2020,House,VA,dickinson m,0,0,0
@@ -10108,15 +10108,15 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 1.0,DEM,Les Gara,former state representative ( running for governor ),2022,House,AK,gara l,2,1,0
 1.0,DEM,Elvi Gray-Jackson,state senator,2022,House,AK,grayjackson e,2,0,0
 1.0,DEM,Emil Notti,"engineer, former commissioner of the Alaska Department of Commerce, Community and Economic Development , former chair of the Alaska Democratic Party , nominee for this district in 1973 , and candidate for this district in the 2022 special election",2022,House,AK,notti e,3,0,1
-1.0,REP,Nick Begich III,"Alaska Policy Forum board member, grandson of former U.S. Representative Nick Begich Sr. , and nephew of former U.S. senator Mark Begich and Alaska Senate Minority Leader Tom Begich",2022,House,AK,begich n,4,1,0
+1.0,REP,Nick Begich III,"Alaska Policy Forum board member, grandson of former U.S. Representative Nick Begich Sr. , and nephew of former U.S. senator Mark Begich and Alaska Senate Minority Leader Tom Begich",2022,House,AK,begich n,0,1,0
 1.0,REP,Sarah Palin,former governor of Alaska (2006–2009) and nominee for Vice President of the United States in 2008,2022,House,AK,palin s,3,0,1
-1.0,REP,John Coghill,"former majority leader of the Alaska Senate , former majority leader of the Alaska House of Representatives , son of former lieutenant governor Jack Coghill , and U.S. Air Force veteran (endorsed Begich)",2022,House,AK,coghill j,3,1,0
+1.0,REP,John Coghill,"former majority leader of the Alaska Senate , former majority leader of the Alaska House of Representatives , son of former lieutenant governor Jack Coghill , and U.S. Air Force veteran (endorsed Begich)",2022,House,AK,coghill j,2,1,0
 1.0,REP,Josh Revak,state senator and U.S. Army veteran,2022,House,AK,revak j,2,0,0
 1.0,REP,Matanuska-Susitna Borough,Assembly member,2022,House,AK,borough m,0,0,0
 1.0,REP,Mead Treadwell,former lieutenant governor of Alaska (endorsed Palin and Sweeney),2022,House,AK,treadwell m,3,0,0
 1.0,REP,Chris Bye,fishing guide,2022,House,AK,bye c,0,0,0
 1.0,REP,U.S. Senate,in 2020 ( ran for governor ),2022,House,AK,senate u,0,0,0
-1.0,IND,Al Gross,"orthopedic surgeon , commercial fisherman , son of former Alaska attorney general Avrum Gross , and Democratic-endorsed nominee for U.S. Senate in 2020    (endorsed Peltola and Sweeney)",2022,House,AK,gross a,3,0,1
+1.0,IND,Al Gross,"orthopedic surgeon , commercial fisherman , son of former Alaska attorney general Avrum Gross , and Democratic-endorsed nominee for U.S. Senate in 2020    (endorsed Peltola and Sweeney)",2022,House,AK,gross a,0,0,1
 1.0,IND,glaciologist,with the University of Alaska Fairbanks and Democratic candidate for this district in 2016 and 2020,2022,House,AK,glaciologist,0,0,1
 1.0,IND,Jeff Lowenfels,attorney and gardening writer,2022,House,AK,lowenfels j,0,0,0
 1.0,IND,Santa Claus,North Pole city councillor and candidate for this district in the 2022 special election    (endorsed Peltola),2022,House,AK,claus s,1,0,1
@@ -10143,7 +10143,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 6.0,DEM,Kirsten Engel,former state senator and former state representative from the 10th district,2022,House,AZ,engel k,2,1,0
 6.0,DEM,Randy Friese,state representative from the 9th district,2022,House,AZ,friese r,2,1,0
 6.0,DEM,Ann Kirkpatrick,incumbent U.S. representative,2022,House,AZ,kirkpatrick a,4,1,0
-6.0,REP,Juan Ciscomani,senior advisor to Governor Doug Ducey and vice chair of the Arizona-Mexico Commission,2022,House,AZ,ciscomani j,3,0,0
+6.0,REP,Juan Ciscomani,senior advisor to Governor Doug Ducey and vice chair of the Arizona-Mexico Commission,2022,House,AZ,ciscomani j,0,0,0
 6.0,REP,Douglas Lowell,surgeon,2022,House,AZ,lowell d,0,0,0
 6.0,REP,Kelly Townsend,state senator from the 16th district,2022,House,AZ,townsend k,2,0,0
 7.0,DEM,Raúl Grijalva,incumbent U.S. representative,2022,House,AZ,grijalva r,4,1,0
@@ -10209,7 +10209,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 1.0,REP,George Gainer,state senator  ( running for re-election ),2022,House,FL,gainer g,2,0,0
 1.0,REP,Ashton Hayward,former mayor of Pensacola,2022,House,FL,hayward a,1,0,0
 1.0,REP,Mike Hill,former state representative,2022,House,FL,hill m,2,1,0
-1.0,REP,Larry Keefe,former U.S. attorney for the Northern District of Florida,2022,House,FL,keefe l,0,0,0
+1.0,REP,Larry Keefe,former U.S. attorney for the Northern District of Florida,2022,House,FL,keefe l,4,0,0
 1.0,REP,Laura Loomer,"reporter for InfoWars , far-right activist, and nominee for Florida's 21st congressional district in 2020  ( running in the 11th district )",2022,House,FL,loomer l,0,0,1
 1.0,REP,Anna Paulina Luna,director of Hispanic Engagement for Turning Point USA and nominee for Florida's 13th congressional district in 2020  ( running in the 13th district ),2022,House,FL,luna a,0,0,1
 1.0,REP,Jimmy Patronis,chief financial officer of Florida  ( running for re-election ),2022,House,FL,patronis j,0,0,0
@@ -10266,7 +10266,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 12.0,REP,Gus Bilirakis,incumbent U.S. representative,2022,House,FL,bilirakis g,4,1,0
 12.0,DEM,U.S. Air Force,veteran,2022,House,FL,force u,0,0,0
 13.0,DEM,United States Secretary of Defense,candidate for this district in 2016,2022,House,FL,defense u,0,0,1
-13.0,DEM,Ben Diamond,state representative from District 68 and grandson of former U.S. Representative Dante Fascell,2022,House,FL,diamond b,4,1,0
+13.0,DEM,Ben Diamond,state representative from District 68 and grandson of former U.S. Representative Dante Fascell,2022,House,FL,diamond b,2,1,0
 13.0,DEM,Michele Rayner,"state representative from District 70 (2020–present)  ( running for re-election , endorsed Lynn)",2022,House,FL,rayner m,2,1,0
 13.0,DEM,Charlie Crist,incumbent U.S. representative ( running for governor ),2022,House,FL,crist c,4,1,0
 13.0,DEM,Rick Kriseman,former mayor of St. Petersburg and former state representative,2022,House,FL,kriseman r,2,1,0
@@ -10355,7 +10355,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 8.0,DEM,Darrius Butler,pastor,2022,House,GA,butler d,0,0,0
 9.0,REP,Andrew Clyde,incumbent U.S. representative,2022,House,GA,clyde a,4,1,0
 9.0,DEM,Hall County,Democratic Party,2022,House,GA,county h,0,0,0
-10.0,REP,Mike Collins,"trucking executive, son of former U.S. Representative Mac Collins , and candidate for this district in 2014",2022,House,GA,collins m,4,1,1
+10.0,REP,Mike Collins,"trucking executive, son of former U.S. Representative Mac Collins , and candidate for this district in 2014",2022,House,GA,collins m,0,1,1
 10.0,REP,Todd Heussner,retired Army colonel,2022,House,GA,heussner t,0,0,0
 10.0,REP,Matt Richards,businessman  (endorsed Mike Collins),2022,House,GA,richards m,0,0,0
 10.0,REP,insurance commissioner,),2022,House,GA,commissioner i,0,0,0
@@ -10409,7 +10409,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 12.0,REP,Mary Miller,incumbent U.S. representative (running in IL15),2022,House,IL,miller m,4,1,0
 12.0,DEM,U.S. Navy,veteran,2022,House,IL,navy u,0,0,0
 13.0,REP,Regan Deering,former chair of the Decatur Public Schools Foundation,2022,House,IL,deering r,0,0,0
-13.0,DEM,Nikki Budzinski,former U.S. Office of Management and Budget chief of staff and former senior advisor to governor J. B. Pritzker,2022,House,IL,budzinski n,3,0,0
+13.0,DEM,Nikki Budzinski,former U.S. Office of Management and Budget chief of staff and former senior advisor to governor J. B. Pritzker,2022,House,IL,budzinski n,0,0,0
 14.0,DEM,Lauren Underwood,incumbent U.S. representative,2022,House,IL,underwood l,4,1,0
 14.0,REP,Kendall County,Board,2022,House,IL,county k,0,0,0
 15.0,REP,Mary Miller,incumbent U.S. representative,2022,House,IL,miller m,4,1,0
@@ -10474,11 +10474,11 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 2.0,REP,Brett Guthrie,incumbent U.S. Representative,2022,House,KY,guthrie b,4,1,0
 2.0,DEM,2018,and 2020,2022,House,KY,,0,0,0
 3.0,DEM,Morgan McGarvey,Minority Leader of the Kentucky Senate,2022,House,KY,mcgarvey m,2,0,0
-3.0,DEM,Matthew Barzun,former U.S. Ambassador to the United Kingdom,2022,House,KY,barzun m,0,0,0
+3.0,DEM,Matthew Barzun,former U.S. Ambassador to the United Kingdom,2022,House,KY,barzun m,4,0,0
 3.0,DEM,Charles Booker,former state representative and candidate for U.S. Senate in 2020 ( running for U.S. Senate ),2022,House,KY,booker c,2,1,1
 3.0,DEM,Greg Fischer,Mayor of Louisville,2022,House,KY,fischer g,1,0,0
 3.0,DEM,Gill Holland,businessman,2022,House,KY,holland g,0,0,0
-3.0,DEM,Aaron Yarmuth,former newspaper owner and son of U.S. Representative John Yarmuth,2022,House,KY,yarmuth a,4,1,0
+3.0,DEM,Aaron Yarmuth,former newspaper owner and son of U.S. Representative John Yarmuth,2022,House,KY,yarmuth a,0,1,0
 3.0,DEM,John Yarmuth,incumbent U.S. Representative,2022,House,KY,yarmuth j,4,1,0
 3.0,REP,Julie Raque Adams,state senator,2022,House,KY,adams j,2,0,0
 3.0,REP,Michael Adams,Secretary of State of Kentucky,2022,House,KY,adams m,3,0,0
@@ -10551,7 +10551,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 1.0,DEM,Bob Lorinser,physician,2022,House,MI,lorinser b,0,0,0
 2.0,REP,John Moolenaar,incumbent U.S. representative,2022,House,MI,moolenaar j,4,1,0
 2.0,DEM,Michigan's 4th congressional district,in 2020,2022,House,MI,district m,0,0,0
-3.0,REP,John Gibbs,former Assistant Secretary of Housing and Urban Development for Community Planning and Development and software engineer,2022,House,MI,gibbs j,0,0,0
+3.0,REP,John Gibbs,former Assistant Secretary of Housing and Urban Development for Community Planning and Development and software engineer,2022,House,MI,gibbs j,4,0,0
 3.0,DEM,Hillary Scholten,attorney and nominee for Michigan's 3rd congressional district in 2020,2022,House,MI,scholten h,0,0,1
 4.0,REP,Bill Huizenga,incumbent U.S. representative,2022,House,MI,huizenga b,4,1,0
 4.0,REP,Steve Carra,"state representative  (running for re-election , endorsed Huizenga)",2022,House,MI,carra s,2,1,0
@@ -10653,7 +10653,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 6.0,DEM,U.S. Army,veteran and candidate for this district in 2020,2022,House,MO,army u,0,0,1
 7.0,REP,Eric Burlison,state senator,2022,House,MO,burlison e,2,0,0
 7.0,REP,Bob Dixon,Greene County Presiding Commissioner and former state senator,2022,House,MO,dixon b,2,0,0
-7.0,REP,Tim Garrison,former United States Attorney for the Western District of Missouri,2022,House,MO,garrison t,0,0,0
+7.0,REP,Tim Garrison,former United States Attorney for the Western District of Missouri,2022,House,MO,garrison t,4,0,0
 7.0,REP,Elijah Haahr,former Speaker of the Missouri House of Representatives,2022,House,MO,haahr e,2,1,0
 7.0,REP,Lincoln Hough,state senator (running for re-election),2022,House,MO,hough l,2,0,0
 7.0,REP,Billy Long,incumbent U.S. Representative ( running for U.S. senate ),2022,House,MO,long b,4,1,0
@@ -10670,7 +10670,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 1.0,DEM,Laurie Bishop,state representative,2022,House,MT,bishop l,2,1,0
 1.0,DEM,Kimberly Dudik,former state representative and candidate for Montana Attorney General in 2020,2022,House,MT,dudik k,2,1,1
 1.0,DEM,Shane Morigeau,state senator and nominee for Montana State Auditor in 2020  ( ran for re-election ),2022,House,MT,morigeau s,2,0,1
-1.0,DEM,Whitney Williams,"businesswoman, daughter of former U.S. Representative Pat Williams , and candidate for Governor of Montana in 2020",2022,House,MT,williams w,4,1,1
+1.0,DEM,Whitney Williams,"businesswoman, daughter of former U.S. Representative Pat Williams , and candidate for Governor of Montana in 2020",2022,House,MT,williams w,0,1,1
 1.0,DEM,John Lamb,farmer and business owner,2022,House,MT,lamb j,0,0,0
 2.0,REP,Matt Rosendale,incumbent U.S. Representative from Montana's at-large congressional district,2022,House,MT,rosendale m,4,1,0
 2.0,REP,Russell Fagg,"former Yellowstone County district judge, former state representative , and candidate for U.S. Senate in 2018",2022,House,MT,fagg r,2,1,1
@@ -10723,7 +10723,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 2.0,DEM,Tim Alexander,former County Detective and civil rights attorney,2022,House,NJ,alexander t,0,0,0
 2.0,DEM,Curtis Green,reverend,2022,House,NJ,green c,0,0,0
 2.0,DEM,Egg Harbor Township,police captain and school board member  (endorsed Alexander),2022,House,NJ,township e,1,0,0
-2.0,DEM,Amy Kennedy,"mental health advocate, wife of former U.S. Representative Patrick J. Kennedy , and nominee for this seat in 2020  (endorsed Alexander)",2022,House,NJ,kennedy a,4,1,1
+2.0,DEM,Amy Kennedy,"mental health advocate, wife of former U.S. Representative Patrick J. Kennedy , and nominee for this seat in 2020  (endorsed Alexander)",2022,House,NJ,kennedy a,0,1,1
 3.0,DEM,Andy Kim,incumbent U.S. Representative,2022,House,NJ,kim a,4,1,0
 3.0,REP,Robert Healey Jr.,yacht manufacturer,2022,House,NJ,healey r,0,0,0
 3.0,REP,New Jersey's 2nd congressional district,),2022,House,NJ,district n,0,0,0
@@ -10749,7 +10749,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 7.0,REP,Thomas Kean Jr.,"minority leader of the New Jersey Senate and nominee for this seat in 2020 , and nominee for the U.S. Senate in 2006",2022,House,NJ,kean t,2,0,1
 7.0,REP,2020,(running in New Jersey's 6th congressional district ),2022,House,NJ,,0,0,0
 7.0,REP,Robert Trugman,salon owner,2022,House,NJ,trugman r,0,0,0
-8.0,DEM,Robert Menendez,Commissioner of the Port Authority of New York and New Jersey and son of U.S. Senator Bob Menendez,2022,House,NJ,menendez r,4,0,0
+8.0,DEM,Robert Menendez,Commissioner of the Port Authority of New York and New Jersey and son of U.S. Senator Bob Menendez,2022,House,NJ,menendez r,3,0,0
 8.0,DEM,Ricardo Rojas,co-founder of the Progressive Democrats of New Jersey,2022,House,NJ,rojas r,0,0,0
 8.0,DEM,Ravinder Bhalla,"Mayor of Hoboken (2018–present), former member of the Hoboken City Council At-Large (2009–2017), and candidate for New Jersey's 33rd assembly district in 2011 and 2013 (endorsed Menendez)",2022,House,NJ,bhalla r,1,1,1
 8.0,DEM,Nicholas Chiaravalloti,"former Majority Whip of the New Jersey General Assembly (2020–2022), former New Jersey State Assemblymember from the 31st district (2016–2022) (endorsed Menendez)",2022,House,NJ,chiaravalloti n,2,0,0
@@ -10786,7 +10786,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 1.0,DEM,Melanie Stansbury,incumbent U.S. representative (2021–present),2022,House,NM,stansbury m,4,1,0
 1.0,REP,2020,"nominee for lieutenant governor in 2018 , and candidate for this district in the 2021 special election",2022,House,NM,,0,0,1
 2.0,REP,Yvette Herrell,incumbent U.S. representative,2022,House,NM,herrell y,4,1,0
-2.0,DEM,Gabe Vasquez,Las Cruces city councilor (2017–2021) and former aide to U.S. Senator Martin Heinrich,2022,House,NM,vasquez g,4,0,0
+2.0,DEM,Gabe Vasquez,Las Cruces city councilor (2017–2021) and former aide to U.S. Senator Martin Heinrich,2022,House,NM,vasquez g,1,0,0
 2.0,DEM,Joe Cervantes,state senator (2012–present),2022,House,NM,cervantes j,2,1,0
 2.0,DEM,Siah Correa Hemphill,state senator (2020–present)  (endorsed Vasquez),2022,House,NM,hemphill s,2,1,0
 2.0,DEM,Howie Morales,lieutenant governor of New Mexico (2019–present) ( running for re-election ),2022,House,NM,morales h,3,1,0
@@ -10873,7 +10873,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 22.0,REP,John Katko,incumbent U.S. representative,2022,House,NY,katko j,4,1,0
 22.0,REP,Onondaga County,executive,2022,House,NY,county o,0,0,0
 22.0,REP,Claudia Tenney,"incumbent U.S. representative  (previously filed to run in the 23rd district , finally ran in the 24th district )",2022,House,NY,tenney c,4,1,0
-22.0,REP,Ben Walsh,mayor of Syracuse and son of former U.S. Representative James Walsh,2022,House,NY,walsh b,4,1,0
+22.0,REP,Ben Walsh,mayor of Syracuse and son of former U.S. Representative James Walsh,2022,House,NY,walsh b,1,1,0
 22.0,DEM,NY-24,in 2020,2022,House,NY,ny,0,0,0
 22.0,DEM,Vanessa Fajans-Turner,climate change activist,2022,House,NY,fajansturner v,0,0,0
 23.0,REP,Nick Langworthy,chair of the New York Republican Party (2019–2023),2022,House,NY,langworthy n,0,0,0
@@ -11074,7 +11074,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 10.0,REP,Scott Perry,incumbent U.S. representative and chair of the Freedom Caucus,2022,House,PA,perry s,4,1,0
 10.0,REP,Brian Allen,clinical psychologist,2022,House,PA,allen b,0,0,0
 10.0,DEM,Harrisburg,city council (2014–present),2022,House,PA,harrisburg,1,1,0
-10.0,DEM,Eugene DePasquale,former Pennsylvania Auditor General and nominee for Pennsylvania's 10th congressional district in 2020,2022,House,PA,depasquale e,0,0,1
+10.0,DEM,Eugene DePasquale,former Pennsylvania Auditor General and nominee for Pennsylvania's 10th congressional district in 2020,2022,House,PA,depasquale e,3,0,1
 11.0,REP,Lloyd Smucker,incumbent U.S. representative,2022,House,PA,smucker l,4,1,0
 11.0,DEM,Bob Hollister,Eastern Lancaster County School superintendent (2008–2022),2022,House,PA,hollister b,0,0,0
 12.0,DEM,Summer Lee,state representative from the 34th district,2022,House,PA,lee s,2,1,0
@@ -11102,7 +11102,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 2.0,DEM,Ed Pacheco,former state representative and former chair of the Rhode Island Democratic Party,2022,House,RI,pacheco e,2,1,0
 2.0,DEM,Gabe Amo,deputy director of the Office of Intergovernmental Affairs,2022,House,RI,amo g,0,0,0
 2.0,DEM,Sam Bell,state senator,2022,House,RI,bell s,2,0,0
-2.0,DEM,Providence,"Board of Licenses, son of former state senator William Conley Jr. , and candidate for this district in 2020",2022,House,RI,providence,2,0,1
+2.0,DEM,Providence,"Board of Licenses, son of former state senator William Conley Jr. , and candidate for this district in 2020",2022,House,RI,providence,0,0,1
 2.0,DEM,Brendan Doherty,former Superintendent of the Rhode Island State Police and Republican nominee for the 1st district in 2012 [ a ],2022,House,RI,doherty b,0,0,1
 2.0,DEM,Jorge Elorza,Mayor of Providence,2022,House,RI,elorza j,1,0,0
 2.0,DEM,Helena Foulkes,former CVS executive ( running for governor ),2022,House,RI,foulkes h,0,0,0
@@ -11400,7 +11400,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 2.0,REP,Wes Allen,Alabama Secretary of State (2023–present),2024,House,AL,allen w,3,1,0
 2.0,REP,Barry Moore,incumbent U.S. Representative ( ran in the 1st district ),2024,House,AL,moore b,4,1,0
 2.0,REP,Pike Road,(2004–present),2024,House,AL,road p,0,1,0
-2.0,DEM,Shomari Figures,former deputy chief of staff and counsel to U.S. Attorney General Merrick Garland and son of state senators Vivian Davis Figures and Michael Figures,2024,House,AL,figures s,3,0,0
+2.0,DEM,Shomari Figures,former deputy chief of staff and counsel to U.S. Attorney General Merrick Garland and son of state senators Vivian Davis Figures and Michael Figures,2024,House,AL,figures s,4,0,0
 2.0,DEM,Brian Gary,surgeon,2024,House,AL,gary b,0,0,0
 2.0,DEM,Kirk Hatcher,state senator from the 26th district (2021–present)  (endorsed Figures),2024,House,AL,hatcher k,2,1,0
 2.0,DEM,Steven Reed,"mayor of Montgomery (2019–present) (endorsed Hatcher, then Gary, then Sinkfield)",2024,House,AL,reed s,1,1,0
@@ -11426,7 +11426,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 2.0,DEM,Jonathan Nez,former president of the Navajo Nation (2019–2023),2024,House,AZ,nez j,0,0,0
 3.0,DEM,Yassamin Ansari,former Phoenix city councilor (2021–2024),2024,House,AZ,ansari y,1,0,0
 3.0,DEM,Central Arizona,"Water Conservation District Board and the Osborn School District Board  (endorsed Terán, ran for Corporation Commission )",2024,House,AZ,arizona c,0,0,0
-3.0,DEM,Phoenix city councilor,from the 4th district and daughter of former U.S. Representative Ed Pastor,2024,House,AZ,councilor p,4,1,0
+3.0,DEM,Phoenix city councilor,from the 4th district and daughter of former U.S. Representative Ed Pastor,2024,House,AZ,councilor p,0,1,0
 3.0,DEM,Steve Gallardo,"Maricopa County supervisor from the 5th district (2015–present) and former state senator from the 29th district (2003–2009, 2011–2015)  ( ran for re-election )",2024,House,AZ,gallardo s,2,1,0
 3.0,DEM,Kate Gallego,mayor of Phoenix (2019–present),2024,House,AZ,gallego k,1,1,0
 3.0,DEM,Ruben Gallego,incumbent U.S. representative ( ran for U.S. Senate ),2024,House,AZ,gallego r,4,1,0
@@ -11781,7 +11781,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 5.0,DEM,Angela Alsobrooks,Prince George's County Executive (2018–present)  ( ran for U.S. Senate ),2024,House,MD,alsobrooks a,1,1,0
 5.0,DEM,Greenbelt,city councilor (2017–present) and candidate for U.S. Senate in 2022,2024,House,MD,greenbelt,1,1,1
 5.0,REP,SD-28,in 2022,2024,House,MD,sd,0,0,0
-6.0,DEM,April McClain Delaney,former deputy administrator of the National Telecommunications and Information Administration and wife of former U.S. Representative John Delaney,2024,House,MD,delaney a,4,1,0
+6.0,DEM,April McClain Delaney,former deputy administrator of the National Telecommunications and Information Administration and wife of former U.S. Representative John Delaney,2024,House,MD,delaney a,0,1,0
 6.0,REP,Neil Parrott,former state delegate from district 2A (2015–2023) and nominee for this district in 2020 and 2022,2024,House,MD,parrott n,2,0,1
 7.0,DEM,Kweisi Mfume,incumbent U.S. representative,2024,House,MD,mfume k,4,1,0
 7.0,IND,Libertarian,"), Republican candidate for HD-45 in 2018",2024,House,MD,libertarian,0,0,1
@@ -11813,7 +11813,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 5.0,DEM,Libbi Urban,retired electrician,2024,House,MI,urban l,0,0,0
 6.0,DEM,Debbie Dingell,incumbent U.S. representative,2024,House,MI,dingell d,4,1,0
 6.0,REP,Heather Smiley,office analyst,2024,House,MI,smiley h,0,0,0
-7.0,DEM,Curtis Hertel Jr.,former state senator and nephew of former U.S. Representative Dennis Hertel,2024,House,MI,hertel c,4,1,0
+7.0,DEM,Curtis Hertel Jr.,former state senator and nephew of former U.S. Representative Dennis Hertel,2024,House,MI,hertel c,2,1,0
 7.0,DEM,Sarah Anthony,state senator,2024,House,MI,anthony s,2,0,0
 7.0,DEM,Barbara Byrum,"Ingham County Clerk and former state representative (ran for re-election, endorsed Hertel)",2024,House,MI,byrum b,2,1,0
 7.0,DEM,Kara Hope,state representative  (endorsed Hertel),2024,House,MI,hope k,2,1,0
@@ -11836,7 +11836,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 8.0,REP,Martin Blank,trauma surgeon,2024,House,MI,blank m,0,0,0
 8.0,REP,Kenneth Horn,former state senator for the 32nd district,2024,House,MI,horn k,2,0,0
 8.0,REP,David Martin,state representative for the 48th district,2024,House,MI,martin d,2,1,0
-8.0,REP,Bill G. Schuette,state representative for the 95th district and son of former Michigan Attorney General Bill Schuette  ( ran for re-election ),2024,House,MI,schuette b,3,1,0
+8.0,REP,Bill G. Schuette,state representative for the 95th district and son of former Michigan Attorney General Bill Schuette  ( ran for re-election ),2024,House,MI,schuette b,2,1,0
 9.0,REP,Lisa McClain,incumbent U.S. representative,2024,House,MI,mcclain l,4,1,0
 9.0,DEM,Clinton St. Mosley,insurance agent,2024,House,MI,mosley c,0,0,0
 10.0,REP,John James,incumbent U.S. representative,2024,House,MI,james j,4,1,0
@@ -11997,7 +11997,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 7.0,DEM,Summit,common councilor  (endorsed Altman),2024,House,NJ,summit,0,0,0
 7.0,DEM,Marci Bandelli,gun safety activist (endorsed Altman),2024,House,NJ,bandelli m,0,0,0
 7.0,DEM,Roy Freiman,state assemblyman from the 16th district (2018–present),2024,House,NJ,freiman r,2,1,0
-7.0,DEM,Jim Johnson,former U.S. Under Secretary of the Treasury and candidate for Governor of New Jersey in 2017  (endorsed Altman),2024,House,NJ,johnson j,0,0,1
+7.0,DEM,Jim Johnson,former U.S. Under Secretary of the Treasury and candidate for Governor of New Jersey in 2017  (endorsed Altman),2024,House,NJ,johnson j,4,0,1
 7.0,DEM,James Kennedy,state assemblyman from the 22nd district (2016–present),2024,House,NJ,kennedy j,2,1,0
 7.0,DEM,Matt Klapper,chief of staff to U.S. Attorney General Merrick Garland and former chief of staff to U.S. Senator Cory Booker,2024,House,NJ,klapper m,4,0,0
 7.0,DEM,Raymond Lesniak,former state senator from the 20th district (1983–2018) and candidate for Governor of New Jersey in 2017,2024,House,NJ,lesniak r,2,0,1
@@ -12022,7 +12022,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 10.0,DEM,LaMonica McIver,president of the Newark Municipal Council (2022–2024) from the Central Ward (2018–present) and nominee for this district in the September special election,2024,House,NJ,mciver l,0,1,1
 10.0,DEM,Linden,(2014–present) and Linden Democratic municipal chair,2024,House,NJ,linden,0,1,0
 10.0,DEM,mayor,of Newark in 2022,2024,House,NJ,mayor,0,0,0
-10.0,DEM,Craig Stanley,former state assemblyman from the 28th district (1996–2008) and cousin of former U.S. representative Donald Payne Jr.,2024,House,NJ,stanley c,4,1,0
+10.0,DEM,Craig Stanley,former state assemblyman from the 28th district (1996–2008) and cousin of former U.S. representative Donald Payne Jr.,2024,House,NJ,stanley c,2,1,0
 10.0,DEM,Jerry Walker,Hudson County commissioner from the 3rd district (2018–present) and candidate for mayor of Jersey City in 2013,2024,House,NJ,walker j,1,1,1
 10.0,DEM,East Orange,city councilor (2019–2023),2024,House,NJ,orange e,1,0,0
 10.0,DEM,New Jersey's 29th assembly district,in 2021,2024,House,NJ,district n,0,0,0
@@ -12095,7 +12095,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 16.0,REP,Madeline Brame,nonprofit founder,2024,House,NY,brame m,0,0,0
 17.0,REP,Mike Lawler,incumbent U.S. representative,2024,House,NY,lawler m,4,1,0
 17.0,DEM,Mondaire Jones,member of the U.S. Commission on Civil Rights and former U.S. representative (2021–2023),2024,House,NY,jones m,4,1,0
-17.0,DEM,Katonah–Lewisboro School District,trustee and sister of Michigan Governor Gretchen Whitmer (endorsed Jones),2024,House,NY,district k,3,0,0
+17.0,DEM,Katonah–Lewisboro School District,trustee and sister of Michigan Governor Gretchen Whitmer (endorsed Jones),2024,House,NY,district k,0,0,0
 18.0,DEM,Pat Ryan,incumbent U.S. representative,2024,House,NY,ryan p,4,1,0
 18.0,DEM,James Skoufis,state senator from the 42nd district (2019–present) ( ran for re-election ),2024,House,NY,skoufis j,2,1,0
 18.0,REP,Alison Esposito,former NYPD deputy inspector and nominee for lieutenant governor in 2022,2024,House,NY,esposito a,0,0,1
@@ -12179,7 +12179,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 1.0,REP,Rick Berg,"former U.S. representative (2011–2013), former chair of the North Dakota Republican Party (2018–2021), and nominee for U.S. Senate in 2012",2024,House,ND,berg r,4,1,1
 1.0,REP,Jonathan Casper,former state senator (2014–2018),2024,House,ND,casper j,2,0,0
 1.0,REP,Scott Davis,former executive director of the North Dakota Indian Affairs Commission,2024,House,ND,davis s,0,0,0
-1.0,REP,Jon Godfread,North Dakota Insurance Commissioner (2016–present)  (endorsed Fedorchak),2024,House,ND,godfread j,0,1,0
+1.0,REP,Jon Godfread,North Dakota Insurance Commissioner (2016–present)  (endorsed Fedorchak),2024,House,ND,godfread j,3,1,0
 1.0,REP,Michael Howe,North Dakota Secretary of State (2023–present)  (endorsed Fedorchak),2024,House,ND,howe m,3,1,0
 1.0,REP,Brian Kroshus,North Dakota State Tax Commissioner (2022–present),2024,House,ND,kroshus b,0,1,0
 1.0,REP,Eric Murphy,state representative (2022–present),2024,House,ND,murphy e,2,1,0
@@ -12317,7 +12317,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 2.0,REP,Steve Corvi,adjunct professor,2024,House,RI,corvi s,0,0,0
 2.0,REP,Allan Fung,"former mayor of Cranston (2009–2021), nominee for this district in 2022 , and nominee for Governor of Rhode Island in 2014 and 2018",2024,House,RI,fung a,1,0,1
 1.0,REP,Nancy Mace,incumbent U.S. Representative,2024,House,SC,mace n,4,1,0
-1.0,REP,Katie Arrington,"former Chief Information Security Officer for the Under Secretary of Defense , former state representative from the 94th district, nominee for this district in 2018 and candidate in 2022  (endorsed Templeton)",2024,House,SC,arrington k,2,1,1
+1.0,REP,Katie Arrington,"former Chief Information Security Officer for the Under Secretary of Defense , former state representative from the 94th district, nominee for this district in 2018 and candidate in 2022  (endorsed Templeton)",2024,House,SC,arrington k,4,1,1
 1.0,REP,Charleston County,councilor,2024,House,SC,county c,0,0,0
 1.0,DEM,Ben Frasier,"former aide to U.S. Representative Mendel Rivers , perennial candidate, and nominee for this district in 2010",2024,House,SC,frasier b,4,1,1
 2.0,REP,Joe Wilson,incumbent U.S. representative,2024,House,SC,wilson j,4,1,0
@@ -12360,7 +12360,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 6.0,DEM,Lore Bergman,community advocate,2024,House,TN,bergman l,0,0,0
 7.0,REP,Mark Green,incumbent U.S. representative,2024,House,TN,green m,4,1,0
 7.0,REP,Caleb Stack,mediator,2024,House,TN,stack c,0,0,0
-7.0,REP,Brandon Ogles,former state representative from the 61st district (2019–2023) and cousin of U.S. Representative Andy Ogles (endorsed Green),2024,House,TN,ogles b,4,1,0
+7.0,REP,Brandon Ogles,former state representative from the 61st district (2019–2023) and cousin of U.S. Representative Andy Ogles (endorsed Green),2024,House,TN,ogles b,2,1,0
 7.0,REP,Jack Johnson,majority leader of the Tennessee Senate (2019–present) from the 27th district (2007–present),2024,House,TN,johnson j,2,1,0
 7.0,REP,Bill Powers,state senator from the 22nd district (2019–present),2024,House,TN,powers b,2,1,0
 7.0,REP,governor,Bill Haslam and U.S. Senator Lamar Alexander and runner-up for mayor of Nashville in 2023,2024,House,TN,governor,4,0,0
@@ -12547,7 +12547,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 3.0,DEM,Rebecca Cooke,former Wisconsin Economic Development Corporation board member and candidate for this district in 2022,2024,House,WI,cooke r,0,0,1
 3.0,DEM,Tara Johnson,former chair of the La Crosse County Board  ( ran for state assembly ),2024,House,WI,johnson t,0,0,0
 3.0,DEM,Harvard Law,student (endorsed Cooke),2024,House,WI,law h,0,0,0
-3.0,DEM,CIA,"officer, daughter of former U.S. Representative Alvin Baldus , and candidate for this district in 2022  (endorsed Shankland)",2024,House,WI,cia,4,1,1
+3.0,DEM,CIA,"officer, daughter of former U.S. Representative Alvin Baldus , and candidate for this district in 2022  (endorsed Shankland)",2024,House,WI,cia,0,1,1
 3.0,DEM,Brad Pfaff,state senator and nominee for this district in 2022 ( ran for re-election ),2024,House,WI,pfaff b,2,0,1
 4.0,DEM,Gwen Moore,incumbent U.S. representative,2024,House,WI,moore g,4,1,0
 4.0,REP,Tim Rogers,delivery driver and perennial candidate,2024,House,WI,rogers t,0,0,0
@@ -12755,7 +12755,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 3.0,DEM,Marie Gluesenkamp Perez,incumbent U.S. representative,2024,House,WA,perez m,4,1,0
 4.0,REP,Dan Newhouse,incumbent U.S. representative,2024,House,WA,newhouse d,4,1,0
 4.0,REP,Jerrod Sessler,"home repair business founder, former NASCAR driver, and candidate for this district in 2022",2024,House,WA,sessler j,0,0,1
-5.0,REP,Michael Baumgartner,"Spokane County Treasurer (2019–present), former state senator from the 6th district (2011–2019), and runner-up for U.S. Senate in 2012",2024,House,WA,baumgartner m,4,1,0
+5.0,REP,Michael Baumgartner,"Spokane County Treasurer (2019–present), former state senator from the 6th district (2011–2019), and runner-up for U.S. Senate in 2012",2024,House,WA,baumgartner m,2,1,0
 6.0,REP,Drew MacEwen,state senator (2023–present),2024,House,WA,macewen d,2,1,0
 6.0,DEM,Emily Randall,state senator (2019–present),2024,House,WA,randall e,2,1,0
 7.0,DEM,Pramila Jayapal,incumbent U.S. representative,2024,House,WA,jayapal p,4,1,0
@@ -17466,7 +17466,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 6.0,REP,Dan Claitor,state senator,2014,House,LA,claitor d,2,0,0
 6.0,REP,Norm Clark,disabled veteran and Ph.D. candidate in LSU's political science program,2014,House,LA,clark n,0,0,0
 6.0,REP,Paul Dietzel,businessman,2014,House,LA,dietzel p,0,0,0
-6.0,REP,Garret Graves,former adviser to Governor Bobby Jindal,2014,House,LA,graves g,3,0,0
+6.0,REP,Garret Graves,former adviser to Governor Bobby Jindal,2014,House,LA,graves g,0,0,0
 6.0,REP,Craig McCulloch,physical therapist and businessman,2014,House,LA,mcculloch c,0,0,0
 6.0,REP,LSU Tigers football,player,2014,House,LA,football l,0,0,0
 6.0,REP,Lenar Whitney,state representative,2014,House,LA,whitney l,2,1,0
@@ -17571,7 +17571,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 3.0,REP,Brett Geymann,state representative,2016,House,LA,geymann b,2,1,0
 3.0,REP,Clay Higgins,"deputy marshal of Lafayette , former public information officer and captain of St. Landry Parish Sheriff's Office",2016,House,LA,higgins c,1,0,0
 3.0,REP,Gus Rantz,businessman,2016,House,LA,rantz g,0,0,0
-3.0,REP,Grover J. Rees III,former United States Ambassador to East Timor,2016,House,LA,rees g,0,0,0
+3.0,REP,Grover J. Rees III,former United States Ambassador to East Timor,2016,House,LA,rees g,4,0,0
 3.0,REP,Herman Vidrine,retired state employee,2016,House,LA,vidrine h,0,0,0
 3.0,REP,Erick Knezek,Lafayette School Board member,2016,House,LA,knezek e,1,0,0
 3.0,DEM,"Jacob ""Dorian Phibian"" Hebert",artist and musician,2016,House,LA,hebert j,0,0,0

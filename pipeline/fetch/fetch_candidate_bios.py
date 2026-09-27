@@ -83,7 +83,12 @@ LEVELS = [
         r"speaker of the (u\.?s\.?|united states) house"),
     (3, r"\bgovernor\b|lieutenant governor|attorney general|secretary of state|"
         r"state treasurer|state auditor|state comptroller|commissioner of|"
-        r"superintendent of public"),
+        r"superintendent of public|"
+        # statewide ELECTED offices the list missed (2026-09-25): Bob Casey Jr. "incumbent
+        # Auditor General" (PA), Rob Sand "Iowa auditor of state", Vicki Schmidt "Kansas
+        # Insurance Commissioner" all read 0 once a relative's/running mate's office stopped
+        # standing in for their own.
+        r"auditor general|auditor of state|insurance commissioner|state controller"),
     (2, r"state senator|state representative|state assembly|state house|"
         r"speaker of the .{0,30}house|state senate|general assembly|state delegate|"
         r"house of delegates|"
@@ -122,14 +127,80 @@ INCUMBENT_BY_OFFICE_RX = {
     "House": re.compile(r"incumbent representative\b"),
 }
 
-def classify(desc, office=None):
+# SENIOR APPOINTED FEDERAL posts count as federal = 4 (user decision 2026-09-25: "we can count
+# those as federal" - Treasury under secretary, White House press secretary). The scale said
+# "cabinet", yet even cabinet secretaries read 3 (Napolitano "former Secretary of Homeland
+# Security", Tommy Thompson "former secretary of Health and Human Services") because only the
+# 'U.S. secretary' phrasing matched. Excluded on purpose: ASSISTANT U.S. attorneys (line
+# prosecutors), UN "goodwill" ambassadors, and any title preceded by a STATE name ("Iowa
+# Secretary of Agriculture", "West Virginia Secretary of Veterans Affairs" are state posts).
+# "secretary of state" alone is almost always the STATE office (level 3) - only the federal
+# sub-cabinet form "... Secretary of State FOR <bureau>" counts here.
+_FED_DEPTS = (r"(?:state for|defense|the treasury|treasury|homeland security|veterans affairs|"
+              r"energy|commerce|labor|education|agriculture|the interior|interior|"
+              r"transportation|health and human services|housing and urban development|"
+              r"the navy|the army|the air force)")
+_FED_APPOINTEE_RX = re.compile(
+    r"(?<!assistant )(?:u\.?s\.?|united states) attorney\b|"
+    r"(?<!goodwill )(?:u\.?s\.?|united states) ambassador|(?<!goodwill )\bambassador to\b|"
+    r"\b(?:principal\s+)?(?:under|deputy|assistant|deputy assistant)\s+secretary of " + _FED_DEPTS + r"|"
+    # bare cabinet title - but not a state cabinet named like one ("secretary of Energy AND
+    # Environmental Affairs" is Massachusetts; "Secretary of Agriculture OF KANSAS" is Kansas)
+    r"\bsecretary of " + _FED_DEPTS +
+    r"(?!\s+and\s+(?:environmental|economic|natural|public|workforce|consumer|community)"
+    r"|\s+of\s+(?!the\s+(?:treasury|navy|army|air\s+force|interior)\b))|"
+    r"director of the (?:consumer financial protection bureau|office of management and budget|"
+    r"central intelligence agency|federal bureau of investigation|office of personnel management|"
+    r"national economic council|u\.?s\.? mint|census bureau|peace corps)|"
+    r"administrator of the (?:small business administration|environmental protection agency|"
+    r"federal emergency management agency|national aeronautics|drug enforcement)")
+_STATE_NAMES_RX = re.compile(
+    r"(?:alabama|alaska|arizona|arkansas|california|colorado|connecticut|delaware|florida|"
+    r"georgia|hawaii|idaho|illinois|indiana|iowa|kansas|kentucky|louisiana|maine|maryland|"
+    r"massachusetts|michigan|minnesota|mississippi|missouri|montana|nebraska|nevada|"
+    r"new hampshire|new jersey|new mexico|new york|north carolina|north dakota|ohio|oklahoma|"
+    r"oregon|pennsylvania|rhode island|south carolina|south dakota|tennessee|texas|utah|"
+    r"vermont|virginia|washington|west virginia|wisconsin|wyoming|state)\s*$")
+
+
+# where a stripped clause (candidacy / staff role / relative) ends: the candidate's OWN next
+# office - ", former X", ", and former X", " and incumbent X", ", current X"
+_NEW_OFFICE = r"(?:,\s*(?:and\s+)?|\s+and\s+)(?:former|current|incumbent)\b"
+
+
+def _federal_appointee(d):
+    for m in _FED_APPOINTEE_RX.finditer(d):
+        before = d[max(0, m.start() - 30):m.start()].strip()
+        # "Iowa Secretary of Agriculture" / "state secretary of ..." -> a STATE post
+        if not _STATE_NAMES_RX.search(before):
+            return m
+    return None
+
+
+def classify_evidence(desc, office=None):
+    """(office_level, evidence) - evidence is the descriptor clause naming the position that
+    set the level ("" for level 0). Written to candidate_bios.csv as `office_evidence`."""
     d = str(desc).lower()
     # candidacy mentions are NOT offices held: 'candidate for governor in 2018' must not
     # classify as governor (caught by the El-Sayed known-truth check). Broadened 2026-07-29 to
     # also strip "ran for / running for / unsuccessful candidate for / nominee for X" - the
     # institution-phrasing level-4 pattern ("U.S. House/Senate") was matching a "( ran for U.S.
     # House )" parenthetical and mislabeling e.g. "school board member (ran for U.S. House)" as 4.
-    d = re.sub(r"(unsuccessful\s+)?(candidate|nominee)\s+for\s+[^,;.()]+", " ", d)
+    # "u.s." inside the clause must not end it: "former nominee for U.S. Ambassador to Chile"
+    # stripped only "nominee for u" and left "ambassador to chile" (2026-09-25)
+    # A stripped clause ends where the candidate's OWN next office begins: ", former ...",
+    # " and former ...", ", current ...". Stopping at every " and " misread "nominee for
+    # governor in 2018 and for lieutenant governor" as a lieutenant governor.
+    d = re.sub(r"(unsuccessful\s+)?(candidate|nominee)\s+for\s+(?:u\.s\.|(?!" + _NEW_OFFICE +
+               r")[^,;.()])+", " ", d)
+    # "runner-up for California State Controller" is a LOSS, not an office (Lanhee Chen), and
+    # "director of the Governor's Office of ..." is staff, not the governorship (2026-09-25)
+    d = re.sub(r"\brunner[\s-]*up\s+(for|in)\s+[^,;.()]+", " ", d)
+    d = re.sub(r"\bgovernor'?s\s+office\b", " ", d)
+    # staff OF an official is not the office: "chief of staff to Governor Deval Patrick"
+    d = re.sub(r"\b(?:chief\s+of\s+staff|aide|adviser|advisor|spokes\w*|counsel)\s+(?:to|for)\s+"
+               r"(?:the\s+)?(?:governor|senator|u\.s\.\s+senator|representative|congress\w*)"
+               r"(?:(?!" + _NEW_OFFICE + r")[^,;])*", " ", d)
     d = re.sub(r"\b(ran|running)\s+for\s+[^,;.()]+", " ", d)
     # FUTURE offices are not offices held at the time of THIS race (2026-08-01). Wikipedia
     # bios are written after the fact, so a candidate's page can describe an office they only
@@ -144,12 +215,51 @@ def classify(desc, office=None):
     d = re.sub(r"\bfuture\s+[^,;.()]+", " ", d)
     d = re.sub(r"\blater\s+(became|elected|won|appointed)\b[^,;.()]*", " ", d)
     d = re.sub(r"\b(subsequently|went\s+on\s+to)\s+(became?|won|elected)\b[^,;.()]*", " ", d)
-    if office in INCUMBENT_BY_OFFICE_RX and INCUMBENT_BY_OFFICE_RX[office].search(d):
-        return 4
+    # OTHER PEOPLE'S offices are not this candidate's (2026-09-25). A governor bullet carries
+    # the running mate ("Running mate: Shane Hernandez, former state representative" made
+    # Tudor Dixon a 2), and bios name relatives ("grandson of former U.S. Senator Paul
+    # Laxalt" made Adam Laxalt a 4; "father-in-law of U.S. representative Max Miller" made
+    # Bernie Moreno a 4). Everything after "running mate" goes; a relation clause goes up to
+    # the next comma/semicolon/" and ".
+    d = re.sub(r"running\s*mate\s*:.*$", " ", d)
+    d = re.sub(r"\b(?:son|daughter|grandson|granddaughter|grandfather|grandmother|father|"
+               r"mother|husband|wife|spouse|brother|sister|nephew|niece|cousin|uncle|aunt|"
+               r"widow|widower|child|grandchild)(?:\s*-\s*in\s*-\s*law)?\s+of\b"
+               # the relative's titles can run past commas ("son of former president pro
+               # tempore of the U.S. Senate, Solicitor of the Interior & U.S. Attorney Ted
+               # Stevens") - consume until the candidate's own next office starts
+               r"(?:(?!" + _NEW_OFFICE + r")[^;])*", " ", d)
+    if office in INCUMBENT_BY_OFFICE_RX:
+        m = INCUMBENT_BY_OFFICE_RX[office].search(d)
+        if m:
+            return 4, _evidence(desc, d, m)
+    m = _federal_appointee(d)
+    if m:
+        return 4, _evidence(desc, d, m)
     for lvl, rx in LEVELS:
-        if re.search(rx, d):
-            return lvl
-    return 0
+        m = re.search(rx, d)
+        if m:
+            return lvl, _evidence(desc, d, m)
+    return 0, ""
+
+
+def classify(desc, office=None):
+    """office_level only - see classify_evidence for the clause that decided it."""
+    return classify_evidence(desc, office)[0]
+
+
+def _evidence(desc, d, m):
+    """The clause around regex match `m` in the cleaned text `d`, returned in the ORIGINAL
+    capitalisation when it can be found in `desc` - the position that set the level."""
+    start = max(d.rfind(sep, 0, m.start()) for sep in (",", ";", "(", ")")) + 1
+    ends = [i for i in (d.find(sep, m.end()) for sep in (",", ";", "(", ")")) if i != -1]
+    clause = re.sub(r"\s+", " ", d[start:min(ends) if ends else len(d)]).strip(" .")
+    clause = re.sub(r"^(?:and|&)\s+|\s+(?:and|&)$", "", clause).strip(" .")
+    low = re.sub(r"\s+", " ", str(desc)).lower()
+    i = low.find(clause)
+    if i != -1:
+        return re.sub(r"\s+", " ", str(desc))[i:i + len(clause)]
+    return clause
 
 def parse_page(html, house=False):
     """[(district_or_None, party, name, descriptor)] from primary-section <li> bullets."""

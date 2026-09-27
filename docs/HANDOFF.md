@@ -4,7 +4,47 @@ For the next agent. Read AGENTS.md first (architecture + rules), CONCERNS.md sec
 (risk register + roadmap). This file: what's mid-flight RIGHT NOW, what's most likely to
 break, and what to do next, in order.
 
-## CURRENT STATE 2026-09-25 (later, latest) - STALENESS + CROSS-SOURCE AUDIT
+> **PRIMARY MODELS FROZEN UNTIL 2028 (user decision 2026-09-25).** The 2026 primaries are over; the
+> primary nominee + primary margin artifacts stay as committed in aefe06f. Retrain only the win and
+> margin models for data fixes until the 2028 primary season.
+
+## CURRENT STATE 2026-09-25 (third pass, latest) - VARIABLE-BY-VARIABLE FACT CHECK
+
+Every model variable checked against an independent source.
+
+**Verified correct (no change):** PRES_PARTY; election-eve unemployment, CPI inflation, fed
+funds, gas, UMich sentiment, U-6, approval for all 14 cycles (vs BLS/FRED/Gallup published
+values); primary margins (Moreno +17.6, Oz +0.1, Fetterman +32.4, Vance +8.3 ...); natl_env
+(matches 538's 30-day October average - it is deliberately smoothed, so it reads R+3.7 for 2010
+while 538's final was R+6.7).
+
+**Fixed:**
+  - bio_office_level credited OTHER PEOPLE's offices: relatives ("grandson of former U.S.
+    Senator Paul Laxalt" -> Laxalt 4, really 3; Moreno 4 via his son-in-law; Mark Kelly 4 via
+    Gabby Giffords) and running mates ("Running mate: ... former state representative" -> Tudor
+    Dixon 2, really 0). classify() now strips relation clauses, running mates, "runner-up for"
+    (a loss) and "Governor's Office" (staff); it also gained statewide offices it missed
+    (auditor general, auditor of state, insurance commissioner, state controller).
+    `tools/repair_bio_relatives.py` re-classified the 164 descriptor rows that changed (never
+    hand-coded rows). candidate_bios.csv rebuilt - the committed copy predated its own inputs
+    (+1,648 hand-coded/Ballotpedia rows). Spot check vs known careers: 41/42 correct.
+  - fund_*_pct capped at 1: FEC bulk summaries list components above total receipts in 13
+    training rows (Coakley 2010: $15.1M individual vs $9.7M receipts).
+  - All four models retrained.
+
+**User decision (2026-09-25): senior APPOINTED federal posts count as federal = 4** (McCormick,
+Treasury under secretary; Sanders, press secretary). Applied consistently in classify(): U.S.
+attorneys (not assistant), ambassadors (not goodwill), cabinet / under / deputy / assistant
+secretaries of federal departments (not state posts - a state name before or "of <State>" after
+the title is rejected; bare "secretary of state" stays the STATE office), named federal agency
+heads (CFPB, OMB, EPA, SBA ...). Cabinet secretaries had read 3 (Napolitano, Sebelius, Perry).
+Also stripped: staff OF officials ("chief of staff to Governor X"), and clause ends are now "the
+candidate's own next office" (", former ..."), not every " and ". 181 rows changed in the second
+repair; spot check 46/46. 2024 monthly
+generic-ballot features are NaN - no per-poll source for 2023-24 survives (Wikipedia's 2024
+pages carry no poll table); natl_env 2024 itself exists.
+
+## CURRENT STATE 2026-09-25 (later) - STALENESS + CROSS-SOURCE AUDIT
 
 Second pass, same day: every input checked for freshness and against a live source.
 

@@ -1036,10 +1036,15 @@ def build_candidate_table(d, macro, natl_env_map, funds, house_train_years=None,
             rec = fe["receipts"] if fe else np.nan
             fund = dict(
                 fund_receipts_ln=(np.log1p(rec) if fe and rec > 0 else np.nan),
-                fund_indiv_pct=(fe["indiv"] / rec if fe and rec > 0 else np.nan),
-                fund_pac_pct=(fe["pac"] / rec if fe and rec > 0 else np.nan),
-                fund_party_pct=(fe["party"] / rec if fe and rec > 0 else np.nan),
-                fund_self_pct=(fe["self"] / rec if fe and rec > 0 else np.nan),
+                # shares CAPPED at 1 (2026-09-25): FEC's own bulk summaries sometimes list a
+                # component above total receipts (Coakley 2010: $15.1M individual vs $9.7M
+                # receipts; candidate loans above net receipts after repayment). 13 of ~3,300
+                # training rows read 1.1-1.75 - impossible as a share; the true split is not
+                # recoverable from the file, so the impossible value is bounded, not guessed.
+                fund_indiv_pct=(min(fe["indiv"] / rec, 1.0) if fe and rec > 0 else np.nan),
+                fund_pac_pct=(min(fe["pac"] / rec, 1.0) if fe and rec > 0 else np.nan),
+                fund_party_pct=(min(fe["party"] / rec, 1.0) if fe and rec > 0 else np.nan),
+                fund_self_pct=(min(fe["self"] / rec, 1.0) if fe and rec > 0 else np.nan),
                 fund_smalldollar_pct=(fe.get("small", np.nan) if fe else np.nan),
                 _fund_receipts=(rec if fe else np.nan),
             ) if fec is not None else {}

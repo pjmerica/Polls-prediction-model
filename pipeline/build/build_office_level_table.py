@@ -34,6 +34,7 @@ import pandas as pd
 
 import features as F
 from fetch_candidate_bios_ballotpedia import classify_ballotpedia
+from fetch_candidate_bios import classify_evidence
 
 
 
@@ -53,6 +54,28 @@ def _bp_asof_level(offices, year):
               if start is not None and start < year]
     return max(levels) if levels else 0
 
+def _bp_asof_evidence(offices, year, level):
+    """The office(s), with tenure, that give `level` as of `year` - the `office_evidence` for a
+    Ballotpedia / hand-coded row (2026-09-25)."""
+    hits = [f"{phrase} ({start}-{end if end is not None else 'present'})"
+            for phrase, start, end in (offices or [])
+            if start is not None and start < year and classify_ballotpedia(phrase) == level]
+    return "; ".join(hits)
+
+
+def _wiki_evidence(r):
+    """`office_evidence` for a Wikipedia row: the descriptor clause that set its level."""
+    desc = "" if pd.isna(r.descriptor) else str(r.descriptor).strip()
+    src = f"[Wikipedia {int(r.year)} {r.office} race page]"
+    if not desc:
+        return (f"no descriptor - results-table row {src}" if int(r.office_level) == 0
+                else f"hand-coded level, no descriptor [{r.src}]")
+    lvl, ev = classify_evidence(desc, r.office)
+    if lvl != int(r.office_level):
+        return f"hand-set level {int(r.office_level)}; descriptor: {desc[:160]} {src}"
+    return f"{ev} {src}" if lvl > 0 else f"no office named in the bio {src}"
+
+
 def main():
     # ---- Wikipedia: already per-year contemporaneous, used as-is ----
     wiki_frames = []
@@ -71,6 +94,7 @@ def main():
     KEY = ["year", "office", "state", "district", "party", "cand_key"]
     wiki["district"] = wiki["district"].fillna("").astype(str).str.replace(r"\.0$", "", regex=True)
     wiki_keys = set(map(tuple, wiki[KEY].astype(str).values))
+    wiki["office_evidence"] = [_wiki_evidence(r) for r in wiki.itertuples()]
     # Wikipedia level per key - needed so a Ballotpedia row with a REAL level can override a
     # Wikipedia row that reads 0 ONLY because it came from a results TABLE (blank descriptor,
     # no prior-office info). Found 2026-07-27: Schumer 1998 / Carper 2000 had level-0 Wikipedia
@@ -99,6 +123,8 @@ def main():
             except (json.JSONDecodeError, TypeError):
                 off_map[(r.candidate, r.state)] = []
         prior_map = {(r.candidate, r.state): getattr(r, "bio_prior_candidacy", 0) for r in bp.itertuples()}
+        ref_map = {(r.candidate, r.state): f"Ballotpedia: {getattr(r, 'src_url', '')}"
+                   for r in bp.itertuples()}
         # MANUAL hardcode (Stage 3, 2026-07-27): data/candidate_bios_manual.csv carries the same
         # person-level offices_json (tenure dates) for winners that neither Wikipedia nor
         # Ballotpedia covered - researched by hand with source_note. Merged into off_map so the
@@ -113,6 +139,7 @@ def main():
                 try:
                     off_map[(r.candidate, r.state)] = json.loads(getattr(r, "offices_json", "[]") or "[]")
                     manual_keys.add((r.candidate, r.state))
+                    ref_map[(r.candidate, r.state)] = f"hand-coded: {getattr(r, 'source_note', '')}"
                 except (json.JSONDecodeError, TypeError):
                     pass
             print(f"candidate_bios_manual.csv: {len(manual_keys)} hand-coded people merged")
@@ -181,7 +208,10 @@ def main():
                 party=r.party, name=r.candidate, cand_key=r.cand_key,
                 office_level=int(lvl), bio_in_office=0,
                 bio_prior_candidacy=int(prior_map.get(key, 0)),
-                src=("manual" if is_manual else "ballotpedia")))
+                src=("manual" if is_manual else "ballotpedia"),
+                office_evidence=((_bp_asof_evidence(off_map[key], int(r.year), int(lvl))
+                                  if lvl > 0 else f"verified: no office held before {int(r.year)}")
+                                 + f" [{ref_map.get(key, '')}]")))
         print(f"candidate_bios_ballotpedia.csv: {len(bp)} profiles -> {len(bp_rows)} "
               f"leak-free as-of-year rows (gap-filling; Wikipedia preferred)")
 
@@ -205,7 +235,8 @@ def main():
     for r in w.itertuples():
         if r.office_level <= 0:
             continue
-        fwd.setdefault((r.name, r.state), []).append((int(r.year), int(r.office_level)))
+        fwd.setdefault((r.name, r.state), []).append((int(r.year), int(r.office_level),
+                                                      r.office_evidence))
     # existing (key) coverage so we only FILL gaps, never overwrite a real row
     covered_lvl = {tuple(str(x) for x in (r.year, r.office, r.state, r.district, r.party, r.cand_key)):
                    r.office_level for r in combined.itertuples()}
@@ -219,10 +250,10 @@ def main():
         allraces["district"] = allraces["district"].fillna("").astype(str).str.replace(r"\.0$", "", regex=True)
         for r in allraces.itertuples():
             k = (r.candidate, r.state)
-            best = 0
-            for (y, l) in fwd.get(k, []):
-                if y <= r.year:            # office held by bio-year Y, race is in year >= Y
-                    best = max(best, l)
+            best, best_ev = 0, ""
+            for (y, l, ev) in fwd.get(k, []):
+                if y <= r.year and l > best:   # office held by bio-year Y, race is in year >= Y
+                    best, best_ev = l, ev
             if best <= 0:
                 continue
             rk = tuple(str(x) for x in (r.year, r.office, r.state, r.district, r.party, r.cand_key))
@@ -231,7 +262,8 @@ def main():
             xref_rows.append(dict(
                 year=r.year, office=r.office, state=r.state, district=r.district, party=r.party,
                 name=r.candidate, cand_key=r.cand_key, office_level=int(best),
-                bio_in_office=0, bio_prior_candidacy=0, src="wiki_xref"))
+                bio_in_office=0, bio_prior_candidacy=0, src="wiki_xref",
+                office_evidence=f"carried forward from the same person's earlier bio: {best_ev}"))
         combined = pd.concat([combined, pd.DataFrame(xref_rows)], ignore_index=True) if xref_rows else combined
         print(f"wikipedia self-cross-reference: {len(xref_rows)} gap rows "
               f"(forward office-persistence, leak-free)")
