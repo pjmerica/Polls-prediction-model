@@ -92,7 +92,28 @@ def load_result_lines(data_dir=None):
     return lines
 
 
-def aggregate_candidates(lines, verbose=False):
+def runoff_winners(data_dir=None):
+    """{(race_id, cand_key)} of candidates who won a same-seat general RUNOFF."""
+    import features as F
+    data_dir = data_dir or paths.DATA
+    out = set()
+    for fn, office in RESULT_FILES:
+        r = pd.read_csv(os.path.join(data_dir, fn), low_memory=False)
+        r = r[r["stage"].astype(str).str.lower().eq("runoff")
+              & r["winner"].astype(str).str.lower().isin(["true", "1"])]
+        for x in r.itertuples():
+            if not isinstance(x.candidate_name, str):
+                continue
+            special = str(x.special).lower() in ("true", "1")
+            if special and office == "House":
+                continue
+            di = F.pdist(x.office_seat_name) if office == "House" else ("S" if special else "")
+            rid = f"{int(x.cycle)}_{str(x.state_abbrev).upper()}_{office}" + (f"-{di}" if di else "")
+            out.add((rid, F.norm_name(x.candidate_name)))
+    return out
+
+
+def aggregate_candidates(lines, verbose=False, data_dir=None):
     """Ballot lines -> one row per (race_id, cand_key) with the candidate's TOTAL round-1 vote."""
     L = lines.copy()
     # RCV: keep each race's first round only (rows without a round number count as round 1)
@@ -117,6 +138,16 @@ def aggregate_candidates(lines, verbose=False):
         print(per[clash].sort_values(["race_id", "vote_pct"])
               [["race_id", "res_candidate", "res_party", "vote_pct", "won"]].to_string(index=False))
     per = per.drop_duplicates(["race_id", "cand_key"], keep="first")
+
+    # RUNOFF races (2026-09-29): `won` is WHO TOOK THE SEAT. The archive's November `winner`
+    # flag marks the first-round plurality leader, so 2020 GA-Sen read Perdue as the winner -
+    # Ossoff won the January runoff. Where a same-seat runoff exists, its winner is the winner.
+    # vote_pct stays first-round (the margin target), like an RCV come-from-behind win.
+    ro = runoff_winners(data_dir)
+    if ro:
+        in_ro = per["race_id"].isin({rid for rid, _ in ro})
+        per.loc[in_ro, "won"] = [int((rid, ck) in ro) for rid, ck in
+                                 zip(per.loc[in_ro, "race_id"], per.loc[in_ro, "cand_key"])]
 
     # race-level context on the aggregated field (NOT the polled subset)
     per["race_winning_pct"] = per.groupby("race_id")["vote_pct"].transform("max")

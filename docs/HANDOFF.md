@@ -4,6 +4,33 @@ For the next agent. Read AGENTS.md first (architecture + rules), CONCERNS.md sec
 (risk register + roadmap). This file: what's mid-flight RIGHT NOW, what's most likely to
 break, and what to do next, in order.
 
+## MODEL REVIEW 2026-09-29 - data-scientist critique (analysis/horizon_eval.py, analysis/ablation_35d.py)
+
+**Horizon (the live model is ~5 weeks out, training uses polls to election eve):** win model,
+expanding-window 2018-24. Eve: race-acc .874, Brier .067, favourite prob .875 vs won .874.
+35 days out: .850 / .078 / .860 vs .850. 60 days: .829 / .094 / .842 vs .829. Calibration holds
+across bins; only ~1 pt of overconfidence mid-campaign. Training on truncated history is WORSE
+(60d race-acc .719) - drop the "snapshot training" roadmap idea.
+
+**Value vs baselines at 35 days:** full model Brier .0779 vs poll-average softmax .0833 and a
+polls-only XGB .0862 - it does add value mid-campaign. Removing the 144 macro features hurts a
+little (.0799). Removing FUNDRAISING hurts Brier (.0812) but IMPROVES race-acc (.860 vs .851) -
+and the fund features are built from END-OF-CYCLE FEC totals (incl. post-election money) in
+training vs mid-cycle totals live, so their measured value is partly look-ahead. Fix: as-of-Sep-30
+per-report FEC totals (FEC API key is in .env).
+
+**Partisan polls:** DEM-sponsored polls run +2.5 pts D vs same-race nonpartisan polls (807),
+REP-sponsored -4.7 (612). Partisan share of poll rows: 16% pre-2018, 25% 2018-24, 33% live. The
+model treats all polls equally (rule 6); a sponsor-lean correction would be a bias fix, not
+weighting - user decision.
+
+**Label fix:** runoff races - `won` is who took the seat. 2020 GA-Sen had Perdue (Nov plurality)
+as the winner; Ossoff won the runoff. Only race affected. Win model retrained.
+
+**Caveats that stay:** only 4 eval cycles (race-acc differences under ~1.5 pts are noise);
+probabilities are per-race independent (no correlated national error - see bias_fragile);
+tuning selects on AUC, not log loss (calibration is fine in practice).
+
 > **PRIMARY MODELS FROZEN UNTIL 2028 (user decision 2026-09-25).** The 2026 primaries are over; the
 > primary nominee + primary margin artifacts stay as committed in aefe06f. Retrain only the win and
 > margin models for data fixes until the 2028 primary season.
