@@ -25,6 +25,17 @@ FEC API traps (all hit while building it - keep them):
 `poll_avg_/poll_lead_{dpoll,rpoll,npoll}` + `n_polls_{dpoll,rpoll}` (features.SPONSOR_FEATS).
 predict.py now carries `partisan` through to the live table.
 
+## 2026-10-02 - margin model horizon + bias test (analysis/margin_horizon_eval.py)
+
+Honest expanding-window MAE, 2018-24, test polls truncated as the live model sees them:
+eve 4.66 (calibrated poll 6.22) | 35 days 5.01 (6.42) | 60 days 5.45 (6.43). Beats polls by
+~1.4 pts mid-campaign; winner-sign accuracy .905 / .895 / .863.
+Signed bias is CYCLE-WIDE, not random: model overstated Dems / understated Reps by ~+3.7/-4.6
+pts in 2020 and +2.6/-2.7 in 2024, understated Dems -2.4 in 2018 (35-day numbers similar). These
+are the national polling misses - shared by every race in a cycle, not learnable in advance
+(bias_prior uses past cycles only). Margins are therefore NOT independent across races: a
+cycle-level +/-3 pt swing moves them all together (same reason the win tab has bias_fragile).
+
 ## MODEL REVIEW 2026-09-29 - data-scientist critique (analysis/horizon_eval.py, analysis/ablation_35d.py)
 
 **Horizon (the live model is ~5 weeks out, training uses polls to election eve):** win model,
