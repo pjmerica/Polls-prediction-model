@@ -4,6 +4,27 @@ For the next agent. Read AGENTS.md first (architecture + rules), CONCERNS.md sec
 (risk register + roadmap). This file: what's mid-flight RIGHT NOW, what's most likely to
 break, and what to do next, in order.
 
+## 2026-10-01 - as-of-Sep-30 money + sponsor-split poll features (win + margin retrained)
+
+**Fundraising without look-ahead.** `pipeline/fetch/fetch_fec_asof.py` -> `data/fec_asof.csv`:
+money raised through Sep 30 of the election year (live 2026: latest of Q2/Q3 until Q3 is filed,
+due Oct 15 - RE-RUN after Oct 15). `load_fec` uses it for every amount; fec_summary only supplies
+identity. No as-of report -> NaN (1998-2000: the FEC API has no report data; Senate before 2018:
+paper filings were never loaded). FollowTheMoney governor totals (year-end, 1998-2002 only) and
+the end-of-cycle fec_detail itemized share are no longer used. Validated: Ossoff 2020 $28.7M
+(his filed cycle-to-date), median as-of/year-end 0.89, steady across cycles.
+FEC API traps (all hit while building it - keep them):
+  - `report_year` is silently IGNORED; the filter is `year`.
+  - Paging must sort on a UNIQUE key (`beginning_image_number`); sorting on coverage_end_date
+    (thousands tie at Sep 30) skipped/duplicated up to 15% of reports.
+  - Form 3 `*_ytd` columns are CYCLE-TO-DATE (6 years for a Senate committee), so the Q3 report
+    alone is the as-of total - never add the off-year year-end to it.
+  - Never `raise_for_status()`: its message prints the URL with the API key.
+
+**Sponsor-split polls (user: "let the model decide").** No correction of partisan polls; instead
+`poll_avg_/poll_lead_{dpoll,rpoll,npoll}` + `n_polls_{dpoll,rpoll}` (features.SPONSOR_FEATS).
+predict.py now carries `partisan` through to the live table.
+
 ## MODEL REVIEW 2026-09-29 - data-scientist critique (analysis/horizon_eval.py, analysis/ablation_35d.py)
 
 **Horizon (the live model is ~5 weeks out, training uses polls to election eve):** win model,

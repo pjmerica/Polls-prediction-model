@@ -534,11 +534,35 @@ def load_fec(path=None, extended=False):
         by_id[(r.cycle, r.cand_id)] = k
         by_race.setdefault(k[:4], []).append((_name_tokens(r.cand_name), npar(r.party), k))
     out["__by_race__"] = by_race
+
+    # AS-OF-SEPTEMBER-30 MONEY (2026-10-01). fec_summary.csv is END-OF-CYCLE and includes money
+    # raised AFTER the election (Ossoff 2020: ~$128M after Sep 30 vs ~$27M before), which the
+    # live model never sees - look-ahead in every fund_* feature. When data/fec_asof.csv exists
+    # (pipeline/fetch/fetch_fec_asof.py: off-year year-end + election-year Q3 YTD), it REPLACES
+    # the amounts; fec_summary still supplies identity (names, keys, matching). A candidate with
+    # no as-of report (e.g. 1998-2000, before the FEC API has report data) gets UNKNOWN (NaN)
+    # money - never the leaky year-end figure.
+    asof_path = os.path.join(DATA_DIR, "fec_asof.csv")
+    asof_mode = os.path.exists(asof_path)
+    if asof_mode:
+        a = pd.read_csv(asof_path)
+        av = {(int(r.cycle), r.cand_id): r for r in a.itertuples()}
+        for (cyc, cid), k in by_id.items():
+            r = av.get((cyc, cid))
+            if r is None:
+                out[k] = dict(receipts=np.nan, indiv=np.nan, pac=np.nan, party=np.nan,
+                              self=np.nan, small=np.nan)
+                continue
+            indiv = float(r.indiv_contrib)
+            out[k] = dict(receipts=float(r.receipts), indiv=indiv, pac=float(r.pac_contrib),
+                          party=float(r.party_contrib), self=float(r.self_fund),
+                          small=(float(np.clip(1 - r.indiv_itemized / indiv, 0, 1))
+                                 if indiv > 0 else np.nan))
     if not extended:
         return out
 
     det_path = os.path.join(DATA_DIR, "fec_detail.csv")
-    if os.path.exists(det_path):
+    if os.path.exists(det_path) and not asof_mode:     # end-of-cycle itemized: leaky
         det = pd.read_csv(det_path)
         itemized = det.groupby(["cycle", "cand_id"])["indiv_itemized"].max()
         for (cyc, cid), item in itemized.items():
@@ -547,7 +571,9 @@ def load_fec(path=None, extended=False):
                 out[k]["small"] = float(np.clip(1 - item / out[k]["indiv"], 0, 1))
 
     gov_path = os.path.join(DATA_DIR, "governor_finance.csv")
-    if os.path.exists(gov_path):
+    # FollowTheMoney governor totals are FULL-CYCLE (same look-ahead) and exist only for
+    # 1998-2002 with nothing at serve time - skipped in as-of mode rather than kept leaky.
+    if os.path.exists(gov_path) and not asof_mode:
         g = pd.read_csv(gov_path)
         g["cand_key"] = g["cand_name"].map(fec_cand_key)
         g = g.sort_values("receipts", ascending=False).drop_duplicates(
@@ -1065,6 +1091,12 @@ def build_candidate_table(d, macro, natl_env_map, funds, house_train_years=None,
                 best_other_pct=(pd.to_numeric(gc["best_other_pct"], errors="coerce").iloc[0]
                                 if "best_other_pct" in gc.columns else np.nan),
                 poll_avg=gc["pct"].mean(),
+                # SPONSOR-SPLIT averages (2026-10-01, user request: "let the model decide").
+                # Dem-sponsored polls run ~+2.5 pts D and Rep-sponsored ~-4.7 vs same-race
+                # nonpartisan polls (2018-24), and partisan polls are 33% of the live feed vs
+                # 16% pre-2018. No correction is applied - the model gets each source apart.
+                # NaN when a candidate has no polls of that kind (never 0).
+                **_sponsor_split(gc),
                 poll_last=(dated["pct"].iloc[-1] if len(dated) else gc["pct"].mean()),
                 poll_last30=(last30["pct"].mean() if len(last30) else gc["pct"].mean()),
                 # final-week average (2026-07-31), mirroring features_primary. Unlike
@@ -1170,6 +1202,12 @@ def build_candidate_table(d, macro, natl_env_map, funds, house_train_years=None,
         # the request was really about, and the only one of the set that is purely relative.
         c["primary_margin_diff"] = c["primary_margin"] - c["opp_primary_margin"]
 
+    # lead within each sponsor class: this candidate's class average minus the best OTHER
+    # candidate's average in the SAME class (NaN when either side has none of that kind)
+    for k in ("dpoll", "rpoll", "npoll"):
+        if f"poll_avg_{k}" in c.columns:
+            c[f"poll_lead_{k}"] = c[f"poll_avg_{k}"] - c.groupby("race_id")[
+                f"poll_avg_{k}"].transform(best_other)
     c["poll_share"] = c["poll_avg"] / c.groupby("race_id")["poll_avg"].transform("sum")
     c["n_cands"] = c.groupby("race_id")["cand_key"].transform("count")
     c["race_total_polls"] = c.groupby("race_id")["n_polls"].transform("sum")
@@ -1190,6 +1228,36 @@ def build_candidate_table(d, macro, natl_env_map, funds, house_train_years=None,
     c["undecided_q"] = c["race_id"].map(undecided_per_question(d))
     c["gap_x_recency"] = c["poll_lead"] * (1.0 / (1.0 + c["min_days"].clip(lower=0) / 30.0))
     return c
+
+def sponsor_class(p):
+    """Poll sponsor -> 'D' (Dem-sponsored), 'R' (Rep-sponsored) or 'N' (nonpartisan / other).
+    Feeds spell it 'DEM'/'REP' (NYT, 538) or 'D'/'R' (Wikipedia); 'REP,REF' is Rep-led; a joint
+    'DEM,REP' or a third-party sponsor counts as N."""
+    s = str(p).strip().upper()
+    if s in ("", "NAN", "NONE") or "," in s and not s.startswith("REP,REF"):
+        return "N"
+    if s.startswith("DEM") or s == "D":
+        return "D"
+    if s.startswith("REP") or s == "R":
+        return "R"
+    return "N"
+
+
+def _sponsor_split(gc):
+    if "partisan" not in gc.columns:
+        return dict(poll_avg_dpoll=np.nan, poll_avg_rpoll=np.nan, poll_avg_npoll=np.nan,
+                    n_polls_dpoll=0, n_polls_rpoll=0)
+    cls = gc["partisan"].map(sponsor_class)
+    pct = gc["pct"]
+    return dict(poll_avg_dpoll=pct[cls == "D"].mean(), poll_avg_rpoll=pct[cls == "R"].mean(),
+                poll_avg_npoll=pct[cls == "N"].mean(),
+                n_polls_dpoll=int((cls == "D").sum()), n_polls_rpoll=int((cls == "R").sum()))
+
+
+SPONSOR_FEATS = ["poll_avg_dpoll", "poll_avg_rpoll", "poll_avg_npoll",
+                 "poll_lead_dpoll", "poll_lead_rpoll", "poll_lead_npoll",
+                 "n_polls_dpoll", "n_polls_rpoll"]
+
 
 def feature_list(macro_feats, fund=False, primary_results=False, candidate_bios=False):
     """The model's input columns. Everything here is available for future races.
@@ -1242,4 +1310,4 @@ def feature_list(macro_feats, fund=False, primary_results=False, candidate_bios=
         "n_lead_changes", "lead_changed",
         "avg_margin_over_time", "margin_volatility", "min_margin", "margin_trend",
         "is_president_party",
-    ] + list(macro_feats)
+    ] + SPONSOR_FEATS + list(macro_feats)   # sponsor-split averages: 2026-10-01

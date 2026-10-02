@@ -51,6 +51,7 @@ data/*
 !data/generic_ballot_monthly.csv
 !data/fec_summary.csv
 !data/fec_detail.csv
+!data/fec_asof.csv
 !data/governor_finance.csv
 !data/district_pvi_current.csv
 !data/redistricted_2026.csv

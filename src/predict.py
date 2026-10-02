@@ -104,6 +104,9 @@ def load_agg_polls(paths, cycle):
         "end_date": raw["end_date"],
         "sample_size": pd.to_numeric(raw["sample_size"], errors="coerce"),
         "pollster": raw["pollster"],
+        # poll SPONSOR (DEM/REP or D/R) -> the sponsor-split features (2026-10-01). Must ride
+        # through here or the live table gets NaN for features the artifact was trained on.
+        "partisan": raw.get("partisan"),
         "poll_id": raw.get("poll_id"),
         # question_id separates the MATCHUPS inside one poll. A single survey routinely
         # tests several hypothetical pairings (Glengariff 2025-05-08 tested five), and
