@@ -48,6 +48,23 @@ def _race_id(year, state, office, district):
             + district.radd("-").where(district != "", ""))
 
 
+def is_general_stage(r):
+    """Rows that ARE the general election (2026-10-06). 538 labels Louisiana's November
+    election - its real general, decided outright at 50%+ or by a December runoff - as
+    'jungle primary', and the same for the November jungle round of Senate SPECIALS (GA 2000-S,
+    GA 2020-S, MS 2018-S). Keeping only 'general' dropped every LA Senate/House race since 2012
+    (no labels, prior margins or incumbency) and made Warnock 2022 / Hyde-Smith 2020 read as
+    non-incumbents. The runoff winner still overrides `won` (runoff_winners), exactly as for
+    Georgia's regular-election runoffs; vote shares are the November round. CA/WA top-two
+    primaries are labelled differently and are NOT matched here. House specials are dropped
+    downstream regardless."""
+    st = r["stage"].astype(str).str.lower()
+    jungle = st.eq("jungle primary") & (
+        r["state_abbrev"].astype(str).str.upper().eq("LA")
+        | r["special"].astype(str).str.lower().isin(["true", "1"]))
+    return st.str.contains("general", na=False) | jungle
+
+
 def load_result_lines(data_dir=None):
     """Every general-election ballot line, one row each, with a race_id matching the polls'."""
     import features as F   # lazy: features imports this module inside load_fundamentals
@@ -55,7 +72,7 @@ def load_result_lines(data_dir=None):
     frames = []
     for fn, office in RESULT_FILES:
         r = pd.read_csv(os.path.join(data_dir, fn), low_memory=False)
-        r = r[r["stage"].astype(str).str.lower().str.contains("general", na=False)]
+        r = r[is_general_stage(r)]
         special = r["special"].astype(str).str.lower().isin(["true", "1"])
         out = pd.DataFrame({
             "year": pd.to_numeric(r["cycle"], errors="coerce"),
@@ -90,6 +107,36 @@ def load_result_lines(data_dir=None):
     lines["race_id"] = _race_id(lines["year"], lines["state"], lines["office"],
                                 lines["district"])
     return lines
+
+
+def jungle_runoff_margins(data_dir=None):
+    """{(year, state, office, district): DEM-minus-REP margin of the RUNOFF} for races whose
+    November round was a jungle (2026-10-06). A jungle first round splits each party across
+    several candidates (LA-Sen 2014: Landrieu 42.1 / Cassidy 41.0 / Maness 13.8), so its best-D
+    minus best-R reads D+1.1 for a seat Cassidy won 56-44 in the runoff. Prior-margin use only;
+    labels keep the November round. Only D-vs-R runoffs."""
+    import features as F
+    data_dir = data_dir or paths.DATA
+    out = {}
+    for fn, office in RESULT_FILES:
+        r = pd.read_csv(os.path.join(data_dir, fn), low_memory=False)
+        special = r["special"].astype(str).str.lower().isin(["true", "1"])
+        r = r.assign(jdi=[("S" if sp else "") if office != "House" else F.pdist(x)
+                          for sp, x in zip(special, r["office_seat_name"])],
+                     jp=r["ballot_party"].map(F.npar),
+                     jpct=pd.to_numeric(r["percent"], errors="coerce"))
+        r = r[~(special & (office == "House"))]
+        st = r["stage"].astype(str).str.lower()
+        jungle = {(int(x.cycle), str(x.state_abbrev).upper(), office, x.jdi)
+                  for x in r[st.eq("jungle primary")].itertuples()}
+        ro = r[st.eq("runoff")]
+        for k, g in ro.groupby([ro["cycle"].astype(int), ro["state_abbrev"].astype(str).str.upper(),
+                                ro["jdi"]]):
+            kk = (k[0], k[1], office, k[2])
+            d = g.loc[g["jp"] == "DEM", "jpct"].max(); rp = g.loc[g["jp"] == "REP", "jpct"].max()
+            if kk in jungle and pd.notna(d) and pd.notna(rp):
+                out[kk] = d - rp
+    return out
 
 
 def runoff_winners(data_dir=None):

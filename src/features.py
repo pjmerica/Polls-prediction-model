@@ -319,6 +319,9 @@ def load_fundamentals():
             piv[col] = np.nan
     piv["margin"] = piv["DEM"].fillna(0) - piv["REP"].fillna(0)
     margin_map = {idx: row.margin for idx, row in piv.iterrows()}
+    # a jungle November round that went to a D-vs-R runoff: the runoff is the seat's real
+    # margin (2026-10-06, see RL.jungle_runoff_margins)
+    margin_map.update(RL.jungle_runoff_margins(DATA_DIR))
 
     # GENERAL-ELECTION WINNERS per (state, office) -> [(year, surname, party)] for PERSONAL
     # incumbency (2026-10-02). Specials included ('S' district) - a special winner is the
@@ -1247,7 +1250,9 @@ def build_candidate_table(d, macro, natl_env_map, funds, house_train_years=None,
                 n_polls_over50=int((gc["pct"] > 50).sum()),
                 avg_sample=gc["sample_size"].mean(),
                 min_days=gc["days_to_elec"].min(),
-                prior_margin_cand=(sign * pm if not (isinstance(pm, float) and np.isnan(pm)) else np.nan),
+                # third-party rows: NaN, not sign 0 x margin = 0.0 ("the seat was tied")
+                prior_margin_cand=(sign * pm if sign != 0 and not (isinstance(pm, float)
+                                                                   and np.isnan(pm)) else np.nan),
                 # unknown incumbency = NaN (missing), never a silent 0
                 is_incumbent=((1 if incp == party else 0) if incp in ("DEM", "REP") else np.nan),
                 is_inc_party_race=(1 if incp in ("DEM", "REP") else 0),

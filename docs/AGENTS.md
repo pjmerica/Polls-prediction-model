@@ -121,6 +121,7 @@ feature builder used by training AND prediction — never fork feature logic out
    `candidate_party_overrides.csv` (model_party vs display_party) + predict.py.
 
 ## TRAPS (don't repeat)
+- **`stage == "jungle primary"` is a GENERAL for Louisiana and for Senate-special November rounds** (GA 2000-S/2020-S, MS 2018-S); raw_polls types LA's November election `-P`. Filtering on `general` alone dropped every LA race since 2012 (2026-10-06). Use `results_labels.is_general_stage`. CA/WA top-two primaries are a different stage and stay out. LA HOUSE 2026 is a jungle again (Nov 3 + Dec 12 runoff).
 - **Run nbconvert executions ONE AT A TIME** — concurrent runs race and overwrite outputs.
 - **Clear `__pycache__` when helper modules change.**
 - CSV round-trips turn House districts into floats (`'1'`→`1.0`) — `features.dist_str`

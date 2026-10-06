@@ -4,6 +4,42 @@ For the next agent. Read AGENTS.md first (architecture + rules), CONCERNS.md sec
 (risk register + roadmap). This file: what's mid-flight RIGHT NOW, what's most likely to
 break, and what to do next, in order.
 
+## 2026-10-06 - Louisiana + Senate-special jungle elections were missing (win + margin retrained)
+
+**Bug.** 538 labels Louisiana's November election - its real general, decided at 50%+ or by a
+December runoff - as `stage == 'jungle primary'`, and likewise the November round of the GA
+2000-S / GA 2020-S / MS 2018-S Senate specials. Every results loader kept only `general`, so:
+every LA Senate/House race since 2012 had no labels, no prior margin and no incumbency; LA polls
+never entered training (pre-2018 raw_polls also types LA's November election '-P'); Warnock 2022
+and Hyde-Smith 2020 read as non-incumbents (their special wins were invisible).
+
+**Fix.** `results_labels.is_general_stage` (results side: LA + non-House specials);
+`build_dataset.ipynb` applies the same rule to the results and to the 2018+ poll files (LA, and
+Senate jungle polls, which the seat-class step keys to the special), and maps raw_polls LA '-P'
+races whose election date IS the November general day (excludes LA's 2008-10 closed primaries).
+`won` is still the runoff winner (runoff_winners), vote shares the November round - same design
+as Georgia's runoffs. Prior margin for a jungle that went to a D-v-R runoff uses the RUNOFF
+(`RL.jungle_runoff_margins`: LA-Sen 2014 read D+1.1 from the split first round; Cassidy won the
+runoff by 11.9). Third-party `prior_margin_cand` is now NaN (was 0.0 = "tied").
+Dataset diff: +516 poll rows / 22 LA races + GA-S 2020 + MS-S 2018, 0 label changes on existing
+rows, 8 junk "Don't know" 2026 rows dropped (junk regex extended earlier).
+
+**Result.** Win Brier .066 -> .064 (race-acc .878); margin MAE 4.88 on a harder eval set (adds the
+25-candidate GA-S 2020 jungle; calibrated-poll baseline 6.22 -> 6.29, the gap is unchanged at
+1.4). LA-Sen 2026 Dem prob 22% -> ~10% (markets ~5%). 35 days out: win Brier .073 -> .072, race-acc .855 -> .860; margin 5.22 vs calibrated poll 6.50.
+
+**2026 Louisiana HOUSE is a jungle again** (verified 2026-10-06: Landry cancelled the May closed
+primaries after Louisiana v. Callais; all-party Nov 3 round, top-two Dec 12 runoff). The model
+treats it like the historical LA jungles, but with ~25 LA training races it cannot price a split
+field: LA-6 reads 62% for a Democrat leading a split GOP field in a seat redrawn for Republicans.
+polling-agg uses the market price for LA House (Dashboard + Model-vs-Markets). LA-SENATE had its
+closed primaries (May 16 / runoff June 27): Letlow v Davis on Nov 3 is a normal general.
+
+**Open: Alaska RCV.** AK-Gov reads 91% Dem from Kreiss-Tomkins' first-round lead over three split
+Republicans; head-to-heads vs Wilson are 52-48 / 55-45. RCV races are trained on the first round
+(design choice) - decide whether to feed final-round head-to-heads for RCV states.
+Also open: races.csv AZ-Gov 2010 incumbent party (DEM at cycle start; Brewer R on election day).
+
 ## 2026-10-02 (later) - new feature batch + data fixes (win + margin retrained)
 
 **Features (user request; src/features.py, `NEW_FEATS_1002` + two fund columns):**
