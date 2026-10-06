@@ -4,6 +4,41 @@ For the next agent. Read AGENTS.md first (architecture + rules), CONCERNS.md sec
 (risk register + roadmap). This file: what's mid-flight RIGHT NOW, what's most likely to
 break, and what to do next, in order.
 
+## 2026-10-02 (later) - new feature batch + data fixes (win + margin retrained)
+
+**Features (user request; src/features.py, `NEW_FEATS_1002` + two fund columns):**
+`is_personal_inc` / `open_seat` (this PERSON holds the seat: same surname + party + compatible
+given name won within one term, House any district of the state; plus hand-curated
+`data/appointed_incumbents.csv` for appointees/successors on their first ballot - Moody, Husted,
+Darline Graham 2026), `pres_lean_cand` (state presidential margin minus national, last election
+strictly before, `data/res_president.csv` from 538), `poll_avg_rw` / `poll_lead_rw` (14-day
+half-life from the race's freshest poll), `pollster_sd` / `n_pollsters`, `midterm_pres_party`
+and `midterm_approval_cand` (= is_midterm x +1/-1 vs the president's party x (approval_eve-50),
+the user's approval-weighted midterm term), `fund_cash_share` / `fund_spend_share` (fec_asof.csv
+now carries `cash_on_hand` + `disbursements`; negative cash = overdraft filings, floored at 0).
+
+**Per-model ablation** (expanding-window 2018-24, 3 seeds, params held fixed) decided what each
+model keeps: WIN drops the recency-weighted pair (`F.WIN_EXCLUDE`: Brier .0662 -> .0645, race-acc
+.866 -> .884 without it, even though it ranked #1 by gain); MARGIN drops the midterm pair
+(`F.MARGIN_EXCLUDE`: MAE 4.710 -> 4.645). Presidential lean is the clearest win-model gain
+(Brier .0698 without it). The first margin retrain looked WORSE (4.66 -> 4.80) only because the
+nested tuner switched hyperparameters; with fixed params the new features improved it (4.78 ->
+4.71). The tuner's choice was not overridden.
+
+**Data fixes in the same commit:** House `prior_margin` is NaN across a redistricting
+(`_last_redraw`; measured effect on MAE: noise, kept as a correctness fix); predict.py drops
+candidates not on the general ballot (lost a decided primary); WA-5 dropouts; Brewer AZ-Gov 2010
+reads `is_incumbent`=0 because races.csv lists the incumbent party at the cycle start (DEM) - noted,
+not changed.
+
+**Final honest metrics:** WIN (expanding-window 2018-24) Brier .071 -> .066, race-acc .866 ->
+.878; at 35 days out Brier .0798 -> .073, race-acc .853 -> .855 (poll softmax .083). MARGIN MAE
+4.66 -> 4.81 (35d 5.01 -> 5.12; calibrated poll 6.22 / 6.42) - the tuner picked new params twice
+(1998-2016 MAE improved 5.72 -> 5.54); with the old params held fixed the same features score 4.65.
+Not overridden (choosing params on the eval cycles would leak), but if margin keeps trailing,
+re-examine the tuning grid / seed variance rather than the features. Top new features (win, gain
+rank): pres_lean_cand 8, fund_cash_share 10, is_personal_inc 13, midterm_approval_cand 18.
+
 ## 2026-10-01 - as-of-Sep-30 money + sponsor-split poll features (win + margin retrained)
 
 **Fundraising without look-ahead.** `pipeline/fetch/fetch_fec_asof.py` -> `data/fec_asof.csv`:

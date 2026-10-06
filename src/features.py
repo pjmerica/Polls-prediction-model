@@ -319,11 +319,119 @@ def load_fundamentals():
             piv[col] = np.nan
     piv["margin"] = piv["DEM"].fillna(0) - piv["REP"].fillna(0)
     margin_map = {idx: row.margin for idx, row in piv.iterrows()}
-    return dict(inc_map=inc_map, margin_map=margin_map)
+
+    # GENERAL-ELECTION WINNERS per (state, office) -> [(year, surname, party)] for PERSONAL
+    # incumbency (2026-10-02). Specials included ('S' district) - a special winner is the
+    # sitting member at the next regular election.
+    winners = {}
+    w = allres[allres["won"] == 1]
+    for r in w.itertuples():
+        # full name tokens kept so the poll's given name can be checked: 'Jon' / 'Ned' match
+        # 'T. Jonathan Ossoff' / 'Edward Lamont', a same-surname relative ('Darline' vs
+        # 'Lindsey Graham', SC 2026) does not
+        winners.setdefault((r.state, r.office), []).append(
+            (int(r.cycle), str(r.cand_key).split(" ")[0], r.p, _name_tokens(r.res_candidate)))
+    # APPOINTED / SUCCEEDED sitting officeholders running for the first time (hand-curated,
+    # data/appointed_incumbents.csv) - they never won the seat, so the results table alone
+    # reads them as challengers (Moody, Husted, Graham 2026; Loeffler, Tina Smith earlier)
+    appointed = set()
+    ap = os.path.join(DATA_DIR, "appointed_incumbents.csv")
+    if os.path.exists(ap):
+        for r in pd.read_csv(ap).itertuples():
+            appointed.add((int(r.year), r.state, r.office, r.surname, r.party))
+    return dict(inc_map=inc_map, margin_map=margin_map, winners=winners,
+                appointed=appointed, pres_lean=load_pres_lean())
+
+
+def load_pres_lean():
+    """{(cycle, state): DEM-minus-REP presidential margin in the state MINUS the national margin}
+    (2026-10-02) - a Cook-PVI-style partisan lean, in points. From data/res_president.csv (538
+    election-results, cycles 2000-2024). Fusion lines are summed per candidate (NY: Harris DEM +
+    WFP, Trump REP + CRV); ME/NE congressional-district rows and PR are excluded. National
+    margin = votes summed over the 50 states + DC. {} if the file is missing."""
+    path = os.path.join(DATA_DIR, "res_president.csv")
+    if not os.path.exists(path):
+        return {}
+    p = pd.read_csv(path, low_memory=False)
+    p = p[(p["stage"] == "general") & p["state_abbrev"].notna()
+          & ~p["state_abbrev"].isin(["M1", "M2", "N1", "N2", "N3", "PR"])
+          & p["candidate_name"].notna()].copy()
+    p["votes"] = pd.to_numeric(p["votes"], errors="coerce").fillna(0)
+    out = {}
+    for cyc, g in p.groupby("cycle"):
+        noms = {}
+        for party in ("DEM", "REP"):
+            gp = g[g["ballot_party"] == party]
+            if len(gp):
+                noms[party] = gp.groupby("candidate_name")["votes"].sum().idxmax()
+        if len(noms) < 2:
+            continue
+        by = g.groupby(["state_abbrev", "candidate_name"])["votes"].sum()
+        tot = g.groupby("state_abbrev")["votes"].sum()
+        d = by.xs(noms["DEM"], level="candidate_name").reindex(tot.index).fillna(0)
+        r = by.xs(noms["REP"], level="candidate_name").reindex(tot.index).fillna(0)
+        nat = 100 * (d.sum() - r.sum()) / tot.sum()
+        for st in tot.index:
+            if tot[st] > 0:
+                out[(int(cyc), st)] = 100 * (d[st] - r[st]) / tot[st] - nat
+    return out
+
+
+def pres_lean_asof(pres_lean, year, state):
+    """Lean from the most recent presidential election STRICTLY before `year` (leak-free: a
+    presidential-year race never sees its own presidential result). NaN if none."""
+    for back in (2, 4):
+        if (year - back) % 4 == 0:
+            v = pres_lean.get((year - back, state))
+            return np.nan if v is None else v
+    return np.nan
+
+
+# how far back a sitting officeholder's last general win can be: one full term
+_TERM_YEARS = {"Senate": 6, "Governor": 4, "House": 2}
+
+
+def personal_incumbent(winners, year, state, office, cand_key, party, name=None, appointed=()):
+    """1 if this candidate (same surname + party) won a general for this office in this state
+    within one term before `year`, else 0 (2026-10-02). House looks at ANY district of the
+    state so members renumbered by a redraw still count. Appointed incumbents who never won
+    (e.g. an appointed senator's first race) read 0 - is_incumbent (party level) still has them.
+    NaN when there are no results at all for this state/office in the window (unknown)."""
+    lst = winners.get((state, office))
+    if lst is None:
+        return np.nan
+    sn = str(cand_key).split(" ")[0]
+    if (year, state, office, sn, party) in appointed:
+        return 1
+    span = [x for x in lst if year - _TERM_YEARS[office] <= x[0] < year]
+    if not span:
+        return np.nan
+    return int(any(s == sn and p == party
+                   and (name is None or _first_names_compatible(name, toks, sn))
+                   for _, s, p, toks in span))
+
+# House maps redrawn: the first election year on each new map. A House district NUMBER means a
+# different place across a redraw, so a prior margin may only come from an election held on the
+# CURRENT map (2026-10-02). Measured: corr(prior_margin, actual margin) was .41/.51/.48 in 2002/
+# 2012/2022 vs .70/.74/.73 the cycle after. Decennial redraws apply to every state; mid-decade
+# redraws listed by state. 2026's redraws are handled at predict time (patch_redistricted_priors).
+_DECENNIAL_REDRAW = (2002, 2012, 2022)
+_MIDDECADE_REDRAW = {"TX": (2004,), "GA": (2006, 2024), "FL": (2016,), "NC": (2016, 2020, 2024),
+                     "VA": (2016,), "PA": (2018,), "AL": (2024,), "LA": (2024,), "NY": (2024,)}
+
+
+def _last_redraw(state, year):
+    yrs = [y for y in _DECENNIAL_REDRAW + _MIDDECADE_REDRAW.get(state, ()) if y <= year]
+    return max(yrs) if yrs else None
+
 
 def prior_margin(margin_map, year, state, office, district):
-    """Most recent same-office two-party margin strictly BEFORE `year` (leak-free)."""
+    """Most recent same-office two-party margin strictly BEFORE `year` (leak-free). For the House,
+    only from an election held on the same district map (NaN across a redraw)."""
+    floor = _last_redraw(state, year) if office == "House" else None
     for back in range(2, 9, 2):
+        if floor is not None and year - back < floor:
+            return np.nan                     # earlier elections used different lines
         v = margin_map.get((year - back, state, office, district))
         if v is not None and not (isinstance(v, float) and np.isnan(v)):
             return v
@@ -551,13 +659,17 @@ def load_fec(path=None, extended=False):
             r = av.get((cyc, cid))
             if r is None:
                 out[k] = dict(receipts=np.nan, indiv=np.nan, pac=np.nan, party=np.nan,
-                              self=np.nan, small=np.nan)
+                              self=np.nan, small=np.nan, cash=np.nan, spend=np.nan)
                 continue
             indiv = float(r.indiv_contrib)
             out[k] = dict(receipts=float(r.receipts), indiv=indiv, pac=float(r.pac_contrib),
                           party=float(r.party_contrib), self=float(r.self_fund),
                           small=(float(np.clip(1 - r.indiv_itemized / indiv, 0, 1))
-                                 if indiv > 0 else np.nan))
+                                 if indiv > 0 else np.nan),
+                          # floored at 0: 790 filings (median -$1k, tiny/defunct committees)
+                          # report an overdraft, which would push a race share below 0 / above 1
+                          cash=max(float(getattr(r, "cash_on_hand", np.nan)), 0.0),
+                          spend=float(getattr(r, "disbursements", np.nan)))
     if not extended:
         return out
 
@@ -659,7 +771,8 @@ def fec_lookup(fec, yr, st, of, di, ck, party=None, name=None):
 
 FUND_FEATS = ["fund_receipts_ln", "fund_share", "fund_indiv_pct", "fund_pac_pct",
               "fund_party_pct", "fund_self_pct"]
-FUND_FEATS_EXT = FUND_FEATS + ["fund_smalldollar_pct"]   # batch 5+ (extended FEC)
+FUND_FEATS_EXT = FUND_FEATS + ["fund_smalldollar_pct",   # batch 5+ (extended FEC)
+                               "fund_cash_share", "fund_spend_share"]   # 2026-10-02
 
 # ---------------------------------------------------------------- poll prep
 
@@ -1004,6 +1117,11 @@ def build_candidate_table(d, macro, natl_env_map, funds, house_train_years=None,
         yr = int(g["year"].iloc[0]); st = g["state"].iloc[0]
         of = g["office"].iloc[0];    di = dist_str(g["district"].iloc[0])
         dyn = margin_dyn_map.get(race_id, {})
+        race_min_days = g["days_to_elec"].min()          # the race's freshest poll
+        n_pollsters = g["pollster"].map(norm_pollster).nunique()
+        is_midterm = int(yr % 4 == 2)
+        pres = PRES_PARTY.get(yr)
+        appr = macro.get(yr, {}).get("approval_eve", np.nan)
         for ck, gc in g.groupby("cand_key"):
             gc = gc.sort_values("end_date")
             dated = gc.dropna(subset=["end_date"])          # NaT polls can't be "most recent"
@@ -1022,6 +1140,20 @@ def build_candidate_table(d, macro, natl_env_map, funds, house_train_years=None,
             # ranked 12th of 187 by gain and appeared in 82 dashboard SHAP blocks with
             # a NULL value in every one. See poll_momentum_slope() for the full record.
             slope = poll_momentum_slope(gc)
+
+            # RECENCY-WEIGHTED average (2026-10-02, user-approved departure from the plain-
+            # average rule above): weight halves every 14 days of age, age measured from the
+            # RACE's freshest poll (not election day), so a race polled only in August is not
+            # down-weighted to nothing at serve time. Undated polls are left out.
+            age = gc["days_to_elec"] - race_min_days
+            ok = age.notna()
+            wts = 0.5 ** (age[ok].clip(lower=0) / 14.0)
+            poll_avg_rw = (float((gc["pct"][ok] * wts).sum() / wts.sum()) if ok.any()
+                           else gc["pct"].mean())
+            # BETWEEN-POLLSTER disagreement: SD of the per-pollster means (house effects /
+            # method spread), distinct from poll_std which also counts movement over time
+            per_p = gc.groupby(gc["pollster"].map(norm_pollster))["pct"].mean()
+            pollster_sd = per_p.std() if len(per_p) >= 2 else np.nan
 
             adj = gc["pct"] - gc["pollster"].map(lambda p: sign * house.get(norm_pollster(p), 0.0))
             md = dyn.get(ck, {})
@@ -1073,6 +1205,8 @@ def build_candidate_table(d, macro, natl_env_map, funds, house_train_years=None,
                 fund_self_pct=(min(fe["self"] / rec, 1.0) if fe and rec > 0 else np.nan),
                 fund_smalldollar_pct=(fe.get("small", np.nan) if fe else np.nan),
                 _fund_receipts=(rec if fe else np.nan),
+                _fund_cash=(fe.get("cash", np.nan) if fe else np.nan),
+                _fund_spend=(fe.get("spend", np.nan) if fe else np.nan),
             ) if fec is not None else {}
 
             rows.append(dict(
@@ -1133,6 +1267,27 @@ def build_candidate_table(d, macro, natl_env_map, funds, house_train_years=None,
                 min_margin=md.get("min_margin", np.nan),
                 margin_trend=md.get("margin_trend", np.nan),
                 is_president_party=int(party == PRES_PARTY.get(yr)),
+                # --- 2026-10-02 feature batch (user request) ---
+                poll_avg_rw=poll_avg_rw,
+                pollster_sd=pollster_sd,
+                n_pollsters=n_pollsters,
+                # PERSONAL incumbency: this person holds the seat (is_incumbent is only the
+                # party holding it). Leak-free: wins strictly before `yr`.
+                is_personal_inc=(personal_incumbent(funds["winners"], yr, st, of, ck, party,
+                                                    gc["candidate"].iloc[0],
+                                                    funds.get("appointed", ()))
+                                 if "winners" in funds else np.nan),
+                # state presidential lean vs the nation, signed toward this candidate's party
+                # (state-level even for House - no district presidential results)
+                pres_lean_cand=(sign * pres_lean_asof(funds.get("pres_lean", {}), yr, st)
+                                if sign != 0 else np.nan),
+                # MIDTERM penalty: the president's party in a midterm, and the same scaled by
+                # approval - +1 president's party / -1 the other major party / 0 others, times
+                # (approval_eve - 50). Zero in presidential years.
+                midterm_pres_party=is_midterm * int(party == pres),
+                midterm_approval_cand=(is_midterm * (1 if party == pres else
+                                                     -1 if party in ("DEM", "REP") else 0)
+                                       * (appr - 50) if pd.notna(appr) else np.nan),
                 # how contested/lopsided THIS candidate's own primary was (NaN = no matched
                 # primary-results page, not "ran unopposed" - see load_primary_results)
                 primary_margin=(pr["primary_margin"] if pr else np.nan),
@@ -1149,7 +1304,13 @@ def build_candidate_table(d, macro, natl_env_map, funds, house_train_years=None,
         # share of the race's (matched) money — the ratio feature robust to cutoff dates
         tot = c.groupby("race_id")["_fund_receipts"].transform("sum")
         c["fund_share"] = np.where(tot > 0, c["_fund_receipts"] / tot, np.nan)
-        c = c.drop(columns="_fund_receipts")
+        # cash in the bank on Sep 30 and cycle-to-date spending, as a share of the race's
+        # matched total (2026-10-02; as-of file only, NaN otherwise). min_count=1 keeps a race
+        # with no known values NaN instead of a 0 denominator.
+        for col, src in (("fund_cash_share", "_fund_cash"), ("fund_spend_share", "_fund_spend")):
+            t = c.groupby("race_id")[src].transform(lambda x: x.sum(min_count=1))
+            c[col] = np.where(t > 0, c[src] / t, np.nan)
+        c = c.drop(columns=["_fund_receipts", "_fund_cash", "_fund_spend"])
 
     # race-relative features (all based on the plain poll average)
     # BUGFIX (2026-07-21): field_best used to be one race-wide constant (the runner-up's
@@ -1208,6 +1369,11 @@ def build_candidate_table(d, macro, natl_env_map, funds, house_train_years=None,
         if f"poll_avg_{k}" in c.columns:
             c[f"poll_lead_{k}"] = c[f"poll_avg_{k}"] - c.groupby("race_id")[
                 f"poll_avg_{k}"].transform(best_other)
+    c["poll_lead_rw"] = c["poll_avg_rw"] - c.groupby("race_id")["poll_avg_rw"].transform(best_other)
+    # OPEN SEAT: no candidate in the race is the personal incumbent (NaN if unknown for all)
+    if "is_personal_inc" in c.columns:
+        c["open_seat"] = c["race_id"].map(c.groupby("race_id")["is_personal_inc"].apply(
+            lambda x: np.nan if x.isna().all() else float(1 - x.max())))
     c["poll_share"] = c["poll_avg"] / c.groupby("race_id")["poll_avg"].transform("sum")
     c["n_cands"] = c.groupby("race_id")["cand_key"].transform("count")
     c["race_total_polls"] = c.groupby("race_id")["n_polls"].transform("sum")
@@ -1259,7 +1425,21 @@ SPONSOR_FEATS = ["poll_avg_dpoll", "poll_avg_rpoll", "poll_avg_npoll",
                  "n_polls_dpoll", "n_polls_rpoll"]
 
 
-def feature_list(macro_feats, fund=False, primary_results=False, candidate_bios=False):
+# 2026-10-02 batch (user request): personal incumbency, open seat, presidential lean,
+# recency-weighted polls, pollster disagreement, midterm penalty (+ x approval)
+# Per-model ablation (expanding-window 2018-24, 3 seeds, fixed params): the WIN model drops
+# poll_avg_rw/poll_lead_rw (Brier .0662 -> .0645, race-acc .866 -> .884 without them); the MARGIN
+# model drops the two midterm columns (MAE 4.710 -> 4.645 without them). Each model keeps the
+# rest. The notebooks pass these via feature_list(exclude=...).
+WIN_EXCLUDE = ("poll_avg_rw", "poll_lead_rw")
+MARGIN_EXCLUDE = ("midterm_pres_party", "midterm_approval_cand")
+NEW_FEATS_1002 = ["is_personal_inc", "open_seat", "pres_lean_cand",
+                  "poll_avg_rw", "poll_lead_rw", "pollster_sd", "n_pollsters",
+                  "midterm_pres_party", "midterm_approval_cand"]
+
+
+def feature_list(macro_feats, fund=False, primary_results=False, candidate_bios=False,
+                 exclude=()):
     """The model's input columns. Everything here is available for future races.
     fund=True appends the FEC fundraising features (pass fec=load_fec() to the builder).
     primary_results=True appends the primary-strength block (pass
@@ -1277,7 +1457,8 @@ def feature_list(macro_feats, fund=False, primary_results=False, candidate_bios=
     FRESH ablation - do not assume either verdict carries over.
     candidate_bios=True appends bio_office_level (2026-07-23; pass
     candidate_bios=load_candidate_bios() to the builder) - ablate before trusting."""
-    return (([] if not fund else list(FUND_FEATS_EXT))
+    # exclude: per-model ablation drops (2026-10-02) - see NEW_FEATS_1002
+    return (([] if not fund else [f for f in FUND_FEATS_EXT if f not in exclude])
            + ([] if not primary_results else ["primary_margin", "opp_primary_margin",
                                                "primary_margin_diff"])
            + ([] if not candidate_bios else ["bio_office_level"])) + [
@@ -1310,4 +1491,4 @@ def feature_list(macro_feats, fund=False, primary_results=False, candidate_bios=
         "n_lead_changes", "lead_changed",
         "avg_margin_over_time", "margin_volatility", "min_margin", "margin_trend",
         "is_president_party",
-    ] + SPONSOR_FEATS + list(macro_feats)   # sponsor-split averages: 2026-10-01
+    ] + SPONSOR_FEATS + [f for f in NEW_FEATS_1002 if f not in exclude] + list(macro_feats)

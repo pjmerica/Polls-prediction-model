@@ -289,6 +289,27 @@ def drop_primary_losers(d, cycle):
         return d
     is_loser = pd.Series([(rid, ck) in losers
                           for rid, ck in zip(d["race_id"], d["cand_key"])], index=d.index)
+    # NOT ON THE PRIMARY BALLOT AT ALL (2026-10-02). Once a party's primary is decided, a
+    # candidate of that party who is not its winner is not on the November ballot - even if
+    # they never appear in the results (Gina Swoboda in AZ-1-REP, Edmond Laplante in NH-Sen-
+    # REP: only LISTED losers used to be dropped). Keyed on the candidate's REAL party
+    # (display_party), so an independent modelled in a party's slot (Osborn, NE-Sen) is never
+    # removed by that party's primary.
+    winners = {}
+    for rid, party, ck in zip(r.loc[r["is_winner"].astype(bool), "general_race_id"],
+                              r.loc[r["is_winner"].astype(bool), "party"],
+                              r.loc[r["is_winner"].astype(bool), "cand_key"]):
+        winners.setdefault((rid, F.npar(party)), set()).add(ck)
+    real_party = (d["display_party"] if "display_party" in d.columns else d["party_std"]).map(F.npar)
+    not_nominee = pd.Series([(rid, p) in winners and ck not in winners[(rid, p)]
+                             for rid, p, ck in zip(d["race_id"], real_party, d["cand_key"])],
+                            index=d.index)
+    if not_nominee.any():
+        nn = d.loc[not_nominee & ~is_loser, ["race_id", "candidate"]].drop_duplicates()
+        if len(nn):
+            print(f"not on the primary ballot (party primary decided, not its winner): "
+                  f"{len(nn)} - " + "; ".join(f"{a}: {b}" for a, b in nn.values[:12]))
+    is_loser = is_loser | not_nominee
     if not is_loser.any():
         return d
 

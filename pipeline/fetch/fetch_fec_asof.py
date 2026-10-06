@@ -45,6 +45,10 @@ YTD = {
     "cand_contrib": "candidate_contribution_ytd",
     "cand_loans": "loans_made_by_candidate_ytd",
     "indiv_itemized": "individual_itemized_contributions_ytd",
+    # spending through Sep 30 (cycle-to-date) and cash in the bank on Sep 30 - the latter is a
+    # point-in-time balance, not a running total (2026-10-02, new features)
+    "disbursements": "total_disbursements_ytd",
+    "cash_on_hand": "cash_on_hand_end_period",
 }
 
 

@@ -42,6 +42,8 @@ data/*
 !data/res_senate.csv
 !data/res_house.csv
 !data/res_governor.csv
+!data/res_president.csv
+!data/appointed_incumbents.csv
 !data/races.csv
 !data/lean_states.csv
 !data/lean_districts.csv
