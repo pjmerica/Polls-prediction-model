@@ -1083,6 +1083,38 @@ def undecided_per_question(d, min_cands=2, lo=70.0, hi=102.0):
     ok = q[(q["size"] >= min_cands) & q["sum"].between(lo, hi)]
     return (100.0 - ok["sum"]).clip(0, 100).groupby(level="race_id").mean()
 
+def rcv_final_round(d):
+    """RANKED-CHOICE races -> their final-round head-to-head polls (2026-10-07, user call).
+
+    In an RCV general the first round is not the decisive count: AK-Gov 2026 read 91% Dem from
+    Kreiss-Tomkins' 40% first-round lead over three split Republicans, while every head-to-head
+    with Wilson is 52-48 / 55-45. For each RCV race (results_labels.is_rcv_general) the expected
+    finalists are the TWO candidates leading the first-round (3+ candidate) questions - from polls
+    only, never results, so training and serving use the same rule. If the race has head-to-head
+    questions of exactly that pair, only those questions are kept and everyone else (expected to
+    be eliminated) leaves the race. No such questions -> the race is left unchanged.
+    Returns (filtered polls, set of switched race_ids)."""
+    import results_labels as RL
+    if "question_id" not in d.columns or d.empty:
+        return d, set()
+    drop_idx, switched = [], set()
+    for rid, g in d.groupby("race_id"):
+        if not RL.is_rcv_general(g["year"].iloc[0], g["state"].iloc[0], g["office"].iloc[0]):
+            continue
+        q = g.groupby("question_id")["cand_key"].agg(frozenset)
+        nq = g["question_id"].map(q).map(len)
+        base = g[nq > 2] if (nq > 2).any() else g
+        top2 = base.groupby("cand_key")["pct"].mean().nlargest(2).index
+        if len(top2) < 2:
+            continue
+        final_q = set(q[q == frozenset(top2)].index)
+        if not final_q:
+            continue
+        drop_idx.extend(g.index[~g["question_id"].isin(final_q)])
+        switched.add(rid)
+    return d.drop(index=drop_idx), switched
+
+
 def build_candidate_table(d, macro, natl_env_map, funds, house_train_years=None, house=None,
                           fec=None, bias_priors=None, primary_results=None,
                           candidate_bios=None):
@@ -1108,6 +1140,13 @@ def build_candidate_table(d, macro, natl_env_map, funds, house_train_years=None,
     coverage + ablation story; ablated 2026-07-24: NOT production - better calibration on
     the win model but worse pick-accuracy in recent folds, uniformly worse margin MAE).
     """
+    # ranked-choice races use their final-round head-to-heads (2026-10-07); with labels present
+    # (training) their margin target becomes the final-round result to match
+    d, rcv_switched = rcv_final_round(d)
+    rcv_labels = {}
+    if rcv_switched and "vote_pct" in d.columns:
+        import results_labels as RL
+        rcv_labels = RL.final_round_labels(DATA_DIR)
     if house is None:
         house = compute_house_effect(d, house_train_years or [])
     lead_change_map = {rid: count_lead_changes(g) for rid, g in d.groupby("race_id")}
@@ -1220,12 +1259,16 @@ def build_candidate_table(d, macro, natl_env_map, funds, house_train_years=None,
                                else party),
                 won=(int(gc["won"].iloc[0]) if has_won and pd.notna(gc["won"].iloc[0]) else np.nan),
                 # actual vote share — LABEL for the margin model, never a feature
-                vote_pct=(pd.to_numeric(gc["vote_pct"], errors="coerce").iloc[0]
+                vote_pct=(rcv_labels[(race_id, ck)][0] if (race_id, ck) in rcv_labels
+                          and race_id in rcv_switched else
+                          pd.to_numeric(gc["vote_pct"], errors="coerce").iloc[0]
                           if "vote_pct" in gc.columns else np.nan),
                 # best OTHER candidate's actual share over the whole RESULTS field, not the
                 # polled subset - LABEL passenger for the margin target, never a feature
                 # (results_labels.py, 2026-09-25)
-                best_other_pct=(pd.to_numeric(gc["best_other_pct"], errors="coerce").iloc[0]
+                best_other_pct=(rcv_labels[(race_id, ck)][1] if (race_id, ck) in rcv_labels
+                                and race_id in rcv_switched else
+                                pd.to_numeric(gc["best_other_pct"], errors="coerce").iloc[0]
                                 if "best_other_pct" in gc.columns else np.nan),
                 poll_avg=gc["pct"].mean(),
                 # SPONSOR-SPLIT averages (2026-10-01, user request: "let the model decide").

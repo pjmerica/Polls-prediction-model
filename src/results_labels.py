@@ -109,6 +109,31 @@ def load_result_lines(data_dir=None):
     return lines
 
 
+def is_rcv_general(year, state, office):
+    """Ranked-choice GENERAL elections (2026-10-07): Maine's federal races from 2018 (its
+    governor stays plurality - state constitution) and every Alaska race from 2022 (top-four
+    primary + RCV; still in force for Nov 2026 - the repeal initiative is on that same ballot)."""
+    return ((state == "ME" and office in ("Senate", "House") and int(year) >= 2018)
+            or (state == "AK" and int(year) >= 2022))
+
+
+def final_round_labels(data_dir=None):
+    """{(race_id, cand_key): (vote_pct, best_other_pct)} from the LAST RCV round, for RCV
+    generals (2026-10-07). Only candidates still in the final round get an entry; a race decided
+    in round 1 has round 1 as its final round. Used as the margin target when the race's poll
+    features come from final-round head-to-heads (features.rcv_final_round)."""
+    L = load_result_lines(data_dir)
+    L = L[[is_rcv_general(y, s_, o) for y, s_, o in zip(L["year"], L["state"], L["office"])]].copy()
+    L["rnd"] = L["rcv_round"].fillna(1)
+    out = {}
+    for rid, g in L.groupby("race_id"):
+        last = g[g["rnd"] == g["rnd"].max()].groupby("cand_key")["vote_pct"].sum()
+        for ck, v in last.items():
+            other = last.drop(ck)
+            out[(rid, ck)] = (float(v), float(other.max()) if len(other) else np.nan)
+    return out
+
+
 def jungle_runoff_margins(data_dir=None):
     """{(year, state, office, district): DEM-minus-REP margin of the RUNOFF} for races whose
     November round was a jungle (2026-10-06). A jungle first round splits each party across

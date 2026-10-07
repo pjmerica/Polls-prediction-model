@@ -4,6 +4,31 @@ For the next agent. Read AGENTS.md first (architecture + rules), CONCERNS.md sec
 (risk register + roadmap). This file: what's mid-flight RIGHT NOW, what's most likely to
 break, and what to do next, in order.
 
+## 2026-10-07 - ranked-choice races use final-round head-to-heads; AZ-Gov 2010; FEC refresh
+
+**RCV (user call).** `features.rcv_final_round` runs at the top of `build_candidate_table`, so
+training, predict, predict_margin, explain and the analysis scripts all get it. For an RCV general
+(`results_labels.is_rcv_general`: ME Senate/House 2018+, every AK race 2022+; ME governor is
+plurality; AK RCV still applies on Nov 3 2026 - the repeal initiative is on that same ballot) the
+expected finalists are the top two of the first-round (3+ candidate) poll questions; when the race
+has head-to-head questions of exactly that pair, only those are kept and the other candidates
+leave the race. With labels present the margin target becomes the FINAL round
+(`RL.final_round_labels`): Golden 2018 had been labelled the winner with a -0.7 first-round margin
+(now 50.6-49.4). Switched training races: ME-2 2018/2022, ME-Sen 2018/2020, AK-Gov 2022, AK-House
+2022/2024, AK-Sen 2022. Live: AK-Gov 91% -> ~81% Dem (head-to-heads 53-47) before retraining.
+
+**AZ-Gov 2010** `races.csv` incumbent_party DEM -> REP: Brewer (R) succeeded Napolitano in Jan 2009
+and was the sitting governor on election day. The only succession whose party differs.
+
+**FEC re-fetch 2026-10-07:** 216 of 3,242 2026 candidates now have a report through Sep 30 (was
+62); the rest are still on Q2 until the Oct 15 deadline - RE-RUN after Oct 15. Some tiny
+committees file nonsense ytd totals (period receipts 0, ytd jumping between $11k and $4.2M:
+C00806307, C00842211) - as filed at the FEC, left as is.
+
+**Metrics:** win race-acc .878 -> .882, Brier .064 -> .065 (35d: .072/.860 -> .073/.855, noise); margin MAE
+4.88 -> 4.73 (35d 5.22 -> 5.11; calibrated poll 6.30 / 6.50). Live AK-Gov 84.5% Dem on a 53-47
+head-to-head (was 91% from the split first round).
+
 ## 2026-10-06 - Louisiana + Senate-special jungle elections were missing (win + margin retrained)
 
 **Bug.** 538 labels Louisiana's November election - its real general, decided at 50%+ or by a

@@ -1259,7 +1259,7 @@ id,type,state_abbrev,State,office_id,office_name,office_seat_name,cycle,stage,pa
 1207,PresidentialRace,UT,Utah,1,U.S. President,,1972,general,,false,REP,11/7/72,,2/12/19 01:20,2/12/19 01:20
 1274,GubernatorialRace,AL,Alabama,6,Governor,,2010,general,,false,REP,11/2/10,REP,2/12/19 01:20,10/14/21 11:14
 1277,GubernatorialRace,AR,Arkansas,16,Governor,,2010,general,,false,DEM,11/2/10,DEM,2/12/19 01:20,10/14/21 11:14
-1276,GubernatorialRace,AZ,Arizona,23,Governor,,2010,general,,false,DEM,11/2/10,REP,2/12/19 01:20,10/14/21 11:14
+1276,GubernatorialRace,AZ,Arizona,23,Governor,,2010,general,,false,REP,11/2/10,REP,2/12/19 01:20,10/14/21 11:14
 1278,GubernatorialRace,CA,California,34,Governor,,2010,general,,false,REP,11/2/10,DEM,2/12/19 01:20,10/14/21 11:14
 1279,GubernatorialRace,CO,Colorado,90,Governor,,2010,general,,false,DEM,11/2/10,DEM,2/12/19 01:20,10/14/21 11:14
 1280,GubernatorialRace,CT,Connecticut,100,Governor,,2010,general,,false,REP,11/2/10,DEM,2/12/19 01:20,10/14/21 11:14
