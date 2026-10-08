@@ -59,6 +59,7 @@ data/*
 !data/redistricted_2026.csv
 !data/candidate_party_overrides.csv
 !data/dropped_out_2026.csv
+!data/replacement_nominees_2026.csv
 # Roster/name-integrity inputs added 2026-08-05/06. These MUST be committed: CI checks out
 # this repo fresh, so anything left ignored simply does not exist there and the filters that
 # read it become silent no-ops. That is exactly what happened - drop_primary_losers() found

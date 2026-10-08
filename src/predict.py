@@ -177,6 +177,21 @@ def load_agg_polls(paths, cycle):
         drop_keys = set(zip(do["race_id"], do["cand_key"]))
         mask = pd.Series([(r, c) in drop_keys for r, c in zip(rid_pre, d["cand_key"])],
                          index=d.index)
+        # A dropped MAJOR-PARTY contender (DEM/REP at 10%+) takes the whole matchup question
+        # with them (2026-10-07): Ager's 45 vs the withdrawn Edwards (NC-11) is a number
+        # measured against an opponent who is not on the ballot - same reasoning as
+        # drop_primary_losers. Fringe/third-party entries (NE-Sen Burbank, NC-3's duplicated
+        # Writz row, Duggan's independent run) still lose only their own row, so the others'
+        # numbers in those multi-way questions are kept.
+        if mask.any() and "question_id" in d.columns:
+            big = mask & d["party_std"].map(F.npar).isin(["DEM", "REP"]) & (d["pct"] >= 10)
+            qkey = rid_pre.astype(str) + "|" + d["question_id"].astype(str)
+            dead = set(qkey[big & d["question_id"].notna()])
+            qmask = qkey.isin(dead) & d["question_id"].notna()
+            if int((qmask & ~mask).sum()):
+                print(f"   + {int((qmask & ~mask).sum())} opponent rows from "
+                      f"{len(dead)} matchups against a dropped major-party candidate")
+            mask = mask | qmask
         if mask.any():
             print(f"dropped-out candidates removed: {int(mask.sum())} poll rows")
             d = d[~mask]
@@ -300,6 +315,13 @@ def drop_primary_losers(d, cycle):
                               r.loc[r["is_winner"].astype(bool), "party"],
                               r.loc[r["is_winner"].astype(bool), "cand_key"]):
         winners.setdefault((rid, F.npar(party)), set()).add(ck)
+    # REPLACEMENT NOMINEES (2026-10-07): a party committee's pick after the primary winner
+    # withdrew (NC-11: Balkcom for Edwards) is the nominee but never won a primary - without this
+    # the rule above dropped her and kept the withdrawn Edwards. data/replacement_nominees_2026.csv.
+    _rp = os.path.join(HERE, "data", "replacement_nominees_2026.csv")
+    if os.path.exists(_rp):
+        for x in pd.read_csv(_rp).itertuples():
+            winners.setdefault((x.race_id, F.npar(x.party)), set()).add(x.cand_key)
     real_party = (d["display_party"] if "display_party" in d.columns else d["party_std"]).map(F.npar)
     not_nominee = pd.Series([(rid, p) in winners and ck not in winners[(rid, p)]
                              for rid, p, ck in zip(d["race_id"], real_party, d["cand_key"])],
