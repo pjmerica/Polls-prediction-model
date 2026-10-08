@@ -93,6 +93,26 @@ FRIENDLY = {
     # rendered it with an empty tooltip (246 occurrences). It lives in the SHARED map rather
     # than explain_primary's local override because BOTH models use the feature now.
     "bio_office_level": "Office experience level",
+    # 2026-10-01 / 10-02 feature batches
+    "poll_avg_dpoll": "Avg in Dem-sponsored polls (%)",
+    "poll_avg_rpoll": "Avg in Rep-sponsored polls (%)",
+    "poll_avg_npoll": "Avg in nonpartisan polls (%)",
+    "poll_lead_dpoll": "Lead in Dem-sponsored polls (pts)",
+    "poll_lead_rpoll": "Lead in Rep-sponsored polls (pts)",
+    "poll_lead_npoll": "Lead in nonpartisan polls (pts)",
+    "n_polls_dpoll": "# of Dem-sponsored polls",
+    "n_polls_rpoll": "# of Rep-sponsored polls",
+    "is_personal_inc": "Candidate is the sitting officeholder",
+    "open_seat": "Open seat",
+    "pres_lean_cand": "State presidential lean (pts)",
+    "poll_avg_rw": "Recency-weighted polling avg (%)",
+    "poll_lead_rw": "Recency-weighted polling lead (pts)",
+    "pollster_sd": "Pollster disagreement (pts)",
+    "n_pollsters": "# of pollsters in race",
+    "midterm_pres_party": "President's party in a midterm",
+    "midterm_approval_cand": "Midterm x presidential approval",
+    "fund_cash_share": "Share of race cash on hand",
+    "fund_spend_share": "Share of race spending",
 }
 # one-line plain-English explanations, shown on hover in the dashboard modal
 DESC = {
@@ -174,6 +194,30 @@ DESC = {
                         "0 = none). A proxy for name recognition and donor networks. "
                         "As-of-year, so the same person reads a lower level in an earlier "
                         "cycle - a first-time candidate is 0 even if they later won office.",
+    "poll_avg_dpoll": "Average share in polls sponsored by Democrats or Democratic groups.",
+    "poll_avg_rpoll": "Average share in polls sponsored by Republicans or Republican groups.",
+    "poll_avg_npoll": "Average share in polls with no partisan sponsor.",
+    "poll_lead_dpoll": "Lead over the best opponent, Democratic-sponsored polls only.",
+    "poll_lead_rpoll": "Lead over the best opponent, Republican-sponsored polls only.",
+    "poll_lead_npoll": "Lead over the best opponent, nonpartisan polls only.",
+    "n_polls_dpoll": "How many Democratic-sponsored polls include the candidate.",
+    "n_polls_rpoll": "How many Republican-sponsored polls include the candidate.",
+    "is_personal_inc": "1 if this person (not just their party) holds the seat - won it in a "
+                       "previous election or sits there by appointment.",
+    "open_seat": "1 if no candidate in the race is the sitting officeholder.",
+    "pres_lean_cand": "How much more the state voted for this candidate's party than the "
+                      "nation did in the last presidential election (state-level, even for House).",
+    "poll_avg_rw": "Polling average where a poll's weight halves every 14 days, so recent "
+                   "polls count most.",
+    "poll_lead_rw": "Recency-weighted polling lead over the best opponent.",
+    "pollster_sd": "How much different pollsters disagree about this candidate.",
+    "n_pollsters": "How many different pollsters have surveyed the race.",
+    "midterm_pres_party": "1 if the candidate is from the president's party in a midterm year.",
+    "midterm_approval_cand": "Midterm penalty scaled by presidential approval: (approval - 50), "
+                             "positive for the president's party and negative for the other "
+                             "party, in midterm years only.",
+    "fund_cash_share": "Candidate's cash on hand as a share of the race total (latest FEC report).",
+    "fund_spend_share": "Candidate's spending to date as a share of the race total.",
 }
 _METRIC = {"unemployment": "Unemployment", "inflation": "Inflation", "cpi_core": "Core CPI",
            "gas": "Gas price", "fed_funds": "Fed funds rate", "unemp_u6": "U-6 underemployment",
