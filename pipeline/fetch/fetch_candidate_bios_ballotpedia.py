@@ -85,6 +85,9 @@ _BP_LEVELS = [
     (3, re.compile(r"\bgovernor of\b|lieutenant governor|attorney general|"
                    r"secretary of state|state treasurer|state auditor|state comptroller|"
                    r"land commissioner|superintendent of public|insurance commissioner|"
+                   # state supreme court (2026-10-08): a statewide judicial office - John
+                   # Stegner (ID-Gov 2026, Idaho Supreme Court 2018-23) read 0
+                   r"(?<!u\.s\. )(?<!united states )supreme court|"
                    # APPOINTED statewide/federal agency heads (added 2026-08-01). Only
                    # "commissioner of <dept>" was matching before, so a state health director
                    # or cabinet secretary read 0 - Nirav Shah (director of the Maine CDC, then
@@ -127,7 +130,10 @@ _BP_LEVELS = [
                    # added 2026-08-01 alongside the level-3 agency-head patterns
                    r"borough president|board of (?:education|supervisors|selectmen)|"
                    r"town council|village trustee|city clerk|\bsheriff\b|"
-                   r"circuit court|district court|superior court|county court", re.I)),
+                   r"circuit court|district court|superior court|county court|"
+                   # Louisiana's county-level bodies (2026-10-08): a parish police jury or
+                   # parish / metro council is the local governing board
+                   r"police jury|parish council|metro(?:politan)? council", re.I)),
 ]
 
 def classify_ballotpedia(infobox_text, office=None):

@@ -4,6 +4,21 @@ For the next agent. Read AGENTS.md first (architecture + rules), CONCERNS.md sec
 (risk register + roadmap). This file: what's mid-flight RIGHT NOW, what's most likely to
 break, and what to do next, in order.
 
+## 2026-10-08 - experience level (bio_office_level) filled for every live candidate
+
+42 live 2026 candidates (38 Dem/Rep + 4 strong independents) had no bio_office_level. Each was
+researched (sources in the source_note column) and added to `data/candidate_bios_manual.csv`
+(43 rows; Kiley added because the won-office floor needs the party to match). Live coverage is now
+334/334. Only one training row matched a new name (Chris Jones, AR-Gov 2022 - same person, 0).
+Classifier fixes (`fetch_candidate_bios_ballotpedia.classify_ballotpedia` level 1: police jury /
+parish council / metro council; level 3: state supreme court; `fetch_candidate_bios.py` level 1:
+metro council / police jury / parish council) and 4 corrected rows in candidate_bios.csv (Tandy,
+Peterson x2, Heck: Louisville / Portland / Baton Rouge metro councils; none are in training polls).
+Coded 0 under the senior-federal-appointee rule, FLAGGED for the user: Sydney Gruters (FL-16) and
+Nikki Gronli (SD-AL), both former USDA Rural Development state directors; Pat Forbes (LA-6),
+appointed LA Office of Community Development director (sub-cabinet, state). Also: Echols (LA-5) party
+REP override; Miguez/Edmonds dropped from LA-5 (running in LA-6).
+
 ## 2026-10-07 (later) - database audit: dedup orphans, survey versions, specials, bio levels
 
 1. **Dedup deleted rows from INSIDE a survey.** Both the build's cross-source dedup (pollster+date+

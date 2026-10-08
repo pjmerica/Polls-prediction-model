@@ -1,3 +1,4 @@
 race_id,cand_key,model_party,display_party,note
 2026_NE_Senate,osborn d,DEM,IND,"Dan Osborn: independent, but the de-facto two-party challenger vs Ricketts. Model as DEM-slot so poll_lead/two-party margin work; display as IND (his real affiliation)."
 2026_GA_Senate,loeffler k,REP,REP,"Kelly Loeffler is Republican; one feed tags IND in error."
+2026_LA_House-5,echols m,REP,REP,"Michael Echols is a Republican state rep (House majority leader); the Wikipedia poll table carries no party, so he read OTH. Added 2026-10-08."

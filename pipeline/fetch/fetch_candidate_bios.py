@@ -109,6 +109,9 @@ LEVELS = [
         r"(?:majority|minority) leader of the .{0,30}(?:senate|house|assembly)"),
     (1, r"\bmayor\b|county (executive|commissioner|supervisor|clerk|judge|attorney|"
         r"treasurer|health director)|city council|county council|sheriff|"
+        # elected metro / parish governments (2026-10-08): Louisville and Baton Rouge Metro
+        # Councils, Portland's Metro Council, Louisiana police juries / parish councils
+        r"metro council|police jury|parish council|"
         r"school board|city commissioner|selectman|alderman|district attorney|"
         r"state's attorney|\bjudge\b"),
 ]
