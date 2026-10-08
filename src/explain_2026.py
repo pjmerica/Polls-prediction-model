@@ -299,13 +299,28 @@ def main():
             ne[args.cycle] = v
     funds = F.load_fundamentals()
     fec = F.load_fec(extended=True)
+    # candidate_bios + primary_results MUST match predict.py's build (2026-10-08): without them
+    # bio_office_level and the primary-strength features were NaN here, so every explainer
+    # described a different input than the one actually predicted (119 races showed n/a
+    # experience, and the explainer's raw score did not match the published win prob).
     cand = patch_redistricted_priors(
-        F.build_candidate_table(d, macro, ne, funds, house=house, fec=fec, bias_priors=bias))
+        F.build_candidate_table(d, macro, ne, funds, house=house, fec=fec, bias_priors=bias,
+                                candidate_bios=F.load_candidate_bios(),
+                                primary_results=F.load_primary_results()))
 
     Xw = cand.reindex(columns=metas["win"]["features"])
     Xm = cand.reindex(columns=metas["margin"]["features"])
     cand["win_prob"] = models["win"].predict_proba(Xw)[:, 1]
     cand["pred_margin"] = models["margin"].predict(Xm)
+    # consistency check against the published predictions (same model, same inputs)
+    _pp = os.path.join(HERE, "outputs", "predictions_2026.csv")
+    if os.path.exists(_pp):
+        _p = pd.read_csv(_pp)[["race_id", "candidate", "win_prob"]]
+        _j = cand[["race_id", "candidate", "win_prob"]].merge(_p, on=["race_id", "candidate"],
+                                                             suffixes=("", "_pub"))
+        if len(_j):
+            _gap = float((_j["win_prob"] - _j["win_prob_pub"]).abs().max())
+            print(f"explainer vs published win_prob: max gap {_gap:.4f} over {len(_j)} candidates")
 
     sv_w = shap.TreeExplainer(models["win"])(Xw)       # log-odds space
     sv_m = shap.TreeExplainer(models["margin"])(Xm)    # margin points
