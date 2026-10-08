@@ -246,8 +246,16 @@ def drop_duplicate_surveys(d, label=""):
     if not keyed.any():
         return d, 0
     sub = d[keyed]
-    dup = sub.duplicated(subset=["race_id", "cand_key", "end_date", "pct", "sample_size"],
-                         keep="first")
+    key = ["race_id", "cand_key", "end_date", "pct", "sample_size"]
+    if "poll_id" in sub.columns and sub["poll_id"].notna().all():
+        # Only a row from a DIFFERENT poll can be a copy (2026-10-07). Within one survey the
+        # same n is shared by every question, so a repeated number across its RV / LV / turnout
+        # variants is not a duplicate: Monmouth NC-Sen 9/1/20 (n=401, three questions) lost
+        # Tillis's 45 from one and Cunningham's 46 from another, orphaning both questions.
+        first_pid = sub.groupby(key, dropna=False)["poll_id"].transform("first")
+        dup = sub["poll_id"].astype(str) != first_pid.astype(str)
+    else:
+        dup = sub.duplicated(subset=key, keep="first")
     n = int(dup.sum())
     if n:
         d = d.drop(index=sub.index[dup])
@@ -300,8 +308,13 @@ def load_fundamentals():
     # overwrote the REGULAR race's incumbent party.
     sp = rc["special"].astype(str).str.lower().isin(["true", "1"]) & ~hm
     rc.loc[sp, "district"] = "S"
+    # House SPECIAL rows share the regular race's key and say 'vacant' (2026-10-07): whichever
+    # row came last won, so 7 training races (PA-18 2018: Doyle's seat read 'vacant' from Lamb's
+    # March special) had unknown incumbency. The November regular row describes the race we
+    # model; House specials are dropped from training anyway.
+    house_special = rc["office"].eq("House") & rc["special"].astype(str).str.lower().isin(["true", "1"])
     inc_map = {(r.cycle, r.state, r.office, r.district): npar(r.incumbent_party)
-               for r in rc[rc["office"].notna()].itertuples()
+               for r in rc[rc["office"].notna() & ~house_special].itertuples()
                if pd.notna(r.incumbent_party)}
 
     # Per-CANDIDATE totals from the shared aggregation (2026-09-25). This used to take the
@@ -388,6 +401,26 @@ def pres_lean_asof(pres_lean, year, state):
             v = pres_lean.get((year - back, state))
             return np.nan if v is None else v
     return np.nan
+
+
+def office_level_floor(winners, year, state, cand_key, party, name=None, appointed=()):
+    """Lowest possible bio_office_level given OFFICE ACTUALLY WON (2026-10-07): a candidate who
+    won a Senate or House general in this state in any year before `year` (or sits there by
+    appointment) has held FEDERAL office (4); a governor, STATEWIDE (3) - highest office EVER
+    held, so no term window (Roy Cooper 2026: governor 2017-25). First-name check guards
+    same-surname relatives.
+    Leak-free - only earlier wins. The bio scraper missed 124 of 1,400 sitting officeholders
+    (Ted Kennedy 2000 read 0, Kit Bond 3; live: Begich 0, Ricketts 3). NaN = no floor."""
+    sn = str(cand_key).split(" ")[0]
+    best = np.nan
+    for office, lvl in (("Senate", 4), ("House", 4), ("Governor", 3)):
+        held = (year, state, office, sn, party) in appointed or any(
+            s_ == sn and p_ == party and y < year
+            and (name is None or _first_names_compatible(name, toks, sn))
+            for y, s_, p_, toks in winners.get((state, office), []))
+        if held and not (best >= lvl):
+            best = lvl
+    return best
 
 
 # how far back a sitting officeholder's last general win can be: one full term
@@ -831,15 +864,29 @@ def norm_pollster(p):
 
 # ---------------------------------------------------------------- race dynamics
 
+def _running_means(g):
+    """(dates, cands, means): each candidate's running mean pct over all of the race's polls up to
+    and including each distinct poll date (NaN before their first poll). Cumulative sums replace a
+    per-date groupby - same numbers, linear instead of quadratic (2026-10-07)."""
+    g = g.dropna(subset=["end_date", "pct"])
+    if g.empty:
+        return [], [], np.empty((0, 0))
+    s = g.groupby(["end_date", "cand_key"])["pct"].agg(["sum", "count"]).unstack("cand_key")
+    csum = s["sum"].fillna(0).cumsum().to_numpy()
+    ccnt = s["count"].fillna(0).cumsum().to_numpy()
+    with np.errstate(invalid="ignore", divide="ignore"):
+        means = np.where(ccnt > 0, csum / np.where(ccnt > 0, ccnt, 1), np.nan)
+    return list(s.index), list(s["sum"].columns), means
+
+
 def count_lead_changes(g):
     """How often the running-mean front-runner flipped over the race's poll dates."""
-    g = g.dropna(subset=["end_date", "pct"]).sort_values("end_date")
+    dates, cands, means = _running_means(g)
     prev, changes = None, 0
-    for dt in g["end_date"].drop_duplicates().sort_values():
-        means = g[g["end_date"] <= dt].groupby("cand_key")["pct"].mean()
-        if means.empty:
+    for row in means:
+        if np.all(np.isnan(row)):
             continue
-        leader = means.idxmax()
+        leader = cands[int(np.nanargmax(row))]        # first max in sorted cand order, as idxmax
         if prev is not None and leader != prev:
             changes += 1
         prev = leader
@@ -937,19 +984,20 @@ def poll_momentum_slope(gc):
 
 def margin_dynamics(g):
     """Per-candidate margin-vs-best-opponent trajectory stats over the campaign."""
-    g = g.dropna(subset=["end_date", "pct"]).sort_values("end_date")
-    dates = g["end_date"].drop_duplicates().sort_values()
+    dates, cands, means = _running_means(g)
     series = {}
-    t0 = dates.min()
-    for dt in dates:
-        means = g[g["end_date"] <= dt].groupby("cand_key")["pct"].mean()
-        if len(means) == 0:
-            continue
-        elapsed = (dt - t0).days
-        for ck, val in means.items():
-            others = means.drop(ck)
-            best_other = others.max() if len(others) else 0.0
-            series.setdefault(ck, []).append((elapsed, val - best_other))
+    if len(dates):
+        t0 = dates[0]
+        for dt, row in zip(dates, means):
+            ok = ~np.isnan(row)
+            if not ok.any():
+                continue
+            elapsed = (dt - t0).days
+            vals = row[ok]; names = [c for c, k in zip(cands, ok) if k]
+            for i_, (ck, val) in enumerate(zip(names, vals)):
+                others = np.delete(vals, i_)
+                best_other = others.max() if len(others) else 0.0
+                series.setdefault(ck, []).append((elapsed, val - best_other))
     out = {}
     for ck, pts in series.items():
         m = np.array([p[1] for p in pts], dtype=float)
@@ -1083,6 +1131,15 @@ def undecided_per_question(d, min_cands=2, lo=70.0, hi=102.0):
     ok = q[(q["size"] >= min_cands) & q["sum"].between(lo, hi)]
     return (100.0 - ok["sum"]).clip(0, 100).groupby(level="race_id").mean()
 
+def one_row_per_survey(d):
+    """Keep the first row per (normalized pollster, end date, race, candidate) - see
+    build_candidate_table. Idempotent; a no-op on the already-deduped live feed."""
+    key = d["pollster"].map(norm_pollster)
+    keep = ~pd.DataFrame({"k": key, "e": d["end_date"].astype(str), "r": d["race_id"],
+                          "c": d["cand_key"]}).duplicated(keep="first")
+    return d[keep.values]
+
+
 def rcv_final_round(d):
     """RANKED-CHOICE races -> their final-round head-to-head polls (2026-10-07, user call).
 
@@ -1143,14 +1200,24 @@ def build_candidate_table(d, macro, natl_env_map, funds, house_train_years=None,
     # ranked-choice races use their final-round head-to-heads (2026-10-07); with labels present
     # (training) their margin target becomes the final-round result to match
     d, rcv_switched = rcv_final_round(d)
+    # ONE NUMBER PER CANDIDATE PER SURVEY (2026-10-07) - the rule predict.py already applies
+    # at serve time. Training kept every version of a survey (RV + LV + alternative turnout
+    # models, 6.2% of labelled rows), so a candidate's average weighted multi-version polls
+    # 2-3x while the live model saw them once. First row wins, matching the serve dedup; it
+    # runs AFTER the dead-matchup and RCV filters so a dropped question never decides it.
+    d = one_row_per_survey(d)
     rcv_labels = {}
     if rcv_switched and "vote_pct" in d.columns:
         import results_labels as RL
         rcv_labels = RL.final_round_labels(DATA_DIR)
     if house is None:
         house = compute_house_effect(d, house_train_years or [])
-    lead_change_map = {rid: count_lead_changes(g) for rid, g in d.groupby("race_id")}
-    margin_dyn_map = {rid: margin_dynamics(g) for rid, g in d.groupby("race_id")}
+    # slim frame: both helpers read only these columns, and slicing the full ~70-column table
+    # (Arrow-backed strings) per poll date made them ~190 s of a ~220 s build (2026-10-07)
+    _slim = d[["race_id", "end_date", "pct", "cand_key"]].copy()
+    _slim["cand_key"] = _slim["cand_key"].astype(object)
+    lead_change_map = {rid: count_lead_changes(g) for rid, g in _slim.groupby("race_id")}
+    margin_dyn_map = {rid: margin_dynamics(g) for rid, g in _slim.groupby("race_id")}
     inc_map, margin_map = funds["inc_map"], funds["margin_map"]
     has_won = "won" in d.columns
 
@@ -1342,7 +1409,11 @@ def build_candidate_table(d, macro, natl_env_map, funds, house_train_years=None,
                 primary_uncontested=(pr["primary_uncontested"] if pr else np.nan),
                 # highest office ever held (NaN = no matched bio, not "no experience" -
                 # see load_candidate_bios)
-                bio_office_level=(bio["bio_office_level"] if bio else np.nan),
+                # floored by office actually won (office_level_floor, 2026-10-07)
+                bio_office_level=np.fmax(
+                    bio["bio_office_level"] if bio else np.nan,
+                    office_level_floor(funds.get("winners", {}), yr, st, ck, party,
+                                       gc["candidate"].iloc[0], funds.get("appointed", ()))),
                 **fund,
                 **macro.get(yr, {}),
             ))

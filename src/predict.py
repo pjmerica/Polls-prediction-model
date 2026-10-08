@@ -230,6 +230,11 @@ def load_agg_polls(paths, cycle):
     # entirely. FL-25: Beacon asked Moskowitz-v-Singer AND Moskowitz-v-Moraitis; the dedup
     # kept the Moraitis row, Moraitis lost the primary, and the DEM NOMINEE vanished.
     d = drop_primary_losers(d, cycle)
+    # ranked-choice races keep only their final-round head-to-heads BEFORE the one-row-per-
+    # candidate-per-survey dedup below, so that dedup can never keep a first-round number over
+    # the head-to-head from the same survey (2026-10-07; build_candidate_table re-applies it,
+    # idempotently, for training)
+    d, _ = F.rcv_final_round(d)
 
     d["_pollster_key"] = d["pollster"].map(F.norm_pollster)
     d = (d.sort_values("_src_priority")

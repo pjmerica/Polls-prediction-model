@@ -4,6 +4,41 @@ For the next agent. Read AGENTS.md first (architecture + rules), CONCERNS.md sec
 (risk register + roadmap). This file: what's mid-flight RIGHT NOW, what's most likely to
 break, and what to do next, in order.
 
+## 2026-10-07 (later) - database audit: dedup orphans, survey versions, specials, bio levels
+
+1. **Dedup deleted rows from INSIDE a survey.** Both the build's cross-source dedup (pollster+date+
+   candidate+pct) and `F.drop_duplicate_surveys` (race+candidate+date+pct+n) ignored the question,
+   so a survey's RV / LV variants lost any repeated number: Monmouth NC-Sen 9/1/20 (n=401, three
+   questions) lost Tillis's 45 from one and Cunningham's 46 from another. Build now dedups whole
+   QUESTIONS (same race/pollster/date/candidate numbers); `drop_duplicate_surveys` only treats a row
+   from a DIFFERENT poll_id as a copy (still catches one survey under two pollster names: 323 live
+   rows). Dataset +543 rows, 0 removed, 0 label changes; orphaned one-candidate questions 395 -> 42.
+2. **One number per candidate per survey in training too** (`F.one_row_per_survey`, top of
+   `build_candidate_table`): predict.py always kept one; training averaged every version (6.2% of
+   labelled rows, 87 candidates' averages moved >1 pt). predict.py now runs the RCV filter before
+   its own per-survey dedup so the head-to-head is the version kept.
+3. **House specials overwrote the regular race's incumbency.** races.csv House specials share the
+   regular key and say 'vacant'; whichever row came last won (89 keys, 7 training races - PA-18 2018
+   read 'vacant' from Lamb's March special instead of Doyle D). `inc_map` skips House special rows.
+   (races.csv's 'Winning party' column has 8 special/regular swaps - unused by any code.)
+4. **bio_office_level too low for 124 of 1,400 sitting officeholders** (Ted Kennedy 2000 = 0,
+   Kit Bond = 3; live Begich 0, Fulcher 2, Ricketts 3). Floored by office actually WON earlier
+   (`F.office_level_floor`: any earlier Senate/House general win in the state -> 4, governor -> 3,
+   appointees from appointed_incumbents.csv; first-name check guards relatives). Leak-free.
+
+5. **Roster:** ME-Sen Troy Jackson (convention nominee after primary winner Graham Platner withdrew
+   2026-07-10) added to replacement_nominees_2026.csv and Platner to dropped_out - Jackson survived
+   only because the ME-Sen DEM primary results are missing. CA-3 Kiley (running in CA-6 as an
+   independent) dropped. fec_summary.csv refreshed (2026: +4; Jackson's committee is registered for
+   governor, Balkcom/Meier not yet in the FEC bulk file - re-run after Oct 15).
+6. **Speed:** `count_lead_changes` / `margin_dynamics` recomputed every running mean per poll date
+   on the full ~70-column frame - ~190 s of a ~220 s `build_candidate_table` (margin notebook 2 h,
+   eval scripts >1 h). Now cumulative sums on a 4-column slice (`_running_means`): identical on all
+   1,998 races (0 lead-change diffs, max stat diff 3e-14), build ~40 s, margin eval 5.5 min.
+
+**Metrics:** win Brier .065 / race-acc .877 (35d: .072 / .871, was .073 / .855); margin MAE 4.75
+(35d 5.09; calibrated poll 6.30 / 6.49).
+
 ## 2026-10-07 - ranked-choice races use final-round head-to-heads; AZ-Gov 2010; FEC refresh
 
 **RCV (user call).** `features.rcv_final_round` runs at the top of `build_candidate_table`, so

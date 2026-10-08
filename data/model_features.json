@@ -372,12 +372,12 @@
  ],
  "xgb_params": {
   "max_depth": 2,
-  "learning_rate": 0.02,
+  "learning_rate": 0.05,
   "n_estimators": 300,
   "min_child_weight": 8,
   "subsample": 1.0,
-  "colsample_bytree": 1.0,
-  "reg_lambda": 5,
+  "colsample_bytree": 0.6,
+  "reg_lambda": 1,
   "reg_alpha": 1,
   "random_state": 42
  }

@@ -1,2 +1,3 @@
 race_id,party,cand_key,note
 2026_NC_House-11,REP,balkcom j,"Jennifer Balkcom: chosen by the NC-11 Republican district executive committee on 2026-08-10 after Chuck Edwards withdrew his nomination. Not a primary winner, so without this file the not-on-the-primary-ballot rule dropped her (NC Newsline / Roll Call 2026-08-10)."
+2026_ME_Senate,DEM,jackson t,"Troy Jackson: Democratic nominee chosen by the 2026-07-25 nominating convention after primary winner Graham Platner withdrew on 2026-07-10. The ME-Sen DEM primary results are not in primary_results_2026.csv, so he survived the not-on-the-primary-ballot rule only by that gap; listed here so a re-scrape cannot drop him."
