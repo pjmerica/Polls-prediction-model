@@ -313,9 +313,16 @@ def load_fundamentals():
     # March special) had unknown incumbency. The November regular row describes the race we
     # model; House specials are dropped from training anyway.
     house_special = rc["office"].eq("House") & rc["special"].astype(str).str.lower().isin(["true", "1"])
-    inc_map = {(r.cycle, r.state, r.office, r.district): npar(r.incumbent_party)
-               for r in rc[rc["office"].notna() & ~house_special].itertuples()
-               if pd.notna(r.incumbent_party)}
+    # the GENERAL row decides (2026-10-09): races.csv also has primary / top-two rows for the
+    # same key, and whichever row came last won - 10 keys in 2024, e.g. CA-45 (Steel R) and WA-3
+    # (Gluesenkamp Perez D) read from top-two-primary rows carrying the wrong party. Other
+    # stages only fill a key that has no general row.
+    _ok = rc[rc["office"].notna() & ~house_special & rc["incumbent_party"].notna()]
+    _gen = _ok["stage"].astype(str).eq("general")
+    inc_map = {}
+    for part in (_ok[~_gen], _ok[_gen]):          # general rows written last, so they win
+        for r in part.itertuples():
+            inc_map[(r.cycle, r.state, r.office, r.district)] = npar(r.incumbent_party)
 
     # Per-CANDIDATE totals from the shared aggregation (2026-09-25). This used to take the
     # biggest single DEM/REP ballot LINE, which dropped fusion lines (a NY Republican's

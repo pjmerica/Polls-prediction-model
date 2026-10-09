@@ -49,6 +49,7 @@ data/*
 !data/lean_districts.csv
 !data/raw_polls_538.csv
 !data/generic_ballot_hist_538.csv
+!data/generic_ballot_averages_538.csv
 !data/approval_monthly.csv
 !data/generic_ballot_monthly.csv
 !data/fec_summary.csv

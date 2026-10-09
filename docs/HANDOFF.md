@@ -4,6 +4,45 @@ For the next agent. Read AGENTS.md first (architecture + rules), CONCERNS.md sec
 (risk register + roadmap). This file: what's mid-flight RIGHT NOW, what's most likely to
 break, and what to do next, in order.
 
+## 2026-10-09 - FEC re-fetch, generic-ballot history filled, incumbency stage bug, data audit
+
+**FEC.** fec_summary + fec_asof re-run (Q3 not due until Oct 15 - RE-RUN AFTER OCT 15). New
+`transfers_out_auth` column: when 2+ authorized committees are summed, money moved between them is
+netted off receipts/disbursements (it was counted twice; 210 candidates changed). Known remaining
+quirks, deliberately NOT changed (money is only used as race shares; ~1.4% of win-model gain):
+(a) Senate "_ytd" is the 6-YEAR election cycle, so senators' as-of totals exceed the 2-year bulk
+file (consistent train/serve); (b) single committees receiving JFC transfers keep the gross total
+(Scalise 2022: $16.9M from his JFC - real money raised); (c) a candidate's OLD committee can carry
+non-campaign money into the next cycle (Jennings 2008: 2007 recount fund in a 2006 committee).
+
+**Generic ballot.** `data/generic_ballot_averages_538.csv` (538 daily averages 2017-04..2024-11,
+Internet Archive) added as the base layer in fetch_generic_ballot.build_monthly. Before, 2017-2024
+had only Sep-Nov of each election year (raw_polls keeps the final weeks), so every 12-month
+generic-ballot feature saw ~3 months in training vs a full year live. Each cycle now has 21 of 25
+months (the 4 post-election months are still empty). macro_monthly.csv generic rows replaced.
+Not changed: cycles._NATL_ENV_FROZEN 2018-2024 differ from this file's 30-day means by 0.4-1.1
+pts (7.8/7.5/0.7/0.1 vs 8.27/7.04/0.26/1.17) - likely 538 methodology vintages (the 2024 file
+recomputed history after 538's 2023 method change); the frozen values may be closer to what was
+published in real time.
+
+**Incumbency.** races.csv also has primary / top-two rows per key and inc_map took whichever came
+last - general rows now win (10 keys, all 2024: CA-45 Steel R, WA-3 Gluesenkamp Perez D, ...).
+races.csv corrected: TX-22 2008 -> DEM (Lampson), MI-11 2014 -> REP (Bentivolio), NY-3 2024 ->
+DEM (Suozzi won the Feb 2024 special after Santos's expulsion), AZ-Sen 2024 -> IND (Sinema).
+
+**Audit - checked and clean:** winners are always the top vote-getter outside runoff/RCV/jungle
+races; no split candidates; no polled race recorded as uncontested; result labels match known
+results (15 spot checks; MA counts blank ballots in the denominator, margins unaffected); House and
+Senate incumbency vs prior winners (all mismatches explained by specials / party switches /
+2-year NH-VT governor terms); live feed has no future-dated polls; macro series ranges sane
+(Oct-2025 CPI / jobs gap = government shutdown).
+
+**Metrics:** win Brier .064 / race-acc .878 (unchanged). Margin MAE 4.685 -> 4.851, but that is
+the nested TUNER flipping hyperparameters again (min_child_weight 8 -> 15, subsample .6 -> .8,
+colsample 1.0 -> .6), not the data: with the previous params held fixed the new data scores 4.716
+(3 seeds), the tuner's pick 4.824. Third flip between these two settings - the tune-cycle CV is
+noisy. Proposed (not done, needs the user's OK): average the tuner's CV over 3 seeds.
+
 ## 2026-10-08 (later) - appointed federal posts = 3.5; docs sweep; primary results refreshed
 
 **User call:** non-elected federal offices get their own bio_office_level, **3.5** (between

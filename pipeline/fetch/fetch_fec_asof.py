@@ -49,6 +49,9 @@ YTD = {
     # point-in-time balance, not a running total (2026-10-02, new features)
     "disbursements": "total_disbursements_ytd",
     "cash_on_hand": "cash_on_hand_end_period",
+    # money moved between a candidate's OWN authorized committees (2026-10-09) - see
+    # fetch_cycle: subtracted when 2+ committees are summed, or it is counted twice
+    "transfers_out_auth": "transfers_to_other_authorized_committee_ytd",
 }
 
 
@@ -171,6 +174,18 @@ def fetch_cycle(cycle, key, live):
             acc[k] += v
         end = str((on.get(cid) or off.get(cid) or {}).get("coverage_end_date", ""))[:10]
         acc["asof"] = max(acc.get("asof", ""), end)
+    # INTER-COMMITTEE TRANSFERS (2026-10-09). total_receipts / total_disbursements include money
+    # moved between a candidate's authorized committees, so summing two of them counts a transfer
+    # once as the sender's spending and again as the receiver's receipts (Christine Jennings
+    # 2008: 3 committees, $5.2M as-of vs $2.2M full-cycle). With 2+ committees, net the transfers
+    # OUT of each summed committee off both totals. A single committee keeps its gross total:
+    # its transfers IN come from a joint fundraising committee we do not sum (Scalise 2022:
+    # $16.9M from his JFC), so they are real money raised, not a double count.
+    for acc in rows.values():
+        t = acc.get("transfers_out_auth", 0.0)
+        if acc["n_committees"] > 1 and t > 0:
+            acc["receipts"] = max(acc["receipts"] - t, 0.0)
+            acc["disbursements"] = max(acc["disbursements"] - t, 0.0)
     print(f"  {cycle}: {len(off)} off-year YE + {len(on)} election-year {stage} reports -> "
           f"{len(rows)} candidates")
     return list(rows.values())

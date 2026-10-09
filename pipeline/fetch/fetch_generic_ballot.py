@@ -18,6 +18,7 @@ _sys.path.insert(0, _os.path.dirname(_os.path.dirname(_os.path.dirname(_os.path.
 from paths import ROOT, AGG  # noqa: E402  (repo-root-relative paths; see paths.py)
 
 import io
+import os
 import re
 import sys
 
@@ -90,6 +91,21 @@ def build_monthly(out="data/generic_ballot_monthly.csv"):
                        - pd.to_numeric(daily["rep_estimate"], errors="coerce"))
     base = (daily.dropna(subset=["date", "margin"])
                  .set_index("date")["margin"].resample("MS").mean())
+    # 538's DAILY generic-ballot averages for the 2018-2024 cycles (each from April of the
+    # off-year to Election Day; data/generic_ballot_averages_538.csv, Internet Archive copy of
+    # projects.fivethirtyeight.com/polls/data/generic_ballot_averages.csv). Added 2026-10-09:
+    # before this, 2017-2024 had ONLY the Sep-Nov election-season months (raw_polls keeps the
+    # final weeks), so every 12-month generic-ballot feature was computed from ~3 months in
+    # training but from a full year live. Same source type as the 1995-2016 base layer and
+    # likewise as-of each day (no look-ahead), so it is the base layer for those years too.
+    _avg_path = "data/generic_ballot_averages_538.csv"
+    if os.path.exists(_avg_path):
+        av = pd.read_csv(_avg_path)
+        av["date"] = pd.to_datetime(av["date"], errors="coerce")
+        pv = av.pivot_table(index="date", columns="candidate", values="pct_estimate")
+        if {"Democrats", "Republicans"} <= set(pv.columns):
+            m2 = (pv["Democrats"] - pv["Republicans"]).dropna().resample("MS").mean()
+            base = base.combine_first(m2)
 
     rp = pd.read_csv("data/raw_polls_538.csv", low_memory=False)
     g = rp[rp["type_simple"] == "House-G-US"].copy()

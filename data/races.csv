@@ -4277,7 +4277,7 @@ id,type,state_abbrev,State,office_id,office_name,office_seat_name,cycle,stage,pa
 4411,HouseRace,TX,Texas,514,U.S. House,District 19,2008,general,,false,REP,11/4/08,REP,2/12/19 01:22,10/14/21 11:14
 4412,HouseRace,TX,Texas,515,U.S. House,District 20,2008,general,,false,DEM,11/4/08,DEM,2/12/19 01:22,10/14/21 11:14
 4413,HouseRace,TX,Texas,516,U.S. House,District 21,2008,general,,false,REP,11/4/08,REP,2/12/19 01:22,10/14/21 11:14
-4414,HouseRace,TX,Texas,517,U.S. House,District 22,2008,general,,false,REP,11/4/08,REP,2/12/19 01:22,10/14/21 11:14
+4414,HouseRace,TX,Texas,517,U.S. House,District 22,2008,general,,false,DEM,11/4/08,REP,2/12/19 01:22,10/14/21 11:14
 4415,HouseRace,TX,Texas,518,U.S. House,District 23,2008,general,,false,DEM,11/4/08,DEM,2/12/19 01:22,10/14/21 11:14
 4416,HouseRace,TX,Texas,519,U.S. House,District 24,2008,general,,false,REP,11/4/08,REP,2/12/19 01:22,10/14/21 11:14
 4417,HouseRace,TX,Texas,520,U.S. House,District 25,2008,general,,false,DEM,11/4/08,DEM,2/12/19 01:22,10/14/21 11:14
@@ -5348,7 +5348,7 @@ id,type,state_abbrev,State,office_id,office_name,office_seat_name,cycle,stage,pa
 5539,HouseRace,MI,Michigan,271,U.S. House,District 8,2014,general,,false,REP,11/4/14,REP,2/12/19 01:22,10/14/21 11:14
 5540,HouseRace,MI,Michigan,272,U.S. House,District 9,2014,general,,false,DEM,11/4/14,DEM,2/12/19 01:22,10/14/21 11:14
 5541,HouseRace,MI,Michigan,273,U.S. House,District 10,2014,general,,false,REP,11/4/14,REP,2/12/19 01:22,10/14/21 11:14
-5542,HouseRace,MI,Michigan,274,U.S. House,District 11,2014,general,,false,DEM,11/4/14,REP,2/12/19 01:22,10/14/21 11:14
+5542,HouseRace,MI,Michigan,274,U.S. House,District 11,2014,general,,false,REP,11/4/14,REP,2/12/19 01:22,10/14/21 11:14
 5543,HouseRace,MI,Michigan,275,U.S. House,District 12,2014,general,,false,DEM,11/4/14,DEM,2/12/19 01:22,10/14/21 11:14
 5544,HouseRace,MI,Michigan,276,U.S. House,District 13,2014,general,,false,DEM,11/4/14,DEM,2/12/19 01:22,10/14/21 11:14
 5546,HouseRace,MN,Minnesota,282,U.S. House,District 1,2014,general,,false,DEM,11/4/14,DEM,2/12/19 01:22,10/14/21 11:14
@@ -6729,7 +6729,7 @@ id,type,state_abbrev,State,office_id,office_name,office_seat_name,cycle,stage,pa
 7024,PresidentialRace,CT,Connecticut,1,U.S. President,,1996,primary,DEM,false,DEM,3/5/96,,12/18/19 13:04,11/15/21 12:43
 7025,PresidentialRace,CT,Connecticut,1,U.S. President,,1996,primary,REP,false,DEM,3/5/96,,12/18/19 13:04,11/15/21 12:43
 7026,PresidentialRace,GA,Georgia,1,U.S. President,,1996,primary,DEM,false,DEM,3/5/96,,12/18/19 13:04,11/15/21 12:43
-9505,SenateRace,AZ,Arizona,32,U.S. Senate,Class I,2024,general,,false,DEM,11/5/24,,9/29/22 10:43,9/29/22 10:43
+9505,SenateRace,AZ,Arizona,32,U.S. Senate,Class I,2024,general,,false,IND,11/5/24,,9/29/22 10:43,9/29/22 10:43
 7028,PresidentialRace,ID,Idaho,1,U.S. President,,1996,caucus,DEM,false,DEM,3/5/96,,12/18/19 13:04,11/15/21 12:43
 7029,PresidentialRace,ME,Maine,1,U.S. President,,1996,primary,DEM,false,DEM,3/5/96,,12/18/19 13:04,11/15/21 12:43
 7030,PresidentialRace,ME,Maine,1,U.S. President,,1996,primary,REP,false,DEM,3/5/96,,12/18/19 13:04,11/15/21 12:43
@@ -9659,7 +9659,7 @@ id,type,state_abbrev,State,office_id,office_name,office_seat_name,cycle,stage,pa
 9797,HouseRace,NM,New Mexico,365,U.S. House,District 3,2024,general,,false,DEM,11/5/24,DEM,11/14/22 17:23,11/14/22 17:23
 9798,HouseRace,NY,New York,375,U.S. House,District 1,2024,general,,false,REP,11/5/24,,11/14/22 17:23,11/14/22 17:23
 9799,HouseRace,NY,New York,376,U.S. House,District 2,2024,general,,false,REP,11/5/24,,11/14/22 17:23,11/14/22 17:23
-9800,HouseRace,NY,New York,377,U.S. House,District 3,2024,general,,false,REP,11/5/24,,11/14/22 17:23,11/14/22 17:23
+9800,HouseRace,NY,New York,377,U.S. House,District 3,2024,general,,false,DEM,11/5/24,,11/14/22 17:23,11/14/22 17:23
 9801,HouseRace,NY,New York,378,U.S. House,District 4,2024,general,,false,REP,11/5/24,,11/14/22 17:23,11/14/22 17:23
 9802,HouseRace,NY,New York,379,U.S. House,District 5,2024,general,,false,DEM,11/5/24,,11/14/22 17:23,11/14/22 17:23
 9803,HouseRace,NY,New York,380,U.S. House,District 6,2024,general,,false,DEM,11/5/24,,11/14/22 17:23,11/14/22 17:23
