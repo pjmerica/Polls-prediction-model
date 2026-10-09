@@ -68,11 +68,11 @@ def _wiki_evidence(r):
     desc = "" if pd.isna(r.descriptor) else str(r.descriptor).strip()
     src = f"[Wikipedia {int(r.year)} {r.office} race page]"
     if not desc:
-        return (f"no descriptor - results-table row {src}" if int(r.office_level) == 0
+        return (f"no descriptor - results-table row {src}" if float(r.office_level) == 0
                 else f"hand-coded level, no descriptor [{r.src}]")
     lvl, ev = classify_evidence(desc, r.office)
-    if lvl != int(r.office_level):
-        return f"hand-set level {int(r.office_level)}; descriptor: {desc[:160]} {src}"
+    if lvl != float(r.office_level):
+        return f"hand-set level {float(r.office_level)}; descriptor: {desc[:160]} {src}"
     return f"{ev} {src}" if lvl > 0 else f"no office named in the bio {src}"
 
 
@@ -206,10 +206,10 @@ def main():
             bp_rows.append(dict(
                 year=r.year, office=r.office, state=r.state, district=r.district,
                 party=r.party, name=r.candidate, cand_key=r.cand_key,
-                office_level=int(lvl), bio_in_office=0,
+                office_level=float(lvl), bio_in_office=0,
                 bio_prior_candidacy=int(prior_map.get(key, 0)),
                 src=("manual" if is_manual else "ballotpedia"),
-                office_evidence=((_bp_asof_evidence(off_map[key], int(r.year), int(lvl))
+                office_evidence=((_bp_asof_evidence(off_map[key], int(r.year), float(lvl))
                                   if lvl > 0 else f"verified: no office held before {int(r.year)}")
                                  + f" [{ref_map.get(key, '')}]")))
         print(f"candidate_bios_ballotpedia.csv: {len(bp)} profiles -> {len(bp_rows)} "
@@ -235,7 +235,7 @@ def main():
     for r in w.itertuples():
         if r.office_level <= 0:
             continue
-        fwd.setdefault((r.name, r.state), []).append((int(r.year), int(r.office_level),
+        fwd.setdefault((r.name, r.state), []).append((int(r.year), float(r.office_level),
                                                       r.office_evidence))
     # existing (key) coverage so we only FILL gaps, never overwrite a real row
     covered_lvl = {tuple(str(x) for x in (r.year, r.office, r.state, r.district, r.party, r.cand_key)):
@@ -261,7 +261,7 @@ def main():
                 continue
             xref_rows.append(dict(
                 year=r.year, office=r.office, state=r.state, district=r.district, party=r.party,
-                name=r.candidate, cand_key=r.cand_key, office_level=int(best),
+                name=r.candidate, cand_key=r.cand_key, office_level=float(best),
                 bio_in_office=0, bio_prior_candidacy=0, src="wiki_xref",
                 office_evidence=f"carried forward from the same person's earlier bio: {best_ev}"))
         combined = pd.concat([combined, pd.DataFrame(xref_rows)], ignore_index=True) if xref_rows else combined
@@ -287,6 +287,9 @@ def main():
                                      kind="stable")
                         .drop_duplicates(subset=KEY, keep="first")
                         .drop(columns="_sr"))
+    # whole levels stay integers in the file; 3.5 = appointed federal post (2026-10-08)
+    combined["office_level"] = combined["office_level"].map(
+        lambda v: int(v) if float(v).is_integer() else float(v)).astype(object)
     combined.to_csv(OUT, index=False)
     print(f"\nsaved -> {OUT}: {len(combined)} rows "
           f"({(combined['src']=='wikipedia').sum()} wiki, {(combined['src']=='ballotpedia').sum()} ballotpedia)")

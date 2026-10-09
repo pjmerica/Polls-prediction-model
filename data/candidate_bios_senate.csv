@@ -16,11 +16,11 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,DEM,Richard Carmona,former Surgeon General of the United States,2012,Senate,AZ,carmona r,0,0,0
 ,DEM,Don Bivens,former chairman of the Arizona Democratic Party,2012,Senate,AZ,bivens d,0,0,0
 ,DEM,David Ruben,physician,2012,Senate,AZ,ruben d,0,0,0
-,DEM,Dennis Burke,United States attorney,2012,Senate,AZ,burke d,4,0,0
+,DEM,Dennis Burke,United States attorney,2012,Senate,AZ,burke d,3.5,0,0
 ,DEM,Gabby Giffords,former U.S. representative,2012,Senate,AZ,giffords g,4,1,0
 ,DEM,Phil Gordon,mayor of Phoenix,2012,Senate,AZ,gordon p,1,0,0
 ,DEM,Mark Kelly,astronaut and husband of Gabrielle Giffords (later elected to Arizona's Class 3 Senate seat in 2020) .,2012,Senate,AZ,kelly m,0,0,0
-,DEM,Janet Napolitano,U.S. secretary of Homeland Security and former Arizona governor,2012,Senate,AZ,napolitano j,4,0,0
+,DEM,Janet Napolitano,U.S. secretary of Homeland Security and former Arizona governor,2012,Senate,AZ,napolitano j,3.5,0,0
 ,DEM,Ed Pastor,U.S. representative,2012,Senate,AZ,pastor e,4,1,0
 ,DEM,Jim Pederson,former Arizona Democratic Party chairman and 2006 Democratic nominee for U.S. Senate,2012,Senate,AZ,pederson j,0,0,1
 ,DEM,Warren Stewart,civil rights leader,2012,Senate,AZ,stewart w,0,0,0
@@ -114,7 +114,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,REP,Andrew Ian Dodge,conservative activist (ran as an independent),2012,Senate,ME,dodge a,0,0,0
 ,REP,Olympia Snowe,incumbent U.S. senator,2012,Senate,ME,snowe o,4,0,0
 ,REP,Steve Abbott,athletic director at the University of Maine and candidate for governor in 2010,2012,Senate,ME,abbott s,0,0,1
-,REP,Peter Cianchette,former United States Ambassador to Costa Rica and nominee for governor in 2002,2012,Senate,ME,cianchette p,4,0,1
+,REP,Peter Cianchette,former United States Ambassador to Costa Rica and nominee for governor in 2002,2012,Senate,ME,cianchette p,3.5,0,1
 ,REP,William Cohen,former United States Secretary of Defense (1997–2001) and former U.S. Senator (1979–1997),2012,Senate,ME,cohen w,4,0,0
 ,REP,Peter Mills,"executive director of the Maine Turnpike Authority , former state senator and candidate for Governor of Maine in 2002 and 2006",2012,Senate,ME,mills p,2,0,1
 ,REP,Kevin Raye,President of the Maine Senate ( ran for U.S. House ),2012,Senate,ME,raye k,2,0,0
@@ -160,7 +160,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,REP,Ed Martin,attorney (running for Missouri attorney general),2012,Senate,MO,martin e,0,0,0
 ,REP,Tom Schweich,state auditor,2012,Senate,MO,schweich t,3,0,0
 ,REP,Jim Talent,former U.S. senator,2012,Senate,MO,talent j,4,0,0
-,REP,Ann Wagner,former U.S. Ambassador to Luxembourg and former Missouri Republican Party chairwoman (running for Congress),2012,Senate,MO,wagner a,4,0,0
+,REP,Ann Wagner,former U.S. Ambassador to Luxembourg and former Missouri Republican Party chairwoman (running for Congress),2012,Senate,MO,wagner a,3.5,0,0
 ,REP,Army,veteran,2012,Senate,MS,army,0,0,0
 ,REP,Roger Wicker,incumbent U.S. Senator,2012,Senate,MS,wicker r,4,0,0
 ,DEM,Afghan War,veteran and Independent candidate for governor in 2011,2012,Senate,MS,war a,0,0,1
@@ -179,8 +179,8 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,DEM,Tim Mathern,state senator and nominee for governor in 2008,2012,Senate,ND,mathern t,2,0,1
 ,DEM,Earl Pomeroy,former U.S. Representative,2012,Senate,ND,pomeroy e,4,1,0
 ,DEM,Tracy Potter,state senator and nominee for the U.S. Senate in 2010,2012,Senate,ND,potter t,2,0,1
-,DEM,Tim Purdon,U.S. Attorney,2012,Senate,ND,purdon t,4,0,0
-,DEM,Jasper Schneider,USDA rural development State Director,2012,Senate,ND,schneider j,0,0,0
+,DEM,Tim Purdon,U.S. Attorney,2012,Senate,ND,purdon t,3.5,0,0
+,DEM,Jasper Schneider,USDA rural development State Director,2012,Senate,ND,schneider j,3.5,0,0
 ,DEM,Mac Schneider,state senator,2012,Senate,ND,schneider m,2,0,0
 ,DEM,Ryan Taylor,Minority Leader of the North Dakota Senate,2012,Senate,ND,taylor r,2,0,0
 ,REP,Rick Berg,U.S. Representative,2012,Senate,ND,berg r,4,1,0
@@ -228,7 +228,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,REP,Ian Linker,attorney,2012,Senate,NJ,linker i,0,0,0
 ,REP,Highlands,and candidate for NJ-06 in 2010,2012,Senate,NJ,highlands,0,0,1
 ,REP,Diane Allen,"state senator, candidate for the U.S. Senate in 2002 and former news broadcaster",2012,Senate,NJ,allen d,2,0,1
-,REP,Chris Christie,governor of New Jersey and former U.S. attorney,2012,Senate,NJ,christie c,4,0,0
+,REP,Chris Christie,governor of New Jersey and former U.S. attorney,2012,Senate,NJ,christie c,3.5,0,0
 ,REP,John Crowley,biotechnology executive,2012,Senate,NJ,crowley j,0,0,0
 ,REP,Michael Doherty,state senator,2012,Senate,NJ,doherty m,2,0,0
 ,REP,Roxbury,Township Council,2012,Senate,NJ,roxbury,0,0,0
@@ -347,7 +347,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,REP,George Allen,former U.S. Senator and former Governor of Virginia,2012,Senate,VA,allen g,4,0,0
 ,REP,Tim Donner,founder of Horizons Television and LibertyNation.com,2012,Senate,VA,donner t,0,0,0
 ,REP,David McCormick,attorney,2012,Senate,VA,mccormick d,0,0,0
-,REP,Liz Cheney,former Principal Deputy Assistant Secretary of State for Near Eastern Affairs,2012,Senate,VA,cheney l,4,0,0
+,REP,Liz Cheney,former Principal Deputy Assistant Secretary of State for Near Eastern Affairs,2012,Senate,VA,cheney l,3.5,0,0
 ,REP,Ken Cuccinelli,Virginia Attorney General,2012,Senate,VA,cuccinelli k,3,0,0
 ,REP,Tom Davis,former U.S. Representative,2012,Senate,VA,davis t,4,1,0
 ,REP,Corey Stewart,Prince William County Board of Supervisors Chairman,2012,Senate,VA,stewart c,0,0,0
@@ -376,7 +376,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,REP,Jeff Fitzgerald,Speaker of the Wisconsin State Assembly,2012,Senate,WI,fitzgerald j,2,0,0
 ,REP,Eric Hovde,businessman,2012,Senate,WI,hovde e,0,0,0
 ,REP,Mark Neumann,"former U.S. representative, nominee for the U.S. Senate in 1998 , and candidate for governor in 2010",2012,Senate,WI,neumann m,4,1,1
-,REP,Tommy Thompson,former governor of Wisconsin and former secretary of Health and Human Services,2012,Senate,WI,thompson t,4,0,0
+,REP,Tommy Thompson,former governor of Wisconsin and former secretary of Health and Human Services,2012,Senate,WI,thompson t,3.5,0,0
 ,REP,Frank Lasee,state senator  (endorsed Eric Hovde),2012,Senate,WI,lasee f,2,0,0
 ,REP,Kip Smith,physical therapist,2012,Senate,WI,smith k,0,0,0
 ,REP,Mark Andrew Green,former U.S. representative and former United States ambassador to Tanzania,2012,Senate,WI,green m,4,1,0
@@ -485,7 +485,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,DEM,Reserve Officers' Training Corps,instructor and former U.S. Army Ranger,2014,Senate,GA,corps r,0,0,0
 ,DEM,Oglethorpe,( ran for Secretary of State ),2014,Senate,GA,oglethorpe,0,0,0
 ,DEM,Stacey Abrams,Minority Leader of the Georgia House of Representatives,2014,Senate,GA,abrams s,2,1,0
-,DEM,David I. Adelman,United States Ambassador to Singapore and former state senator,2014,Senate,GA,adelman d,4,0,0
+,DEM,David I. Adelman,United States Ambassador to Singapore and former state senator,2014,Senate,GA,adelman d,3.5,0,0
 ,DEM,COO,of Atlanta,2014,Senate,GA,coo,0,0,0
 ,DEM,Thurbert Baker,former Attorney General of Georgia and candidate for Governor in 2010,2014,Senate,GA,baker t,3,0,1
 ,DEM,Roy Barnes,former governor,2014,Senate,GA,barnes r,3,0,0
@@ -524,12 +524,12 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,DEM,Dave Loebsack,U.S. Representative from Iowa's 2nd congressional district ( ran for re-election ),2014,Senate,IA,loebsack d,4,1,0
 ,DEM,Kevin McCarthy,Minority Leader of the Iowa House of Representatives,2014,Senate,IA,mccarthy k,2,1,0
 ,DEM,Christie Vilsack,former First Lady of Iowa and nominee for Iowa's 4th congressional district in 2012,2014,Senate,IA,vilsack c,0,0,1
-,DEM,Tom Vilsack,United States Secretary of Agriculture and former Governor of Iowa,2014,Senate,IA,vilsack t,4,0,0
+,DEM,Tom Vilsack,United States Secretary of Agriculture and former Governor of Iowa,2014,Senate,IA,vilsack t,3.5,0,0
 ,REP,Sam Clovis,radio host,2014,Senate,IA,clovis s,0,0,0
 ,REP,Joni Ernst,state senator,2014,Senate,IA,ernst j,2,0,0
 ,REP,Mark Jacobs,former CEO of Reliant Energy,2014,Senate,IA,jacobs m,0,0,0
 ,REP,Scott Schaben,businessman,2014,Senate,IA,schaben s,0,0,0
-,REP,Matthew Whitaker,former U.S. Attorney for the Southern District of Iowa and nominee for Treasurer of Iowa in 2002,2014,Senate,IA,whitaker m,4,0,1
+,REP,Matthew Whitaker,former U.S. Attorney for the Southern District of Iowa and nominee for Treasurer of Iowa in 2002,2014,Senate,IA,whitaker m,3.5,0,1
 ,REP,Iowa's 4th congressional district,in 1988 and 1992,2014,Senate,IA,district i,0,0,0
 ,REP,David Young,former Chief of Staff to U.S. Senator Chuck Grassley ( ran for U.S. House ),2014,Senate,IA,young d,0,0,0
 ,REP,Terry Branstad,Governor of Iowa,2014,Senate,IA,branstad t,3,0,0
@@ -538,7 +538,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,REP,Bill Dix,Minority Leader of the Iowa Senate,2014,Senate,IA,dix b,2,0,0
 ,REP,Steve King,U.S. Representative from Iowa's 4th congressional district,2014,Senate,IA,king s,4,1,0
 ,REP,Tom Latham,U.S. Representative,2014,Senate,IA,latham t,4,1,0
-,REP,Bill Northey,Iowa Secretary of Agriculture,2014,Senate,IA,northey b,0,0,0
+,REP,Bill Northey,Iowa Secretary of Agriculture,2014,Senate,IA,northey b,3,0,0
 ,REP,McDonald's,store owner and operator,2014,Senate,IA,mcdonalds,0,0,0
 ,REP,Kim Reynolds,Lieutenant Governor of Iowa,2014,Senate,IA,reynolds k,3,0,0
 ,REP,Rod Roberts,Director of the Iowa Department of Inspections and Appeals and candidate for governor in 2010,2014,Senate,IA,roberts r,0,0,1
@@ -568,7 +568,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,REP,Dennis Pyle,state senator,2014,Senate,KS,pyle d,2,0,0
 ,REP,Todd Tiahrt,former U.S. representative ( ran for KS-04 ),2014,Senate,KS,tiahrt t,4,1,0
 ,DEM,Chad Taylor,Shawnee County district attorney,2014,Senate,KS,taylor c,1,0,0
-,DEM,Kathleen Sebelius,former United States Secretary of Health and Human Services and former governor of Kansas,2014,Senate,KS,sebelius k,4,0,0
+,DEM,Kathleen Sebelius,former United States Secretary of Health and Human Services and former governor of Kansas,2014,Senate,KS,sebelius k,3.5,0,0
 ,DEM,Randall Batson,nominee for the State House in 2012,2014,Senate,KS,batson r,0,0,1
 ,IND,Greg Orman,"businessman, briefly ran in the Democratic primary in 2008 before dropping out",2014,Senate,KS,orman g,0,0,0
 ,REP,Matt Bevin,businessman,2014,Senate,KY,bevin m,0,0,0
@@ -586,7 +586,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,DEM,Tom Recktenwald,former Catholic school teacher,2014,Senate,KY,recktenwald t,0,0,0
 ,DEM,Kentucky's 2nd congressional district,in 2010 (ran as an independent before dropping out entirely),2014,Senate,KY,district k,0,0,0
 ,DEM,Jerry Abramson,lieutenant governor of Kentucky and former mayor of Louisville,2014,Senate,KY,abramson j,3,0,0
-,DEM,Matthew Barzun,United States ambassador to the United Kingdom and former United States ambassador to Sweden,2014,Senate,KY,barzun m,4,0,0
+,DEM,Matthew Barzun,United States ambassador to the United Kingdom and former United States ambassador to Sweden,2014,Senate,KY,barzun m,3.5,0,0
 ,DEM,Steve Beshear,Governor of Kentucky,2014,Senate,KY,beshear s,3,0,0
 ,DEM,John Young Brown III,former secretary of state of Kentucky and candidate for lieutenant governor of Kentucky in 2007,2014,Senate,KY,brown j,3,0,1
 ,DEM,Ben Chandler,former U.S. representative,2014,Senate,KY,chandler b,4,1,0
@@ -692,7 +692,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,DEM,David Baria,state representative,2014,Senate,MS,baria d,2,1,0
 ,DEM,Jim Hood,Mississippi attorney general,2014,Senate,MS,hood j,3,0,0
 ,DEM,Bill Luckett,mayor of Clarksdale and candidate for governor in 2011,2014,Senate,MS,luckett b,1,0,1
-,DEM,Ray Mabus,U.S. secretary of the Navy and former governor of Mississippi,2014,Senate,MS,mabus r,4,0,0
+,DEM,Ray Mabus,U.S. secretary of the Navy and former governor of Mississippi,2014,Senate,MS,mabus r,3.5,0,0
 ,DEM,Connie Moran,mayor of Ocean Springs,2014,Senate,MS,moran c,1,0,0
 ,DEM,Ronnie Musgrove,former governor of Mississippi and nominee for the U.S. Senate in 2008,2014,Senate,MS,musgrove r,3,0,1
 ,DEM,Brandon Presley,commissioner for the Northern District of the Mississippi Public Service Commission,2014,Senate,MS,presley b,0,0,0
@@ -759,7 +759,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,REP,Phil Berger,President pro tempore of the North Carolina Senate,2014,Senate,NC,berger p,2,0,0
 ,REP,Cherie K. Berry,North Carolina Commissioner of Labor,2014,Senate,NC,berry c,3,0,0
 ,REP,Peter S. Brunstetter,state senator,2014,Senate,NC,brunstetter p,2,0,0
-,REP,James P. Cain,attorney and former United States Ambassador to Denmark,2014,Senate,NC,cain j,4,0,0
+,REP,James P. Cain,attorney and former United States Ambassador to Denmark,2014,Senate,NC,cain j,3.5,0,0
 ,REP,Renee Ellmers,U.S. representative,2014,Senate,NC,ellmers r,4,1,0
 ,REP,Dan Forest,Lieutenant Governor of North Carolina,2014,Senate,NC,forest d,3,0,0
 ,REP,Virginia Foxx,U.S. representative,2014,Senate,NC,foxx v,4,1,0
@@ -910,7 +910,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,DEM,Henry Jo Sinkie,rancher and resort owner,2014,Senate,SD,sinkie h,0,0,0
 ,DEM,Jason Frerichs,Minority Leader of the South Dakota Senate (running for re-election),2014,Senate,SD,frerichs j,2,0,0
 ,DEM,Stephanie Herseth Sandlin,former U.S. Representative,2014,Senate,SD,sandlin s,4,1,0
-,DEM,Brendan Johnson,United States Attorney for the District of South Dakota and son of incumbent senator Tim Johnson,2014,Senate,SD,johnson b,4,0,0
+,DEM,Brendan Johnson,United States Attorney for the District of South Dakota and son of incumbent senator Tim Johnson,2014,Senate,SD,johnson b,3.5,0,0
 ,DEM,Tim Johnson,incumbent U.S. Senator,2014,Senate,SD,johnson t,4,0,0
 ,DEM,Pat O'Brien,"author, television anchor and radio host",2014,Senate,SD,obrien p,0,0,0
 ,DEM,Ron J. Volesky,attorney and former state senator,2014,Senate,SD,volesky r,2,0,0
@@ -999,7 +999,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,DEM,West Virginia Democratic Party,(running for the U.S. House ),2014,Senate,WV,party w,0,0,0
 ,DEM,Robin Davis,justice for the Supreme Court of Appeals of West Virginia,2014,Senate,WV,davis r,0,0,0
 ,DEM,Glen Gainer III,West Virginia state auditor ( running for WV-01 ),2014,Senate,WV,gainer g,3,0,0
-,DEM,Booth Goodwin,United States attorney for the Southern District of West Virginia,2014,Senate,WV,goodwin b,4,0,0
+,DEM,Booth Goodwin,United States attorney for the Southern District of West Virginia,2014,Senate,WV,goodwin b,3.5,0,0
 ,DEM,Carte Goodwin,former U.S. senator,2014,Senate,WV,goodwin c,4,0,0
 ,DEM,Walt Helmick,West Virginia agriculture commissioner,2014,Senate,WV,helmick w,0,0,0
 ,DEM,West Virginia's 2nd congressional district,in 2000 and 2002,2014,Senate,WV,district w,0,0,0
@@ -1073,7 +1073,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,DEM,Terri Sewell,U.S. representative (running for re-election),2016,Senate,AL,sewell t,4,1,0
 ,REP,John Boozman,incumbent U.S. senator,2016,Senate,AR,boozman j,4,0,0
 ,REP,in 2014,and candidate for the U.S. Senate in 2010,2016,Senate,AR,in,0,0,1
-,DEM,Conner Eldridge,former United States attorney for the Western District of Arkansas,2016,Senate,AR,eldridge c,4,0,0
+,DEM,Conner Eldridge,former United States attorney for the Western District of Arkansas,2016,Senate,AR,eldridge c,3.5,0,0
 ,DEM,DeKalb Township,"constable, former mayor of Tull , nominee for the state senate in 2012 and nominee for governor in 2014",2016,Senate,AR,township d,1,0,1
 ,REP,John McCain,incumbent U.S. senator,2016,Senate,AZ,mccain j,4,0,0
 ,REP,2012,and candidate for Arizona's 8th congressional district in 2014,2016,Senate,AZ,,0,0,1
@@ -1098,14 +1098,14 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,DEM,Ruben Gallego,U.S. representative from Arizona's 7th congressional district ( ran for re-election ),2016,Senate,AZ,gallego r,4,1,0
 ,DEM,Phil Gordon,former mayor of Phoenix,2016,Senate,AZ,gordon p,1,0,0
 ,DEM,Mark Kelly,retired astronaut and husband of former Congresswoman Gabrielle Giffords,2016,Senate,AZ,kelly m,0,0,0
-,DEM,Janet Napolitano,"President of the University of California System, former Secretary of Homeland Security and former governor of Arizona",2016,Senate,AZ,napolitano j,4,0,0
+,DEM,Janet Napolitano,"President of the University of California System, former Secretary of Homeland Security and former governor of Arizona",2016,Senate,AZ,napolitano j,3.5,0,0
 ,DEM,Greg Stanton,Mayor of Phoenix,2016,Senate,AZ,stanton g,1,0,0
 ,DEM,Stewart Albertson,attorney,2016,Senate,CA,albertson s,0,0,0
 ,DEM,Xavier Becerra,U.S. representative and candidate for Mayor of Los Angeles in 2001,2016,Senate,CA,becerra x,4,1,1
 ,DEM,Ami Bera,U.S. representative,2016,Senate,CA,bera a,4,1,0
 ,DEM,Barbara Boxer,incumbent U.S. senator,2016,Senate,CA,boxer b,4,0,0
 ,DEM,Julia Brownley,U.S. representative,2016,Senate,CA,brownley j,4,1,0
-,DEM,Louis Caldera,"former director of the White House Military Office , former United States Secretary of the Army and former state assemblyman",2016,Senate,CA,caldera l,4,0,0
+,DEM,Louis Caldera,"former director of the White House Military Office , former United States Secretary of the Army and former state assemblyman",2016,Senate,CA,caldera l,3.5,0,0
 ,DEM,Tony Cárdenas,U.S. representative,2016,Senate,CA,cardenas t,4,1,0
 ,DEM,John Chiang,"California State Treasurer , former California State Controller and former member of the State Board of Equalization",2016,Senate,CA,chiang j,3,0,0
 ,DEM,Kevin de León,President pro tempore of the California State Senate,2016,Senate,CA,leon k,2,0,0
@@ -1117,7 +1117,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,DEM,Sam Liccardo,Mayor of San Jose,2016,Senate,CA,liccardo s,1,0,0
 ,DEM,Bill Lockyer,former California State Treasurer and former Attorney General of California,2016,Senate,CA,lockyer b,3,0,0
 ,DEM,Gloria Molina,former Los Angeles County Supervisor,2016,Senate,CA,molina g,1,0,0
-,DEM,Janet Napolitano,"president of the University of California , former United States Secretary of Homeland Security and former governor of Arizona",2016,Senate,CA,napolitano j,4,0,0
+,DEM,Janet Napolitano,"president of the University of California , former United States Secretary of Homeland Security and former governor of Arizona",2016,Senate,CA,napolitano j,3.5,0,0
 ,DEM,Gavin Newsom,Lieutenant Governor of California and former Mayor of San Francisco ( running for the governorship in 2018 ),2016,Senate,CA,newsom g,3,0,0
 ,DEM,Alex Padilla,"Secretary of State of California , former state senator and future U.S. senator for this seat",2016,Senate,CA,padilla a,3,0,0
 ,DEM,Raul Ruiz,U.S. representative,2016,Senate,CA,ruiz r,4,1,0
@@ -1149,7 +1149,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,REP,Doug Ose,former U.S. representative,2016,Senate,CA,ose d,4,1,0
 ,REP,Pepperdine University,and candidate for Secretary of State of California in 2014,2016,Senate,CA,university p,0,0,1
 ,REP,Steve Poizner,former California Insurance Commissioner and candidate for governor in 2010,2016,Senate,CA,poizner s,3,0,1
-,REP,Condoleezza Rice,"former United States Secretary of State , former United States National Security Advisor and former provost of Stanford University",2016,Senate,CA,rice c,4,0,0
+,REP,Condoleezza Rice,"former United States Secretary of State , former United States National Security Advisor and former provost of Stanford University",2016,Senate,CA,rice c,3.5,0,0
 ,REP,Ed Royce,U.S. representative,2016,Senate,CA,royce e,4,1,0
 ,REP,Arnold Schwarzenegger,actor and former governor of California,2016,Senate,CA,schwarzenegger a,3,0,0
 ,REP,Ashley Swearengin,Mayor of Fresno and candidate for California State Controller in 2014,2016,Senate,CA,swearengin a,1,0,1
@@ -1185,7 +1185,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,REP,Owen Hill,state senator and candidate for the U.S. Senate in 2014,2016,Senate,CO,hill o,2,0,1
 ,REP,Mike Kopp,former state senator and candidate for governor in 2014,2016,Senate,CO,kopp m,2,0,1
 ,REP,Steve Laffey,"former mayor of Cranston, Rhode Island , candidate for U.S. Senate from Rhode Island in 2006 , and candidate for Colorado's 4th congressional district in 2014",2016,Senate,CO,laffey s,1,0,1
-,REP,Gale Norton,"former United States Secretary of the Interior , former attorney general of Colorado , and candidate for the U.S. Senate in 1996",2016,Senate,CO,norton g,4,0,1
+,REP,Gale Norton,"former United States Secretary of the Interior , former attorney general of Colorado , and candidate for the U.S. Senate in 1996",2016,Senate,CO,norton g,3.5,0,1
 ,REP,Josh Penry,former state senator,2016,Senate,CO,penry j,2,0,0
 ,REP,Ellen Roberts,state senator,2016,Senate,CO,roberts e,2,0,0
 ,REP,Doug Robinson,businessman,2016,Senate,CO,robinson d,0,0,0
@@ -1228,7 +1228,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,REP,John Mica,U.S. representative (ran for reelection ),2016,Senate,FL,mica j,4,1,0
 ,REP,Jeff Miller,U.S. representative,2016,Senate,FL,miller j,4,1,0
 ,REP,Adam Putnam,Florida Commissioner of Agriculture and former U.S. representative,2016,Senate,FL,putnam a,4,1,0
-,REP,Francis Rooney,former United States Ambassador to the Holy See (ran for U.S. House ),2016,Senate,FL,rooney f,4,0,0
+,REP,Francis Rooney,former United States Ambassador to the Holy See (ran for U.S. House ),2016,Senate,FL,rooney f,3.5,0,0
 ,REP,Tom Rooney,U.S. representative (ran for reelection ),2016,Senate,FL,rooney t,4,1,0
 ,REP,Dennis A. Ross,U.S. representative (ran for reelection ),2016,Senate,FL,ross d,4,1,0
 ,REP,Joe Scarborough,cable news personality and former U.S. representative,2016,Senate,FL,scarborough j,4,1,0
@@ -1284,7 +1284,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,DEM,Michelle Nunn,former CEO of Points of Light and nominee for the U.S. Senate in 2014,2016,Senate,GA,nunn m,0,0,1
 ,DEM,Kasim Reed,mayor of Atlanta,2016,Senate,GA,reed k,1,0,0
 ,DEM,Doug Stoner,former state senator,2016,Senate,GA,stoner d,2,0,0
-,DEM,Ed Tarver,United States attorney for the Southern District of Georgia and former state senator,2016,Senate,GA,tarver e,4,0,0
+,DEM,Ed Tarver,United States attorney for the Southern District of Georgia and former state senator,2016,Senate,GA,tarver e,3.5,0,0
 ,DEM,Regina Thomas,former state senator and candidate for GA-12 in 2008 and 2010,2016,Senate,GA,thomas r,2,0,1
 ,DEM,Teresa Tomlinson,mayor of Columbus,2016,Senate,GA,tomlinson t,1,0,0
 ,DEM,Raphael Warnock,pastor of Ebenezer Baptist Church and future U.S. Senator for this seat,2016,Senate,GA,warnock r,0,0,0
@@ -1313,7 +1313,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,DEM,Bob Krause,"former state representative, nominee for state treasurer in 1978, candidate for Mayor of Waterloo in 1982 and candidate for the U.S. Senate in 2010",2016,Senate,IA,krause b,2,1,1
 ,DEM,Ray Zirkelbach,former state representative,2016,Senate,IA,zirkelbach r,2,1,0
 ,DEM,Christie Vilsack,former First Lady of Iowa and nominee for Iowa's 4th congressional district in 2012,2016,Senate,IA,vilsack c,0,0,1
-,DEM,Tom Vilsack,United States Secretary of Agriculture and former governor of Iowa,2016,Senate,IA,vilsack t,4,0,0
+,DEM,Tom Vilsack,United States Secretary of Agriculture and former governor of Iowa,2016,Senate,IA,vilsack t,3.5,0,0
 ,DEM,Chet Culver,former governor of Iowa,2016,Senate,IA,culver c,3,0,0
 ,DEM,Michael Gronstal,Majority Leader of the Iowa Senate and Chairman of the Democratic Legislative Campaign Committee,2016,Senate,IA,gronstal m,2,0,0
 ,DEM,Dave Loebsack,U.S. Representative (running for re-election),2016,Senate,IA,loebsack d,4,1,0
@@ -1400,7 +1400,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,DEM,Dan Glickman,former U.S. Representative and former United States Secretary of Agriculture,2016,Senate,KS,glickman d,4,1,0
 ,DEM,Greg Orman,businessman and independent candidate for the U.S. Senate in 2014,2016,Senate,KS,orman g,0,0,1
 ,DEM,Joe Reardon,former mayor of Kansas City and Wyandotte County,2016,Senate,KS,reardon j,1,0,0
-,DEM,Kathleen Sebelius,former United States Secretary of Health and Human Services and former governor of Kansas,2016,Senate,KS,sebelius k,4,0,0
+,DEM,Kathleen Sebelius,former United States Secretary of Health and Human Services and former governor of Kansas,2016,Senate,KS,sebelius k,3.5,0,0
 ,DEM,Jim Slattery,former U.S. Representative and nominee for U.S. Senate in 2008,2016,Senate,KS,slattery j,4,1,1
 ,DEM,Kansas's 2nd congressional district,in 2014,2016,Senate,KS,district k,0,0,0
 ,DEM,KS-02,in 2008,2016,Senate,KS,ks,0,0,0
@@ -1408,7 +1408,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,REP,James Gould,financial analyst and Navy veteran,2016,Senate,KY,gould j,0,0,0
 ,REP,Rand Paul,incumbent U.S. Senator,2016,Senate,KY,paul r,4,0,0
 ,REP,Stephen Slaughter,engineer,2016,Senate,KY,slaughter s,0,0,0
-,REP,Catherine Todd Bailey,businesswoman and former United States Ambassador to Latvia,2016,Senate,KY,bailey c,4,0,0
+,REP,Catherine Todd Bailey,businesswoman and former United States Ambassador to Latvia,2016,Senate,KY,bailey c,3.5,0,0
 ,REP,Andy Barr,U.S. Representative,2016,Senate,KY,barr a,4,1,0
 ,REP,James Comer,former Kentucky Agriculture Commissioner and candidate for Governor of Kentucky in 2015 (running for KY-01 ),2016,Senate,KY,comer j,0,0,1
 ,REP,Mike Duncan,former chairman of the Republican National Committee,2016,Senate,KY,duncan m,0,0,0
@@ -1457,7 +1457,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,DEM,Barbara Mikulski,incumbent senator,2016,Senate,MD,mikulski b,4,0,0
 ,DEM,Heather Mizeur,former state delegate and candidate for governor in 2014,2016,Senate,MD,mizeur h,2,0,1
 ,DEM,Martin O'Malley,former governor of Maryland ( ran for President ),2016,Senate,MD,omalley m,3,0,0
-,DEM,Thomas Perez,"United States Secretary of Labor and former secretary of the Maryland Department of Labor, Licensing and Regulation",2016,Senate,MD,perez t,4,0,0
+,DEM,Thomas Perez,"United States Secretary of Labor and former secretary of the Maryland Department of Labor, Licensing and Regulation",2016,Senate,MD,perez t,3.5,0,0
 ,DEM,Jamie Raskin,state senator (ran for MD-08 ),2016,Senate,MD,raskin j,2,0,0
 ,DEM,Stephanie Rawlings-Blake,Mayor of Baltimore,2016,Senate,MD,rawlingsblake s,1,0,0
 ,DEM,Dutch Ruppersberger,U.S. Representative (ran for re-election),2016,Senate,MD,ruppersberger d,4,1,0
@@ -1511,7 +1511,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,DEM,Janet Cowell,North Carolina State Treasurer,2016,Senate,NC,cowell j,3,0,0
 ,DEM,Cal Cunningham,former state senator and candidate for the U.S. Senate in 2010,2016,Senate,NC,cunningham c,2,0,1
 ,DEM,Joel Ford,state senator,2016,Senate,NC,ford j,2,0,0
-,DEM,Anthony Foxx,United States Secretary of Transportation and former mayor of Charlotte,2016,Senate,NC,foxx a,4,0,0
+,DEM,Anthony Foxx,United States Secretary of Transportation and former mayor of Charlotte,2016,Senate,NC,foxx a,3.5,0,0
 ,DEM,Kay Hagan,former U.S. senator,2016,Senate,NC,hagan k,4,0,0
 ,DEM,Duane Hall,state representative,2016,Senate,NC,hall d,2,1,0
 ,DEM,Larry Hall,Minority Leader of the North Carolina House of Representatives,2016,Senate,NC,hall l,2,1,0
@@ -1563,7 +1563,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,REP,Juston Preble,sales consultant,2016,Senate,NV,preble j,0,0,0
 ,REP,Bob Beers,"Las Vegas City Councilman, former state senator and candidate for governor in 2006",2016,Senate,NV,beers b,2,0,1
 ,REP,Mark Amodei,U.S. representative (running for re-election),2016,Senate,NV,amodei m,4,1,0
-,REP,Greg Brower,state senator and former United States Attorney for the District of Nevada,2016,Senate,NV,brower g,4,0,0
+,REP,Greg Brower,state senator and former United States Attorney for the District of Nevada,2016,Senate,NV,brower g,3.5,0,0
 ,REP,Barbara Cegavske,"Secretary of State of Nevada , former state senator and candidate for NV-04 in 2012",2016,Senate,NV,cegavske b,3,0,1
 ,REP,Heidi Gansert,former state assemblywoman and former chief of staff to Governor Brian Sandoval,2016,Senate,NV,gansert h,2,0,0
 ,REP,Cresent Hardy,U.S. representative (lost re-election to NV-04 ),2016,Senate,NV,hardy c,4,1,0
@@ -1601,7 +1601,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,DEM,John Boccieri,"state representative from the 59th district (2015-2018), former U.S. representative of Ohio's 16th congressional district (2009-2011) and former state senator from the 33rd district (2007-2008)",2016,Senate,OH,boccieri j,4,1,0
 ,DEM,Jennifer Brunner,"judge on the Ohio Tenth District Court of Appeals (2015-2021), former Ohio Secretary of State (2007-2011) and candidate for the U.S. Senate in 2010",2016,Senate,OH,brunner j,3,0,1
 ,DEM,Michael B. Coleman,mayor of Columbus (2000-2016),2016,Senate,OH,coleman m,1,0,0
-,DEM,Richard Cordray,"director of the Consumer Financial Protection Bureau (2012-2017), former attorney general of Ohio (2009-2011) and candidate for the U.S. Senate in 2000",2016,Senate,OH,cordray r,4,0,1
+,DEM,Richard Cordray,"director of the Consumer Financial Protection Bureau (2012-2017), former attorney general of Ohio (2009-2011) and candidate for the U.S. Senate in 2000",2016,Senate,OH,cordray r,3.5,0,1
 ,DEM,Connie Pillich,former state representative of the 28th district (2009-2014) and nominee for Ohio state treasurer in 2014,2016,Senate,OH,pillich c,2,1,1
 ,DEM,Tim Ryan,U.S. representative of Ohio's 13th congressional district (2003-2023),2016,Senate,OH,ryan t,4,1,0
 ,DEM,Betty Sutton,administrator of the Saint Lawrence Seaway Development Corporation (2013-2017) and former U.S. representative of Ohio's 13th congressional district (2007-2013),2016,Senate,OH,sutton b,4,1,0
@@ -1633,7 +1633,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,DEM,Kathy Dahlkemper,Erie County executive and former U.S. representative (endorsed Katie McGinty),2016,Senate,PA,dahlkemper k,4,1,0
 ,DEM,Eugene DePasquale,Pennsylvania auditor general ( running for re-election ),2016,Senate,PA,depasquale e,3,0,0
 ,DEM,Rich Fitzgerald,Allegheny County executive (endorsed Katie McGinty),2016,Senate,PA,fitzgerald r,1,0,0
-,DEM,David Hickton,United States attorney for the Western District of Pennsylvania,2016,Senate,PA,hickton d,4,0,0
+,DEM,David Hickton,United States attorney for the Western District of Pennsylvania,2016,Senate,PA,hickton d,3.5,0,0
 ,DEM,Vincent Hughes,state senator (endorsed Katie McGinty),2016,Senate,PA,hughes v,2,0,0
 ,DEM,Kathleen Kane,Pennsylvania attorney general,2016,Senate,PA,kane k,3,0,0
 ,DEM,Rob McCord,former Pennsylvania Treasurer and candidate for the governorship in 2014,2016,Senate,PA,mccord r,0,0,1
@@ -1656,7 +1656,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,DEM,Stephanie Herseth Sandlin,former U.S. Representative,2016,Senate,SD,sandlin s,4,1,0
 ,DEM,Bernie Hunhoff,state senator and candidate for governor in 1998,2016,Senate,SD,hunhoff b,2,0,1
 ,DEM,Sam Hurst,filmmaker and television news producer,2016,Senate,SD,hurst s,0,0,0
-,DEM,Brendan Johnson,former United States Attorney for the District of South Dakota,2016,Senate,SD,johnson b,4,0,0
+,DEM,Brendan Johnson,former United States Attorney for the District of South Dakota,2016,Senate,SD,johnson b,3.5,0,0
 ,DEM,Frank Kloucek,former state senator,2016,Senate,SD,kloucek f,2,0,0
 ,DEM,KSFY-TV,senior meteorologist,2016,Senate,SD,ksfytv,0,0,0
 ,DEM,Billie Sutton,Minority Leader of the South Dakota Senate,2016,Senate,SD,sutton b,2,0,0
@@ -1665,9 +1665,9 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,REP,Lane Beattie,president and CEO of the Salt Lake Chamber of Commerce and former president of the Utah State Senate,2016,Senate,UT,beattie l,2,0,0
 ,REP,Jason Chaffetz,U.S. Representative,2016,Senate,UT,chaffetz j,4,1,0
 ,REP,Spencer Cox,Lieutenant Governor of Utah,2016,Senate,UT,cox s,3,0,0
-,REP,"Jon Huntsman, Jr.","former governor of Utah , former United States Ambassador to China under Barack Obama and candidate for President in 2012",2016,Senate,UT,huntsman j,4,0,1
+,REP,"Jon Huntsman, Jr.","former governor of Utah , former United States Ambassador to China under Barack Obama and candidate for President in 2012",2016,Senate,UT,huntsman j,3.5,0,1
 ,REP,University of Utah,Hinckley Institute of Politics,2016,Senate,UT,utah u,0,0,0
-,REP,Mike Leavitt,former governor of Utah and former United States Secretary of Health and Human Services,2016,Senate,UT,leavitt m,4,0,0
+,REP,Mike Leavitt,former governor of Utah and former United States Secretary of Health and Human Services,2016,Senate,UT,leavitt m,3.5,0,0
 ,REP,Dan Liljenquist,former state senator and candidate for the U.S. Senate in 2012,2016,Senate,UT,liljenquist d,2,0,1
 ,REP,Aaron Osmond,state senator,2016,Senate,UT,osmond a,2,0,0
 ,REP,Sean Reyes,Attorney General of Utah,2016,Senate,UT,reyes s,3,0,0
@@ -1925,7 +1925,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,REP,Rick Becker,state representative and candidate for governor in 2016,2018,Senate,ND,becker r,2,1,1
 ,REP,Rick Berg,former U.S. representative and nominee for U.S. Senate in 2012,2018,Senate,ND,berg r,4,1,1
 ,REP,Tammy Miller,businesswoman,2018,Senate,ND,miller t,0,0,0
-,REP,Ed Schafer,former United States Secretary of Agriculture and former governor of North Dakota,2018,Senate,ND,schafer e,4,0,0
+,REP,Ed Schafer,former United States Secretary of Agriculture and former governor of North Dakota,2018,Senate,ND,schafer e,3.5,0,0
 ,REP,Kelly Schmidt,North Dakota State Treasurer,2018,Senate,ND,schmidt k,3,0,0
 ,REP,Wayne Stenehjem,North Dakota attorney general and candidate for governor in 2016,2018,Senate,ND,stenehjem w,3,0,1
 ,REP,Deb Fischer,incumbent U.S. senator,2018,Senate,NE,fischer d,4,0,0
@@ -1982,7 +1982,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,DEM,Scott Noren,oral and maxillofacial surgeon,2018,Senate,NY,noren s,0,0,0
 ,DEM,Chelsea Clinton,daughter of former senator Hillary Clinton,2018,Senate,NY,clinton c,0,0,0
 ,DEM,Andrew Cuomo,incumbent New York governor,2018,Senate,NY,cuomo a,3,0,0
-,DEM,Caroline Kennedy,"former United States ambassador to Japan , daughter of former president John F. Kennedy and member of the Kennedy family",2018,Senate,NY,kennedy c,4,0,0
+,DEM,Caroline Kennedy,"former United States ambassador to Japan , daughter of former president John F. Kennedy and member of the Kennedy family",2018,Senate,NY,kennedy c,3.5,0,0
 ,DEM,Andrew Yang,entrepreneur ( ran for Democratic presidential nomination in 2020 ),2018,Senate,NY,yang a,0,0,0
 ,REP,Chele Chiavacci Farley,private equity executive,2018,Senate,NY,farley c,0,0,0
 ,REP,Rocky De La Fuente,businessman and perennial candidate,2018,Senate,NY,fuente r,0,0,0
@@ -2055,7 +2055,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,REP,George P. Bush,Texas Land Commissioner and grandson of former President George H. W. Bush ( ran for re-election ),2018,Senate,TX,bush g,0,0,0
 ,REP,Michael McCaul,U.S. representative from Texas's 10th congressional district ( ran for re-election ),2018,Senate,TX,mccaul m,4,1,0
 ,REP,Dan Patrick,lieutenant governor of Texas ( ran for re-election ),2018,Senate,TX,patrick d,3,0,0
-,REP,Rick Perry,"Secretary of Energy , former governor of Texas and candidate for president in 2012 and 2016",2018,Senate,TX,perry r,4,0,1
+,REP,Rick Perry,"Secretary of Energy , former governor of Texas and candidate for president in 2012 and 2016",2018,Senate,TX,perry r,3.5,0,1
 ,REP,Katrina Pierson,national spokesperson for the Donald Trump's presidential campaign in 2016 and candidate for House district TX-32 in 2014,2018,Senate,TX,pierson k,0,0,1
 ,DEM,Beto O'Rourke,U.S. representative from Texas's 16th congressional district,2018,Senate,TX,orourke b,4,1,0
 ,DEM,Joaquin Castro,U.S. representative from Texas's 20th congressional district ( ran for re-election ),2018,Senate,TX,castro j,4,1,0
@@ -2180,7 +2180,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,REP,Margot Dupre,estate agent,2020,Senate,CO,dupre m,0,0,0
 ,REP,Gail Prentice,veteran and business owner,2020,Senate,CO,prentice g,0,0,0
 ,DEM,John Hickenlooper,former governor of Colorado and former candidate for president of the United States in 2020,2020,Senate,CO,hickenlooper j,3,0,1
-,DEM,Dan Baer,former executive director of the Colorado Department of Higher Education and former United States Ambassador to the Organization for Security and Cooperation in Europe  (endorsed John Hickenlooper),2020,Senate,CO,baer d,4,0,0
+,DEM,Dan Baer,former executive director of the Colorado Department of Higher Education and former United States Ambassador to the Organization for Security and Cooperation in Europe  (endorsed John Hickenlooper),2020,Senate,CO,baer d,3.5,0,0
 ,DEM,Marcos Boyington,software engineer,2020,Senate,CO,boyington m,0,0,0
 ,DEM,Diana Bray,psychologist and climate activist  (endorsed Andrew Romanoff),2020,Senate,CO,bray d,0,0,0
 ,DEM,Denise Burgess,businesswoman and Denver Metro Chamber of Commerce board member,2020,Senate,CO,burgess d,0,0,0
@@ -2192,7 +2192,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,DEM,Alice Madden,former majority leader of the Colorado House of Representatives,2020,Senate,CO,madden a,2,1,0
 ,DEM,Keith Pottratz,technician and veteran  (endorsed Lorena Garcia),2020,Senate,CO,pottratz k,0,0,0
 ,DEM,University of Colorado Colorado Springs,and nominee for Colorado's 5th congressional district in 2018  (endorsed Lorena Garcia),2020,Senate,CO,springs u,0,0,1
-,DEM,John F. Walsh,former U.S. Attorney for the District of Colorado  (endorsed John Hickenlooper),2020,Senate,CO,walsh j,4,0,0
+,DEM,John F. Walsh,former U.S. Attorney for the District of Colorado  (endorsed John Hickenlooper),2020,Senate,CO,walsh j,3.5,0,0
 ,DEM,Michelle Ferrigno Warren,"nonprofit leader, immigration advocate [ b ]",2020,Senate,CO,warren m,0,0,0
 ,DEM,Angela Williams,state senator (ran for re-election),2020,Senate,CO,williams a,2,0,0
 ,DEM,Trish Zornio,biomedical scientist   (endorsed John Hickenlooper),2020,Senate,CO,zornio t,0,0,0
@@ -2253,7 +2253,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,DEM,Liz Mathis,state senator,2020,Senate,IA,mathis l,2,0,0
 ,DEM,Rob Sand,Iowa State Auditor,2020,Senate,IA,sand r,3,0,0
 ,DEM,J.D. Scholten,nominee for Iowa's 4th congressional district in 2018 (running in Iowa's 4th congressional district),2020,Senate,IA,scholten j,0,0,1
-,DEM,Tom Vilsack,former governor of Iowa and former U.S. Secretary of Agriculture,2020,Senate,IA,vilsack t,4,0,0
+,DEM,Tom Vilsack,former governor of Iowa and former U.S. Secretary of Agriculture,2020,Senate,IA,vilsack t,3.5,0,0
 ,DEM,Linn County,supervisor (endorsed Graham),2020,Senate,IA,county l,0,0,0
 ,DEM,Steve Warnstadt,former state senator and intelligence officer in the Iowa Army National Guard,2020,Senate,IA,warnstadt s,2,0,0
 ,DEM,Libertarian,nominee for the 2018 Iowa Secretary of Agriculture election and independent candidate for the 2014 United States Senate election in Iowa,2020,Senate,IA,libertarian,0,0,1
@@ -2300,12 +2300,12 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,DEM,Elliot Adams,database developer,2020,Senate,KS,adams e,0,0,0
 ,DEM,Nancy Boyda,former U.S. representative from Kansas's 2nd congressional district (endorsed Bollier),2020,Senate,KS,boyda n,4,1,0
 ,DEM,Corbie Crow,certified public accountant,2020,Senate,KS,crow c,0,0,0
-,DEM,Barry Grissom,former United States Attorney for the District of Kansas (endorsed Bollier),2020,Senate,KS,grissom b,4,0,0
+,DEM,Barry Grissom,former United States Attorney for the District of Kansas (endorsed Bollier),2020,Senate,KS,grissom b,3.5,0,0
 ,DEM,Usha Reddi,mayor of Manhattan,2020,Senate,KS,reddi u,1,0,0
 ,DEM,Paul Davis,"former minority leader of the Kansas House of Representatives , nominee for governor in 2014 and KS-02 in 2018",2020,Senate,KS,davis p,2,1,1
-,DEM,Kathleen Sebelius,"former Secretary of Health and Human Services , former governor of Kansas, and former Kansas Insurance Commissioner",2020,Senate,KS,sebelius k,4,0,0
+,DEM,Kathleen Sebelius,"former Secretary of Health and Human Services , former governor of Kansas, and former Kansas Insurance Commissioner",2020,Senate,KS,sebelius k,3.5,0,0
 ,DEM,Sarah Smarsh,author,2020,Senate,KS,smarsh s,0,0,0
-,DEM,Josh Svaty,"former Kansas Secretary of Agriculture , former state representative, and candidate for governor of Kansas in 2018",2020,Senate,KS,svaty j,2,1,1
+,DEM,Josh Svaty,"former Kansas Secretary of Agriculture , former state representative, and candidate for governor of Kansas in 2018",2020,Senate,KS,svaty j,3,1,1
 ,DEM,Kansas's 3rd congressional district,in 2018,2020,Senate,KS,district k,0,0,0
 ,DEM,Jason Buckley,U.S. Navy veteran,2020,Senate,KS,buckley j,0,0,0
 ,REP,Mitch McConnell,incumbent U.S. senator and Senate majority leader,2020,Senate,KY,mcconnell m,4,0,0
@@ -2360,7 +2360,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,DEM,Janet Mills,governor of Maine and former attorney general of Maine,2020,Senate,ME,mills j,3,0,0
 ,DEM,Chellie Pingree,incumbent U.S. representative for Maine's 1st congressional district and nominee for the U.S. Senate in 2002,2020,Senate,ME,pingree c,4,1,1
 ,DEM,Hannah Pingree,former Speaker of the Maine House of Representatives (endorsed Gideon),2020,Senate,ME,pingree h,2,1,0
-,DEM,Susan Rice,former United States National Security Advisor and former United States Ambassador to the United Nations,2020,Senate,ME,rice s,4,0,0
+,DEM,Susan Rice,former United States National Security Advisor and former United States Ambassador to the United Nations,2020,Senate,ME,rice s,3.5,0,0
 ,DEM,Cecile Richards,former president of Planned Parenthood,2020,Senate,ME,richards c,0,0,0
 ,DEM,2018,(endorsed Sweet),2020,Senate,ME,,0,0,0
 ,DEM,Ethan Strimling,former mayor of Portland and candidate for Maine's 1st congressional district in 2008,2020,Senate,ME,strimling e,1,0,1
@@ -2403,7 +2403,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,DEM,Mike Knoles,"mathematician, physicist, and data analyst (endorsed Bullock)  (remained on ballot)",2020,Senate,MT,knoles m,0,0,0
 ,DEM,Cora Neumann,public health expert and founder of the Global First Ladies Alliance  (endorsed Bullock),2020,Senate,MT,neumann c,0,0,0
 ,DEM,Josh Seckinger,fishing guide (endorsed Bullock),2020,Senate,MT,seckinger j,0,0,0
-,DEM,Michael Punke,writer and former U.S. ambassador to the World Trade Organization,2020,Senate,MT,punke m,4,0,0
+,DEM,Michael Punke,writer and former U.S. ambassador to the World Trade Organization,2020,Senate,MT,punke m,3.5,0,0
 ,DEM,Brian Schweitzer,former governor of Montana,2020,Senate,MT,schweitzer b,3,0,0
 ,DEM,Kathleen Williams,former state representative and nominee for Montana's at-large congressional district in 2018 ( running for Montana's at-large congressional district ),2020,Senate,MT,williams k,2,1,1
 ,DEM,Montana House of Representatives,in 2014,2020,Senate,MT,representatives m,0,0,0
@@ -2418,7 +2418,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,DEM,North Carolina Commissioner of Labor,),2020,Senate,NC,labor n,0,0,0
 ,DEM,Eric L. Mansfield,former state senator,2020,Senate,NC,mansfield e,2,0,0
 ,DEM,Janet Cowell,former North Carolina State Treasurer  ( endorsed Cunningham ),2020,Senate,NC,cowell j,3,0,0
-,DEM,Anthony Foxx,former U.S. Secretary of Transportation and former mayor of Charlotte  ( endorsed Cunningham ),2020,Senate,NC,foxx a,4,0,0
+,DEM,Anthony Foxx,former U.S. Secretary of Transportation and former mayor of Charlotte  ( endorsed Cunningham ),2020,Senate,NC,foxx a,3.5,0,0
 ,DEM,Rachel Hunt,state representative,2020,Senate,NC,hunt r,2,1,0
 ,DEM,Vi Lyles,mayor of Charlotte,2020,Senate,NC,lyles v,1,0,0
 ,DEM,Dan McCready,"former U.S. Marine, businessman, and nominee for North Carolina's 9th congressional district in 2018 and 2019 special election",2020,Senate,NC,mccready d,0,0,1
@@ -2497,7 +2497,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,REP,Bob Walsh,nuclear safety scientist,2020,Senate,NM,walsh b,0,0,0
 ,REP,Gary Johnson,former governor of New Mexico and nominee for U.S. Senate in 2018,2020,Senate,NM,johnson g,3,0,1
 ,REP,Jim Inhofe,incumbent U.S. Senator [ citation needed ],2020,Senate,OK,inhofe j,4,0,0
-,REP,Scott Pruitt,"former administrator of the Environmental Protection Agency , former attorney general of Oklahoma , and former state senator",2020,Senate,OK,pruitt s,4,0,0
+,REP,Scott Pruitt,"former administrator of the Environmental Protection Agency , former attorney general of Oklahoma , and former state senator",2020,Senate,OK,pruitt s,3.5,0,0
 ,DEM,KFOR,news reporter,2020,Senate,OK,kfor,0,0,0
 ,DEM,Dylan Billings,political science professor,2020,Senate,OK,billings d,0,0,0
 ,DEM,Tyler Dougherty,software developer,2020,Senate,OK,dougherty t,0,0,0
@@ -2533,10 +2533,10 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,DEM,Daniel Ahlers,former state representative and former state senator,2020,Senate,SD,ahlers d,2,1,0
 ,DEM,Clara Hart,board member of the Sioux Falls Arts Council,2020,Senate,SD,hart c,0,0,0
 ,DEM,Erin Healy,state representative,2020,Senate,SD,healy e,2,1,0
-,DEM,Brendan Johnson,former United States Attorney for the District of South Dakota,2020,Senate,SD,johnson b,4,0,0
+,DEM,Brendan Johnson,former United States Attorney for the District of South Dakota,2020,Senate,SD,johnson b,3.5,0,0
 ,DEM,Billie Sutton,former minority leader of the South Dakota Senate and nominee for Governor of South Dakota in 2018,2020,Senate,SD,sutton b,2,0,1
 ,DEM,Susan Wismer,state senator and Democratic nominee for Governor of South Dakota in 2014,2020,Senate,SD,wismer s,2,0,1
-,REP,Bill Hagerty,"businessman, former United States Ambassador to Japan and former Commissioner of the Tennessee Department of Economic and Community Development",2020,Senate,TN,hagerty b,4,0,0
+,REP,Bill Hagerty,"businessman, former United States Ambassador to Japan and former Commissioner of the Tennessee Department of Economic and Community Development",2020,Senate,TN,hagerty b,3.5,0,0
 ,REP,Tennessee House of Representatives,in 2016,2020,Senate,TN,representatives t,0,0,0
 ,REP,unsuccessfully ran for TN-01,),2020,Senate,TN,tn u,0,0,0
 ,REP,Lamar Alexander,incumbent U.S. senator,2020,Senate,TN,alexander l,4,0,0
@@ -2610,7 +2610,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,DEM,2020,( ran for governor ),2022,Senate,AK,,0,0,0
 ,IND,Al Gross,"orthopedic surgeon , commercial fisherman , son of former Alaska Attorney General Avrum Gross , and candidate for U.S. Senate in 2020 ( ran for U.S. House )",2022,Senate,AK,gross a,0,0,1
 ,REP,Katie Britt,former president and CEO of the Business Council of Alabama; former chief of staff to outgoing senator Richard Shelby,2022,Senate,AL,britt k,0,0,0
-,REP,Lynda Blanchard,United States Ambassador to Slovenia (2019–2021) ( ran for governor ),2022,Senate,AL,blanchard l,4,0,0
+,REP,Lynda Blanchard,United States Ambassador to Slovenia (2019–2021) ( ran for governor ),2022,Senate,AL,blanchard l,3.5,0,0
 ,REP,U.S. Marine Corps,veteran ( ran for Alabama Senate ; endorsed Durant),2022,Senate,AL,corps u,0,0,0
 ,REP,Alabama's 2nd congressional district,"in 2020 (endorsed Durant, later Brooks)",2022,Senate,AL,district a,0,0,0
 ,REP,Robert Aderholt,U.S. Representative for Alabama's 4th congressional district (1997–present) ( ran for re-election ),2022,Senate,AL,aderholt r,4,1,0
@@ -2703,7 +2703,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,REP,Buddy Carter,U.S. Representative for Georgia's 1st congressional district ( ran for re-election ; endorsed Walker),2022,Senate,GA,carter b,4,1,0
 ,REP,Doug Collins,former U.S. Representative for Georgia's 9th congressional district and candidate for the U.S. Senate in 2020,2022,Senate,GA,collins d,4,1,1
 ,REP,Geoff Duncan,former Lieutenant Governor of Georgia and former state representative,2022,Senate,GA,duncan g,3,1,0
-,REP,Randy Evans,former U.S. Ambassador to Luxembourg   (endorsed Walker),2022,Senate,GA,evans r,4,0,0
+,REP,Randy Evans,former U.S. Ambassador to Luxembourg   (endorsed Walker),2022,Senate,GA,evans r,3.5,0,0
 ,REP,Drew Ferguson,U.S. Representative for Georgia's 3rd congressional district ( ran for re-election ),2022,Senate,GA,ferguson d,4,1,0
 ,REP,Vernon Jones,former Democratic state representative and CEO of DeKalb County ( ran for the U.S. House in GA-10 ),2022,Senate,GA,jones v,2,1,0
 ,REP,Brian Kemp,Governor of Georgia ( ran for re-election ),2022,Senate,GA,kemp b,3,0,0
@@ -2719,7 +2719,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,REP,Emma Jane Pohlman,attorney,2022,Senate,HI,pohlman e,0,0,0
 ,REP,Chuck Grassley,incumbent U.S. senator (1981–present) and president pro tempore emeritus,2022,Senate,IA,grassley c,4,1,0
 ,REP,Ashley Hinson,U.S. representative for Iowa's 1st congressional district (2021–2023) ( ran for re-election ; endorsed Grassley),2022,Senate,IA,hinson a,4,1,0
-,REP,Matthew Whitaker,"former acting U.S. attorney general , former U.S. attorney for the Southern District of Iowa , and candidate for the U.S. Senate in 2014  (endorsed Grassley)",2022,Senate,IA,whitaker m,4,0,1
+,REP,Matthew Whitaker,"former acting U.S. attorney general , former U.S. attorney for the Southern District of Iowa , and candidate for the U.S. Senate in 2014  (endorsed Grassley)",2022,Senate,IA,whitaker m,3.5,0,1
 ,DEM,Michael Franken,"retired U.S. Navy admiral , former aide to U.S. Senator Ted Kennedy , and candidate for U.S. Senate in 2020",2022,Senate,IA,franken m,0,0,1
 ,DEM,Bob Krause,former state representative   (endorsed Franken),2022,Senate,IA,krause b,2,1,0
 ,DEM,Crawford County,supervisor (2017–2021)   (endorsed Franken),2022,Senate,IA,county c,0,0,0
@@ -2741,10 +2741,10 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,DEM,Thomas McDermott Jr.,mayor of Hammond and candidate for Indiana's 1st congressional district in 2020,2022,Senate,IN,mcdermott t,1,0,1
 ,DEM,Indiana University,(ran as independent),2022,Senate,IN,university i,0,0,0
 ,DEM,Valerie McCray,psychologist,2022,Senate,IN,mccray v,0,0,0
-,DEM,Pete Buttigieg,"U.S. Secretary of Transportation , former mayor of South Bend , nominee for Indiana State Treasurer in 2010 , and candidate for President of the United States in 2020",2022,Senate,IN,buttigieg p,4,0,1
+,DEM,Pete Buttigieg,"U.S. Secretary of Transportation , former mayor of South Bend , nominee for Indiana State Treasurer in 2010 , and candidate for President of the United States in 2020",2022,Senate,IN,buttigieg p,3.5,0,1
 ,DEM,Joe Donnelly,former U.S. Ambassador to the Holy See and former U.S. Senator,2022,Senate,IN,donnelly j,4,0,0
 ,DEM,J. D. Ford,state senator  ( ran for re-election ),2022,Senate,IN,ford j,2,0,0
-,DEM,Joe Hogsett,"Mayor of Indianapolis , former Indiana Secretary of State , former U.S. Attorney for the Southern District of Indiana , former chair of the Indiana Democratic Party , and nominee for U.S. Senate in 1992",2022,Senate,IN,hogsett j,4,0,1
+,DEM,Joe Hogsett,"Mayor of Indianapolis , former Indiana Secretary of State , former U.S. Attorney for the Southern District of Indiana , former chair of the Indiana Democratic Party , and nominee for U.S. Senate in 1992",2022,Senate,IN,hogsett j,3.5,0,1
 ,DEM,James Sceniak,activist and behavior therapist,2022,Senate,IN,sceniak j,0,0,0
 ,DEM,U.S. Army,veteran,2022,Senate,IN,army u,0,0,0
 ,DEM,Ellen Kizik,retail worker,2022,Senate,IN,kizik e,0,0,0
@@ -2765,7 +2765,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,REP,mayor,"of Corpus Christi, Texas (2016–2017)   ( ran for the U.S. House )",2022,Senate,MO,mayor,0,0,0
 ,REP,Jay Ashcroft,Missouri secretary of state (2017–present),2022,Senate,MO,ashcroft j,3,1,0
 ,REP,Scott Fitzpatrick,Missouri state treasurer (2019–2023) ( ran for state auditor ),2022,Senate,MO,fitzpatrick s,3,0,0
-,REP,Timothy A. Garrison,former U.S. attorney for the Western District of Missouri (2018–2021),2022,Senate,MO,garrison t,4,0,0
+,REP,Timothy A. Garrison,former U.S. attorney for the Western District of Missouri (2018–2021),2022,Senate,MO,garrison t,3.5,0,0
 ,REP,Mike Kehoe,lieutenant governor of Missouri (2018–present)  ( ran for governor ),2022,Senate,MO,kehoe m,3,1,0
 ,REP,Peter Kinder,former lieutenant governor of Missouri (2005–2017),2022,Senate,MO,kinder p,3,0,0
 ,REP,Blaine Luetkemeyer,U.S. representative from Missouri's 3rd congressional district (2013–present) and Missouri's 9th congressional district (2009–2013) ( ran for re-election ),2022,Senate,MO,luetkemeyer b,4,1,0
@@ -2806,7 +2806,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,DEM,Roy Cooper,governor of North Carolina (2017–2025),2022,Senate,NC,cooper r,3,0,0
 ,DEM,Anita Earls,associate justice of the North Carolina Supreme Court (2019–present),2022,Senate,NC,earls a,0,1,0
 ,DEM,Terence Everitt,state representative,2022,Senate,NC,everitt t,2,1,0
-,DEM,Anthony Foxx,former United States Secretary of Transportation (2013–2017) and former mayor of Charlotte (2009–2013),2022,Senate,NC,foxx a,4,0,0
+,DEM,Anthony Foxx,former United States Secretary of Transportation (2013–2017) and former mayor of Charlotte (2009–2013),2022,Senate,NC,foxx a,3.5,0,0
 ,DEM,Joan Higginbotham,electrical engineer and former NASA astronaut,2022,Senate,NC,higginbotham j,0,0,0
 ,DEM,Vi Lyles,mayor of Charlotte (2017–present) ( running for re-election ),2022,Senate,NC,lyles v,1,1,0
 ,DEM,Grier Martin,state representative (2005–2022),2022,Senate,NC,martin g,2,1,0
@@ -2844,7 +2844,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,DEM,Khaled Salem,activist,2022,Senate,NY,salem k,0,0,0
 ,DEM,Alessandra Biaggi,state senator from the 34th district ( ran for U.S. House ),2022,Senate,NY,biaggi a,2,0,0
 ,DEM,Jamaal Bowman,U.S. Representative for New York's 16th congressional district ( ran for re-election ),2022,Senate,NY,bowman j,4,1,0
-,DEM,Andrew Cuomo,"former governor of New York , former attorney general of New York , and former U.S. Secretary of Housing and Urban Development",2022,Senate,NY,cuomo a,4,0,0
+,DEM,Andrew Cuomo,"former governor of New York , former attorney general of New York , and former U.S. Secretary of Housing and Urban Development",2022,Senate,NY,cuomo a,3.5,0,0
 ,DEM,Mondaire Jones,U.S. Representative for New York's 17th congressional district ( ran for re-election ),2022,Senate,NY,jones m,4,1,0
 ,DEM,Alexandria Ocasio-Cortez,U.S. Representative for New York's 14th congressional district ( ran for re-election ),2022,Senate,NY,ocasiocortez a,4,1,0
 ,DEM,Jumaane Williams,New York City Public Advocate and former New York City Councilor for the 45th district ( ran for governor ),2022,Senate,NY,williams j,1,0,0
@@ -2914,7 +2914,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,REP,Mehmet Oz,host of The Dr. Oz Show and former cardiologist,2022,Senate,PA,oz m,0,0,0
 ,REP,Sean Parnell,"U.S. Army veteran, author, and nominee for PA-17 in 2020 (endorsed McCormick)",2022,Senate,PA,parnell s,0,0,1
 ,REP,Everett Stern,"whistleblower, private intelligence agency owner, and candidate for PA-13 in 2014 and U.S. Senate in 2016 (ran as an independent)",2022,Senate,PA,stern e,0,0,1
-,REP,Kenneth Braithwaite,"U.S. Secretary of the Navy (2020–2021), U.S. Ambassador to Norway (2018–2020), and former advisor to U.S. Senator Arlen Specter",2022,Senate,PA,braithwaite k,4,0,0
+,REP,Kenneth Braithwaite,"U.S. Secretary of the Navy (2020–2021), U.S. Ambassador to Norway (2018–2020), and former advisor to U.S. Senator Arlen Specter",2022,Senate,PA,braithwaite k,3.5,0,0
 ,REP,Mike Kelly,U.S. representative for PA-16 ; formerly PA-03 (2011–present)   (endorsed Parnell),2022,Senate,PA,kelly m,4,1,0
 ,REP,Keith Rothfus,U.S. representative for PA-12 (2013–2019),2022,Senate,PA,rothfus k,4,1,0
 ,REP,Kiron Skinner,Taube Professor of International Relations and Politics at Carnegie Mellon University and former Director of Policy Planning at the U.S. State Department (2018–2019),2022,Senate,PA,skinner k,0,0,0
@@ -2949,7 +2949,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,REP,Kristi Noem,Governor of South Dakota (2019–2025) and former U.S. Representative for South Dakota's at-large congressional district (2011–2019) ( ran for re-election ),2022,Senate,SD,noem k,4,1,0
 ,DEM,U.S. Navy,"and Air Force veteran, and former Northern State University political science professor",2022,Senate,SD,navy u,0,0,0
 ,DEM,Troy Heinert,Minority Leader of the South Dakota Senate (2019–2023) from the 26th district (2015–2023),2022,Senate,SD,heinert t,2,0,0
-,DEM,Brendan Johnson,former U.S. Attorney for South Dakota (2009–2015) and son of former U.S. Senator Tim Johnson,2022,Senate,SD,johnson b,4,0,0
+,DEM,Brendan Johnson,former U.S. Attorney for South Dakota (2009–2015) and son of former U.S. Senator Tim Johnson,2022,Senate,SD,johnson b,3.5,0,0
 ,DEM,Stephanie Herseth Sandlin,president of Augustana University (2017–present) and former U.S. Representative for South Dakota's at-large congressional district (2004–2011),2022,Senate,SD,sandlin s,4,1,0
 ,DEM,Billie Sutton,former Minority Leader of the South Dakota Senate (2015–2019) from the 21st district (2011–2019) and nominee for governor in 2018,2022,Senate,SD,sutton b,2,0,1
 ,DEM,Tamara Lesnar,small business owner,2022,Senate,SD,lesnar t,0,0,0
@@ -3078,14 +3078,14 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,IND,Tulsi Gabbard,former Democratic U.S. representative from Hawaii's 2nd congressional district (2013–2021) and candidate for president of the United States in 2020,2024,Senate,HI,gabbard t,4,1,1
 ,REP,Jim Banks,U.S. representative for Indiana's 3rd congressional district (2017–2025),2024,Senate,IN,banks j,4,1,0
 ,REP,Mike Braun,incumbent U.S. senator (2019–2025) ( successfully ran for governor ),2024,Senate,IN,braun m,4,0,0
-,REP,Mitch Daniels,"former governor of Indiana (2005–2013), former president of Purdue University (2013–2022), and former director of the Office of Management and Budget (2001–2003)",2024,Senate,IN,daniels m,4,0,0
+,REP,Mitch Daniels,"former governor of Indiana (2005–2013), former president of Purdue University (2013–2022), and former director of the Office of Management and Budget (2001–2003)",2024,Senate,IN,daniels m,3.5,0,0
 ,REP,Eric Holcomb,governor of Indiana (2017–2025) and candidate for U.S. Senate in 2016,2024,Senate,IN,holcomb e,3,0,1
 ,REP,Mike Pence,"former vice president of the United States (2017–2021), former governor of Indiana (2013–2017), and former U.S. representative for Indiana's 5th congressional district (2001–2013)  ( unsuccessfully ran for president )",2024,Senate,IN,pence m,4,1,0
 ,REP,Todd Rokita,"Indiana attorney general (2021–present), former U.S. representative for Indiana's 4th congressional district (2011–2019), former Indiana secretary of state (2002–2010) and candidate for U.S. Senate in 2018 ( successfully ran for re-election )",2024,Senate,IN,rokita t,4,1,1
 ,REP,Victoria Spartz,U.S. representative for Indiana's 5th congressional district (2021–present) ( successfully ran for re-election ),2024,Senate,IN,spartz v,4,1,0
 ,DEM,Indianapolis city councilor,(2020–2023),2024,Senate,IN,councilor i,0,0,0
 ,DEM,Joe Donnelly,former U.S. ambassador to the Holy See (2022–2024) and former U.S. senator (2013–2019),2024,Senate,IN,donnelly j,4,0,0
-,DEM,Ron Klain,former White House chief of staff (2021–2023),2024,Senate,IN,klain r,4,0,0
+,DEM,Ron Klain,former White House chief of staff (2021–2023),2024,Senate,IN,klain r,3.5,0,0
 ,DEM,Indiana's 3rd congressional district,in 2022,2024,Senate,IN,district i,0,0,0
 ,DEM,Elizabeth Warren,incumbent U.S. senator (2013–present),2024,Senate,MA,warren e,4,1,0
 ,DEM,Jake Auchincloss,U.S. representative for Massachusetts's 4th congressional district (2021–present)  ( ran for re-election ),2024,Senate,MA,auchincloss j,4,1,0
@@ -3103,7 +3103,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,DEM,Kweisi Mfume,"U.S. representative for Maryland's 7th congressional district (1987–1996; 2020–present), candidate for U.S. Senate in 2006 , and former president of the NAACP (1996–2004)  ( endorsed Alsobrooks, ran for re-election )",2024,Senate,MD,mfume k,4,1,1
 ,DEM,Wes Moore,governor of Maryland (2023–present)  (endorsed Alsobrooks),2024,Senate,MD,moore w,3,1,0
 ,DEM,Johnny Olszewski,"Baltimore County Executive (2018–2025) and former state delegate from the 6th district (2006–2015) ( endorsed Alsobrooks, ran for U.S. House )",2024,Senate,MD,olszewski j,2,0,0
-,DEM,Tom Perez,"former chair of the Democratic National Committee (2017–2021), former U.S. Secretary of Labor (2013–2017), former Maryland Secretary of Labor (2007–2009), and candidate for governor of Maryland in 2022",2024,Senate,MD,perez t,4,0,1
+,DEM,Tom Perez,"former chair of the Democratic National Committee (2017–2021), former U.S. Secretary of Labor (2013–2017), former Maryland Secretary of Labor (2007–2009), and candidate for governor of Maryland in 2022",2024,Senate,MD,perez t,3.5,0,1
 ,DEM,Jamie Raskin,"U.S. representative for Maryland's 8th congressional district (2017–present) ( ran for re-election , endorsed Alsobrooks )",2024,Senate,MD,raskin j,4,1,0
 ,DEM,John Sarbanes,U.S. representative for Maryland's 3rd congressional district (2007–2025) and son of former U.S. Senator Paul Sarbanes  ( endorsed Alsobrooks ),2024,Senate,MD,sarbanes j,4,1,0
 ,REP,Larry Hogan,former governor of Maryland (2015–2023),2024,Senate,MD,hogan l,3,0,0
@@ -3125,7 +3125,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,DEM,Leslie Love,former state representative for the 10th district (2014–2020),2024,Senate,MI,love l,2,1,0
 ,DEM,Pamela Pugh,president of the Michigan State Board of Education (2015–present) ( ran for U.S. House ),2024,Senate,MI,pugh p,0,1,0
 ,DEM,Jocelyn Benson,Michigan Secretary of State (2019–present),2024,Senate,MI,benson j,3,1,0
-,DEM,Pete Buttigieg,"U.S. Secretary of Transportation (2021–2025), former mayor of South Bend, Indiana (2012–2020), and candidate for President of the United States in 2020",2024,Senate,MI,buttigieg p,4,0,1
+,DEM,Pete Buttigieg,"U.S. Secretary of Transportation (2021–2025), former mayor of South Bend, Indiana (2012–2020), and candidate for President of the United States in 2020",2024,Senate,MI,buttigieg p,3.5,0,1
 ,DEM,Debbie Dingell,U.S. representative for Michigan's 6th congressional district (2015–present)  ( ran for re-election ),2024,Senate,MI,dingell d,4,1,0
 ,DEM,Mike Duggan,mayor of Detroit (2014–2026),2024,Senate,MI,duggan m,1,0,0
 ,DEM,Abdul El-Sayed,Wayne County Health Director and candidate for governor of Michigan in 2018  (endorsed Harper),2024,Senate,MI,elsayed a,1,0,1
@@ -3268,7 +3268,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,REP,Green Party,"), U.S. Navy veteran and perennial candidate",2024,Senate,OH,party g,0,0,0
 ,DEM,Bob Casey Jr.,incumbent U.S. senator (2007–2025),2024,Senate,PA,casey b,4,0,0
 ,DEM,William Parker,app developer,2024,Senate,PA,parker w,0,0,0
-,REP,Dave McCormick,"former U.S. Under Secretary of the Treasury for International Affairs (2007–2009), former CEO of Bridgewater Associates (2020–2022), and candidate for U.S. Senate in 2022",2024,Senate,PA,mccormick d,4,0,1
+,REP,Dave McCormick,"former U.S. Under Secretary of the Treasury for International Affairs (2007–2009), former CEO of Bridgewater Associates (2020–2022), and candidate for U.S. Senate in 2022",2024,Senate,PA,mccormick d,3.5,0,1
 ,REP,Conestoga Township,treasurer and secretary (ran as a write-in candidate),2024,Senate,PA,township c,0,0,0
 ,REP,Joseph Vodvarka,spring manufacturer and perennial candidate,2024,Senate,PA,vodvarka j,0,0,0
 ,REP,Kathy Barnette,"political commentator, nominee for Pennsylvania's 4th congressional district in 2020 , and candidate for U.S. Senate in 2022",2024,Senate,PA,barnette k,0,0,1
@@ -3280,7 +3280,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,REP,Bernard Selker,truck driver,2024,Senate,PA,selker b,0,0,0
 ,DEM,Sheldon Whitehouse,incumbent U.S. senator,2024,Senate,RI,whitehouse s,4,0,0
 ,DEM,U.S. Senate,in 2020 and for Rhode Island's 1st congressional district in 2022  ( ran for U.S. House ),2024,Senate,RI,senate u,0,0,0
-,DEM,Gina Raimondo,Secretary of Commerce (2021–2025) and Governor of Rhode Island (2015–2021),2024,Senate,RI,raimondo g,4,0,0
+,DEM,Gina Raimondo,Secretary of Commerce (2021–2025) and Governor of Rhode Island (2015–2021),2024,Senate,RI,raimondo g,3.5,0,0
 ,REP,Patricia Morgan,"state representative, former Minority Leader of the Rhode Island House of Representatives, and candidate for governor in 2018",2024,Senate,RI,morgan p,2,1,1
 ,REP,Marsha Blackburn,incumbent U.S. Senator (2019–present),2024,Senate,TN,blackburn m,4,1,0
 ,DEM,Gloria Johnson,"state representative from the 90th district (2013–2015, 2019–present)",2024,Senate,TN,johnson g,2,1,0
@@ -3294,7 +3294,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,DEM,Colin Allred,U.S. representative from Texas's 32nd congressional district (2019–2025),2024,Senate,TX,allred c,4,1,0
 ,DEM,Midland,city councilor and candidate for U.S. Senate in 2020 ( ran for U.S. House ),2024,Senate,TX,midland,1,0,1
 ,DEM,ran for U.S. House,),2024,Senate,TX,house r,0,0,0
-,DEM,Julián Castro,"former U.S. Secretary of Housing and Urban Development (2014–2017), former mayor of San Antonio (2009–2014), and candidate for president of the United States in 2020",2024,Senate,TX,castro j,4,0,1
+,DEM,Julián Castro,"former U.S. Secretary of Housing and Urban Development (2014–2017), former mayor of San Antonio (2009–2014), and candidate for president of the United States in 2020",2024,Senate,TX,castro j,3.5,0,1
 ,DEM,Veronica Escobar,"U.S. representative for Texas's 16th congressional district (2019–present) ( ran for re-election , endorsed Allred)",2024,Senate,TX,escobar v,4,1,0
 ,DEM,Scott Kelly,retired NASA astronaut and brother of Arizona Senator Mark Kelly,2024,Senate,TX,kelly s,0,0,0
 ,DEM,Texas's 17th congressional district,in 2020,2024,Senate,TX,district t,0,0,0
@@ -3491,7 +3491,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,DEM,Rachel Howard,research health specialist,2026,Senate,MI,howard r,0,0,0
 ,DEM,Mallory McMorrow,state senator from the 8th district (2019–present) (remained on ballot),2026,Senate,MI,mcmorrow m,2,1,0
 ,DEM,Joe Tate,former speaker of the Michigan House of Representatives (2023–2025) from the 9th district (2019–present)  (endorsed Stevens),2026,Senate,MI,tate j,2,1,0
-,DEM,Pete Buttigieg,"former U.S. secretary of transportation (2021–2025), former mayor of South Bend, Indiana (2012–2020), and candidate for president in 2020",2026,Senate,MI,buttigieg p,4,0,1
+,DEM,Pete Buttigieg,"former U.S. secretary of transportation (2021–2025), former mayor of South Bend, Indiana (2012–2020), and candidate for president in 2020",2026,Senate,MI,buttigieg p,3.5,0,1
 ,DEM,Debbie Dingell,U.S. representative from Michigan's 6th congressional district (2015–present) ( running for re-election ),2026,Senate,MI,dingell d,4,1,0
 ,DEM,Garlin Gilchrist,lieutenant governor of Michigan (2019–present) ( running for secretary of state ),2026,Senate,MI,gilchrist g,3,1,0
 ,DEM,Gary Peters,incumbent U.S. senator (2015–present),2026,Senate,MI,peters g,4,1,0
@@ -3518,7 +3518,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,DEM,Keith Ellison,"attorney general of Minnesota (2019–present) and former U.S. representative from Minnesota's 5th congressional district (2007–2019) ( running for reelection , endorsed Flanagan)",2026,Senate,MN,ellison k,4,1,0
 ,DEM,Al Franken,former U.S. senator (2009–2018)  (endorsed Flanagan),2026,Senate,MN,franken a,4,0,0
 ,DEM,Jacob Frey,mayor of Minneapolis (2018–present)  (endorsed Craig),2026,Senate,MN,frey j,1,1,0
-,DEM,Andrew Luger,"former U.S. attorney for the district of Minnesota (2014–2017, 2022–2025)",2026,Senate,MN,luger a,4,0,0
+,DEM,Andrew Luger,"former U.S. attorney for the district of Minnesota (2014–2017, 2022–2025)",2026,Senate,MN,luger a,3.5,0,0
 ,DEM,Ilhan Omar,"U.S. representative from Minnesota's 5th congressional district (2019–present) ( running for reelection , endorsed Flanagan)",2026,Senate,MN,omar i,4,1,0
 ,DEM,Kelly Morrison,U.S. representative from Minnesota's 3rd congressional district (2025–present) ( running for reelection ),2026,Senate,MN,morrison k,4,1,0
 ,DEM,Dean Phillips,former U.S. representative from Minnesota's 3rd congressional district (2019–2025) and candidate for president in 2024  (endorsed Craig),2026,Senate,MN,phillips d,4,1,1
@@ -3543,7 +3543,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,REP,Pete Stauber,U.S. representative from Minnesota's 8th congressional district (2019–present),2026,Senate,MN,stauber p,4,1,0
 ,IND,Marisa Simonetti,business owner,2026,Senate,MN,simonetti m,0,0,0
 ,IND,2024,( Libertarian ),2026,Senate,MN,,0,0,0
-,REP,Kurt Alme,"former U.S. Attorney for the District of Montana (2017–2020, 2025–2026)",2026,Senate,MT,alme k,4,0,0
+,REP,Kurt Alme,"former U.S. Attorney for the District of Montana (2017–2020, 2025–2026)",2026,Senate,MT,alme k,3.5,0,0
 ,REP,Steve Daines,incumbent U.S. senator (2015–present) (endorsed Alme),2026,Senate,MT,daines s,4,1,0
 ,DEM,Alani Bankhead,Air Force lieutenant colonel and leadership coach,2026,Senate,MT,bankhead a,0,0,0
 ,DEM,Montana House of Representatives,),2026,Senate,MT,representatives m,0,0,0
@@ -3637,7 +3637,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,DEM,Connor Burbridge,elder care worker,2026,Senate,RI,burbridge c,0,0,0
 ,DEM,2018,and Democratic candidate for governor in 2022,2026,Senate,RI,,0,0,1
 ,DEM,Jack Reed,incumbent U.S. senator (1997–present),2026,Senate,RI,reed j,4,1,0
-,DEM,Gina Raimondo,former U.S. secretary of commerce (2021–2025) and governor of Rhode Island (2015–2021),2026,Senate,RI,raimondo g,4,0,0
+,DEM,Gina Raimondo,former U.S. secretary of commerce (2021–2025) and governor of Rhode Island (2015–2021),2026,Senate,RI,raimondo g,3.5,0,0
 ,REP,Rhode Island Republican Party,"State Central Committee, former president of the Rhode Island Republican Assembly , and candidate for U.S. Senate in 2024",2026,Senate,RI,party r,0,0,1
 ,IND,Michael Bahry,theologian,2026,Senate,RI,bahry m,0,0,0
 ,REP,Lindsey Graham,"incumbent U.S. Senator (died July 11, 2026)",2026,Senate,SC,graham l,4,0,0
@@ -3655,9 +3655,9 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,REP,Sheri Biggs,U.S. representative from South Carolina's 3rd congressional district (2025–present) ( currently running for reelection ),2026,Senate,SC,biggs s,4,1,0
 ,REP,Pamela Evette,lieutenant governor of South Carolina (2019–present) and Republican primary runoff candidate for governor in 2026,2026,Senate,SC,evette p,3,1,1
 ,REP,Henry McMaster,governor of South Carolina (2017–present),2026,Senate,SC,mcmaster h,3,1,0
-,REP,Scott Bessent,United States Secretary of the Treasury (2025–present),2026,Senate,SC,bessent s,4,1,0
+,REP,Scott Bessent,United States Secretary of the Treasury (2025–present),2026,Senate,SC,bessent s,3.5,1,0
 ,REP,Trey Gowdy,former U.S. representative from South Carolina's 4th congressional district (2011–2019),2026,Senate,SC,gowdy t,4,1,0
-,REP,Nikki Haley,"former United States ambassador to the United Nations (2017–2018), former governor of South Carolina (2011–2017), and candidate for president in 2024",2026,Senate,SC,haley n,4,0,1
+,REP,Nikki Haley,"former United States ambassador to the United Nations (2017–2018), former governor of South Carolina (2011–2017), and candidate for president in 2024",2026,Senate,SC,haley n,3.5,0,1
 ,REP,Nancy Mace,"U.S. representative from South Carolina's 1st congressional district (2021–present), candidate for U.S. Senate in 2014 , and candidate for governor in 2026  (endorsed Norman)",2026,Senate,SC,mace n,4,1,1
 ,REP,William Timmons,"U.S. representative from South Carolina's 4th congressional district (2019–present) ( running for reelection , endorsed Graham)",2026,Senate,SC,timmons w,4,1,0
 ,REP,Joe Wilson,U.S. representative from South Carolina's 2nd congressional district (2001–present) ( running for reelection ),2026,Senate,SC,wilson j,4,1,0
@@ -4216,9 +4216,9 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,DEM,Mark Pryor,attorney general of Arkansas,2002,Senate,AR,pryor m,3,0,0
 ,REP,Tim Hutchinson,incumbent U.S. senator,2002,Senate,AR,hutchinson t,4,0,0
 ,REP,Jim Bob Duggar,state representative,2002,Senate,AR,duggar j,2,1,0
-,DEM,Tom Strickland,former U.S. Attorney for the District of Colorado and Democratic nominee for the U.S. Senate in 1996,2002,Senate,CO,strickland t,4,0,1
+,DEM,Tom Strickland,former U.S. Attorney for the District of Colorado and Democratic nominee for the U.S. Senate in 1996,2002,Senate,CO,strickland t,3.5,0,1
 ,REP,Wayne Allard,incumbent U.S. Senator first elected in 1996,2002,Senate,CO,allard w,4,0,0
-,REP,Tom Strickland,former U.S. Attorney for the District of Colorado and Democratic nominee for the U.S. Senate in 1996,2002,Senate,CO,strickland t,4,0,1
+,REP,Tom Strickland,former U.S. Attorney for the District of Colorado and Democratic nominee for the U.S. Senate in 1996,2002,Senate,CO,strickland t,3.5,0,1
 ,OTH,Douglas Campbell,,2002,Senate,CO,campbell d,0,0,0
 ,OTH,Rick Stanley,,2002,Senate,CO,stanley r,0,0,0
 ,OTH,John Heckman,,2002,Senate,CO,heckman j,0,0,0
@@ -4232,10 +4232,10 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,REP,Bill Salier,hog farmer,2002,Senate,IA,salier b,0,0,0
 ,OTH,Timothy A. Harthan,,2002,Senate,IA,harthan t,0,0,0
 ,OTH,Richard J. Moore,,2002,Senate,IA,moore r,0,0,0
-,DEM,Alan Blinken,former United States Ambassador to Belgium,2002,Senate,ID,blinken a,4,0,0
+,DEM,Alan Blinken,former United States Ambassador to Belgium,2002,Senate,ID,blinken a,3.5,0,0
 ,DEM,Donovan Bramwell,perennial candidate,2002,Senate,ID,bramwell d,0,0,0
 ,REP,Larry Craig,incumbent U.S. Senator,2002,Senate,ID,craig l,4,0,0
-,REP,Alan Blinken,"(D), former United States Ambassador to Belgium",2002,Senate,ID,blinken a,4,0,0
+,REP,Alan Blinken,"(D), former United States Ambassador to Belgium",2002,Senate,ID,blinken a,3.5,0,0
 ,REP,Donovan Bramwell (L),perennial candidate,2002,Senate,ID,l d,0,0,0
 ,DEM,Dave Sneddon,,2002,Senate,ID,sneddon d,0,0,0
 ,OTH,Donovan Bramwell,,2002,Senate,ID,bramwell d,0,0,0
@@ -4299,13 +4299,13 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,OTH,Stan Jones,,2002,Senate,MT,jones s,0,0,0
 ,OTH,Bob Kelleher,,2002,Senate,MT,kelleher b,0,0,0
 ,DEM,Dan Blue,State Representative,2002,Senate,NC,blue d,2,1,0
-,DEM,Erskine Bowles,former White House Chief of Staff,2002,Senate,NC,bowles e,4,0,0
+,DEM,Erskine Bowles,former White House Chief of Staff,2002,Senate,NC,bowles e,3.5,0,0
 ,DEM,Elaine Marshall,Secretary of State of North Carolina,2002,Senate,NC,marshall e,3,0,0
-,REP,Elizabeth Dole,"former United States Secretary of Labor , former United States Secretary of Transportation , former Assistant to the President for Public Liaison , and wife of former U.S. Senator Bob Dole",2002,Senate,NC,dole e,4,0,0
+,REP,Elizabeth Dole,"former United States Secretary of Labor , former United States Secretary of Transportation , former Assistant to the President for Public Liaison , and wife of former U.S. Senator Bob Dole",2002,Senate,NC,dole e,3.5,0,0
 ,REP,James Snyder Jr.,former state representative,2002,Senate,NC,snyder j,2,1,0
 ,REP,Jim Parker,physician,2002,Senate,NC,parker j,0,0,0
 ,REP,Ada Fisher,physician and activist,2002,Senate,NC,fisher a,0,0,0
-,REP,Erskine Bowles,"(D), former White House Chief of Staff",2002,Senate,NC,bowles e,4,0,0
+,REP,Erskine Bowles,"(D), former White House Chief of Staff",2002,Senate,NC,bowles e,3.5,0,0
 ,DEM,Cynthia D. Brown,,2002,Senate,NC,brown c,0,0,0
 ,OTH,Sean Haugh,,2002,Senate,NC,haugh s,0,0,0
 ,DEM,Charlie A. Matulka,construction worker,2002,Senate,NE,matulka c,0,0,0
@@ -4372,7 +4372,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,DEM,Herman Eilers,,2002,Senate,SD,eilers h,0,0,0
 ,REP,John Thune,,2002,Senate,SD,thune j,0,0,0
 ,OTH,Kurt Evans,,2002,Senate,SD,evans k,0,0,0
-,REP,Lamar Alexander,"former U.S. Secretary of Education , former Governor of Tennessee",2002,Senate,TN,alexander l,4,0,0
+,REP,Lamar Alexander,"former U.S. Secretary of Education , former Governor of Tennessee",2002,Senate,TN,alexander l,3.5,0,0
 ,REP,Ed Bryant,U.S. Representative,2002,Senate,TN,bryant e,4,1,0
 ,REP,Mary Taylor-Shelby,perennial candidate,2002,Senate,TN,taylorshelby m,0,0,0
 ,REP,June Griffin,activist,2002,Senate,TN,griffin j,0,0,0
@@ -4417,7 +4417,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,REP,Jim Dore,aviation mechanic,2004,Senate,AK,dore j,0,0,0
 ,REP,Mike W. Miller,"businessman, former state senator, former state representative, nominee for lieutenant governor in 1994 and younger brother of Terry Miller",2004,Senate,AK,miller m,2,1,1
 ,REP,Lisa Murkowski,"incumbent U.S. Senator since 2002, formerly an Anchorage lawyer and member of the Alaska House",2004,Senate,AK,murkowski l,4,0,0
-,REP,Wev Shea,former U.S. Attorney for Alaska,2004,Senate,AK,shea w,4,0,0
+,REP,Wev Shea,former U.S. Attorney for Alaska,2004,Senate,AK,shea w,3.5,0,0
 ,DEM,Tony Knowles,"businessman, former governor and former mayor of Anchorage",2004,Senate,AK,knowles t,3,0,0
 ,DEM,Theresa Obermeyer,former Anchorage school board member and 1996 Democratic U.S. Senate nominee,2004,Senate,AK,obermeyer t,4,0,0
 ,DEM,Don Wright,former president of the Alaska Federation of Natives and perennial candidate,2004,Senate,AK,wright d,0,0,0
@@ -4469,7 +4469,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,REP,Bob Beauprez,U.S. representative from Colorado's 7th congressional district,2004,Senate,CO,beauprez b,4,1,0
 ,REP,Dave Liniger,real estate magnate,2004,Senate,CO,liniger d,0,0,0
 ,REP,Scott McInnis,U.S. representative from Colorado's 3rd congressional district,2004,Senate,CO,mcinnis s,4,1,0
-,REP,Jim Nicholson,U.S. Ambassador to the Holy See,2004,Senate,CO,nicholson j,4,0,0
+,REP,Jim Nicholson,U.S. Ambassador to the Holy See,2004,Senate,CO,nicholson j,3.5,0,0
 ,REP,Jane Norton,Lieutenant Governor of Colorado,2004,Senate,CO,norton j,3,0,0
 ,REP,Ken Salazar,"(D), State Attorney General",2004,Senate,CO,salazar k,3,0,0
 ,OTH,Douglas Campbell,,2004,Senate,CO,campbell d,0,0,0
@@ -4489,7 +4489,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,REP,Johnnie Byrd,state representative from Plant City and speaker of the Florida House of Representatives,2004,Senate,FL,byrd j,2,1,0
 ,REP,Doug Gallagher,businessman,2004,Senate,FL,gallagher d,0,0,0
 ,REP,Larry Klayman,attorney,2004,Senate,FL,klayman l,0,0,0
-,REP,Mel Martínez,former U.S. Secretary of Housing and Urban Development and candidate for Lieutenant Governor in 1994,2004,Senate,FL,martinez m,4,0,1
+,REP,Mel Martínez,former U.S. Secretary of Housing and Urban Development and candidate for Lieutenant Governor in 1994,2004,Senate,FL,martinez m,3.5,0,1
 ,REP,Bill McCollum,former U.S. representative from Longwood and nominee for U.S. Senate in 2000,2004,Senate,FL,mccollum b,4,1,1
 ,REP,Mark Foley,"U.S. representative from Jupiter ( withdrew September 6, 2003 )",2004,Senate,FL,foley m,4,1,0
 ,REP,Daniel Webster,state senator from Clermont,2004,Senate,FL,webster d,2,0,0
@@ -4936,7 +4936,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,DEM,Hillary Clinton,incumbent Senator,2006,Senate,NY,clinton h,4,0,0
 ,DEM,Jonathan B. Tasini,journalist and anti-war activist,2006,Senate,NY,tasini j,0,0,0
 ,DEM,Mark Greenstein,businessman (endorsed Tasini),2006,Senate,NY,greenstein m,0,0,0
-,REP,K. T. McFarland,former Deputy Assistant United States Secretary of Defense,2006,Senate,NY,mcfarland k,4,0,0
+,REP,K. T. McFarland,former Deputy Assistant United States Secretary of Defense,2006,Senate,NY,mcfarland k,3.5,0,0
 ,REP,John Spencer,former mayor of Yonkers,2006,Senate,NY,spencer j,1,0,0
 ,REP,Edward F. Cox,attorney and son-in-law of Richard Nixon,2006,Senate,NY,cox e,0,0,0
 ,REP,Jeanine Pirro,"Westchester County District Attorney (December 21, 2005) (ran for Attorney General)",2006,Senate,NY,pirro j,1,0,0
@@ -4969,7 +4969,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,DEM,Chuck Pennacchio,,2006,Senate,PA,pennacchio c,0,0,0
 ,DEM,Alan Sandals,,2006,Senate,PA,sandals a,0,0,0
 ,DEM,Marine,veteran,2006,Senate,RI,marine,0,0,0
-,DEM,Sheldon Whitehouse,former Attorney General of Rhode Island and former U.S. Attorney for the District of Rhode Island,2006,Senate,RI,whitehouse s,4,0,0
+,DEM,Sheldon Whitehouse,former Attorney General of Rhode Island and former U.S. Attorney for the District of Rhode Island,2006,Senate,RI,whitehouse s,3.5,0,0
 ,DEM,Matt Brown,secretary of state of Rhode Island ( endorsed Whitehouse ),2006,Senate,RI,brown m,3,0,0
 ,REP,Lincoln Chafee,incumbent U.S. Senator,2006,Senate,RI,chafee l,4,0,0
 ,REP,Steve Laffey,Mayor of Cranston,2006,Senate,RI,laffey s,1,0,0
@@ -5006,7 +5006,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,OTH,Dave Seely,,2006,Senate,UT,seely d,0,0,0
 ,OTH,Julian Hatch,,2006,Senate,UT,hatch j,0,0,0
 ,DEM,Harris Miller,businessman,2006,Senate,VA,miller h,0,0,0
-,DEM,Jim Webb,former United States Secretary of the Navy,2006,Senate,VA,webb j,4,0,0
+,DEM,Jim Webb,former United States Secretary of the Navy,2006,Senate,VA,webb j,3.5,0,0
 ,DEM,George Allen,"(R), incumbent U.S. Senator former Governor and former U.S. representative from Virginia's 7th congressional district.",2006,Senate,VA,allen g,4,1,0
 ,DEM,Gail Parker (G),Air Force veteran,2006,Senate,VA,g g,0,0,0
 ,REP,Florida in 2000,"and Washington's 2004 gubernatorial election —rarely result in a swing of more than 1,000 votes, and Allen was trailing by almost 10,000 in the initial count. In particular, almost all votes in this Virginia election were cast using electronic voting machines, whose results are unlikely to change in a recount.",2006,Senate,VA,in f,0,0,0
@@ -5219,7 +5219,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,DEM,Howard Staley,,2008,Senate,NC,staley h,0,0,0
 ,OTH,Chris Cole,,2008,Senate,NC,cole c,0,0,0
 ,REP,Pat Flynn,businessman,2008,Senate,NE,flynn p,0,0,0
-,REP,Mike Johanns,former United States Secretary of Agriculture and former Governor of Nebraska,2008,Senate,NE,johanns m,4,0,0
+,REP,Mike Johanns,former United States Secretary of Agriculture and former Governor of Nebraska,2008,Senate,NE,johanns m,3.5,0,0
 ,REP,Jon Bruning,Attorney General of Nebraska,2008,Senate,NE,bruning j,3,0,0
 ,REP,Hal Daub,former mayor of Omaha and former United States congressman,2008,Senate,NE,daub h,4,0,0
 ,DEM,Scott Kleeb,businessman and 2006 Democratic nominee for Nebraska's 3rd congressional district,2008,Senate,NE,kleeb s,0,0,1
@@ -5416,7 +5416,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,REP,Ken Buck,Weld County District Attorney,2010,Senate,CO,buck k,1,0,0
 ,REP,Tom Wiens,former state senator,2010,Senate,CO,wiens t,2,0,0
 ,REP,Bob Beauprez,former U.S. Representative for Colorado's 7th congressional district,2010,Senate,CO,beauprez b,4,1,0
-,REP,Troy Eid,U.S. Attorney for United States District Court for the District of Colorado,2010,Senate,CO,eid t,4,0,0
+,REP,Troy Eid,U.S. Attorney for United States District Court for the District of Colorado,2010,Senate,CO,eid t,3.5,0,0
 ,REP,Aurora,city councilman,2010,Senate,CO,aurora,1,0,0
 ,REP,Michael Bennet,"(D), incumbent U.S. Senator",2010,Senate,CO,bennet m,4,0,0
 ,REP,campaign site,PVS ),2010,Senate,CO,site c,0,0,0
@@ -5483,7 +5483,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,OTH,Lloyd Jeffrey Mallen,,2010,Senate,HI,mallen l,0,0,0
 ,OTH,Jeff Jarrett,,2010,Senate,HI,jarrett j,0,0,0
 ,REP,Chuck Grassley,incumbent U.S. Senator,2010,Senate,IA,grassley c,4,0,0
-,DEM,Roxanne Conlin,former United States Attorney for the Southern District of Iowa,2010,Senate,IA,conlin r,4,0,0
+,DEM,Roxanne Conlin,former United States Attorney for the Southern District of Iowa,2010,Senate,IA,conlin r,3.5,0,0
 ,DEM,Bob Krause,former Iowa State Representative and nominee for Treasurer in 1978,2010,Senate,IA,krause b,2,1,1
 ,DEM,Tom Fiegen,former Iowa State Senator,2010,Senate,IA,fiegen t,2,0,0
 ,DEM,Chuck Grassley,"(R), incumbent U.S. Senator",2010,Senate,IA,grassley c,4,0,0

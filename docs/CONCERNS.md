@@ -15,6 +15,10 @@ it every top feature; grades don't exist for future polls → train/serve skew. 
 dropped from FEATURES. Recency still reaches the model via explicit features
 (`poll_last`, `poll_last30`, `min_days`, `poll_momentum`, `gap_x_recency`). The 538
 partisan-lean file is gone from the pipeline entirely.
+**Update 2026-10-02 (user request):** one TIME-only weighted pair was added - `poll_avg_rw` /
+`poll_lead_rw` (14-day half-life from the race's freshest poll; no grades, no sample weights).
+The per-model ablation kept it in the MARGIN model only (`F.WIN_EXCLUDE` drops it from the win
+model). Every other aggregate is still a plain average.
 Implemented in **`features.py`** — the ONE shared feature builder used by both `model.ipynb`
 and `predict.py`, so train and predict features can never drift apart.
 

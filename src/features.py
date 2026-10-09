@@ -565,26 +565,16 @@ def load_candidate_bios():
     the same committed file, GENERAL-model party/office keying (district='' for
     Senate/Governor vs primary's within-party-field keying).
 
-    bio_office_level: 4 federal / 3 statewide / 2 state-leg / 1 local / 0 none-detected
-    (fetch_candidate_bios.py). Real coverage 58.1% of the general model's full 14-cycle
-    candidate table, 67.7% among WINNERS (measured 2026-07-24, AFTER the unbiased-target-
-    list fix - an earlier 32.7% figure here predated that fix; the old target list was
-    derived from primary-POLL pages and systematically excluded uncontested/safe-seat
-    incumbent races, i.e. exactly the highest-office-level candidates). Remaining known
-    gaps: a few House pages missing from transient fetch failures (CA 2024, LA/WA several
-    cycles - re-running fetch_house_candidate_bios_hist.py retries only missing pages),
-    genuinely thin pre-2012 Wikipedia editing depth, and independents filed under an
-    "Independents" section the parser's stage tracker doesn't classify as primary
-    (Bernie Sanders - open item). 2026 predict-time coverage will likely trail training
-    coverage (race pages accrue bio detail in the YEARS AFTER an election) - a real
-    train/serve mismatch to weigh against whatever an ablation shows. ABLATION STATUS
-    (2026-07-24, post-coverage-fix): win model - calibration metrics (AUC/AUC-PR/KS/Brier)
-    all flipped positive vs the pre-fix null, but race-acc still -0.0048 (2020/2024 folds
-    regress, confirmed NOT a NaN-dilution artifact via a matched-races-only split); margin
-    model - uniformly worse MAE in all 4 eval cycles. NOT wired into production. Only
-    office_level is exposed here (not bio_in_office/bio_prior_candidacy) - the PRIMARY
-    model's own overfit review found those added nothing once tested per-cycle
-    (METHODOLOGY.md)."""
+    bio_office_level: 4 elected federal / 3.5 appointed federal (cabinet and sub-cabinet,
+    agency heads, ambassadors, U.S. attorneys, White House posts, federal state directors -
+    user call 2026-10-08) / 3 statewide / 2 state legislature / 1 local / 0 none.
+    Coverage: 100% of the general model's training rows and of the live 2026 major-party
+    candidates (2026-10-08, after 43 researched hand-codes in candidate_bios_manual.csv).
+    IN PRODUCTION since 2026-07-29 (the 2026-07-24 ablation that kept it out was a coverage
+    artifact - it flipped positive on both models once coverage reached 100%).
+    Lookup order in build_candidate_table: exact key here -> person-level manual/Ballotpedia
+    tenure (__person_offices__, as-of-year) -> same person's earlier rows (__prior_levels__) ->
+    floored by offices actually won (office_level_floor)."""
     path = os.path.join(DATA_DIR, "candidate_bios.csv")
     if not os.path.exists(path):
         return {}
@@ -594,9 +584,9 @@ def load_candidate_bios():
         di = dist_str(r.district)
         party = npar(r.party)
         out[(int(r.year), r.office, r.state, di, party, r.cand_key)] = dict(
-            bio_office_level=int(r.office_level))
+            bio_office_level=float(r.office_level))
         prior.setdefault((r.cand_key, r.state, r.office, party), []).append(
-            (int(r.year), int(r.office_level)))
+            (int(r.year), float(r.office_level)))
     out["__prior_levels__"] = prior
 
     # PERSON-LEVEL as-of-year fallback (2026-07-29): the exact-key map above is built from
@@ -1179,23 +1169,25 @@ def build_candidate_table(d, macro, natl_env_map, funds, house_train_years=None,
 
     d must have: race_id, year, state, office, district, candidate, cand_key, party_std,
     pct, end_date, days_to_elec, sample_size, pollster. `won` optional (NaN at predict time).
-    All poll aggregates are PLAIN averages (no weighting).
+    Poll aggregates are plain averages, except poll_avg_rw / poll_lead_rw (14-day half-life,
+    added 2026-10-02 at the user's request). Before aggregating: ranked-choice races keep only
+    their final-round head-to-heads (rcv_final_round) and each candidate keeps one number per
+    survey (one_row_per_survey) - both 2026-10-07.
 
     House effect: pass `house_train_years` to compute it from those cycles of `d`, or pass a
     precomputed `house` dict directly (predict time: computed from historical polls, applied
     to the new cycle's polls).
 
-    primary_results: pass load_primary_results() to add primary_margin/primary_uncontested
-    (2026-07-22) - how contested/lopsided this candidate's own primary was, 33.5% coverage
-    (real matches only; NaN elsewhere, never a silent 0/uncontested guess). ABLATED OUT of
-    production 2026-07-23 (honest null result on both win and margin models) - kept in the
-    codebase, not the default.
+    primary_results: pass load_primary_results() to add primary_margin / opp_primary_margin /
+    primary_margin_diff - how contested this candidate's and the opponent's primaries were
+    (NaN when unmatched, never a silent 0). IN PRODUCTION since 2026-08-07 (the own-primary-only
+    version was ablated out 2026-07-23; the opponent-facing block brought it back).
 
-    candidate_bios: pass load_candidate_bios() to add bio_office_level (2026-07-23) - the
-    candidate's highest office held (4 fed/3 statewide/2 state-leg/1 local/0 none), 58.1%
-    coverage post-target-list-fix (see load_candidate_bios's docstring for the full
-    coverage + ablation story; ablated 2026-07-24: NOT production - better calibration on
-    the win model but worse pick-accuracy in recent folds, uniformly worse margin MAE).
+    candidate_bios: pass load_candidate_bios() to add bio_office_level - highest office held
+    strictly before the election year: 4 elected federal / 3.5 appointed federal (2026-10-08) /
+    3 statewide / 2 state legislature / 1 local / 0 none. IN PRODUCTION since 2026-07-29.
+    Floored by offices actually won (office_level_floor, 2026-10-07). predict.py AND
+    explain_2026.py must pass both of these, or the features are NaN at serve time.
     """
     # ranked-choice races use their final-round head-to-heads (2026-10-07); with labels present
     # (training) their margin target becomes the final-round result to match

@@ -4,6 +4,29 @@ For the next agent. Read AGENTS.md first (architecture + rules), CONCERNS.md sec
 (risk register + roadmap). This file: what's mid-flight RIGHT NOW, what's most likely to
 break, and what to do next, in order.
 
+## 2026-10-08 (later) - appointed federal posts = 3.5; docs sweep; primary results refreshed
+
+**User call:** non-elected federal offices get their own bio_office_level, **3.5** (between
+statewide 3 and elected federal 4; was 4 since 2026-09-25). Covers cabinet / sub-cabinet
+secretaries, federal agency heads, ambassadors, U.S. attorneys, White House posts (not junior
+staff: aide/analyst/intern/fellow) and federal state directors (USDA Rural Development / Farm
+Service Agency). `APPOINTED_FEDERAL` in fetch_candidate_bios.py; both classifiers take the max, so
+elected federal still wins. Wikipedia source CSVs recoded only where the stored level equalled the
+old classifier output (hand-set levels untouched): 250 rows. candidate_bios.csv patched in place
+(264 level changes, +30 rows from the rebuild - the full rebuild was NOT used: it dropped 20
+current 2026 rows and reverted 4 hand corrections). Hand fixes: Toland KS-Gov 2022 -> 3 (state
+Commerce secretary misread as federal), Arrington SC-1 2024 -> 2 (staffer for an under secretary).
+Live at 3.5: Sanders (AR-Gov - press secretary outranks governor under max), Gruters, Gronli,
+Green, Alme, Buckhout. Retrained: win Brier .064 / race-acc .878; margin MAE 4.685.
+Integer casts of office_level removed (features.load_candidate_bios, build_office_level_table).
+
+**Docs:** stale docstrings (bio feature "NOT production", primary block "ablated out", "all
+aggregates are plain averages") corrected; DATA_DICTIONARY / CONCERNS / METHODOLOGY notes; shared
+Documents/AGENTS.md session-6 block; polling-agg HANDOFF/README.
+**primary_results_2026.csv** re-scraped: same 630 party-races and winners; 22 "Write-in" pseudo-
+candidate rows dropped; certified-count 0.1-pt changes. 67 modeled race-parties still have no
+results table (conventions / unopposed).
+
 ## 2026-10-08 - experience level (bio_office_level) filled for every live candidate
 
 42 live 2026 candidates (38 Dem/Rep + 4 strong independents) had no bio_office_level. Each was

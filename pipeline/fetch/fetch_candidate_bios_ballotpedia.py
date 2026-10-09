@@ -49,7 +49,7 @@ HERE = ROOT   # repo root (paths.py) - this file lives in a subfolder
 sys.path.insert(0, AGG)
 from bs4 import BeautifulSoup  # noqa: E402
 
-from fetch_candidate_bios import classify, PRIOR_CAND_RX  # noqa: E402
+from fetch_candidate_bios import classify, PRIOR_CAND_RX, APPOINTED_FEDERAL  # noqa: E402
 import features as F  # noqa: E402
 
 
@@ -140,10 +140,33 @@ def classify_ballotpedia(infobox_text, office=None):
     d = re.sub(r"candidate,?\s+[^.]*?(?=(u\.?s\.?|state|governor|mayor|county|city|$))",
                " ", str(infobox_text), count=1, flags=re.I)  # drop leading "Candidate, ..."
     d = re.sub(r"(candidate|nominee) for [^,;.]+", " ", d, flags=re.I)
+    # ELECTED federal office first (4); then an APPOINTED federal post (3.5, user call
+    # 2026-10-08: cabinet / sub-cabinet secretaries, agency heads, ambassadors, U.S. attorneys,
+    # White House posts, federal state directors such as USDA Rural Development); then the
+    # statewide / legislative / local levels below
+    if _BP_ELECTED_FED.search(d):
+        return 4
+    if _is_federal_appointment(d):
+        return APPOINTED_FEDERAL
     for lvl, rx in _BP_LEVELS:
         if rx.search(d):
             return lvl
     return classify(infobox_text, office=office)   # fall back to the Wikipedia classifier
+
+
+_BP_ELECTED_FED = re.compile(r"u\.?s\.?\s+(senate|house|senator|representative)|"
+                             r"united states\s+(senate|house|senator|representative)|"
+                             r"member of congress", re.I)
+_BP_FED_APPT_EXTRA = re.compile(
+    r"u\.?s\.?\s+cabinet|secretary of (the treasury|defense|energy|homeland security|"
+    r"veterans affairs|the interior|housing)\b|"
+    r"(?:u\.?s\.?|united states|federal)\s+(?:secretary|department|agency|administration|bureau)\b|"
+    r"centers? for disease control|deputy director of the (?:u\.?s\.?|federal)", re.I)
+
+
+def _is_federal_appointment(d):
+    from fetch_candidate_bios import _federal_appointee
+    return bool(_federal_appointee(str(d).lower()) or _BP_FED_APPT_EXTRA.search(str(d)))
 
 OUT = os.path.join(HERE, "data", "candidate_bios_ballotpedia.csv")
 UNCOVERED = os.path.join(HERE, "data", "uncovered_candidates.csv")

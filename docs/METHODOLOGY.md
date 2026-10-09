@@ -18,7 +18,9 @@ election day). `predict.py` uses the true election date for `days_to_elec`.
 
 ## A. Poll-based features — per candidate, within the cycle
 **All aggregates are PLAIN averages — no weighting of any kind** (recency/sample/pollster-grade
-weights were removed 2026-07-05; grades don't exist for future polls). Recency enters through
+weights were removed 2026-07-05; grades don't exist for future polls). *Exception added
+2026-10-02 at the user's request:* `poll_avg_rw` / `poll_lead_rw`, a time-only 14-day half-life
+average (margin model only - the win model excludes it after ablation). Recency enters through
 explicit features instead. Poll `pct` is rounded to 1 decimal in BOTH training and predict
 paths (the live feed's resolution — instrument harmonization, 2026-07-06). Pollster names are
 normalized (`features.norm_pollster`) before house-effect lookup so 2026-feed names match the

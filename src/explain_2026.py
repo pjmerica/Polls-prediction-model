@@ -190,7 +190,8 @@ DESC = {
     "fund_self_pct": "Share the candidate gave/loaned themselves.",
     "fund_smalldollar_pct": "Share of individual money from small (<$200) donors.",
     "bio_office_level": "Highest public office the candidate held BEFORE this election "
-                        "(4 = federal, 3 = statewide, 2 = state legislature, 1 = local, "
+                        "(4 = elected federal, 3.5 = appointed federal post, 3 = statewide, "
+                        "2 = state legislature, 1 = local, "
                         "0 = none). A proxy for name recognition and donor networks. "
                         "As-of-year, so the same person reads a lower level in an earlier "
                         "cycle - a first-time candidate is 0 even if they later won office.",

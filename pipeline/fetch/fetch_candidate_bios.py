@@ -7,8 +7,10 @@ Bullet format on race pages:  "Mallory McMorrow , state senator from the 8th dis
 (2019-present)" / "Abdul El-Sayed , former Wayne County health director (2023-2025) and
 candidate for governor in 2018".
 
-office_level: 4 federal (US sen/rep/cabinet) > 3 statewide (gov/LG/AG/SoS/treasurer) >
-2 state legislature > 1 local (mayor/county/city/sheriff/judge) > 0 none-detected.
+office_level: 4 elected federal (US sen/rep) > 3.5 appointed federal (cabinet/sub-cabinet,
+agency heads, ambassadors, U.S. attorneys, White House posts, federal state directors - 2026-10-08)
+> 3 statewide (gov/LG/AG/SoS/treasurer/state cabinet) > 2 state legislature > 1 local
+(mayor/county/city/metro council/sheriff/judge) > 0 none-detected.
 Plus: bio_in_office (descriptor says 'present'), bio_prior_candidacy ('candidate for' /
 'nominee for' - catches runs our results files never tracked, e.g. El-Sayed's 2018
 gubernatorial primary bid).
@@ -69,12 +71,15 @@ URL_HOUSE = ("https://en.wikipedia.org/wiki/{year}_United_States_House_of_Repres
 
 LEVELS = [
     # US-form variants: 'U.S.', 'US', 'U.S' (missing periods happen: 'U.S representative')
-    (4, r"(u\.?s\.?|united states) (senator|representative|secretary)|"
+    # ELECTED federal office only (2026-10-08): appointed federal posts - U.S. secretaries,
+    # White House staff posts, ambassadors, agency heads - are APPOINTED_FEDERAL (3.5), see
+    # _FED_APPOINTEE_RX
+    (4, r"(u\.?s\.?|united states) (senator|representative)|"
         r"member of (the )?(u\.?s\.?|united states) house|member of congress|"
         # institution phrasing "U.S. House <state>" / "U.S. Senate <state>" (Ballotpedia-style,
         # also appears in some Wikipedia rows) - added 2026-07-29 ("U.S. House Washington" read 0)
         r"(u\.?s\.?|united states)\s+(house|senate)\b|"
-        r"white house|congress(wo)?man|"
+        r"congress(wo)?man|"
         # leadership titles imply U.S. House/Senate membership on their own (found
         # 2026-07-23: 'former Majority Leader of the United States House of
         # Representatives' (Eric Cantor) didn't match 'member of ... house' - the phrase
@@ -84,6 +89,9 @@ LEVELS = [
     (3, r"\bgovernor\b|lieutenant governor|attorney general|secretary of state|"
         r"state treasurer|state auditor|state comptroller|commissioner of|"
         r"superintendent of public|"
+        # elected statewide in several states (Iowa); the FEDERAL post matches the appointee
+        # rule first and keeps 3.5 (2026-10-08)
+        r"secretary of agriculture|"
         # statewide ELECTED offices the list missed (2026-09-25): Bob Casey Jr. "incumbent
         # Auditor General" (PA), Rob Sand "Iowa auditor of state", Vicki Schmidt "Kansas
         # Insurance Commissioner" all read 0 once a relative's/running mate's office stopped
@@ -143,14 +151,22 @@ _FED_DEPTS = (r"(?:state for|defense|the treasury|treasury|homeland security|vet
               r"energy|commerce|labor|education|agriculture|the interior|interior|"
               r"transportation|health and human services|housing and urban development|"
               r"the navy|the army|the air force)")
+# APPOINTED (non-elected) federal posts get their own level, between statewide (3) and elected
+# federal (4) - user call 2026-10-08 (was 4 under the 2026-09-25 rule). A descriptor that ALSO
+# names an elected federal office keeps 4 (classify_evidence takes the max).
+APPOINTED_FEDERAL = 3.5
 _FED_APPOINTEE_RX = re.compile(
+    r"(?:u\.?s\.?|united states) secretary\b|\busda\b|rural development|"
+    # White House POSTS (press secretary, chief of staff, office directors) - not junior staff
+    r"white house(?!(?:\s+\w+)?\s+(?:aide|analyst|intern|staffer|fellow|volunteer))|"
     r"(?<!assistant )(?:u\.?s\.?|united states) attorney\b|"
     r"(?<!goodwill )(?:u\.?s\.?|united states) ambassador|(?<!goodwill )\bambassador to\b|"
     r"\b(?:principal\s+)?(?:under|deputy|assistant|deputy assistant)\s+secretary of " + _FED_DEPTS + r"|"
     # bare cabinet title - but not a state cabinet named like one ("secretary of Energy AND
     # Environmental Affairs" is Massachusetts; "Secretary of Agriculture OF KANSAS" is Kansas)
     r"\bsecretary of " + _FED_DEPTS +
-    r"(?!\s+and\s+(?:environmental|economic|natural|public|workforce|consumer|community)"
+    r"(?!\s+and\s+(?:environmental|economic|natural|public|workforce|consumer|community|"
+    r"forestry|consumer services)"
     r"|\s+of\s+(?!the\s+(?:treasury|navy|army|air\s+force|interior)\b))|"
     r"director of the (?:consumer financial protection bureau|office of management and budget|"
     r"central intelligence agency|federal bureau of investigation|office of personnel management|"
@@ -236,13 +252,18 @@ def classify_evidence(desc, office=None):
         m = INCUMBENT_BY_OFFICE_RX[office].search(d)
         if m:
             return 4, _evidence(desc, d, m)
-    m = _federal_appointee(d)
-    if m:
-        return 4, _evidence(desc, d, m)
+    m_app = _federal_appointee(d)
+    hit = None
     for lvl, rx in LEVELS:
         m = re.search(rx, d)
         if m:
-            return lvl, _evidence(desc, d, m)
+            hit = (lvl, m)
+            break
+    # an appointed federal post (3.5) beats statewide/legislative/local, never elected federal
+    if m_app and (hit is None or hit[0] < APPOINTED_FEDERAL):
+        return APPOINTED_FEDERAL, _evidence(desc, d, m_app)
+    if hit:
+        return hit[0], _evidence(desc, d, hit[1])
     return 0, ""
 
 
