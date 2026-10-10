@@ -4,6 +4,16 @@ For the next agent. Read AGENTS.md first (architecture + rules), CONCERNS.md sec
 (risk register + roadmap). This file: what's mid-flight RIGHT NOW, what's most likely to
 break, and what to do next, in order.
 
+## 2026-10-10 - margin tuner stabilized (two-stage, seed-averaged)
+
+User call. margin_model.ipynb's nested tuner screens the 120 combos with one seed, then re-scores
+the TOP_K=10 with 3 seeds (42, 7, 123) and picks by the average - still on the 1998-2016 tune
+cycles only. (Seed-averaging all 120 combos hit the 6-hour cell limit.) Result: the same setting
+as the last single-seed run (min_child_weight 15, subsample .8, colsample .6, reg_lambda 20) - the
+top 10 are near-tied (3-seed MAE 5.620-5.631), which is why one seed's noise kept flipping the
+pick. Honest 2018-24 MAE 4.851 (unchanged). The previous setting scores 4.716 on 2018-24, but
+choosing it by eval-cycle score would leak; it is not the tune-cycle winner.
+
 ## 2026-10-09 - FEC re-fetch, generic-ballot history filled, incumbency stage bug, data audit
 
 **FEC.** fec_summary + fec_asof re-run (Q3 not due until Oct 15 - RE-RUN AFTER OCT 15). New
