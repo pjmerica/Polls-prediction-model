@@ -99,7 +99,12 @@ def load_agg_polls(paths, cycle):
         "office": raw["office"],
         "district": raw["district"],
         "candidate": raw["candidate"],
-        "party_std": raw["party"].map(F.npar),
+        # empty party -> the name's own "(DFL)" / "(R)" suffix (2026-10-13): 220 Wikipedia
+        # rows carry no party, incl. 20 "Amy Klobuchar (DFL)" and 16 "Peggy Flanagan (DFL)"
+        "party_std": raw["party"].where(
+            raw["party"].notna(),
+            raw["candidate"].astype(str).str.extract(r"\(([A-Za-z-]+)\)\s*$", expand=False)
+            .str.upper().replace({"D": "DEM", "R": "REP", "GOP": "REP"})).map(F.npar),
         "pct": pd.to_numeric(raw["implied_prob"], errors="coerce") * 100.0,
         "end_date": raw["end_date"],
         "sample_size": pd.to_numeric(raw["sample_size"], errors="coerce"),
@@ -140,7 +145,7 @@ def load_agg_polls(paths, cycle):
     def _majority(s):
         vc = s.value_counts()
         return vc.index[0] if len(vc) == 1 or vc.iloc[0] > vc.iloc[1] else s.iloc[0]
-    _fixed = _key.map(d.groupby(_key)["party_std"].agg(_majority))
+    _fixed = _key.map(d.groupby(_key)["party_std"].agg(_majority)).fillna(d["party_std"])
     _chg = _fixed != d["party_std"]
     if _chg.any():
         print(f"party majority vote: {int(_chg.sum())} minority-tagged poll rows re-tagged "

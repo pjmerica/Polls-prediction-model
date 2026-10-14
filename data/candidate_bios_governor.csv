@@ -2308,7 +2308,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,DEM,Lehigh County,controller (2019–present) ( running for State Senate ),2022,Governor,PA,county l,0,1,0
 ,REP,Doug Mastriano,state senator from SD-33 (2019–present) and candidate for PA-13 in 2018,2022,Governor,PA,mastriano d,2,1,1
 ,REP,Shawn Berger,restaurant owner,2022,Governor,PA,berger s,0,0,0
-,REP,Chester County,"Chamber of Business & Industry (2014–present), Chief of staff to Lieutenant Governor Jim Cawley (2011–2014) ( ran unsuccessfully for U.S. House )",2022,Governor,PA,county c,4,1,0
+,REP,Chester County,"Chamber of Business & Industry (2014–present), Chief of staff to Lieutenant Governor Jim Cawley (2011–2014) ( ran unsuccessfully for U.S. House )",2022,Governor,PA,county c,0,1,0
 ,REP,Jake Corman,"state senator from District 34 (1999–2022), President pro tempore of the Pennsylvania Senate (2020–2022) (endorsed Barletta)",2022,Governor,PA,corman j,2,0,0
 ,REP,Melissa Hart,"U.S. representative from Pennsylvania's 4th congressional district (2001–2007), state senator from District 40 (1991–2001) (endorsed Barletta)",2022,Governor,PA,hart m,4,1,0
 ,REP,Scott Martin,state senator from District 13 (2017–present),2022,Governor,PA,martin s,2,1,0
@@ -3537,7 +3537,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,DEM,Rollie Heath,businessman,2002,Governor,CO,heath r,0,0,0
 ,OTH,Ronald Forthofer,,2002,Governor,CO,forthofer r,0,0,0
 ,OTH,Ralph Shnelvar,,2002,Governor,CO,shnelvar r,0,0,0
-,DEM,Bill Curry,"Counselor to the President under Clinton Administration, nominee in 1994 Running mate: George Jepsen , Connecticut state senator",2002,Governor,CT,curry b,0,0,0
+,DEM,Bill Curry,"Counselor to the President under Clinton Administration, nominee in 1994 Running mate: George Jepsen , Connecticut state senator",2002,Governor,CT,curry b,3.5,0,0
 ,DEM,George Jepsen,Connecticut state senator,2002,Governor,CT,jepsen g,2,0,0
 ,REP,John G. Rowland,"incumbent governor of Connecticut Running mate: Jodi Rell , incumbent lieutenant governor of Connecticut",2002,Governor,CT,rowland j,3,0,0
 ,REP,Jodi Rell,incumbent lieutenant governor of Connecticut,2002,Governor,CT,rell j,3,0,0

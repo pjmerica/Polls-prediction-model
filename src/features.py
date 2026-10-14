@@ -50,9 +50,16 @@ def pdist(v):
     m = re.search(r"(\d+)", str(v))
     return str(int(m.group(1))) if m else ""
 
+# State affiliates of the Democratic Party (2026-10-13): Minnesota's DFL and North Dakota's
+# Democratic-NPL. 10 Klobuchar MN-Gov 2026 poll rows tagged 'DFL' had read as OTH.
+_DEM_AFFILIATES = ("DFL", "NPL", "D-NPL", "DEM-NPL")
+
+
 def npar(p):
-    p = str(p).upper()
-    return "DEM" if p.startswith("DEM") else "REP" if p.startswith("REP") else "OTH"
+    p = str(p).strip().upper()
+    if p.startswith("DEM") or p in _DEM_AFFILIATES:
+        return "DEM"
+    return "REP" if p.startswith("REP") else "OTH"
 
 # Intra-word punctuation is DELETED, not spaced (2026-08-01). Before this, the two
 # apostrophe characters took different paths and produced different keys for one person:
@@ -294,6 +301,7 @@ def load_fundamentals():
     Returns dict(inc_map=..., margin_map=...). No network, ever.
     """
     rc = pd.read_csv(os.path.join(DATA_DIR, "races.csv"), low_memory=False)
+    rc_dates = rc[["id", "date"]]
     off = rc["office_name"].astype(str).str.lower()
     rc["office"] = np.select(
         [off.str.contains("senate"), off.str.contains("house"), off.str.contains("governor")],
@@ -353,7 +361,34 @@ def load_fundamentals():
         # 'T. Jonathan Ossoff' / 'Edward Lamont', a same-surname relative ('Darline' vs
         # 'Lindsey Graham', SC 2026) does not
         winners.setdefault((r.state, r.office), []).append(
-            (int(r.cycle), str(r.cand_key).split(" ")[0], r.p, _name_tokens(r.res_candidate)))
+            (int(r.cycle) + GEN_T, str(r.cand_key).split(" ")[0], r.p, _name_tokens(r.res_candidate)))
+    # HOUSE SPECIAL-election winners (2026-10-13): load_result_lines drops House specials (their
+    # result must not label the November race), so a member first elected in a special never
+    # counted as the sitting member at the next general - Karen Handel (GA-6, June 2017 runoff),
+    # Conor Lamb (PA-18, March 2018). Per special: the winner of its LATEST-dated stage (the GA-6
+    # April jungle round flags Ossoff, who lost the runoff), timed by its races.csv date so a
+    # March special counts for that November and an Election-Day special does not.
+    try:
+        _rh = pd.read_csv(os.path.join(DATA_DIR, "res_house.csv"), low_memory=False)
+        _sp = _rh[_rh["special"].astype(str).str.lower().isin(["true", "1"])
+                  & _rh["candidate_name"].notna()].merge(
+            rc_dates, left_on="race_id", right_on="id", how="left")
+        _sp["sp_d"] = pd.to_datetime(_sp["date"], errors="coerce", format="mixed")
+        _sp["sp_seat"] = _sp["office_seat_name"].map(pdist)
+        _sp = _sp.dropna(subset=["sp_d"])
+        for (_st, _seat, _cyc), g in _sp.groupby(["state_abbrev", "sp_seat", "cycle"]):
+            last = g[g["sp_d"] == g["sp_d"].max()]
+            w = last[last["winner"].astype(str).str.lower().isin(["true", "1"])]
+            for r in w.itertuples():
+                ck = norm_name(r.candidate_name)
+                if not ck:
+                    continue
+                d = r.sp_d
+                t = d.year + (d.month - 1) / 12 if d < pd.Timestamp(d.year, 11, 1) else d.year + 0.9
+                winners.setdefault((str(_st).upper(), "House"), []).append(
+                    (t, ck.split(" ")[0], npar(r.ballot_party), _name_tokens(r.candidate_name)))
+    except (OSError, KeyError, ValueError):
+        pass
     # APPOINTED / SUCCEEDED sitting officeholders running for the first time (hand-curated,
     # data/appointed_incumbents.csv) - they never won the seat, so the results table alone
     # reads them as challengers (Moody, Husted, Graham 2026; Loeffler, Tina Smith earlier)
@@ -422,13 +457,17 @@ def office_level_floor(winners, year, state, cand_key, party, name=None, appoint
     best = np.nan
     for office, lvl in (("Senate", 4), ("House", 4), ("Governor", 3)):
         held = (year, state, office, sn, party) in appointed or any(
-            s_ == sn and p_ == party and y < year
+            s_ == sn and p_ == party and y < year + GEN_T
             and (name is None or _first_names_compatible(name, toks, sn))
             for y, s_, p_, toks in winners.get((state, office), []))
         if held and not (best >= lvl):
             best = lvl
     return best
 
+
+# a general election's time within its year (early November) - wins are stored as fractional
+# years so a same-year special held BEFORE November counts as a prior win (2026-10-13)
+GEN_T = 0.84
 
 # how far back a sitting officeholder's last general win can be: one full term
 _TERM_YEARS = {"Senate": 6, "Governor": 4, "House": 2}
@@ -446,8 +485,14 @@ def personal_incumbent(winners, year, state, office, cand_key, party, name=None,
     sn = str(cand_key).split(" ")[0]
     if (year, state, office, sn, party) in appointed:
         return 1
-    span = [x for x in lst if year - _TERM_YEARS[office] <= x[0] < year]
-    if not span:
+    # window = from the general election one term back (inclusive) to this one (exclusive): a
+    # special win before that earlier general was superseded by it (Mayra Flores won TX-34's June
+    # 2022 special, lost that November - not the incumbent in 2024) - 2026-10-13
+    span = [x for x in lst if year - _TERM_YEARS[office] + GEN_T - 1e-6 <= x[0] < year + GEN_T]
+    # unknown unless the window holds at least one GENERAL result (fraction == GEN_T): a lone
+    # special winner must not turn "no results for these years" into a confident 0 (1998 House:
+    # the 1996 generals are not in the results files) - 2026-10-13
+    if not any(abs((x[0] % 1) - GEN_T) < 1e-6 for x in span):
         return np.nan
     return int(any(s == sn and p == party
                    and (name is None or _first_names_compatible(name, toks, sn))
@@ -621,6 +666,19 @@ def load_candidate_bios():
             if key not in person:
                 person[key] = offices
     out["__person_offices__"] = person
+    # each person's OWN Wikipedia infobox offices with term years (2026-10-13,
+    # pipeline/fetch/fetch_wikipedia_person_offices.py) - used as a FLOOR in build_candidate_table:
+    # "Stage-4 verified level 0" hand rows were really "no evidence found" (~1 in 5 wrong in a
+    # random spot check: Neumann, Bloom, Goyle, Bruun, Sasse)
+    wp = {}
+    p = os.path.join(DATA_DIR, "candidate_bios_wikiperson.csv")
+    if os.path.exists(p):
+        for r in pd.read_csv(p, low_memory=False).itertuples():
+            try:
+                wp[(norm_name(r.candidate), r.state)] = json.loads(r.offices_json)
+            except (json.JSONDecodeError, TypeError):
+                pass
+    out["__wikiperson__"] = wp
     return out
 
 def _person_asof_level(offices, year):
@@ -798,6 +856,15 @@ def fec_lookup(fec, yr, st, of, di, ck, party=None, name=None):
                  if sn in toks and (name is None or _first_names_compatible(name, toks, sn))]
         if len(cands) > 1 and party:
             cands = [c for c in cands if c[1] == party]
+        # never hand a candidate the OTHER major party's money on an initial alone (2026-10-13):
+        # Annette Davis Jackson (R, GA-Sen-S 2020) matched 'JACKSON, DEBORAH A' (D) via the
+        # middle initial. A full given name still matches across parties: the FEC files a
+        # switcher under his LATER party ('GRIFFITH, PARKER', REP; he won AL-5 2008 as a DEM).
+        major = ("DEM", "REP")
+        if len(cands) == 1 and party in major and cands[0][1] in major and cands[0][1] != party:
+            given = {t for t in _name_tokens(name or "") if len(t) > 1} - {sn}
+            if not (given & cands[0][0]):
+                cands = []
         if len(cands) == 1:
             return fec.get(cands[0][2])
     return None
@@ -1235,7 +1302,10 @@ def build_candidate_table(d, macro, natl_env_map, funds, house_train_years=None,
             dated = gc.dropna(subset=["end_date"])          # NaT polls can't be "most recent"
             last30 = gc[gc["days_to_elec"] <= 30]
             last7 = gc[gc["days_to_elec"] <= 7]
-            party = gc["party_std"].iloc[0]
+            # majority party over the candidate's rows (2026-10-13; was the FIRST row, so one
+            # hypothetical REP row made Neuschwanger, American Constitution, a second CO-Gov 2022
+            # Republican). predict.py majority-votes the same way at serve time.
+            party = gc["party_std"].value_counts().index[0]
             sign = 1 if party == "DEM" else -1 if party == "REP" else 0
 
             incp = inc_map.get((yr, st, of, di))
@@ -1409,10 +1479,14 @@ def build_candidate_table(d, macro, natl_env_map, funds, house_train_years=None,
                 # highest office ever held (NaN = no matched bio, not "no experience" -
                 # see load_candidate_bios)
                 # floored by office actually won (office_level_floor, 2026-10-07)
-                bio_office_level=np.fmax(
+                bio_office_level=np.fmax(np.fmax(
                     bio["bio_office_level"] if bio else np.nan,
                     office_level_floor(funds.get("winners", {}), yr, st, ck, party,
                                        gc["candidate"].iloc[0], funds.get("appointed", ()))),
+                    # own-Wikipedia-infobox offices that started before this year (floor)
+                    (_person_asof_level(candidate_bios["__wikiperson__"][(ck, st)], yr)
+                     if candidate_bios is not None
+                     and (ck, st) in candidate_bios.get("__wikiperson__", {}) else np.nan)),
                 **fund,
                 **macro.get(yr, {}),
             ))
@@ -1488,6 +1562,20 @@ def build_candidate_table(d, macro, natl_env_map, funds, house_train_years=None,
             c[f"poll_lead_{k}"] = c[f"poll_avg_{k}"] - c.groupby("race_id")[
                 f"poll_avg_{k}"].transform(best_other)
     c["poll_lead_rw"] = c["poll_avg_rw"] - c.groupby("race_id")["poll_avg_rw"].transform(best_other)
+    # REDRAW-YEAR party incumbency (2026-10-13): in the first House election on a new map
+    # races.csv's incumbent party belongs to the old district that carried this NUMBER, not to the
+    # sitting member actually running here (CA-21 2022: Costa D running, races.csv says R from
+    # Valadao's old seat; 30 such rows). If exactly one party fields a sitting member, that party
+    # holds the seat; member-vs-member races keep races.csv.
+    if "is_personal_inc" in c.columns:
+        _rd = (c["office"] == "House") & pd.Series(
+            [_last_redraw(s_, y_) == y_ for s_, y_ in zip(c["state"], c["year"])], index=c.index)
+        _pi = c[_rd & (c["is_personal_inc"] == 1) & c["party"].isin(["DEM", "REP"])]
+        _held = _pi.groupby("race_id")["party"].agg(lambda x: x.iloc[0] if x.nunique() == 1 else None)
+        _held = _held.dropna()
+        _m = c["race_id"].isin(_held.index) & c["party"].isin(["DEM", "REP"])
+        c.loc[_m, "is_incumbent"] = (c.loc[_m, "party"] == c.loc[_m, "race_id"].map(_held)).astype(int)
+        c.loc[c["race_id"].isin(_held.index), "is_inc_party_race"] = 1
     # OPEN SEAT: no candidate in the race is the personal incumbent (NaN if unknown for all)
     if "is_personal_inc" in c.columns:
         c["open_seat"] = c["race_id"].map(c.groupby("race_id")["is_personal_inc"].apply(

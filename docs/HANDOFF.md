@@ -4,6 +4,48 @@ For the next agent. Read AGENTS.md first (architecture + rules), CONCERNS.md sec
 (risk register + roadmap). This file: what's mid-flight RIGHT NOW, what's most likely to
 break, and what to do next, in order.
 
+## 2026-10-13/14 - spot-check fixes: vote shares, winnerless races, bios, party, FEC (win + margin retrained)
+
+User asked for a thorough spot check of the training data. Fixes, each verified against the record:
+
+- **Vote shares over VALID votes** (`results_labels._valid_vote_pct`). 538's `percent` divides by a
+  total that includes blank / void lines (NY, MA "Blank/Scattering"): Towns NY-10 1998 read 69.8%,
+  real 92.3%; Schumer 1998 51.1 -> 54.6. 827 rows of `polls_long_with_results.csv` patched in place
+  (vote_pct, race_winning_pct, best_other_pct only). pandas 3 note: `astype(str)` keeps NaN, so
+  groupby needs `dropna=False` or those rows silently fall out.
+- **Races whose winner was never polled are dropped** (both notebooks). Pre-2018 raw_polls is D-vs-R
+  only, so King ME-Sen 2012 / ME-Gov 1998, Lieberman, Murkowski 2010, Chafee, Ventura trained as
+  "both candidates lost" with poll leads against the wrong field. 6 races, 12 rows.
+- **Party:** `npar` maps DFL / NPL to DEM (10 Klobuchar rows were OTH); the candidate table takes the
+  MAJORITY party over a candidate's rows, not the first row (Neuschwanger, American Constitution,
+  was a second CO-Gov 2022 Republican); predict.py reads the party from a "(DFL)" / "(R)" name
+  suffix when the feed's party is empty (36 MN Wikipedia rows).
+- **FEC:** the surname fallback never hands a candidate the other major party's money on an initial
+  alone (Annette A. Jackson R got Deborah A. Jackson D's); a full shared given name still matches
+  (Parker Griffith, filed REP after switching).
+- **Experience level:** new `pipeline/fetch/fetch_wikipedia_person_offices.py` reads each level-0
+  candidate's own infobox -> `data/candidate_bios_wikiperson.csv` (1,186 people, a leak-free FLOOR).
+  The match needs the surname as a whole word and a compatible first name or nickname; 59
+  wrong-person hits removed (spouses, parents, brothers, 19th-century namesakes) - run
+  `--recheck` after any re-fetch. `classify_ballotpedia` gained statewide treasurer / auditor /
+  comptroller, utility commissions, NH Executive Council, state cabinet "Secretary of X of <State>",
+  the Nebraska Legislature, county posts, more federal appointee titles (Trade Rep, Surgeon General,
+  envoys, FEMA) and President; city police chiefs, NY "Supreme Court" (a trial court) and NYC
+  departments are local. Descriptor parser strips "ran unsuccessfully for", ", for X in <year>" and
+  "candidate in ... runoff" (Kenyatta / Bartos read 4, Berkowitz / Friedman / Leonard / Lawrence 3).
+  Helmke's "verified 0" was Mayor of Fort Wayne. 177 training candidates' levels changed.
+
+**Metrics.** Win: Brier .065, race-acc .881 (was .064 / .878). Margin: expanding-window MAE 5.418
+(was 4.851) - ENTIRELY the 2018 fold (5.44 -> 7.48; 2020-24 within 0.2). Ablation: the 6 dropped
+winnerless races cause it. Pre-2018 training has only 10 third-party rows vs 180 in 2018, and those
+12 rows were the only examples of a 20-30% candidate losing badly. The data is now correct; the
+2018 fold exposes a real coverage gap (third parties before 2018), not a live-model problem - the
+deployed model trains on 2018-24 with hundreds of OTH rows. Six live favorites flipped, all
+tossups, each now the poll leader.
+
+**Open:** bare "Secretary of Commerce" is ambiguous (Kansas for Toland, federal for Vilsack) - left
+as is. Re-run both FEC fetches after Oct 15.
+
 ## 2026-10-10 - margin tuner stabilized (two-stage, seed-averaged)
 
 User call. margin_model.ipynb's nested tuner screens the 120 combos with one seed, then re-scores

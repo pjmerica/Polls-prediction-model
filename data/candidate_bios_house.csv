@@ -1092,7 +1092,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 2.0,REP,Andy Matthews,Nevada State Controller (2023–present) ( running for re-election ),2026,House,NV,matthews a,3,1,0
 2.0,REP,Danny Tarkanian,Douglas County commissioner (2021–present) and candidate for this district in 2022 ( running for attorney general ),2026,House,NV,tarkanian d,1,1,1
 2.0,REP,Robin Titus,minority leader of the Nevada Senate (2024–present) from the 17th district (2022–present) ( running for re-election ),2026,House,NV,titus r,2,1,0
-2.0,DEM,Teresa Benitez-Thompson,chief of staff to Nevada Attorney General Aaron Ford and former majority leader of the Nevada Assembly (2016–2022) from the 27th district (2010–2022),2026,House,NV,benitezthompson t,3,0,0
+2.0,DEM,Teresa Benitez-Thompson,chief of staff to Nevada Attorney General Aaron Ford and former majority leader of the Nevada Assembly (2016–2022) from the 27th district (2010–2022),2026,House,NV,benitezthompson t,2,0,0
 2.0,DEM,Josh Hebert,"physicist   ( endorsed Wadsworth, remained on ballot )",2026,House,NV,hebert j,0,0,0
 2.0,DEM,Mark Jolle,business owner (remained on ballot),2026,House,NV,jolle m,0,0,0
 2.0,DEM,Samuel White   ( endorsed Wadsworth,remained on ballot ),2026,House,NV,wadsworth s,0,0,0
@@ -3038,7 +3038,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 1.0,REP,Rick Crawford,incumbent U.S. Representative,2012,House,AR,crawford r,4,1,0
 1.0,DEM,Paul Bookout,president pro tempore of the Arkansas Senate ;,2012,House,AR,bookout p,2,0,0
 1.0,DEM,Land Commissioner,in 2010,2012,House,AR,commissioner l,0,0,0
-1.0,DEM,Chad Causey,former chief of staff to U.S. Representative Marion Berry and nominee for this seat in 2010,2012,House,AR,causey c,4,1,1
+1.0,DEM,Chad Causey,former chief of staff to U.S. Representative Marion Berry and nominee for this seat in 2010,2012,House,AR,causey c,0,1,1
 1.0,DEM,David Cook,former state representative and candidate for this seat in 2010,2012,House,AR,cook d,2,1,1
 1.0,DEM,Keith Ingram,state representative,2012,House,AR,ingram k,2,1,0
 1.0,DEM,Robert S. Moore Jr.,Speaker of the state house of representatives;,2012,House,AR,moore r,2,1,0
@@ -3458,7 +3458,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 12.0,REP,Jason Plummer,chairman of the Madison County Republican Party and nominee for lieutenant governor in 2010,2012,House,IL,plummer j,0,0,1
 12.0,REP,Mike Bost,state representative,2012,House,IL,bost m,2,1,0
 13.0,REP,Tim Johnson,incumbent U.S. representative,2012,House,IL,johnson t,4,1,0
-13.0,REP,Rodney L. Davis,aide to U.S. Representative John Shimkus,2012,House,IL,davis r,4,1,0
+13.0,REP,Rodney L. Davis,aide to U.S. Representative John Shimkus,2012,House,IL,davis r,0,1,0
 13.0,REP,Randy Hultgren,and Johnson's former chief of staff,2012,House,IL,hultgren r,0,0,0
 13.0,REP,Erika Harold,lawyer and 2003 Miss America,2012,House,IL,harold e,0,0,0
 13.0,REP,Kathy Wassink,businesswoman.,2012,House,IL,wassink k,0,0,0
@@ -6272,7 +6272,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 18.0,REP,Mark Zalcman,attorney,2016,House,IL,zalcman m,0,0,0
 1.0,DEM,Pete Visclosky,incumbent U.S. Representative,2016,House,IN,visclosky p,4,1,0
 2.0,REP,Jackie Walorski,incumbent U.S. Representative,2016,House,IN,walorski j,4,1,0
-2.0,DEM,South Bend Police Department,and former aide to Mayor Steve Luecke,2016,House,IN,department s,1,0,0
+2.0,DEM,South Bend Police Department,and former aide to Mayor Steve Luecke,2016,House,IN,department s,0,0,0
 2.0,DEM,David L. Niezgodski,state representative,2016,House,IN,niezgodski d,2,1,0
 3.0,REP,Jim Banks,state senator,2016,House,IN,banks j,2,0,0
 3.0,REP,Whitley County,Council member and Libertarian nominee for this seat in 2010 and 2014,2016,House,IN,county w,0,0,1
@@ -8500,7 +8500,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 2.0,DEM,Connor Oswald,teacher,2020,House,FL,oswald c,0,0,0
 2.0,DEM,Kristy Thripp,activist,2020,House,FL,thripp k,0,0,0
 2.0,IND,Leon County commission,in 2018,2020,House,FL,commission l,0,0,0
-3.0,REP,Kat Cammack,deputy chief of staff for U.S. representative Ted Yoho,2020,House,FL,cammack k,4,1,0
+3.0,REP,Kat Cammack,deputy chief of staff for U.S. representative Ted Yoho,2020,House,FL,cammack k,0,1,0
 3.0,REP,Rob Bradley,state senator,2020,House,FL,bradley r,2,0,0
 3.0,REP,Keith Perry,state senator,2020,House,FL,perry k,2,0,0
 3.0,REP,Ted Yoho,incumbent U.S. representative,2020,House,FL,yoho t,4,1,0
@@ -11061,7 +11061,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 5.0,DEM,Mary Gay Scanlon,incumbent U.S. representative,2022,House,PA,scanlon m,4,1,0
 5.0,REP,David Galluch,Navy veteran,2022,House,PA,galluch d,0,0,0
 6.0,DEM,Chrissy Houlahan,incumbent U.S. representative,2022,House,PA,houlahan c,4,1,0
-6.0,REP,Chester County,Chamber of Business & Industry and former chief of staff to Lieutenant Governor Jim Cawley,2022,House,PA,county c,3,0,0
+6.0,REP,Chester County,Chamber of Business & Industry and former chief of staff to Lieutenant Governor Jim Cawley,2022,House,PA,county c,0,0,0
 7.0,DEM,Susan Wild,incumbent U.S. representative,2022,House,PA,wild s,4,1,0
 7.0,REP,Lehigh County,commissioner and nominee for Pennsylvania's 7th congressional district in 2020,2022,House,PA,county l,0,0,1
 7.0,REP,Ryan Mackenzie,state representative from the 134th district,2022,House,PA,mackenzie r,2,1,0
@@ -11400,7 +11400,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 2.0,REP,Wes Allen,Alabama Secretary of State (2023–present),2024,House,AL,allen w,3,1,0
 2.0,REP,Barry Moore,incumbent U.S. Representative ( ran in the 1st district ),2024,House,AL,moore b,4,1,0
 2.0,REP,Pike Road,(2004–present),2024,House,AL,road p,0,1,0
-2.0,DEM,Shomari Figures,former deputy chief of staff and counsel to U.S. Attorney General Merrick Garland and son of state senators Vivian Davis Figures and Michael Figures,2024,House,AL,figures s,3.5,0,0
+2.0,DEM,Shomari Figures,former deputy chief of staff and counsel to U.S. Attorney General Merrick Garland and son of state senators Vivian Davis Figures and Michael Figures,2024,House,AL,figures s,0,0,0
 2.0,DEM,Brian Gary,surgeon,2024,House,AL,gary b,0,0,0
 2.0,DEM,Kirk Hatcher,state senator from the 26th district (2021–present)  (endorsed Figures),2024,House,AL,hatcher k,2,1,0
 2.0,DEM,Steven Reed,"mayor of Montgomery (2019–present) (endorsed Hatcher, then Gary, then Sinkfield)",2024,House,AL,reed s,1,1,0
@@ -11999,7 +11999,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 7.0,DEM,Roy Freiman,state assemblyman from the 16th district (2018–present),2024,House,NJ,freiman r,2,1,0
 7.0,DEM,Jim Johnson,former U.S. Under Secretary of the Treasury and candidate for Governor of New Jersey in 2017  (endorsed Altman),2024,House,NJ,johnson j,3.5,0,1
 7.0,DEM,James Kennedy,state assemblyman from the 22nd district (2016–present),2024,House,NJ,kennedy j,2,1,0
-7.0,DEM,Matt Klapper,chief of staff to U.S. Attorney General Merrick Garland and former chief of staff to U.S. Senator Cory Booker,2024,House,NJ,klapper m,3.5,0,0
+7.0,DEM,Matt Klapper,chief of staff to U.S. Attorney General Merrick Garland and former chief of staff to U.S. Senator Cory Booker,2024,House,NJ,klapper m,0,0,0
 7.0,DEM,Raymond Lesniak,former state senator from the 20th district (1983–2018) and candidate for Governor of New Jersey in 2017,2024,House,NJ,lesniak r,2,0,1
 7.0,DEM,Tom Malinowski,former U.S. representative from New Jersey's 7th congressional district (2019–2023)  (endorsed Altman),2024,House,NJ,malinowski t,4,1,0
 7.0,DEM,U.S. Surgeon General,Vivek Murthy,2024,House,NJ,general u,0,0,0
@@ -12319,7 +12319,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 1.0,REP,Nancy Mace,incumbent U.S. Representative,2024,House,SC,mace n,4,1,0
 1.0,REP,Katie Arrington,"former Chief Information Security Officer for the Under Secretary of Defense , former state representative from the 94th district, nominee for this district in 2018 and candidate in 2022  (endorsed Templeton)",2024,House,SC,arrington k,2,1,1
 1.0,REP,Charleston County,councilor,2024,House,SC,county c,0,0,0
-1.0,DEM,Ben Frasier,"former aide to U.S. Representative Mendel Rivers , perennial candidate, and nominee for this district in 2010",2024,House,SC,frasier b,4,1,1
+1.0,DEM,Ben Frasier,"former aide to U.S. Representative Mendel Rivers , perennial candidate, and nominee for this district in 2010",2024,House,SC,frasier b,0,1,1
 2.0,REP,Joe Wilson,incumbent U.S. representative,2024,House,SC,wilson j,4,1,0
 3.0,REP,Sheri Biggs,nurse practitioner,2024,House,SC,biggs s,0,0,0
 3.0,REP,Richard Cash,state senator from the 3rd district (2017–present) and candidate for this district in 2010 (endorsed Jones),2024,House,SC,cash r,2,1,1
@@ -12574,7 +12574,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 3.0,REP,Clay Higgins,incumbent U.S. representative,2020,House,LA,higgins c,4,1,0
 4.0,REP,Mike Johnson,incumbent U.S. representative,2020,House,LA,johnson m,4,1,0
 5.0,REP,Lance Harris,state representative,2020,House,LA,harris l,2,1,0
-5.0,REP,Luke Letlow,former Chief of Staff to U.S. Representative Ralph Abraham,2020,House,LA,letlow l,4,1,0
+5.0,REP,Luke Letlow,former Chief of Staff to U.S. Representative Ralph Abraham,2020,House,LA,letlow l,0,1,0
 6.0,REP,Garret Graves,incumbent U.S. representative,2020,House,LA,graves g,4,1,0
 1.0,REP,Doug LaMalfa,incumbent U.S. representative,2022,House,CA,lamalfa d,4,1,0
 2.0,DEM,Jared Huffman,incumbent U.S. representative,2022,House,CA,huffman j,4,1,0

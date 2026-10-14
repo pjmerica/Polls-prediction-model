@@ -65,6 +65,27 @@ def is_general_stage(r):
     return st.str.contains("general", na=False) | jungle
 
 
+_NOT_A_VOTE = r"blank|void|overvote|undervote|spoiled"   # also "Blank/Void/Scattering" lines
+
+
+def _valid_vote_pct(r):
+    """Vote share of VALID votes (2026-10-13). The source's `percent` divides by a total that
+    includes blank / void / over- / under-vote lines where a state reports them (NY, MA, VA,
+    WI, MN...), so Towns NY-10 1998 read 69.8% (DEM+LBL) with 24.4% blanks; he won 92% of the
+    votes actually cast for someone. Write-in / scattering / other lines stay in the total (a combined
+    "Blank/Scattering" line goes - NY and MA report them that way, and blanks dominate).
+    Falls back to `percent` for any contest missing a vote count."""
+    votes = pd.to_numeric(r["votes"], errors="coerce")
+    junk = r["alt_result_text"].astype(str).str.lower().str.contains(_NOT_A_VOTE, na=False)
+    key = [r["race_id"].astype(str), r["stage"].astype(str),
+           r["ranked_choice_round"].astype(str)]
+    valid = votes.where(~junk, 0).groupby(key, dropna=False).transform("sum")   # pandas 3: NaN keys
+    complete = votes.notna().groupby(key, dropna=False).transform("all")
+    pct = pd.to_numeric(r["percent"], errors="coerce")
+    ok = complete & (valid > 0)
+    return pct.where(~ok, 100.0 * votes / valid)
+
+
 def load_result_lines(data_dir=None):
     """Every general-election ballot line, one row each, with a race_id matching the polls'."""
     import features as F   # lazy: features imports this module inside load_fundamentals
@@ -73,7 +94,8 @@ def load_result_lines(data_dir=None):
     for fn, office in RESULT_FILES:
         r = pd.read_csv(os.path.join(data_dir, fn), low_memory=False)
         r = r[is_general_stage(r)]
-        special = r["special"].astype(str).str.lower().isin(["true", "1"])
+        pct = _valid_vote_pct(r)
+        special =r["special"].astype(str).str.lower().isin(["true", "1"])
         out = pd.DataFrame({
             "year": pd.to_numeric(r["cycle"], errors="coerce"),
             "state": r["state_abbrev"].astype(str).str.upper(),
@@ -83,7 +105,7 @@ def load_result_lines(data_dir=None):
             "res_candidate": r["candidate_name"],
             # the 'party' column is all-null in these files; ballot_party holds DEM/REP/WFP/...
             "line_party": r["ballot_party"].map(F.npar),
-            "vote_pct": pd.to_numeric(r["percent"], errors="coerce"),
+            "vote_pct": pct,
             "won": r["winner"].astype(str).str.lower().isin(["true", "1", "t", "yes", "y"])
                    .astype(int),
             "rcv_round": pd.to_numeric(r["ranked_choice_round"], errors="coerce"),
@@ -201,6 +223,12 @@ def aggregate_candidates(lines, verbose=False, data_dir=None):
                 district=("district", "first"), res_candidate=("res_candidate", "first"),
                 res_party=("line_party", "first"), vote_pct=("vote_pct", "sum"),
                 won=("won", "max"), n_lines=("vote_pct", "size")).reset_index()
+    # UNOPPOSED winners (2026-10-13): FL / AR / LA do not print a vote count for an unopposed
+    # race, so the summed share came out 0% and the seat's next prior_margin read 0 (= "tied")
+    # instead of a 100-point hold (98 races, e.g. Clay Shaw FL-22 1998). A race whose ONLY
+    # candidate won with no share recorded gets 100.
+    _n = per.groupby("race_id")["cand_key"].transform("size")
+    per.loc[(_n == 1) & (per["won"] == 1) & (per["vote_pct"].fillna(0) == 0), "vote_pct"] = 100.0
 
     # same key, different people: keep the larger, report it
     per = per.sort_values("vote_pct", ascending=False)

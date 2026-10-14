@@ -157,6 +157,8 @@ _FED_DEPTS = (r"(?:state for|defense|the treasury|treasury|homeland security|vet
 APPOINTED_FEDERAL = 3.5
 _FED_APPOINTEE_RX = re.compile(
     r"(?:u\.?s\.?|united states) secretary\b|\busda\b|rural development|"
+    # senior White House titles that do not say "White House" (Bill Curry, CT-Gov 2002)
+    r"(?:counselor|assistant|deputy assistant) to the president\b|"
     # White House POSTS (press secretary, chief of staff, office directors) - not junior staff
     r"white house(?!(?:\s+\w+)?\s+(?:aide|analyst|intern|staffer|fellow|volunteer))|"
     r"(?<!assistant )(?:u\.?s\.?|united states) attorney\b|"
@@ -180,6 +182,15 @@ _STATE_NAMES_RX = re.compile(
     r"new hampshire|new jersey|new mexico|new york|north carolina|north dakota|ohio|oklahoma|"
     r"oregon|pennsylvania|rhode island|south carolina|south dakota|tennessee|texas|utah|"
     r"vermont|virginia|washington|west virginia|wisconsin|wyoming|state)\s*$")
+
+
+_STATE_LIST = (r"(?:alabama|alaska|arizona|arkansas|california|colorado|connecticut|delaware|"
+               r"florida|georgia|hawaii|idaho|illinois|indiana|iowa|kansas|kentucky|louisiana|"
+               r"maine|maryland|massachusetts|michigan|minnesota|mississippi|missouri|montana|"
+               r"nebraska|nevada|new hampshire|new jersey|new mexico|new york|north carolina|"
+               r"north dakota|ohio|oklahoma|oregon|pennsylvania|rhode island|south carolina|"
+               r"south dakota|tennessee|texas|utah|vermont|virginia|washington|west virginia|"
+               r"wisconsin|wyoming)")
 
 
 # where a stripped clause (candidacy / staff role / relative) ends: the candidate's OWN next
@@ -217,10 +228,22 @@ def classify_evidence(desc, office=None):
     d = re.sub(r"\brunner[\s-]*up\s+(for|in)\s+[^,;.()]+", " ", d)
     d = re.sub(r"\bgovernor'?s\s+office\b", " ", d)
     # staff OF an official is not the office: "chief of staff to Governor Deval Patrick"
+    # the boss may carry a state / "U.S." prefix and any elected title (2026-10-13: "chief of
+    # staff to Nevada Attorney General Aaron Ford" scored Teresa Benitez-Thompson as the AG, 3).
+    # "the president" is deliberately NOT a boss here - senior White House posts count as 3.5.
     d = re.sub(r"\b(?:chief\s+of\s+staff|aide|adviser|advisor|spokes\w*|counsel)\s+(?:to|for)\s+"
-               r"(?:the\s+)?(?:governor|senator|u\.s\.\s+senator|representative|congress\w*)"
+               r"(?:the\s+)?(?:u\.s\.\s+|" + _STATE_LIST + r"\s+)?"
+               r"(?:governor|lieutenant\s+governor|attorney\s+general|secretary\s+of\s+state|mayor|"
+               r"senator|u\.s\.\s+senator|representative|congress\w*|speaker|comptroller|"
+               r"treasurer|county\s+executive)"
                r"(?:(?!" + _NEW_OFFICE + r")[^,;])*", " ", d)
-    d = re.sub(r"\b(ran|running)\s+for\s+[^,;.()]+", " ", d)
+    d = re.sub(r"\b(ran|running)\s+(?:unsuccessfully\s+)?for\s+[^,;.()]+", " ", d)
+    # more campaign phrasing that is not an office (2026-10-14): a list continuation ", for
+    # Congress in 2008 and governor in 2010" (Berkowitz AK-Gov 2014 read 3), "ran
+    # unsuccessfully for U.S. Senate" (Bartos, Kenyatta read 4) and "candidate in May 27 runoff
+    # for Texas Commissioner of Agriculture" (Kinky Friedman read 3)
+    d = re.sub(r"(?:^|[,;(]|\band)\s*for\s+[^,;.()]*?\bin\s+(?:19|20)\d\d[^,;.()]*", " ", d)
+    d = re.sub(r"\bcandidate\s+in\s+[^,;.()]+", " ", d)
     # FUTURE offices are not offices held at the time of THIS race (2026-08-01). Wikipedia
     # bios are written after the fact, so a candidate's page can describe an office they only
     # won LATER: "pastor of Ebenezer Baptist Church and future U.S. Senator for this seat"

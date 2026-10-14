@@ -148,20 +148,71 @@ def classify_ballotpedia(infobox_text, office=None):
         return 4
     if _is_federal_appointment(d):
         return APPOINTED_FEDERAL
+    if _BP_LOCAL_FIRST.search(d):
+        return 1
     for lvl, rx in _BP_LEVELS:
-        if rx.search(d):
+        extra = _BP_LEVELS_EXTRA.get(lvl)
+        if rx.search(d) or (extra is not None and extra.search(d)):
             return lvl
     return classify(infobox_text, office=office)   # fall back to the Wikipedia classifier
 
 
 _BP_ELECTED_FED = re.compile(r"u\.?s\.?\s+(senate|house|senator|representative)|"
                              r"united states\s+(senate|house|senator|representative)|"
-                             r"member of congress", re.I)
+                             r"member of congress|"
+                             # the office itself only - not "President of the United States
+                             # Conference of Mayors" (Helmke) or "...Institute of Peace"
+                             r"\b(?:vice\s+)?president of the united states\s*(?:$|[,;(])", re.I)
 _BP_FED_APPT_EXTRA = re.compile(
     r"u\.?s\.?\s+cabinet|secretary of (the treasury|defense|energy|homeland security|"
     r"veterans affairs|the interior|housing)\b|"
     r"(?:u\.?s\.?|united states|federal)\s+(?:secretary|department|agency|administration|bureau)\b|"
-    r"centers? for disease control|deputy director of the (?:u\.?s\.?|federal)", re.I)
+    r"centers? for disease control|deputy director of the (?:u\.?s\.?|federal)|"
+    # Wikipedia-infobox federal titles (2026-10-14 census of candidate_bios_wikiperson.csv)
+    r"trade representative|surgeon general of the united states|special envoy|"
+    r"special representative for|homeland security advisor|national security advisor|"
+    r"national counterterrorism center|federal communications commission|"
+    r"centers for medicare|general counsel of the army|department of defense|"
+    r"office of public (?:liaison|engagement)|defense nuclear facilities safety board|"
+    r"assistant attorney general for|federal emergency management agency", re.I)
+
+# LOCAL posts whose wording trips the statewide agency-head pattern (2026-10-14): a city
+# police chief ("Chief of the Orlando Police Department", Demings), New York's "Supreme Court"
+# (its general TRIAL court, Barbaro) and New York CITY departments
+_BP_LOCAL_FIRST = re.compile(r"police department|chief of police|police chief|"
+                             r"new york supreme court|new york city\b", re.I)
+
+_STATES_RX = (r"(?:alabama|alaska|arizona|arkansas|california|colorado|connecticut|delaware|"
+              r"florida|georgia|hawaii|idaho|illinois|indiana|iowa|kansas|kentucky|louisiana|"
+              r"maine|maryland|massachusetts|michigan|minnesota|mississippi|missouri|montana|"
+              r"nebraska|nevada|new hampshire|new jersey|new mexico|new york|north carolina|"
+              r"north dakota|ohio|oklahoma|oregon|pennsylvania|rhode island|south carolina|"
+              r"south dakota|tennessee|texas|utah|vermont|virginia|washington|west virginia|"
+              r"wisconsin|wyoming)(?!\s+(?:city|county|parish|township|public schools))\b")
+# Offices the table above missed, found by classifying every office in the Wikipedia person
+# infoboxes (2026-10-14): statewide treasurers / auditors / comptrollers read 0 (Treasurer of
+# Delaware, 15th Auditor of Minnesota), as did state utility commissions, state cabinet posts
+# named "Secretary of X of <State>", the unicameral Nebraska Legislature, and most county posts.
+_BP_LEVELS_EXTRA = {
+    3: re.compile(r"\b(?:treasurer|auditor|comptroller|controller|tax commissioner|"
+                  r"adjutant general|solicitor general)(?: and receiver-general)? of "
+                  + _STATES_RX + r"|"
+                  r"\b" + _STATES_RX + r"\s+(?:auditor|treasurer|comptroller|tax commissioner|"
+                  r"superintendent of (?:education|public instruction)|secretary of)\b|"
+                  r"chief financial officer of florida|auditor of accounts|board of equalization|"
+                  r"public (?:service|regulation|utilities) commission|corporation commission|"
+                  r"new hampshire executive council|superintendent of insurance|"
+                  r"\bsecretary of [a-z' ]{1,40}? of " + _STATES_RX + r"|"
+                  r"\bsecretary of the " + _STATES_RX + r"\s+(?:department|agency)", re.I),
+    2: re.compile(r"\b" + _STATES_RX + r"\s+legislature\b", re.I),
+    1: re.compile(r"\bcounty (?:board|commission)|board of (?:county )?commissioners|"
+                  r"\b(?:chief )?executive(?: officer)? of [a-z.' -]+ county|"
+                  r"\b(?:treasurer|controller|clerk|administrator) of [a-z.' -]+ county|"
+                  r"(?:county|parish) commission|prosecut(?:or|ing attorney)|"
+                  r"commonwealth's attorney|freeholder|clerk of courts|board of legislators|"
+                  r"\bassembly from seat|common council|town board|\bsupervisor\b|"
+                  r"first selectwoman|schools board|board of regents|\bcontroller\b", re.I),
+}
 
 
 def _is_federal_appointment(d):
