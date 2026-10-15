@@ -287,7 +287,7 @@ def main():
                                      kind="stable")
                         .drop_duplicates(subset=KEY, keep="first")
                         .drop(columns="_sr"))
-    # whole levels stay integers in the file; 3.5 = appointed federal post (2026-10-08)
+    # whole levels stay integers in the file; 0.75 / 0.5 = appointed federal / state (2026-10-14)
     combined["office_level"] = combined["office_level"].map(
         lambda v: int(v) if float(v).is_integer() else float(v)).astype(object)
     combined.to_csv(OUT, index=False)

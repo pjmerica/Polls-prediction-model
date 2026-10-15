@@ -617,9 +617,10 @@ def load_candidate_bios():
     the same committed file, GENERAL-model party/office keying (district='' for
     Senate/Governor vs primary's within-party-field keying).
 
-    bio_office_level: 4 elected federal / 3.5 appointed federal (cabinet and sub-cabinet,
-    agency heads, ambassadors, U.S. attorneys, White House posts, federal state directors -
-    user call 2026-10-08) / 3 statewide / 2 state legislature / 1 local / 0 none.
+    bio_office_level: 4 elected federal / 3 elected statewide / 2 state legislature / 1 local
+    elected / 0.75 appointed federal (cabinet, agency heads, ambassadors, U.S. attorneys, White
+    House posts) / 0.5 appointed state or local (cabinet, agency heads, police chiefs) / 0 none.
+    Appointed ranks below EVERY elected office - user call 2026-10-14 (was 3.5 from 10-08).
     Coverage: 100% of the general model's training rows and of the live 2026 major-party
     candidates (2026-10-08, after 43 researched hand-codes in candidate_bios_manual.csv).
     IN PRODUCTION since 2026-07-29 (the 2026-07-24 ablation that kept it out was a coverage
@@ -1258,8 +1259,8 @@ def build_candidate_table(d, macro, natl_env_map, funds, house_train_years=None,
     version was ablated out 2026-07-23; the opponent-facing block brought it back).
 
     candidate_bios: pass load_candidate_bios() to add bio_office_level - highest office held
-    strictly before the election year: 4 elected federal / 3.5 appointed federal (2026-10-08) /
-    3 statewide / 2 state legislature / 1 local / 0 none. IN PRODUCTION since 2026-07-29.
+    strictly before the election year: 4 elected federal / 3 elected statewide / 2 state legislature / 1 local elected / 0.75 appointed federal / 0.5 appointed state or local / 0 none
+    (appointed < elected, 2026-10-14). IN PRODUCTION since 2026-07-29.
     Floored by offices actually won (office_level_floor, 2026-10-07). predict.py AND
     explain_2026.py must pass both of these, or the features are NaN at serve time.
     """

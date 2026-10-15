@@ -4,6 +4,35 @@ For the next agent. Read AGENTS.md first (architecture + rules), CONCERNS.md sec
 (risk register + roadmap). This file: what's mid-flight RIGHT NOW, what's most likely to
 break, and what to do next, in order.
 
+## 2026-10-14 (later) - appointed posts rank BELOW every elected office (win + margin retrained)
+
+**User call:** "White House press secretary should not outrank governor. Non-elected roles should be
+below elected" - and, asked where, "below all elected". bio_office_level is now 4 elected federal /
+3 elected statewide / 2 state legislature / 1 local elected / **0.75 appointed federal** / **0.5
+appointed state or local** / 0 none (appointed federal was 3.5 since 10-08). State cabinet
+secretaries and department heads, previously 3, are 0.5; elected commissioners (public lands,
+labor, insurance, agriculture, utility commissions, Iowa ag secretary, AL agriculture & industries,
+FL education to 2003) stay 3. Sanders, Cuomo, Napolitano, Almond -> 3 (governor); Buttigieg, Bill
+White -> 1 (mayor); Cruz 2012 -> 0.5 (TX solicitor general).
+
+- Both classifiers: `classify_evidence` blanks federal-appointee titles, takes the first ELECTED
+  match, then falls back to 0.75 / 0.5; `classify_ballotpedia` orders elected federal -> fed
+  appointee -> elected 3/2/1 -> state appointee. Party posts, staff and military ranks stay 0.
+- Stored levels recoded line by line (388 rows in candidate_bios.csv + the three source files);
+  carried-forward rows take the person's highest recoded level from their other rows.
+- **Wikipedia infobox parser bug:** `\s*` after "=" crossed the newline, so an empty field
+  ("| caption =") swallowed the next office line. `--reparse` re-read the 1,182 accepted
+  articles: 238 people gained offices (Helmke's mayoralty, Kennedy's Louisiana Treasurer).
+  The re-run of the ~1,000 never-matched targets was STOPPED at ~180 (resume it with the normal
+  command - it skips people already saved - before the post-Oct-15 FEC retrain).
+- Also fixed: "chief of staff to FORMER governor" (staff), "school district board" (elected local),
+  Kennedy / Helmke manual "verified 0" rows.
+
+Metrics: win Brier .064, race-acc .881; margin folds 2018-24 7.54 / 5.55 / 4.32 / 4.39 (the 2018
+fold is the known third-party coverage gap, see below). Two tossups flipped back (OH-Gov
+Ramaswamy, TX-28 Cuellar). Primary models are frozen and still use the old scale (2026
+primaries are over).
+
 ## 2026-10-13/14 - spot-check fixes: vote shares, winnerless races, bios, party, FEC (win + margin retrained)
 
 User asked for a thorough spot check of the training data. Fixes, each verified against the record:

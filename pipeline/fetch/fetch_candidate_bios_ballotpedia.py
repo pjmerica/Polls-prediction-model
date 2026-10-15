@@ -49,7 +49,7 @@ HERE = ROOT   # repo root (paths.py) - this file lives in a subfolder
 sys.path.insert(0, AGG)
 from bs4 import BeautifulSoup  # noqa: E402
 
-from fetch_candidate_bios import classify, PRIOR_CAND_RX, APPOINTED_FEDERAL  # noqa: E402
+from fetch_candidate_bios import classify, PRIOR_CAND_RX, APPOINTED_FEDERAL, APPOINTED_STATE, _STATE_APPOINTEE_RX  # noqa: E402
 import features as F  # noqa: E402
 
 
@@ -88,25 +88,10 @@ _BP_LEVELS = [
                    # state supreme court (2026-10-08): a statewide judicial office - John
                    # Stegner (ID-Gov 2026, Idaho Supreme Court 2018-23) read 0
                    r"(?<!u\.s\. )(?<!united states )supreme court|"
-                   # APPOINTED statewide/federal agency heads (added 2026-08-01). Only
-                   # "commissioner of <dept>" was matching before, so a state health director
-                   # or cabinet secretary read 0 - Nirav Shah (director of the Maine CDC, then
-                   # principal deputy director of the federal CDC) classified as "no office
-                   # held". These are real executive credentials: name recognition, donor
-                   # networks, statewide profile. Requires an agency word so it cannot catch a
-                   # corporate "director of marketing".
-                   r"(?:(?:deputy|principal deputy|acting)\s+)?"
-                   r"(?:director|administrator|commissioner|superintendent|chief)\s+of\s+"
-                   r"(?:the\s+)?[a-z' ]{0,40}?"
-                   r"(?:department|agency|administration|bureau|division|"
-                   r"centers? for disease control|environmental protection)\b|"
-                   r"\b(?:state\s+)?(?:health|education|transportation|revenue|labor|"
-                   r"corrections|agriculture|commerce|emergency management)\s+"
-                   r"(?:department\s+)?(?:director|commissioner|secretary)\b|"
-                   r"\bsecretary of (?:commerce|labor|health|education|corrections|"
-                   r"administration|revenue|state agencies)\b|"
-                   r"\bchief justice\b|\bstate supreme court\b|\bsupreme court of\b|"
-                   r"\bunited states ambassador\b|\bu\.?s\.? ambassador\b", re.I)),
+                   # (appointed agency heads / cabinet secretaries were level 3 here from
+                   # 2026-08-01; since 2026-10-14 they are APPOINTED_STATE, below every elected
+                   # office - see _BP_STATE_APPOINTED)
+                   r"\bchief justice\b|\bstate supreme court\b|\bsupreme court of\b", re.I)),
     (2, re.compile(r"state senate|state house|state assembly|state legislature|"
                    r"house of delegates|general assembly|state senator|state representative|"
                    r"state delegate|"
@@ -140,20 +125,23 @@ def classify_ballotpedia(infobox_text, office=None):
     d = re.sub(r"candidate,?\s+[^.]*?(?=(u\.?s\.?|state|governor|mayor|county|city|$))",
                " ", str(infobox_text), count=1, flags=re.I)  # drop leading "Candidate, ..."
     d = re.sub(r"(candidate|nominee) for [^,;.]+", " ", d, flags=re.I)
-    # ELECTED federal office first (4); then an APPOINTED federal post (3.5, user call
-    # 2026-10-08: cabinet / sub-cabinet secretaries, agency heads, ambassadors, U.S. attorneys,
-    # White House posts, federal state directors such as USDA Rural Development); then the
-    # statewide / legislative / local levels below
+    # ELECTED offices outrank every APPOINTED post (user call 2026-10-14). Order: elected federal
+    # (4); a federal appointee title (0.75 - checked before the statewide patterns so "U.S.
+    # Secretary of State" cannot read as the elected state office); elected statewide /
+    # legislative / local (3 / 2 / 1); appointed state or local posts (0.5); else the Wikipedia
+    # text classifier. One office string is one office, so first match = its level.
     if _BP_ELECTED_FED.search(d):
         return 4
-    if _is_federal_appointment(d):
-        return APPOINTED_FEDERAL
     if _BP_LOCAL_FIRST.search(d):
         return 1
+    if _is_federal_appointment(d):
+        return APPOINTED_FEDERAL
     for lvl, rx in _BP_LEVELS:
         extra = _BP_LEVELS_EXTRA.get(lvl)
         if rx.search(d) or (extra is not None and extra.search(d)):
             return lvl
+    if _BP_STATE_APPOINTED.search(d) or _STATE_APPOINTEE_RX.search(d.lower()):
+        return APPOINTED_STATE
     return classify(infobox_text, office=office)   # fall back to the Wikipedia classifier
 
 
@@ -176,11 +164,24 @@ _BP_FED_APPT_EXTRA = re.compile(
     r"office of public (?:liaison|engagement)|defense nuclear facilities safety board|"
     r"assistant attorney general for|federal emergency management agency", re.I)
 
-# LOCAL posts whose wording trips the statewide agency-head pattern (2026-10-14): a city
-# police chief ("Chief of the Orlando Police Department", Demings), New York's "Supreme Court"
-# (its general TRIAL court, Barbaro) and New York CITY departments
-_BP_LOCAL_FIRST = re.compile(r"police department|chief of police|police chief|"
-                             r"new york supreme court|new york city\b", re.I)
+# New York's "Supreme Court" is its general TRIAL court (elected local judges, Barbaro), not the
+# state's high court (2026-10-14)
+_BP_LOCAL_FIRST = re.compile(r"new york supreme court", re.I)
+# APPOINTED state / local posts -> APPOINTED_STATE (0.5), below every elected office (2026-10-14):
+# cabinet secretaries, department / agency heads, adjutant / solicitor general, city police
+# chiefs (Demings) and city departments. Elected commissioners match level 3 first.
+_BP_STATE_APPOINTED = re.compile(
+    r"(?:(?:deputy|principal deputy|acting)\s+)?"
+    r"(?:director|administrator|commissioner|superintendent|chief|secretary)\s+of\s+"
+    r"(?:the\s+)?[a-z&' ]{0,50}?(?:department|agency|administration|bureau|division|"
+    r"environmental protection|authority|office)\b|"
+    r"\b(?:state\s+)?(?:health|education|transportation|revenue|labor|corrections|agriculture|"
+    r"commerce|emergency management|finance|banking)\s+(?:department\s+)?"
+    r"(?:director|commissioner|secretary)\b|"
+    r"\bsecretary of (?!state\b)[a-z&' ]+|\bcommissioner of (?!the revenue)[a-z&' ]+|"
+    r"adjutant general|solicitor general|superintendent of insurance|"
+    r"police department|chief of police|police chief|\badministrator of [a-z.' -]+ county|"
+    r"superintendent of [a-z.' -]+ (?:public )?schools", re.I)
 
 _STATES_RX = (r"(?:alabama|alaska|arizona|arkansas|california|colorado|connecticut|delaware|"
               r"florida|georgia|hawaii|idaho|illinois|indiana|iowa|kansas|kentucky|louisiana|"
@@ -194,24 +195,29 @@ _STATES_RX = (r"(?:alabama|alaska|arizona|arkansas|california|colorado|connectic
 # Delaware, 15th Auditor of Minnesota), as did state utility commissions, state cabinet posts
 # named "Secretary of X of <State>", the unicameral Nebraska Legislature, and most county posts.
 _BP_LEVELS_EXTRA = {
-    3: re.compile(r"\b(?:treasurer|auditor|comptroller|controller|tax commissioner|"
-                  r"adjutant general|solicitor general)(?: and receiver-general)? of "
-                  + _STATES_RX + r"|"
+    # ELECTED statewide only (appointed cabinet posts moved to _BP_STATE_APPOINTED 2026-10-14)
+    3: re.compile(r"\b(?:treasurer|auditor|comptroller|controller|tax commissioner)"
+                  r"(?: and receiver-general)? of " + _STATES_RX + r"|"
                   r"\b" + _STATES_RX + r"\s+(?:auditor|treasurer|comptroller|tax commissioner|"
-                  r"superintendent of (?:education|public instruction)|secretary of)\b|"
+                  r"superintendent of (?:education|public instruction))\b|"
                   r"chief financial officer of florida|auditor of accounts|board of equalization|"
                   r"public (?:service|regulation|utilities) commission|corporation commission|"
-                  r"new hampshire executive council|superintendent of insurance|"
-                  r"\bsecretary of [a-z' ]{1,40}? of " + _STATES_RX + r"|"
-                  r"\bsecretary of the " + _STATES_RX + r"\s+(?:department|agency)", re.I),
+                  r"new hampshire executive council|"
+                  # elected commissioners: public lands (NM, WA), labor (GA, NC, OK, OR),
+                  # insurance, agriculture
+                  r"commissioner of (?:the )?(?:public lands|schools and public lands|"
+                  r"general land office|insurance|agriculture|labor)\b|"
+                  r"(?:labor|agriculture) commissioner|iowa secretary of agriculture|"
+                  r"agriculture and industries|education commissioner of florida|"
+                  r"elections commissioner of louisiana", re.I),
     2: re.compile(r"\b" + _STATES_RX + r"\s+legislature\b", re.I),
     1: re.compile(r"\bcounty (?:board|commission)|board of (?:county )?commissioners|"
                   r"\b(?:chief )?executive(?: officer)? of [a-z.' -]+ county|"
-                  r"\b(?:treasurer|controller|clerk|administrator) of [a-z.' -]+ county|"
+                  r"\b(?:treasurer|controller|clerk) of [a-z.' -]+ county|"
                   r"(?:county|parish) commission|prosecut(?:or|ing attorney)|"
                   r"commonwealth's attorney|freeholder|clerk of courts|board of legislators|"
                   r"\bassembly from seat|common council|town board|\bsupervisor\b|"
-                  r"first selectwoman|schools board|board of regents|\bcontroller\b", re.I),
+                  r"first selectwoman|schools board|school (?:district )?board|board of regents|\bcontroller\b", re.I),
 }
 
 

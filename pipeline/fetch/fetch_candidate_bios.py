@@ -7,10 +7,11 @@ Bullet format on race pages:  "Mallory McMorrow , state senator from the 8th dis
 (2019-present)" / "Abdul El-Sayed , former Wayne County health director (2023-2025) and
 candidate for governor in 2018".
 
-office_level: 4 elected federal (US sen/rep) > 3.5 appointed federal (cabinet/sub-cabinet,
-agency heads, ambassadors, U.S. attorneys, White House posts, federal state directors - 2026-10-08)
-> 3 statewide (gov/LG/AG/SoS/treasurer/state cabinet) > 2 state legislature > 1 local
-(mayor/county/city/metro council/sheriff/judge) > 0 none-detected.
+office_level: 4 elected federal (US sen/rep) > 3 elected statewide (gov/LG/AG/SoS/treasurer/
+elected commissioners) > 2 state legislature > 1 local elected (mayor/county/city/metro
+council/sheriff/judge) > 0.75 appointed federal (cabinet/sub-cabinet, agency heads, ambassadors,
+U.S. attorneys, White House posts) > 0.5 appointed state or local (cabinet, agency heads,
+police chiefs) > 0 none-detected. Appointed < every elected office: user call 2026-10-14.
 Plus: bio_in_office (descriptor says 'present'), bio_prior_candidacy ('candidate for' /
 'nominee for' - catches runs our results files never tracked, e.g. El-Sayed's 2018
 gubernatorial primary bid).
@@ -72,7 +73,7 @@ URL_HOUSE = ("https://en.wikipedia.org/wiki/{year}_United_States_House_of_Repres
 LEVELS = [
     # US-form variants: 'U.S.', 'US', 'U.S' (missing periods happen: 'U.S representative')
     # ELECTED federal office only (2026-10-08): appointed federal posts - U.S. secretaries,
-    # White House staff posts, ambassadors, agency heads - are APPOINTED_FEDERAL (3.5), see
+    # White House staff posts, ambassadors, agency heads - are APPOINTED_FEDERAL (0.75), see
     # _FED_APPOINTEE_RX
     (4, r"(u\.?s\.?|united states) (senator|representative)|"
         r"member of (the )?(u\.?s\.?|united states) house|member of congress|"
@@ -87,10 +88,18 @@ LEVELS = [
         r"(majority|minority) (leader|whip) of the .{0,10}(u\.?s\.?|united states) house|"
         r"speaker of the (u\.?s\.?|united states) house"),
     (3, r"\bgovernor\b|lieutenant governor|attorney general|secretary of state|"
-        r"state treasurer|state auditor|state comptroller|commissioner of|"
+        r"state treasurer|state auditor|state comptroller|"
+        # ELECTED commissioners only (2026-10-14; was any "commissioner of", which also took
+        # appointed department heads - those are APPOINTED_STATE now): public lands (NM, WA),
+        # labor (GA, NC, OK, OR), insurance, agriculture, state utility / corporation commissions
+        r"commissioner of (?:the )?(?:public lands|schools and public lands|general land office|"
+        r"insurance|agriculture|labor)\b|(?:land|labor|agriculture) commissioner|"
+        # Alabama's agriculture commissioner and Florida's education commissioner (to 2003)
+        r"agriculture and industries|education commissioner of florida|"
+        r"florida (?:education )?commissioner of education|"
+        r"corporation commission|public (?:service|regulation|utilities) commission|"
         r"superintendent of public|"
-        # elected statewide in several states (Iowa); the FEDERAL post matches the appointee
-        # rule first and keeps 3.5 (2026-10-08)
+        # elected statewide in Iowa; the FEDERAL post is blanked first (appointee rule)
         r"secretary of agriculture|"
         # statewide ELECTED offices the list missed (2026-09-25): Bob Casey Jr. "incumbent
         # Auditor General" (PA), Rob Sand "Iowa auditor of state", Vicki Schmidt "Kansas
@@ -120,7 +129,9 @@ LEVELS = [
         # elected metro / parish governments (2026-10-08): Louisville and Baton Rouge Metro
         # Councils, Portland's Metro Council, Louisiana police juries / parish councils
         r"metro council|police jury|parish council|"
-        r"school board|city commissioner|selectman|alderman|district attorney|"
+        r"school (?:district )?board|city commissioner|selectman|alderman|district attorney|"
+        # elected local posts named like appointed ones (2026-10-14)
+        r"commissioner of the revenue|harbor (?:district|commission)|"
         r"state's attorney|\bjudge\b"),
 ]
 PRIOR_CAND_RX = re.compile(r"candidate for|nominee for", re.I)
@@ -151,10 +162,29 @@ _FED_DEPTS = (r"(?:state for|defense|the treasury|treasury|homeland security|vet
               r"energy|commerce|labor|education|agriculture|the interior|interior|"
               r"transportation|health and human services|housing and urban development|"
               r"the navy|the army|the air force)")
-# APPOINTED (non-elected) federal posts get their own level, between statewide (3) and elected
-# federal (4) - user call 2026-10-08 (was 4 under the 2026-09-25 rule). A descriptor that ALSO
-# names an elected federal office keeps 4 (classify_evidence takes the max).
-APPOINTED_FEDERAL = 3.5
+# APPOINTED (non-elected) posts rank BELOW EVERY ELECTED OFFICE - user call 2026-10-14 ("non-elected
+# roles should be below elected"; a White House press secretary must not outrank a governor).
+# Federal appointees 0.75, state / local appointees 0.5, both under local elected office (1).
+# History: 4 until 2026-10-08, then 3.5 (between statewide and elected federal) until 2026-10-14.
+# A descriptor naming ANY elected office takes that office's level (classify_evidence).
+APPOINTED_FEDERAL = 0.75
+APPOINTED_STATE = 0.5
+# appointed state / local executive posts: cabinet secretaries, department / agency heads,
+# adjutant / solicitor general, authority boards. Elected commissioners are matched as level 3
+# first (public lands, labor, insurance, agriculture, utility commissions).
+_STATE_APPOINTEE_RX = re.compile(
+    r"(?:director|administrator|commissioner|superintendent|secretary|chief|executive director)"
+    r"\s+of\s+(?:the\s+)?[a-z&' ]{0,50}?(?:department|agency|administration|bureau|division|"
+    r"office of|authority|board)\b|"
+    r"\b(?:department|agency)\s+(?:of\s+[a-z& ]+\s+)?(?:director|commissioner|secretary)\b|"
+    r"\b(?:state\s+)?(?:health|education|transportation|revenue|labor|corrections|finance|"
+    r"commerce|banking|public safety)\s+(?:commissioner|director|secretary)\b|"
+    r"\bcommissioner of (?!the revenue)[a-z&' ]+|"
+    r"\bsecretary of (?!state\b)[a-z&' ]+|adjutant general(?! corps)|solicitor general|"
+    r"cabinet secretary")
+# a PARTY post named like a cabinet one is not an office ("Secretary of the New Jersey
+# Democratic Party")
+_PARTY_POST_RX = re.compile(r"\b(?:democratic|republican|libertarian|green)\s+party\b|\bparty\b")
 _FED_APPOINTEE_RX = re.compile(
     r"(?:u\.?s\.?|united states) secretary\b|\busda\b|rural development|"
     # senior White House titles that do not say "White House" (Bill Curry, CT-Gov 2002)
@@ -173,6 +203,8 @@ _FED_APPOINTEE_RX = re.compile(
     r"director of the (?:consumer financial protection bureau|office of management and budget|"
     r"central intelligence agency|federal bureau of investigation|office of personnel management|"
     r"national economic council|u\.?s\.? mint|census bureau|peace corps)|"
+    r"\bsurgeon general\b(?!\s+of\s+(?:the\s+)?(?:louisiana|" + r"[a-z]+\s+department))|"
+    r"bureau of land management|"
     r"administrator of the (?:small business administration|environmental protection agency|"
     r"federal emergency management agency|national aeronautics|drug enforcement)")
 _STATE_NAMES_RX = re.compile(
@@ -227,12 +259,17 @@ def classify_evidence(desc, office=None):
     # "director of the Governor's Office of ..." is staff, not the governorship (2026-09-25)
     d = re.sub(r"\brunner[\s-]*up\s+(for|in)\s+[^,;.()]+", " ", d)
     d = re.sub(r"\bgovernor'?s\s+office\b", " ", d)
+    # "director of Governor Bill Owens' policy and initiatives office" (2026-10-14)
+    d = re.sub(r"\bgovernor\s+[a-z.]+(?:\s+[a-z.]+){0,2}\s*'\s*s?\s+[a-z& ]*office\b", " ", d)
     # staff OF an official is not the office: "chief of staff to Governor Deval Patrick"
     # the boss may carry a state / "U.S." prefix and any elected title (2026-10-13: "chief of
     # staff to Nevada Attorney General Aaron Ford" scored Teresa Benitez-Thompson as the AG, 3).
     # "the president" is deliberately NOT a boss here - senior White House posts count as 3.5.
-    d = re.sub(r"\b(?:chief\s+of\s+staff|aide|adviser|advisor|spokes\w*|counsel)\s+(?:to|for)\s+"
-               r"(?:the\s+)?(?:u\.s\.\s+|" + _STATE_LIST + r"\s+)?"
+    # 2026-10-14: the boss may be "former" / "incumbent" ("chief of staff to former governor Sonny
+    # Perdue" scored the governorship), and "official for" is staff too
+    d = re.sub(r"\b(?:chief\s+of\s+staff|aide|adviser|advisor|spokes\w*|counsel|official)\s+"
+               r"(?:to|for)\s+(?:the\s+)?(?:(?:former|incumbent|then[\s-]*)\s+)?"
+               r"(?:u\.s\.\s+|" + _STATE_LIST + r"\s+)?"
                r"(?:governor|lieutenant\s+governor|attorney\s+general|secretary\s+of\s+state|mayor|"
                r"senator|u\.s\.\s+senator|representative|congress\w*|speaker|comptroller|"
                r"treasurer|county\s+executive)"
@@ -276,17 +313,24 @@ def classify_evidence(desc, office=None):
         if m:
             return 4, _evidence(desc, d, m)
     m_app = _federal_appointee(d)
-    hit = None
-    for lvl, rx in LEVELS:
-        m = re.search(rx, d)
-        if m:
-            hit = (lvl, m)
+    # an ELECTED office of any level wins over any appointed post (2026-10-14). Blank the federal
+    # appointee titles first so "U.S. Secretary of State" cannot read as the elected statewide
+    # secretary of state, nor "Secretary of the Interior and former governor" lose the governor.
+    d_el = d
+    while True:
+        fa = _federal_appointee(d_el)
+        if not fa:
             break
-    # an appointed federal post (3.5) beats statewide/legislative/local, never elected federal
-    if m_app and (hit is None or hit[0] < APPOINTED_FEDERAL):
+        d_el = d_el[:fa.start()] + " " * (fa.end() - fa.start()) + d_el[fa.end():]
+    for lvl, rx in LEVELS:
+        m = re.search(rx, d_el)
+        if m:
+            return lvl, _evidence(desc, d, m)
+    if m_app:
         return APPOINTED_FEDERAL, _evidence(desc, d, m_app)
-    if hit:
-        return hit[0], _evidence(desc, d, hit[1])
+    m_st = _STATE_APPOINTEE_RX.search(d)
+    if m_st and not _PARTY_POST_RX.search(m_st.group(0)):
+        return APPOINTED_STATE, _evidence(desc, d, m_st)
     return 0, ""
 
 

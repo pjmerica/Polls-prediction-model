@@ -82,10 +82,27 @@ def infobox_offices(wikitext):
     state_delegateN, or a U.S. seat implied by jr/sr (Senate) or a {{ushr}} / stateN+districtN
     pair (House). Start/end from term_startN / term_endN, else the years in termN."""
     i = wikitext.lower().find("{{infobox")
-    box = wikitext[i:i + 12000] if i >= 0 else ""
+    if i < 0:
+        return []
+    # cut at the infobox's OWN closing braces (2026-10-14): a fixed 12,000-char window ran into
+    # later templates whose same-named fields overwrote the real ones
+    depth, j = 0, i
+    while j < len(wikitext) - 1:
+        two = wikitext[j:j + 2]
+        if two == "{{":
+            depth += 1; j += 2; continue
+        if two == "}}":
+            depth -= 1; j += 2
+            if depth == 0:
+                break
+            continue
+        j += 1
+    box = wikitext[i:j]
     params = {}
-    for m in re.finditer(r"^\s*\|\s*([a-z_/ ]+?)(\d*)\s*=\s*(.*)$", box, re.M):
-        params[(m.group(1).strip(), m.group(2))] = m.group(3)
+    # [ \t]*, never \s*: \s crosses the newline, so an EMPTY field ("| caption =") swallowed the
+    # next line as its value and that office was lost (Helmke's mayoralty, Kennedy's treasurer)
+    for m in re.finditer(r"^[ \t]*\|[ \t]*([a-z_/ ]+?)(\d*)[ \t]*=[ \t]*(.*)$", box, re.M):
+        params.setdefault((m.group(1).strip(), m.group(2)), m.group(3))
     idxs = sorted({k[1] for k in params}, key=lambda x: int(x) if x else 0)
     out = []
     for n in idxs:
@@ -208,7 +225,30 @@ def main():
     ap.add_argument("--limit", type=int, default=0)
     ap.add_argument("--recheck", action="store_true",
                     help="drop saved rows whose article title fails title_matches, then exit")
+    ap.add_argument("--reparse", action="store_true",
+                    help="re-download the saved rows' articles (50 per request) and re-read "
+                         "their infoboxes with the current parser, then exit")
     args = ap.parse_args()
+    if args.reparse:
+        done = pd.read_csv(OUT)
+        title = done["source_note"].str.extract(r"infobox: (.*) \(fetched", expand=False)
+        titles = sorted(set(title.dropna()))
+        wt = {}
+        for k in range(0, len(titles), 50):
+            q = _get({"action": "query", "titles": "|".join(titles[k:k + 50]),
+                      "prop": "revisions", "rvprop": "content", "rvslots": "main"})
+            for pg in q.get("query", {}).get("pages", []):
+                revs = pg.get("revisions") or [{}]
+                wt[pg.get("title")] = revs[0].get("slots", {}).get("main", {}).get("content", "")
+        n = 0
+        for i, t in title.items():
+            if wt.get(t):
+                offs = infobox_offices(wt[t])
+                if offs and json.dumps(offs) != done.at[i, "offices_json"]:
+                    done.at[i, "offices_json"] = json.dumps(offs); n += 1
+        done.to_csv(OUT, index=False)
+        print(f"reparse: {len(wt)} articles read, {n} people's offices changed")
+        return
     if args.recheck:
         done = pd.read_csv(OUT)
         title = done["source_note"].str.extract(r"infobox: (.*) \(fetched", expand=False)
