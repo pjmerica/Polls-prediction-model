@@ -5216,7 +5216,7 @@ id,race_id,state_abbrev,state,office_id,office_name,office_seat_name,cycle,stage
 14768,289,GA,Georgia,149,U.S. House,District 9,2018,general,false,"",3088,11653,Doug Collins,REP,"",224661,79.5040661339524,,true,,https://history.house.gov/Institution/Election-Statistics/
 14769,289,GA,Georgia,149,U.S. House,District 9,2018,general,false,"",13267,19171,Clifford Dennis Baxter,W,"",5,0.001769422955785659,,false,,https://history.house.gov/Institution/Election-Statistics/
 14685,397,MS,Mississippi,307,U.S. House,District 3,2018,general,false,"",13228,19123,Matthew Holland,REF,"",2526,0.9818440477162214,,false,,https://history.house.gov/Institution/Election-Statistics/
-14684,397,MS,Mississippi,307,U.S. House,District 3,2018,general,false,"",8697,11425,Mary Brannon,DEM,"",94461,36.71653625943072,,false,,https://history.house.gov/Institution/Election-Statistics/
+14684,397,MS,Mississippi,307,U.S. House,District 3,2018,general,false,,8697,11425,Michael Evans,DEM,,94461,36.71653625943072,,false,,https://history.house.gov/Institution/Election-Statistics/
 14686,397,MS,Mississippi,307,U.S. House,District 3,2018,general,false,"",8698,11426,Michael Guest,REP,"",160284,62.30161969285306,,true,,https://history.house.gov/Institution/Election-Statistics/
 14677,386,MN,Minnesota,289,U.S. House,District 8,2018,general,false,"","",,"","","",156,0.049648166359548204,,"",Write-in,https://history.house.gov/Institution/Election-Statistics/
 14676,386,MN,Minnesota,289,U.S. House,District 8,2018,general,false,"",8896,11813,Pete Stauber,REP,"",159364,50.71878451104512,,true,,https://history.house.gov/Institution/Election-Statistics/

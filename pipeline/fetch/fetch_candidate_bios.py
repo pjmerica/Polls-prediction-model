@@ -105,7 +105,14 @@ LEVELS = [
         # Auditor General" (PA), Rob Sand "Iowa auditor of state", Vicki Schmidt "Kansas
         # Insurance Commissioner" all read 0 once a relative's/running mate's office stopped
         # standing in for their own.
-        r"auditor general|auditor of state|insurance commissioner|state controller"),
+        r"auditor general|auditor of state|insurance commissioner|state controller|"
+        # a justice of an ELECTED state high court (2026-10-15: highest-office rule - the
+        # Ballotpedia classifier already had it; Wikipedia descriptors read 0). Appointed
+        # high courts are rewritten to appointees first (appointed_ag); U.S. Supreme Court
+        # and clerks don't match ("justice ... of/on the ... supreme court" only).
+        r"\b(?:justice|judge)\s+(?:of|on)\s+(?:the\s+)?(?!u\.s\.|united states)(?:[a-z]+\s+){0,2}supreme court(?!\s+of\s+the\s+united)|"
+        r"\b(?<!u\.s\. )(?<!united states )(?:[a-z]+\s+){1,2}supreme court\s+(?:chief\s+)?justice|"
+        r"\bchief justice of (?:the\s+)?(?!u\.s\.|united states)[a-z ]{0,30}supreme court"),
     (2, r"state senator|state representative|state assembly|state house|"
         r"speaker of the .{0,30}house|state senate|general assembly|state delegate|"
         r"house of delegates|"
@@ -132,6 +139,9 @@ LEVELS = [
         r"school (?:district )?board|city commissioner|selectman|alderman|district attorney|"
         # elected local posts named like appointed ones (2026-10-14)
         r"commissioner of the revenue|harbor (?:district|commission)|"
+        # county boards (2026-10-15: "former Atlantic County freeholder" read 0)
+        r"freeholder|board of supervisors|county board|board of (?:county )?commissioners|"
+        r"county council(?:or|man|woman)?|town supervisor|"
         r"state's attorney|\bjudge\b"),
 ]
 PRIOR_CAND_RX = re.compile(r"candidate for|nominee for", re.I)
@@ -192,6 +202,7 @@ _FED_APPOINTEE_RX = re.compile(
     # White House POSTS (press secretary, chief of staff, office directors) - not junior staff
     r"white house(?!(?:\s+\w+)?\s+(?:aide|analyst|intern|staffer|fellow|volunteer))|"
     r"(?<!assistant )(?:u\.?s\.?|united states) attorney\b|"
+    r"(?:u\.?s\.?|united states)\s+(?:(?:deputy|associate|assistant)\s+)+attorney general|"
     r"(?<!goodwill )(?:u\.?s\.?|united states) ambassador|(?<!goodwill )\bambassador to\b|"
     r"\b(?:principal\s+)?(?:under|deputy|assistant|deputy assistant)\s+secretary of " + _FED_DEPTS + r"|"
     # bare cabinet title - but not a state cabinet named like one ("secretary of Energy AND
@@ -229,6 +240,48 @@ _STATE_LIST = (r"(?:alabama|alaska|arizona|arkansas|california|colorado|connecti
 # office - ", former X", ", and former X", " and incumbent X", ", current X"
 _NEW_OFFICE = r"(?:,\s*(?:and\s+)?|\s+and\s+)(?:former|current|incumbent)\b"
 
+# agriculture heads are ELECTED statewide only in these states (2026-10-15: "Tennessee
+# Commissioner of Agriculture" Charlie Hatcher read 3; TN's is a governor's appointee)
+_AG_ELECTED = ("alabama", "florida", "georgia", "iowa", "kentucky", "louisiana", "mississippi",
+               "north carolina", "north dakota", "south carolina", "texas", "west virginia")
+_AG_TITLE = r"(?:commissioner|secretary)\s+of\s+agriculture|agriculture\s+(?:commissioner|secretary)"
+_AG_STATE_RX = re.compile(r"\b" + _STATE_LIST + r"(?:'s)?\s+(?:state\s+)?(?:" + _AG_TITLE + r")\b|"
+                          r"\b(?:" + _AG_TITLE + r")\s+(?:of|for)\s+(?:the\s+state\s+of\s+)?" +
+                          _STATE_LIST + r"\b")
+# a STATE deputy / assistant attorney general is a staff lawyer, not the elected AG (2026-10-15:
+# Josh Stein 2016 "state senator and former deputy attorney general" read 3, Mike Siegel "Austin
+# assistant attorney general" read 3). "U.S. Deputy Attorney General" is a federal appointee.
+_STAFF_AG_RX = re.compile(r"(?<!u\.s\. )(?<!united states )(?<!deputy )(?<!associate )"
+                          r"\b(?:senior\s+|chief\s+|principal\s+)?(?:deputy|assistant|associate)"
+                          r"(?:\s+assistant)?\s+(?:state\s+)?attorneys?\s+general\b|"
+                          # line prosecutors, not the elected DA ("Manhattan Assistant District
+                          # Attorney" read 1)
+                          r"\b(?:senior\s+|chief\s+)?(?:assistant|deputy)\s+(?:district|state'?s|"
+                          r"county|commonwealth'?s|prosecuting|city|circuit)\s+attorney\b")
+
+
+# high courts filled by appointment with no popular vote (governor or legislature): a justice
+# there is an APPOINTED state post (0.5), not the statewide elected level 3 (2026-10-15: Bob
+# Flanders, RI Supreme Court 1996-2004, read 3)
+_APPT_COURT_STATES = (r"(?<!west )(?:connecticut|delaware|hawaii|massachusetts|maine|new hampshire|"
+                      r"new jersey|rhode island|vermont|virginia|south carolina)")
+_APPT_COURT_RX = re.compile(
+    r"(?:(?:associate|chief)\s+)?(?:justice|judge)?\s*(?:of\s+(?:the\s+)?)?\b" + _APPT_COURT_STATES +
+    r"\s+supreme\s+(?:judicial\s+)?court|"
+    r"(?:(?:associate|chief)\s+)?(?:justice|judge)?\s*(?:of\s+)?(?:the\s+)?supreme\s+(?:judicial\s+)?"
+    r"court\s+of\s+" + _APPT_COURT_STATES + r"\b")
+
+
+def appointed_ag(d):
+    """Rewrite a named-state agriculture commissioner / secretary in an APPOINTING state to a
+    department-head phrase (appointed, 0.5) so the elected level-3 pattern cannot match it, and
+    a state deputy / assistant attorney general to staff (0)."""
+    def sub(m):
+        st = re.search(_STATE_LIST, m.group(0)).group(0)
+        return m.group(0) if st in _AG_ELECTED else f"{st} agriculture department commissioner"
+    d = _STAFF_AG_RX.sub(" staff lawyer", _AG_STATE_RX.sub(sub, str(d).lower()))
+    return _APPT_COURT_RX.sub(" commissioner of the judiciary (appointed justice)", d)
+
 
 def _federal_appointee(d):
     for m in _FED_APPOINTEE_RX.finditer(d):
@@ -242,7 +295,7 @@ def _federal_appointee(d):
 def classify_evidence(desc, office=None):
     """(office_level, evidence) - evidence is the descriptor clause naming the position that
     set the level ("" for level 0). Written to candidate_bios.csv as `office_evidence`."""
-    d = str(desc).lower()
+    d = appointed_ag(desc)
     # candidacy mentions are NOT offices held: 'candidate for governor in 2018' must not
     # classify as governor (caught by the El-Sayed known-truth check). Broadened 2026-07-29 to
     # also strip "ran for / running for / unsuccessful candidate for / nominee for X" - the
@@ -268,7 +321,8 @@ def classify_evidence(desc, office=None):
     # 2026-10-14: the boss may be "former" / "incumbent" ("chief of staff to former governor Sonny
     # Perdue" scored the governorship), and "official for" is staff too
     d = re.sub(r"\b(?:chief\s+of\s+staff|aide|adviser|advisor|spokes\w*|counsel|official)\s+"
-               r"(?:to|for)\s+(?:the\s+)?(?:(?:former|incumbent|then[\s-]*)\s+)?"
+               # "then-U.S. Representative" has no space after the hyphen (Josh Riley, 2026-10-15)
+               r"(?:to|for)\s+(?:the\s+)?(?:(?:former|incumbent)\s+|then[\s-]+)?"
                r"(?:u\.s\.\s+|" + _STATE_LIST + r"\s+)?"
                r"(?:governor|lieutenant\s+governor|attorney\s+general|secretary\s+of\s+state|mayor|"
                r"senator|u\.s\.\s+senator|representative|congress\w*|speaker|comptroller|"
@@ -281,6 +335,12 @@ def classify_evidence(desc, office=None):
     # for Texas Commissioner of Agriculture" (Kinky Friedman read 3)
     d = re.sub(r"(?:^|[,;(]|\band)\s*for\s+[^,;.()]*?\bin\s+(?:19|20)\d\d[^,;.()]*", " ", d)
     d = re.sub(r"\bcandidate\s+in\s+[^,;.()]+", " ", d)
+    # "<office> nominee / candidate" (2026-10-15): "2000 U.S. Senate nominee" scored Brian
+    # Schweitzer (MT-Gov 2008) as a U.S. senator (4). Office words only, so a real office
+    # earlier in the clause ("former state senator and Senate nominee") is kept.
+    d = re.sub(r"(?:\b(?:19|20)\d\d\s+)?(?:u\.s\.\s+|united states\s+)?(?:democratic\s+|republican\s+)?"
+               r"(?:senate|senatorial|house|congressional|gubernatorial|governor|lieutenant governor|"
+               r"attorney general|mayoral|state senate|state house)\s+(?:nominee|candidate)\b", " ", d)
     # FUTURE offices are not offices held at the time of THIS race (2026-08-01). Wikipedia
     # bios are written after the fact, so a candidate's page can describe an office they only
     # won LATER: "pastor of Ebenezer Baptist Church and future U.S. Senator for this seat"

@@ -49,7 +49,7 @@ HERE = ROOT   # repo root (paths.py) - this file lives in a subfolder
 sys.path.insert(0, AGG)
 from bs4 import BeautifulSoup  # noqa: E402
 
-from fetch_candidate_bios import classify, PRIOR_CAND_RX, APPOINTED_FEDERAL, APPOINTED_STATE, _STATE_APPOINTEE_RX  # noqa: E402
+from fetch_candidate_bios import classify, PRIOR_CAND_RX, APPOINTED_FEDERAL, APPOINTED_STATE, _STATE_APPOINTEE_RX, appointed_ag  # noqa: E402
 import features as F  # noqa: E402
 
 
@@ -125,6 +125,7 @@ def classify_ballotpedia(infobox_text, office=None):
     d = re.sub(r"candidate,?\s+[^.]*?(?=(u\.?s\.?|state|governor|mayor|county|city|$))",
                " ", str(infobox_text), count=1, flags=re.I)  # drop leading "Candidate, ..."
     d = re.sub(r"(candidate|nominee) for [^,;.]+", " ", d, flags=re.I)
+    d = appointed_ag(d)   # TN / PA / KS ... agriculture heads are appointed (0.5)
     # ELECTED offices outrank every APPOINTED post (user call 2026-10-14). Order: elected federal
     # (4); a federal appointee title (0.75 - checked before the statewide patterns so "U.S.
     # Secretary of State" cannot read as the elected state office); elected statewide /
@@ -162,7 +163,11 @@ _BP_FED_APPT_EXTRA = re.compile(
     r"national counterterrorism center|federal communications commission|"
     r"centers for medicare|general counsel of the army|department of defense|"
     r"office of public (?:liaison|engagement)|defense nuclear facilities safety board|"
-    r"assistant attorney general for|federal emergency management agency", re.I)
+    r"assistant attorney general for|federal emergency management agency|"
+    # 2026-10-15: "United States Associate Attorney General" read as an elected AG (3), and
+    # "Director of the Defense POW/MIA Accounting Agency" read 0
+    r"(?:u\.?s\.?|united states)\s+(?:associate|deputy|assistant)\s+attorney general|"
+    r"\bdefense\s+[a-z/ ]{0,40}agency\b", re.I)
 
 # New York's "Supreme Court" is its general TRIAL court (elected local judges, Barbaro), not the
 # state's high court (2026-10-14)

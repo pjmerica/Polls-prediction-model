@@ -191,11 +191,121 @@ def fetch_cycle(cycle, key, live):
     return list(rows.values())
 
 
+CMTE_API = "https://api.open.fec.gov/v1/committee/{cid}/reports/"
+
+
+def _committee_reports(key, cid, cycle, report_types):
+    """Per-committee reports. Unlike /reports/house-senate/, this endpoint includes PAPER
+    filings - every Senate campaign before 2019 (they filed with the Secretary of the Senate)
+    and every campaign in 1998-2000 (House e-filing became mandatory in 2001)."""
+    out = []
+    # report_types=None: ONE call for every report of the cycle, filtered by the caller - the
+    # per-type calls ran ~4 requests per committee into the API's hourly cap (2026-10-15)
+    for rt in (report_types or [None]):
+        params = {"api_key": key, "cycle": cycle, "per_page": 100}
+        if rt:
+            params["report_type"] = rt
+        for attempt in range(8):
+            try:
+                r = requests.get(CMTE_API.format(cid=cid), timeout=90, headers=H,
+                                 params=params)
+            except requests.exceptions.RequestException:
+                time.sleep(15); continue
+            if r.status_code == 429:
+                time.sleep(65); continue
+            if r.status_code >= 500:
+                time.sleep(15); continue
+            if r.status_code == 200:
+                out += r.json().get("results", [])
+            break
+        time.sleep(1.1)
+    return out
+
+
+def _best(reps, year):
+    """Latest-received report whose coverage ends in `year` and that carries the cycle-to-date
+    receipts (paper amendments are often entered with every _ytd field empty)."""
+    ok = [x for x in reps if str(x.get("coverage_end_date", ""))[:4] == str(year)
+          and x.get("total_receipts_ytd") not in (None, "")]
+    # ...and an all-zero record is a data-entry shell, not a filing, when another version of
+    # the same report carries money (Burr 2010: a Jan-2011 "amendment" of zeros vs $11.86M)
+    pos = [x for x in ok if float(x["total_receipts_ytd"]) > 0]
+    ok = pos or ok
+    return max(ok, key=lambda x: str(x.get("receipt_date") or "")) if ok else None
+
+
+def _ytd_or_nan(rep):
+    """Like ytd_values, but a field the paper record lacks is UNKNOWN (NaN), never 0 - a 0
+    itemized total would read as 100% small-dollar money."""
+    out = {}
+    for k, v in YTD.items():
+        x = rep.get(v)
+        out[k] = float(x) if x not in (None, "") else float("nan")
+    return out
+
+
+def fetch_paper(key, targets):
+    """As-of-Sep-30 money for PAPER-FILED campaigns, by committee (2026-10-15). Found by a
+    training-data spot check: before 2018 almost no Senate candidate had as-of money (Bill
+    Nelson 2006, Burr 2010, Cantwell 2012, Capito 2014 ...: 0-10% coverage vs 87-96% from
+    2018) and nobody in 1998-2000 did - the bulk report endpoint carries e-filings only.
+    Same rules as fetch_cycle: election-year Q3 / October monthly, else the off-year
+    year-end; cycle-to-date columns; inter-committee transfers netted when 2+ are summed.
+    `targets`: DataFrame with cycle, cand_id."""
+    rows = []
+    links = {}
+    for i, t in enumerate(targets.itertuples(), 1):
+        cyc, cand = int(t.cycle), t.cand_id
+        if cyc not in links:
+            inv = {}
+            for cm, ca in linkage(cyc).items():
+                inv.setdefault(ca, []).append(cm)
+            links[cyc] = inv
+        acc = None
+        for cm in links[cyc].get(cand, []):
+            allrep = _committee_reports(key, cm, cyc, None)
+            rep = _best([x for x in allrep if x.get("report_type") in ("Q3", "M10")], cyc)
+            if rep is None:
+                rep = _best([x for x in allrep if x.get("report_type") == "YE"], cyc - 1)
+            if rep is None:
+                continue
+            if acc is None:
+                acc = dict(cycle=cyc, cand_id=cand, n_committees=0, **{k: 0.0 for k in YTD})
+            acc["n_committees"] += 1
+            for k, v in _ytd_or_nan(rep).items():
+                acc[k] = acc[k] + v            # NaN stays NaN: an unknown part is unknown
+            acc["asof"] = max(acc.get("asof", ""), str(rep.get("coverage_end_date", ""))[:10])
+        if acc is not None:
+            t_out = acc.get("transfers_out_auth", 0.0)
+            if acc["n_committees"] > 1 and t_out == t_out and t_out > 0:
+                acc["receipts"] = max(acc["receipts"] - t_out, 0.0)
+                acc["disbursements"] = max(acc["disbursements"] - t_out, 0.0)
+            rows.append(acc)
+        if i % 25 == 0:
+            print(f"  paper: {i}/{len(targets)} candidates, {len(rows)} with an as-of report",
+                  flush=True)
+    return rows
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--all", action="store_true")
+    ap.add_argument("--paper", metavar="TARGETS_CSV",
+                    help="add paper-filed campaigns (cycle,cand_id) missing from the file, then exit")
     args = ap.parse_args()
     key = api_key()
+    if args.paper:
+        old = pd.read_csv(OUT)
+        have = set(zip(old["cycle"], old["cand_id"]))
+        tg = pd.read_csv(args.paper)
+        tg = tg[[(int(c), i) not in have for c, i in zip(tg["cycle"], tg["cand_id"])]]
+        new = pd.DataFrame(fetch_paper(key, tg))
+        if len(new):
+            new["self_fund"] = new["cand_contrib"] + new["cand_loans"]
+            old = pd.concat([old, new], ignore_index=True)
+            old.to_csv(OUT, index=False)
+        print(f"PAPERDONE: added {len(new)} candidates -> {OUT} ({len(old)} rows)")
+        return
     old = pd.read_csv(OUT) if os.path.exists(OUT) else pd.DataFrame()
     have = set(old["cycle"].unique()) if len(old) else set()
     todo = [c for c in CYCLES if args.all or c not in have or c == CYCLES[-1]]

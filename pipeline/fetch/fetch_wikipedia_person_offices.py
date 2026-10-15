@@ -145,7 +145,11 @@ _NICKS = {"larry": "lawrence", "jerry": "gerald", "libby": "elizabeth", "quico":
 # verified one-offs where the article uses an unrelated nickname
 _SAME_PERSON = {("samuel pearson goddard", "terry goddard")}   # Samuel Pearson Goddard III
 # ...and relatives who pass the name rule through a shared middle name
-_NOT_SAME = {("robert gerald lorge", "gerald lorge")}   # his father, WI state senator 1955-85
+_NOT_SAME = {("robert gerald lorge", "gerald lorge"),   # his father, WI state senator 1955-85
+             # PA-7 2026 Dem nominee is a firefighters' union head, not the Murrysville mayor
+             ("bob brooks", "robert brooks (pennsylvania politician)"),
+             # ME-1 nominee 2024/26 is a retired Army colonel, never in the Maine House
+             ("ronald c. russell", "ronald b. russell"), ("ronald russell", "ronald b. russell")}
 
 
 def title_matches(name, title):
@@ -154,14 +158,18 @@ def title_matches(name, title):
     Never via an initial (2026-10-13): 'Patrick R. Casey' (PA-10 2002, Bob Casey's brother)
     matched 'Bob Casey Jr.' through the R, and 'Marsha Folsom' matched 'Jim Folsom Jr.'."""
     import features as F
-    sn = name.split()[-1].strip(",.").lower()
+    # surname = last word that is not a generational suffix ("Joe Manchin, III" -> manchin)
+    sn = [w for w in (x.strip(",.").lower() for x in name.split())
+          if w and w not in ("jr", "sr", "ii", "iii", "iv")][-1]
     if not re.search(r"\b" + re.escape(sn) + r"\b", title.lower()):
         return False          # whole word: 'Rich' is not in 'Heinrich'
     bare = re.sub(r"\(.*?\)", " ", title).lower()            # drop '(politician)'
+    # title tokens drop only generational suffixes: a surname particle can BE the first given
+    # word ('Van Tran' passed for Jennifer Tran once 'van' joined _NAME_NOISE, 2026-10-15)
     t_toks = [t for t in re.findall(r"[a-z]+", bare)          # in title order
-              if t != sn and t not in F._NAME_NOISE and len(t) > 1]
+              if t != sn and t not in ("jr", "sr", "ii", "iii", "iv") and len(t) > 1]
     given = [t for t in re.findall(r"[a-z]+", name.lower())
-             if t != sn and t not in F._NAME_NOISE and len(t) > 1]
+             if t != sn and t not in ("jr", "sr", "ii", "iii", "iv") and len(t) > 1]
     if not t_toks or not given:
         return True
     t0 = t_toks[0]
@@ -196,15 +204,22 @@ def plausible(offices):
 def find_article(name, state, party, year):
     """ONE request per person: the search runs as a generator and returns each hit's wikitext
     in the same call (was a search plus up to four separate page fetches)."""
-    sname = name.split()[-1].strip(",.").lower()
+    # drop suffixes and middle initials (2026-10-15): "Jacob W. Hoogendyk Jr." took "Jr" as
+    # the surname, and "Elliott E. Maynard ... politician" never surfaced "Elliott Maynard"
+    words = [w for w in re.sub(r",", " ", name).split()
+             if w.strip(".").lower() not in ("jr", "sr", "ii", "iii", "iv")]
+    sname = words[-1].strip(",.").lower()
+    plain = " ".join(w for w in words if len(w.strip(".")) > 1)
     st = STATE_NAME.get(state, state)
-    q = _get({"action": "query", "generator": "search", "gsrlimit": 4,
-              "gsrsearch": f"{name} {st} politician", "prop": "revisions",
-              "rvprop": "content", "rvslots": "main", "redirects": 1})
-    pages = sorted(q.get("query", {}).get("pages", []), key=lambda pg: pg.get("index", 99))
+    pages = []
+    for query in (f"{plain} {st} politician", f"{plain} {st}"):
+        q = _get({"action": "query", "generator": "search", "gsrlimit": 4,
+                  "gsrsearch": query, "prop": "revisions",
+                  "rvprop": "content", "rvslots": "main", "redirects": 1})
+        pages += sorted(q.get("query", {}).get("pages", []), key=lambda pg: pg.get("index", 99))
     for pg in pages:
         title = pg.get("title", "")
-        if sname not in title.lower() or not title_matches(name, title):
+        if sname not in title.lower() or not title_matches(plain, title):
             continue
         revs = pg.get("revisions") or [{}]
         wt = revs[0].get("slots", {}).get("main", {}).get("content", "")

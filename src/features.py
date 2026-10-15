@@ -458,7 +458,10 @@ def office_level_floor(winners, year, state, cand_key, party, name=None, appoint
     for office, lvl in (("Senate", 4), ("House", 4), ("Governor", 3)):
         held = (year, state, office, sn, party) in appointed or any(
             s_ == sn and p_ == party and y < year + GEN_T
-            and (name is None or _first_names_compatible(name, toks, sn))
+            # strict given-name match (2026-10-15): a shared initial let Joe Baldacci (ME-2
+            # 2026, state senator) inherit brother John's U.S. House wins (4). Suffixes are
+            # ignored here - results files spell Jr./III inconsistently.
+            and (name is None or _same_person_given(name, " ".join(toks), suffix=False))
             for y, s_, p_, toks in winners.get((state, office), []))
         if held and not (best >= lvl):
             best = lvl
@@ -625,9 +628,12 @@ def load_candidate_bios():
     candidates (2026-10-08, after 43 researched hand-codes in candidate_bios_manual.csv).
     IN PRODUCTION since 2026-07-29 (the 2026-07-24 ablation that kept it out was a coverage
     artifact - it flipped positive on both models once coverage reached 100%).
-    Lookup order in build_candidate_table: exact key here -> person-level manual/Ballotpedia
-    tenure (__person_offices__, as-of-year) -> same person's earlier rows (__prior_levels__) ->
-    floored by offices actually won (office_level_floor)."""
+    The level is the HIGHEST office held before the race year, over every source (user rule
+    2026-10-15): build_candidate_table takes the max of the exact-key row here, the person-level
+    manual/Ballotpedia tenure (__person_offices__, as-of-year), the same person's levels in ANY
+    earlier race (__prior_levels__, any office or party), offices actually won
+    (office_level_floor) and the person's own Wikipedia infobox (__wikiperson__). Person-level
+    sources count only when the given names match (_same_person_given)."""
     path = os.path.join(DATA_DIR, "candidate_bios.csv")
     if not os.path.exists(path):
         return {}
@@ -638,8 +644,10 @@ def load_candidate_bios():
         party = npar(r.party)
         out[(int(r.year), r.office, r.state, di, party, r.cand_key)] = dict(
             bio_office_level=float(r.office_level))
-        prior.setdefault((r.cand_key, r.state, r.office, party), []).append(
-            (int(r.year), float(r.office_level)))
+        # keyed by person only (2026-10-15; was also office + party, so a former governor's 3
+        # did not follow them into a House race, nor Kiley's history across his party switch)
+        prior.setdefault((r.cand_key, r.state), []).append(
+            (int(r.year), float(r.office_level), r.name))
     out["__prior_levels__"] = prior
 
     # PERSON-LEVEL as-of-year fallback (2026-07-29): the exact-key map above is built from
@@ -650,7 +658,7 @@ def load_candidate_bios():
     # (offices_json = [[office, start, end_or_null]]) keyed (cand_key, state); build_candidate_
     # table falls back to computing the as-of-year level from it when the exact key misses.
     # Leak-free: only offices whose tenure STARTED strictly before the race year count.
-    person = {}
+    person, person_names = {}, {}
     for fn in ("candidate_bios_manual.csv", "candidate_bios_ballotpedia.csv"):
         p = os.path.join(DATA_DIR, fn)
         if not os.path.exists(p):
@@ -666,21 +674,85 @@ def load_candidate_bios():
             # manual overrides ballotpedia (manual file read first); [] = verified no office
             if key not in person:
                 person[key] = offices
+                person_names[key] = r.candidate
     out["__person_offices__"] = person
+    # names travel with both person maps (2026-10-15): the key is only surname + initial +
+    # state, so Jake Johnson (MN-1 2026, a teacher) inherited Jeff Johnson's state-House level.
+    # build_candidate_table applies an entry only when the given names really match.
+    out["__person_names__"] = person_names
     # each person's OWN Wikipedia infobox offices with term years (2026-10-13,
     # pipeline/fetch/fetch_wikipedia_person_offices.py) - used as a FLOOR in build_candidate_table:
     # "Stage-4 verified level 0" hand rows were really "no evidence found" (~1 in 5 wrong in a
     # random spot check: Neumann, Bloom, Goyle, Bruun, Sasse)
-    wp = {}
+    wp, wp_names = {}, {}
     p = os.path.join(DATA_DIR, "candidate_bios_wikiperson.csv")
     if os.path.exists(p):
         for r in pd.read_csv(p, low_memory=False).itertuples():
             try:
                 wp[(norm_name(r.candidate), r.state)] = json.loads(r.offices_json)
+                wp_names[(norm_name(r.candidate), r.state)] = r.candidate
             except (json.JSONDecodeError, TypeError):
                 pass
     out["__wikiperson__"] = wp
+    out["__wikiperson_names__"] = wp_names
     return out
+
+
+def _same_person_given(a, b, suffix=True):
+    """True unless the two names' GIVEN names clearly differ (2026-10-15). Stricter than
+    _first_names_compatible: a shared initial is not enough ('Jake' vs 'Jeff' Johnson); equal
+    names, a prefix (Doug/Douglas), the same first three letters (Ernie/Ernest) or a known
+    nickname (Bob/Robert) are. No given name on either side -> True (no evidence against).
+    Different generational suffixes are different people: "Thomas H. Kean Jr." (state senator)
+    had carried forward his father "Thomas Kean"'s governorship (3)."""
+    def gen(n):
+        return set(re.findall(r"\b(jr|sr|ii|iii|iv)\b", str(n).lower()))
+    if suffix and gen(a) != gen(b):
+        return False
+    sa = norm_name(a).split(" ")[0] if norm_name(a) else ""
+    A = [t for t in _name_tokens(a) if t != sa and t not in _NAME_NOISE and len(t) > 1]
+    B = [t for t in _name_tokens(b) if t != sa and t not in _NAME_NOISE and len(t) > 1]
+    if not A or not B:
+        return True
+    # equal, a prefix (Doug/Douglas, Jen/Jennifer), a diminutive (Kathy/Katherine) or a listed
+    # nickname. NOT a shared initial or 2-3 letters: Joe vs John Baldacci (ME-2 2026, his brother
+    # the ex-congressman) read 4; Mark/Martin, Joseph/Joshua would pass too (2026-10-15)
+    for x in A:
+        for y in B:
+            if x == y or (len(x) >= 3 and len(y) >= 3 and (x.startswith(y) or y.startswith(x))):
+                return True
+            s, l = sorted((x, y), key=len)
+            stem = re.sub(r"(?:ie|y|i)$", "", s)
+            if stem != s and len(stem) >= 3 and l.startswith(stem):
+                return True
+            if y in _GIVEN_NICKS.get(x, ()) or x in _GIVEN_NICKS.get(y, ()):
+                return True
+    return False
+
+
+_NICK_PAIRS = """tom tommy:thomas jim jimmy jamie:james bill billy will willie:william
+bob bobby rob robbie bert:robert dick rick ricky rich richie:richard ted ed eddie ned:edward
+chuck chas charlie:charles jack johnny jon:john peggy maggie meg:margaret
+liz beth betsy libby lisa eliza betty:elizabeth larry:lawrence jerry:gerald gerry:gerald
+hank:henry sandy:alexandra sandy:sandra mike mikey mick mickey:michael joe joey:joseph
+tony:anthony steve:steven steve:stephen sue susie:susan jake:jacob al:albert al:alan
+al:allen al:alfred hal:harold hal:henry gene:eugene becky:rebecca cindy:cynthia
+patty patsy pat:patricia pat:patrick sally:sarah kate katie kathy cathy kit:katherine
+kate katie kathy cathy:catherine kate:kathleen andy drew:andrew ben:benjamin dan danny:daniel
+dave:david don donnie:donald greg:gregory jeff:jeffrey jeff:geoffrey ken kenny:kenneth
+matt:matthew nick:nicholas nate:nathan nate:nathaniel ron ronnie:ronald sam:samuel
+tim:timothy vince:vincent walt:walter wally:walter zach zack:zachary josh:joshua
+chris:christopher chris:christine chris:christina abby:abigail deb debbie:deborah
+jen jenny:jennifer kim:kimberly pam:pamela barb:barbara val:valerie vicky:victoria
+fred freddie:frederick frank:francis lou:louis lou:louise mitch:mitchell
+mandy:amanda manny:emmanuel manny:emanuel ray:raymond russ:russell stan:stanley
+terry:terrence terry:theresa tess:theresa doug:douglas phil:phillip phil:philip
+buddy:william chet:chester gus:augustus jay:james lee:leroy"""
+_GIVEN_NICKS = {}
+for _pair in re.findall(r"([a-z ]+):([a-z]+)", _NICK_PAIRS.replace("\n", " ")):
+    for _n in _pair[0].split():
+        _GIVEN_NICKS.setdefault(_n, set()).add(_pair[1])
+        _GIVEN_NICKS.setdefault(_pair[1], set()).add(_n)
 
 def _person_asof_level(offices, year):
     """Highest office-level among a person's offices whose tenure STARTED strictly before
@@ -858,9 +930,18 @@ def fec_lookup(fec, yr, st, of, di, ck, party=None, name=None):
             return fe
     sn = str(ck).split(" ")[0]
     by_race = fec.get("__by_race__", {})
+    def _sur(toks):
+        """The FEC token that IS the surname: exact, or a hyphenated surname joined into one
+        token that starts/ends with it (2026-10-15: George Santos is 'DEVOLDER-SANTOS' ->
+        'devoldersantos'). Returned so the given-name check ignores that token."""
+        if sn in toks:
+            return sn
+        hit = [t for t in toks if len(t) > len(sn) + 2 and (t.endswith(sn) or t.startswith(sn))]
+        return hit[0] if len(hit) == 1 else None
+
     for d_ in dis:
         cands = [(toks, p, k) for toks, p, k in by_race.get((yr, st, of, d_), [])
-                 if sn in toks and (name is None or _first_names_compatible(name, toks, sn))]
+                 if (s_ := _sur(toks)) and (name is None or _first_names_compatible(name, toks, s_))]
         if len(cands) > 1 and party:
             cands = [c for c in cands if c[1] == party]
         # never hand a candidate the OTHER major party's money on an initial alone (2026-10-13):
@@ -874,9 +955,25 @@ def fec_lookup(fec, yr, st, of, di, ck, party=None, name=None):
                 cands = []
         if len(cands) == 1:
             return fec.get(cands[0][2])
+    # HOUSE DISTRICT MOVERS (2026-10-15): the FEC keeps the district a candidate first
+    # registered in, so a member running in a new seat is filed elsewhere in the state - Issa
+    # (CA-49 -> CA-50 2020), Schweikert (AZ-6 -> AZ-1 2022), Susan Wild (PA-15 -> PA-7 2018).
+    # Last resort: ONE same-party candidate in the whole state that cycle with this surname and
+    # a compatible given name; two or more -> None, never a guess.
+    if of == "House" and party in ("DEM", "REP"):
+        idx = fec.setdefault("__by_state__", {})
+        if not idx:
+            for (y_, s_, o_, d_), lst in by_race.items():
+                idx.setdefault((y_, s_, o_), []).extend(lst)
+        cands = [(toks, p, k) for toks, p, k in idx.get((yr, st, of), [])
+                 if p == party and (s_ := _sur(toks))
+                 and name is not None and _first_names_compatible(name, toks, s_)
+                 and ({t for t in _name_tokens(name) if len(t) > 1} - {sn}) & toks]
+        if len(cands) == 1:
+            return fec.get(cands[0][2])
     return None
 
-FUND_FEATS = ["fund_receipts_ln", "fund_share", "fund_indiv_pct", "fund_pac_pct",
+FUND_FEATS =["fund_receipts_ln", "fund_share", "fund_indiv_pct", "fund_pac_pct",
               "fund_party_pct", "fund_self_pct"]
 FUND_FEATS_EXT = FUND_FEATS + ["fund_smalldollar_pct",   # batch 5+ (extended FEC)
                                "fund_cash_share", "fund_spend_share"]   # 2026-10-02
@@ -1361,23 +1458,29 @@ def build_candidate_table(d, macro, natl_env_map, funds, house_train_years=None,
             # PERSON-LEVEL fallback: exact-key miss (common for live predict-time candidates
             # absent from the training poll file) -> compute the as-of-year level from the
             # hand-coded/Ballotpedia tenure map, keyed (cand_key, state), leak-free (2026-07-29).
-            if bio is None and candidate_bios is not None:
+            # HIGHEST office held, over every source (user rule 2026-10-15): before, the person
+            # tenure and the earlier-race levels were consulted only when the exact key missed,
+            # so a lower race row could hide a higher office the person map or an earlier race
+            # knew about.
+            levels = [bio["bio_office_level"]] if bio else []
+            if candidate_bios is not None:
+                cname = gc["candidate"].iloc[0]
                 poff = candidate_bios.get("__person_offices__", {})
-                if (ck, st) in poff:
+                pnm = candidate_bios.get("__person_names__", {}).get((ck, st))
+                if (ck, st) in poff and (pnm is None or _same_person_given(cname, pnm)):
                     lvl = _person_asof_level(poff[(ck, st)], yr)
                     if lvl is not None:
-                        bio = dict(bio_office_level=lvl)
-            # CARRY-FORWARD fallback (2026-09-25): the same person's level in an EARLIER race
-            # for the same office, state and party. Highest-office-held never goes down, and
-            # only strictly earlier years count, so this is leak-free. The bio table has no row
-            # for a race whose Wikipedia page was scraped before its candidates were listed -
-            # 59 of 315 live DEM/REP candidates were NaN, most of them SITTING officeholders
-            # (Cotton, Sullivan, Matsui, Little, Hyde-Smith) the table already knew from 2014-24.
-            if bio is None and candidate_bios is not None:
-                prev = [lv for y, lv in candidate_bios.get("__prior_levels__", {})
-                        .get((ck, st, of, party), []) if y < yr]
-                if prev:
-                    bio = dict(bio_office_level=max(prev))
+                        levels.append(lvl)
+                # CARRY-FORWARD (2026-09-25): the same person's level in any EARLIER race.
+                # Highest-office-held never goes down, and only strictly earlier years count,
+                # so this is leak-free. The bio table has no row for a race whose Wikipedia
+                # page was scraped before its candidates were listed (59 of 315 live DEM/REP
+                # candidates had been NaN, most of them sitting officeholders).
+                levels += [lv for y, lv, nm in candidate_bios.get("__prior_levels__", {})
+                           .get((ck, st), [])
+                           if y < yr and not np.isnan(lv) and _same_person_given(cname, str(nm))]
+            levels = [lv for lv in levels if lv is not None and not np.isnan(lv)]
+            bio = dict(bio_office_level=max(levels)) if levels else None
 
             fe = fec_lookup(fec, yr, st, of, di, ck, party, gc["candidate"].iloc[0])
             rec = fe["receipts"] if fe else np.nan
@@ -1497,7 +1600,11 @@ def build_candidate_table(d, macro, natl_env_map, funds, house_train_years=None,
                     # own-Wikipedia-infobox offices that started before this year (floor)
                     (_person_asof_level(candidate_bios["__wikiperson__"][(ck, st)], yr)
                      if candidate_bios is not None
-                     and (ck, st) in candidate_bios.get("__wikiperson__", {}) else np.nan)),
+                     and (ck, st) in candidate_bios.get("__wikiperson__", {})
+                     and _same_person_given(gc["candidate"].iloc[0],
+                                            candidate_bios.get("__wikiperson_names__", {})
+                                            .get((ck, st), gc["candidate"].iloc[0]))
+                     else np.nan)),
                 **fund,
                 **macro.get(yr, {}),
             ))

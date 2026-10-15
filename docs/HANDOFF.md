@@ -4,6 +4,61 @@ For the next agent. Read AGENTS.md first (architecture + rules), CONCERNS.md sec
 (risk register + roadmap). This file: what's mid-flight RIGHT NOW, what's most likely to
 break, and what to do next, in order.
 
+## 2026-10-15 (later) - training-data verification by cycle + hand web checks (win + margin retrained)
+
+User asked for every cycle's training data to be spot-checked against the web, then for hand
+web searches. Results and vote shares checked per cycle were all correct. Fixed:
+- **Bio levels, "Stage-4 verified level 0"**: all 544 training candidates with that tag were
+  hand-checked by web search; 135 held an office (88 local, 28 legislature, 1 statewide, 3 federal
+  appointees, 15 state appointees). Log: `data/bio_verification_2026-10-15.csv`
+  (race_id, candidate, level, evidence, basis).
+- **538 source error**: MS-3 2018's Democrat is Michael (Ted) Evans, a state representative; 538
+  files him as "Mary Brannon" (the OK-4 nominee). Patched in res_house, house_historical,
+  polls_long_with_results and the bio table.
+- **Senate money before 2019** was missing (paper filings never reached the e-filing API).
+  `fetch_fec_asof.py --paper TARGETS_CSV` reads `/committee/{id}/reports/`; 862 of 962 Senate
+  2006-2016 candidates now have an as-of total. 1998-2004 paper reports carry no
+  cycle-to-date figure and stay NaN. Senate figures are 6-year cycle-to-date (as before).
+- **Classifier** (`fetch_candidate_bios.py`, `fetch_candidate_bios_ballotpedia.py`):
+  - agriculture commissioners/secretaries are elected only in AL FL GA IA KY LA MS NC ND SC TX
+    WV; elsewhere 0.5 (Hatcher TN, John Rose TN, Wolff PA, Haymore VA; Svaty KS = 2 from the
+    Kansas House);
+  - state deputy / assistant attorneys general and assistant / deputy district attorneys are
+    staff (0), not the elected AG / DA (Josh Stein 2016 read 3 instead of 2, Mike Siegel 3,
+    Joe Kennedy III 2012 1); U.S. deputy / associate / assistant AGs are federal appointees
+    (0.75: Sally Yates, Goodlander, Reitz);
+  - "Director of the Defense ... Agency" = federal appointee.
+- **Highest office held, always** (user rule): build_candidate_table now takes the MAX of the
+  race row, the hand-coded person tenure, the person's level in ANY earlier race (was: same
+  office + party, and only when the race row was missing), offices won and the Wikipedia
+  infobox. Person sources need matching given names AND generational suffixes (Thomas H. Kean
+  Jr. had inherited his father's governorship). Every Wikipedia-descriptor row was re-classified
+  with the current rules (97 missed offices: county boards, freeholders, town supervisors,
+  elected state justices). Justices of high courts that are never popularly elected (CT DE HI
+  MA ME NH NJ RI VT VA SC) are appointees, 0.5 (Flanders RI).
+- **Wikipedia title check**: a surname particle can be the first given word ("Van Tran" had
+  passed for Jennifer Tran), and the surname of "Joe Manchin, III" was read as "III".
+  Ronald (C.) Russell, ME-1 2024/26 (retired Army colonel), was matched to Ronald B. Russell
+  of the Maine House: `_NOT_SAME`. Stefany Shaheen's hand-code said NH Executive Council from
+  2025 (never on it; Portsmouth council/police commission = 1) - surfaced by the max rule.
+- **Given-name matcher** (`_same_person_given`) is now exact / prefix / diminutive / an explicit
+  nickname table (`_NICK_PAIRS`). The old shared-2-or-3-letters and nickname-initial rules
+  passed Joe/John, Mark/Martin, Joseph/Joshua, Bob/Richard. `office_level_floor` (offices won)
+  used a first-INITIAL check and now uses this matcher: Joe Baldacci (ME-2 2026, state senator)
+  had read 4 from brother John's House wins; also Patrick J. Murphy PA-8 2006 and Mark Murphy
+  NY-11 2012 (4 -> 0), Robin Carnahan MO 2010 (Russ's House seat; 4 -> 3, secretary of state).
+- **Name collisions**: the person-level office fallback and the Wikipedia-person floor now need
+  a matching given name (`_same_person_given` in features.py). Jake Johnson (MN-1) had taken Jeff
+  Johnson's state legislature seat (2). Bob Brooks (PA-7, firefighters' union head) had a
+  different Robert Brooks' Murrysville mayoralty; `_NOT_SAME` in the Wikipedia fetcher.
+- **Live 2026 hand-codes re-checked**: Scott Singer 1 (Boca Raton council/mayor; never FL
+  House), Amanda McKinney 1 (Yakima County; never WA House), Bob Brooks 0, Brian Poindexter 1
+  (Brook Park council), Shortsleeve 0.5 (MBTA), Honeycutt council from 2019, Pat Forbes 0.5,
+  Robert/Bobby Charles 0.75, Ramaswamy 0 (his 2 was running mate McColley's).
+- Wikipedia-person fetch re-run with the fixed infobox parser (see 10-14); new matches reviewed.
+- Retrained: win Brier 0.064, race-acc 0.880 (was 0.881); margin expanding-window MAE 5.45
+  (was ~5.45). Data correctness, not these metrics, was the goal.
+
 ## 2026-10-15 - code/logic review (no retrain needed)
 
 User asked for a hard review of both repos. Fixed:

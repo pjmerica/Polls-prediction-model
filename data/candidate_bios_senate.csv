@@ -175,7 +175,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,DEM,Pam Gulleson,former state representative and former chief of staff and former state director for former senator Byron Dorgan,2012,Senate,ND,gulleson p,2,1,0
 ,DEM,North Dakota Secretary of State,in 2006,2012,Senate,ND,state n,0,0,0
 ,DEM,Joel Heitkamp,"brother of Heidi Heitkamp, radio personality and former state senator",2012,Senate,ND,heitkamp j,2,0,0
-,DEM,Roger Johnson,president of the National Farmers Union and former North Dakota Agriculture Commissioner,2012,Senate,ND,johnson r,0,0,0
+,DEM,Roger Johnson,president of the National Farmers Union and former North Dakota Agriculture Commissioner,2012,Senate,ND,johnson r,3,0,0
 ,DEM,Tim Mathern,state senator and nominee for governor in 2008,2012,Senate,ND,mathern t,2,0,1
 ,DEM,Earl Pomeroy,former U.S. Representative,2012,Senate,ND,pomeroy e,4,1,0
 ,DEM,Tracy Potter,state senator and nominee for the U.S. Senate in 2010,2012,Senate,ND,potter t,2,0,1
@@ -185,14 +185,14 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,DEM,Ryan Taylor,Minority Leader of the North Dakota Senate,2012,Senate,ND,taylor r,2,0,0
 ,REP,Rick Berg,U.S. Representative,2012,Senate,ND,berg r,4,1,0
 ,REP,Al Carlson,North Dakota state house majority leader,2012,Senate,ND,carlson a,2,0,0
-,REP,Tony Clark,state public service commissioner,2012,Senate,ND,clark t,0,0,0
-,REP,Kevin Cramer,state public service commissioner,2012,Senate,ND,cramer k,0,0,0
+,REP,Tony Clark,state public service commissioner,2012,Senate,ND,clark t,3,0,0
+,REP,Kevin Cramer,state public service commissioner,2012,Senate,ND,cramer k,3,0,0
 ,REP,Jack Dalrymple,North Dakota governor and 1992 Republican nominee for U.S. Senate,2012,Senate,ND,dalrymple j,3,0,1
 ,REP,Cory Fong,state tax commissioner,2012,Senate,ND,fong c,0,0,0
 ,REP,John Hoeven,'s state director,2012,Senate,ND,hoeven j,0,0,0
 ,REP,Tony Grindberg,state senator,2012,Senate,ND,grindberg t,2,0,0
 ,REP,Bob Harms,North Dakota Republican Party treasurer,2012,Senate,ND,harms b,0,0,0
-,REP,Brian Kalk,state public service commissioner (running for House),2012,Senate,ND,kalk b,0,0,0
+,REP,Brian Kalk,state public service commissioner (running for House),2012,Senate,ND,kalk b,3,0,0
 ,REP,Kim Koppelman,state representative,2012,Senate,ND,koppelman k,2,1,0
 ,REP,Ed Schafer,former U.S. agriculture secretary and former North Dakota governor,2012,Senate,ND,schafer e,3,0,0
 ,REP,Kelly Schmidt,North Dakota treasurer,2012,Senate,ND,schmidt k,0,0,0
@@ -504,7 +504,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,DEM,Doug Stoner,former state senator,2014,Senate,GA,stoner d,2,0,0
 ,DEM,Mark Taylor,former lieutenant governor of Georgia and nominee for Governor in 2006,2014,Senate,GA,taylor m,3,0,1
 ,DEM,Steve Thompson,state senator,2014,Senate,GA,thompson s,2,0,0
-,DEM,Michael Thurmond,"interim Superintendent of the DeKalb County School District , former Georgia Labor Commissioner and nominee for the U.S. Senate in 2010",2014,Senate,GA,thurmond m,0,0,1
+,DEM,Michael Thurmond,"interim Superintendent of the DeKalb County School District , former Georgia Labor Commissioner and nominee for the U.S. Senate in 2010",2014,Senate,GA,thurmond m,3,0,1
 ,DEM,Kasim Reed,Mayor of Atlanta,2014,Senate,GA,reed k,1,0,0
 ,DEM,Flowery Branch,City Councilwoman,2014,Senate,GA,branch f,1,0,0
 ,DEM,Colleen Hanabusa,U.S. representative,2014,Senate,HI,hanabusa c,4,1,0
@@ -695,7 +695,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,DEM,Ray Mabus,U.S. secretary of the Navy and former governor of Mississippi,2014,Senate,MS,mabus r,3,0,0
 ,DEM,Connie Moran,mayor of Ocean Springs,2014,Senate,MS,moran c,1,0,0
 ,DEM,Ronnie Musgrove,former governor of Mississippi and nominee for the U.S. Senate in 2008,2014,Senate,MS,musgrove r,3,0,1
-,DEM,Brandon Presley,commissioner for the Northern District of the Mississippi Public Service Commission,2014,Senate,MS,presley b,0,0,0
+,DEM,Brandon Presley,commissioner for the Northern District of the Mississippi Public Service Commission,2014,Senate,MS,presley b,3,0,0
 ,DEM,Gene Taylor,former U.S. representative,2014,Senate,MS,taylor g,4,1,0
 ,DEM,Bennie Thompson,U.S. representative,2014,Senate,MS,thompson b,4,1,0
 ,DEM,Dirk Adams,"rancher, businessman and former business law professor",2014,Senate,MT,adams d,0,0,0
@@ -1001,7 +1001,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,DEM,Glen Gainer III,West Virginia state auditor ( running for WV-01 ),2014,Senate,WV,gainer g,3,0,0
 ,DEM,Booth Goodwin,United States attorney for the Southern District of West Virginia,2014,Senate,WV,goodwin b,0.75,0,0
 ,DEM,Carte Goodwin,former U.S. senator,2014,Senate,WV,goodwin c,4,0,0
-,DEM,Walt Helmick,West Virginia agriculture commissioner,2014,Senate,WV,helmick w,0,0,0
+,DEM,Walt Helmick,West Virginia agriculture commissioner,2014,Senate,WV,helmick w,3,0,0
 ,DEM,West Virginia's 2nd congressional district,in 2000 and 2002,2014,Senate,WV,district w,0,0,0
 ,DEM,Jeff Kessler,president of the West Virginia Senate and candidate for governor in 2011,2014,Senate,WV,kessler j,2,0,1
 ,DEM,Corey Palumbo,state senator,2014,Senate,WV,palumbo c,2,0,0
@@ -1328,7 +1328,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,DEM,Larry LaRocco,"former U.S. Representative, nominee for lieutenant governor in 2006 and nominee for U.S. Senate in 2008",2016,Senate,ID,larocco l,4,1,1
 ,DEM,Walt Minnick,former U.S. Representative and nominee for U.S. Senate in 1996,2016,Senate,ID,minnick w,4,1,1
 ,IND,Pro-Life,"(formerly known as Marvin Richardson), organic strawberry farmer, anti-abortion activist and perennial candidate",2016,Senate,ID,prolife,0,0,0
-,IND,Timothy Raty,paralegal and 2004 Libertarian State House candidate,2016,Senate,ID,raty t,2,0,0
+,IND,Timothy Raty,paralegal and 2004 Libertarian State House candidate,2016,Senate,ID,raty t,0,0,0
 ,REP,Mark Kirk,incumbent U.S. senator,2016,Senate,IL,kirk m,4,0,0
 ,REP,Ron Wallace,"investment advisor, conservative activist and economics professor",2016,Senate,IL,wallace r,0,0,0
 ,REP,IL-01,"in 1994 , candidate for Illinois Comptroller in 2010 and candidate for Mayor of Chicago in 2015",2016,Senate,IL,il,0,0,1
@@ -1410,7 +1410,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,REP,Stephen Slaughter,engineer,2016,Senate,KY,slaughter s,0,0,0
 ,REP,Catherine Todd Bailey,businesswoman and former United States Ambassador to Latvia,2016,Senate,KY,bailey c,0.75,0,0
 ,REP,Andy Barr,U.S. Representative,2016,Senate,KY,barr a,4,1,0
-,REP,James Comer,former Kentucky Agriculture Commissioner and candidate for Governor of Kentucky in 2015 (running for KY-01 ),2016,Senate,KY,comer j,0,0,1
+,REP,James Comer,former Kentucky Agriculture Commissioner and candidate for Governor of Kentucky in 2015 (running for KY-01 ),2016,Senate,KY,comer j,3,0,1
 ,REP,Mike Duncan,former chairman of the Republican National Committee,2016,Senate,KY,duncan m,0,0,0
 ,REP,Trey Grayson,"former director of the Institute of Politics at Harvard Kennedy School , former Secretary of State of Kentucky and candidate for the U.S. Senate in 2010",2016,Senate,KY,grayson t,3,0,1
 ,REP,Brett Guthrie,U.S. Representative,2016,Senate,KY,guthrie b,4,1,0
@@ -1435,7 +1435,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,DEM,Ashley Judd,actress and political activist,2016,Senate,KY,judd a,0,0,0
 ,DEM,Crit Luallen,former Lieutenant Governor of Kentucky and former Kentucky Auditor of Public Accounts,2016,Senate,KY,luallen c,3,0,0
 ,DEM,Greg Stumbo,Speaker of the Kentucky House of Representatives and former Attorney General of Kentucky (running for reelection),2016,Senate,KY,stumbo g,3,1,0
-,DEM,David Tandy,President of the Louisville Metro Council,2016,Senate,KY,tandy d,0,0,0
+,DEM,David Tandy,President of the Louisville Metro Council,2016,Senate,KY,tandy d,1,0,0
 ,DEM,Donna Edwards,U.S. Representative,2016,Senate,MD,edwards d,4,1,0
 ,DEM,Charles U. Smith,perennial candidate,2016,Senate,MD,smith c,0,0,0
 ,DEM,Ed Tinus,perennial candidate,2016,Senate,MD,tinus e,0,0,0
@@ -1906,7 +1906,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,DEM,David Baria,Mississippi House of Representatives Minority Leader,2018,Senate,MS,baria d,2,1,0
 ,DEM,Omeria Scott,state representative,2018,Senate,MS,scott o,2,1,0
 ,DEM,Jeramey Anderson,state representative (running for MS-4 ),2018,Senate,MS,anderson j,2,1,0
-,DEM,Brandon Presley,chair of the Mississippi Public Service Commission,2018,Senate,MS,presley b,0,0,0
+,DEM,Brandon Presley,chair of the Mississippi Public Service Commission,2018,Senate,MS,presley b,3,0,0
 ,DEM,Jon Tester,incumbent U.S. senator,2018,Senate,MT,tester j,4,0,0
 ,REP,Matt Rosendale,auditor of Montana and candidate for Congress in 2014,2018,Senate,MT,rosendale m,0,0,1
 ,REP,Ron Murray,businessman and candidate for the state house in 2010,2018,Senate,MT,murray r,0,0,1
@@ -2052,7 +2052,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,DEM,Jeff Yarbro,state senator,2018,Senate,TN,yarbro j,2,0,0
 ,IND,Dean Hill,"US Army veteran, business owner, realtor",2018,Senate,TN,hill d,0,0,0
 ,REP,Ted Cruz,incumbent U.S. senator and former candidate for president in 2016,2018,Senate,TX,cruz t,4,0,1
-,REP,George P. Bush,Texas Land Commissioner and grandson of former President George H. W. Bush ( ran for re-election ),2018,Senate,TX,bush g,0,0,0
+,REP,George P. Bush,Texas Land Commissioner and grandson of former President George H. W. Bush ( ran for re-election ),2018,Senate,TX,bush g,3,0,0
 ,REP,Michael McCaul,U.S. representative from Texas's 10th congressional district ( ran for re-election ),2018,Senate,TX,mccaul m,4,1,0
 ,REP,Dan Patrick,lieutenant governor of Texas ( ran for re-election ),2018,Senate,TX,patrick d,3,0,0
 ,REP,Rick Perry,"Secretary of Energy , former governor of Texas and candidate for president in 2012 and 2016",2018,Senate,TX,perry r,3,0,1
@@ -2175,7 +2175,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,DEM,perennial candidate,(write-in)  (switched to Democratic general election write-in candidacy),2020,Senate,AZ,candidate p,0,0,0
 ,DEM,Ruben Gallego,"incumbent U.S. representative for Arizona's 7th congressional district ( ran for re-election , endorsed Kelly)",2020,Senate,AZ,gallego r,4,1,0
 ,DEM,Katie Hobbs,Secretary of State of Arizona,2020,Senate,AZ,hobbs k,3,0,0
-,DEM,Grant Woods,former Republican Arizona Attorney General and former congressional chief of staff to former U.S. senator John McCain,2020,Senate,AZ,woods g,4,0,0
+,DEM,Grant Woods,former Republican Arizona Attorney General and former congressional chief of staff to former U.S. senator John McCain,2020,Senate,AZ,woods g,3,0,0
 ,REP,Cory Gardner,incumbent U.S. senator,2020,Senate,CO,gardner c,4,0,0
 ,REP,Margot Dupre,estate agent,2020,Senate,CO,dupre m,0,0,0
 ,REP,Gail Prentice,veteran and business owner,2020,Senate,CO,prentice g,0,0,0
@@ -2395,7 +2395,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,REP,Chris McDaniel,incumbent state senator and candidate for U.S. Senate in 2014 and 2018,2020,Senate,MS,mcdaniel c,2,0,1
 ,DEM,Mike Espy,"former United States Secretary of Agriculture , former U.S. representative for Mississippi's 2nd congressional district , and nominee for U.S. Senate in 2018",2020,Senate,MS,espy m,4,1,1
 ,DEM,J. P. Hughes Jr.,state representative and candidate for lieutenant governor of Mississippi in 2019,2020,Senate,MS,hughes j,2,1,1
-,DEM,Brandon Presley,member of the Mississippi Public Service Commission,2020,Senate,MS,presley b,0,0,0
+,DEM,Brandon Presley,member of the Mississippi Public Service Commission,2020,Senate,MS,presley b,3,0,0
 ,REP,Steve Daines,incumbent U.S. senator,2020,Senate,MT,daines s,4,0,0
 ,DEM,Steve Bullock,incumbent governor of Montana and former candidate for president of the United States in 2020,2020,Senate,MT,bullock s,3,0,1
 ,DEM,Montana State University Billings,(endorsed Bullock),2020,Senate,MT,billings m,0,0,0
@@ -2595,7 +2595,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,REP,Patrick Dotson,retiree,2020,Senate,WY,dotson p,0,0,0
 ,REP,Liz Cheney,"incumbent U.S. representative for Wyoming's at-large congressional district , Chair of House Republican Conference , and daughter of the 46th Vice President Dick Cheney ( running for re-election )",2020,Senate,WY,cheney l,4,1,0
 ,REP,Mike Enzi,incumbent U.S. senator  (endorsed Cynthia Lummis),2020,Senate,WY,enzi m,4,0,0
-,REP,Foster Friess,businessman and former governor candidate,2020,Senate,WY,friess f,3,0,0
+,REP,Foster Friess,businessman and former governor candidate,2020,Senate,WY,friess f,0,0,0
 ,REP,Mark Gordon,governor of Wyoming,2020,Senate,WY,gordon m,3,0,0
 ,REP,Robert Grady,policy adviser to former president George H. W. Bush,2020,Senate,WY,grady r,0,0,0
 ,REP,Matt Mead,former governor of Wyoming,2020,Senate,WY,mead m,3,0,0
@@ -3176,7 +3176,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,DEM,Jared Young (Better Party),payroll services executive,2024,Senate,MO,party j,0,0,0
 ,REP,Roger Wicker,incumbent U.S. senator,2024,Senate,MS,wicker r,4,0,0
 ,DEM,secretary of state,in 2023,2024,Senate,MS,state s,0,0,0
-,DEM,Brandon Presley,former Mississippi Public Service commissioner for the Northern District (2008–2024) and nominee for governor in 2023,2024,Senate,MS,presley b,0,0,1
+,DEM,Brandon Presley,former Mississippi Public Service commissioner for the Northern District (2008–2024) and nominee for governor in 2023,2024,Senate,MS,presley b,3,0,1
 ,DEM,Jon Tester,incumbent U.S. senator (2007–2025),2024,Senate,MT,tester j,4,0,0
 ,REP,Tim Sheehy,founder and former CEO of Bridger Aerospace,2024,Senate,MT,sheehy t,0,0,0
 ,REP,Jeremy Mygland,"construction company owner (endorsed Rosendale, ran for state senate)",2024,Senate,MT,mygland j,0,0,0
@@ -4419,7 +4419,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,REP,Lisa Murkowski,"incumbent U.S. Senator since 2002, formerly an Anchorage lawyer and member of the Alaska House",2004,Senate,AK,murkowski l,4,0,0
 ,REP,Wev Shea,former U.S. Attorney for Alaska,2004,Senate,AK,shea w,0.75,0,0
 ,DEM,Tony Knowles,"businessman, former governor and former mayor of Anchorage",2004,Senate,AK,knowles t,3,0,0
-,DEM,Theresa Obermeyer,former Anchorage school board member and 1996 Democratic U.S. Senate nominee,2004,Senate,AK,obermeyer t,4,0,0
+,DEM,Theresa Obermeyer,former Anchorage school board member and 1996 Democratic U.S. Senate nominee,2004,Senate,AK,obermeyer t,1,0,0
 ,DEM,Don Wright,former president of the Alaska Federation of Natives and perennial candidate,2004,Senate,AK,wright d,0,0,0
 ,DEM,ANWR,and veterans issues (Independent),2004,Senate,AK,anwr,0,0,0
 ,DEM,Scott Kohlhaas,party activist and perennial candidate (Libertarian),2004,Senate,AK,kohlhaas s,0,0,0
@@ -4655,7 +4655,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,DEM,Monte E. Johnson,attorney,2004,Senate,OK,johnson m,0,0,0
 ,REP,Tom Coburn,former U.S. Representative,2004,Senate,OK,coburn t,4,1,0
 ,REP,Kirk Humphreys,former Mayor of Oklahoma City,2004,Senate,OK,humphreys k,1,0,0
-,REP,Bob Anthony,Oklahoma Corporation Commissioner,2004,Senate,OK,anthony b,0,0,0
+,REP,Bob Anthony,Oklahoma Corporation Commissioner,2004,Senate,OK,anthony b,3,0,0
 ,REP,Jay Richard Hunt,activist,2004,Senate,OK,hunt j,0,0,0
 ,REP,Sheila Bilyeu (I),perennial candidate,2004,Senate,OK,i s,0,0,0
 ,REP,Brad Carson,"(D), United States Congressman from Oklahoma's 2nd congressional district",2004,Senate,OK,carson b,4,0,0
@@ -5068,7 +5068,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,REP,Paul J. Brown,activist,2006,Senate,WV,brown p,0,0,0
 ,REP,Zane Lawhorn,optician and author,2006,Senate,WV,lawhorn z,0,0,0
 ,REP,Hiram Lewis,member of the West Virginia Army National Guard and a self-employed attorney,2006,Senate,WV,lewis h,0,0,0
-,REP,Bud Railey,land-developer and unsuccessful governor candidate,2006,Senate,WV,railey b,3,0,0
+,REP,Bud Railey,land-developer and unsuccessful governor candidate,2006,Senate,WV,railey b,0,0,0
 ,REP,John Raese,"owner of Greer Industries , West Virginia Newspaper Publishing Company (which publishes The Dominion Post ), and West Virginia Radio Corporation",2006,Senate,WV,raese j,0,0,0
 ,REP,Rick Snuffer,unsuccessful 2004 congressional candidate,2006,Senate,WV,snuffer r,0,0,0
 ,REP,Robert Byrd,"(D), incumbent U.S. senator",2006,Senate,WV,byrd r,4,0,0
@@ -5294,7 +5294,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,REP,Buddy Witherspoon,,2008,Senate,SC,witherspoon b,0,0,0
 ,REP,Joel Dykstra,South Dakota State Representative,2008,Senate,SD,dykstra j,2,1,0
 ,REP,Dennis Daugaard,incumbent Lieutenant Governor since 2003,2008,Senate,SD,daugaard d,3,0,0
-,REP,Dusty Johnson,member of the South Dakota Public Utilities Commission,2008,Senate,SD,johnson d,0,0,0
+,REP,Dusty Johnson,member of the South Dakota Public Utilities Commission,2008,Senate,SD,johnson d,3,0,0
 ,REP,Mike Rounds,incumbent Governor since 2003,2008,Senate,SD,rounds m,3,0,0
 ,REP,Tim Johnson (D),incumbent U.S. Senator,2008,Senate,SD,d t,4,0,0
 ,REP,Sam Kephart,,2008,Senate,SD,kephart s,0,0,0

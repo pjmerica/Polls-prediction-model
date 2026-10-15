@@ -200,6 +200,9 @@ venv/
 # features.load_candidate_bios as a level floor) and the target list that drives the fetch
 !data/candidate_bios_wikiperson.csv
 !data/wikiperson_targets.csv
+# 2026-10-15 hand verification (web search / knowledge) of every training candidate that rested
+# on a "Stage-4 verified level 0" bio row: level, evidence, source per person
+!data/bio_verification_2026-10-15.csv
 
 # FROZEN 2026-cycle dataset (freeze_2026_dataset.py, 2026-07-29): a self-contained record of
 # the cycle - raw polls (append-ready to the training set once results land), the built feature

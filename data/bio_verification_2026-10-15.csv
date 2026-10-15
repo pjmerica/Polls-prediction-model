@@ -1,0 +1,545 @@
+race_id,candidate,level,evidence,basis
+1998_AL_Senate,Clayton Suddith,1.0,former Franklin County Commissioner,Wikipedia 1998 AL Senate election
+1998_AR_House-2,Phil Wyrick,2.0,Arkansas House 1991-95; Arkansas Senate 1997,Wikipedia Phil Wyrick
+1998_AZ_Senate,Edward Ranger,0.0,attorney,Wikipedia 1998 AZ Senate election
+1998_CA_House-24,Randy Hoffman,0.0,businessman,knowledge
+1998_CO_House-2,Bob Greenlee,1.0,former Mayor of Boulder,knowledge
+1998_CT_House-1,Kevin James O'Connor,0.0,attorney (U.S. Attorney only from 2002),Wikipedia Kevin J. O'Connor
+1998_HI_House-1,Gene Ward,2.0,Hawaii House of Representatives,knowledge
+1998_ID_House-1,Dan Williams,0.0,attorney; 1996 nominee,Wikipedia 1998 ID House elections
+1998_IN_House-10,Gary Anthony Hofmeister,0.0,jeweler,web search
+1998_KS_House-4,Jim Lawing,0.0,no office found,web search
+1998_KS_Senate,Paul Feleciano,2.0,Kansas State Senate,knowledge
+1998_MT_House-1,Dusty Deschamps,1.0,Missoula County Attorney (career prosecutor),web search
+1998_NC_House-2,Dan Page,0.0,no office found,web search
+1998_NC_House-4,Thomas H. Roberg,0.0,no office found,web search
+1998_NC_House-8,Mike Taylor,0.0,lawyer; political newcomer,web search
+1998_NE_Governor,Bill Hoppner,0.0,chief of staff to Sen. Kerrey (staff),knowledge
+1998_NH_Governor,Jay Lucas,2.0,former New Hampshire state representative,Wikipedia Jay Lucas
+1998_NH_House-2,Mary Rauh,0.0,party vice chair; Planned Parenthood director,web search
+1998_NH_Senate,George Condodemetraky,0.0,perennial candidate,knowledge
+1998_NV_House-1,Don Chairez,1.0,former state district judge,Las Vegas Sun
+1998_OR_House-1,Molly Bordonaro,0.0,businesswoman,knowledge
+1998_PA_House-10,Patrick R. Casey,0.0,lawyer; no office found,web search
+1998_PA_Senate,Bill Lloyd,2.0,Pennsylvania House of Representatives,knowledge
+1998_UT_House-2,Lily Eskelsen,0.0,teachers union president,knowledge
+1998_WI_House-1,Lydia Carol Spottswood,1.0,Kenosha City Council president,web search
+2000_AL_House-4,Marsha Guthrie Folsom,1.0,Cullman City School Board,web search (CNN/Rothenberg)
+2000_CA_House-20,Rich Rodriguez,0.0,former broadcaster,web search
+2000_CT_Senate,Phil Giordano,1.0,Mayor of Waterbury,knowledge
+2000_DE_Governor,John Burris,2.0,former Delaware House majority leader,knowledge
+2000_IN_House-9,Michael E. Bailey,0.0,no office found,web search
+2000_IN_Senate,David L. Johnson,0.0,no elected office,web search
+2000_KY_House-4,Don Bell,0.0,no office found,web search
+2000_MA_Senate,Jack E. Robinson,0.0,businessman,knowledge
+2000_MD_Senate,Paul H. Rappaport,0.5,former Howard County police chief (appointed),web search
+2000_MO_House-2,Ted House,2.0,Missouri State Senate,knowledge
+2000_ND_Senate,Duane Sand,0.0,Navy officer,knowledge
+2000_OK_House-2,Andy Ewing,0.0,car dealer,web search
+2000_RI_House-1,Stephen Cabral,0.0,no office found,web search
+2000_RI_House-2,Robert G. Tingle,0.0,casino worker,web search
+2000_TN_Senate,Jeff Clark,0.0,no office found,web search
+2000_TX_House-25,Phil Sudan,0.0,no office found,web search
+2000_WA_House-1,Dan McDonald,2.0,Washington State Senate (majority leader),knowledge
+2000_WA_House-8,Heidi Behrens-Benedict,0.0,no office,knowledge
+2000_WI_Senate,John Gillespie,0.0,founder of Rawhide Boys Ranch,web search
+2000_WV_House-2,Jim Humphreys,2.0,former West Virginia state senator,web search
+2002_AZ_House-1,George Cordova,0.0,party outsider; no office found,web search
+2002_FL_House-22,Carol A. Roberts,1.0,Palm Beach County Commissioner,knowledge
+2002_FL_House-24,Harry Jacobs,0.0,no office found,web search
+2002_FL_House-7,Wayne Hogan,0.0,trial lawyer,Jax Daily Record
+2002_FL_House-8,Eddie Diaz,0.0,no office found,web search
+2002_GA_House-11,Roger Kahn,0.0,businessman and farmer,web search
+2002_GA_House-12,Charles Walker,0.0,businessman (father was the state senator),Inside Elections
+2002_GA_House-3,Calder B. Clay,1.0,Bibb County commissioner,web search
+2002_IA_Governor,Doug Gross,0.0,chief of staff to Gov. Branstad (staff),knowledge
+2002_IA_House-3,Stanley J. Thompson,0.0,no office found,web search
+2002_IA_House-4,John Norris,0.0,chief of staff to Gov. Vilsack (staff),knowledge
+2002_IN_House-7,Ambrose A. McVey,0.0,aide to Quayle and Coats (staff),web search
+2002_IN_House-8,Bryan Hartke,0.0,engineer,web search
+2002_KS_House-3,Adam Taff,0.0,Navy veteran,knowledge
+2002_KS_House-4,Carlos J. Nolla,0.0,no office found,web search
+2002_LA_House-5,Lee Fletcher,0.0,congressional chief of staff (staff),web search
+2002_ME_House-2,Kevin L. Raye,0.0,chief of staff to Sen. Snowe (state senate only from 2004),knowledge
+2002_MI_House-11,Kevin Kelley,0.0,no office found,web search
+2002_MT_House-1,Steve Kelly,0.0,artist and environmentalist,web search
+2002_NC_House-13,Carolyn W. Grant,0.0,no office found,web search
+2002_NC_House-8,Chris Kouri,0.0,attorney,web search
+2002_NH_House-2,Katrina Swett,0.0,no office,knowledge
+2002_NJ_House-5,Anne Ricks Sumers,0.0,no office,knowledge
+2002_NM_House-2,John Arthur Smith,2.0,New Mexico State Senate (1989-2021),Wikipedia John Arthur Smith
+2002_NV_House-1,Lynette Maria Boggs-McDonald,1.0,Las Vegas City Council,knowledge
+2002_OH_House-17,Ann Womer Benjamin,2.0,Ohio House of Representatives,knowledge
+2002_OK_House-1,Doug Dodd,1.0,former Tulsa School Board member,Wikipedia 2002 OK-1 special
+2002_OK_House-2,H. Kent Pharaoh,0.0,no office found,web search
+2002_OK_House-4,Darryl Roberts,2.0,former Oklahoma State Senator,Wikipedia Oklahoma's 4th district
+2002_PA_House-6,Dan Wofford,0.0,no office,knowledge
+2002_RI_House-1,David W. Rogers,0.0,political newcomer,web search
+2002_RI_Senate,Robert G. Tingle,0.0,casino worker,web search
+2002_TX_House-11,Ramsey Farley,0.0,no office found,web search
+2002_TX_House-25,Thomas Reiser,0.0,no office found,web search
+2002_TX_House-5,Ron Chapman,1.0,judge (elected Texas bench),web search
+2002_WA_House-2,Norma Smith,1.0,South Whidbey School Board (1991-95),Wikipedia Norma Smith
+2002_WV_House-2,Jim Humphreys,2.0,former West Virginia state senator,web search
+2004_AR_House-2,Marvin Parks,2.0,Arkansas House of Representatives (1998-2004),web search
+2004_AZ_House-1,Paul Babbitt,1.0,Coconino County Board of Supervisors,knowledge (patched)
+2004_CO_House-3,Greg Walcher,0.5,Executive Director Colorado Dept of Natural Resources (appointed),knowledge (patched)
+2004_CO_House-7,David J. Thomas,1.0,Jefferson County District Attorney,knowledge
+2004_CT_House-2,Jim Sullivan,1.0,Norwich City Council (two terms),web search
+2004_DE_Governor,William S. Lee,0.5,Delaware Superior Court judge (appointed),Wikipedia Bill Lee (Delaware)
+2004_DE_House-1,Paul Donnelly,0.0,no office found,web search
+2004_FL_House-13,Jan Schneider,0.0,attorney,knowledge
+2004_GA_House-3,Calder B. Clay,1.0,Bibb County commissioner,web search
+2004_IL_House-11,Tari Renner,1.0,McLean County Board,web search
+2004_IN_Senate,Marvin Bailey Scott,0.0,professor,knowledge
+2004_KS_House-4,Michael Kinard,0.0,no office found,web search
+2004_KY_House-3,Tony Miller,1.0,Jefferson Circuit Court Clerk (elected),knowledge
+2004_ME_House-2,Brian N. Hamel,0.0,president of Loring Development Authority,web search
+2004_MN_House-6,Patty Wetterling,0.0,advocate,knowledge
+2004_MO_House-5,Jeanne Patterson,0.0,businesswoman,knowledge
+2004_MT_House-1,Tracy Velazquez,0.0,no office,knowledge
+2004_NC_House-11,Patricia R. Keever,1.0,Buncombe County Commissioner,knowledge (patched)
+2004_ND_Governor,Joseph A Satrom,2.0,North Dakota State Senate (1982-1992),Wikipedia Joe Satrom
+2004_ND_House-1,Duane Sand,0.0,Navy officer,knowledge
+2004_NE_House-3,Donna J. Anderson,0.0,cosmetologist,web search
+2004_NH_House-1,Justin Nadeau,0.0,attorney,knowledge
+2004_NM_House-3,Gregory M. Tucker,1.0,San Juan County District Attorney,web search (patched)
+2004_NY_House-27,Nancy A. Naples,1.0,Erie County Comptroller,knowledge
+2004_OK_House-1,Doug Dodd,1.0,former Tulsa School Board member,Wikipedia
+2004_PA_House-15,Joe Driscoll,0.0,no office found,web search
+2004_PA_House-17,Scott G. Paterno,0.0,attorney,knowledge
+2004_TX_House-17,Arlene Reid Wohlgemuth,2.0,Texas House of Representatives,knowledge
+2004_UT_Governor,"Scott M. Matheson, Jr.",0.75,U.S. Attorney for Utah (1993-97),knowledge
+2004_WA_House-5,Donald K. Barbieri,0.0,businessman,knowledge
+2004_WA_House-8,Dave Ross,0.0,radio host,knowledge
+2004_WI_Senate,Tim Michels,0.0,businessman,knowledge
+2006_AK_House-1,Diane Benson,0.0,writer/activist,knowledge
+2006_CA_House-26,Cynthia Rodriguez Matthews,0.0,no office found,web search
+2006_CA_House-4,Charles Duane Brown,0.0,retired Air Force officer,knowledge
+2006_CA_House-50,Francine P. Busby,1.0,Cardiff School District board,knowledge
+2006_CO_House-5,Jay Fawcett,0.0,retired Air Force officer,knowledge
+2006_FL_House-13,Christine L. Jennings,0.0,banker,knowledge
+2006_FL_House-24,Clint Curtis,0.0,programmer,knowledge
+2006_FL_House-5,John T. Russell,0.0,health care worker,web search
+2006_FL_House-8,Charlie Stuart,0.0,businessman,knowledge
+2006_IA_House-1,Mike Whalen,0.0,businessman,knowledge
+2006_IA_House-4,Selden E. Spencer,0.0,physician,knowledge
+2006_ID_House-1,Larry Grant,0.0,business executive,knowledge
+2006_IL_House-10,Daniel J. Seals,0.0,business consultant,knowledge
+2006_IL_House-14,Jonathan Laesch,0.0,no office,knowledge
+2006_IL_House-19,Danny L. Stover,1.0,Vandalia city councilman (1983-; 2003-06),NBC Chicago
+2006_IN_House-7,Eric Dickerson,0.0,auto dealer,web search
+2006_KS_House-4,Garth McGinn,0.0,no office found,web search
+2006_ME_House-1,Darlene J. Curley,2.0,Maine House of Representatives,knowledge
+2006_ME_House-2,Laurence Scott D'Amboise,1.0,former Lisbon selectman,web search
+2006_ME_Senate,Jean M. Hay Bright,0.0,farmer/writer,knowledge
+2006_MI_House-7,Sharon Marie Renier,0.0,farmer,knowledge
+2006_MN_House-5,Alan Fine,0.0,businessman,knowledge
+2006_MN_House-6,Patty Wetterling,0.0,advocate,knowledge
+2006_NM_House-2,Albert D. Kissling,0.0,no office,knowledge
+2006_NM_House-3,Ronald M. Dolin,0.0,scientist,knowledge
+2006_NM_Senate,Allen W. McCulloch MD,0.0,physician,knowledge
+2006_NV_House-3,Tessa M. Hafen,0.0,press secretary to Sen. Reid (staff),knowledge
+2006_NY_House-24,Raymond A. Meier,2.0,New York State Senate,knowledge
+2006_NY_House-26,Jack Davis,0.0,businessman,knowledge
+2006_NY_House-3,David L. Mejias,1.0,Nassau County Legislator,knowledge
+2006_OH_House-13,L. Craig Foltin,1.0,Mayor of Lorain,knowledge
+2006_OH_House-2,Victoria Wells Wulsin,0.0,physician,knowledge
+2006_PA_House-12,Diana Irey Vaughan,1.0,Washington County Commissioner,knowledge
+2006_PA_House-6,Lois Murphy,0.0,attorney,knowledge
+2006_SD_House-1,Bruce W. Whalen,0.0,no office,knowledge
+2006_UT_House-1,Steve Olsen,0.0,engineer,web search
+2006_UT_House-2,LaVar Christensen,2.0,Utah House of Representatives,knowledge
+2006_UT_House-3,Christian Burridge,0.0,no office,knowledge
+2006_UT_Senate,Pete Ashdown,0.0,businessman,knowledge
+2006_VA_House-5,Albert C. Weed,0.0,no office,knowledge
+2006_WA_House-2,Douglas R. Roulstone,0.0,Navy officer,knowledge
+2006_WA_House-8,Darcy Burner,0.0,no office,knowledge
+2006_WA_Senate,Mike McGavick,0.0,insurance executive (former Senate staff),knowledge
+2006_WV_Senate,John Raese,0.0,businessman,knowledge
+2008_AL_House-5,Wayne Parker,0.0,businessman,knowledge
+2008_AZ_House-3,Bob Lord,0.0,attorney,knowledge
+2008_CA_House-4,Charles Duane Brown,0.0,retired Air Force officer,knowledge
+2008_CA_House-50,Nicholas Leibham,0.0,former deputy district attorney (staff),knowledge
+2008_CT_House-2,Sean P. Sullivan,0.0,Navy officer,knowledge
+2008_DE_Governor,William S. Lee,0.5,retired Delaware Superior Court judge (appointed),Wikipedia
+2008_DE_House-1,Karen M. Hartley-Nagle,0.0,no office,knowledge
+2008_DE_Senate,Christine O'Donnell,0.0,commentator,knowledge
+2008_FL_House-10,Bob Hackworth,1.0,Mayor of Dunedin,knowledge
+2008_FL_House-13,Christine L. Jennings,0.0,banker,knowledge
+2008_FL_House-21,Raul L. Martinez,1.0,Mayor of Hialeah,knowledge
+2008_FL_House-9,Bill Mitchell,0.0,lawyer,Tampa Bay Times
+2008_GA_House-8,Richard N. Goddard,0.0,retired Air Force officer,knowledge
+2008_IA_House-4,Becky Greenwald,0.0,no office,knowledge
+2008_ID_House-2,Deborah Holmes,0.0,real estate agent/chemist,Wikipedia Debbie Holmes
+2008_IL_House-10,Daniel J. Seals,0.0,business consultant,knowledge
+2008_IL_House-11,Marty Ozinga,0.0,businessman,knowledge
+2008_IN_House-3,Michael A. Montagano,0.0,attorney,knowledge
+2008_KY_House-4,Michael Kelley,0.0,physician,knowledge
+2008_MA_Senate,Jeffrey K. Beatty,0.0,security consultant,knowledge
+2008_ME_House-2,John N. Frary,0.0,professor,knowledge
+2008_MI_Senate,Jacob W. Hoogendyk Jr.,2.0,Michigan House of Representatives (2003-2008),Wikipedia Jack Hoogendyk (patched)
+2008_MN_House-3,Ashwin Madia,0.0,attorney,knowledge
+2008_ND_House-1,Duane Sand,0.0,Navy officer,knowledge
+2008_NE_House-2,James D. Esch,0.0,no office,knowledge
+2008_NH_House-2,Jennifer M. Horn,0.0,radio host,knowledge
+2008_NJ_House-2,David Kurkowski,1.0,Cape May City Council (from 2006),Stockton/Gloucester County Times
+2008_NM_House-1,Darren White,1.0,Bernalillo County Sheriff,knowledge
+2008_NM_House-2,Edward R. Tinsley,0.0,businessman,knowledge
+2008_NM_House-3,Daniel K. East,0.0,no elected office,Santa Fe Reporter
+2008_NY_House-25,Dale A. Sweetland,1.0,Onondaga County Legislature chairman,Wikipedia Dale Sweetland
+2008_NY_House-26,Alice Kryzan,0.0,attorney,knowledge
+2008_OH_House-16,Kirk J. Schuring,2.0,Ohio State Senate,knowledge
+2008_OH_House-2,Victoria Wells Wulsin,0.0,physician,knowledge
+2008_OH_House-7,Sharen Swartz Neuhardt,0.0,attorney,knowledge
+2008_OR_House-5,Mike Erickson,0.0,businessman,knowledge
+2008_PA_House-12,William Russell,0.0,retired Army officer,knowledge
+2008_RI_Senate,Robert G. Tingle,0.0,casino worker,web search
+2008_SC_House-1,Linda Ketner,0.0,businesswoman,knowledge
+2008_TN_Senate,Robert D. Tuke,0.0,attorney; former party chair,knowledge
+2008_TX_House-7,Michael Peter Skelly,0.0,businessman,knowledge
+2008_UT_House-1,Morgan E. Bowen,0.0,consultant/seminary teacher,KUER
+2008_UT_House-2,Bill Dew,0.0,home builder,KSL
+2008_UT_House-3,Bennion L. Spencer,0.0,journalist/professor,Wikipedia Bennion Spencer
+2008_WA_House-4,George B. Fearing,0.0,attorney,knowledge
+2008_WA_House-8,Darcy Burner,0.0,no office,knowledge
+2008_WY_Senate-S,Nicholas H. Carter,0.0,attorney,knowledge
+2010_AR_House-3,David Whitaker,0.0,assistant Fayetteville city attorney (staff); state House only from 2013,Talk Business
+2010_AR_House-4,Beth Anne Rankin,0.0,no office found / private sector,knowledge or web search
+2010_AZ_House-7,Ruth McClung,0.0,no office found / private sector,knowledge or web search
+2010_AZ_House-8,Jesse Kelly,0.0,no office found / private sector,knowledge or web search
+2010_AZ_Senate,Rodney Britz Glassman,1.0,Tucson City Council,knowledge
+2010_CA_House-11,David Harmer,0.0,no office found / private sector,knowledge or web search
+2010_CA_House-15,Scott Kirkland,0.0,no office found / private sector,knowledge or web search
+2010_CA_House-18,Michael C. Berryhill,1.0,"Turlock Irrigation District director (elected, 26 years)",Turlock Journal
+2010_CA_House-19,Loraine Goodwin,0.0,no office found / private sector,knowledge or web search
+2010_CA_House-20,Andy Vidak,0.0,no office found / private sector,knowledge or web search
+2010_CA_House-44,William E. Hedrick,0.0,no office found / private sector,knowledge or web search
+2010_CO_House-7,Ryan Frazier,1.0,Aurora City Council,knowledge
+2010_CT_House-1,Ann Brickley,0.0,no office found / private sector,knowledge or web search
+2010_CT_House-2,Janet Peckinpaugh,0.0,no office found / private sector,knowledge or web search
+2010_DE_Senate-S,Christine O'Donnell,0.0,no office found / private sector,knowledge or web search
+2010_FL_House-3,Michael F. Yost,0.0,no office found / private sector,knowledge or web search
+2010_GA_House-7,Douglass S. Heckman,0.0,no office found / private sector,knowledge or web search
+2010_HI_House-2,John W. Willoughby,0.0,no office found / private sector,knowledge or web search
+2010_ID_House-2,Mike Crawford,0.0,no office found / private sector,knowledge or web search
+2010_IL_House-10,Daniel J. Seals,0.0,no office found / private sector,knowledge or web search
+2010_IL_House-9,Joel B. Pollak,0.0,no office found / private sector,knowledge or web search
+2010_IN_House-3,Thomas E. Hayhurst,1.0,Fort Wayne City Council,knowledge
+2010_IN_House-7,Marvin Bailey Scott,0.0,no office found / private sector,knowledge or web search
+2010_KS_House-1,Alan E. Jilka,1.0,Mayor of Salina,Ballotpedia
+2010_KS_Senate,Lisa Johnston,0.0,no office found / private sector,knowledge or web search
+2010_KY_House-3,Todd Lally,0.0,no office found / private sector,knowledge or web search
+2010_MA_House-4,Sean Bielat,0.0,no office found / private sector,knowledge or web search
+2010_MA_House-6,Bill Hudak,0.0,no office found / private sector,knowledge or web search
+2010_MD_Senate,Eric Wargotz,1.0,Queen Anne's County Commissioner,knowledge
+2010_ME_House-1,C. Peter Scontras,0.0,no office found / private sector,knowledge or web search
+2010_ME_House-2,Jason J. Levesque,0.0,no office found / private sector,knowledge or web search
+2010_MI_House-15,Rob Steele,0.0,no office found / private sector,knowledge or web search
+2010_MI_House-3,Patrick A. Miles,0.0,no office found / private sector,knowledge or web search
+2010_MO_House-5,Jacob Turk,0.0,no office found / private sector,knowledge or web search
+2010_MO_House-7,Scott Eckersley,0.0,no office found / private sector,knowledge or web search
+2010_MS_House-2,William Marcy,0.0,no office found / private sector,knowledge or web search
+2010_NC_House-11,Jeff Miller,0.0,no office found / private sector,knowledge or web search
+2010_NC_House-7,Ilario Gregory Pantano,0.0,no office found / private sector,knowledge or web search
+2010_NC_House-8,Harold Johnson,0.0,no office found / private sector,knowledge or web search
+2010_NE_Governor,Mike Meister,0.0,no office found / private sector,knowledge or web search
+2010_NE_House-2,Tom White,2.0,Nebraska Legislature,knowledge
+2010_NJ_House-1,Dale Mark Glading,0.0,no office found / private sector,knowledge or web search
+2010_NJ_House-2,Gary S. Stein,0.5,retired New Jersey Supreme Court justice (appointed),knowledge
+2010_NJ_House-6,Anna C. Little,1.0,Mayor of Highlands,Ballotpedia
+2010_NM_House-1,Jonathan L. Barela,0.0,no office found / private sector,knowledge or web search
+2010_NM_House-3,Thomas E. Mullins,0.0,no office found / private sector,knowledge or web search
+2010_NY_Governor,Carl P. Paladino,0.0,no office found / private sector,knowledge or web search
+2010_NY_House-1,Randolph Altschuler,0.0,no office found / private sector,knowledge or web search
+2010_NY_House-22,George K. Phillips,0.0,no office found / private sector,knowledge or web search
+2010_NY_House-23,Matthew A. Doheny,0.0,no office found / private sector,knowledge or web search
+2010_NY_House-29,Matthew Zeller,0.0,no office found / private sector,knowledge or web search
+2010_NY_House-4,Francis X. Becker,1.0,Nassau County Legislator,knowledge
+2010_OH_House-13,Tom Ganley,0.0,no office found / private sector,knowledge or web search
+2010_OR_House-1,Robert Y. Cornilles,0.0,no office found / private sector,knowledge or web search
+2010_PA_House-13,Carson Dee Adcock,0.0,no office found / private sector,knowledge or web search
+2010_RI_House-2,Mark S. Zaccaria,1.0,North Kingstown Town Council (two terms),web search
+2010_SC_House-2,Rob Miller,0.0,no office found / private sector,knowledge or web search
+2010_TN_House-3,John Wolfe,0.0,no office found / private sector,knowledge or web search
+2010_TN_House-8,Roy Brasfield Herron,2.0,Tennessee State Senate,knowledge
+2010_UT_House-1,Morgan E. Bowen,0.0,no office found / private sector,knowledge or web search
+2010_UT_House-3,Karen E. Hyer,0.0,no office found / private sector,knowledge or web search
+2010_VT_Senate,Leonard Wheeler Britton,0.0,no office found / private sector,knowledge or web search
+2010_WA_House-6,Doug R. Cloud,0.0,no office found / private sector,knowledge or web search
+2010_WV_House-3,Elliott E. Maynard,3.0,"Justice, WV Supreme Court of Appeals (1997-2008)",knowledge (patched)
+2010_WV_Senate-S,John Raese,0.0,no office found / private sector,knowledge or web search
+2010_WY_Governor,Leslie Petersen,0.0,no office found / private sector,knowledge or web search
+2012_AR_House-1,Scott Ellington,1.0,"Prosecuting Attorney, 2nd Judicial District of Arkansas",knowledge (patched)
+2012_AR_House-4,Harmon Jeffress,2.0,Arkansas Senate 2003-13; Arkansas House before,Wikipedia Gene Jeffress
+2012_AZ_House-9,Vernon B. Parker,1.0,Mayor of Paradise Valley,knowledge
+2012_CA_House-10,Jose Hernandez,0.0,no office found / private sector,knowledge or web search
+2012_CA_House-21,John S. Hernandez,0.0,no office found / private sector,knowledge or web search
+2012_CA_House-9,Ricky Gill,0.0,no office found / private sector,knowledge or web search
+2012_CA_Senate,Elizabeth Emken,0.0,no office found / private sector,knowledge or web search
+2012_FL_House-23,Karen Harrington,0.0,no office found / private sector,knowledge or web search
+2012_FL_House-9,William Todd Long,0.0,no office found / private sector,knowledge or web search
+2012_IA_House-1,Benjamin M. Lange,0.0,no office found / private sector,knowledge or web search
+2012_IL_House-13,David M. Gill,0.0,no office found / private sector,knowledge or web search
+2012_IL_House-2,Brian Woodworth,0.0,no office found / private sector,knowledge or web search
+2012_MI_House-11,Syed Taj,1.0,Canton Township Board of Trustees,knowledge
+2012_MI_House-6,Mike O'Brien,0.0,no office found / private sector,knowledge or web search
+2012_MI_House-9,Don Volaric,0.0,no office found / private sector,knowledge or web search
+2012_NE_House-3,Roger Mark Sullivan,0.0,no office found / private sector,knowledge or web search
+2012_NM_House-2,Evelyn Madrid Erhard,0.0,no office found / private sector,knowledge or web search
+2012_NY_House-1,Randolph Altschuler,0.0,no office found / private sector,knowledge or web search
+2012_NY_House-20,Bob Dieterich,0.0,no office found / private sector,knowledge or web search
+2012_NY_House-21,Matthew A. Doheny,0.0,no office found / private sector,knowledge or web search
+2012_OK_House-2,Rob Wallace,1.0,"District Attorney, LeFlore and Latimer counties (elected)",Public Radio Tulsa / Roll Call
+2012_PA_House-4,Harry Perkinson,0.0,no office found / private sector,knowledge or web search
+2012_SD_House-1,Matt Varilek,0.0,Senate staff; SBA appointments only from 2013,Ballotpedia
+2012_TN_Senate,Mark E. Clayton,0.0,no office found / private sector,knowledge or web search
+2012_UT_House-1,Donna M. McAleer,0.0,no office found / private sector,knowledge or web search
+2012_UT_House-2,F. Jay Seegmiller,2.0,Utah House of Representatives,knowledge
+2012_WI_House-1,Rob T. Zerban,1.0,Kenosha County Board,knowledge
+2014_AK_House-1,Forrest Dunbar,0.0,no office found / private sector,knowledge or web search
+2014_AR_House-1,Jackie McPherson,1.0,Mayor of Heber Springs,Talk Business
+2014_CA_House-10,Michael Eggman,0.0,no office found / private sector,knowledge or web search
+2014_CA_House-31,Paul Chabot,0.5,California Parole Board commissioner (appointed 2006),Wikipedia Paul Chabot
+2014_CT_House-5,Mark Greenberg,0.0,no office found / private sector,knowledge or web search
+2014_DE_House-1,Rose Izzo,0.0,no office found / private sector,knowledge or web search
+2014_DE_Senate,Kevin Wade,0.0,no office found / private sector,knowledge or web search
+2014_GA_House-10,I. Kenneth Dious,0.0,no office found / private sector,knowledge or web search
+2014_IA_House-4,Jim Mowrer,0.0,no office found / private sector,knowledge or web search
+2014_ID_Governor,AJ Balukoff,1.0,Boise School Board,knowledge
+2014_KS_House-2,Margie Wakefield,0.0,no office found / private sector,knowledge or web search
+2014_MA_Senate,Brian J. Herr,1.0,Hopkinton Board of Selectmen,knowledge
+2014_ME_House-1,Isaac J. Misiuk,0.0,no office found / private sector,knowledge or web search
+2014_MT_House-1,John Lewis,0.0,no office found / private sector,knowledge or web search
+2014_NE_Governor,Chuck Hassebrook,1.0,University of Nebraska Board of Regents (elected),knowledge
+2014_NV_Governor,Robert E. Goodman,0.5,Nevada director of economic development 1972-78 (appointed),Las Vegas Sun / Wikipedia
+2014_PA_House-3,Dan Lavallee,0.0,no office found / private sector,knowledge or web search
+2014_RI_Senate,Mark S. Zaccaria,1.0,North Kingstown Town Council (two terms),web search
+2014_TN_Governor,Charles V. Brown,0.0,no office found / private sector,knowledge or web search
+2014_TN_Senate,William Gordon Ball,0.0,no office found / private sector,knowledge or web search
+2014_TX_Senate,David M. Alameel,0.0,no office found / private sector,knowledge or web search
+2014_UT_House-1,Donna M. McAleer,0.0,no office found / private sector,knowledge or web search
+2016_AK_House-1,Steve Lindbeck,0.0,no office found / private sector,knowledge or web search
+2016_CA_House-10,Michael Eggman,0.0,no office found / private sector,knowledge or web search
+2016_CA_House-24,Justin Donald Fareed,0.0,no office found / private sector,knowledge or web search
+2016_CA_House-31,Paul Chabot,0.5,California Parole Board commissioner (appointed),Wikipedia
+2016_CA_House-49,Doug Applegate,0.0,no office found / private sector,knowledge or web search
+2016_CO_Senate,Darryl Glenn,1.0,El Paso County Commissioner; Colorado Springs City Council,knowledge
+2016_DE_House-1,Hans Reigle,1.0,"Mayor of Wyoming, Delaware (2005-07)",Ballotpedia / Delaware Public Media
+2016_FL_House-10,Thuy Lowe,0.0,no office found / private sector,knowledge or web search
+2016_FL_House-18,Randy Perkins,0.0,no office found / private sector,knowledge or web search
+2016_GA_House-11,Don E. Wilson,0.0,no office found / private sector,knowledge or web search
+2016_GA_House-12,Patricia Carpenter McCracken,0.0,no office found / private sector,knowledge or web search
+2016_GA_House-3,Angela Pendley,0.0,no office found / private sector,knowledge or web search
+2016_GA_House-8,James Neal Harris,0.0,no office found / private sector,knowledge or web search
+2016_IA_House-3,Jim Mowrer,0.0,no office found / private sector,knowledge or web search
+2016_ID_House-1,James Piotrowski,0.0,no office found / private sector,knowledge or web search
+2016_ID_House-2,Jennifer Martinez,0.0,no office found / private sector,knowledge or web search
+2016_KS_Senate,Patrick Wiesner,0.0,no office found / private sector,knowledge or web search
+2016_ND_Governor,Marvin E. Nelson,2.0,North Dakota House of Representatives,knowledge
+2016_NJ_House-2,David H. Cole,0.0,no office found / private sector,knowledge or web search
+2016_NM_House-1,Richard Priem,0.0,no office found / private sector,knowledge or web search
+2016_NM_House-2,Merrie Lee Soules,0.0,no office found / private sector,knowledge or web search
+2016_NY_House-1,Anna Throne-Holst,1.0,Southampton Town Supervisor,knowledge
+2016_NY_House-24,Colleen Deacon,0.0,no office found / private sector,knowledge or web search
+2016_OK_Senate,Mike Workman,0.0,no office found / private sector,knowledge or web search
+2016_OR_Governor-S,William C. Pierce,0.0,no office found / private sector,knowledge or web search
+2016_OR_Senate,Mark Callahan,0.0,no office found / private sector,knowledge or web search
+2016_SC_House-5,Francis Person,0.0,no office found / private sector,knowledge or web search
+2016_SD_Senate,Jay H. Williams,1.0,Yankton school board,SDPB
+2016_UT_Governor,Mike Weinholtz,0.0,no office found / private sector,knowledge or web search
+2016_VA_House-10,LuAnn L. Bennett,0.0,no office found / private sector,knowledge or web search
+2016_VA_House-5,Jane DeSimone Dittmar,1.0,Albemarle County Board of Supervisors (chair),knowledge (patched)
+2016_WI_House-1,Ryan A. Solen,0.0,no office found / private sector,knowledge or web search
+2018_AK_House-1,Alyse S. Galvin,0.0,no office found / private sector,knowledge or web search
+2018_AR_Governor,Jared K. Henderson,0.0,no office found / private sector,knowledge or web search
+2018_AR_House-1,Chintan Desai,0.0,no office found / private sector,knowledge or web search
+2018_CA_Governor,John Cox,0.0,no office found / private sector,knowledge or web search
+2018_CA_House-22,Andrew Janz,0.0,no office found / private sector,knowledge or web search
+2018_CA_House-24,Justin Donald Fareed,0.0,no office found / private sector,knowledge or web search
+2018_CA_House-50,Ammar Campa-Najjar,0.0,no office found / private sector,knowledge or web search
+2018_CA_House-7,Andrew Grant,0.0,no office found / private sector,knowledge or web search
+2018_CT_Governor,Robert Stefanowski,0.0,no office found / private sector,knowledge or web search
+2018_CT_Senate,Matthew M. Corey,0.0,no office found / private sector,knowledge or web search
+2018_DE_House-1,Scott Walker,0.0,no office found / private sector,knowledge or web search
+2018_DE_Senate,Rob Arlett,1.0,Sussex County Council,knowledge
+2018_FL_House-9,Wayne Liebnitzky,0.0,no office found / private sector,knowledge or web search
+2018_IA_House-2,Christopher Peters,0.0,no office found / private sector,knowledge or web search
+2018_ID_House-1,Cristina McNeil,0.0,no office found / private sector,knowledge or web search
+2018_ID_House-2,Aaron Swisher,0.0,no office found / private sector,knowledge or web search
+2018_IL_House-13,Betsy Dirksen Londrigan,0.0,no office found / private sector,knowledge or web search
+2018_KS_House-1,Alan LaPolice,0.0,no office found / private sector,knowledge or web search
+2018_KS_House-4,James A. Thompson,0.0,no office found / private sector,knowledge or web search
+2018_MD_Senate,Tony Campbell,0.0,no office found / private sector,knowledge or web search
+2018_ME_Governor,Shawn H. Moody,0.0,no office found / private sector,knowledge or web search
+2018_MN_House-7,Dave Hughes,0.0,no office found / private sector,knowledge or web search
+2018_MS_House-1,Randy Wadkins,0.0,no office found / private sector,knowledge or web search
+2018_MS_House-3,Mary Brannon,2.0,actually Michael Evans: Mississippi House of Representatives (from 2012); 538 mislabels the name,Wikipedia Michael Evans (patched)
+2018_NE_House-1,Jessica McClure,0.0,no office found / private sector,knowledge or web search
+2018_NE_House-2,Kara Eastman,1.0,Metropolitan Community College Board of Governors (elected),knowledge
+2018_NH_House-1,Eddie Edwards,0.5,South Hampton police chief; NH liquor enforcement chief (appointed),NHPR
+2018_NJ_House-2,Seth Grossman,1.0,Atlantic County freeholder; Atlantic City Council,Ballotpedia (patched)
+2018_NJ_House-5,John McCann,1.0,former Cresskill councilman,New Jersey Globe
+2018_NY_House-23,Tracy Mitrano,0.0,no office found / private sector,knowledge or web search
+2018_NY_House-24,Dana Balter,0.0,no office found / private sector,knowledge or web search
+2018_NY_House-27,Nate McMurray,1.0,Grand Island Town Supervisor,knowledge (patched)
+2018_NY_Senate,Chele Farley,0.0,no office found / private sector,knowledge or web search
+2018_OH_House-2,Jill Schiller,0.0,no office found / private sector,knowledge or web search
+2018_OH_House-4,Janet Garrett,0.0,no office found / private sector,knowledge or web search
+2018_OK_House-1,Tim Gilpin,0.5,Oklahoma State Board of Education (appointed),web search
+2018_OK_House-2,Jason Nichols,1.0,Mayor of Tahlequah,knowledge
+2018_OR_House-5,Mark Callahan,0.0,no office found / private sector,knowledge or web search
+2018_PA_House-1,Scott Wallace,0.0,no office found / private sector,knowledge or web search
+2018_PA_House-13,Brent Ottaway,0.0,no office found / private sector,knowledge or web search
+2018_PA_House-16,Ronald A. DiNicola,0.0,no office found / private sector,knowledge or web search
+2018_RI_Senate,Bob Flanders,0.5,Rhode Island Supreme Court justice (appointed),knowledge
+2018_TX_House-17,Rick Kennedy,0.0,no office found / private sector,knowledge or web search
+2018_VA_House-5,Leslie Cockburn,0.0,no office found / private sector,knowledge or web search
+2018_VA_House-9,Anthony Flaccavento,0.0,no office found / private sector,knowledge or web search
+2018_VT_House-1,Anya Tynio,0.0,no office found / private sector,knowledge or web search
+2018_WA_House-3,Carolyn Long,0.0,no office found / private sector,knowledge or web search
+2018_WI_House-6,Dan Kohl,0.0,no office found / private sector,knowledge or web search
+2018_WV_House-1,Kendra Fershee,0.0,no office found / private sector,knowledge or web search
+2018_WV_House-2,Talley Sergent,0.0,no office found / private sector,knowledge or web search
+2020_AK_House-1,Alyse S. Galvin,0.0,no office found / private sector,knowledge
+2020_CA_House-22,Phil Arballo,0.0,no office found / private sector,knowledge
+2020_CA_House-49,Brian Maryott,1.0,Mayor of San Juan Capistrano,knowledge
+2020_CA_House-50,Ammar Campa-Najjar,0.0,no office found / private sector,knowledge
+2020_DE_House-1,Lee Murphy,0.0,no office found / private sector,knowledge
+2020_FL_House-18,Pamela Michele Keith,0.0,no office found / private sector,knowledge
+2020_GA_Senate-S,A. Wayne Johnson,0.75,COO of Federal Student Aid (federal appointee),knowledge
+2020_IL_House-13,Betsy Dirksen Londrigan,0.0,no office found / private sector,knowledge
+2020_IL_House-17,Esther Joy King,0.0,no office found / private sector,knowledge
+2020_IL_House-3,Mike Fricilone,1.0,Will County Board,knowledge
+2020_KS_House-4,Laura Lombard,0.0,no office found / private sector,knowledge
+2020_MI_House-2,Bryan Berghoef,0.0,no office found / private sector,knowledge
+2020_NC_House-9,Cynthia Lee Wallace,0.0,no office found / private sector,knowledge
+2020_ND_Governor,Shelley Lenz,0.0,no office found / private sector,knowledge
+2020_NE_House-2,Kara Eastman,1.0,Metropolitan Community College Board of Governors (elected),knowledge
+2020_NE_Senate,Chris E. Janicek,0.0,no office found / private sector,knowledge
+2020_NH_Senate,Bryant Messner,0.0,no office found / private sector,knowledge
+2020_NJ_House-3,David Richter,0.0,no office found / private sector,knowledge
+2020_NM_House-1,Michelle Garcia Holmes,0.0,no office found / private sector,knowledge
+2020_NM_House-3,Alexis Martinez Johnson,0.0,no office found / private sector,knowledge
+2020_NM_Senate,Mark V. Ronchetti,0.0,no office found / private sector,knowledge
+2020_NY_House-18,Chele Farley,0.0,no office found / private sector,knowledge
+2020_NY_House-23,Tracy Mitrano,0.0,no office found / private sector,knowledge
+2020_NY_House-24,Dana Balter,0.0,no office found / private sector,knowledge
+2020_OK_Senate,Abby Broyles,0.0,no office found / private sector,knowledge
+2020_PA_House-1,Christina M. Finello,1.0,Ivyland Borough Council,knowledge
+2020_PA_House-17,Richard Sean Parnell,0.0,no office found / private sector,knowledge
+2020_PA_House-7,Lisa Scheller,1.0,Lehigh County Commissioner,knowledge
+2020_PA_House-8,Jim Bognet,0.0,no office found / private sector,knowledge
+2020_TN_Senate,Marquita Bradshaw,0.0,no office found / private sector,knowledge
+2020_TX_House-17,Rick Kennedy,0.0,no office found / private sector,knowledge
+2020_TX_House-22,Sri Kulkarni,0.0,no office found / private sector,knowledge
+2020_TX_House-25,Julie Oliver,0.0,no office found / private sector,knowledge
+2020_TX_House-3,Helane Seikaly,0.0,no office found / private sector,knowledge
+2020_UT_House-1,Darren Parry,0.0,no office found / private sector,knowledge
+2020_UT_House-2,Kael Weston,0.0,no office found / private sector,knowledge
+2020_VA_House-5,Bryant Cameron Webb,0.0,no office found / private sector,knowledge
+2020_WA_House-10,Beth Doglio,2.0,Washington House of Representatives,knowledge
+2020_WA_House-3,Carolyn Long,0.0,no office found / private sector,knowledge
+2020_WI_House-1,Roger Polack,0.0,no office found / private sector,knowledge
+2020_WV_Governor,Ben Salango,1.0,Kanawha County Commissioner,knowledge
+2020_WY_House-1,Lynnette GreyBull,0.0,no office found / private sector,knowledge
+2022_AK_Senate,Kelly C. Tshibaka,0.5,"Commissioner, Alaska Department of Administration (appointed)",knowledge
+2022_AZ_House-4,Kelly Cooper,0.0,no office found / private sector,knowledge
+2022_CA_House-21,Michael Maher,0.0,no office found / private sector,knowledge
+2022_CA_House-26,Matt Jacobs,0.0,no office found / private sector,knowledge
+2022_CA_House-40,Asif Mahmood,0.5,Medical Board of California (appointed 2019),web search
+2022_CA_House-41,Will Rollins,0.0,no office found / private sector,knowledge
+2022_CA_House-49,Brian Maryott,1.0,Mayor of San Juan Capistrano,knowledge
+2022_CA_Senate-S,Mark P. Meuser,0.0,no office found / private sector,knowledge
+2022_CT_Governor,Robert Stefanowski,0.0,no office found / private sector,knowledge
+2022_CT_House-4,Jayme Stevenson,1.0,First Selectwoman of Darien,knowledge
+2022_DE_House-1,Lee Murphy,0.0,no office found / private sector,knowledge
+2022_FL_House-4,"LaShonda ""L.J."" Holloway",0.0,no office found / private sector,knowledge
+2022_IA_Governor,Deidre DeJear,0.0,no office found / private sector,knowledge
+2022_IL_House-17,Esther Joy King,0.0,no office found / private sector,knowledge
+2022_MD_House-2,Nicolee Ambrose,0.0,no office found / private sector,knowledge
+2022_ME_House-1,Edwin Thelander,0.0,no office found / private sector,knowledge
+2022_MI_House-10,Carl J. Marlinga,1.0,Macomb County Prosecutor; judge,knowledge
+2022_MI_House-8,Paul Junge,0.0,no office found / private sector,knowledge
+2022_MO_Senate,Trudy Busch Valentine,0.0,no office found / private sector,knowledge
+2022_MT_House-2,Penny Ronning,1.0,Billings City Council,knowledge
+2022_NC_House-1,Sandy Smith,0.0,no office found / private sector,knowledge
+2022_NC_House-11,Jasmine Beach-Ferrara,1.0,Buncombe County Commissioner,knowledge
+2022_NH_House-2,Robert Burns,1.0,Hillsborough County Treasurer,knowledge
+2022_NH_Senate,Donald C. Bolduc,0.0,no office found / private sector,knowledge
+2022_NJ_House-1,Claire Gustafson,1.0,former Collingswood school board member,PhillyVoice
+2022_NJ_House-3,Bob Healey,0.0,no office found / private sector,knowledge
+2022_NM_Governor,Mark V. Ronchetti,0.0,no office found / private sector,knowledge
+2022_NM_House-1,Michelle Garcia Holmes,0.0,no office found / private sector,knowledge
+2022_NM_House-3,Alexis Martinez Johnson,0.0,no office found / private sector,knowledge
+2022_NV_House-1,Mark Robertson,0.0,no office found / private sector,knowledge
+2022_NV_House-3,April Becker,0.0,no office found / private sector,knowledge
+2022_NV_House-4,Sam Peters,0.0,no office found / private sector,knowledge
+2022_NY_House-2,Jackie Gordon,1.0,Babylon Town Council,knowledge
+2022_NY_House-22,Francis Conole,0.0,no office found / private sector,knowledge
+2022_NY_House-25,La'Ron D. Singletary,0.5,Rochester police chief (appointed),knowledge
+2022_NY_House-3,Robert P. Zimmerman,0.0,no office found / private sector,knowledge
+2022_OH_House-9,J.R. Majewski,0.0,no office found / private sector,knowledge
+2022_OR_House-6,Mike Erickson,0.0,no office found / private sector,knowledge
+2022_PA_House-1,Ashley Ehasz,0.0,no office found / private sector,knowledge
+2022_PA_House-10,Shamaine Daniels,1.0,Harrisburg City Council,knowledge
+2022_PA_House-7,Lisa Scheller,1.0,Lehigh County Commissioner,knowledge
+2022_PA_House-8,Jim Bognet,0.0,no office found / private sector,knowledge
+2022_RI_Governor,Ashley Kalus,0.0,no office found / private sector,knowledge
+2022_SD_Senate,Brian L. Bengs,0.0,no office found / private sector,knowledge
+2022_TN_Governor,Jason Brantley Martin,0.0,no office found / private sector,knowledge
+2022_TX_House-15,Michelle Vallejo,0.0,no office found / private sector,knowledge
+2022_UT_House-1,Rick Edwin Jones,0.0,no office found / private sector,knowledge
+2022_UT_House-3,Glenn J. Wright,1.0,Summit County Council,KPCW (patched)
+2022_UT_House-4,Darlene McDonald,0.0,no office found / private sector,knowledge
+2022_VA_House-7,Yesli I. Vega,1.0,Prince William County Board of Supervisors,knowledge
+2022_VT_Governor,Brenda Siegel,0.0,no office found / private sector,knowledge
+2022_WA_House-3,Joe Kent,0.0,no office found / private sector,knowledge
+2022_WA_House-8,Matt Larkin,0.0,no office found / private sector,knowledge
+2022_WI_Governor,Tim Michels,0.0,no office found / private sector,knowledge
+2022_WY_House-1,Lynnette GreyBull,0.0,no office found / private sector,knowledge
+2024_CA_House-12,Jennifer Tran,0.0,no office found / private sector,knowledge
+2024_CA_House-41,Will Rollins,0.0,no office found / private sector,knowledge
+2024_CA_House-48,Stephen Houlahan,1.0,Santee City Council (2016-20),East County Magazine
+2024_CA_House-49,Matt Gunderson,0.0,no office found / private sector,knowledge
+2024_CA_House-50,Peter J. Bono,0.0,no office found / private sector,knowledge
+2024_CA_House-51,Bill Wells,1.0,Mayor of El Cajon,knowledge
+2024_CA_House-52,Justin Lee,0.0,no office found / private sector,knowledge
+2024_CA_Senate-S,Steve Garvey,0.0,no office found / private sector,knowledge
+2024_CO_House-4,Trisha Calvarese,0.0,no office found / private sector,knowledge
+2024_CT_Senate,Matthew M. Corey,0.0,no office found / private sector,knowledge
+2024_FL_House-13,Whitney Fox,0.0,no office found / private sector,knowledge
+2024_FL_House-15,"Patricia ""Pat"" Kemp",1.0,Hillsborough County Commissioner,knowledge
+2024_FL_House-28,Phil Ehr,0.0,no office found / private sector,knowledge
+2024_FL_House-4,"LaShonda ""L.J."" Holloway",0.0,no office found / private sector,knowledge
+2024_GA_House-2,A. Wayne Johnson,0.75,COO of Federal Student Aid (federal appointee),knowledge
+2024_IA_House-3,Lanon Baccam,0.0,USDA deputy chief of staff (staff),Axios / Iowa Capital Dispatch
+2024_IL_House-11,Jerry Evans,0.0,no office found / private sector,knowledge
+2024_IN_Senate,Valerie McCray,0.0,no office found / private sector,knowledge
+2024_ME_Senate,David Allen Costello,0.5,"deputy secretary, Maryland Department of the Environment (appointed)",WABI
+2024_ME_Senate,Demi Kouzounas,0.0,no office found / private sector,knowledge
+2024_MI_House-10,Carl J. Marlinga,1.0,Macomb County Prosecutor; judge,knowledge
+2024_MI_House-8,Paul Junge,0.0,no office found / private sector,knowledge
+2024_MO_Senate,Lucas Kunce,0.0,no office found / private sector,knowledge
+2024_MS_Senate,Ty Pinkins,0.0,no office found / private sector,knowledge
+2024_ND_Senate,Katrina Christiansen,0.0,no office found / private sector,knowledge
+2024_NE_Senate-S,Preston Love Jr.,0.0,no office found / private sector,knowledge
+2024_NJ_House-7,Sue Altman,0.0,no office found / private sector,knowledge
+2024_NJ_Senate,Curtis Bashaw,0.0,no office found / private sector,knowledge
+2024_NM_House-1,Steve Jones,0.0,no office found / private sector,knowledge
+2024_NM_Senate,Nella Louise Domenici,0.0,no office found / private sector,knowledge
+2024_NV_House-1,Mark Robertson,0.0,no office found / private sector,knowledge
+2024_NV_Senate,Sam Brown,0.0,no office found / private sector,knowledge
+2024_NY_Senate,Michael D. Sapraicone,0.0,no office found / private sector,knowledge
+2024_OR_House-6,Mike Erickson,0.0,no office found / private sector,knowledge
+2024_PA_House-1,Ashley Ehasz,0.0,no office found / private sector,knowledge
+2024_RI_House-1,Allen R. Waters,0.0,no office found / private sector,knowledge
+2024_TX_House-15,Michelle Vallejo,0.0,no office found / private sector,knowledge
+2024_UT_House-1,Bill Campbell,0.0,no office found / private sector,knowledge
+2024_UT_House-2,Nathaniel Woodward,0.0,no office found / private sector,knowledge
+2024_UT_House-3,Glenn J. Wright,1.0,Summit County Council,KPCW (patched)
+2024_VA_House-2,Missy Cotter Smasal,0.0,no office found / private sector,knowledge
+2024_WA_House-3,Joe Kent,0.0,no office found / private sector,knowledge
+2024_WA_Senate,Raul Garcia,0.0,no office found / private sector,knowledge
+2024_WI_Senate,Eric D. Hovde,0.0,no office found / private sector,knowledge
+2024_WV_Senate,Glenn Elliott,1.0,Mayor of Wheeling,knowledge
