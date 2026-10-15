@@ -4,6 +4,35 @@ For the next agent. Read AGENTS.md first (architecture + rules), CONCERNS.md sec
 (risk register + roadmap). This file: what's mid-flight RIGHT NOW, what's most likely to
 break, and what to do next, in order.
 
+## 2026-10-15 - code/logic review (no retrain needed)
+
+User asked for a hard review of both repos. Fixed:
+- **predict_margin.py** never passed `primary_results`, so the margin model's primary_margin /
+  opp_primary_margin / primary_margin_diff were all-NaN at serve time (trained with real values).
+- **Surname particles** ("de", "la", "van", ...) counted as given names in
+  `_first_names_compatible`, so Carlos De La Cruz (TX-35) matched Monica De La Cruz: sitting-member
+  incumbency + level 4. Added to `_NAME_NOISE`; no training row changed, TX-35 R 56% -> 54%.
+- **NV-2 name split** "Lynn Champan (IA)" / "Lynn Chapman" -> data/name_aliases.csv; the
+  near-duplicate warning now compares names without a "(party)" suffix (it had missed this pair).
+- **poll_adj** subtracted the full D-R house effect from each side (2x the bias). Halved. Not a
+  model feature, so no prediction changed.
+- polling-agg: Dashboard data.js was rebuilt only by the daily refresh, lagging every model
+  refresh by up to a day; both refresh workflows now rebuild it.
+
+Checked and sound: no outcome leakage in folds (house effects are vs other polls; bias priors use
+cycles < Y), natl_env / approval inputs, live feature NaN rates, SC-Sen Darline Graham (appointed
+after Lindsey Graham's death, data/appointed_incumbents.csv).
+
+Flagged, not changed (design calls):
+- prior_margin counts a missing party as 0%, so a seat where one party sat out reads as a
+  landslide (NV-2 2024: R+55 although the real gap to the independent was 21). Same rule in
+  training, so consistent - a "vs best opponent" variant would need a retrain + ablation.
+- Margin model spends ~12% of its gain on 144 unsigned macro columns (cycle-level constants, 14
+  cycles). Ablation: removing them hurts 2018-22 and helps 2024; mean 5.38 vs 5.50 - kept.
+- Model-vs-Markets renormalises leading D vs leading R while the market side includes an
+  independent quote when one exists; third-party mass is <= 5% except CA-6 (handled), so <= ~3 pts.
+- KY-6's 67% D vs ~33% market rests on 8 polls, all Democratic-sponsored.
+
 ## 2026-10-14 (later) - appointed posts rank BELOW every elected office (win + margin retrained)
 
 **User call:** "White House press secretary should not outrank governor. Non-elected roles should be

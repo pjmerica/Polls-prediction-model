@@ -22,6 +22,7 @@ duplicates (audited 2026-07-05: ~1.3k internal, ~2.7k cross). Collapsed here on
 """
 import argparse
 import json
+import re
 import os
 
 import numpy as np
@@ -395,7 +396,10 @@ def warn_near_duplicate_names(d, threshold=0.88):
                 # trains the reader to ignore this check.
                 if F.norm_name(a) == F.norm_name(b):
                     continue
-                if difflib.SequenceMatcher(None, a.lower(), b.lower()).ratio() >= threshold:
+                # compare WITHOUT a trailing "(party)" suffix (2026-10-15): "Lynn Champan (IA)"
+                # vs "Lynn Chapman" scored under the threshold only because of the "(IA)"
+                bare = lambda s: re.sub(r"\s*\([^)]*\)\s*$", "", s).lower()
+                if difflib.SequenceMatcher(None, bare(a), bare(b)).ratio() >= threshold:
                     seen.append((rid, a, b))
     if seen:
         print(f"NEAR-DUPLICATE NAMES ({len(seen)}) - likely one candidate split by a feed "

@@ -75,9 +75,13 @@ def main():
     # bio_office_level shipped 2026-07-29: load bios at serve time or the feature is all-NaN for
     # live races (train/serve skew); the artifact now expects it (assert below would fire).
     bios = F.load_candidate_bios()
+    # primary_results too (2026-10-14): margin_model.ipynb trains WITH it, and this script
+    # left it out, so primary_margin / opp_primary_margin / primary_margin_diff were all-NaN
+    # at serve time - the train/serve skew predict.py and explain_2026.py already guard against
+    primres = F.load_primary_results()
     cand = patch_redistricted_priors(
         F.build_candidate_table(d, macro, ne, funds, house=house, fec=fec, bias_priors=bias,
-                                candidate_bios=bios))
+                                candidate_bios=bios, primary_results=primres))
 
     missing = [f for f in meta["features"] if f not in cand.columns]
     assert not missing, f"artifact expects features absent from the built table: {missing[:8]}"
@@ -92,7 +96,7 @@ def main():
         ds["pct"] = ds["pct"] + sgn * dem_shift / 2
         cs = patch_redistricted_priors(
             F.build_candidate_table(ds, macro, ne, funds, house=house, fec=fec, bias_priors=bias,
-                                    candidate_bios=bios))
+                                    candidate_bios=bios, primary_results=primres))
         cs["p"] = model.predict(cs.reindex(columns=meta["features"]))
         mm = cs.set_index(["race_id", "cand_key"])["p"]
         cand[f"pred_margin_{label}"] = [mm.get((r, c)) for r, c in

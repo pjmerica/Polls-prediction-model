@@ -810,7 +810,13 @@ _NICK_INITIAL = {"bob": "r", "bobby": "r", "rob": "r", "robbie": "r", "beto": "r
                  "tony": "a", "dick": "r", "rick": "r", "becky": "r", "ginny": "v", "gene": "e",
                  "ted": "e", "chuck": "c", "jack": "j", "hank": "h", "ned": "e", "sandy": "a",
                  "patty": "p", "tricia": "p", "chip": "c", "ron": "r", "dan": "d", "don": "d"}
-_NAME_NOISE = {"jr", "sr", "ii", "iii", "iv", "mr", "mrs", "ms", "dr", "sen", "rep", "md"}
+_NAME_NOISE = {"jr", "sr", "ii", "iii", "iv", "mr", "mrs", "ms", "dr", "sen", "rep", "md",
+               # SURNAME PARTICLES are not given names (2026-10-15): "Carlos De La Cruz" and
+               # "Monica De La Cruz" shared the initials d / l, so the given-name check called
+               # them compatible and Carlos (TX-35 2026) inherited her House incumbency and
+               # elected-federal experience level
+               "de", "la", "le", "del", "della", "di", "da", "van", "von", "der", "den", "du",
+               "st", "ten", "ter", "dos", "das", "y"}
 
 
 def _first_names_compatible(poll_name, fec_tokens, surname):
@@ -1129,7 +1135,10 @@ def candidate_poll_adj(d, house):
     without rebuilding the whole candidate table."""
     dd = d[["race_id", "cand_key", "party_std", "pct", "pollster"]].copy()
     dd["sign"] = dd["party_std"].map({"DEM": 1, "REP": -1}).fillna(0)
-    dd["adj"] = dd["pct"] - dd["sign"] * dd["pollster"].map(norm_pollster).map(house).fillna(0.0)
+    # the house effect is a bias on the D-R MARGIN, so each side's share moves by HALF of it
+    # (2026-10-15; the full value moved the margin by 2x the measured bias - poll_adj is not
+    # a model feature, so no shipped prediction was affected)
+    dd["adj"] = dd["pct"] - dd["sign"] * dd["pollster"].map(norm_pollster).map(house).fillna(0.0) / 2
     return dd.groupby(["race_id", "cand_key"])["adj"].mean()
 
 # ---------------------------------------------------------------- main builder
@@ -1334,7 +1343,8 @@ def build_candidate_table(d, macro, natl_env_map, funds, house_train_years=None,
             per_p = gc.groupby(gc["pollster"].map(norm_pollster))["pct"].mean()
             pollster_sd = per_p.std() if len(per_p) >= 2 else np.nan
 
-            adj = gc["pct"] - gc["pollster"].map(lambda p: sign * house.get(norm_pollster(p), 0.0))
+            # half the margin house effect per side - see candidate_poll_adj (2026-10-15)
+            adj = gc["pct"] - gc["pollster"].map(lambda p: sign * house.get(norm_pollster(p), 0.0) / 2)
             md = dyn.get(ck, {})
 
             pr = (primary_results.get((yr, st, of, di, party, ck))
