@@ -4,6 +4,21 @@ For the next agent. Read AGENTS.md first (architecture + rules), CONCERNS.md sec
 (risk register + roadmap). This file: what's mid-flight RIGHT NOW, what's most likely to
 break, and what to do next, in order.
 
+## 2026-10-19 - Q3 2026 money (live only; no retrain)
+
+`fetch_fec_asof.py` re-run after the Oct 15 Q3 deadline: 2026 rows now mostly as of Sep 30
+(2,302 of 3,293), 52 more candidates, live DEM/REP nominees without money 64 -> 60.
+Earlier cycles byte-identical. Fixes found on the way:
+- **Data loss**: `main()` dropped every to-do cycle's rows before re-fetching and checkpointed
+  after 1998 (no cycle-to-date data, 0 rows), so one failed 2026 fetch wiped all 2026 rows on
+  disk. Rows are now replaced only after their cycle returns rows.
+- **Primary-loss reset**: after losing a primary a committee's cycle-to-date restarts (Massie
+  $8.85M on Q2 -> $118K on Q3). Live mode keeps Q2 when Q3 is under half of it (54
+  committees), or the off-year year-end when even Q2 is post-primary (March primaries).
+- **Blank cycle-to-date**: a Q3 whose ytd is below its own quarter (Constantino NY-21: $5.0M
+  period, $0 ytd) is rebuilt as Q2 ytd + Q3 period (23 reports; Constantino $17.06M).
+- Known, left alone: Larry Kidd (OH-2 R) Q3 claims $1.72M ytd on a $500 quarter (FEC filing).
+
 ## 2026-10-15 (later) - training-data verification by cycle + hand web checks (win + margin retrained)
 
 User asked for every cycle's training data to be spot-checked against the web, then for hand

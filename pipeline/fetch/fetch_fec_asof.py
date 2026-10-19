@@ -151,7 +151,32 @@ def fetch_cycle(cycle, key, live):
         # Q2 (through Jun 30). Choosing one report type for the whole cycle left every
         # not-yet-filed campaign with only last year's money.
         on = reports(key, cycle, ["Q2", "M7"], cycle)
-        on.update(reports(key, cycle, ["Q3", "M10"], cycle))
+        q3 = reports(key, cycle, ["Q3", "M10"], cycle)
+        # a campaign that LOST its primary starts a new cycle-to-date afterwards, so its Q3
+        # "_ytd" is post-primary only (2026-10-19: Massie $8.85M on Q2 -> $118K on Q3,
+        # Constantino $12.1M -> $0). Keep Q2 when Q3's total is under half of it.
+        # A cycle-to-date BELOW the report's own quarter is impossible - the ytd column was left
+        # blank (Constantino NY-21 Q3: $5.0M this period, $0 ytd). Rebuild it as Q2 ytd + Q3
+        # period; cash on hand stays Q3's.
+        n_reset = n_blank = 0
+        for cid, rep in q3.items():
+            r2 = ytd_values(on[cid])["receipts"] if cid in on else 0.0
+            per = float(rep.get("total_receipts_period") or 0.0)
+            if cid in on and ytd_values(rep)["receipts"] + 1 < per:
+                fixed = dict(rep)
+                for k, f in YTD.items():
+                    if f.endswith("_ytd"):
+                        fixed[f] = float(on[cid].get(f) or 0.0) + \
+                            float(rep.get(f.replace("_ytd", "_period")) or 0.0)
+                on[cid] = fixed
+                n_blank += 1
+                continue
+            if r2 > 0 and ytd_values(rep)["receipts"] < 0.5 * r2:
+                n_reset += 1
+                continue
+            on[cid] = rep
+        print(f"  {cycle}: {n_reset} committees kept Q2 (cycle-to-date reset after a primary), "
+              f"{n_blank} Q3 reports with a blank cycle-to-date rebuilt from Q2 + Q3 period")
         stage = "latest of Q2/Q3"
     else:
         on = reports(key, cycle, ["Q3", "M10"], cycle)
@@ -170,9 +195,14 @@ def fetch_cycle(cycle, key, live):
         # fallback for a committee that has no election-year report - never added to it
         # (the first build summed both and double-counted the off year).
         part = on.get(cid) or off.get(cid)
+        # same primary-loss reset when even the Q2 is post-primary (March primaries, e.g.
+        # Illinois): fall back to the off-year year-end if it is more than twice as large
+        if live and on.get(cid) and off.get(cid) and \
+                ytd_values(on[cid])["receipts"] < 0.5 * ytd_values(off[cid])["receipts"]:
+            part = off[cid]
         for k, v in ytd_values(part).items():
             acc[k] += v
-        end = str((on.get(cid) or off.get(cid) or {}).get("coverage_end_date", ""))[:10]
+        end = str((part or {}).get("coverage_end_date", ""))[:10]
         acc["asof"] = max(acc.get("asof", ""), end)
     # INTER-COMMITTEE TRANSFERS (2026-10-09). total_receipts / total_disbursements include money
     # moved between a candidate's authorized committees, so summing two of them counts a transfer
@@ -309,9 +339,16 @@ def main():
     old = pd.read_csv(OUT) if os.path.exists(OUT) else pd.DataFrame()
     have = set(old["cycle"].unique()) if len(old) else set()
     todo = [c for c in CYCLES if args.all or c not in have or c == CYCLES[-1]]
-    kept = old[~old["cycle"].isin(todo)] if len(old) else pd.DataFrame()
+    # a cycle's old rows are replaced only once its re-fetch has returned rows (2026-10-19: the
+    # old loop dropped every todo cycle up front and checkpointed after 1998 - which has no
+    # cycle-to-date data and returns 0 rows - so a failed 2026 fetch left NO 2026 rows on disk)
+    kept = old.copy() if len(old) else pd.DataFrame()
     for cyc in todo:
         rows = fetch_cycle(cyc, key, live=(cyc == CYCLES[-1]))
+        if not rows:
+            continue
+        if len(kept):
+            kept = kept[kept["cycle"] != cyc]
         kept = pd.concat([kept, pd.DataFrame(rows)], ignore_index=True)
         kept.to_csv(OUT, index=False)                      # checkpoint every cycle
     kept["self_fund"] = kept["cand_contrib"] + kept["cand_loans"]
