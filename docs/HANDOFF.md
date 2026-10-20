@@ -18,6 +18,8 @@ Earlier cycles byte-identical. Fixes found on the way:
 - **Blank cycle-to-date**: a Q3 whose ytd is below its own quarter (Constantino NY-21: $5.0M
   period, $0 ytd) is rebuilt as Q2 ytd + Q3 period (23 reports; Constantino $17.06M).
 - Known, left alone: Larry Kidd (OH-2 R) Q3 claims $1.72M ytd on a $500 quarter (FEC filing).
+- 2026-10-20: win + margin retrained on request (training data unchanged since 10-15): win Brier
+  0.064, race-acc 0.883; margin expanding-window MAE 5.47 - run-to-run variation only.
 
 ## 2026-10-15 (later) - training-data verification by cycle + hand web checks (win + margin retrained)
 
