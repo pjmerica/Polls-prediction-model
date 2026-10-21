@@ -259,6 +259,15 @@ def load_agg_polls(paths, cycle):
     # race's newest poll, and a defeated candidate is never stale by that measure.
     d = drop_stale_candidates(F.prepare_polls(d))
 
+    # a race needs two NAMED candidates (2026-10-20). Placeholder answers ("Generic Democrat")
+    # are removed in prepare_polls, so a race polled only against a placeholder kept one
+    # candidate and published 100% (NJ-2: Van Drew vs "Generic Democrat", May 2025 only).
+    n_named = d.groupby("race_id")["cand_key"].transform("nunique")
+    lone = sorted(d.loc[n_named < 2, "race_id"].unique())
+    if lone:
+        print(f"single-candidate races dropped (no named opponent polled): {len(lone)} {lone}")
+    d = d[n_named >= 2]
+
     # schema sanity: a silent upstream change (pct scale, stage labels, race_id format)
     # must crash here, loudly, instead of producing confident garbage downstream
     bad_pct = ~d["pct"].between(0, 100)

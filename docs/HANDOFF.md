@@ -4,6 +4,18 @@ For the next agent. Read AGENTS.md first (architecture + rules), CONCERNS.md sec
 (risk register + roadmap). This file: what's mid-flight RIGHT NOW, what's most likely to
 break, and what to do next, in order.
 
+## 2026-10-20 - live forecast audit
+
+- `predict.py` (shared by predict_margin): a race needs two NAMED candidates after placeholder
+  answers are removed. NJ-2's only poll was Van Drew vs "Generic Democrat" (May 2025), so it
+  published Van Drew 100% against a 20% Dem market. Now dropped with a log line.
+- Checked and left: NV-Gov (model Lombardo 79% vs market Ford 58%) - recent nonpartisan polls are
+  within 2, the Lombardo +7..+12 polls are mostly R-sponsored; LA-6 (jungle first round, one
+  poll, every candidate's margin negative); KY-6 (8 polls, all D-sponsored, known).
+- polling-agg same day: WA top-two field polls were tagged general by the Wikipedia scraper
+  (WA-3 Gravis Braun 33 / Perez 24 / Hennrich 14 counted as a general poll); same-party top-two
+  races no longer show the party market as a candidate price on the forecast page.
+
 ## 2026-10-19 - Q3 2026 money (live only; no retrain)
 
 `fetch_fec_asof.py` re-run after the Oct 15 Q3 deadline: 2026 rows now mostly as of Sep 30
