@@ -410,6 +410,16 @@ def warn_near_duplicate_names(d, threshold=0.88):
                 bare = lambda s: re.sub(r"\s*\([^)]*\)\s*$", "", s).lower()
                 if difflib.SequenceMatcher(None, bare(a), bare(b)).ratio() >= threshold:
                     seen.append((rid, a, b))
+                    continue
+                # nickname + misspelt surname (2026-10-20): "Didi Okapareke" vs "Ndidiamaka
+                # Okpareke" (NM-1) scored 0.6 on the full name. Same party + near-identical
+                # surname in one race is the same person far more often than not.
+                pa = set(g.loc[g["candidate"].astype(str) == a, "party_std"]) if "party_std" in g else set()
+                pb = set(g.loc[g["candidate"].astype(str) == b, "party_std"]) if "party_std" in g else set()
+                sa, sb = bare(a).split()[-1:], bare(b).split()[-1:]
+                if pa & pb and sa and sb and sa != sb and \
+                        difflib.SequenceMatcher(None, sa[0], sb[0]).ratio() >= 0.85:
+                    seen.append((rid, a, b))
     if seen:
         print(f"NEAR-DUPLICATE NAMES ({len(seen)}) - likely one candidate split by a feed "
               f"typo. Add to data/name_aliases.csv if they are the same person:")

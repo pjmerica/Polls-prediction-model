@@ -9,6 +9,12 @@ break, and what to do next, in order.
 - `predict.py` (shared by predict_margin): a race needs two NAMED candidates after placeholder
   answers are removed. NJ-2's only poll was Van Drew vs "Generic Democrat" (May 2025), so it
   published Van Drew 100% against a 20% Dem market. Now dropped with a log line.
+- Live major-party candidates with no experience level: 7 -> 0. Hand-coded (web-verified)
+  Carlos De La Cruz TX-35 0 (first run; Monica's brother - the 10-15 particle fix had rightly
+  removed her level), Okpareke NM-1 0, Zamora NM-3 2 (state rep since 2019), Keenan RI-1 0,
+  Mellor RI-2 0, Mazzei OK-Gov 2 (state senate 2004-16). NM-1 was SPLIT: "Didi Okapareke" vs
+  "Ndidiamaka Okpareke" (alias added); `warn_near_duplicate_names` now also flags same-party
+  candidates in one race with near-identical surnames (the full names scored 0.6).
 - Checked and left: NV-Gov (model Lombardo 79% vs market Ford 58%) - recent nonpartisan polls are
   within 2, the Lombardo +7..+12 polls are mostly R-sponsored; LA-6 (jungle first round, one
   poll, every candidate's margin negative); KY-6 (8 polls, all D-sponsored, known).
