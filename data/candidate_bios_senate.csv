@@ -3128,7 +3128,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,DEM,Pete Buttigieg,"U.S. Secretary of Transportation (2021–2025), former mayor of South Bend, Indiana (2012–2020), and candidate for President of the United States in 2020",2024,Senate,MI,buttigieg p,1,0,1
 ,DEM,Debbie Dingell,U.S. representative for Michigan's 6th congressional district (2015–present)  ( ran for re-election ),2024,Senate,MI,dingell d,4,1,0
 ,DEM,Mike Duggan,mayor of Detroit (2014–2026),2024,Senate,MI,duggan m,1,0,0
-,DEM,Abdul El-Sayed,Wayne County Health Director and candidate for governor of Michigan in 2018  (endorsed Harper),2024,Senate,MI,elsayed a,1,0,1
+,DEM,Abdul El-Sayed,Wayne County Health Director and candidate for governor of Michigan in 2018  (endorsed Harper),2024,Senate,MI,elsayed a,0.5,0,1
 ,DEM,Garlin Gilchrist,lieutenant governor of Michigan (2019–present),2024,Senate,MI,gilchrist g,3,1,0
 ,DEM,Dan Kildee,U.S. representative for Michigan's 8th congressional district (2013–2025)  (endorsed Slotkin),2024,Senate,MI,kildee d,4,1,0
 ,DEM,Andy Levin,former U.S. representative for Michigan's 9th congressional district (2019–2023),2024,Senate,MI,levin a,4,1,0
@@ -3486,7 +3486,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,DEM,Heather Cox Richardson,historian,2026,Senate,ME,richardson h,0,0,0
 ,IND,Tim Rich,former restaurant owner,2026,Senate,ME,rich t,0,0,0
 ,IND,Maine Space Corporation,Board of Directors (2023–2025),2026,Senate,ME,corporation m,0,0,0
-,DEM,Abdul El-Sayed,former Wayne County health director (2023–2025) and candidate for governor in 2018,2026,Senate,MI,elsayed a,1,0,1
+,DEM,Abdul El-Sayed,former Wayne County health director (2023–2025) and candidate for governor in 2018,2026,Senate,MI,elsayed a,0.5,0,1
 ,DEM,Haley Stevens,U.S. representative from Michigan's 11th congressional district (2019–present),2026,Senate,MI,stevens h,4,1,0
 ,DEM,Rachel Howard,research health specialist,2026,Senate,MI,howard r,0,0,0
 ,DEM,Mallory McMorrow,state senator from the 8th district (2019–present) (remained on ballot),2026,Senate,MI,mcmorrow m,2,1,0

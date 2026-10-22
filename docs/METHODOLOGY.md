@@ -26,6 +26,17 @@ paths (the live feed's resolution — instrument harmonization, 2026-07-06). Pol
 normalized (`features.norm_pollster`) before house-effect lookup so 2026-feed names match the
 538-era history (row match 63% → 67%).
 
+**Which numbers count (2026-10-21, training AND predict):** one QUESTION per survey
+(`one_question_per_survey`: the question covering the race's two leading candidates, then likely >
+registered > voters > adults, then the fuller ballot, then NYT before Wikipedia) - never each
+candidate's first row, which paired numbers from different questions. Questions left with one
+candidate are dropped (`drop_one_sided_questions`); so are polls that ended on or before the
+previous general election (`drop_out_of_cycle`). Predict also drops one survey filed by both feeds
+under different names / rounding / month-only dates (`drop_cross_source_copies`). **Known era gap:**
+1998-2016 training polls (538's pollster-ratings file) cover only the last ~60 days before the
+election, while 2018-2024 and live polls cover the whole cycle - "all polls in the cycle" below
+therefore spans different windows by era (MODEL_AUDIT 2026-10-21, Part 3).
+
 | feature | window |
 |---|---|
 | `poll_avg`, `poll_std`, `n_polls`, `poll_share`, `poll_lead`, `n_polls_over50`, `frac_polls_over50`, `race_total_polls`, `avg_sample` | all general-election polls in the cycle for that candidate/race |
@@ -56,7 +67,7 @@ recorded in `predictions_2026_meta.json` per run.
 ## D. Fundamentals
 | feature | window |
 |---|---|
-| `prior_margin_cand` | most recent **prior** same-office election for that seat (2/4/6/8 yrs back; strictly before the cycle) |
+| `prior_margin_cand` | most recent **prior** same-office election in the state (2/4/6/8 yrs back; strictly before the cycle), DEM minus REP. **For the Senate this is the latest race for EITHER seat** - the lookup key is (state, office), not the seat class (corrected 2026-10-21; this line used to say "for that seat"). Consequences: ME 2026 reads the 2024 King race (R 34.6 vs D 10.8 = R+23.8), AK 2026 reads 2022 Murkowski-Tshibaka (R+32.7); specials (district 'S') have no prior. A seat-class key is a recommended change (MODEL_AUDIT 2026-10-21, Part 3). |
 | `is_incumbent`, `is_inc_party_race` | from frozen `races.csv` incumbent_party; **unknown = NaN**, never 0 |
 | `is_president_party` | candidate's party == sitting president's party |
 

@@ -131,8 +131,11 @@ LEVELS = [
         r"(?:senate|house|assembly|senator|representative|house of representatives|"
         r"house of delegates|general assembly)|"
         r"(?:majority|minority) leader of the .{0,30}(?:senate|house|assembly)"),
+    # "county health director" removed 2026-10-21: county health directors are APPOINTED by the
+    # county executive / board (Abdul El-Sayed, Wayne County 2023-25, read 1 as if elected); they
+    # now fall to the appointed-state/local rule (0.5)
     (1, r"\bmayor\b|county (executive|commissioner|supervisor|clerk|judge|attorney|"
-        r"treasurer|health director)|city council|county council|sheriff|"
+        r"treasurer)|city council|county council|sheriff|"
         # elected metro / parish governments (2026-10-08): Louisville and Baton Rouge Metro
         # Councils, Portland's Metro Council, Louisiana police juries / parish councils
         r"metro council|police jury|parish council|"
@@ -335,6 +338,10 @@ def classify_evidence(desc, office=None):
     # for Texas Commissioner of Agriculture" (Kinky Friedman read 3)
     d = re.sub(r"(?:^|[,;(]|\band)\s*for\s+[^,;.()]*?\bin\s+(?:19|20)\d\d[^,;.()]*", " ", d)
     d = re.sub(r"\bcandidate\s+in\s+[^,;.()]+", " ", d)
+    # a PRIVATE employer's title is not a government post (2026-10-21): "hospital behavioral
+    # health director" (Scott Costello, IN-1 2020) matched the appointed health-director rule (0.5)
+    d = re.sub(r"\b(?:hospital|clinic|health\s+system|medical\s+center|company|corporate|"
+               r"nonprofit|foundation)\b[^,;.()]*?\b(?:director|administrator|executive)\b", " ", d)
     # "<office> nominee / candidate" (2026-10-15): "2000 U.S. Senate nominee" scored Brian
     # Schweitzer (MT-Gov 2008) as a U.S. senator (4). Office words only, so a real office
     # earlier in the clause ("former state senator and Senate nominee") is kept.

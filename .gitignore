@@ -59,6 +59,8 @@ data/*
 !data/district_pvi_current.csv
 !data/redistricted_2026.csv
 !data/candidate_party_overrides.csv
+# Training-side party fixes (2026-10-21): build_candidate_table reads it at train time.
+!data/model_party_overrides_hist.csv
 !data/dropped_out_2026.csv
 !data/replacement_nominees_2026.csv
 # Roster/name-integrity inputs added 2026-08-05/06. These MUST be committed: CI checks out

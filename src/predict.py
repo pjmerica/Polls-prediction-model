@@ -119,6 +119,8 @@ def load_agg_polls(paths, cycle):
         # without this column every pairing's numbers pool together as if they came from
         # one question - see drop_dead_matchups().
         "question_id": raw.get("question_id"),
+        # survey population (lv/rv/v/a): one_question_per_survey prefers likely voters (2026-10-21)
+        "population": raw.get("population"),
         "_src_priority": raw["_src_priority"],
     })
     d["election_date"] = election_date(cycle)
@@ -241,6 +243,18 @@ def load_agg_polls(paths, cycle):
     # the head-to-head from the same survey (2026-10-07; build_candidate_table re-applies it,
     # idempotently, for training)
     d, _ = F.rcv_final_round(d)
+    # ONE QUESTION PER SURVEY (2026-10-21): pick a whole question, never each candidate's first
+    # row, so a candidate's number can no longer come from a different question than the
+    # opponent's (F.one_question_per_survey). Then remove copies of one survey filed by both
+    # sources under different names / rounding, and questions left with a single candidate.
+    d, n_q = F.one_question_per_survey(d)
+    if n_q:
+        print(f"one question per survey: {n_q} rows from other versions / matchups of the same "
+              f"survey dropped")
+    d, _ = F.drop_cross_source_copies(d, label="general feed")
+    d, n_lone = F.drop_one_sided_questions(d)
+    if n_lone:
+        print(f"one-sided questions dropped: {n_lone} rows (opponent's number missing upstream)")
 
     d["_pollster_key"] = d["pollster"].map(F.norm_pollster)
     d = (d.sort_values("_src_priority")
@@ -257,7 +271,10 @@ def load_agg_polls(paths, cycle):
     # Primary losers were dropped above, BEFORE the relative staleness rule. Order matters:
     # the loser filter is absolute (a called result), the stale filter is relative to the
     # race's newest poll, and a defeated candidate is never stale by that measure.
-    d = drop_stale_candidates(F.prepare_polls(d))
+    d, n_old = F.drop_out_of_cycle(F.prepare_polls(d))
+    if n_old:
+        print(f"out-of-cycle polls dropped: {n_old} rows (ended on/before the previous general election)")
+    d = drop_stale_candidates(d)
 
     # a race needs two NAMED candidates (2026-10-20). Placeholder answers ("Generic Democrat")
     # are removed in prepare_polls, so a race polled only against a placeholder kept one

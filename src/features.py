@@ -1021,6 +1021,13 @@ def norm_pollster(p):
     s = re.sub(r"\binc\b\.?|,", "", s)
     s = re.sub(r"[^a-z0-9/ ]", "", s)
     s = re.sub(r"\s+", " ", s).strip()
+    # 2026-10-21: the two feeds file the SAME survey as "The New York Times/Siena University"
+    # (NYT) and "New York Times / Siena University" (Wikipedia), and Fox News polls as
+    # "Beacon Research/Shaw & Company Research" vs "Beacon Research (D)/ Shaw & Co. Research (R)".
+    # A leading "the" and the spacing around "/" kept them apart, so every NYT/Siena poll and
+    # every Fox poll counted twice in the 2026 feed (19 + 8 survey pairs).
+    s = re.sub(r"\s*/\s*", "/", s)
+    s = re.sub(r"^the\s+", "", s)
     # repeat: "X Research and Communications LLC" -> "X Research"
     while True:
         s2 = re.sub(rf"\s+{_POLLSTER_TAIL}$", "", s).strip()
@@ -1302,6 +1309,225 @@ def undecided_per_question(d, min_cands=2, lo=70.0, hi=102.0):
     ok = q[(q["size"] >= min_cands) & q["sum"].between(lo, hi)]
     return (100.0 - ok["sum"]).clip(0, 100).groupby(level="race_id").mean()
 
+# ---------------------------------------------------------------- survey identity (2026-10-21)
+
+# When one survey reports several versions of a question, keep likely voters, then registered
+# voters, then voters, then adults - the convention 538 used for the polls this model trains on.
+_POP_RANK = {"lv": 0, "rv": 1, "v": 2, "a": 3}
+
+
+def _date_key(s):
+    return pd.to_datetime(s, errors="coerce", format="mixed").dt.strftime("%Y-%m-%d").fillna("?")
+
+
+def one_question_per_survey(d):
+    """ONE QUESTION PER SURVEY (2026-10-21). Returns (d, rows_dropped).
+
+    A survey (same race, normalized pollster, end date) often reports several QUESTIONS:
+    registered- and likely-voter versions, a head-to-head and a full-ballot version, or
+    matchups against several possible opponents. The old rule (one_row_per_survey: first row
+    per candidate) picked each candidate's number separately, so a candidate's number could
+    come from a different question than the opponent's:
+      - NE-Sen, Tavern Research 2026-05-11: Osborn 47 (Osborn v Ricketts question) was paired
+        with Ricketts 49 (Ricketts v 'Generic Democrat'); the real head-to-head was Osborn 47,
+        Ricketts 42 - a 7-point error on one poll.
+      - OH-Sen special, Bowling Green Feb 2025: Husted's 45 against Tim Ryan (not running)
+        survived next to his 47 against Brown.
+      - Fox News polls: the registered-voter (Turek 50-46) and likely-voter (49-47) versions
+        both counted.
+    Now ONE question is kept per survey, chosen by: covers both of the race's two leading
+    candidates > likely > registered > voters > adults > more candidates (full ballot) >
+    source priority (NYT first, live feed only) > feed order. Rows without a question_id
+    (pre-2018 archives) are left alone. Runs after the dead-matchup and RCV filters, so a
+    question against an eliminated candidate never competes."""
+    if d.empty or "question_id" not in d.columns:
+        return d, 0
+    qid = d["question_id"]
+    has = qid.notna() & ~qid.astype(str).str.strip().str.lower().isin(["", "nan", "none"])
+    if not has.any():
+        return d, 0
+    w = d.loc[has, ["race_id", "pollster", "end_date", "cand_key", "pct"]].copy()
+    w["_s"] = (w["race_id"].astype(str) + "|" + w["pollster"].map(norm_pollster) + "|"
+               + _date_key(w["end_date"]))
+    w["_q"] = qid[has].astype(str)
+    w["_pop"] = (d.loc[has, "population"].astype(str).str.strip().str.lower().map(_POP_RANK).fillna(4)
+                 if "population" in d.columns else 4)
+    w["_prio"] = d.loc[has, "_src_priority"] if "_src_priority" in d.columns else 0
+    w["_pos"] = np.arange(len(w))
+    nq = w.groupby("_s")["_q"].nunique()
+    multi = set(nq[nq > 1].index)
+    if not multi:
+        return d, 0
+    # the race's two leading candidates = the two polled in the MOST surveys (then by mean pct).
+    # Ranking by mean pct alone let a hypothetical opponent with one strong poll outrank the real
+    # nominee: WA-3's Voter Sciences 2025-08-01 survey asked Gluesenkamp Perez vs Braun (the
+    # actual opponent), vs Heidi St. John (46) and vs Jim Walsh, and St. John's single 46 beat
+    # Braun's longer average.
+    w_all = d.assign(_skey=(d["pollster"].map(norm_pollster) + "|" + _date_key(d["end_date"])))
+    rank = (w_all.groupby(["race_id", "cand_key"])
+                 .agg(n_surv=("_skey", "nunique"), avg=("pct", "mean")).reset_index()
+                 .sort_values(["race_id", "n_surv", "avg"], ascending=[True, False, False]))
+    top2 = rank.groupby("race_id").head(2).groupby("race_id")["cand_key"].agg(frozenset).to_dict()
+    m = w[w["_s"].isin(multi)]
+    qs = (m.groupby(["_s", "_q"])
+            .agg(race=("race_id", "first"), cands=("cand_key", frozenset), pop=("_pop", "min"),
+                 prio=("_prio", "min"), pos=("_pos", "min"))
+            .reset_index())
+    qs["cover"] = [len(c & top2.get(r, frozenset())) for c, r in zip(qs["cands"], qs["race"])]
+    qs["ncand"] = qs["cands"].map(len)
+    qs = qs.sort_values(["_s", "cover", "pop", "ncand", "prio", "pos"],
+                        ascending=[True, False, True, False, True, True])
+    keep = set(map(tuple, qs.groupby("_s").head(1)[["_s", "_q"]].values))
+    drop = [i for i, s, q in zip(m.index, m["_s"], m["_q"]) if (s, q) not in keep]
+    return d.drop(index=drop), len(drop)
+
+
+def drop_one_sided_questions(d):
+    """Drop questions that carry only ONE candidate's number in a race where two or more
+    candidates are polled (2026-10-21). Returns (d, rows_dropped). The opponent's row went
+    missing upstream (a feed or parse gap, or a dead matchup whose other row was removed), so
+    the surviving number was measured against an unknown opponent. 113 such questions in the
+    2026 general feed (Husted 45/47/49/50 from early-2025 Bowling Green matchups, GQR's lone
+    Rogers 42 in MI-Sen, ...). Rows without a question_id are left alone."""
+    if d.empty or "question_id" not in d.columns:
+        return d, 0
+    qid = d["question_id"]
+    has = qid.notna() & ~qid.astype(str).str.strip().str.lower().isin(["", "nan", "none"])
+    if not has.any():
+        return d, 0
+    qkey = d["race_id"].astype(str) + "|" + d["pollster"].astype(str) + "|" + qid.astype(str)
+    n_in_q = d[has].groupby(qkey[has])["cand_key"].transform("nunique")
+    n_in_race = d.groupby("race_id")["cand_key"].transform("nunique")
+    lone = pd.Series(False, index=d.index)
+    lone.loc[has] = (n_in_q == 1) & (n_in_race[has] >= 2)
+    return d[~lone], int(lone.sum())
+
+
+def _squash_pollster(p):
+    return re.sub(r"[^a-z0-9]", "", norm_pollster(p))
+
+
+def drop_cross_source_copies(d, tol=0.6, label=""):
+    """Second survey-identity pass for the same survey filed by two sources under names the
+    normalizer cannot equate (2026-10-21). Returns (d, rows_dropped).
+
+    drop_duplicate_surveys needs the SAME pct and sample size, but the NYT feed carries
+    decimals (Husted 47.47) where Wikipedia rounds (47), so copies of one survey survived.
+    Two surveys in one race on one end date are the same survey when they share at least
+    two candidates, every shared candidate is within `tol` points (rounding only), and either
+    the sample sizes match or one normalized pollster name contains the other ('Bowling Green
+    State University Democracy and Public Policy Research Network/YouGov' vs 'Bowling Green
+    State University/YouGov', n=800 both; 'Cygnal' vs 'Cygnal Political'; 'YouGov' vs 'CBS
+    News/YouGov'). Keeps the higher-priority source (NYT first), then the fuller question."""
+    need = {"race_id", "pollster", "end_date", "cand_key", "pct"}
+    if d.empty or not need <= set(d.columns):
+        return d, 0
+    w = d[["race_id", "pollster", "end_date", "cand_key", "pct"]].copy()
+    w["_n"] = d["sample_size"] if "sample_size" in d.columns else np.nan
+    w["_date"] = _date_key(w["end_date"])
+    w["_name"] = w["pollster"].map(_squash_pollster)
+    w["_prio"] = d["_src_priority"] if "_src_priority" in d.columns else 0
+    groups = {}
+    for (rid, day, nm), g in w.groupby(["race_id", "_date", "_name"]):
+        n = g["_n"].dropna()
+        groups.setdefault((rid, day), []).append(dict(
+            name=nm, idx=list(g.index), pct=g.groupby("cand_key")["pct"].first().to_dict(),
+            n=float(n.iloc[0]) if len(n) else None, prio=g["_prio"].min()))
+    drop = []
+    for ss in groups.values():
+        if len(ss) < 2:
+            continue
+        ss.sort(key=lambda s: (s["prio"], -len(s["pct"])))
+        kept = []
+        for s in ss:
+            copy = False
+            for k in kept:
+                shared = set(s["pct"]) & set(k["pct"])
+                if len(shared) < 2 or not all(abs(s["pct"][c] - k["pct"][c]) <= tol for c in shared):
+                    continue
+                same_n = s["n"] is not None and k["n"] is not None and s["n"] == k["n"]
+                if same_n or s["name"] in k["name"] or k["name"] in s["name"]:
+                    copy = True
+                    break
+            if copy:
+                drop.extend(s["idx"])
+            else:
+                kept.append(s)
+    # MONTH-ONLY dates (2026-10-21): Wikipedia lists some polls as just "April 2026", parsed as
+    # the 1st, while NYT carries the exact end date - NE-Sen's GBAO polls sat in the feed twice,
+    # as 4/1 + 4/20 and 7/1 + 7/26. A survey dated the 1st of a month is the same survey as the
+    # same pollster's survey later that month when every shared candidate matches within `tol`.
+    dropped = set(drop)
+    flat = [(rid, day, s) for (rid, day), ss in groups.items() for s in ss
+            if not (set(s["idx"]) & dropped)]
+    for rid, day, s in flat:
+        if not day.endswith("-01"):
+            continue
+        for rid2, day2, k in flat:
+            if (rid2 != rid or k is s or k["name"] != s["name"] or day2 == day
+                    or day2[:7] != day[:7] or set(k["idx"]) & dropped):
+                continue
+            shared = set(s["pct"]) & set(k["pct"])
+            if len(shared) >= 2 and all(abs(s["pct"][c] - k["pct"][c]) <= tol for c in shared):
+                drop.extend(s["idx"])
+                dropped |= set(s["idx"])
+                break
+    if drop and label:
+        print(f"cross-source copies dropped ({label}): {len(drop)} rows - one survey filed by two "
+              f"sources under different names / rounding")
+    return d.drop(index=drop), len(drop)
+
+
+def prev_general_date(year):
+    """Election Day two years before `year`: the first Tuesday after the first Monday of November."""
+    day = pd.Timestamp(year=int(year) - 2, month=11, day=2)
+    while day.dayofweek != 1:
+        day += pd.Timedelta(days=1)
+    return day
+
+
+def drop_out_of_cycle(d):
+    """Polls that ended on or before the PREVIOUS general election belong to another cycle
+    (2026-10-21). Returns (d, rows_dropped). AK-Sen 2026 carried an April 2023 Alaska Survey
+    Research Peltola-v-Sullivan question (1,288 days out, before Peltola's 2024 House race);
+    no training cycle reaches that far (max 1,020 days, 2024). Applied in training AND serving."""
+    if d.empty or "year" not in d.columns or "end_date" not in d.columns:
+        return d, 0
+    ed = pd.to_datetime(d["end_date"], errors="coerce", format="mixed")
+    starts = {y: prev_general_date(y) for y in pd.unique(d["year"].dropna())}
+    start = d["year"].map(starts)
+    bad = ed.notna() & start.notna() & (ed <= start)
+    return d[~bad], int(bad.sum())
+
+
+def load_hist_party_overrides():
+    """data/model_party_overrides_hist.csv -> {(year, state, office, district, cand_key): party}.
+    Historical (training) counterpart of predict.py's candidate_party_overrides.csv: an
+    independent who was the de-facto two-party challenger with NO Democrat on the ballot sits
+    in the DEM slot (the 2026-07-12 rule for Osborn), plus outright party-label errors in the
+    poll archives (2026-10-21)."""
+    path = os.path.join(DATA_DIR, "model_party_overrides_hist.csv")
+    if not os.path.exists(path):
+        return {}
+    ov = pd.read_csv(path, dtype={"district": str}, keep_default_na=False)
+    return {(int(r.year), r.state, r.office, dist_str(r.district), r.cand_key): npar(r.model_party)
+            for r in ov.itertuples()}
+
+
+def apply_hist_party_overrides(d, overrides=None):
+    """Set party_std from load_hist_party_overrides() where listed. Returns (d, rows_changed)."""
+    ov = load_hist_party_overrides() if overrides is None else overrides
+    if not ov or d.empty or not {"year", "state", "office", "district", "cand_key"} <= set(d.columns):
+        return d, 0
+    keys = zip(d["year"].astype(int), d["state"], d["office"], d["district"].map(dist_str), d["cand_key"])
+    new = pd.Series([ov.get(k) for k in keys], index=d.index)
+    chg = new.notna() & (new != d["party_std"])
+    if chg.any():
+        d = d.copy()
+        d.loc[chg, "party_std"] = new[chg]
+    return d, int(chg.sum())
+
+
 def one_row_per_survey(d):
     """Keep the first row per (normalized pollster, end date, race, candidate) - see
     build_candidate_table. Idempotent; a no-op on the already-deduped live feed."""
@@ -1332,6 +1558,16 @@ def rcv_final_round(d):
         q = g.groupby("question_id")["cand_key"].agg(frozenset)
         nq = g["question_id"].map(q).map(len)
         base = g[nq > 2] if (nq > 2).any() else g
+        # finalists from the RECENT field (2026-10-21): the race's 3+ candidate questions within
+        # 60 days of its newest poll. Over the whole cycle, AK-Gov 2026's early field polls that
+        # tested Mary Peltola for GOVERNOR (she ran for Senate) made her a "finalist", no
+        # Peltola v Kreiss-Tomkins head-to-head existed, and the race was never switched to its
+        # Kreiss-Tomkins v Wilson final-round polls.
+        ed = pd.to_datetime(base["end_date"], errors="coerce", format="mixed")
+        if ed.notna().any():
+            recent = base[ed >= ed.max() - pd.Timedelta(days=60)]
+            if len(recent):
+                base = recent
         top2 = base.groupby("cand_key")["pct"].mean().nlargest(2).index
         if len(top2) < 2:
             continue
@@ -1372,7 +1608,15 @@ def build_candidate_table(d, macro, natl_env_map, funds, house_train_years=None,
     """
     # ranked-choice races use their final-round head-to-heads (2026-10-07); with labels present
     # (training) their margin target becomes the final-round result to match
+    # historical DEM-slot independents + party-label fixes, and polls from another cycle
+    # (2026-10-21) - both before any poll-level selection
+    d, _ = apply_hist_party_overrides(d)
+    d, _ = drop_out_of_cycle(d)
     d, rcv_switched = rcv_final_round(d)
+    # ONE QUESTION PER SURVEY, then drop one-sided questions (2026-10-21) - the same two passes
+    # predict.py runs at serve time; one_row_per_survey below is now a safety net only
+    d, _ = one_question_per_survey(d)
+    d, _ = drop_one_sided_questions(d)
     # ONE NUMBER PER CANDIDATE PER SURVEY (2026-10-07) - the rule predict.py already applies
     # at serve time. Training kept every version of a survey (RV + LV + alternative turnout
     # models, 6.2% of labelled rows), so a candidate's average weighted multi-version polls

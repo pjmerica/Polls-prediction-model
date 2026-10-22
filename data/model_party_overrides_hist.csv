@@ -1,0 +1,9 @@
+year,state,office,district,cand_key,model_party,display_party,note
+2014,KS,Senate,,orman g,DEM,IND,"Greg Orman: independent; the Democratic nominee (Chad Taylor) withdrew, so no Democrat was on the ballot. De-facto two-party challenger -> DEM slot, the rule predict.py applies to Dan Osborn (2026-07-12). Added 2026-10-21."
+2014,AK,Governor,,walker b,DEM,IND,"Bill Walker: independent on a unity ticket with the Democratic nominee (Byron Mallott, who withdrew to be his running mate); no Democrat on the ballot -> DEM slot. Added 2026-10-21."
+2022,UT,Senate,,mcmullin e,DEM,IND,"Evan McMullin: independent endorsed by the Utah Democratic Party, which nominated no candidate -> DEM slot. Added 2026-10-21."
+2022,ND,House,1,mund c,DEM,IND,"Cara Mund: independent; the Democratic nominee (Mark Haugen) withdrew and backed her, so no Democrat was on the ballot -> DEM slot. Added 2026-10-21."
+2024,NE,Senate,,osborn d,DEM,IND,"Dan Osborn: independent, no Democrat on the ballot - the same race type predict.py already models in the DEM slot for 2026. The results file already carries him on the DEM line (res_senate.csv); the poll archive had him OTH. Added 2026-10-21."
+2024,NV,House,2,kidd r,DEM,IND,"Robert Gregory Kidd: independent and the only major opponent of Mark Amodei (no Democrat on the ballot) -> DEM slot. Added 2026-10-21."
+2008,MS,Senate,S,musgrove r,DEM,DEM,"Ronnie Musgrove: the DEMOCRATIC nominee (former Democratic governor) in the 2008 special, filed OTH in the poll archive because Mississippi special-election ballots carry no party labels. Real party, not a slot. Added 2026-10-21."
+2006,TX,House,22,gibbs s,REP,REP,"Shelley Sekula-Gibbs: the REPUBLICAN write-in candidate after Tom DeLay withdrew (no Republican on the ballot line), filed OTH in the poll archive. Real party. Added 2026-10-21."

@@ -4,6 +4,85 @@ For the next agent. Read AGENTS.md first (architecture + rules), CONCERNS.md sec
 (risk register + roadmap). This file: what's mid-flight RIGHT NOW, what's most likely to
 break, and what to do next, in order.
 
+## 2026-10-21 - poll-input audit of the competitive races (win + margin retrained)
+
+User asked for every input of the close Senate/Governor races to be checked, plus training-data
+issues. Full write-up with before/after tables: polling-agg
+`State election results/model_audit/MODEL_AUDIT.md`. The published forecast was reproduced exactly
+first (3,062 poll rows, 173 races), then every poll row / feature was dumped and checked.
+
+Fixed (shared `features.py`, so training AND serving):
+- **Same survey counted twice**: `norm_pollster` now drops a leading "the" and the spaces around
+  "/" (every NYT/Siena poll was in twice: "The New York Times/Siena University" vs "New York Times /
+  Siena University"; Fox's "Beacon Research/Shaw & Company Research" vs "Beacon Research (D)/ Shaw &
+  Co. Research (R)"); new `drop_cross_source_copies` (same race+date, 2+ shared candidates within
+  0.6 pts, same n or one name inside the other - NYT decimals vs Wikipedia rounding; Cygnal vs Cygnal
+  Political, YouGov vs CBS News/YouGov, two BGSU spellings) incl. MONTH-ONLY Wikipedia dates ("April
+  2026" -> 4/1: NE-Sen GBAO was in as 4/1 + 4/20 and 7/1 + 7/26).
+- **Numbers mixed across questions**: `one_row_per_survey` (first row PER CANDIDATE) paired numbers
+  from different questions of one survey - NE-Sen Tavern 5/11 read Osborn 47 (vs Ricketts) with
+  Ricketts 49 (vs "Generic Democrat"); real head-to-head Osborn 47-42. OH-Sen BGSU Feb 2025 kept
+  Husted 45 vs Tim Ryan. New `one_question_per_survey` keeps ONE whole question: covers the race's
+  two leading candidates (by #surveys, then mean - a one-poll hypothetical opponent cannot outrank the
+  nominee: WA-3 Voter Sciences vs Heidi St. John) > LV > RV > V > A > fuller ballot > NYT first.
+  This also ends RV-over-LV picks (Marist MI 10/18: RV 52-45 had been used, LV 50-48).
+- **One-sided questions** (opponent's row missing): `drop_one_sided_questions`.
+- **Previous-cycle polls**: `drop_out_of_cycle` (end <= previous general): AK-Sen April-2023 ASR poll,
+  NV-Gov May-2023 Vote TXT (Lombardo 51-30). No training cycle reached that far (max 1,020 days).
+- **RCV finalists from stale questions**: `rcv_final_round` now picks finalists from the last 60
+  days of 3+ candidate questions. AK-Gov's 2025 polls tested Peltola for governor, so the rule looked
+  for a Peltola v Kreiss-Tomkins head-to-head, found none and never switched the race.
+- **Historical party labels** (`data/model_party_overrides_hist.csv`, applied in
+  build_candidate_table): Musgrove MS-Sen-S 2008 = DEM (was OTH), Sekula-Gibbs TX-22 2006 = REP; and
+  the DEM-slot rule used for Osborn 2026 now also covers the training races of its kind - Orman
+  KS-Sen 2014, Walker AK-Gov 2014, McMullin UT-Sen 2022, Mund ND-AL 2022, Osborn NE-Sen 2024 (his
+  results row was already on the DEM line), Kidd NV-2 2024. Sitting independents (Sanders, King) left OTH.
+- **Bios**: "county health director" is appointed, not elected (El-Sayed 2024/2026 1 -> 0.5); a
+  private employer's "director" is no office (Costello IN-1 2020 0.5 -> 0). Only these 3 rows change.
+- predict.py carries `population` and runs the new passes; the per-candidate dedup stays as a net.
+
+polling-agg same day: Wikipedia scraper gives bipartisan pairs ("Beacon Research (D)/ Shaw & Co.
+Research (R)" = Fox; Fabrizio (R)/Impact (D) = AARP; Hart (D)/POS (R) = NBC) no sponsor - 189 rows
+had been tagged R or D from the trailing tag.
+
+Found, NOT changed (see MODEL_AUDIT.md Part 3): 1998-2016 training polls are the last ~60 days only
+(538 pollster-ratings file) while 2018-24 and live cover the whole cycle - poll_avg means different
+things by era (add consistent-window features + ablate); prior_margin keys Senate on (state, office)
+so it mixes both seats (ME 2026 reads King 2024 as R+23.8; METHODOLOGY says "that seat"); specials
+have no prior; fund_pac_pct now separates the parties (2026 Senate median D 1.8% vs R 7.2%; 2018-24
+3.3% vs 2.4%) and costs every Democrat in the close races -0.29 log-odds - ablation recommended.
+
+`data/model_party_overrides_hist.csv` is un-ignored in .gitignore (the `*.csv` rule would have kept
+it out of CI, making the training-side overrides a silent no-op there).
+
+**Retrained 2026-10-22 (win + margin; primary models frozen, untouched).** Win: Brier 0.064,
+race-acc 0.878 (was 0.064 / 0.883). Margin: expanding-window MAE 5.455 (was 5.47), settings
+unchanged. The win tuner picked NEW settings on a near-tie:
+
+| | Old | New |
+|---|---|---|
+| depth | 1 | 2 |
+| lr | .05 | .02 |
+| min_child_weight | 8 | 15 |
+| subsample | .8 | 1.0 |
+| reg_lambda | 5 | 1 |
+| Tune-cycle AUC | .9519 | .9522 |
+| Tune-cycle Brier | .0873 | .0876 |
+| 2018-24 Brier | .0634 | .0635 |
+
+The old setting's tune Brier is the better one. The two disagree by up to 15 pts on 2026 races:
+- FL-22 Dandiya 78.6 vs 64.1;
+- MI-Sen El-Sayed 68.9 vs 63.4;
+- TX-Sen Talarico 62.0 vs 55.0;
+- five House favorites flip D->R under the new one (AZ-6, CO-5, IA-3, MI-7, MI-10).
+
+Retrained on the old settings, the slate moves no more than the data fixes alone (21 vs 18 races
+2+ pts). **User call 2026-10-22: publish the tuner's pick.**
+
+Open: select on Brier / log loss, or average the top-K settings as the margin tuner does, so a tie
+can't swing races. See polling-agg `State election results/model_audit/MODEL_AUDIT.md` (Part 3
+#4, Part 5c) and `model_audit/scripts/compare_params.py`.
+
 ## 2026-10-20 - live forecast audit
 
 - `predict.py` (shared by predict_margin): a race needs two NAMED candidates after placeholder
