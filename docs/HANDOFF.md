@@ -4,6 +4,57 @@ For the next agent. Read AGENTS.md first (architecture + rules), CONCERNS.md sec
 (risk register + roadmap). This file: what's mid-flight RIGHT NOW, what's most likely to
 break, and what to do next, in order.
 
+## 2026-10-23 - every race on the ballot is scored (no-polls model shipped for unpolled races)
+
+User: "every race should be scored by the model". The poll model covers 174 of the 506 general
+races; the other 332 had no number at all.
+- **`models/fundamentals/predict_unpolled.py`** scores every race `src/predict.py` doesn't, with the
+  no-polling model (`data/fundamentals_model_general.json`): same feature builder on one row per
+  nominee with blank poll fields, the poll run's national environment, the party overrides /
+  dropped-out lists and the redistricting patch. Fragile = the pick flips at natl_env +/-3. Writes
+  `outputs/fundamentals_predictions_2026.csv` + SHAP `fundamentals_explanations_2026.json`;
+  `src/refresh_dashboard.py` runs it right after predict.py and copies both to polling-agg
+  (`model_fundamentals_*`), whose forecast page and map show them as "No polls".
+- **Roster**: `data/general_roster_2026.csv` (`pipeline/fetch/fetch_general_roster_2026.py`, the
+  Wikipedia 2026 House/Senate/governor pages): 506 races, withdrawn and write-in candidates flagged.
+  Un-ignored in .gitignore so CI has it.
+- **Retrained** (`models/fundamentals/fundamentals_model.py --general-only`; the primary variant
+  stays frozen): the Aug 2 artifact had learned on END-OF-CYCLE money (CONCERNS #28/#5) but is served
+  as-of-Sep-30 money. Now 172 features (today's production set minus poll features), re-tuned
+  (min_child_weight 30, subsample 0.6). Held-out polled races 2018-24: Brier .093, race_acc .821
+  (the Aug artifact's own eval, on leaky money: .105 / .811).
+- **Validation** (`analysis/fundamentals_on_unpolled.py`): 99.5% of 1,245 historically unpolled
+  races called right (2018-2024, expanding window) vs 98.3% for "the incumbent party wins"; its
+  favored party matches the markets' in all 324 priced unpolled 2026 races (median gap 1.8 pts).
+- **Largest gaps with the markets** (honest model output, flagged to the user): CA-1 D 53% vs ~96%
+  (19% before the retrain: Gallagher won the old-lines special in 2026, so the R party "holds" a
+  seat redrawn to D+7, and he had more money at Sep 30) and GA-14 R 83% vs ~95% (68% before:
+  Harris (D) holds 80% of the race's money from the special). Party-holds-the-seat in a heavily
+  redrawn district and special-election money are the model's blind spots.
+- **Missouri** votes on the 2022 lines (the referendum petition suspends the 2025 map; the Supreme
+  Court left it suspended late Sept): removed from `data/redistricted_2026.csv`,
+  `data/district_pvi_current.csv` refreshed (MO-5 had been read off the 2025 map's PVI).
+- **Bios of the unpolled nominees** (330 major-party nominees read level 0): 2026 House race pages
+  re-scraped for 49 states (31 before; California's page lists no candidates), and every level-0
+  nominee looked up on Wikipedia (own infobox) and, until it rate-limited, Ballotpedia. Real
+  officeholders found: Mike McGuire (CA-1 D, state senator since 2014; he read 0 through a 2000
+  namesake's key), Lisa Kinney and Chuck Gray (WY), Chris Beck (OR-2), Mark Tedford (OK-1), Jeffrey
+  Hulum (MS-4). The poll model's 433 candidate rows came out identical (those were hand-coded).
+  Still unchecked on Ballotpedia: ~50 nominees, mostly California - a local office there could read 0.
+- **Matcher fixes**: `fetch_wikipedia_person_offices.title_matches` no longer matches through a
+  nickname's INITIAL (Jim Kingston, GA-1, had become his father Jack; Rick Kennedy (TX) had become
+  Robert F. Kennedy Jr.); new `foreign_offices` rejects an infobox whose state offices are all in
+  another state (Steve Cohen, CA-50 R, had become Tennessee's Rep. Steve Cohen), `_MOVED` lists
+  verified movers (Richard Ojeda, WV senator, NC-9 nominee). `fetch_candidate_bios.classify`: a
+  "mayor's office" and "employee of ..." are staff (George Marsh NY-5 had read local elected).
+- **OPEN - bio table drift (reconcile before the next retrain):** `pipeline/build/build_office_level_table.py`
+  no longer reproduces the committed `data/candidate_bios.csv`. A from-scratch run today moves 282
+  pre-2026 rows (233 down, 49 up; 151 of them hand-coded rows whose computed level changed, e.g.
+  Freudenthal WY-Gov 2006 0.75 -> 3, Huntley ID-Gov 1998 3 -> 2) and drops 13 hand-coded 2026
+  Senate/Governor rows (the build's stale-candidate filter reads the live poll file). The 2026-10-23
+  commit therefore changed ONLY the table's 2026 House rows. Reproduce: run the builder, diff against
+  git, review each class of change, then retrain.
+
 ## 2026-10-21 - poll-input audit of the competitive races (win + margin retrained)
 
 User asked for every input of the close Senate/Governor races to be checked, plus training-data

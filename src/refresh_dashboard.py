@@ -56,6 +56,12 @@ STEPS_FEEDS = [
 ]
 STEPS_PREDICT = [
     ([sys.executable, os.path.join(SRC, "predict.py")], "win probabilities"),
+    # every race the poll model cannot score (no polls) gets the no-polls model (2026-10-23);
+    # it reads predictions_2026.csv + its meta, so it must run right after predict.py.
+    # NOT fatal: if it fails, the polled forecast still publishes and polling-agg keeps the last
+    # good model_fundamentals_* files (the copy below skips them when missing)
+    ([sys.executable, os.path.join(ROOT, "models", "fundamentals", "predict_unpolled.py")],
+     "no-polls model for unpolled races", False),
     ([sys.executable, os.path.join(SRC, "predict_margin.py")], "margins"),
     ([sys.executable, os.path.join(SRC, "predict_primary.py")], "primary nominee probabilities"),
     ([sys.executable, os.path.join(SRC, "predict_primary_margin.py")], "primary margins"),
@@ -65,11 +71,15 @@ STEPS_PREDICT = [
      "primary SHAP explanations (writes polling-agg copy itself)"),
 ]
 
-def run(cmd, label, cwd=HERE):
+def run(cmd, label, cwd=HERE, fatal=True):
     print(f"\n=== {label}: {' '.join(os.path.basename(c) for c in cmd)} ===")
     r = subprocess.run(cmd, cwd=cwd)
     if r.returncode != 0:
+        if not fatal:
+            print(f"!! STEP FAILED (not fatal): {label} (exit {r.returncode}) - continuing")
+            return False
         raise SystemExit(f"step failed: {label} (exit {r.returncode})")
+    return True
 
 def check_feed_freshness():
     """Loud staleness warnings — a dead upstream (VoteHub, DBnomics, BLS) fails SOFTLY in
@@ -109,8 +119,11 @@ def main():
         for cmd, label in STEPS_FEEDS:
             run(cmd, label)
     check_feed_freshness()
-    for cmd, label in STEPS_PREDICT:
-        run(cmd, label)
+    unpolled_ok = True
+    for cmd, label, *fatal in STEPS_PREDICT:
+        ok = run(cmd, label, fatal=fatal[0] if fatal else True)
+        if "unpolled" in label:
+            unpolled_ok = ok
 
     for src, dst in [("predictions_2026.csv", "model_predictions_2026.csv"),
                      ("predictions_2026_meta.json", "model_predictions_meta.json"),
@@ -118,7 +131,13 @@ def main():
                      ("primary_predictions_2026.csv", "model_primary_predictions_2026.csv"),
                      ("primary_predictions_2026_meta.json", "model_primary_predictions_meta.json"),
                      ("primary_margin_predictions_2026.csv",
-                      "model_primary_margin_predictions_2026.csv")]:
+                      "model_primary_margin_predictions_2026.csv"),
+                     ("fundamentals_predictions_2026.csv", "model_fundamentals_predictions_2026.csv"),
+                     ("fundamentals_explanations_2026.json",
+                      "model_fundamentals_explanations_2026.json")]:
+        if src.startswith("fundamentals_") and not unpolled_ok:
+            print(f"kept polling-agg's last {dst} (the no-polls step failed)")
+            continue
         shutil.copyfile(_paths.out(src),
                         os.path.join(AGG, "data", "processed", dst))
         print(f"copied {src} -> polling-agg/data/processed/{dst}")

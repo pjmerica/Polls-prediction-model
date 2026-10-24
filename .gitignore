@@ -63,6 +63,9 @@ data/*
 !data/model_party_overrides_hist.csv
 !data/dropped_out_2026.csv
 !data/replacement_nominees_2026.csv
+# 2026 general-election roster (2026-10-23): models/fundamentals/predict_unpolled.py scores every
+# unpolled race from it in CI, so it must be committed like the other roster inputs below
+!data/general_roster_2026.csv
 # Roster/name-integrity inputs added 2026-08-05/06. These MUST be committed: CI checks out
 # this repo fresh, so anything left ignored simply does not exist there and the filters that
 # read it become silent no-ops. That is exactly what happened - drop_primary_losers() found

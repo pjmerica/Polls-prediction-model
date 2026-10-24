@@ -306,6 +306,12 @@ def main():
                                                        for kk, vv in r.items()}
                                               for k, r in ev.iterrows()}), f, indent=1)
 
+    # --general-only (2026-10-23): retrain just the general model, which now serves the unpolled
+    # races (models/fundamentals/predict_unpolled.py). The primary models stay frozen until the
+    # 2028 cycle (user rule), so their fundamentals variant is not rebuilt with it.
+    if "--general-only" in _sys.argv:
+        return
+
     # ---------------- PRIMARY ----------------
     cp = primary_table()
     pprod = json.load(open(os.path.join(HERE, "data", "primary_model_features.json")))

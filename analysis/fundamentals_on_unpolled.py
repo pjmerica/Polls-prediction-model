@@ -108,6 +108,9 @@ def unpolled_table(res, polled, polls_long):
         "cand_key": u["cand_key"], "party_std": u["party_std"],
         "pct": np.nan, "end_date": pd.NaT, "sample_size": np.nan,
         "pollster": "none", "won": u["won"].astype(int),
+        # build_candidate_table groups by poll_id since 2026-10 (undecided_per_question): one
+        # placeholder per race keeps the blank poll fields blank (fixed 2026-10-23)
+        "poll_id": ("nopoll-" + u["race_id"]).values,
         "election_date": pd.to_datetime(u["year"].astype(str) + "-11-05"),
         "days_to_elec": np.nan, "race_id": u["race_id"],
     })

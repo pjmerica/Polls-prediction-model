@@ -368,6 +368,10 @@ above:
     it twice. "Fewer polls = worse" is NOT monotone.
 28. **The fundamentals (no-polling) model — work list CLOSED 2026-08-02.** All items done or
     resolved; the model stays a reference floor, NOT wired into predict.py or the dashboard.
+    **Update 2026-10-23:** it now scores every race with NO polls (`models/fundamentals/
+    predict_unpolled.py`, user: "every race should be scored by the model"); still never blended
+    into a polled race (#6 stands). Retrained on the as-of-Sep-30 money (the Aug 2 artifact had
+    learned on end-of-cycle totals, #5's leak, while serving as-of money). See HANDOFF 2026-10-23.
       - #5 fundraising leakage: **PROVEN**, not assumed. FEC coverage runs to the year AFTER
         the cycle (2022 → 2023-01-31), so ~18 months of post-primary money is in the total.
         The eventual nominee is the top fundraiser **92.4%** of the time vs the poll leader
