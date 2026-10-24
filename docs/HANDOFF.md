@@ -4,6 +4,59 @@ For the next agent. Read AGENTS.md first (architecture + rules), CONCERNS.md sec
 (risk register + roadmap). This file: what's mid-flight RIGHT NOW, what's most likely to
 break, and what to do next, in order.
 
+## 2026-10-24 - office-level table reconciled with its sources (the bio drift)
+
+User: "fix that with research and web searching along with ballotpedia".
+- **Cause:** the 2026-10-15 verification pass edited `data/candidate_bios.csv` directly, so the
+  builder reverted 282 pre-2026 rows. **Never hand-edit candidate_bios.csv.** Researched offices go
+  in `data/candidate_bios_manual.csv` (keyed by the poll-feed spelling + state). An optional 4th
+  element in `offices_json` is a researched level that wins over the phrase classifier, for titles it
+  misreads. Then rebuild with `pipeline/build/build_office_level_table.py`.
+- **Research:** all 149 hand-verified people were re-checked by web search and Wikipedia. Ballotpedia
+  was read through search results, because direct fetches are bot-blocked. The result is 137 manual
+  entries with dated offices and cited sources.
+  - Corrections:
+    - Gary S. Stein (NJ-2 2010) is a perennial candidate, not the retired NJ justice: 0.5 -> 0.
+    - Phil Giordano was in the CT House in 1995: 1 -> 2.
+    - No office before 2006 was found for Scott D'Amboise: 1 -> 0.
+    - Charlie Baker was a Swampscott selectman 2004-07: 1 in 2010 and 2014.
+    - A. Wayne Johnson was FSA chief operating officer from 2017: 0.75.
+  - Where only "in office by year Y" is known, the start is that year and the office phrase says so.
+- **Classifier fixes** (`fetch_candidate_bios.py`, shared by both classifiers):
+  - Appointed secretaries of state (DE, MD, NJ, NY, OK, PA, TX, VA) are 0.5. Florida's has been
+    appointed since 2003, which `office_level()` decides by start year.
+    - Ron Kirk TX-Sen 2002: 3 -> 1. Tom Cole OK-4 2002: 3 -> 2. Roger Williams and DeForest Soaries: 0.5.
+  - Appointed university regents are 0.5 in every state except NE, CO, MI and NV, which elect theirs
+    (Robson, DuVal, Steil, Tony Sanchez).
+  - Connecticut's elected "Secretary of the State" is 3 (it read 0.5).
+  - "U.S. Assistant Secretary of State" is 0.75 (it read 3).
+  - Running-mate text is cut before the candidacy strip: Cordray 4 -> 3, Orman 2 -> 0, Schweitzer
+    2 -> 0, Ramaswamy 2 -> 0.
+  - "town council(or)" is 1.
+  - Stored levels were written back, so no source row now differs from its classifier.
+- **Builder:**
+  - A manual entry with a higher level now beats the Wikipedia race row (highest office held).
+  - Manual tenure also lifts the same name + state's Wikipedia rows outside the poll feed (170 rows).
+  - `fetch_candidate_bios_ballotpedia.office_level()` is shared by the builder and `features.py`.
+- **Result:**
+  - Of the 282 drift rows, 256 rebuild to the committed values.
+  - 26 differ on purpose: the 3 research corrections, plus 23 rows where the committed table was
+    wrong (Walsh NY-25 2006 was the incumbent, 4; Freudenthal 2006 the sitting governor, 3).
+  - The full table differs from HEAD in 142 rows, all reviewed.
+  - Five Stage-3 hand-codes that stopped before the person's U.S. House term now include it
+    (McMorris Rodgers, Gohmert, Hultgren, Courtney, Malliotakis).
+- **Effect:**
+  - 2026 predictions are unchanged: the poll model's 438 rows and the no-polls model's 857 are identical.
+  - In the training table, 14 of 4,450 rows' effective `bio_office_level` change: Kirk, Cole, Tony
+    Sanchez, Schweitzer, D'Amboise, Baker x2, Stein, DuVal, Orman, Cordray, Steil, Giordano,
+    A. Wayne Johnson.
+  - This takes effect at the next retrain. **Not retrained: that is the user's call.**
+- **Open (user calls):**
+  - Elected state boards (Colorado State Board of Education, NU and CU regents) read 1, while the
+    CA BOE and NH Executive Council read 3.
+  - Lower-court judges in appointing states (NJ, DE, MA) read 1 through the generic "judge" pattern.
+    W. S. Lee got an explicit 0.5.
+
 ## 2026-10-24 - primary results: ranked-choice winners, nested Lieutenant-Governor sections
 
 Found by checking the unpolled races' nominees against `data/primary_results_2026.csv`.
@@ -83,7 +136,7 @@ races; the other 332 had no number at all.
   another state (Steve Cohen, CA-50 R, had become Tennessee's Rep. Steve Cohen), `_MOVED` lists
   verified movers (Richard Ojeda, WV senator, NC-9 nominee). `fetch_candidate_bios.classify`: a
   "mayor's office" and "employee of ..." are staff (George Marsh NY-5 had read local elected).
-- **OPEN - bio table drift (reconcile before the next retrain):** `pipeline/build/build_office_level_table.py`
+- **RESOLVED 2026-10-24 (entry above) - bio table drift:** `pipeline/build/build_office_level_table.py`
   no longer reproduces the committed `data/candidate_bios.csv`. A from-scratch run today moves 282
   pre-2026 rows (233 down, 49 up; 151 of them hand-coded rows whose computed level changed, e.g.
   Freudenthal WY-Gov 2006 0.75 -> 3, Huntley ID-Gov 1998 3 -> 2) and drops 13 hand-coded 2026

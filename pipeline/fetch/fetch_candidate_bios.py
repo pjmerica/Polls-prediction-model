@@ -88,6 +88,8 @@ LEVELS = [
         r"(majority|minority) (leader|whip) of the .{0,10}(u\.?s\.?|united states) house|"
         r"speaker of the (u\.?s\.?|united states) house"),
     (3, r"\bgovernor\b|lieutenant governor|attorney general|secretary of state|"
+        # Connecticut's elected title has "the" (2026-10-24: it read as an appointed secretary)
+        r"connecticut secretary of the state|secretary of the state of connecticut|"
         r"state treasurer|state auditor|state comptroller|"
         # ELECTED commissioners only (2026-10-14; was any "commissioner of", which also took
         # appointed department heads - those are APPOINTED_STATE now): public lands (NM, WA),
@@ -145,6 +147,9 @@ LEVELS = [
         # county boards (2026-10-15: "former Atlantic County freeholder" read 0)
         r"freeholder|board of supervisors|county board|board of (?:county )?commissioners|"
         r"county council(?:or|man|woman)?|town supervisor|"
+        # (2026-10-24: "West Hartford Town Councilor" read 0 once a running mate's office no
+        # longer stood in for it)
+        r"town council(?:or|man|woman|member)?|"
         r"state's attorney|\bjudge\b"),
 ]
 PRIOR_CAND_RX = re.compile(r"candidate for|nominee for", re.I)
@@ -194,7 +199,7 @@ _STATE_APPOINTEE_RX = re.compile(
     r"commerce|banking|public safety)\s+(?:commissioner|director|secretary)\b|"
     r"\bcommissioner of (?!the revenue)[a-z&' ]+|"
     r"\bsecretary of (?!state\b)[a-z&' ]+|adjutant general(?! corps)|solicitor general|"
-    r"cabinet secretary")
+    r"cabinet secretary|\(appointed state post\)")
 # a PARTY post named like a cabinet one is not an office ("Secretary of the New Jersey
 # Democratic Party")
 _PARTY_POST_RX = re.compile(r"\b(?:democratic|republican|libertarian|green)\s+party\b|\bparty\b")
@@ -206,6 +211,9 @@ _FED_APPOINTEE_RX = re.compile(
     r"white house(?!(?:\s+\w+)?\s+(?:aide|analyst|intern|staffer|fellow|volunteer))|"
     r"(?<!assistant )(?:u\.?s\.?|united states) attorney\b|"
     r"(?:u\.?s\.?|united states)\s+(?:(?:deputy|associate|assistant)\s+)+attorney general|"
+    # "U.S. Assistant Secretary of State" without a "for <bureau>" read as the elected state
+    # office (2026-10-24: Bobby Charles, ME-Gov 2026, read 3)
+    r"(?:u\.?s\.?|united states)\s+(?:(?:principal|deputy|under|assistant)\s+)+secretary of state\b|"
     r"(?<!goodwill )(?:u\.?s\.?|united states) ambassador|(?<!goodwill )\bambassador to\b|"
     r"\b(?:principal\s+)?(?:under|deputy|assistant|deputy assistant)\s+secretary of " + _FED_DEPTS + r"|"
     # bare cabinet title - but not a state cabinet named like one ("secretary of Energy AND
@@ -274,15 +282,56 @@ _APPT_COURT_RX = re.compile(
     r"(?:(?:associate|chief)\s+)?(?:justice|judge)?\s*(?:of\s+)?(?:the\s+)?supreme\s+(?:judicial\s+)?"
     r"court\s+of\s+" + _APPT_COURT_STATES + r"\b")
 
+# secretaries of state APPOINTED by the governor (2026-10-24: Tom Cole, OK-4 2002, and Ron Kirk,
+# TX-Sen 2002, read 3 for Oklahoma's and Texas's). Florida's has been appointed only since January
+# 2003, which needs the start year (fetch_candidate_bios_ballotpedia.office_level).
+_APPT_SOS_STATES = (r"(delaware|maryland|new jersey|new york|oklahoma|pennsylvania|texas|"
+                    r"(?<!west )virginia)")
+_APPT_SOS_RX = re.compile(
+    r"\b" + _APPT_SOS_STATES + r"(?:'s)?\s+(?:state\s+)?secretary\s+of\s+state\b|"
+    r"\bsecretary\s+of\s+state\s+(?:of|for)\s+(?:the\s+(?:state|commonwealth)\s+of\s+)?" +
+    _APPT_SOS_STATES + r"\b")
+# state university boards the governor appoints (2026-10-24: Karrin Taylor Robson, Arizona Board
+# of Regents 2017-21, read as an elected board). Nebraska, Colorado, Michigan and Nevada elect theirs.
+_APPT_REGENT_STATES = (r"(alabama|alaska|arizona|arkansas|california|connecticut|delaware|florida|"
+                       r"georgia|hawaii|idaho|illinois|indiana|iowa|kansas|kentucky|louisiana|maine|"
+                       r"maryland|massachusetts|minnesota|mississippi|missouri|montana|new hampshire|"
+                       r"new jersey|new mexico|new york|north carolina|north dakota|ohio|oklahoma|"
+                       r"oregon|pennsylvania|rhode island|south carolina|south dakota|tennessee|texas|"
+                       r"utah|vermont|(?<!west )virginia|washington|west virginia|wisconsin|wyoming)")
+_APPT_REGENTS_RX = re.compile(
+    r"\bboard\s+of\s+regents\s+of\s+(?:the\s+)?(?:university(?:\s+system)?\s+of\s+)?" +
+    _APPT_REGENT_STATES + r"\b|"
+    r"\b(?:university\s+(?:system\s+)?of\s+)?" + _APPT_REGENT_STATES +
+    r"(?:\s+state)?(?:\s+a&m)?(?:\s+university)?(?:\s+system)?\s+board\s+of\s+regents\b")
 
-def appointed_ag(d):
+
+def appointed_ag(d, state=None):
     """Rewrite a named-state agriculture commissioner / secretary in an APPOINTING state to a
     department-head phrase (appointed, 0.5) so the elected level-3 pattern cannot match it, and
-    a state deputy / assistant attorney general to staff (0)."""
+    a state deputy / assistant attorney general to staff (0). The same for appointed high courts,
+    secretaries of state and university regents."""
     def sub(m):
         st = re.search(_STATE_LIST, m.group(0)).group(0)
         return m.group(0) if st in _AG_ELECTED else f"{st} agriculture department commissioner"
     d = _STAFF_AG_RX.sub(" staff lawyer", _AG_STATE_RX.sub(sub, str(d).lower()))
+    # an agriculture title that names NO state is the race state's own post (2026-10-24: Todd
+    # Haymore, VA-5 2016, "Secretary of Agriculture and Forestry" read 3; Virginia's is appointed).
+    # A state name or "U.S. / United States / federal" just before it is left to the rules above.
+    full = STATES.get(str(state).upper(), "").replace("_", " ").lower() if state else ""   # North_Carolina
+    if full and full not in _AG_ELECTED:
+        def sub2(m):
+            before = d[max(0, m.start() - 30):m.start()]
+            if re.search(_STATE_LIST + r"|u\.s\.|united states|federal", before):
+                return m.group(0)
+            return f"{full} agriculture department commissioner"
+        d = re.sub(r"\b(?:" + _AG_TITLE + r")\b", sub2, d)
+    # hyphenated so no elected pattern ("secretary of state", "board of regents") matches; the
+    # marker is an appointed-state pattern (_STATE_APPOINTEE_RX)
+    d = _APPT_SOS_RX.sub(lambda m: f"{m.group(1) or m.group(2)} secretary-of-state "
+                                   "(appointed state post)", d)
+    d = _APPT_REGENTS_RX.sub(lambda m: f"{m.group(1) or m.group(2)} board-of-regents "
+                                       "(appointed state post)", d)
     return _APPT_COURT_RX.sub(" commissioner of the judiciary (appointed justice)", d)
 
 
@@ -295,10 +344,15 @@ def _federal_appointee(d):
     return None
 
 
-def classify_evidence(desc, office=None):
+def classify_evidence(desc, office=None, state=None):
     """(office_level, evidence) - evidence is the descriptor clause naming the position that
-    set the level ("" for level 0). Written to candidate_bios.csv as `office_evidence`."""
-    d = appointed_ag(desc)
+    set the level ("" for level 0). Written to candidate_bios.csv as `office_evidence`.
+    state: the race's state, for titles that name none (agriculture heads, 2026-10-24)."""
+    d = appointed_ag(desc, state)
+    # the running mate's offices are not the candidate's - cut them first, before the candidacy
+    # strip below can swallow the "Running mate:" marker (2026-10-24: "candidate for president in
+    # 2024  Running mate: Rob McColley, president of the Ohio Senate" gave Vivek Ramaswamy a 2)
+    d = re.sub(r"running\s*mate\s*:.*$", " ", d)
     # candidacy mentions are NOT offices held: 'candidate for governor in 2018' must not
     # classify as governor (caught by the El-Sayed known-truth check). Broadened 2026-07-29 to
     # also strip "ran for / running for / unsuccessful candidate for / nominee for X" - the
@@ -405,9 +459,9 @@ def classify_evidence(desc, office=None):
     return 0, ""
 
 
-def classify(desc, office=None):
+def classify(desc, office=None, state=None):
     """office_level only - see classify_evidence for the clause that decided it."""
-    return classify_evidence(desc, office)[0]
+    return classify_evidence(desc, office, state)[0]
 
 
 def _evidence(desc, d, m):

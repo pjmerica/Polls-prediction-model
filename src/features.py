@@ -760,11 +760,13 @@ def _person_asof_level(offices, year):
     level (0 if they held no office before that year) or None if offices is unknown/empty-
     and-therefore-not-a-verified-zero. An EMPTY list here means a hand-verified "no prior
     office" -> level 0 (the manual/ballotpedia sources only store [] when that's confirmed)."""
-    from fetch_candidate_bios_ballotpedia import classify_ballotpedia  # lazy: circular import
+    from fetch_candidate_bios_ballotpedia import office_level  # lazy: circular import
     if offices is None:
         return None
-    levels = [classify_ballotpedia(o[0]) for o in offices
-              if len(o) >= 2 and o[1] is not None and int(o[1]) < year]
+    # an optional 4th element is a researched level for that office (2026-10-24: hand-verified
+    # rows the phrase classifier misreads); office_level applies it
+    levels = [office_level(o)
+              for o in offices if len(o) >= 2 and o[1] is not None and int(o[1]) < year]
     return max(levels) if levels else 0
 
 # ---------------------------------------------------------------- FEC fundraising

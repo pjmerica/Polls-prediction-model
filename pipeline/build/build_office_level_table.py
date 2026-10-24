@@ -33,7 +33,7 @@ import re
 import pandas as pd
 
 import features as F
-from fetch_candidate_bios_ballotpedia import classify_ballotpedia
+from fetch_candidate_bios_ballotpedia import office_level
 from fetch_candidate_bios import classify_evidence
 
 
@@ -50,16 +50,20 @@ def _bp_asof_level(offices, year):
     before that race), or None if offices is empty/unknown."""
     if not offices:
         return None
-    levels = [classify_ballotpedia(phrase) for phrase, start, _ in offices
-              if start is not None and start < year]
+    levels = [_office_level(o) for o in offices if o[1] is not None and o[1] < year]
     return max(levels) if levels else 0
+
+def _office_level(o):
+    """[phrase, start, end(, level)] -> level (fetch_candidate_bios_ballotpedia.office_level: a
+    researched 4th element wins over the phrase classifier)."""
+    return office_level(o)
 
 def _bp_asof_evidence(offices, year, level):
     """The office(s), with tenure, that give `level` as of `year` - the `office_evidence` for a
     Ballotpedia / hand-coded row (2026-09-25)."""
-    hits = [f"{phrase} ({start}-{end if end is not None else 'present'})"
-            for phrase, start, end in (offices or [])
-            if start is not None and start < year and classify_ballotpedia(phrase) == level]
+    hits = [f"{o[0]} ({o[1]}-{o[2] if o[2] is not None else 'present'})"
+            for o in (offices or [])
+            if o[1] is not None and o[1] < year and _office_level(o) == level]
     return "; ".join(hits)
 
 
@@ -70,7 +74,7 @@ def _wiki_evidence(r):
     if not desc:
         return (f"no descriptor - results-table row {src}" if float(r.office_level) == 0
                 else f"hand-coded level, no descriptor [{r.src}]")
-    lvl, ev = classify_evidence(desc, r.office)
+    lvl, ev = classify_evidence(desc, r.office, r.state)
     if lvl != float(r.office_level):
         return f"hand-set level {float(r.office_level)}; descriptor: {desc[:160]} {src}"
     return f"{ev} {src}" if lvl > 0 else f"no office named in the bio {src}"
@@ -113,6 +117,7 @@ def main():
     # every uncovered race a BP-resolved person appears in. Falls back to the scope file if the
     # roster is absent.
     bp_rows = []
+    off_map, ref_map, manual_keys = {}, {}, set()
     if os.path.exists(bp_path):
         bp = pd.read_csv(bp_path, low_memory=False)
         bp = bp[bp["office_level"].notna()]
@@ -200,8 +205,12 @@ def main():
                 # results-table row with no descriptor) and this source has a real higher
                 # level - then let this row through to override in the dedup below. A manual
                 # entry overrides a wiki table-zero at level 0 too (hand-verified 0 beats an
-                # unknown table 0 - same key, dedup keeps either; harmless).
-                if not (wiki_level.get(rowkey, 0) == 0 and (lvl > 0 or is_manual)):
+                # unknown table 0 - same key, dedup keeps either; harmless). A manual entry
+                # with a HIGHER level also wins (2026-10-24): the race page's descriptor can
+                # omit an office the researched tenure has (Joshua Svaty 2014 named only the
+                # appointed agriculture post, not the Kansas House) - highest office held.
+                wl = wiki_level.get(rowkey, 0)
+                if not ((wl == 0 and (lvl > 0 or is_manual)) or (is_manual and lvl > wl)):
                     continue
             bp_rows.append(dict(
                 year=r.year, office=r.office, state=r.state, district=r.district,
@@ -216,6 +225,24 @@ def main():
               f"leak-free as-of-year rows (gap-filling; Wikipedia preferred)")
 
     combined = pd.concat([wiki, pd.DataFrame(bp_rows)], ignore_index=True) if bp_rows else wiki
+
+    # Researched tenure also lifts the same person's Wikipedia rows OUTSIDE the poll feed (matched
+    # on name + state, as the manual file is keyed), e.g. a 2010 House row whose results table had
+    # no descriptor. Only upward - a manual entry is the evidence for an office the row missed.
+    lifted = 0
+    for i in combined.index[combined["src"] == "wikipedia"]:
+        k = (combined.at[i, "name"], combined.at[i, "state"])
+        if k not in manual_keys:
+            continue
+        yr = int(combined.at[i, "year"])
+        lvl = _bp_asof_level(off_map[k], yr)
+        if lvl is not None and lvl > float(combined.at[i, "office_level"]):
+            combined.at[i, "office_level"] = float(lvl)
+            combined.at[i, "src"] = "manual"
+            combined.at[i, "office_evidence"] = (_bp_asof_evidence(off_map[k], yr, float(lvl))
+                                                 + f" [{ref_map.get(k, '')}]")
+            lifted += 1
+    print(f"manual tenure lifted {lifted} Wikipedia rows")
 
     # ---- WIKIPEDIA SELF-CROSS-REFERENCE (2026-07-28, user-requested, leak-free) ----
     # A person's office history is often recorded on SOME of their Wikipedia race pages but
@@ -287,10 +314,15 @@ def main():
                                      kind="stable")
                         .drop_duplicates(subset=KEY, keep="first")
                         .drop(columns="_sr"))
-    # whole levels stay integers in the file; 0.75 / 0.5 = appointed federal / state (2026-10-14)
-    combined["office_level"] = combined["office_level"].map(
-        lambda v: int(v) if float(v).is_integer() else float(v)).astype(object)
-    combined.to_csv(OUT, index=False)
+    # whole levels stay integers in the file; 0.75 / 0.5 = appointed federal / state (2026-10-14).
+    # Built as an object column directly: .map() re-inferred float64 and wrote "4.0" (2026-10-24)
+    combined["office_level"] = pd.Series(
+        [int(v) if float(v).is_integer() else float(v) for v in combined["office_level"]],
+        index=combined.index, dtype=object)
+    # one fixed row order (the key) and LF line endings, so a rebuild's git diff shows only the
+    # rows that changed (2026-10-24: the level-sorted order moved every row whose level moved)
+    combined = combined.sort_values(KEY, kind="stable", key=lambda s: s.astype(str))
+    combined.to_csv(OUT, index=False, lineterminator="\n")
     print(f"\nsaved -> {OUT}: {len(combined)} rows "
           f"({(combined['src']=='wikipedia').sum()} wiki, {(combined['src']=='ballotpedia').sum()} ballotpedia)")
     print("office_level distribution:", combined["office_level"].value_counts().sort_index().to_dict())

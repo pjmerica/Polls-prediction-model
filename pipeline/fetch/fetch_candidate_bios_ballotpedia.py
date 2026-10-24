@@ -206,6 +206,8 @@ _BP_LEVELS_EXTRA = {
                   r"\b" + _STATES_RX + r"\s+(?:auditor|treasurer|comptroller|tax commissioner|"
                   r"superintendent of (?:education|public instruction))\b|"
                   r"chief financial officer of florida|auditor of accounts|board of equalization|"
+                  # Connecticut's elected title has "the" (read as an appointed secretary)
+                  r"connecticut secretary of the state|secretary of the state of connecticut|"
                   r"public (?:service|regulation|utilities) commission|corporation commission|"
                   r"new hampshire executive council|"
                   # elected commissioners: public lands (NM, WA), labor (GA, NC, OK, OR),
@@ -224,6 +226,23 @@ _BP_LEVELS_EXTRA = {
                   r"\bassembly from seat|common council|town board|\bsupervisor\b|"
                   r"first selectwoman|schools board|school (?:district )?board|board of regents|\bcontroller\b", re.I),
 }
+
+
+_FL_SOS_RX = re.compile(r"florida secretary of state|secretary of state of florida", re.I)
+
+
+def office_level(o):
+    """[phrase, start, end(, level)] -> that office's level. A 4th element is a researched level
+    (hand-verified rows, 2026-10-24) and wins; otherwise the phrase classifier. Florida's
+    secretary of state has been appointed since January 2003 (Laurel Lee, 2019-22), so there
+    the start year decides."""
+    if len(o) >= 4 and o[3] is not None:
+        return float(o[3])
+    lvl = classify_ballotpedia(o[0])
+    if (lvl == 3 and len(o) >= 2 and o[1] is not None and int(o[1]) >= 2003
+            and _FL_SOS_RX.search(str(o[0]))):
+        return APPOINTED_STATE
+    return lvl
 
 
 def _is_federal_appointment(d):
