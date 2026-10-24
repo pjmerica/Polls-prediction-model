@@ -175,9 +175,9 @@
  ],
  "xgb_params": {
   "max_depth": 3,
-  "learning_rate": 0.05,
+  "learning_rate": 0.03,
   "n_estimators": 300,
-  "min_child_weight": 30,
+  "min_child_weight": 15,
   "subsample": 0.6,
   "colsample_bytree": 1.0,
   "reg_lambda": 1,
@@ -205,27 +205,27 @@
  "eval_expanding_window": {
   "2018": {
    "n_races": 229.0,
-   "AUC": 0.9373,
-   "Brier": 0.1004,
-   "race_acc": 0.786
+   "AUC": 0.9353,
+   "Brier": 0.1009,
+   "race_acc": 0.8035
   },
   "2020": {
    "n_races": 153.0,
-   "AUC": 0.9158,
-   "Brier": 0.118,
-   "race_acc": 0.7908
+   "AUC": 0.9152,
+   "Brier": 0.1173,
+   "race_acc": 0.7843
   },
   "2022": {
    "n_races": 178.0,
-   "AUC": 0.9633,
-   "Brier": 0.0776,
-   "race_acc": 0.8483
+   "AUC": 0.963,
+   "Brier": 0.0787,
+   "race_acc": 0.8371
   },
   "2024": {
    "n_races": 135.0,
-   "AUC": 0.9638,
-   "Brier": 0.077,
-   "race_acc": 0.8593
+   "AUC": 0.9652,
+   "Brier": 0.0758,
+   "race_acc": 0.8667
   }
  }
 }

@@ -4,6 +4,41 @@ For the next agent. Read AGENTS.md first (architecture + rules), CONCERNS.md sec
 (risk register + roadmap). This file: what's mid-flight RIGHT NOW, what's most likely to
 break, and what to do next, in order.
 
+## 2026-10-24 - retrained on the reconciled office levels
+
+User: "make sure to document the changes and retrain". The standard sequence was run:
+`model.ipynb`, then `margin_model.ipynb` (one at a time), then `fundamentals_model.py
+--general-only`. The primary models stay frozen. The before/after 2026 comparison used the same
+local polls feed.
+- **Win model: the artifact is byte-identical.** The production fit's 300 depth-2 trees split on
+  28 of the 207 features, and `bio_office_level` is not one of them. It shows in
+  `feature_importance.csv` only through the notebook's 2024-walkthrough model.
+  - Held-out 2018-24 is unchanged: AUC .974, Brier .063, LogLoss .206, race-acc .879 vs poll-leader .869.
+  - 2026 win probabilities are identical in all 176 polled races.
+- **Margin model: the tuner flipped on a tie.**
+  - Stage-2 3-seed tune-CV MAE (1998-2016) is 5.577 for the new pick vs 5.579 for the previous
+    settings on the same corrected data.
+  - New: 200 trees, min_child_weight 30, colsample 1.0, reg_lambda 5, reg_alpha 0. Previous: 400 /
+    15 / 0.6 / 1 / 1.
+  - Held-out 2018-24 MAE is 5.796, against 5.455 before. The previous settings on the corrected data
+    score 5.493, so the data fix alone costs 0.04 (the fragile 2018 fold) and the flip 0.30.
+  - Per cycle, new vs previous on new data: 2018 8.49 / 7.58, 2020 5.95 / 5.72, 2022 4.43 / 4.34,
+    2024 4.33 / 4.34. Margin race-acc .864 vs poll .869 (was .879).
+  - **Published the tuner's pick, per the 2026-10-22 user call on near-ties.** The open question
+    stands: select on a calibrated metric, or average the top settings' predictions.
+  - To revert, save the margin artifact with the previous XGBR_PARAMS (cells 10-11 with fixed
+    params). To compare settings, score them with the notebook's `cv_mae` (cell 6) and its
+    expanding-window loop (cell 7).
+  - 2026 margins move a median 0.58 pts, max 4.7.
+- **No-polls model:** re-tuned to learning_rate .03 (was .05) and min_child_weight 15 (was 30).
+  - Held-out 2018-24: AUC .945, Brier .093, race-acc .823 (was .945 / .093 / .821).
+  - `bio_office_level` is still its #2 feature (3.9% of gain).
+  - 2026 unpolled races: no favourite changes; median move 0.4 pts, mean 0.9. Biggest: NC-8 Mark
+    Harris 85.8 -> 75.0, CA-1 McGuire 53.3 -> 61.8, NY-2 Garbarino 87.8 -> 94.1, PA-9 Meuser
+    88.9 -> 83.0, NV-1 Titus 83.7 -> 77.9, CA-12 Simon 75.0 -> 80.7.
+- The competitive Senate/Governor list (favourite at 75% or less) is unchanged at 13 races, so the
+  polling-agg State election results guides need no rebuild.
+
 ## 2026-10-24 - office-level table reconciled with its sources (the bio drift)
 
 User: "fix that with research and web searching along with ballotpedia".

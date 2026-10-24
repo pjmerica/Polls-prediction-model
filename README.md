@@ -44,8 +44,8 @@ differently:**
 
 | model | target | notebook/script | headline (honest, expanding-window) |
 |---|---|---|---|
-| **Win** | `won ∈ {0,1}` | `model.ipynb` | AUC .966 / AUC-PR .947 / Brier .072 / race-acc .864 (ties the poll baseline) |
-| **Margin** | signed vote margin vs. best opponent | `margin_model.ipynb` | MAE ~6.5–7.2 vs. ~7.5 calibrated-poll baseline (**beats polls**) |
+| **Win** | `won ∈ {0,1}` | `model.ipynb` | AUC .974 / AUC-PR .958 / Brier .063 / race-acc .879 vs. poll-leader .869 (2018-24, retrain 2026-10-24) |
+| **Margin** | signed vote margin vs. best opponent | `margin_model.ipynb` | MAE 5.80 vs. 6.26 calibrated-poll / 6.59 raw-poll baseline (**beats polls**; 2018-24, retrain 2026-10-24) |
 | **Primary nominee** | `won ∈ {0,1}` (becomes the party's nominee) | `models/poll/primary_model.py` | AUC-PR .97 / Brier .02 / race-acc .93 vs. poll-leader .72 baseline |
 | **Primary margin** | vote margin vs. best other candidate | `models/poll/primary_margin_model.py` | MAE 17.0 vs. 18.5 calibrated-poll baseline — beats it on the mean, but LOSES the 2022 fold; two eval cycles only |
 
@@ -53,13 +53,15 @@ differently:**
 `models/poll/margin_feature_importance.csv` / `data/primary_model_features.json` for the exact
 current run, and `HANDOFF.md` for the dated history of every retrain.)
 
-A fifth, non-production model exists for reference: `models/fundamentals/fundamentals_model.py`
-trains NO-POLLING variants of the general and primary models. The general one reaches race-acc
-.811 (vs .868 with polls) — most general elections are structurally determined, with
-`is_incumbent` alone carrying 43% of the gain. The primary one only reaches .435, BELOW its own
+A fifth model, `models/fundamentals/fundamentals_model.py`, trains NO-POLLING variants of the
+general and primary models. Since 2026-10-23 the general one scores every race without polls
+(`models/fundamentals/predict_unpolled.py`). It reaches race-acc .823 / Brier .093 (2018-24,
+retrain 2026-10-24) vs .871 / .064 with polls - most general elections are structurally
+determined, with `is_incumbent` alone carrying about a quarter of the gain and `bio_office_level`
+the next most. The primary one only reaches .435, BELOW its own
 naive "pick the highest office-level candidate" baseline of .451, because within one party
-there is no incumbency edge, no partisan lean and no seat history to lean on. It is not blended
-into production — see CONCERNS.md #28.
+there is no incumbency edge, no partisan lean and no seat history to lean on. Neither is blended
+into the polled races' numbers — see CONCERNS.md #28.
 
 **Validation:** nested, never random. Hyperparameters are tuned by leave-one-cycle-out CV on
 **older cycles only** (1998–2016 general models; ≤2020 for the primary model); the headline
