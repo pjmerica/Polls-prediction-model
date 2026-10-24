@@ -31,6 +31,11 @@ Found by checking the unpolled races' nominees against `data/primary_results_202
 - **DEM-slot independents** (`candidate_party_overrides.csv`, the Osborn convention): Todd Achilles
   (ID-Sen) and Brian Bengs (SD-Sen) - each is the de-facto challenger after the Democratic nominee
   withdrew. They had been scored as minor third-party candidates.
+- **No-polls stress test now shifts the whole national mood** (natl_env AND every generic-ballot
+  level feature, +/-3): the old natl_env-only shift barely registered. Finding: the no-polls model
+  is nearly flat in the national mood at today's D+8.6 (median 0.2 pts between the two shifts; CA-1
+  51.3 / 53.3 / 53.4) - few training cycles were this Democratic - so no race is fragile and the
+  forecast page still shows no stress test for no-polls races.
 - **Roster corrections** (`fetch_general_roster_2026.CORRECTIONS`, re-applied on every run): LA-6
   Chauna Banks added (Louisiana's state-page ballot table, polled, October coverage; missing from
   the overview page), Chris Johnson dropped (not on that table), KY-3 spelling.

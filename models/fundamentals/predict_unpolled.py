@@ -60,7 +60,23 @@ def roster(skip):
     return r
 
 
-def table(r, ne):
+# generic-ballot features that are LEVELS of the D-minus-R margin (a national-mood error moves them;
+# std / trend / last12_delta describe its path and do not move)
+GB_LEVELS = ("eve", "mean", "max", "min", "avg_3mo", "avg_6mo", "avg_12mo", "max_3mo", "max_6mo",
+             "max_12mo")
+
+
+def macro(gb_shift=0.0):
+    m = build_macro(cycles=[CYCLE])
+    if gb_shift:
+        for k in GB_LEVELS:
+            key = f"generic_ballot_{k}"
+            if key in m[CYCLE] and m[CYCLE][key] == m[CYCLE][key]:
+                m[CYCLE][key] += gb_shift
+    return m
+
+
+def table(r, ne, gb_shift=0.0):
     fake = pd.DataFrame({
         "year": CYCLE, "state": r["state"].values, "office": r["office"].values,
         "district": r["district"].values, "candidate": r["candidate"].values,
@@ -72,7 +88,7 @@ def table(r, ne):
         "election_date": pd.Timestamp(f"{CYCLE}-11-03"), "days_to_elec": np.nan,
         "race_id": r["race_id"].values,
     })
-    c = F.build_candidate_table(fake, build_macro(cycles=[CYCLE]), ne, F.load_fundamentals(), house={},
+    c = F.build_candidate_table(fake, macro(gb_shift), ne, F.load_fundamentals(), house={},
                                 fec=F.load_fec(extended=True), bias_priors={},
                                 candidate_bios=F.load_candidate_bios(),
                                 primary_results=F.load_primary_results())
@@ -107,12 +123,15 @@ def main():
     missing = [f for f in FE if f not in c.columns]
     assert not missing, f"the model expects features the table lacks: {missing[:8]}"
     c["win_prob"] = model.predict_proba(c.reindex(columns=FE))[:, 1]
-    # fragility: the pick under a national environment 3 points either way
+    # stress test: the national mood 3 points more Republican / Democratic than measured - the
+    # national environment AND every generic-ballot level feature move together (2026-10-24:
+    # moving natl_env alone barely registered, since the trees read the mood mostly through the
+    # generic-ballot features, so no race ever came out fragile)
     picks = {}
     for label, shift in (("R3", -3.0), ("D3", +3.0)):
         ne2 = dict(ne)
         ne2[CYCLE] = ne.get(CYCLE, 0.0) + shift
-        cs = table(r, ne2)
+        cs = table(r, ne2, gb_shift=shift)
         cs["p"] = model.predict_proba(cs.reindex(columns=FE))[:, 1]
         m = cs.set_index(["race_id", "cand_key"])["p"]
         c[f"win_prob_{label}"] = [m.get((a, b)) for a, b in zip(c["race_id"], c["cand_key"])]
