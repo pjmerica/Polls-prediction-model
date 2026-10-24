@@ -315,6 +315,10 @@ def classify_evidence(desc, office=None):
     # "director of the Governor's Office of ..." is staff, not the governorship (2026-09-25)
     d = re.sub(r"\brunner[\s-]*up\s+(for|in)\s+[^,;.()]+", " ", d)
     d = re.sub(r"\bgovernor'?s\s+office\b", " ", d)
+    # the same for a mayor's office, and any "employee of ..." is a job, not an office
+    # (2026-10-23: "former employee of the NYC Mayor's Office", George Marsh NY-5, read 1)
+    d = re.sub(r"\bmayor'?s\s+office\b", " ", d)
+    d = re.sub(r"\b(?:employee|staffer|intern)\s+(?:of|at|in|for)\s+[^,;.()]+", " ", d)
     # "director of Governor Bill Owens' policy and initiatives office" (2026-10-14)
     d = re.sub(r"\bgovernor\s+[a-z.]+(?:\s+[a-z.]+){0,2}\s*'\s*s?\s+[a-z& ]*office\b", " ", d)
     # staff OF an official is not the office: "chief of staff to Governor Deval Patrick"

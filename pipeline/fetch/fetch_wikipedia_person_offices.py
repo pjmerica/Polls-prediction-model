@@ -141,7 +141,8 @@ _NICKS = {"larry": "lawrence", "jerry": "gerald", "libby": "elizabeth", "quico":
           "beth": "elizabeth", "liz": "elizabeth", "hank": "henry", "skip": "william",
           "tom": "thomas", "tommy": "thomas", "jim": "james", "jimmy": "james",
           "bob": "robert", "bobby": "robert", "rob": "robert", "chris": "christopher",
-          "steve": "stephen", "kate": "katherine", "kathy": "kathleen", "sue": "susan"}
+          "steve": "stephen", "kate": "katherine", "kathy": "kathleen", "sue": "susan",
+          "ginny": "virginia"}
 # verified one-offs where the article uses an unrelated nickname
 _SAME_PERSON = {("samuel pearson goddard", "terry goddard")}   # Samuel Pearson Goddard III
 # ...and relatives who pass the name rule through a shared middle name
@@ -156,8 +157,10 @@ def title_matches(name, title):
     """The article's first given name must line up with one of the candidate's FULL given
     names - same word, a prefix (Ric/Richard), or a nickname (Tom/Thomas, Bob/Robert).
     Never via an initial (2026-10-13): 'Patrick R. Casey' (PA-10 2002, Bob Casey's brother)
-    matched 'Bob Casey Jr.' through the R, and 'Marsha Folsom' matched 'Jim Folsom Jr.'."""
-    import features as F
+    matched 'Bob Casey Jr.' through the R, and 'Marsha Folsom' matched 'Jim Folsom Jr.'.
+    Nor via a nickname's INITIAL (2026-10-23): features._NICK_INITIAL is for the FEC fallback,
+    where only an initial exists; here both names are full, so it let 'Jim' Kingston (GA-1 2026)
+    pass as his father 'Jack' (J for John) and 'Rick' Kennedy (TX) as 'Robert' F. Kennedy Jr."""
     # surname = last word that is not a generational suffix ("Joe Manchin, III" -> manchin)
     sn = [w for w in (x.strip(",.").lower() for x in name.split())
           if w and w not in ("jr", "sr", "ii", "iii", "iv")][-1]
@@ -182,10 +185,6 @@ def title_matches(name, title):
             return True
         if g == t0 or (len(g) >= 3 and len(t0) >= 3 and (g.startswith(t0) or t0.startswith(g))):
             return True
-        if t0 in F._NICK_INITIAL and F._NICK_INITIAL[t0] == g[0]:
-            return True
-        if g in F._NICK_INITIAL and F._NICK_INITIAL[g] == t0[0]:
-            return True
         # short forms, either side, sharing two letters: Mike/Michael, Don/Donald, Joe/Joseph
         # (not just one: 'Mick' Rich passed as 'Martin' Heinrich, 2026-10-14)
         if t0[:2] == g[:2] and min(len(t0), len(g)) <= 4:
@@ -199,6 +198,34 @@ def plausible(offices):
     """No candidate since 1998 held office before 1940: an older infobox is a namesake
     (Bill Marcy, MS-2 2010, matched William L. Marcy, U.S. Senator 1831-33)."""
     return all(o[1] is None or int(o[1]) >= 1940 for o in offices)
+
+
+_STATE_OFFICE = ("{n}(?: state)? (?:house|senate|assembly|legislature|general assembly|house of delegates)"
+                 "|(?:governor|lieutenant governor|attorney general|secretary of state|treasurer|auditor"
+                 "|comptroller) of {n}|(?:senator|representative|member) from {n}"
+                 "|{n}'s \\d+(?:st|nd|rd|th) (?:congressional )?district")
+
+
+# verified movers whose offices really were in another state
+_MOVED = {("richard ojeda", "NC")}   # WV state senator 2017-19, NC-9 Democratic nominee 2026
+
+
+def foreign_offices(offices, state, name=""):
+    """True when the infobox's state-level offices are all in ANOTHER state: a namesake
+    (2026-10-23: Steve Cohen, CA-50's 2026 Republican nominee, matched Tennessee's Rep. Steve
+    Cohen through his 'Tennessee State Senate' term). Only legislature / statewide-office /
+    'from <state>' wording counts, so Kansas City or a Washington County post does not."""
+    if (str(name).lower(), state) in _MOVED:
+        return False
+    home = STATE_NAME.get(state, state).lower()
+    hits = set()
+    for o in offices:
+        s = str(o[0]).lower()
+        found = [n.lower() for n in STATE_NAME.values()
+                 if re.search(r"\b(?:" + _STATE_OFFICE.format(n=re.escape(n.lower())) + r")\b", s)]
+        if found:                       # 'west virginia senate' also reads as 'virginia senate'
+            hits.add(max(found, key=len))
+    return bool(hits) and home not in hits
 
 
 def find_article(name, state, party, year):
@@ -267,8 +294,9 @@ def main():
     if args.recheck:
         done = pd.read_csv(OUT)
         title = done["source_note"].str.extract(r"infobox: (.*) \(fetched", expand=False)
-        ok = [title_matches(c, t) and plausible(json.loads(o))
-              for c, t, o in zip(done["candidate"], title.fillna(""), done["offices_json"])]
+        ok = [title_matches(c, t) and plausible(json.loads(o)) and not foreign_offices(json.loads(o), s, c)
+              for c, s, t, o in zip(done["candidate"], done["state"], title.fillna(""),
+                                    done["offices_json"])]
         for c, t, k in zip(done["candidate"], title, ok):
             if not k:
                 print(f"  drop: {c} <- {t}")
@@ -294,7 +322,7 @@ def main():
         futs = [ex.submit(work, r) for r in todo]
         for i, f in enumerate(as_completed(futs), 1):
             r, title, offs = f.result()
-            if title and offs and plausible(offs):
+            if title and offs and plausible(offs) and not foreign_offices(offs, r.state, r.candidate):
                 rows.append(dict(candidate=r.candidate, state=r.state,
                                  offices_json=json.dumps(offs),
                                  source_note=f"Wikipedia infobox: {title} (fetched 2026-10-13)"))
