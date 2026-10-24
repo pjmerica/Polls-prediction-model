@@ -21,6 +21,19 @@ Found by checking the unpolled races' nominees against `data/primary_results_202
   one-seat states use the singular "...election in <State>" page (SD/VT/WY House now parsed).
 - All four cases are in the parser's KNOWN hard-fail list. Net change to the file: 3 winners
   corrected, 9 party-races added.
+- **Every roster nominee checked against every 2026 primary result** (all 121 state pages, the fixed
+  parser; validation only): 2 differences, both explained (NC-11 Balkcom replaced Edwards; KY-3
+  "Rodriquez" is a typo for Maria Teresa Rodriguez), and 3 primary winners missing from the roster,
+  all withdrawn: David Roth (ID-Sen, July 28), Cindy Burbank (NE-Sen), Julian Beaudion (SD-Sen, Aug 4).
+- **Stale candidates the poll model still scored** (modelled but not on the November ballot):
+  `dropped_out_2026.csv` + Roth, Beaudion, Hector Mujica (FL-28: one March hypothetical; nominee Phil
+  Ehr, so FL-28 moves to the no-polls model), Stephen Villee (NH-Gov), Chris Schmidt (NY-21).
+- **DEM-slot independents** (`candidate_party_overrides.csv`, the Osborn convention): Todd Achilles
+  (ID-Sen) and Brian Bengs (SD-Sen) - each is the de-facto challenger after the Democratic nominee
+  withdrew. They had been scored as minor third-party candidates.
+- **Roster corrections** (`fetch_general_roster_2026.CORRECTIONS`, re-applied on every run): LA-6
+  Chauna Banks added (Louisiana's state-page ballot table, polled, October coverage; missing from
+  the overview page), Chris Johnson dropped (not on that table), KY-3 spelling.
 
 ## 2026-10-23 - every race on the ballot is scored (no-polls model shipped for unpolled races)
 

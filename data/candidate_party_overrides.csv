@@ -2,3 +2,5 @@ race_id,cand_key,model_party,display_party,note
 2026_NE_Senate,osborn d,DEM,IND,"Dan Osborn: independent, but the de-facto two-party challenger vs Ricketts. Model as DEM-slot so poll_lead/two-party margin work; display as IND (his real affiliation)."
 2026_GA_Senate,loeffler k,REP,REP,"Kelly Loeffler is Republican; one feed tags IND in error."
 2026_LA_House-5,echols m,REP,REP,"Michael Echols is a Republican state rep (House majority leader); the Wikipedia poll table carries no party, so he read OTH. Added 2026-10-08."
+2026_ID_Senate,achilles t,DEM,IND,"Todd Achilles: independent; Idaho Democrats backed him and their nominee David Roth withdrew (2026-07-28). The de-facto two-party challenger vs Risch: model as DEM-slot like Osborn, display IND. Added 2026-10-24."
+2026_SD_Senate,bengs b,DEM,IND,"Brian Bengs: independent, the 2022 Democratic nominee; the 2026 Democratic nominee withdrew (2026-08-04). The de-facto two-party challenger vs Rounds: model as DEM-slot like Osborn, display IND. Added 2026-10-24."

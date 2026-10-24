@@ -50,6 +50,41 @@ STATES = {
     "Utah": "UT", "Vermont": "VT", "Virginia": "VA", "Washington": "WA", "West Virginia": "WV",
     "Wisconsin": "WI", "Wyoming": "WY"}
 _DROP = re.compile(r"withdr|disqualif|deceased|died|suspended|removed from (the )?ballot", re.I)
+
+# Hand corrections, each with its source. The overview pages lag the per-state pages; found
+# 2026-10-24 by checking the roster against Louisiana's state page (its all-party Nov 3 ballot
+# table) and against every 2026 primary result. (race_id, candidate as listed, action, source)
+CORRECTIONS = [
+    ("2026_LA_House-6", "Chauna Banks", "add:Democratic",
+     "on Louisiana's state-page ballot table, polled (Aug 12-13), October forum and voter-guide coverage"),
+    ("2026_LA_House-6", "Chris Johnson", "drop",
+     "not on Louisiana's state-page ballot table nor in any October coverage of the race"),
+    ("2026_KY_House-3", "Maria Rodriquez", "rename:Maria Teresa Rodriguez",
+     "spelling: the primary results and Ballotpedia have Maria Teresa Rodriguez"),
+]
+
+
+def apply_corrections(d):
+    d = d.copy()
+    d["correction"] = ""
+    for rid, name, action, source in CORRECTIONS:
+        hit = (d["race_id"] == rid) & (d["candidate"] == name)
+        if action.startswith("add:"):
+            if hit.any():
+                continue                                   # the page has caught up
+            base = d[d["race_id"] == rid].iloc[0].to_dict()
+            party_raw = action.split(":", 1)[1]
+            base.update(candidate=name, party_raw=party_raw, party=party_code(party_raw),
+                        write_in=0, dropped=0, cand_key=F.norm_name(name), correction=source)
+            d = pd.concat([d, pd.DataFrame([base])], ignore_index=True)
+        elif not hit.any():
+            print(f"  correction no longer needed or name changed: {rid} {name} ({action})")
+        elif action == "drop":
+            d.loc[hit, ["dropped", "correction"]] = [1, source]
+        elif action.startswith("rename:"):
+            new = action.split(":", 1)[1]
+            d.loc[hit, ["candidate", "cand_key", "correction"]] = [new, F.norm_name(new), source]
+    return d
 _REF = re.compile(r"\[\s*[^\]]{1,8}\s*\]")
 _PVI = re.compile(r"^(R\+\d+|D\+\d+|EVEN)$")
 
@@ -155,6 +190,7 @@ def main():
     d["cand_key"] = d["candidate"].map(F.norm_name)
     d["fetched_at"] = dt.date.today().isoformat()
     d = d.drop_duplicates(["race_id", "cand_key"])
+    d = apply_corrections(d)
     d.to_csv(OUT, index=False)
     live = d[(d["dropped"] == 0) & (d["write_in"] == 0)]
     two = live.groupby("race_id")["party"].apply(lambda s: {"DEM", "REP"} <= set(s)).sum()
