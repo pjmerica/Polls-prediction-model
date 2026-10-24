@@ -4,6 +4,24 @@ For the next agent. Read AGENTS.md first (architecture + rules), CONCERNS.md sec
 (risk register + roadmap). This file: what's mid-flight RIGHT NOW, what's most likely to
 break, and what to do next, in order.
 
+## 2026-10-24 - primary results: ranked-choice winners, nested Lieutenant-Governor sections
+
+Found by checking the unpolled races' nominees against `data/primary_results_2026.csv`.
+- **ME-2 was published with the wrong Democrat** (Joe Baldacci 56%): Maine's primaries are
+  ranked-choice, the parser read round 1 (Baldacci 31.7% led), and drop_primary_losers then dropped
+  the real nominee, Matthew Dunlap (won after transfers; AP). Same for ME-Gov D (Shah led round 1;
+  Hannah Pingree won 56-44 in the final round). `fetch_primary_results_2026.py` now reads every
+  round of a ranked-choice table and crowns the final-round leader.
+- **NM-Gov D**: the page nests "Primary election" (h4) under "Lieutenant governor" (h3); that
+  heading reset the down-ticket guard, so Maggie Toulouse Oliver (LG) was the "governor winner",
+  Deb Haaland was dropped as a loser and the race fell out of the poll model. The guard now resets
+  only on a heading at its own level or above. Haaland 72.3-27.7; now polled again.
+- Re-runs no longer erase races the current target list skips (the targets follow the primary
+  model's live race list; a re-run had dropped AR/MS/OH-Senate, MD-Governor, IA/NV House), and
+  one-seat states use the singular "...election in <State>" page (SD/VT/WY House now parsed).
+- All four cases are in the parser's KNOWN hard-fail list. Net change to the file: 3 winners
+  corrected, 9 party-races added.
+
 ## 2026-10-23 - every race on the ballot is scored (no-polls model shipped for unpolled races)
 
 User: "every race should be scored by the model". The poll model covers 174 of the 506 general

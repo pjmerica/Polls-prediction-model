@@ -711,8 +711,8 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2026_MD_House-8_REP,REP,Anita Cox,2123,26.3,16,False,cox a
 2026_MD_House-8_REP,REP,Donald Lech,1376,17.0,16,False,lech d
 2026_MD_House-8_REP,REP,Michael Yadeta,1087,13.5,16,False,yadeta m
-2026_ME_Governor_DEM,DEM,Hannah Pingree,50552,23.3,1,False,pingree h
-2026_ME_Governor_DEM,DEM,Nirav Shah,58606,26.8,1,True,shah n
+2026_ME_Governor_DEM,DEM,Hannah Pingree,50552,23.3,1,True,pingree h
+2026_ME_Governor_DEM,DEM,Nirav Shah,58606,26.8,1,False,shah n
 2026_ME_Governor_DEM,DEM,Troy Jackson,45959,21.1,1,False,jackson t
 2026_ME_Governor_DEM,DEM,Shenna Bellows,44770,20.6,1,False,bellows s
 2026_ME_Governor_DEM,DEM,Angus King III,17860,8.3,1,False,king a
@@ -727,8 +727,8 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2026_ME_House-1_DEM,DEM,Chellie Pingree,128257,100.0,1,True,pingree c
 2026_ME_House-1_REP,REP,Ronald Russell,27059,53.5,2,True,russell r
 2026_ME_House-1_REP,REP,Joshua Pietrowicz,23485,46.5,2,False,pietrowicz j
-2026_ME_House-2_DEM,DEM,Matthew Dunlap,22933,29.1,3,False,dunlap m
-2026_ME_House-2_DEM,DEM,Joe Baldacci,24966,31.7,3,True,baldacci j
+2026_ME_House-2_DEM,DEM,Matthew Dunlap,22933,29.1,3,True,dunlap m
+2026_ME_House-2_DEM,DEM,Joe Baldacci,24966,31.7,3,False,baldacci j
 2026_ME_House-2_DEM,DEM,Jordan Wood,22712,28.8,3,False,wood j
 2026_ME_House-2_DEM,DEM,Paige Loud,8194,10.4,3,False,loud p
 2026_ME_House-2_REP,REP,Paul LePage,69233,100.0,4,True,lepage p
@@ -1115,11 +1115,11 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2026_NJ_House-12_DEM,DEM,Elijah Dixon,1150,1.5,38,False,dixon e
 2026_NJ_House-12_DEM,DEM,Kyle Little,674,0.9,38,False,little k
 2026_NJ_House-12_REP,REP,Gregg Mele,13298,100.0,41,True,mele g
-2026_NM_Governor_DEM,DEM,Maggie Toulouse Oliver,169930,80.0,2,True,oliver m
-2026_NM_Governor_DEM,DEM,Harold Pope Jr.,42515,20.0,2,False,pope h
-2026_NM_Governor_REP,REP,Gregg Hull,56708,47.0,3,True,hull g
-2026_NM_Governor_REP,REP,Doug Turner,44480,36.9,3,False,turner d
-2026_NM_Governor_REP,REP,Duke Rodriguez,19393,16.1,3,False,rodriguez d
+2026_NM_Governor_DEM,DEM,Deb Haaland,158713,72.3,1,True,haaland d
+2026_NM_Governor_DEM,DEM,Sam Bregman,60619,27.7,1,False,bregman s
+2026_NM_Governor_REP,REP,Gregg Hull,56708,47.0,2,True,hull g
+2026_NM_Governor_REP,REP,Doug Turner,44480,36.9,2,False,turner d
+2026_NM_Governor_REP,REP,Duke Rodriguez,19393,16.1,2,False,rodriguez d
 2026_NM_Senate_DEM,DEM,Ben Ray Luján,182360,84.2,1,True,lujan b
 2026_NM_Senate_DEM,DEM,Matt Dodson,34289,15.8,1,False,dodson m
 2026_NM_Senate_REP,REP,Larry Marker,31220,100.0,2,True,marker l
@@ -1815,3 +1815,24 @@ race_id,party,candidate,votes,pct,table_seq,is_winner,cand_key
 2026_WY_Governor_REP,REP,Megan Degenfelder,38739,29.7,1,False,degenfelder m
 2026_WY_Governor_REP,REP,Brent Bien,30843,23.6,1,False,bien b
 2026_WY_Governor_REP,REP,Curt Blake,2161,1.7,1,False,blake c
+2026_RI_House-1_DEM,DEM,Gabe Amo,56255,100.0,1,True,amo g
+2026_RI_House-1_REP,REP,Kellie Keenan,7155,100.0,2,True,keenan k
+2026_RI_House-2_DEM,DEM,Seth Magaziner,55135,100.0,3,True,magaziner s
+2026_RI_House-2_REP,REP,Victor Mellor,8837,58.1,4,True,mellor v
+2026_RI_House-2_REP,REP,Stephen Skoly,6380,41.9,4,False,skoly s
+2026_SD_House-1_REP,REP,Marty Jackley,103074,79.2,1,True,jackley m
+2026_SD_House-1_REP,REP,James Bialota Jr.,27100,20.8,1,False,bialota j
+2026_VT_House-1_DEM,DEM,Becca Balint,79679,98.4,1,True,balint b
+2026_VT_House-1_REP,REP,Gerald Malloy,15662,76.3,2,True,malloy g
+2026_VT_House-1_REP,REP,Mark Coester,4523,22.0,2,False,coester m
+2026_WY_House-1_REP,REP,Chuck Gray,31224,25.4,1,True,gray c
+2026_WY_House-1_REP,REP,Steve Friess,25059,20.4,1,False,friess s
+2026_WY_House-1_REP,REP,Kevin Christensen,21633,17.6,1,False,christensen k
+2026_WY_House-1_REP,REP,Jillian Balow,12591,10.3,1,False,balow j
+2026_WY_House-1_REP,REP,Reid Rasner,10808,8.8,1,False,rasner r
+2026_WY_House-1_REP,REP,David Giralt,10131,8.2,1,False,giralt d
+2026_WY_House-1_REP,REP,Bo Biteman,6257,5.1,1,False,biteman b
+2026_WY_House-1_REP,REP,Keith Goodenough,3343,2.7,1,False,goodenough k
+2026_WY_House-1_REP,REP,Richard Dodson,1777,1.4,1,False,dodson r
+2026_WY_House-1_DEM,DEM,Lisa F. Kinney,9344,77.8,2,True,kinney l
+2026_WY_House-1_DEM,DEM,Elena del Real,2660,22.2,2,False,real e

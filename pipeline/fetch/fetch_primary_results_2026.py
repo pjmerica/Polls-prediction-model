@@ -52,6 +52,7 @@ URL_HOUSE = ("https://en.wikipedia.org/wiki/{year}_United_States_House_of_Repres
              "_elections_in_{state}")
 
 PARTY_ROW = {"republican": "REP", "democratic": "DEM"}
+AT_LARGE_2026 = {"AK", "DE", "ND", "SD", "VT", "WY"}
 
 # State affiliates whose Wikipedia party label is NOT the bare national name. Exact-match on
 # PARTY_ROW silently skipped these, and a skipped party table means the whole race is absent
@@ -95,6 +96,7 @@ def parse_results_tables(html, base_race_id, house=False, at_large=False):
     soup = BeautifulSoup(html, "html.parser")
     rows, seq = [], 0
     stage, district, other_office = "general", (1 if at_large else None), False
+    other_level = 9
     OTHER_OFFICE_RX = re.compile(
         r"lieutenant|attorney general|secretary of state|treasurer|auditor|"
         r"comptroller|agriculture|superintendent|land commissioner|railroad",
@@ -102,6 +104,7 @@ def parse_results_tables(html, base_race_id, house=False, at_large=False):
     for el in soup.find_all(["h2", "h3", "h4", "table"]):
         if el.name != "table":
             text = el.get_text(" ", strip=True)
+            level = int(el.name[1])
             if house:
                 m = re.search(r"District\s+(\d+)", text)
                 if m:
@@ -109,14 +112,19 @@ def parse_results_tables(html, base_race_id, house=False, at_large=False):
             s, _p = infer_section_context(text)
             if s:
                 stage = s
-                other_office = False    # a new primary/general section resets the guard
+                # a new primary/general section resets the guard - but only one at the guard's
+                # own level or above: NM 2026 nests "Primary election" (h4) UNDER "Lieutenant
+                # governor" (h3), which reset it and crowned the LG winner Maggie Toulouse
+                # Oliver over Deb Haaland (fixed 2026-10-24)
+                if level <= other_level:
+                    other_office, other_level = False, 9
             # DOWN-TICKET GUARD: gubernatorial pages nest Lieutenant-Governor (etc.)
             # primary results INSIDE the party-primary sections - without this the
             # last-table heuristic crowned running mates (Husted over DeWine, Driscoll
             # over Healey, Fetterman as 2018 PA "governor" winner...). A subsection
             # naming another office poisons tables until the next stage-bearing heading.
             if OTHER_OFFICE_RX.search(text):
-                other_office = True
+                other_office, other_level = True, min(other_level, level)
             continue
         if other_office or stage not in ("primary", "primary runoff"):
             continue
@@ -126,6 +134,11 @@ def parse_results_tables(html, base_race_id, house=False, at_large=False):
         if "candidate" not in heads or ("votes" not in heads and "%" not in heads):
             continue
         seq += 1
+        # RANKED-CHOICE tables (Maine) carry every round in one row - votes, %, transfer, votes,
+        # % ... - so the first vote column is only round 1. The nominee is the final-round
+        # leader (2026-10-24: Nirav Shah and Joe Baldacci led round 1, Hannah Pingree and
+        # Matthew Dunlap won ME-Gov and ME-2 after transfers)
+        rcv = "transfer" in heads or "round 2" in heads
         parties, trows = set(), []
         for tr in el.find_all("tr"):
             els = tr.find_all(["td", "th"])
@@ -148,17 +161,28 @@ def parse_results_tables(html, base_race_id, house=False, at_large=False):
             pct = re.sub(r"[^\d.]", "", cells[4]) if len(cells) > 4 else ""
             if not cand or not votes:
                 continue
+            # (round, votes) of the last round this candidate appears in: vote cells sit every
+            # third cell from the first (votes, %, transfer); later rounds are blank once out
+            final = (1, int(votes))
+            if rcv:
+                for k, cell in enumerate(cells[3::3], start=1):
+                    if re.fullmatch(r"[\d,]+", cell.strip()):
+                        final = (k, int(cell.replace(",", "")))
             parties.add(party)
-            trows.append((party, cand, int(votes), float(pct) if pct else None))
+            trows.append((party, cand, int(votes), float(pct) if pct else None, final))
         if not trows or len(parties) != 1:
             continue          # mixed-party table = not a primary results table
         party = parties.pop()
         rid = base_race_id + (f"-{district}" if house and district else "") + "_" + party
         if house and district is None:
             continue
-        for p_, cand, votes, pct in trows:
+        last_round = max(f[0] for *_x, f in trows)
+        for p_, cand, votes, pct, (rnd, fv) in trows:
+            # final_votes: the last round's count for the candidates still in it (round 1 =
+            # the only round for an ordinary primary), 0 for those eliminated earlier
             rows.append(dict(race_id=rid, party=party, candidate=cand,
-                             votes=votes, pct=pct, table_seq=seq))
+                             votes=votes, pct=pct, table_seq=seq,
+                             final_votes=fv if rnd == last_round else 0))
     return rows
 
 def page_targets(hist, deep=False):
@@ -231,11 +255,16 @@ def main():
         else:
             url, base, house = (URL_HOUSE.format(year=year, state=s),
                                 f"{year}_{st}_House", True)
+        # one-seat states have an "...election in <State>" page (singular) with no district
+        # headings (2026-10-24: SD/VT/WY House failed to fetch)
+        at_large = house and year == 2026 and st in AT_LARGE_2026
+        if at_large:
+            url = URL_HOUSE.format(year=year, state=s).replace("_elections_in_", "_election_in_")
         html = fetch_page(url)
         if html is None:
             print(f"  {st} {office}: page fetch failed")
             continue
-        rows = parse_results_tables(html, base, house=house)
+        rows = parse_results_tables(html, base, house=house, at_large=at_large)
         if rows:
             print(f"  {st} {office}: {len(rows)} result rows, "
                   f"{len(set(r['race_id'] for r in rows))} party-races")
@@ -245,10 +274,11 @@ def main():
     df = pd.DataFrame(allrows)
     if not len(df):
         raise SystemExit("no results parsed - page structure changed?")
-    # winner = top votes in the LAST table per (race_id): runoff supersedes round 1
+    # winner = top votes in the LAST table per (race_id): runoff supersedes round 1; in a
+    # ranked-choice table, the top FINAL-round count
     last = df.groupby("race_id")["table_seq"].transform("max")
     fin = df[df["table_seq"] == last].copy()
-    fin["is_winner"] = fin.groupby("race_id")["votes"].transform("max") == fin["votes"]
+    fin["is_winner"] = fin.groupby("race_id")["final_votes"].transform("max") == fin["final_votes"]
     fin["cand_key"] = fin["candidate"].map(F.norm_name)
 
     # ---- drop PARTY CONVENTION / ENDORSEMENT tables masquerading as primary results ----
@@ -278,13 +308,31 @@ def main():
     # Lieutenant-Governor table bug corrupted, plus a runoff case)
     KNOWN = {"2018_OH_Governor_DEM": "cordray r", "2018_OH_Governor_REP": "dewine m",
              "2018_HI_Governor_DEM": "ige d", "2022_MA_Governor_DEM": "healey m",
-             "2026_TX_Senate_REP": "paxton k"}
+             "2026_TX_Senate_REP": "paxton k",
+             # ranked-choice winners and a nested Lieutenant-Governor section (2026-10-24)
+             "2026_ME_Governor_DEM": "pingree h", "2026_ME_House-2_DEM": "dunlap m",
+             "2026_ME_Governor_REP": "charles r", "2026_NM_Governor_DEM": "haaland d"}
     wmap = fin[fin["is_winner"]].groupby("race_id")["cand_key"].agg(set).to_dict()
     for rid, want in KNOWN.items():
         if rid in wmap:
             assert want in wmap[rid], f"{rid}: parsed winner {wmap[rid]} != known {want}"
 
-    fin.to_csv(out_path, index=False)
+    # the 2026 targets follow the primary model's CURRENT race list, so a re-run must not erase
+    # results it no longer scrapes (2026-10-24: a re-run dropped AR/MS/OH-Senate, MD-Governor and
+    # the IA/NV House primaries, which would have turned drop_primary_losers off for them).
+    # Re-scraped races replace their old rows in place; the others keep theirs.
+    if not args.hist and not args.deep and os.path.exists(out_path):
+        old = pd.read_csv(out_path)
+        fresh = set(fin["race_id"])
+        parts = [fin[fin["race_id"] == rid] if rid in fresh else g
+                 for rid, g in old.groupby("race_id", sort=False)]
+        parts.append(fin[~fin["race_id"].isin(set(old["race_id"]))])
+        kept = old["race_id"].nunique() - len(fresh & set(old["race_id"]))
+        fin = pd.concat(parts, ignore_index=True)
+        print(f"kept {kept} party-races from the previous file that this run did not re-scrape")
+
+    # final_votes only decides is_winner; the file keeps its columns
+    fin.drop(columns=["final_votes"], errors="ignore").to_csv(out_path, index=False)
     w = fin[fin["is_winner"]]
     print(f"\nsaved -> {out_path}: {fin['race_id'].nunique()} party-races with results, "
           f"{len(w)} winners (known-winner validation passed)")
