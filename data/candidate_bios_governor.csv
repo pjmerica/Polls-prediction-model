@@ -407,7 +407,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,DEM,Donald Berwick,former administrator of the Centers for Medicare and Medicaid Services and CEO of the Institute for Healthcare Improvement,2014,Governor,MA,berwick d,0,0,0
 ,DEM,Martha Coakley,attorney general of Massachusetts and nominee for U.S. Senate in 2010,2014,Governor,MA,coakley m,3,0,1
 ,DEM,Steven Grossman,"treasurer and receiver-general of Massachusetts , former chairman of the Democratic National Committee and Massachusetts Democratic Party",2014,Governor,MA,grossman s,0,0,0
-,DEM,Joseph Avellone,"executive at PAREXEL , former COO of Blue Cross Blue Shield of Massachusetts and former chairman of the Wellesley board of selectmen",2014,Governor,MA,avellone j,0,0,0
+,DEM,Joseph Avellone,"executive at PAREXEL , former COO of Blue Cross Blue Shield of Massachusetts and former chairman of the Wellesley board of selectmen",2014,Governor,MA,avellone j,1,0,0
 ,DEM,Juliette Kayyem,former assistant U.S. secretary of Homeland Security,2014,Governor,MA,kayyem j,0.75,0,0
 ,DEM,Dan Wolf,state senator from Harwich and CEO of Cape Air,2014,Governor,MA,wolf d,2,0,0
 ,DEM,Suzanne M. Bump,Massachusetts state auditor (ran for re-election),2014,Governor,MA,bump s,3,0,0
@@ -437,7 +437,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,IND,Running mate: Angus Jennings,professional planner/consultant,2014,Governor,MA,jennings r,0,0,0
 ,IND,Scott Lively,evangelical pastor,2014,Governor,MA,lively s,0,0,0
 ,IND,Jeff McCormick,co-founder and managing partner of venture capital firm Saturn Partners,2014,Governor,MA,mccormick j,0,0,0
-,IND,Yarmouth,Board of Selectmen,2014,Governor,MA,yarmouth,0,0,0
+,IND,Yarmouth,Board of Selectmen,2014,Governor,MA,yarmouth,1,0,0
 ,DEM,Anthony Brown,Lieutenant Governor of Maryland,2014,Governor,MD,brown a,3,0,0
 ,DEM,Kenneth Ulman,Howard County Executive,2014,Governor,MD,ulman k,1,0,0
 ,DEM,Doug Gansler,Attorney General of Maryland,2014,Governor,MD,gansler d,3,0,0
@@ -1361,7 +1361,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,DEM,Jay Gonzalez,"private health insurance executive, corporate lawyer, former state secretary of administration and finance",2018,Governor,MA,gonzalez j,0.5,0,0
 ,DEM,Bob Massie,"co-founder of the Global Reporting Initiative , former executive director of Ceres , former president of the New Economy Coalition , ordained Episcopal minister, nominee for lieutenant governor in 1994 , candidate for the U.S. Senate in 2012",2018,Governor,MA,massie b,0,0,1
 ,DEM,Setti Warren,former mayor of Newton and candidate for the U.S. Senate in 2012,2018,Governor,MA,warren s,1,0,1
-,DEM,Joe Avellone,"businessman, former chairman of the Wellesley Board of selectmen and candidate for governor in 2014",2018,Governor,MA,avellone j,0,0,1
+,DEM,Joe Avellone,"businessman, former chairman of the Wellesley Board of selectmen and candidate for governor in 2014",2018,Governor,MA,avellone j,1,0,1
 ,DEM,Jeff Bussgang,venture capitalist and lecturer at Harvard Business School,2018,Governor,MA,bussgang j,0,0,0
 ,DEM,Katherine Clark,U.S. representative ( running for reelection ),2018,Governor,MA,clark k,4,1,0
 ,DEM,United Independent Party,and United Independent nominee for governor in 2014,2018,Governor,MA,party u,0,0,1
@@ -2078,7 +2078,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,DEM,Marty Walsh,U.S. secretary of labor (2021–2023) and former mayor of Boston (2014–2021),2022,Governor,MA,walsh m,1,0,0
 ,DEM,Elizabeth Warren,U.S. senator (2013–present) and 2020 Democratic candidate for president,2022,Governor,MA,warren e,4,1,1
 ,DEM,Kim Driscoll,mayor of Salem,2022,Governor,MA,driscoll k,1,0,0
-,DEM,Manny Cruz,member of the Salem school committee,2022,Governor,MA,cruz m,0,0,0
+,DEM,Manny Cruz,member of the Salem school committee,2022,Governor,MA,cruz m,1,0,0
 ,DEM,Dan Koh,"chief of staff to U.S. Labor Secretary Marty Walsh , former Andover selectman , and candidate for Massachusetts' 3rd congressional district in 2018",2022,Governor,MA,koh d,1,0,1
 ,IND,Dianna Ploss,former radio host,2022,Governor,MA,ploss d,0,0,0
 ,REP,Dan Cox,"state delegate for the fourth district (2019–2023) and nominee for MD-08 in 2016  Running mate: Gordana Schifanelli, attorney",2022,Governor,MD,cox d,2,0,1
@@ -2335,7 +2335,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,REP,state representative,from the 81st district in 2018 and state treasurer in 2020 ( running as the Keystone nominee ),2022,Governor,PA,representative s,3,0,0
 ,REP,state senator,from the 48th district in 2021,2022,Governor,PA,senator s,0,0,0
 ,REP,Nicole Shultz,"auditor of Windsor Township, York County (2022–present) and treasurer of the Libertarian Party of Pennsylvania (2021–2022) ( ran for Governor )",2022,Governor,PA,shultz n,0,1,0
-,REP,Cherry Valley,"(2022–present), former member of the Cherry Valley Borough Council (1989–2022), and nominee for state representative from the 64th district in 2016 and 2020",2022,Governor,PA,valley c,0,1,1
+,REP,Cherry Valley,"(2022–present), former member of the Cherry Valley Borough Council (1989–2022), and nominee for state representative from the 64th district in 2016 and 2020",2022,Governor,PA,valley c,1,1,1
 ,REP,Keystone,"nominee), public accountant and Libertarian nominee for state representative from the 81st district in 2018 and state treasurer in 2020 ( originally ran as a Libertarian )",2022,Governor,PA,keystone,0,1,1
 ,REP,ran for state representative,),2022,Governor,PA,representative r,0,0,0
 ,DEM,Dan McKee,incumbent governor [ a ],2022,Governor,RI,mckee d,3,0,0
@@ -4163,7 +4163,7 @@ additional terms may apply. By using this site, you agree to the Terms of Use an
 ,DEM,Chris Gabrieli,businessman and lieutenant governor nominee in 2002,2006,Governor,MA,gabrieli c,0,0,0
 ,DEM,Deval Patrick,former assistant U.S. attorney general for Civil Rights,2006,Governor,MA,patrick d,3,0,0
 ,DEM,Thomas Reilly,Massachusetts attorney general,2006,Governor,MA,reilly t,3,0,0
-,DEM,Deb Goldberg,former chair of the Brookline Board of Selectmen,2006,Governor,MA,goldberg d,0,0,0
+,DEM,Deb Goldberg,former chair of the Brookline Board of Selectmen,2006,Governor,MA,goldberg d,1,0,0
 ,DEM,Tim Murray,mayor of Worcester,2006,Governor,MA,murray t,1,0,0
 ,DEM,Andrea Silbert,businesswoman,2006,Governor,MA,silbert a,0,0,0
 ,DEM,Sam Kelley,"MD, child, adolescent, and adult psychiatrist; medical director of the Massachusetts Society for the Prevention of Cruelty to Children; and former legislative aide to US Congressman Jim McDermott",2006,Governor,MA,kelley s,4,0,0
@@ -4895,7 +4895,7 @@ additional terms may apply. By using this site, you agree to the Terms of Use an
 ,DEM,Andrew Cuomo,"Attorney General of New York , Former Secretary of Housing and Urban Development , and son of former governor Mario Cuomo",2010,Governor,NY,cuomo a,3,0,0
 ,DEM,David Paterson,"incumbent Governor of New York (withdrew February 26, 2010)",2010,Governor,NY,paterson d,3,0,0
 ,DEM,Jimmy McMillan,founder of the Rent Is Too Damn High Party,2010,Governor,NY,mcmillan j,0,0,0
-,DEM,Joel Tyner,Dutchess County legislator,2010,Governor,NY,tyner j,0,0,0
+,DEM,Joel Tyner,Dutchess County legislator,2010,Governor,NY,tyner j,1,0,0
 ,REP,Carl Paladino,Buffalo developer and political activist,2010,Governor,NY,paladino c,0,0,0
 ,REP,Rick Lazio,"former congressman, 2000 Republican nominee for U.S. Senate , and official party designee",2010,Governor,NY,lazio r,4,0,1
 ,REP,Warren Redlich,attorney and Libertarian Party gubernatorial nominee,2010,Governor,NY,redlich w,0,0,0

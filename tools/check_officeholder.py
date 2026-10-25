@@ -30,14 +30,17 @@ def main():
         m = bios[(bios["year"] == year) & (bios["office"] == office)
                  & (bios["state"] == st) & (bios["cand_key"] == n(name))
                  & (bios["party"].map(F.npar) == party)]
-        return int(m["office_level"].iloc[0]) if len(m) else None
+        # float: appointed posts are 0.5 / 0.75 (an int() here read El-Sayed's 0.5 as 0)
+        return float(m["office_level"].iloc[0]) if len(m) else None
 
     # ---- pass 1: known truths ----
+    # expectations follow the appointed-office rules (2026-10-08, 10-21): an appointed county
+    # health director is 0.5, and a former mayor (1) outranks an appointed cabinet post (0.75)
     checks = [
         ("McMorrow = state senator (2)", 2026, "Senate", "MI", "Mallory McMorrow", "DEM", 2),
         ("Stevens = US rep (4)", 2026, "Senate", "MI", "Haley Stevens", "DEM", 4),
-        ("El-Sayed = county health director (1)", 2026, "Senate", "MI", "Abdul El-Sayed", "DEM", 1),
-        ("Buttigieg = fmr US cabinet (4)", 2026, "Senate", "MI", "Pete Buttigieg", "DEM", 4),
+        ("El-Sayed = appointed county health director (0.5)", 2026, "Senate", "MI", "Abdul El-Sayed", "DEM", 0.5),
+        ("Buttigieg = fmr mayor (1) over appointed cabinet (0.75)", 2026, "Senate", "MI", "Pete Buttigieg", "DEM", 1),
         ("Paxton = TX AG (3)", 2026, "Senate", "TX", "Ken Paxton", "REP", 3),
         ("Talarico = TX state rep (2)", 2026, "Senate", "TX", "James Talarico", "DEM", 2),
         ("Barr = US rep (4)", 2026, "Senate", "KY", "Andy Barr", "REP", 4),

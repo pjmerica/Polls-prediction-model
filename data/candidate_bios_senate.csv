@@ -1352,7 +1352,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,DEM,Kwame Raoul,state senator,2016,Senate,IL,raoul k,2,0,0
 ,DEM,Jan Schakowsky,U.S. representative,2016,Senate,IL,schakowsky j,4,1,0
 ,DEM,Sheila Simon,former lieutenant governor of Illinois and nominee for Illinois Comptroller in 2014,2016,Senate,IL,simon s,3,0,1
-,DEM,Chad Koppie,farmer and vice president of Kane County Regional Board of School Trustees,2016,Senate,IL,koppie c,0,0,0
+,DEM,Chad Koppie,farmer and vice president of Kane County Regional Board of School Trustees,2016,Senate,IL,koppie c,1,0,0
 ,DEM,McHenry County College,Board of Trustees,2016,Senate,IL,college m,0,0,0
 ,REP,Marlin Stutzman,U.S. representative and candidate for the U.S. Senate in 2010,2016,Senate,IN,stutzman m,4,1,1
 ,REP,Todd Young,U.S. representative,2016,Senate,IN,young t,4,1,0
@@ -2007,7 +2007,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,REP,Jeff Bartos,real estate developer (running for lieutenant governor),2018,Senate,PA,bartos j,0,0,0
 ,REP,Bobby Lawrence,small business owner (endorsed Dale Kerns),2018,Senate,PA,lawrence b,0,0,0
 ,REP,Rick Saccone,"state representative ( ran for PA-18 , ran for PA-14 )",2018,Senate,PA,saccone r,2,1,0
-,REP,Berwick,Borough Councilman ( running for PA-9 ),2018,Senate,PA,berwick,0,0,0
+,REP,Berwick,Borough Councilman ( running for PA-9 ),2018,Senate,PA,berwick,1,0,0
 ,REP,Mike Kelly,U.S. Representative,2018,Senate,PA,kelly m,4,1,0
 ,REP,Pat Meehan,former U.S. Representative,2018,Senate,PA,meehan p,4,1,0
 ,REP,Dave Reed,Majority Leader of the Pennsylvania House of Representatives,2018,Senate,PA,reed d,2,1,0
@@ -2277,7 +2277,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,REP,Rodney Davis,incumbent U.S. representative for Illinois's 13th congressional district (running for re-election),2020,Senate,IL,davis r,4,1,0
 ,REP,Erika Harold,"attorney, former Miss America , candidate for IL-13 in 2014 , and nominee for attorney general in 2018",2020,Senate,IL,harold e,0,0,1
 ,REP,Darin LaHood,incumbent U.S. representative for Illinois's 18th congressional district (running for re-election),2020,Senate,IL,lahood d,4,1,0
-,REP,Chad Koppie,perennial candidate and former member of the Kane County Regional Board of School Trustees,2020,Senate,IL,koppie c,0,0,0
+,REP,Chad Koppie,perennial candidate and former member of the Kane County Regional Board of School Trustees,2020,Senate,IL,koppie c,1,0,0
 ,IND,Willie Wilson,businessman and perennial candidate,2020,Senate,IL,wilson w,0,0,0
 ,IND,Kevin Keely,substitute teacher and community activist (as a write-in candidate),2020,Senate,IL,keely k,0,0,0
 ,IND,Lowell Martin Seida,perennial candidate (as a write-in candidate),2020,Senate,IL,seida l,0,0,0
@@ -2937,7 +2937,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,DEM,powder coater,"and former chair of the Pennsylvania Libertarian Party (2013–2015, 2019–2021)",2022,Senate,PA,coater p,0,0,0
 ,DEM,attorney general,"in 2020 , and nominee for judge of the Allegheny County Court of Common Pleas in 2021",2022,Senate,PA,general a,0,0,1
 ,IND,Keystone,"nominee), lawyer and Libertarian nominee for attorney general in 2020",2022,Senate,PA,keystone,0,0,1
-,IND,Constitution,"nominee), former Fredonia borough councilor    ( originally ran as a Republican )",2022,Senate,PA,constitution,0,0,0
+,IND,Constitution,"nominee), former Fredonia borough councilor    ( originally ran as a Republican )",2022,Senate,PA,constitution,1,0,0
 ,IND,inspector of elections,for Philadelphia 's 44th ward,2022,Senate,PA,elections i,0,0,0
 ,IND,Everett Stern,"whistleblower, private intelligence agency owner, and Republican candidate for PA-13 in 2014 and U.S. Senate in 2016 (originally ran as a Republican, endorsed Fetterman)",2022,Senate,PA,stern e,0,0,1
 ,REP,Tim Scott,incumbent U.S. Senator (2013–present),2022,Senate,SC,scott t,4,1,0
@@ -3097,7 +3097,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,REP,governor,in 2022,2024,Senate,MA,governor,0,0,0
 ,REP,Chelmsford,town meeting representative,2024,Senate,MA,chelmsford,0,1,0
 ,DEM,Angela Alsobrooks,Prince George's County Executive (2018–2024),2024,Senate,MD,alsobrooks a,1,0,0
-,DEM,Breezeline,"and former Republican Bogota, New Jersey borough councilor (1995–1998) ( ran for U.S. House )",2024,Senate,MD,breezeline,0,0,0
+,DEM,Breezeline,"and former Republican Bogota, New Jersey borough councilor (1995–1998) ( ran for U.S. House )",2024,Senate,MD,breezeline,1,0,0
 ,DEM,Will Jawando,at-large Montgomery County councilor (2018–present) and candidate for Maryland's 8th congressional district in 2016  (endorsed Alsobrooks),2024,Senate,MD,jawando w,1,1,1
 ,DEM,Ben Cardin,incumbent U.S. senator (2007–2025),2024,Senate,MD,cardin b,4,0,0
 ,DEM,Kweisi Mfume,"U.S. representative for Maryland's 7th congressional district (1987–1996; 2020–present), candidate for U.S. Senate in 2006 , and former president of the NAACP (1996–2004)  ( endorsed Alsobrooks, ran for re-election )",2024,Senate,MD,mfume k,4,1,1
@@ -3447,7 +3447,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,DEM,Alex Rikleen,history teacher (endorsed Markey),2026,Senate,MA,rikleen a,0,0,0
 ,DEM,Jake Auchincloss,U.S. representative for Massachusetts's 4th congressional district (2021–present) ( running for re-election ),2026,Senate,MA,auchincloss j,4,1,0
 ,DEM,Ayanna Pressley,U.S. representative for Massachusetts's 7th congressional district (2019–present) ( running for re-election ; endorsed Markey),2026,Senate,MA,pressley a,4,1,0
-,REP,Westport,School Committee Chair and nominee for Massachusetts House of Representatives' 8th Bristol district in 2024,2026,Senate,MA,westport,0,1,1
+,REP,Westport,School Committee Chair and nominee for Massachusetts House of Representatives' 8th Bristol district in 2024,2026,Senate,MA,westport,1,1,1
 ,REP,West Springfield,City Councilman and nominee for Massachusetts's 1st congressional district in 2008 (running as an independent),2026,Senate,MA,springfield w,1,0,1
 ,REP,Charlie Baker,president of the National Collegiate Athletic Association (2023–present) and former Governor of Massachusetts (2015–2023),2026,Senate,MA,baker c,3,1,0
 ,REP,Michael Soter,state representative from the 8th Worcester district (2019–present),2026,Senate,MA,soter m,2,1,0

@@ -150,6 +150,18 @@ LEVELS = [
         # (2026-10-24: "West Hartford Town Councilor" read 0 once a running mate's office no
         # longer stood in for it)
         r"town council(?:or|man|woman|member)?|"
+        # more elected local bodies and county offices (2026-10-25: "Tompkins County legislator"
+        # (Shinagawa, NY-23 2012), "Hempstead Town Board member" (D'Esposito, NY-4 2022), "North
+        # Township trustee" (Mrvan) and "Shelby County Criminal Court clerk" (Kuhn, TN-8 2026)
+        # read 0). Justice of the peace is left out: appointed in MA, NH, DE and CT
+        r"county legislat(?:or|ure|ive)|town board|village board|village (?:trustee|president)|"
+        r"township (?:trustee|committee(?:man|woman|member)?|supervisor|board)|"
+        r"board of (?:selectmen|aldermen)|select ?board(?:member)?|"
+        r"borough council(?:or|man|woman|member)?|(?<!boston )school committee|"
+        r"clerk of (?:the )?(?:circuit |superior |criminal |district |county |municipal |probate )?courts?\b|"
+        r"(?:circuit|criminal|superior|city|county|district|municipal|probate) court clerk|"
+        r"receiver of taxes|register of (?:deeds|wills)|recorder of deeds|prothonotary|"
+        r"(?:town|village) justice|regional board of (?:school )?trustees|\bconstable\b|"
         r"state's attorney|\bjudge\b"),
 ]
 PRIOR_CAND_RX = re.compile(r"candidate for|nominee for", re.I)
@@ -395,6 +407,10 @@ def classify_evidence(desc, office=None, state=None):
     # unsuccessfully for U.S. Senate" (Bartos, Kenyatta read 4) and "candidate in May 27 runoff
     # for Texas Commissioner of Agriculture" (Kinky Friedman read 3)
     d = re.sub(r"(?:^|[,;(]|\band)\s*for\s+[^,;.()]*?\bin\s+(?:19|20)\d\d[^,;.()]*", " ", d)
+    # "<local body> candidate" (2026-10-25): "pastor and town board candidate in 2023" - before the
+    # "candidate in" strip below, which would leave "town board" standing
+    d = re.sub(r"\b(?:town|village|township|city|county|school|borough)\s+(?:board|council|commission|"
+               r"committee|legislature|trustee)\s+(?:nominee|candidate)\b", " ", d)
     d = re.sub(r"\bcandidate\s+in\s+[^,;.()]+", " ", d)
     # a PRIVATE employer's title is not a government post (2026-10-21): "hospital behavioral
     # health director" (Scott Costello, IN-1 2020) matched the appointed health-director rule (0.5)

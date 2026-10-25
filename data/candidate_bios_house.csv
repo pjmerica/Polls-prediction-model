@@ -247,7 +247,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 4.0,DEM,District of Columbia,Office of Documents and Administrative Issuances and nominee for this district in 2022 and 2024,2026,House,FL,columbia d,0,0,1
 4.0,DEM,Michael Kirwan,attorney,2026,House,FL,kirwan m,0,0,0
 4.0,DEM,Brit Robinson,interior designer and hospitality worker,2026,House,FL,robinson b,0,0,0
-4.0,DEM,Ricky Knoles,ESL teacher and school board candidate in 2024,2026,House,FL,knoles r,1,0,0
+4.0,DEM,Ricky Knoles,ESL teacher and school board candidate in 2024,2026,House,FL,knoles r,0,0,0
 4.0,IND,Todd Schaefer,navy veteran,2026,House,FL,schaefer t,0,0,0
 5.0,REP,John Rutherford,incumbent U.S. representative,2026,House,FL,rutherford j,4,1,0
 5.0,REP,Mark Kaye,conservative podcaster and former radio host,2026,House,FL,kaye m,0,0,0
@@ -699,7 +699,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 13.0,REP,Champaign County,Board member,2026,House,IL,county c,0,0,0
 14.0,DEM,Lauren Underwood,incumbent U.S. representative,2026,House,IL,underwood l,4,1,0
 14.0,REP,Oswego,Public Library Board member and perennial candidate,2026,House,IL,oswego,0,0,0
-14.0,REP,Naperville,township supervisor,2026,House,IL,naperville,0,0,0
+14.0,REP,Naperville,township supervisor,2026,House,IL,naperville,1,0,0
 14.0,REP,Jed Davis,state representative from the 75th district (2023–present) ( running for re-election ),2026,House,IL,davis j,2,1,0
 15.0,REP,Mary Miller,incumbent U.S. representative,2026,House,IL,miller m,4,1,0
 15.0,REP,Judy Bowlby,lobbyist,2026,House,IL,bowlby j,0,0,0
@@ -743,7 +743,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 6.0,DEM,Nick Baker,attorney,2026,House,IN,baker n,0,0,0
 6.0,DEM,David Boyd,insurance adjuster,2026,House,IN,boyd d,0,0,0
 7.0,DEM,André Carson,incumbent U.S. representative,2026,House,IN,carson a,4,1,0
-7.0,DEM,Center Township,constable,2026,House,IN,township c,0,0,0
+7.0,DEM,Center Township,constable,2026,House,IN,township c,1,0,0
 7.0,DEM,Indiana Democratic Party,State Central Committee,2026,House,IN,party i,0,0,0
 7.0,DEM,Attorney General,"in 2024 , and nominee for Secretary of State in 2022",2026,House,IN,general a,0,0,1
 7.0,REP,Patrick McAuley,real estate associate,2026,House,IN,mcauley p,0,0,0
@@ -781,7 +781,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 1.0,REP,Tennessee's 7th congressional district,in 2025,2026,House,KY,district t,0,0,0
 1.0,DEM,"John ""Drew"" Williams",event organizer,2026,House,KY,williams j,0,0,0
 2.0,REP,Brett Guthrie,incumbent U.S. representative,2026,House,KY,guthrie b,4,1,0
-2.0,REP,Joshua Ferguson,former constable,2026,House,KY,ferguson j,0,0,0
+2.0,REP,Joshua Ferguson,former constable,2026,House,KY,ferguson j,1,0,0
 2.0,REP,Jefferson County,school board district three in 2022,2026,House,KY,county j,1,0,0
 2.0,DEM,Megan Wingfield,mechanic,2026,House,KY,wingfield m,0,0,0
 2.0,DEM,Plum Springs,city commissioner and candidate for this district in 2022 and 2024,2026,House,KY,springs p,1,0,1
@@ -857,7 +857,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 4.0,DEM,Jake Auchincloss,incumbent U.S. representative,2026,House,MA,auchincloss j,4,1,0
 4.0,DEM,Jason Poulos,AI researcher,2026,House,MA,poulos j,0,0,0
 4.0,DEM,Chris Boyd,educator,2026,House,MA,boyd c,0,0,0
-4.0,DEM,Brookline,Board of Selectmen member and candidate for this district in 2020,2026,House,MA,brookline,0,0,1
+4.0,DEM,Brookline,Board of Selectmen member and candidate for this district in 2020,2026,House,MA,brookline,1,0,1
 4.0,REP,Tom Stalcup,physicist and entrepreneur,2026,House,MA,stalcup t,0,0,0
 5.0,DEM,Katherine Clark,incumbent U.S. representative,2026,House,MA,clark k,4,1,0
 5.0,DEM,Waltham,city councilor,2026,House,MA,waltham,1,0,0
@@ -1544,7 +1544,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 4.0,DEM,Kiana Bierria-Anderson,activist,2026,House,NY,bierriaanderson k,0,0,0
 4.0,DEM,Nick Sciretta,stagehand,2026,House,NY,sciretta n,0,0,0
 4.0,DEM,Taylor Darling,former state assemblymember from the 18th district (2019–2024) and candidate for New York's 6th State Senate district in 2024,2026,House,NY,darling t,2,0,1
-4.0,REP,Hempstead,receiver of taxes,2026,House,NY,hempstead,0,0,0
+4.0,REP,Hempstead,receiver of taxes,2026,House,NY,hempstead,1,0,0
 4.0,REP,U.S. Air Force,veteran,2026,House,NY,force u,0,0,0
 4.0,REP,Michael Mandel,attorney,2026,House,NY,mandel m,0,0,0
 4.0,REP,Anthony D'Esposito,inspector general of the U.S. Department of Labor (2026–present) and former U.S. representative (2023–2025),2026,House,NY,desposito a,4,1,0
@@ -1653,7 +1653,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 17.0,DEM,Cait Conley,former senior advisor to the Cybersecurity and Infrastructure Security Agency,2026,House,NY,conley c,0,0,0
 17.0,DEM,John Cappello,non-profit executive,2026,House,NY,cappello j,0,0,0
 17.0,DEM,Rockland County,legislator,2026,House,NY,county r,0,0,0
-17.0,DEM,Tarrytown,village trustee,2026,House,NY,tarrytown,0,0,0
+17.0,DEM,Tarrytown,village trustee,2026,House,NY,tarrytown,1,0,0
 17.0,DEM,WNYW,political reporter,2026,House,NY,wnyw,0,0,0
 17.0,DEM,Jessica Reinmann,nonprofit CEO (endorsed Conley),2026,House,NY,reinmann j,0,0,0
 17.0,DEM,FBI,intelligence analyst,2026,House,NY,fbi,0,0,0
@@ -1697,7 +1697,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 24.0,IND,Ken Estes,farmer,2026,House,NY,estes k,0,0,0
 24.0,IND,Todd Sloan,attorney,2026,House,NY,sloan t,0,0,0
 25.0,DEM,Joseph Morelle,incumbent U.S. representative,2026,House,NY,morelle j,4,1,0
-25.0,DEM,Brighton,Town Board member and candidate for this seat in 2018 and 2020,2026,House,NY,brighton,0,0,1
+25.0,DEM,Brighton,Town Board member and candidate for this seat in 2018 and 2020,2026,House,NY,brighton,1,0,1
 25.0,REP,Monroe County,legislator,2026,House,NY,county m,0,0,0
 26.0,DEM,Tim Kennedy,incumbent U.S. representative,2026,House,NY,kennedy t,4,1,0
 26.0,REP,Dennis Hannon,former construction worker,2026,House,NY,hannon d,0,0,0
@@ -1732,7 +1732,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 6.0,REP,Jullie Kelley,pastor and town board candidate in 2023,2026,House,OH,kelley j,0,0,0
 6.0,DEM,Elizabeth Kirtley,freelance writer,2026,House,OH,kirtley e,0,0,0
 6.0,DEM,Sean Connolly,tattoo shop owner,2026,House,OH,connolly s,0,0,0
-6.0,DEM,Mahoning County,clerk of courts,2026,House,OH,county m,0,0,0
+6.0,DEM,Mahoning County,clerk of courts,2026,House,OH,county m,1,0,0
 6.0,DEM,Christopher Lafont,manager (write-in),2026,House,OH,lafont c,0,0,0
 6.0,DEM,Malcolm Ritchie,retired locomotive engineer,2026,House,OH,ritchie m,0,0,0
 6.0,DEM,Adrian Vitus,public policy specialist,2026,House,OH,vitus a,0,0,0
@@ -1775,7 +1775,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 12.0,DEM,Jason Reynard,bartender,2026,House,OH,reynard j,0,0,0
 13.0,DEM,Emilia Sykes,incumbent U.S. representative,2026,House,OH,sykes e,4,1,0
 13.0,REP,Carey Coleman,radio host,2026,House,OH,coleman c,0,0,0
-13.0,REP,Summit,county council candidate in 2022,2026,House,OH,summit,1,0,0
+13.0,REP,Summit,county council candidate in 2022,2026,House,OH,summit,0,0,0
 13.0,REP,Sanjin Drakovac,physician,2026,House,OH,drakovac s,0,0,0
 13.0,REP,Neil Patel,businessman,2026,House,OH,patel n,0,0,0
 13.0,REP,Leetonia,(2016–present),2026,House,OH,leetonia,0,1,0
@@ -1993,7 +1993,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 7.0,DEM,Joshua Warren Sales,teacher,2026,House,TN,sales j,0,0,0
 7.0,DEM,Aftyn Behn,state representative from the 51st district (2023–present) and nominee for this district in 2025 ( running for re-election ),2026,House,TN,behn a,2,1,1
 8.0,REP,David Kustoff,incumbent U.S. representative,2026,House,TN,kustoff d,4,1,0
-8.0,DEM,Heidi Kuhn,Shelby County Criminal Court clerk,2026,House,TN,kuhn h,0,0,0
+8.0,DEM,Heidi Kuhn,Shelby County Criminal Court clerk,2026,House,TN,kuhn h,1,0,0
 8.0,DEM,USAF,air traffic controller,2026,House,TN,usaf,0,0,0
 9.0,DEM,Justin Pearson,"state representative from the 86th district (2023, 2023–present)",2026,House,TN,pearson j,2,1,0
 9.0,DEM,M. LaTroy Alexandria-Williams,community activist,2026,House,TN,alexandriawilliams m,0,0,0
@@ -2110,7 +2110,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 21.0,REP,San Antonio city councilor,from the 10th district (2023–present) and candidate for Texas's 121st House of Representatives district in 2018,2026,House,TX,councilor s,0,1,1
 21.0,DEM,Gary Taylor,teacher,2026,House,TX,taylor g,0,0,0
 21.0,DEM,Regina Vanburg,psychologist,2026,House,TX,vanburg r,0,0,0
-22.0,REP,Fort Bend County,constable from the 4th precinct (2013–2020) and brother of Troy Nehls,2026,House,TX,county f,0,0,0
+22.0,REP,Fort Bend County,constable from the 4th precinct (2013–2020) and brother of Troy Nehls,2026,House,TX,county f,1,0,0
 22.0,REP,Rebecca Clark,geophysicist,2026,House,TX,clark r,0,0,0
 22.0,REP,Jacey Jetton,former state representative from the 26th district (2021–2025),2026,House,TX,jetton j,2,1,0
 22.0,REP,Troy Nehls,incumbent U.S. representative (endorsed Trever Nehls),2026,House,TX,nehls t,4,1,0
@@ -2263,7 +2263,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 1.0,DEM,Lisa Vedernikova Khanna,corporate chief of staff,2026,House,VA,khanna l,0,0,0
 1.0,DEM,Lewis Littlepage,retired prosecutor,2026,House,VA,littlepage l,0,0,0
 1.0,DEM,Andrew Lucchetti,attorney,2026,House,VA,lucchetti a,0,0,0
-1.0,DEM,Chesterfield County,clerk of court and nominee for SD-11 in 2019,2026,House,VA,county c,0,0,1
+1.0,DEM,Chesterfield County,clerk of court and nominee for SD-11 in 2019,2026,House,VA,county c,1,0,1
 1.0,DEM,James Shea,high school economics teacher,2026,House,VA,shea j,0,0,0
 1.0,DEM,Sean Sublette,meteorologist,2026,House,VA,sublette s,0,0,0
 1.0,DEM,Eugene Vindman,U.S. representative for VA-7 (2025–present) (running in the 7th district after the 2026 Virginia redistricting amendment was struck down),2026,House,VA,vindman e,4,1,0
@@ -3562,7 +3562,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 11.0,REP,Rodney Frelinghuysen,incumbent Representative since 1995,1998,House,NJ,frelinghuysen r,4,1,0
 12.0,REP,Mike Pappas,incumbent Representative since 1997,1998,House,NJ,pappas m,4,1,0
 12.0,DEM,Rush Holt Jr.,"assistant director of the Princeton Plasma Physics Laboratory , candidate for this seat in 1996 and son of U.S. Senator Rush Holt",1998,House,NJ,holt r,0,0,1
-12.0,DEM,Carl J. Mayer,"consumer advocate, member of the Princeton Township Committee and candidate for this seat in 1996",1998,House,NJ,mayer c,0,0,1
+12.0,DEM,Carl J. Mayer,"consumer advocate, member of the Princeton Township Committee and candidate for this seat in 1996",1998,House,NJ,mayer c,1,0,1
 13.0,DEM,Bob Menendez,incumbent Representative from Union City since 1993,1998,House,NJ,menendez b,4,1,0
 13.0,REP,Theresa de Leon,attorney and chief financial officer for the Legal Aid Society of New York,1998,House,NJ,leon t,0,0,0
 1.0,DEM,Bob Brady,incumbent U.S. Representative,1998,House,PA,brady b,4,1,0
@@ -4164,7 +4164,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 10.0,DEM,Donald M. Payne,incumbent Representative from Newark since 1989,2006,House,NJ,payne d,4,1,0
 11.0,REP,Rodney Frelinghuysen,incumbent Representative from Harding since 1995,2006,House,NJ,frelinghuysen r,4,1,0
 12.0,DEM,Rush Holt Jr.,incumbent Representative from Pennington since 1999,2006,House,NJ,holt r,4,1,0
-12.0,REP,Helmetta,Borough Council president and nominee for Middlesex County Clerk in 2005,2006,House,NJ,helmetta,0,0,1
+12.0,REP,Helmetta,Borough Council president and nominee for Middlesex County Clerk in 2005,2006,House,NJ,helmetta,1,0,1
 13.0,DEM,Albio Sires,Speaker of the New Jersey General Assembly and mayor of West New York,2006,House,NJ,sires a,2,0,0
 13.0,DEM,Joseph Vas,Assemblyman and mayor of Perth Amboy,2006,House,NJ,vas j,1,0,0
 13.0,REP,John J. Guarini,Jersey City salesman,2006,House,NJ,guarini j,0,0,0
@@ -5444,7 +5444,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 4.0,DEM,Cynthia Creem,state senator,2012,House,MA,creem c,2,0,0
 4.0,DEM,William A. Flanagan,Mayor of Fall River,2012,House,MA,flanagan w,1,0,0
 4.0,DEM,Barney Frank,incumbent U.S. Representative,2012,House,MA,frank b,4,1,0
-4.0,DEM,Deborah Goldberg,former chair of the Brookline Board of Selectmen,2012,House,MA,goldberg d,0,0,0
+4.0,DEM,Deborah Goldberg,former chair of the Brookline Board of Selectmen,2012,House,MA,goldberg d,1,0,0
 4.0,DEM,Alan Khazei,co-founder of the City Year non-profit,2012,House,MA,khazei a,0,0,0
 4.0,DEM,Jesse Mermell,Brookline Selectwoman,2012,House,MA,mermell j,0,0,0
 4.0,DEM,Marc Pacheco,state senator,2012,House,MA,pacheco m,2,0,0
@@ -5762,7 +5762,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 22.0,REP,Richard Hanna,incumbent U.S. representative,2012,House,NY,hanna r,4,1,0
 22.0,DEM,Maurice Hinchey,incumbent U.S. representative,2012,House,NY,hinchey m,4,1,0
 23.0,REP,Tom Reed,incumbent U.S. representative,2012,House,NY,reed t,4,1,0
-23.0,DEM,Nate Shinagawa,Tompkins County legislator,2012,House,NY,shinagawa n,0,0,0
+23.0,DEM,Nate Shinagawa,Tompkins County legislator,2012,House,NY,shinagawa n,1,0,0
 23.0,DEM,CIA,"analyst, Afghanistan war veteran and nominee for this seat in 2010  (endorsed Shinagawa)",2012,House,NY,cia,0,0,1
 24.0,REP,Ann Marie Buerkle,incumbent U.S. representative,2012,House,NY,buerkle a,4,1,0
 24.0,DEM,Dan Maffei,former U.S. representative,2012,House,NY,maffei d,4,1,0
@@ -5966,7 +5966,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 8.0,REP,Mike Fitzpatrick,incumbent U.S. representative,2012,House,PA,fitzpatrick m,4,1,0
 8.0,REP,Jennifer Stefano,activist,2012,House,PA,stefano j,0,0,0
 8.0,DEM,Kathy Boockvar,attorney and nominee for Commonwealth Court of Pennsylvania in 2011,2012,House,PA,boockvar k,0,0,1
-8.0,DEM,Det Asinn,Doylestown Borough Council president,2012,House,PA,asinn d,0,0,0
+8.0,DEM,Det Asinn,Doylestown Borough Council president,2012,House,PA,asinn d,1,0,0
 8.0,DEM,Bucks County,commissioner,2012,House,PA,county b,0,0,0
 8.0,DEM,Doylestown Township,supervisor,2012,House,PA,township d,0,0,0
 9.0,REP,Bill Shuster,incumbent U.S. representative,2012,House,PA,shuster b,4,1,0
@@ -6053,7 +6053,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 8.0,DEM,Timothy Dixon,auto industry manager,2012,House,TN,dixon t,0,0,0
 8.0,DEM,Roy Herron,state senator and nominee for this seat in 2010,2012,House,TN,herron r,2,0,1
 9.0,DEM,Steve Cohen,incumbent U.S. Representative,2012,House,TN,cohen s,4,1,0
-9.0,DEM,Thomas Long,Memphis City Court Clerk,2012,House,TN,long t,0,0,0
+9.0,DEM,Thomas Long,Memphis City Court Clerk,2012,House,TN,long t,1,0,0
 9.0,REP,radiologist,radio magnate and candidate for the 8th district in 2010,2012,House,TN,radiologist,0,0,1
 1.0,REP,Louie Gohmert,incumbent U.S. Representative,2012,House,TX,gohmert l,4,1,0
 1.0,DEM,Dr. Shirley McKellar,Army veteran and non-profit businesswoman,2012,House,TX,mckellar d,0,0,0
@@ -7176,12 +7176,12 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 3.0,DEM,Steve Israel,incumbent U.S. Representative,2014,House,NY,israel s,4,1,0
 3.0,REP,1994,& 1996,2014,House,NY,,0,0,0
 4.0,DEM,Kathleen Rice,Nassau County District Attorney,2014,House,NY,rice k,1,0,0
-4.0,DEM,Dave Denenberg,Nassau County Legislator,2014,House,NY,denenberg d,0,0,0
+4.0,DEM,Dave Denenberg,Nassau County Legislator,2014,House,NY,denenberg d,1,0,0
 4.0,DEM,Laura Gillen,attorney and nominee for Nassau County clerk in 2013,2014,House,NY,gillen l,0,0,1
 4.0,DEM,Carolyn McCarthy,incumbent U.S. Representative,2014,House,NY,mccarthy c,4,1,0
 4.0,DEM,Freeport,trustee,2014,House,NY,freeport,0,0,0
-4.0,REP,Bruce Blakeman,"former Nassau County Legislative Majority Leader and Presiding Officer, nominee for New York State Comptroller in 1998 and the Tax Revolt Party nominee for the U.S. Senate in 2010",2014,House,NY,blakeman b,0,0,1
-4.0,REP,Fran Becker,Nassau County Legislator and nominee for this seat in 2010 & 2012,2014,House,NY,becker f,0,0,1
+4.0,REP,Bruce Blakeman,"former Nassau County Legislative Majority Leader and Presiding Officer, nominee for New York State Comptroller in 1998 and the Tax Revolt Party nominee for the U.S. Senate in 2010",2014,House,NY,blakeman b,1,0,1
+4.0,REP,Fran Becker,Nassau County Legislator and nominee for this seat in 2010 & 2012,2014,House,NY,becker f,1,0,1
 4.0,REP,Kate Murray,Hempstead Town Supervisor,2014,House,NY,murray k,1,0,0
 5.0,DEM,Gregory Meeks,incumbent U.S. Representative,2014,House,NY,meeks g,4,1,0
 6.0,DEM,Grace Meng,incumbent U.S. Representative,2014,House,NY,meng g,4,1,0
@@ -7244,13 +7244,13 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 21.0,REP,Warren County,District Attorney,2014,House,NY,county w,1,0,0
 21.0,REP,John James,actor,2014,House,NY,james j,0,0,0
 21.0,REP,Betty Little,state senator,2014,House,NY,little b,2,0,0
-21.0,REP,Tupper Lake,and Franklin County Legislator,2014,House,NY,lake t,0,0,0
+21.0,REP,Tupper Lake,and Franklin County Legislator,2014,House,NY,lake t,1,0,0
 21.0,REP,Matt Funiciello,bakery owner and political activist,2014,House,NY,funiciello m,0,0,0
 22.0,REP,Richard Hanna,incumbent U.S. Representative,2014,House,NY,hanna r,4,1,0
 22.0,REP,Michael Vasquez,"founder and president of MV Consulting, Inc.",2014,House,NY,vasquez m,0,0,0
 23.0,REP,Tom Reed,incumbent U.S. Representative,2014,House,NY,reed t,4,1,0
-23.0,DEM,Martha Robertson,chair of the Tompkins County legislature,2014,House,NY,robertson m,0,0,0
-23.0,DEM,Nate Shinagawa,Tompkins County legislator and nominee for this seat in 2012,2014,House,NY,shinagawa n,0,0,1
+23.0,DEM,Martha Robertson,chair of the Tompkins County legislature,2014,House,NY,robertson m,1,0,0
+23.0,DEM,Nate Shinagawa,Tompkins County legislator and nominee for this seat in 2012,2014,House,NY,shinagawa n,1,0,1
 24.0,DEM,Dan Maffei,incumbent U.S. Representative,2014,House,NY,maffei d,4,1,0
 24.0,REP,John Katko,former Assistant United States Attorney in the Department of Justice,2014,House,NY,katko j,0,0,0
 24.0,REP,Ann Marie Buerkle,former U.S. Representative,2014,House,NY,buerkle a,4,1,0
@@ -7415,7 +7415,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 13.0,DEM,Mark B. Cohen,state representative,2014,House,PA,cohen m,2,1,0
 13.0,DEM,Jonathan Saidel,former Philadelphia City Controller,2014,House,PA,saidel j,0,0,0
 13.0,DEM,Bill Green,Philadelphia City Councilman,2014,House,PA,green b,1,0,0
-13.0,DEM,Montgomery County,Prothonotary (endorsed Brendan Boyle),2014,House,PA,county m,0,0,0
+13.0,DEM,Montgomery County,Prothonotary (endorsed Brendan Boyle),2014,House,PA,county m,1,0,0
 13.0,DEM,Ed Neilson,state representative,2014,House,PA,neilson e,2,1,0
 13.0,DEM,Leslie Richards,Montgomery County commissioner (endorsed Marjorie Margolies),2014,House,PA,richards l,1,0,0
 13.0,DEM,John Sabatina,state representative,2014,House,PA,sabatina j,2,1,0
@@ -7526,7 +7526,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 35.0,REP,San Marcos,and nominee for this seat in 2012,2014,House,TX,marcos s,0,0,1
 36.0,REP,Brian Babin,"dentist, former mayor of Woodville and nominee for the 2nd district in 1996 and 1998",2014,House,TX,babin b,1,0,1
 1.0,DEM,Peter Welch,incumbent representative,2014,House,VT,welch p,4,1,0
-1.0,REP,Hartford,Board of Selectmen and nominee for the seat in 2012,2014,House,VT,hartford,0,0,1
+1.0,REP,Hartford,Board of Selectmen and nominee for the seat in 2012,2014,House,VT,hartford,1,0,1
 1.0,IND,also ran for Governor,),2014,House,VT,governor a,0,0,0
 1.0,IND,2006,and 2008,2014,House,VT,,0,0,0
 1.0,REP,Rob Wittman,incumbent U.S. representative,2014,House,VA,wittman r,4,1,0
@@ -7557,7 +7557,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 8.0,DEM,Aneesh Chopra,former chief technology officer of the United States and candidate for lieutenant governor in 2013,2014,House,VA,chopra a,0,0,1
 8.0,DEM,Kerry J. Donley,former mayor of Alexandria,2014,House,VA,donley k,1,0,0
 8.0,DEM,Barbara Favola,state senator,2014,House,VA,favola b,2,0,0
-8.0,DEM,Arlington County,Clerk of the Court,2014,House,VA,county a,0,0,0
+8.0,DEM,Arlington County,Clerk of the Court,2014,House,VA,county a,1,0,0
 8.0,DEM,Jay Fisette,chair of the Arlington County Board of Supervisors,2014,House,VA,fisette j,1,0,0
 8.0,DEM,Rob Krupicka,state delegate,2014,House,VA,krupicka r,2,0,0
 8.0,DEM,Fairfax County,School Board,2014,House,VA,county f,1,0,0
@@ -8436,16 +8436,16 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 3.0,REP,Michael Romero,police officer,2016,House,NM,romero m,0,0,0
 1.0,REP,Lee Zeldin,incumbent U.S. representative,2016,House,NY,zeldin l,4,1,0
 1.0,DEM,Southampton,town supervisor,2016,House,NY,southampton,1,0,0
-1.0,DEM,Kara Hahn,Suffolk County legislator,2016,House,NY,hahn k,0,0,0
+1.0,DEM,Kara Hahn,Suffolk County legislator,2016,House,NY,hahn k,1,0,0
 1.0,DEM,Mark Lesko,former Brookhaven supervisor,2016,House,NY,lesko m,0,0,0
 2.0,REP,Peter King,incumbent U.S. representative,2016,House,NY,king p,4,1,0
 2.0,DEM,Suffolk County,Legislature,2016,House,NY,county s,0,0,0
 2.0,DEM,Martin Tankleff,attorney,2016,House,NY,tankleff m,0,0,0
 3.0,DEM,Tom Suozzi,former Nassau County executive & mayor of Glen Cove,2016,House,NY,suozzi t,1,0,0
-3.0,DEM,Judi Bosworth,"Nassau County legislator, 10th district",2016,House,NY,bosworth j,0,0,0
+3.0,DEM,Judi Bosworth,"Nassau County legislator, 10th district",2016,House,NY,bosworth j,1,0,0
 3.0,DEM,Steve Israel,incumbent U.S. representative,2016,House,NY,israel s,4,1,0
 3.0,DEM,Lori Scheinman,philanthropist,2016,House,NY,scheinman l,0,0,0
-3.0,DEM,William Spencer,"Suffolk County legislator, 18th district",2016,House,NY,spencer w,0,0,0
+3.0,DEM,William Spencer,"Suffolk County legislator, 18th district",2016,House,NY,spencer w,1,0,0
 3.0,DEM,Robert Zimmerman,Long Island Economic development commissioner,2016,House,NY,zimmerman r,0,0,0
 3.0,REP,Jack Martins,state senator,2016,House,NY,martins j,2,0,0
 3.0,REP,Philip Pidot,"businessman, former fraud investigator and Fox News commentator",2016,House,NY,pidot p,0,0,0
@@ -8517,8 +8517,8 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 22.0,REP,Richard Hanna,incumbent U.S. representative,2016,House,NY,hanna r,4,1,0
 22.0,REP,Raymond Meier,former state senator,2016,House,NY,meier r,2,0,0
 22.0,REP,Anthony Picente,Oneida County executive,2016,House,NY,picente a,1,0,0
-22.0,DEM,Kim A. Myers,Broome County legislator,2016,House,NY,myers k,0,0,0
-22.0,DEM,David Gordon,former Oneida County legislator,2016,House,NY,gordon d,0,0,0
+22.0,DEM,Kim A. Myers,Broome County legislator,2016,House,NY,myers k,1,0,0
+22.0,DEM,David Gordon,former Oneida County legislator,2016,House,NY,gordon d,1,0,0
 22.0,DEM,Anthony Brindisi,state assembly member,2016,House,NY,brindisi a,2,0,0
 23.0,REP,Tom Reed,incumbent U.S. representative,2016,House,NY,reed t,4,1,0
 23.0,DEM,John F. Plumb,"aerospace engineer, United States Navy Reserve captain and former acting deputy Assistant Secretary of Defense for Space Policy",2016,House,NY,plumb j,0.75,0,0
@@ -8528,7 +8528,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 25.0,DEM,Louise Slaughter,incumbent U.S. representative,2016,House,NY,slaughter l,4,1,0
 25.0,REP,town supervisor,"of Gates , Conservative nominee for this seat in 2004 and nominee for this seat in 2014",2016,House,NY,supervisor t,0,0,1
 26.0,DEM,Brian Higgins,incumbent U.S. representative,2016,House,NY,higgins b,4,1,0
-26.0,REP,Shelly Schratz,business owner and former Amherst Town Board member,2016,House,NY,schratz s,0,0,0
+26.0,REP,Shelly Schratz,business owner and former Amherst Town Board member,2016,House,NY,schratz s,1,0,0
 27.0,REP,Chris Collins,incumbent U.S. representative,2016,House,NY,collins c,4,1,0
 27.0,DEM,Diana K. Kastenbaum,small business owner,2016,House,NY,kastenbaum d,0,0,0
 1.0,DEM,G. K. Butterfield,incumbent U.S. Representative,2016,House,NC,butterfield g,4,1,0
@@ -9419,7 +9419,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 1.0,IND,Marty Grohman,state representative,2018,House,ME,grohman m,2,1,0
 2.0,REP,Bruce Poliquin,incumbent U.S. representative,2018,House,ME,poliquin b,4,1,0
 2.0,DEM,Jared Golden,Assistant Majority Leader of the Maine House of Representatives,2018,House,ME,golden j,2,1,0
-2.0,DEM,Islesboro,Board of Selectmen,2018,House,ME,islesboro,0,0,0
+2.0,DEM,Islesboro,Board of Selectmen,2018,House,ME,islesboro,1,0,0
 2.0,DEM,United States Postal Service,employee,2018,House,ME,service u,0,0,0
 2.0,DEM,Maine Senate,candidate,2018,House,ME,senate m,0,0,0
 2.0,DEM,Tim Rich,businessman,2018,House,ME,rich t,0,0,0
@@ -9632,7 +9632,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 4.0,DEM,Mike Keeling,music teacher,2018,House,NJ,keeling m,0,0,0
 4.0,DEM,Kelly Stewart Maer,party operative,2018,House,NJ,maer k,0,0,0
 5.0,DEM,Josh Gottheimer,incumbent U.S. Representative,2018,House,NJ,gottheimer j,4,1,0
-5.0,REP,Cresskill,Borough Council member,2018,House,NJ,cresskill,0,0,0
+5.0,REP,Cresskill,Borough Council member,2018,House,NJ,cresskill,1,0,0
 5.0,REP,Robert Auth,state assembly member,2018,House,NJ,auth r,2,0,0
 5.0,REP,Lou Dobbs,"conservative political commentator, author, and television host",2018,House,NJ,dobbs l,0,0,0
 5.0,REP,Michael J. Doherty,state senator,2018,House,NJ,doherty m,2,0,0
@@ -9656,7 +9656,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 7.0,DEM,LD-23,) in 2017,2018,House,NJ,ld,0,0,0
 7.0,DEM,Somerset County,Democratic Party,2018,House,NJ,county s,0,0,0
 7.0,DEM,Bill Knox,wealth management specialist,2018,House,NJ,knox b,0,0,0
-7.0,DEM,North Plainfield,Borough Council member,2018,House,NJ,plainfield n,0,0,0
+7.0,DEM,North Plainfield,Borough Council member,2018,House,NJ,plainfield n,1,0,0
 7.0,DEM,Kurt Perhach,teacher and Army prosecutor,2018,House,NJ,perhach k,0,0,0
 8.0,DEM,Albio Sires,incumbent U.S. Representative,2018,House,NJ,sires a,4,1,0
 9.0,DEM,Bill Pascrell Jr.,incumbent U.S. Representative,2018,House,NJ,pascrell b,4,1,0
@@ -9904,7 +9904,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 5.0,DEM,Kendra Horn,attorney and communication technology firm strategic consultant,2018,House,OK,horn k,0,0,0
 5.0,DEM,Al McAffrey,state senator and nominee for this seat in 2014 & 2016,2018,House,OK,mcaffrey a,2,0,1
 1.0,REP,Brian Fitzpatrick,incumbent U.S. representative,2018,House,PA,fitzpatrick b,4,1,0
-1.0,REP,Valerie Mihalek,former Yardley Borough council member and deputy district director for former U.S. Rep. Mike Fitzpatrick,2018,House,PA,mihalek v,0,0,0
+1.0,REP,Valerie Mihalek,former Yardley Borough council member and deputy district director for former U.S. Rep. Mike Fitzpatrick,2018,House,PA,mihalek v,1,0,0
 1.0,DEM,Diane Ellis-Marseglia,Bucks County commissioner,2018,House,PA,ellismarseglia d,1,0,0
 2.0,DEM,Brendan Boyle,incumbent U.S. representative,2018,House,PA,boyle b,4,1,0
 2.0,DEM,Bob Brady,incumbent U.S. representative,2018,House,PA,brady b,4,1,0
@@ -10620,7 +10620,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 1.0,DEM,Indiana Secretary of State,in 2018,2020,House,IN,state i,0,0,0
 1.0,DEM,Thomas McDermott Jr.,mayor of Hammond,2020,House,IN,mcdermott t,1,0,0
 1.0,DEM,Wendell Mosby,former Prairie State Community College trustee,2020,House,IN,mosby w,0,0,0
-1.0,DEM,Frank J. Mrvan,North Township trustee and son of Frank Mrvan,2020,House,IN,mrvan f,0,0,0
+1.0,DEM,Frank J. Mrvan,North Township trustee and son of Frank Mrvan,2020,House,IN,mrvan f,1,0,0
 1.0,DEM,Mara Candelaria Reardon,state representative,2020,House,IN,reardon m,2,1,0
 1.0,DEM,Jayson Reeves,engineer,2020,House,IN,reeves j,0,0,0
 1.0,DEM,Merrillville,town councilman,2020,House,IN,merrillville,1,0,0
@@ -11140,9 +11140,9 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 4.0,DEM,Jim Keady,former Asbury Park city councilman (2005–2008),2020,House,NJ,keady j,1,0,0
 4.0,DEM,Hassan Shehadeh,financial analyst,2020,House,NJ,shehadeh h,0,0,0
 5.0,DEM,Josh Gottheimer,incumbent U.S. representative,2020,House,NJ,gottheimer j,4,1,0
-5.0,DEM,Glen Rock,borough councilwoman,2020,House,NJ,rock g,0,0,0
+5.0,DEM,Glen Rock,borough councilwoman,2020,House,NJ,rock g,1,0,0
 5.0,REP,James Baldini,educator,2020,House,NJ,baldini j,0,0,0
-5.0,REP,Cresskill,borough councilman and nominee for New Jersey's 5th congressional district in 2018,2020,House,NJ,cresskill,0,0,1
+5.0,REP,Cresskill,borough councilman and nominee for New Jersey's 5th congressional district in 2018,2020,House,NJ,cresskill,1,0,1
 5.0,REP,Frank Pallotta,former investment banker,2020,House,NJ,pallotta f,0,0,0
 5.0,REP,Bob Auth,state assemblyman,2020,House,NJ,auth b,2,0,0
 5.0,REP,Jon Dalrymple Jr.,student,2020,House,NJ,dalrymple j,0,0,0
@@ -11186,7 +11186,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 11.0,DEM,Mikie Sherrill,incumbent U.S. representative,2020,House,NJ,sherrill m,4,1,0
 11.0,DEM,Mark Washburne,professor,2020,House,NJ,washburne m,0,0,0
 11.0,REP,Rosemary Becchi,tax attorney and nonprofit executive,2020,House,NJ,becchi r,0,0,0
-11.0,REP,Kinnelon,borough councilman,2020,House,NJ,kinnelon,0,0,0
+11.0,REP,Kinnelon,borough councilman,2020,House,NJ,kinnelon,1,0,0
 11.0,REP,Reinier Prijten,financial manager,2020,House,NJ,prijten r,0,0,0
 11.0,REP,Mary Pat Christie,former First Lady of New Jersey and former investment banker,2020,House,NJ,christie m,0,0,0
 11.0,REP,James Gannon,Morris County sheriff,2020,House,NJ,gannon j,1,0,0
@@ -11240,7 +11240,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 2.0,REP,Suffolk County,health official,2020,House,NY,county s,0,0,0
 2.0,REP,Nick LaLota,Suffolk County elections commissioner (running for New York's 8th State Senate district ),2020,House,NY,lalota n,0,0,0
 2.0,REP,Phil Boyle,state senator,2020,House,NY,boyle p,2,0,0
-2.0,REP,Tom Cilmi,minority leader of the Suffolk County Legislature,2020,House,NY,cilmi t,0,0,0
+2.0,REP,Tom Cilmi,minority leader of the Suffolk County Legislature,2020,House,NY,cilmi t,1,0,0
 2.0,REP,Michael Fitzpatrick,state assemblyman,2020,House,NY,fitzpatrick m,2,0,0
 2.0,REP,Chuck Fuschillo,former state senator,2020,House,NY,fuschillo c,2,0,0
 2.0,REP,Nassau County,legislator,2020,House,NY,county n,0,0,0
@@ -11366,10 +11366,10 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 17.0,DEM,Asha Castleberry-Hernandez,U.S. Army veteran and national security expert,2020,House,NY,castleberryhernandez a,0,0,0
 17.0,DEM,Evelyn Farkas,"former Deputy Assistant Secretary of Defense for Russia, Ukraine, and Eurasia",2020,House,NY,farkas e,0.75,0,0
 17.0,DEM,Mondaire Jones,attorney,2020,House,NY,jones m,0,0,0
-17.0,DEM,Catherine Borgia,Westchester County legislator (endorsed Buchwald),2020,House,NY,borgia c,0,0,0
+17.0,DEM,Catherine Borgia,Westchester County legislator (endorsed Buchwald),2020,House,NY,borgia c,1,0,0
 17.0,DEM,Buchanan,trustee and candidate for New York's 18th congressional district in 2012,2020,House,NY,buchanan,0,0,1
 17.0,DEM,David Katz,debt-recovery attorney (endorsed Jones),2020,House,NY,katz d,0,0,0
-17.0,DEM,Catherine Parker,Westchester County legislator (endorsed Jones)  (remained on ballot),2020,House,NY,parker c,0,0,0
+17.0,DEM,Catherine Parker,Westchester County legislator (endorsed Jones)  (remained on ballot),2020,House,NY,parker c,1,0,0
 17.0,DEM,Jo-Anna Rodriguez-Wheeler,small business owner,2020,House,NY,rodriguezwheeler j,0,0,0
 17.0,DEM,Tom Abinanti,state assemblyman  (running for re-election),2020,House,NY,abinanti t,2,0,0
 17.0,DEM,Chelsea Clinton,global health advocate and member of the Clinton family,2020,House,NY,clinton c,0,0,0
@@ -11386,7 +11386,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 18.0,REP,Middletown,town councilman and candidate for New York's 18th congressional district in 2014,2020,House,NY,middletown,1,0,1
 19.0,DEM,Antonio Delgado,incumbent U.S. representative,2020,House,NY,delgado a,4,1,0
 19.0,REP,Ola Hawatmeh,fashion designer and philanthropist,2020,House,NY,hawatmeh o,0,0,0
-19.0,REP,Millbrook,village trustee and attorney,2020,House,NY,millbrook,0,0,0
+19.0,REP,Millbrook,village trustee and attorney,2020,House,NY,millbrook,1,0,0
 19.0,REP,New York National Guard,adjutant general,2020,House,NY,guard n,0.5,0,0
 19.0,REP,citation needed,],2020,House,NY,needed c,0,0,0
 19.0,REP,John Faso,former U.S. representative,2020,House,NY,faso j,4,1,0
@@ -11396,7 +11396,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 20.0,DEM,Paul Tonko,incumbent U.S. representative,2020,House,NY,tonko p,4,1,0
 20.0,REP,Liz Joy,real estate agent and author,2020,House,NY,joy l,0,0,0
 21.0,REP,Elise Stefanik,incumbent U.S. representative,2020,House,NY,stefanik e,4,1,0
-21.0,DEM,Tedra Cobb,former St. Lawrence County legislator and nominee for New York's 21st congressional district in 2018,2020,House,NY,cobb t,0,0,1
+21.0,DEM,Tedra Cobb,former St. Lawrence County legislator and nominee for New York's 21st congressional district in 2018,2020,House,NY,cobb t,1,0,1
 21.0,DEM,Clinton County,legislator,2020,House,NY,county c,0,0,0
 22.0,DEM,Anthony Brindisi,incumbent U.S. representative,2020,House,NY,brindisi a,4,1,0
 22.0,REP,Broome County,"legislator, and nominee for New York's 22nd congressional district in 2008 and 2010",2020,House,NY,county b,0,0,1
@@ -11419,7 +11419,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 26.0,REP,Ricky Donovan,retired corrections officer,2020,House,NY,donovan r,0,0,0
 27.0,REP,Chris Jacobs,state senator,2020,House,NY,jacobs c,2,0,0
 27.0,REP,Stefan I. Mychajliw Jr.,Erie County comptroller,2020,House,NY,mychajliw s,0,0,0
-27.0,REP,Darien,town justice,2020,House,NY,darien,0,0,0
+27.0,REP,Darien,town justice,2020,House,NY,darien,1,0,0
 27.0,DEM,Grand Island,supervisor and nominee for this district in 2018,2020,House,NY,island g,0,0,1
 1.0,DEM,G. K. Butterfield,incumbent U.S. representative,2020,House,NC,butterfield g,4,1,0
 1.0,REP,Sandy Smith,business executive and farmer,2020,House,NC,smith s,0,0,0
@@ -11460,7 +11460,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 1.0,DEM,North Dakota House of Representatives,in 2018,2020,House,ND,representatives n,0,0,0
 1.0,DEM,Roland Riemers,"perennial candidate, winner of the 1996 North Dakota Democratic primary",2020,House,ND,riemers r,0,0,0
 1.0,REP,Steve Chabot,incumbent U.S. representative,2020,House,OH,chabot s,4,1,0
-1.0,REP,Rocky Boiman,ESPN football analyst and former Green Township trustee,2020,House,OH,boiman r,0,0,0
+1.0,REP,Rocky Boiman,ESPN football analyst and former Green Township trustee,2020,House,OH,boiman r,1,0,0
 1.0,REP,Amy Murray,Cincinnati city councilwoman,2020,House,OH,murray a,1,0,0
 1.0,DEM,Kate Schroder,health care executive,2020,House,OH,schroder k,0,0,0
 1.0,DEM,Denise Driehaus,president of the Hamilton County Board of Commissioners and former state representative,2020,House,OH,driehaus d,2,1,0
@@ -11567,8 +11567,8 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 5.0,REP,Joey Nations,tax policy analyst,2020,House,OR,nations j,0,0,0
 5.0,REP,Angela Roman,businesswoman,2020,House,OR,roman a,0,0,0
 5.0,REP,Keizer,"city councilor, businesswoman, and community volunteer",2020,House,OR,keizer,1,0,0
-1.0,DEM,Ivyland,borough councilwoman and Bucks County deputy director of Housing and Human Services,2020,House,PA,ivyland,0,0,0
-1.0,DEM,Bucks County,prothonotary and former Lower Makefield Township supervisor,2020,House,PA,county b,0,0,0
+1.0,DEM,Ivyland,borough councilwoman and Bucks County deputy director of Housing and Human Services,2020,House,PA,ivyland,1,0,0
+1.0,DEM,Bucks County,prothonotary and former Lower Makefield Township supervisor,2020,House,PA,county b,1,0,0
 1.0,DEM,Pennsbury School District,school board,2020,House,PA,district p,1,0,0
 1.0,DEM,Diane Ellis-Marseglia,Bucks County commissioner,2020,House,PA,ellismarseglia d,1,0,0
 1.0,DEM,Patrick Murphy,former United States Under Secretary of the Army and former U.S. representative for Pennsylvania's 8th congressional district (2007–2011),2020,House,PA,murphy p,4,1,0
@@ -12354,7 +12354,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 3.0,REP,Dean Tran,former state senator (2017–2021),2022,House,MA,tran d,2,0,0
 4.0,DEM,Jake Auchincloss,incumbent U.S. Representative,2022,House,MA,auchincloss j,4,1,0
 4.0,DEM,Sam Hyun,chair of the Commonwealth of Massachusetts Asian American and Pacific Islander Commission,2022,House,MA,hyun s,0,0,0
-4.0,DEM,Brookline,"select boardmember, former aide to former governor Deval Patrick , and candidate for this district in 2020",2022,House,MA,brookline,0,0,1
+4.0,DEM,Brookline,"select boardmember, former aide to former governor Deval Patrick , and candidate for this district in 2020",2022,House,MA,brookline,1,0,1
 5.0,DEM,Katherine Clark,incumbent U.S. Representative and Assistant Speaker of the House,2022,House,MA,clark k,4,1,0
 6.0,DEM,Seth Moulton,incumbent U.S. Representative,2022,House,MA,moulton s,4,1,0
 6.0,REP,Robert May,"mechanical engineer, business consultant, and candidate for state representative in 2020",2022,House,MA,may r,0,1,1
@@ -12622,10 +12622,10 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 3.0,DEM,Thomas Suozzi,incumbent U.S. representative (ran unsuccessfully for Democratic nomination for governor of New York ),2022,House,NY,suozzi t,4,1,0
 3.0,REP,George Santos,"former call center employee, and nominee for this district in 2020",2022,House,NY,santos g,0,0,1
 4.0,DEM,Laura Gillen,former town supervisor of Hempstead (2018–2019),2022,House,NY,gillen l,1,0,0
-4.0,DEM,Siela Bynoe,member of the Nassau County Legislature,2022,House,NY,bynoe s,0,0,0
+4.0,DEM,Siela Bynoe,member of the Nassau County Legislature,2022,House,NY,bynoe s,1,0,0
 4.0,DEM,Todd Kaminsky,"New York state senator from the 9th district (2016–present), former New York State Assemblymember from the 20th district (2015–2016), candidate for Nassau County District Attorney in 2021",2022,House,NY,kaminsky t,2,1,1
 4.0,DEM,Kathleen Rice,incumbent U.S. representative  (endorsed Gillen),2022,House,NY,rice k,4,1,0
-4.0,REP,Anthony D'Esposito,retired NYPD detective and Hempstead Town Board member,2022,House,NY,desposito a,0,0,0
+4.0,REP,Anthony D'Esposito,retired NYPD detective and Hempstead Town Board member,2022,House,NY,desposito a,1,0,0
 4.0,REP,Bill Staniford,veteran and CEO of PropertyShark,2022,House,NY,staniford b,0,0,0
 7.0,DEM,Nydia Velázquez,incumbent U.S. representative,2022,House,NY,velazquez n,4,1,0
 8.0,DEM,Hakeem Jeffries,incumbent U.S. representative and chair of the House Democratic Caucus,2022,House,NY,jeffries h,4,1,0
@@ -12897,7 +12897,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 11.0,DEM,Bob Hollister,Eastern Lancaster County School superintendent (2008–2022),2022,House,PA,hollister b,0,0,0
 12.0,DEM,Summer Lee,state representative from the 34th district,2022,House,PA,lee s,2,1,0
 12.0,DEM,Brentwood,"city councilor (endorsed Irwin, ran for state representative )",2022,House,PA,brentwood,1,1,0
-12.0,DEM,Edgewood,borough councilor,2022,House,PA,edgewood,0,0,0
+12.0,DEM,Edgewood,borough councilor,2022,House,PA,edgewood,1,0,0
 12.0,DEM,Mike Doyle,incumbent U.S. representative (endorsed Irwin),2022,House,PA,doyle m,4,1,0
 12.0,REP,Plum,city councilor (no relation to Democratic incumbent Mike Doyle ),2022,House,PA,plum,1,0,0
 13.0,REP,John Joyce,incumbent U.S. representative,2022,House,PA,joyce j,4,1,0
@@ -13873,7 +13873,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 3.0,DEM,New York city councilor,Barry Grodenchik and candidate for New York City's 23rd City Council district in 2021 and 2023 (endorsed Suozzi),2024,House,NY,councilor n,0,0,1
 3.0,DEM,Austin Cheng,surgical center CEO  (endorsed Suozzi),2024,House,NY,cheng a,0,0,0
 3.0,DEM,Anna Kaplan,former state senator from the 7th district and candidate for this district in 2016 (endorsed Suozzi),2024,House,NY,kaplan a,2,0,1
-3.0,DEM,Josh Lafazan,Nassau County legislator and candidate for this district in 2022 (endorsed Suozzi),2024,House,NY,lafazan j,0,0,1
+3.0,DEM,Josh Lafazan,Nassau County legislator and candidate for this district in 2022 (endorsed Suozzi),2024,House,NY,lafazan j,1,0,1
 3.0,DEM,Zak Malamed,nonprofit executive (endorsed Suozzi),2024,House,NY,malamed z,0,0,0
 3.0,DEM,News 12,and 1010 WINS,2024,House,NY,news,0,0,0
 3.0,DEM,Democratic National Committee,member and nominee for this district in 2022,2024,House,NY,committee d,0,0,1
@@ -14357,7 +14357,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 1.0,REP,Bryan Steil,incumbent U.S. representative,2024,House,WI,steil b,4,1,0
 1.0,DEM,Peter Barca,former secretary of the Wisconsin Department of Revenue (2019–2024) and former U.S. representative from this district (1993–1995),2024,House,WI,barca p,4,1,0
 1.0,DEM,Diane Anderson,family nurse practitioner  (endorsed Barca),2024,House,WI,anderson d,0,0,0
-1.0,DEM,Caledonia,village trustee,2024,House,WI,caledonia,0,0,0
+1.0,DEM,Caledonia,village trustee,2024,House,WI,caledonia,1,0,0
 1.0,DEM,Racine County,"emergency management coordinator and chair of Wisconsin Young Democrats ( ran for Racine County executive , endorsed Barca)",2024,House,WI,county r,0,0,0
 1.0,DEM,Mike Sheridan,former Speaker of the Wisconsin State Assembly (2009–2011) from the 44th district (2005–2011) (endorsed Barca),2024,House,WI,sheridan m,2,0,0
 2.0,DEM,Mark Pocan,incumbent U.S. representative,2024,House,WI,pocan m,4,1,0
@@ -19249,7 +19249,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 5.0,OTH,Clay Steven Grant,,2012,House,LA,grant c,0,0,0
 6.0,OTH,Rufus Holt Craig,,2012,House,LA,craig r,0,0,0
 1.0,DEM,Peter Welch,incumbent U.S. Representative,2012,House,VT,welch p,4,1,0
-1.0,REP,Hartford,Board of Selectmen,2012,House,VT,hartford,0,0,0
+1.0,REP,Hartford,Board of Selectmen,2012,House,VT,hartford,1,0,0
 1.0,REP,Mark Donka,,2012,House,VT,donka m,0,0,0
 1.0,OTH,"James ""Sam"" Desrochers",,2012,House,VT,desrochers j,0,0,0
 1.0,,Liberty Union,,2012,House,VT,union l,0,0,0

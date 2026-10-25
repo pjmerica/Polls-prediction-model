@@ -4,6 +4,71 @@ For the next agent. Read AGENTS.md first (architecture + rules), CONCERNS.md sec
 (risk register + roadmap). This file: what's mid-flight RIGHT NOW, what's most likely to
 break, and what to do next, in order.
 
+## 2026-10-25 - 2026 no-polls nominees' offices researched; local-office classifier gaps (no retrain)
+
+User: "continue" (after the 10-24 reconciliation and retrain). Scope: the 660 major-party nominees in
+the 330 races the no-polls model scores. 198 of them rested on no evidence: a blank level (filled as
+0) or a Wikipedia results-table row with no descriptor.
+- **Research:** all 198 were checked by web search. Ballotpedia was read through search results only,
+  because direct fetches are bot-blocked.
+  - The result is 199 entries in `data/candidate_bios_manual.csv`: the 198 plus Heidi Kuhn, found by
+    the descriptor scan below. Source notes start "2026 nominee researched 2026-10-24".
+  - 151 held no office; `[]` means verified.
+  - 48 held one:
+    - IN-1 Barb Regnitz (Porter County commissioner since 2023) and PA-17 Tony Guy (Beaver County
+      sheriff since 2016).
+    - OR-5 Patti Adair (Deschutes County commissioner since 2019) and NY-4 Jeanine Driscoll
+      (Hempstead receiver of taxes since 2020).
+    - MI-11 Ethan Baker (Troy mayor since 2019) and TN-8 Heidi Kuhn (Shelby County Criminal Court
+      clerk 2018-26).
+    - Mayors and councilmembers in CA-3, CA-27, CA-28, CA-31, CA-39, CA-45, NC-6 and TX-13.
+    - Appointed posts: LeBrun (LA-3, CODOFIL board) and Soulé (CA-16, San Jose Civil Service
+      Commission) are 0.5. Beckwith (VA-10, Deputy Assistant Secretary of Defense) is 0.75.
+  - Correction: Brian Burley (CA-42) had a "Stage-4 verified level 0" entry, but he joined the
+    Huntington Beach City School Board in 2024.
+  - Where only "in office by year Y" is known, the start is Y and the office phrase says so. That
+    applies to Bartie's JP post, Beckwith, Farnham, Greene-Scott, Russ, Oakley and Bucco.
+  - Two entries are weaker: Bucco (a former Belleville school board member per NJ Globe, years not
+    found) and Pino (Clifton council since 2018, from an AI-written profile citing her campaign
+    site; AP confirms she is a councilwoman).
+- **Classifier gaps** (`fetch_candidate_bios.py` LEVELS[1], shared by the Ballotpedia classifier):
+  - Scanning the level-0 nominees' Wikipedia descriptors found elected local titles that read 0.
+    Example: TN-8 Kuhn, "Shelby County Criminal Court clerk".
+  - Added:
+    - county legislator / legislature;
+    - town and village boards, village trustee and president;
+    - township trustee, committee, supervisor and board;
+    - boards of selectmen and aldermen, select board, borough council;
+    - school committee (not Boston's, which is appointed);
+    - clerk of court(s) and court clerk;
+    - receiver of taxes, register of deeds and wills, recorder of deeds, prothonotary;
+    - town and village justice, regional board of school trustees, constable.
+  - Justice of the peace is left out: it is appointed in MA, NH, DE and CT. Bartie's Texas JP post is a
+    manual entry.
+  - A "<local body> candidate" strip now runs before the "candidate in" strip. "Town board candidate
+    in 2023" had been read as an officeholder.
+  - Stored levels were written back to the three source files: 71 rows.
+    - 69 went from 0 to 1 (Shinagawa, Blakeman, Myers, D'Esposito, Mrvan's township trustee, ...).
+    - FL-4 "school board candidate" and OH-13 "county council candidate" went from 1 to 0.
+- **`tools/check_officeholder.py`** cast levels to int, so El-Sayed's 0.5 read 0. It also still
+  expected the levels from before the 10-08 rule change. It now uses floats, with El-Sayed at 0.5 and
+  Buttigieg at 1 (mayor over the appointed cabinet post). All checks pass.
+- **Effect:**
+  - Table vs HEAD: 106 level changes (102 from 0 to 1), 57 of them before 2026. Most of those are
+    primary-only or garbled-name rows; the primary models are frozen.
+  - **General training table: 2 of 4,480 rows change.** Nate Shinagawa (NY-23 2012) and Kim Myers
+    (NY-22 2016) go from 0 to 1; both lost. Blakeman and D'Esposito already read 1 through another
+    source.
+  - **Not retrained.** A retrain for 2 rows would mostly re-roll the tuners; on 10-24 the margin
+    tuner flipped on a 0.002 tie. The change takes effect at the next retrain. That is the user's call.
+  - 2026 no-polls: 48 nominees' levels rise (45 to 1, 2 to 0.5, 1 to 0.75), and no favourites change.
+    The median move is 0.0; 3 races move a point or more:
+    - IN-1: Mrvan 87.1 -> 83.5.
+    - CA-2: Huffman 98.5 -> 97.1.
+    - NJ-11: Mejia 94.8 -> 93.5.
+  - No polled 2026 candidate's row changed.
+  - All 660 nominees now have a level (39 were blank).
+
 ## 2026-10-24 - retrained on the reconciled office levels
 
 User: "make sure to document the changes and retrain". The standard sequence was run:
