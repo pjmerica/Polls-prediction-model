@@ -28,9 +28,8 @@ the 330 races the no-polls model scores. 198 of them rested on no evidence: a bl
     Huntington Beach City School Board in 2024.
   - Where only "in office by year Y" is known, the start is Y and the office phrase says so. That
     applies to Bartie's JP post, Beckwith, Farnham, Greene-Scott, Russ, Oakley and Bucco.
-  - Two entries are weaker: Bucco (a former Belleville school board member per NJ Globe, years not
-    found) and Pino (Clifton council since 2018, from an AI-written profile citing her campaign
-    site; AP confirms she is a councilwoman).
+  - One entry is weaker: Bucco is a former Belleville school board member per NJ Globe, but the
+    years were not found.
 - **Classifier gaps** (`fetch_candidate_bios.py` LEVELS[1], shared by the Ballotpedia classifier):
   - Scanning the level-0 nominees' Wikipedia descriptors found elected local titles that read 0.
     Example: TN-8 Kuhn, "Shelby County Criminal Court clerk".
