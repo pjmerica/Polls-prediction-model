@@ -174,10 +174,10 @@
   "unemployment_trend_6mo"
  ],
  "xgb_params": {
-  "max_depth": 3,
-  "learning_rate": 0.03,
+  "max_depth": 2,
+  "learning_rate": 0.05,
   "n_estimators": 300,
-  "min_child_weight": 15,
+  "min_child_weight": 8,
   "subsample": 0.6,
   "colsample_bytree": 1.0,
   "reg_lambda": 1,
@@ -205,26 +205,26 @@
  "eval_expanding_window": {
   "2018": {
    "n_races": 229.0,
-   "AUC": 0.9353,
-   "Brier": 0.1009,
-   "race_acc": 0.8035
+   "AUC": 0.9315,
+   "Brier": 0.1037,
+   "race_acc": 0.8079
   },
   "2020": {
    "n_races": 153.0,
-   "AUC": 0.9152,
-   "Brier": 0.1173,
-   "race_acc": 0.7843
+   "AUC": 0.9176,
+   "Brier": 0.1138,
+   "race_acc": 0.8039
   },
   "2022": {
    "n_races": 178.0,
-   "AUC": 0.963,
-   "Brier": 0.0787,
+   "AUC": 0.9618,
+   "Brier": 0.0805,
    "race_acc": 0.8371
   },
   "2024": {
    "n_races": 135.0,
-   "AUC": 0.9652,
-   "Brier": 0.0758,
+   "AUC": 0.9658,
+   "Brier": 0.0755,
    "race_acc": 0.8667
   }
  }

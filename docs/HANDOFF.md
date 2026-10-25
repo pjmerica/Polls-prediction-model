@@ -4,6 +4,44 @@ For the next agent. Read AGENTS.md first (architecture + rules), CONCERNS.md sec
 (risk register + roadmap). This file: what's mid-flight RIGHT NOW, what's most likely to
 break, and what to do next, in order.
 
+## 2026-10-25 (later) - retrained on the researched office levels
+
+User: "ok document and retrain". The sequence was the same as on 10-24: `model.ipynb`, then
+`margin_model.ipynb` (one at a time), then `fundamentals_model.py --general-only`. The primary
+models stay frozen. The before/after 2026 comparison used the same local feeds: 440 polled rows and
+857 unpolled.
+- **Win model: byte-identical again** (artifact, features file and notebook metrics).
+  - Held-out 2018-24: AUC .974, Brier .063, race-acc .879 vs poll-leader .869.
+  - 2026 win probabilities are identical in all 177 polled races, so the competitive Senate/Governor
+    list is unchanged at 13.
+- **Margin model: the tuner went back to the 10-22 settings** (400 trees, min_child_weight 15,
+  colsample 0.6, reg_lambda 1, reg_alpha 1).
+  - Stage-2 3-seed tune-CV MAE is 5.572, against 5.575 and 5.577 for the next settings. That is
+    another near-tie.
+  - Held-out 2018-24 MAE is 5.50 (5.80 with the 10-24 pick). Per cycle: 2018 7.64 (was 8.49),
+    2020 5.69 (5.95), 2022 4.34 (4.43), 2024 4.34 (4.33). Margin race-acc is .877 vs poll .869
+    (was .864).
+  - 2026 margins move a median 0.6 pts, max 5.1 (LA-Sen, Davis). Nine rows within about a point of
+    zero change sign (AK-Sen, AZ-2, CO-3, FL-9, KS-Sen, MI-4, MO-2).
+- **No-polls model: re-tuned** to max_depth 2, learning_rate .05, min_child_weight 8 (was 3 / .03 /
+  15). Its best tune LOCO AUC is 0.8542 over the 10 old cycles.
+  - Held-out 2018-24: AUC .944, Brier .093, race-acc .829 (was .945 / .093 / .823). The win model's
+    params on the same features score .948 / .095 / .835.
+  - `is_incumbent` has 30.2% of the gain and `bio_office_level` 6.3% (were 24.8% and 3.9%).
+  - 2026 unpolled races: no favourite changes; median move 0.4 pts, mean 0.8. Biggest:
+    - MI-1: Bergman 56.7 -> 49.0, Barr 35.3 -> 39.6 (five minor candidates share the rest).
+    - NY-11: Malliotakis 80.4 -> 73.4.
+    - CA-5: McClintock 91.5 -> 85.0.
+    - IL-16: LaHood 90.2 -> 84.7.
+    - CA-12: Simon 80.7 -> 86.5.
+    - LA-4: Johnson 59.2 -> 65.5 (finishing first in the Nov 3 round).
+  - Against the markets (313 priced D-vs-R unpolled races): the median gap is 2.0 pts (was 1.9) and
+    the favoured party matches everywhere. The two gaps over 25 pts are the same as before:
+    - CA-1: model D 60% vs market 96%.
+    - MI-1: model D 45% vs market 12%. Before this retrain it was already a 27-pt gap. It is driven by
+      the midterm-approval term (+13 for the out-party), the D+8.6 national environment and Barr's
+      58% share of race cash, against an R+21 seat.
+
 ## 2026-10-25 - 2026 no-polls nominees' offices researched; local-office classifier gaps (no retrain)
 
 User: "continue" (after the 10-24 reconciliation and retrain). Scope: the 660 major-party nominees in
@@ -58,8 +96,9 @@ the 330 races the no-polls model scores. 198 of them rested on no evidence: a bl
   - **General training table: 2 of 4,480 rows change.** Nate Shinagawa (NY-23 2012) and Kim Myers
     (NY-22 2016) go from 0 to 1; both lost. Blakeman and D'Esposito already read 1 through another
     source.
-  - **Not retrained.** A retrain for 2 rows would mostly re-roll the tuners; on 10-24 the margin
-    tuner flipped on a 0.002 tie. The change takes effect at the next retrain. That is the user's call.
+  - **Not retrained** in this commit: a retrain for 2 rows would mostly re-roll the tuners, and on
+    10-24 the margin tuner flipped on a 0.002 tie. The user then asked for a retrain, which is the
+    entry above.
   - 2026 no-polls: 48 nominees' levels rise (45 to 1, 2 to 0.5, 1 to 0.75), and no favourites change.
     The median move is 0.0; 3 races move a point or more:
     - IN-1: Mrvan 87.1 -> 83.5.
