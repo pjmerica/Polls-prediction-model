@@ -295,6 +295,11 @@ def best_other(s):
 
 # ---------------------------------------------------------------- fundamentals
 
+# an independent / third-party candidate at or above this share among a race's top two makes it
+# a non-D-vs-R contest, skipped as a prior margin (load_fundamentals, 2026-10-25)
+PRIOR_OTHER_MIN = 20.0
+
+
 def load_fundamentals():
     """Incumbency + prior-margin lookups from the committed static files in data/.
 
@@ -340,13 +345,42 @@ def load_fundamentals():
     import results_labels as RL
     allres = RL.aggregate_candidates(RL.load_result_lines(DATA_DIR)).rename(
         columns={"year": "cycle", "res_party": "p", "vote_pct": "pct"})
-    piv = (allres[allres["p"].isin(["DEM", "REP"])]
-           .groupby(["cycle", "state", "office", "district", "p"])["pct"].max().unstack("p"))
+    # PRIOR MARGIN = the latest real Democrat-vs-Republican race (2026-10-25). DEM-slot
+    # independents and party-label fixes (model_party_overrides_hist.csv) count as their model
+    # party here, as they already do in the training polls: NV-2 2024 is Amodei vs Kidd, not
+    # Amodei vs nobody. Only the margin uses them - `winners` below keeps the ballot party.
+    mres = allres
+    hist_ov = load_hist_party_overrides()
+    if hist_ov:
+        _ovp = pd.Series([hist_ov.get(k) for k in zip(
+            allres["cycle"].astype(int), allres["state"], allres["office"],
+            allres["district"].map(dist_str), allres["cand_key"])], index=allres.index)
+        mres = allres.copy()
+        mres.loc[_ovp.notna(), "p"] = _ovp[_ovp.notna()]
+    race_cols = ["cycle", "state", "office", "district"]
+    piv = (mres[mres["p"].isin(["DEM", "REP"])]
+           .groupby(race_cols + ["p"])["pct"].max().unstack("p"))
     for col in ["DEM", "REP"]:
         if col not in piv.columns:
             piv[col] = np.nan
     piv["margin"] = piv["DEM"].fillna(0) - piv["REP"].fillna(0)
     margin_map = {idx: row.margin for idx, row in piv.iterrows()}
+    # A race whose top two were NOT a Democrat and a Republican says nothing about the D-R
+    # margin: an independent or third party with PRIOR_OTHER_MIN+ among the top two (King ME-Sen
+    # 2024, Sanders, Lieberman 2006) or a same-party final (Murkowski v Tshibaka AK-Sen 2022,
+    # CA/WA top-two). Its DEM - REP read ME 2026 as R+23.8 and AK 2026 as R+32.7. Set to NaN so
+    # prior_margin steps back to the latest real D-vs-R race (ME 2020 R+8.6, AK 2020 R+12.7).
+    # A race one major party sat out with only token opposition keeps its lopsided value: that
+    # is a real safe-seat signal, built the same way in training and at serve time.
+    top2 = (mres.dropna(subset=["pct"]).sort_values("pct", ascending=False)
+                .groupby(race_cols).head(2))
+    for key, g in top2.groupby(race_cols):
+        if len(g) < 2 or set(g["p"]) == {"DEM", "REP"} or key not in margin_map:
+            continue
+        same_party = g["p"].iloc[0] == g["p"].iloc[1]
+        strong_other = (~g["p"].isin(["DEM", "REP"]) & (g["pct"] >= PRIOR_OTHER_MIN)).any()
+        if same_party or strong_other:
+            margin_map[key] = np.nan
     # a jungle November round that went to a D-vs-R runoff: the runoff is the seat's real
     # margin (2026-10-06, see RL.jungle_runoff_margins)
     margin_map.update(RL.jungle_runoff_margins(DATA_DIR))
@@ -518,7 +552,9 @@ def _last_redraw(state, year):
 
 def prior_margin(margin_map, year, state, office, district):
     """Most recent same-office two-party margin strictly BEFORE `year` (leak-free). For the House,
-    only from an election held on the same district map (NaN across a redraw)."""
+    only from an election held on the same district map (NaN across a redraw). Races that were
+    not a Democrat against a Republican are NaN in margin_map (load_fundamentals, 2026-10-25), so
+    the loop steps back past them to the latest real D-vs-R race."""
     floor = _last_redraw(state, year) if office == "House" else None
     for back in range(2, 9, 2):
         if floor is not None and year - back < floor:

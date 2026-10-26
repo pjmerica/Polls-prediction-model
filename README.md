@@ -44,8 +44,8 @@ differently:**
 
 | model | target | notebook/script | headline (honest, expanding-window) |
 |---|---|---|---|
-| **Win** | `won ∈ {0,1}` | `model.ipynb` | AUC .974 / AUC-PR .958 / Brier .063 / race-acc .879 vs. poll-leader .869 (2018-24, retrain 2026-10-25) |
-| **Margin** | signed vote margin vs. best opponent | `margin_model.ipynb` | MAE 5.50 vs. 6.26 calibrated-poll / 6.59 raw-poll baseline (**beats polls**; 2018-24, retrain 2026-10-25) |
+| **Win** | `won ∈ {0,1}` | `model.ipynb` | AUC .974 / AUC-PR .956 / Brier .064 / race-acc .875 vs. poll-leader .869 (2018-24, retrain 2026-10-26) |
+| **Margin** | signed vote margin vs. best opponent | `margin_model.ipynb` | MAE 5.66 vs. 6.26 calibrated-poll / 6.59 raw-poll baseline (**beats polls**; 2018-24, retrain 2026-10-26) |
 | **Primary nominee** | `won ∈ {0,1}` (becomes the party's nominee) | `models/poll/primary_model.py` | AUC-PR .97 / Brier .02 / race-acc .93 vs. poll-leader .72 baseline |
 | **Primary margin** | vote margin vs. best other candidate | `models/poll/primary_margin_model.py` | MAE 17.0 vs. 18.5 calibrated-poll baseline — beats it on the mean, but LOSES the 2022 fold; two eval cycles only |
 
@@ -55,10 +55,10 @@ current run, and `HANDOFF.md` for the dated history of every retrain.)
 
 A fifth model, `models/fundamentals/fundamentals_model.py`, trains NO-POLLING variants of the
 general and primary models. Since 2026-10-23 the general one scores every race without polls
-(`models/fundamentals/predict_unpolled.py`). It reaches race-acc .829 / Brier .093 (2018-24,
-retrain 2026-10-25) vs .871 / .064 with polls - most general elections are structurally
-determined, with `is_incumbent` alone carrying about 30% of the gain and `bio_office_level`
-the next most (6%). The primary one only reaches .435, BELOW its own
+(`models/fundamentals/predict_unpolled.py`). It reaches race-acc .818 / Brier .094 (2018-24,
+retrain 2026-10-26) vs .870 / .064 with polls - most general elections are structurally
+determined, with `is_incumbent` alone carrying about 25% of the gain and `bio_office_level`
+the next most (4%). The primary one only reaches .435, BELOW its own
 naive "pick the highest office-level candidate" baseline of .451, because within one party
 there is no incumbency edge, no partisan lean and no seat history to lean on. Neither is blended
 into the polled races' numbers — see CONCERNS.md #28.

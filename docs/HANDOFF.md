@@ -4,6 +4,47 @@ For the next agent. Read AGENTS.md first (architecture + rules), CONCERNS.md sec
 (risk register + roadmap). This file: what's mid-flight RIGHT NOW, what's most likely to
 break, and what to do next, in order.
 
+## 2026-10-25/26 - prior margin = latest real D-vs-R race (retrained and published 10-26)
+
+From the polling-agg model audit (prior_margin checklist). `features.load_fundamentals` now
+(1) applies `model_party_overrides_hist.csv` to the results lines used for the margin, so DEM-slot
+independents count as the Democrat (Kidd NV-2 2024, McMullin, Orman, Walker, Mund; Sekula-Gibbs as
+the Republican in TX-22 2006), and (2) sets to NaN any race whose top two were not D vs R (an
+independent / third party with 20%+ among them, `PRIOR_OTHER_MIN`, or a same-party final), so
+`prior_margin` steps back to the previous race. One-party seats with token opposition keep their
+value; jungle D-vs-R runoffs are untouched. The Senate keeps "latest race for either seat" (33 of 35
+regular 2026 races read the other seat; a seat-class key would change 430 training races and make
+NE-Sen read Sasse 2020 instead of Osborn 2024).
+- Training: 40 races / 99 candidate rows change (19 House, 14 Senate, 7 Governor; 8 now blank).
+- Live 2026: 6 races - AK-Sen -32.7 -> -12.7, ME-Sen -23.8 -> -8.6, NV-2 -55.0 -> -19.0, WA-4
+  -52.0 -> -35.3, MA-1 62.4 -> 23.1, MA-2 68.6 -> 32.5.
+- New `tests/test_prior_margin.py` (9 tests, `py -m pytest tests`) - the repo's first test file.
+- **Fixed-settings test first** (old vs new prior margin, the committed params, expanding-window
+  2018-24): neutral. Win Brier .0638 -> .0637, race-acc .878 both; margin MAE 5.524 -> 5.533 over 5
+  seeds (per-seed -0.067..+0.056 = noise); no-polls Brier .0937 -> .0939 over 5 seeds.
+- **Retrained 2026-10-26** (`model.ipynb`, `margin_model.ipynb`, `fundamentals_model.py
+  --general-only`, one at a time). All three tuners moved on near-ties again:
+  - Win: min_child_weight 15 -> 8, reg_alpha 1 -> 0 (tune AUC .9522, same as before). Held-out
+    AUC .974, Brier .064, race-acc .875 vs poll .869 (was .063 / .879).
+  - Margin: learning_rate .03 -> .02 (stage-2 5.575 vs 5.578 for the next two). Held-out MAE 5.657
+    (was 5.50); 2018 fold 8.06 (was 7.64).
+  - No-polls: max_depth 2 -> 3, min_child_weight 8 -> 30. Held-out AUC .944, Brier .094, race-acc
+    .818 (was .944 / .093 / .829).
+  - The data fix was neutral at fixed settings, so these small held-out losses are the tuner flips
+    (polling-agg audit M5), not the prior margin.
+- **2026 before/after** (same local feeds, natl_env fixed at +8.64; "before" = old prior + previous
+  artifacts): polled races move a median 0.3 pts, max 2.9 (TX-Sen 59.3 -> 56.4); no favourite flips;
+  the 13 competitive Senate/Governor races are unchanged. AK-Sen 51.9 -> 51.0, ME-Sen 68.7 -> 67.2,
+  NV-2 D 43.8 -> 43.2. No-polls: median 0.4, 9 races move 5+ pts (NY-11 D 26.6 -> 15.2, PA-9 21.5 ->
+  11.5, CA-5 15.0 -> 6.9, CA-1 59.9 -> 52.5), no favourite flips - the depth-3 re-tune. Margins move
+  a median 0.56, max 3.2; the margin favourite flips in AK-Sen (now Peltola, agreeing with the win
+  model) and CO-3 (now Hurd, disagreeing). Win/margin disagreements stay at 9.
+- **User call 2026-10-26: publish the tuners' picks** (the 10-22 rule), not the previous settings
+  on the corrected data - choosing settings by their 2018-24 score would make that score
+  optimistic. The tuner question (select on Brier / average the top settings) stays open.
+- Overnight run note: the first attempt died with a nbconvert CellTimeoutError because the PC went
+  into Modern Standby at 11:15 PM; re-run with `--ExecutePreprocessor.timeout=-1` in the day.
+
 ## 2026-10-25 (later) - retrained on the researched office levels
 
 User: "ok document and retrain". The sequence was the same as on 10-24: `model.ipynb`, then

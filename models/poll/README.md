@@ -1,14 +1,14 @@
 # `models/poll/` — the four production models
 
 All four use race polling and all four are shipped to the dashboard. The two general models'
-numbers are the notebooks' honest expanding-window evals (2018-2024) from the 2026-10-25
-retrain; the primary models' are from their committed `../../data/*_features.json` (2026-08-08,
+numbers are the notebooks' honest expanding-window evals (2018-2024) from the 2026-10-26
+retrain (prior-margin fix); the primary models' are from their committed `../../data/*_features.json` (2026-08-08,
 frozen until the 2028 cycle).
 
 | file | model | artifact | headline |
 |---|---|---|---|
-| `model.ipynb` | **Win probability** | `data/model_xgb.json` | AUC .974 / Brier .063 / race-acc .879 vs poll-leader .869 — about **ties** the poll-leader baseline |
-| `margin_model.ipynb` | **Margin of victory** | `data/margin_model_xgb.json` | MAE 5.50 vs 6.26 calibrated-poll baseline — **beats** polls |
+| `model.ipynb` | **Win probability** | `data/model_xgb.json` | AUC .974 / Brier .064 / race-acc .875 vs poll-leader .869 — about **ties** the poll-leader baseline |
+| `margin_model.ipynb` | **Margin of victory** | `data/margin_model_xgb.json` | MAE 5.66 vs 6.26 calibrated-poll baseline — **beats** polls |
 | `primary_model.py` | **Primary nominee** | `data/primary_model_xgb.json` | race-acc .923 (2022) / .892 (2024) vs poll-leader .769 / .676 |
 | `primary_margin_model.py` | **Primary margin** | `data/primary_margin_model_xgb.json` | MAE 14.69 (2022) / 18.65 (2024) vs poll 16.33 / 23.18 |
 
