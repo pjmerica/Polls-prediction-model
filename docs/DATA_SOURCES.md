@@ -85,6 +85,15 @@ A CPVI-style lean per state (51 rows) and per district (435 rows), 2022 vintage.
 Negative = Republican-leaning. **Caveat:** single vintage, so in the model feature table
 `lean_cand` is ~59% missing (post-2022 redistricting districts don't match).
 
+**Presidential lean, state and district (the features in use).** `pres_lean_cand` = the state's
+presidential margin minus the nation's, from `data/res_president.csv` (2026-10-02).
+`dist_pres_lean_cand` (2026-10-27) = the same for each House district, on the lines in force in the
+race year: `data/district_pres_margin.csv`, built by `pipeline/build/build_dist_pres_lean.py` from
+**The Downballot** (formerly Daily Kos Elections), presidential results by congressional district,
+https://www.the-downballot.com/p/data (free with credit and a link; they ask that the sheets not be
+reproduced whole, so the raw downloads stay in gitignored `data/raw/pres_by_cd/`). Covers House races
+2002-2026; missing 1998-2000, GA 2002-04, TX 2002 and five TX districts in 2004, FL 2016.
+
 ---
 
 ## 4. National environment — a model feature

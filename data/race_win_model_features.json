@@ -59,6 +59,7 @@
   "is_personal_inc",
   "open_seat",
   "pres_lean_cand",
+  "dist_pres_lean_cand",
   "pollster_sd",
   "n_pollsters",
   "midterm_pres_party",
@@ -214,10 +215,10 @@
   "max_depth": 1,
   "learning_rate": 0.05,
   "n_estimators": 600,
-  "min_child_weight": 2,
+  "min_child_weight": 8,
   "subsample": 1.0,
   "colsample_bytree": 1.0,
-  "reg_lambda": 5
+  "reg_lambda": 1
  },
  "softmax_temp": 0.9655,
  "minor_offset": -8.0,
@@ -264,19 +265,7 @@
   "metric": "log loss of softmaxed probability",
   "stage2": [
    [
-    0.2783,
-    {
-     "max_depth": 1,
-     "learning_rate": 0.05,
-     "n_estimators": 600,
-     "min_child_weight": 2,
-     "subsample": 1.0,
-     "colsample_bytree": 1.0,
-     "reg_lambda": 5
-    }
-   ],
-   [
-    0.279,
+    0.2705,
     {
      "max_depth": 1,
      "learning_rate": 0.05,
@@ -288,7 +277,19 @@
     }
    ],
    [
-    0.2819,
+    0.273,
+    {
+     "max_depth": 1,
+     "learning_rate": 0.05,
+     "n_estimators": 300,
+     "min_child_weight": 0.5,
+     "subsample": 1.0,
+     "colsample_bytree": 0.4,
+     "reg_lambda": 1
+    }
+   ],
+   [
+    0.2734,
     {
      "max_depth": 1,
      "learning_rate": 0.1,
@@ -300,110 +301,110 @@
     }
    ],
    [
-    0.2822,
+    0.2738,
     {
-     "max_depth": 3,
-     "learning_rate": 0.02,
-     "n_estimators": 300,
+     "max_depth": 1,
+     "learning_rate": 0.05,
+     "n_estimators": 600,
      "min_child_weight": 2,
-     "subsample": 0.6,
-     "colsample_bytree": 0.6,
-     "reg_lambda": 1
-    }
-   ],
-   [
-    0.2836,
-    {
-     "max_depth": 3,
-     "learning_rate": 0.02,
-     "n_estimators": 300,
-     "min_child_weight": 0.5,
-     "subsample": 0.6,
-     "colsample_bytree": 0.6,
+     "subsample": 1.0,
+     "colsample_bytree": 1.0,
      "reg_lambda": 5
     }
    ],
    [
-    0.2838,
+    0.2741,
     {
-     "max_depth": 1,
-     "learning_rate": 0.05,
-     "n_estimators": 300,
-     "min_child_weight": 0.5,
+     "max_depth": 2,
+     "learning_rate": 0.1,
+     "n_estimators": 150,
+     "min_child_weight": 2,
      "subsample": 1.0,
      "colsample_bytree": 0.4,
      "reg_lambda": 1
     }
    ],
    [
-    0.2841,
+    0.2746,
     {
      "max_depth": 2,
-     "learning_rate": 0.02,
-     "n_estimators": 600,
-     "min_child_weight": 2,
-     "subsample": 0.8,
-     "colsample_bytree": 1.0,
-     "reg_lambda": 5
-    }
-   ],
-   [
-    0.2851,
-    {
-     "max_depth": 3,
      "learning_rate": 0.05,
      "n_estimators": 150,
      "min_child_weight": 0.5,
-     "subsample": 0.8,
-     "colsample_bytree": 0.4,
-     "reg_lambda": 1
+     "subsample": 1.0,
+     "colsample_bytree": 1.0,
+     "reg_lambda": 20
+    }
+   ],
+   [
+    0.2746,
+    {
+     "max_depth": 2,
+     "learning_rate": 0.05,
+     "n_estimators": 150,
+     "min_child_weight": 2,
+     "subsample": 1.0,
+     "colsample_bytree": 0.6,
+     "reg_lambda": 20
+    }
+   ],
+   [
+    0.2766,
+    {
+     "max_depth": 2,
+     "learning_rate": 0.1,
+     "n_estimators": 150,
+     "min_child_weight": 2,
+     "subsample": 1.0,
+     "colsample_bytree": 0.6,
+     "reg_lambda": 20
     }
    ]
   ]
  },
  "eval_expanding_window": {
   "mean": {
-   "Brier": 0.0653,
-   "LogLoss": 0.2087,
-   "AUC": 0.9724,
-   "race_acc": 0.8749
+   "Brier": 0.0602,
+   "LogLoss": 0.1923,
+   "AUC": 0.9759,
+   "race_acc": 0.8763
   },
   "per_cycle": [
    {
     "cycle": 2018,
     "temp": 0.9655,
     "minor_offset": 0.0,
-    "Brier": 0.054,
-    "LogLoss": 0.1878,
-    "AUC": 0.9773,
-    "race_acc": 0.8952
+    "Brier": 0.0544,
+    "LogLoss": 0.1881,
+    "AUC": 0.9772,
+    "race_acc": 0.8865
    },
    {
     "cycle": 2020,
-    "temp": 0.811,
+    "temp": 0.8849,
     "minor_offset": -8.0,
-    "Brier": 0.0865,
-    "LogLoss": 0.2636,
-    "AUC": 0.9577,
-    "race_acc": 0.8267
+    "Brier": 0.0725,
+    "LogLoss": 0.2231,
+    "AUC": 0.9674,
+    "race_acc": 0.8333
    },
    {
     "cycle": 2022,
     "temp": 0.9655,
     "minor_offset": -8.0,
-    "Brier": 0.0672,
-    "LogLoss": 0.2068,
-    "AUC": 0.9733,
-    "race_acc": 0.8678
+    "Brier": 0.0555,
+    "LogLoss": 0.1778,
+    "AUC": 0.9802,
+    "race_acc": 0.8908
    },
    {
     "cycle": 2024,
-    "temp": 0.9655,
+    "temp": 0.8849,
     "minor_offset": -8.0,
-    "Brier": 0.0536,
-    "LogLoss": 0.1765,
-    "AUC": 0.9812,
-    "race_acc": 0.9098
+    "Brier": 0.0582,
+    "LogLoss": 0.1803,
+    "AUC": 0.9789,
+    "race_acc": 0.8947
    }
   ]
  },

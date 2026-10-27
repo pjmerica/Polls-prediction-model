@@ -431,8 +431,10 @@ def load_fundamentals():
     if os.path.exists(ap):
         for r in pd.read_csv(ap).itertuples():
             appointed.add((int(r.year), r.state, r.office, r.surname, r.party))
+    pres_lean = load_pres_lean()
     return dict(inc_map=inc_map, margin_map=margin_map, winners=winners,
-                appointed=appointed, pres_lean=load_pres_lean())
+                appointed=appointed, pres_lean=pres_lean,
+                dist_pres_lean=load_dist_pres_lean(pres_lean))
 
 
 def load_pres_lean():
@@ -463,9 +465,29 @@ def load_pres_lean():
         d = by.xs(noms["DEM"], level="candidate_name").reindex(tot.index).fillna(0)
         r = by.xs(noms["REP"], level="candidate_name").reindex(tot.index).fillna(0)
         nat = 100 * (d.sum() - r.sum()) / tot.sum()
+        out[(int(cyc), "US")] = nat      # the national margin (load_dist_pres_lean subtracts it)
         for st in tot.index:
             if tot[st] > 0:
                 out[(int(cyc), st)] = 100 * (d[st] - r[st]) / tot[st] - nat
+    return out
+
+
+def load_dist_pres_lean(pres_lean):
+    """{(race year, state, district): district presidential lean} for House races (2026-10-27).
+
+    data/district_pres_margin.csv (pipeline/build/build_dist_pres_lean.py, from The Downballot)
+    holds each district's DEM-minus-REP presidential margin at the latest presidential election
+    strictly before the race year, on the lines in force that year; minus that election's national
+    margin (pres_lean's (cycle, "US") entry) it is a lean in the same units as pres_lean_cand.
+    {} if the file is missing."""
+    path = os.path.join(DATA_DIR, "district_pres_margin.csv")
+    if not os.path.exists(path):
+        return {}
+    out = {}
+    for r in pd.read_csv(path).itertuples():
+        nat = pres_lean.get((int(r.pres_cycle), "US"))
+        if nat is not None:
+            out[(int(r.year), r.state, dist_str(r.district))] = float(r.margin) - nat
     return out
 
 
@@ -1861,6 +1883,12 @@ def build_candidate_table(d, macro, natl_env_map, funds, house_train_years=None,
                 # (state-level even for House - no district presidential results)
                 pres_lean_cand=(sign * pres_lean_asof(funds.get("pres_lean", {}), yr, st)
                                 if sign != 0 else np.nan),
+                # DISTRICT presidential lean (2026-10-27, user: keep a state AND a district column):
+                # the district's own lean for House races (NaN where no table covers it: 1998-2000,
+                # FL 2016), the state's for Senate / Governor (the state is the district there)
+                dist_pres_lean_cand=(np.nan if sign == 0 else sign * (
+                    funds.get("dist_pres_lean", {}).get((yr, st, di), np.nan) if of == "House"
+                    else pres_lean_asof(funds.get("pres_lean", {}), yr, st))),
                 # MIDTERM penalty: the president's party in a midterm, and the same scaled by
                 # approval - +1 president's party / -1 the other major party / 0 others, times
                 # (approval_eve - 50). Zero in presidential years.
@@ -2039,9 +2067,23 @@ SPONSOR_FEATS = ["poll_avg_dpoll", "poll_avg_rpoll", "poll_avg_npoll",
 # rest. The notebooks pass these via feature_list(exclude=...).
 WIN_EXCLUDE = ("poll_avg_rw", "poll_lead_rw")
 MARGIN_EXCLUDE = ("midterm_pres_party", "midterm_approval_cand")
-NEW_FEATS_1002 = ["is_personal_inc", "open_seat", "pres_lean_cand",
+NEW_FEATS_1002 = ["is_personal_inc", "open_seat", "pres_lean_cand", "dist_pres_lean_cand",
                   "poll_avg_rw", "poll_lead_rw", "pollster_sd", "n_pollsters",
                   "midterm_pres_party", "midterm_approval_cand"]
+
+
+def general_features(kind):
+    """The served general models' feature lists (2026-10-27): kind "win" or "margin".
+
+    Same call model.ipynb / margin_model.ipynb make; the race-level models
+    (models/poll/race_*_model.py) and the no-polls model take their lists from here, so a new
+    feature needs no notebook re-run. Matched the notebooks' saved lists exactly on 2026-10-27
+    (before dist_pres_lean_cand was added)."""
+    from macro_features import build_macro
+    macro = build_macro()
+    mf = sorted({k for cyc in macro for k in macro[cyc]})
+    return feature_list(mf, fund=True, candidate_bios=True, primary_results=True,
+                        exclude=WIN_EXCLUDE if kind == "win" else MARGIN_EXCLUDE)
 
 
 def feature_list(macro_feats, fund=False, primary_results=False, candidate_bios=False,

@@ -12,7 +12,7 @@ The softmax output is the ONE probability: what is evaluated here, saved and pub
 (predict.py serves it since 2026-10-27, audit item 7).
 
 Scheme (also fixes polling-agg audit M4/M5):
-- Same training rows and features as model.ipynb (data/model_features.json feature list).
+- Same training rows as model.ipynb; features.general_features("win") (the list model.ipynb uses).
 - Tuning: LOCO over the 1998-2016 TUNE cycles ONLY - each tune fold trains on the other tune
   cycles, never on 2018-24 (model.ipynb's tuner trained on them). Score = log loss of the
   softmaxed probabilities, with the temperature fitted on the same tune-cycle predictions.
@@ -158,8 +158,7 @@ def main():
     t0 = time.time()
     with contextlib.redirect_stdout(io.StringIO()):
         c = training_table()
-    meta_cls = json.load(open(os.path.join(ROOT, "data", "model_features.json")))
-    FEATS = meta_cls["features"]
+    FEATS = F.general_features("win")
     print(f"training rows {len(c)} | races {c['race_id'].nunique()} | features {len(FEATS)} "
           f"| built in {time.time() - t0:.0f}s")
 

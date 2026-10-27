@@ -59,6 +59,7 @@
   "is_personal_inc",
   "open_seat",
   "pres_lean_cand",
+  "dist_pres_lean_cand",
   "poll_avg_rw",
   "poll_lead_rw",
   "pollster_sd",
@@ -212,12 +213,12 @@
  "target": "vote_pct",
  "published": "margin = predicted share minus the best rival's predicted share in the same race (race_margins)",
  "xgb_params": {
-  "max_depth": 3,
+  "max_depth": 4,
   "learning_rate": 0.03,
-  "n_estimators": 800,
+  "n_estimators": 200,
   "min_child_weight": 8,
-  "subsample": 0.8,
-  "colsample_bytree": 0.4,
+  "subsample": 0.6,
+  "colsample_bytree": 1.0,
   "reg_lambda": 1,
   "reg_alpha": 1
  },
@@ -253,20 +254,20 @@
   "metric": "MAE of the derived margin",
   "stage2": [
    [
-    5.4573,
+    5.3363,
     {
-     "max_depth": 3,
+     "max_depth": 4,
      "learning_rate": 0.03,
-     "n_estimators": 800,
+     "n_estimators": 200,
      "min_child_weight": 8,
-     "subsample": 0.8,
-     "colsample_bytree": 0.4,
+     "subsample": 0.6,
+     "colsample_bytree": 1.0,
      "reg_lambda": 1,
      "reg_alpha": 1
     }
    ],
    [
-    5.4759,
+    5.3373,
     {
      "max_depth": 4,
      "learning_rate": 0.03,
@@ -279,33 +280,46 @@
     }
    ],
    [
-    5.4804,
+    5.3386,
     {
-     "max_depth": 4,
+     "max_depth": 3,
      "learning_rate": 0.03,
-     "n_estimators": 200,
+     "n_estimators": 800,
      "min_child_weight": 8,
-     "subsample": 0.6,
-     "colsample_bytree": 1.0,
+     "subsample": 0.8,
+     "colsample_bytree": 0.4,
      "reg_lambda": 1,
      "reg_alpha": 1
     }
    ],
    [
-    5.5048,
+    5.3495,
     {
-     "max_depth": 4,
+     "max_depth": 2,
      "learning_rate": 0.03,
      "n_estimators": 800,
      "min_child_weight": 8,
      "subsample": 0.6,
-     "colsample_bytree": 0.4,
-     "reg_lambda": 5,
-     "reg_alpha": 1
+     "colsample_bytree": 1.0,
+     "reg_lambda": 1,
+     "reg_alpha": 0
     }
    ],
    [
-    5.5107,
+    5.3515,
+    {
+     "max_depth": 3,
+     "learning_rate": 0.02,
+     "n_estimators": 800,
+     "min_child_weight": 15,
+     "subsample": 1.0,
+     "colsample_bytree": 0.4,
+     "reg_lambda": 1,
+     "reg_alpha": 0
+    }
+   ],
+   [
+    5.3561,
     {
      "max_depth": 4,
      "learning_rate": 0.02,
@@ -318,7 +332,20 @@
     }
    ],
    [
-    5.5127,
+    5.3659,
+    {
+     "max_depth": 3,
+     "learning_rate": 0.05,
+     "n_estimators": 800,
+     "min_child_weight": 8,
+     "subsample": 0.8,
+     "colsample_bytree": 0.6,
+     "reg_lambda": 1,
+     "reg_alpha": 0
+    }
+   ],
+   [
+    5.3677,
     {
      "max_depth": 3,
      "learning_rate": 0.03,
@@ -329,75 +356,49 @@
      "reg_lambda": 5,
      "reg_alpha": 0
     }
-   ],
-   [
-    5.5132,
-    {
-     "max_depth": 4,
-     "learning_rate": 0.05,
-     "n_estimators": 400,
-     "min_child_weight": 15,
-     "subsample": 0.8,
-     "colsample_bytree": 1.0,
-     "reg_lambda": 1,
-     "reg_alpha": 1
-    }
-   ],
-   [
-    5.5233,
-    {
-     "max_depth": 3,
-     "learning_rate": 0.03,
-     "n_estimators": 200,
-     "min_child_weight": 15,
-     "subsample": 0.6,
-     "colsample_bytree": 0.6,
-     "reg_lambda": 1,
-     "reg_alpha": 1
-    }
    ]
   ]
  },
  "eval_expanding_window": {
   "mean": {
-   "MAE_margin": 5.4157,
-   "MAE_share": 3.4185,
-   "race_acc": 0.8805
+   "MAE_margin": 5.0944,
+   "MAE_share": 3.2243,
+   "race_acc": 0.9014
   },
   "per_cycle": [
    {
     "cycle": 2018,
     "n_races": 229,
-    "MAE_margin": 7.2351,
-    "MAE_share": 5.6982,
-    "race_acc": 0.8821,
+    "MAE_margin": 7.5035,
+    "MAE_share": 6.1386,
+    "race_acc": 0.8952,
     "max_two_cand_sum": 0.0,
     "races_not_one_winner": 0
    },
    {
     "cycle": 2020,
     "n_races": 150,
-    "MAE_margin": 5.624,
-    "MAE_share": 3.3882,
-    "race_acc": 0.8467,
+    "MAE_margin": 5.0369,
+    "MAE_share": 2.7628,
+    "race_acc": 0.8867,
     "max_two_cand_sum": 0.0,
     "races_not_one_winner": 0
    },
    {
     "cycle": 2022,
     "n_races": 174,
-    "MAE_margin": 4.37,
-    "MAE_share": 2.3323,
-    "race_acc": 0.8908,
+    "MAE_margin": 3.8027,
+    "MAE_share": 2.0075,
+    "race_acc": 0.9138,
     "max_two_cand_sum": 0.0,
     "races_not_one_winner": 0
    },
    {
     "cycle": 2024,
     "n_races": 133,
-    "MAE_margin": 4.4338,
-    "MAE_share": 2.2553,
-    "race_acc": 0.9023,
+    "MAE_margin": 4.0345,
+    "MAE_share": 1.9883,
+    "race_acc": 0.9098,
     "max_two_cand_sum": 0.0,
     "races_not_one_winner": 0
    }

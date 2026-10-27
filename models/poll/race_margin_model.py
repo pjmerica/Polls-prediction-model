@@ -13,7 +13,7 @@ independents need no special case.
 
 Scheme (mirrors race_win_model.py):
 - Same training rows as model.ipynb / margin_model.ipynb (race_win_model.training_table) and the
-  margin model's feature list (data/margin_model_features.json).
+  margin feature list (features.general_features("margin"), the list margin_model.ipynb uses).
 - Target: vote_pct (share of the full results field). The published number, and the tuning
   score, is the DERIVED margin, scored against margin_actual = vote_pct - best_other_pct.
 - Tuning: LOCO over the 1998-2016 TUNE cycles only, each fold training on the other tune cycles;
@@ -39,6 +39,7 @@ import numpy as np
 import pandas as pd
 import xgboost as xgb
 
+import features as F
 from cycles import TUNE_CYCLES, EVAL_CYCLES
 from race_level import race_margins
 from race_win_model import training_table
@@ -89,8 +90,7 @@ def main():
     with contextlib.redirect_stdout(io.StringIO()):
         c = training_table()
     c["margin_actual"] = c["vote_pct"] - c["best_other_pct"]
-    meta_m = json.load(open(os.path.join(ROOT, "data", "margin_model_features.json")))
-    FEATS = meta_m["features"]
+    FEATS = F.general_features("margin")
     print(f"training rows {len(c)} | races {c['race_id'].nunique()} | features {len(FEATS)} "
           f"| built in {time.time() - t0:.0f}s", flush=True)
 

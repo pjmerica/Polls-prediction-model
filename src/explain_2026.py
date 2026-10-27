@@ -113,6 +113,7 @@ FRIENDLY = {
     "is_personal_inc": "Candidate is the sitting officeholder",
     "open_seat": "Open seat",
     "pres_lean_cand": "State presidential lean (pts)",
+    "dist_pres_lean_cand": "District presidential lean (pts)",
     "poll_avg_rw": "Recency-weighted polling avg (%)",
     "poll_lead_rw": "Recency-weighted polling lead (pts)",
     "pollster_sd": "Pollster disagreement (pts)",
@@ -216,6 +217,9 @@ DESC = {
     "open_seat": "1 if no candidate in the race is the sitting officeholder.",
     "pres_lean_cand": "How much more the state voted for this candidate's party than the "
                       "nation did in the last presidential election (state-level, even for House).",
+    "dist_pres_lean_cand": "How much more the DISTRICT voted for this candidate's party than the nation "
+                           "did in the last presidential election, on this year's district lines "
+                           "(the state's lean for Senate and Governor races).",
     "poll_avg_rw": "Polling average where a poll's weight halves every 14 days, so recent "
                    "polls count most.",
     "poll_lead_rw": "Recency-weighted polling lead over the best opponent.",

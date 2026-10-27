@@ -57,6 +57,9 @@ data/*
 !data/fec_asof.csv
 !data/governor_finance.csv
 !data/district_pvi_current.csv
+# district presidential margins for House races (pipeline/build/build_dist_pres_lean.py; derived
+# from The Downballot - the raw sheets stay in data/raw/pres_by_cd/, see the script)
+!data/district_pres_margin.csv
 !data/redistricted_2026.csv
 !data/candidate_party_overrides.csv
 # Training-side party fixes (2026-10-21): build_candidate_table reads it at train time.

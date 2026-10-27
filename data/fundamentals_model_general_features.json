@@ -25,6 +25,7 @@
   "is_personal_inc",
   "open_seat",
   "pres_lean_cand",
+  "dist_pres_lean_cand",
   "midterm_pres_party",
   "midterm_approval_cand",
   "approval_avg_12mo",
@@ -176,11 +177,11 @@
   "max_depth": 3,
   "learning_rate": 0.05,
   "n_estimators": 300,
-  "min_child_weight": 30,
-  "subsample": 0.6,
+  "min_child_weight": 15,
+  "subsample": 1.0,
   "colsample_bytree": 1.0,
-  "reg_lambda": 1,
-  "reg_alpha": 0
+  "reg_lambda": 5,
+  "reg_alpha": 1
  },
  "model_type": "xgbclassifier",
  "target": "won",
@@ -204,27 +205,27 @@
  "eval_expanding_window": {
   "2018": {
    "n_races": 229.0,
-   "AUC": 0.9287,
-   "Brier": 0.1061,
-   "race_acc": 0.7948
+   "AUC": 0.9574,
+   "Brier": 0.0818,
+   "race_acc": 0.8472
   },
   "2020": {
    "n_races": 153.0,
-   "AUC": 0.9125,
-   "Brier": 0.1222,
-   "race_acc": 0.7974
+   "AUC": 0.9503,
+   "Brier": 0.0885,
+   "race_acc": 0.8431
   },
   "2022": {
    "n_races": 177.0,
-   "AUC": 0.962,
-   "Brier": 0.0794,
-   "race_acc": 0.8475
+   "AUC": 0.9789,
+   "Brier": 0.0579,
+   "race_acc": 0.8983
   },
   "2024": {
    "n_races": 134.0,
-   "AUC": 0.9652,
-   "Brier": 0.0749,
-   "race_acc": 0.8582
+   "AUC": 0.9733,
+   "Brier": 0.0693,
+   "race_acc": 0.8955
   }
  }
 }

@@ -286,12 +286,14 @@ def main():
     prod = json.load(open(os.path.join(HERE, "data", "model_features.json")))
     prod_params = {k: v for k, v in prod["xgb_params"].items()
                    if k not in ("random_state", "n_jobs")}
-    FUND = [f for f in prod["features"] if not is_poll_feature(f)]
-    FUND_NOMOOD = [f for f in prod["features"]
-                   if not is_poll_feature(f, drop_mood=True)]
+    # the served win model's feature list (features.general_features, 2026-10-27: it now carries
+    # dist_pres_lean_cand, which model.ipynb's saved list predates)
+    ALL = F.general_features("win")
+    FUND = [f for f in ALL if not is_poll_feature(f)]
+    FUND_NOMOOD = [f for f in ALL if not is_poll_feature(f, drop_mood=True)]
     years = [2018, 2020, 2022, 2024]
     tune_years = [y for y in sorted(c["year"].unique()) if y < min(years)]
-    print(f"general: {len(prod['features'])} production features -> {len(FUND)} fundamentals "
+    print(f"general: {len(ALL)} production features -> {len(FUND)} fundamentals "
           f"({len(FUND_NOMOOD)} without approval/sentiment)")
     print(f"  tuning on old cycles {tune_years} (eval cycles {years} stay unseen)")
     params = tune_general(c, FUND, tune_years)

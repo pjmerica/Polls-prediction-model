@@ -4,6 +4,40 @@ For the next agent. Read AGENTS.md first (architecture + rules), CONCERNS.md sec
 (risk register + roadmap). This file: what's mid-flight RIGHT NOW, what's most likely to
 break, and what to do next, in order.
 
+## 2026-10-27 (later) - district presidential lean added next to the state lean; all three general models retrained
+
+User 2026-10-27: "keep a column for state presidential lean and district presidential lean".
+- `pres_lean_cand` (state lean, unchanged) + new `dist_pres_lean_cand`: for House races the
+  district's presidential margin minus the national margin at the latest presidential election
+  strictly before the race year, on the lines in force that year; for Senate / Governor the state
+  lean (the state is the district). NaN for minor-party rows (like the state lean) and where no
+  table covers the district: 1998-2000, GA 2002-04, TX 2002 + five TX districts 2004, FL 2016.
+- Data: `data/district_pres_margin.csv` (5,565 rows, House race years 2002-2026), built by
+  `pipeline/build/build_dist_pres_lean.py` from The Downballot's presidential-by-district sheets
+  (raw downloads gitignored in `data/raw/pres_by_cd/`, they ask not to reproduce the sheets whole;
+  `--fetch` re-downloads). 2026 uses exact 2024 votes on the 2026 lines (the nine redraws; MO and VA
+  on their old maps). `features.load_dist_pres_lean`; `load_pres_lean` now also carries the national
+  margin as `(cycle, "US")`. Tests: `tests/test_dist_pres_lean.py`.
+- In training (House D/R rows) it correlates .65 with the actual margin vs .41 for the state lean.
+- Feature lists now come from `features.general_features("win" | "margin")` (the call the notebooks
+  make; matched their saved lists exactly before the new column), used by both race-level models and
+  the no-polls model, so a new feature needs no notebook re-run. model.ipynb's saved list lacks it.
+- Retrained (208 features), all re-tuned on 1998-2016 only:
+  - Win: depth 1, lr .05, 600 trees, mcw 8, lambda 1; T .9655, minor offset -8. Held out 2018-24
+    Brier .060, AUC .976, race-acc .876 (sanity only).
+  - Margin: depth 4, lr .03, 200 trees, mcw 8, subsample .6, colsample 1, lambda 1, alpha 1.
+    Held out: MAE 5.09, race-acc .901; margins cancel, one winner, in every held-out race.
+  - No-polls: depth 3, lr .05, 300 trees, mcw 15, lambda 5, alpha 1; 172 features
+    (dist_pres_lean_cand 3rd by gain). Held out: AUC .965, Brier .074, race-acc .871.
+- Gate: 31 passed, 1 xfailed.
+- 2026 vs the 15:52Z publish: polled races median 1.7 pts (32 over 10), 8 favourite flips - AZ-1,
+  CO-3, CO-5 (D 79 -> 47; market 41), FL-9, MN-1 toward the market; TX-Sen (Paxton 62%; market D 66),
+  TX-35, WA-3 away. Statewide inputs did not change (district lean = state lean there); ME-Sen 60 ->
+  85 and GA-Gov 68 -> 80 come from the re-tuned settings (published per the 10-22 "tuner's pick" rule).
+  No-polls: median 0.8; MI-1 D 48 -> 13 and CA-1 63 -> 87 (the two 25+ pt market gaps of 10-25) now
+  sit near the markets; NY-11, NC-8, NC-13, GA-14 to 3-5% D. Sen/Gov at 75% or less: 9 -> 7
+  (AK-Sen, KS-Sen, MI-Sen, NV-Gov, OH-Gov, OH-Sen-S, TX-Sen).
+
 ## 2026-10-27 - race-level win and margin models served; one number on every page (audit items 7, 2, 3)
 
 User 2026-10-26: "accuracy over everything", method changes judged on correctness, not on a metric
