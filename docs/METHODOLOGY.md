@@ -119,11 +119,22 @@ plus race-winner accuracy vs the tuned poll-softmax baseline. AUC-PR + KS added 
 The **margin model** reports MAE / R² only — AUC-PR and KS are classification metrics and
 don't apply to a regression target.
 
-## Production model (predict.py)
-Trained on **all 14 cycles** with the tuned params; saved to `data/model_xgb.json` +
-`data/model_features.json` by `model.ipynb`. `predict.py` builds identical features (same
-`features.py` code) from the polling-agg raw poll feed and outputs per-candidate win
-probabilities plus within-race normalized probabilities.
+## Production model (predict.py) - race-level since 2026-10-27
+`predict.py` and `predict_margin.py` serve the RACE-LEVEL models (polling-agg audit item 7), built
+on the same training rows and feature lists as the notebooks above (`data/model_features.json`,
+`data/margin_model_features.json`). The shared formulas live in `src/race_level.py`.
+- **Win** (`models/poll/race_win_model.py` -> `data/race_win_model_*.json`): an XGBRanker. A race's
+  win probabilities are the softmax of its candidates' scores / T, plus a fitted log-scale offset
+  for candidates polling under 10%, so they sum to 1 in every race and that sum is the number
+  evaluated. T and the offset are fitted on out-of-sample predictions for the full-field cycles
+  (2018-24): the 1998-2016 polls carry only the top two candidates, and a temperature fitted there
+  gave minor candidates far too much (held out: 478 candidates under 10%, 9 expected wins, 0 won).
+- **Margin** (`models/poll/race_margin_model.py` -> `data/race_margin_model_*.json`): a regressor on
+  each candidate's vote share; the published margin is share minus the best rival's predicted
+  share, so one candidate is ahead per race and the top two's margins cancel.
+- The per-candidate classifier / regressor (`model.ipynb`, `margin_model.ipynb`) are no longer
+  served: their raw odds summed to 0.80-1.42 per race, and their margins did not cancel (51 races)
+  or crowned two winners (5 races) in the 2026-10-27 run.
 
 ## Static-data principle
 Every input is pulled once and **committed**: polls (all vintages), results, races.csv, macro,

@@ -6,8 +6,11 @@ Inputs (ALL local / already-committed — no network):
 - Raw polls: the polling-agg repo's data/raw/{nyt_polls,wikipedia_polls}.csv (default paths
   point at the sibling checkout). Only columns a bare poll feed has are used:
   pollster, candidate, party, stage, sample_size, end_date, implied_prob (pct/100), race_id.
-- data/model_xgb.json + data/model_features.json — trained/tuned by model.ipynb (all 14
-  cycles, params tuned on 1998-2016).
+- data/race_win_model_xgb.json + data/race_win_model_features.json — the RACE-LEVEL win model
+  (models/poll/race_win_model.py; audit item 7, served since 2026-10-27): an XGBRanker whose
+  within-race softmax is the one published probability, so win_prob sums to 1 in every race.
+  Before 2026-10-27 this loaded model.ipynb's per-candidate classifier (data/model_xgb.json) and
+  divided its raw probabilities by their race sum; that classifier is no longer served.
 - data/macro_monthly.csv, data/races.csv, data/res_*.csv — frozen fundamentals.
 - Historical polls (polls_long_with_results.csv) — ONLY to compute pollster house effects.
 
@@ -30,6 +33,7 @@ import pandas as pd
 import xgboost as xgb
 
 import features as F
+from race_level import race_win_probs
 import features_primary as FP   # merge_nickname_aliases - shared with the primary path
 from cycles import natl_env as natl_env_hist
 from macro_features import build_macro
@@ -508,12 +512,20 @@ def main():
     ap.add_argument("--out", default=None)
     args = ap.parse_args()
 
-    with open(os.path.join(HERE, "data", "model_features.json")) as f:
+    with open(os.path.join(HERE, "data", "race_win_model_features.json")) as f:
         meta = json.load(f)
-    model = xgb.XGBClassifier()
-    model.load_model(os.path.join(HERE, "data", "model_xgb.json"))
-    print(f"model: trained on cycles {meta['trained_on_cycles'][0]}-{meta['trained_on_cycles'][-1]}, "
-          f"{len(meta['features'])} features")
+    model = xgb.XGBRanker()
+    model.load_model(os.path.join(HERE, "data", "race_win_model_xgb.json"))
+    temp, offset = float(meta["softmax_temp"]), float(meta.get("minor_offset", 0.0))
+    print(f"race win model: trained on cycles {meta['trained_on_cycles'][0]}-"
+          f"{meta['trained_on_cycles'][-1]}, {len(meta['features'])} features, softmax T={temp}, "
+          f"minor offset {offset}")
+
+    def race_probs(table):
+        # ranker scores -> within-race softmax: THE published probability (src/race_level.py)
+        t = table[["race_id", "poll_avg"]].copy()
+        t["_score"] = model.predict(table.reindex(columns=meta["features"]))
+        return race_win_probs(t, "_score", temp, offset)
 
     d = load_agg_polls(args.polls, args.cycle)
     if len(d) == 0:
@@ -565,7 +577,7 @@ def main():
     missing = [f for f in meta["features"] if f not in cand.columns]
     assert not missing, f"artifact expects features absent from the built table: {missing[:8]}"
     X = cand.reindex(columns=meta["features"])
-    cand["win_prob"] = model.predict_proba(X)[:, 1]
+    cand["win_prob"] = race_probs(cand)
 
     # ---- poll-bias robustness sweep (cycle-level poll error is historically ±4-7 pts,
     # shared across ALL races — see HANDOFF.md). Re-predict under a uniform 3-point
@@ -577,7 +589,7 @@ def main():
         cs = patch_redistricted_priors(
             F.build_candidate_table(ds, macro, ne, funds, house=house, fec=fec, bias_priors=bias,
                                     candidate_bios=bios, primary_results=primres))
-        cs["p"] = model.predict_proba(cs.reindex(columns=meta["features"]))[:, 1]
+        cs["p"] = race_probs(cs)
         m = cs.set_index(["race_id", "cand_key"])["p"]
         cand[f"win_prob_{label}"] = [m.get((r, c)) for r, c in
                                      zip(cand["race_id"], cand["cand_key"])]
@@ -589,9 +601,9 @@ def main():
     cand["bias_fragile"] = cand["race_id"].isin(fragile).astype(int)
     print(f"bias-fragile races (pick flips under a +/-3pt national poll shift): "
           f"{len(fragile)} of {cand['race_id'].nunique()}")
-    # within-race normalized probability (raw probs are per-candidate, not a race simplex)
-    cand["win_prob_norm"] = (cand["win_prob"]
-                             / cand.groupby("race_id")["win_prob"].transform("sum"))
+    # the race-level model's win_prob already sums to 1 in every race; win_prob_norm is kept as
+    # the column every consumer reads (forecast page, dashboard, map - audit item 2: one number)
+    cand["win_prob_norm"] = cand["win_prob"]
 
     # distinct SURVEYS the model actually used per race (a poll = one pollster+end_date;
     # n_polls is a per-CANDIDATE row count that sums to more than the survey count).

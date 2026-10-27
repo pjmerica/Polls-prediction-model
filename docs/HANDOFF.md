@@ -4,6 +4,58 @@ For the next agent. Read AGENTS.md first (architecture + rules), CONCERNS.md sec
 (risk register + roadmap). This file: what's mid-flight RIGHT NOW, what's most likely to
 break, and what to do next, in order.
 
+## 2026-10-27 - race-level win and margin models served; one number on every page (audit items 7, 2, 3)
+
+User 2026-10-26: "accuracy over everything", method changes judged on correctness, not on a metric
+comparison with the old model. User 2026-10-27 chose to publish now and fix the House lean next
+(see "Next" below).
+
+**Win** - `models/poll/race_win_model.py` -> `data/race_win_model_*.json`, served by `src/predict.py`.
+- XGBRanker (pairwise) on model.ipynb's rows and feature list; a race's odds are the softmax of its
+  candidates' scores / T plus a log-scale offset for candidates polling under 10%
+  (`src/race_level.py`, shared by training, predict.py and explain_2026.py). `win_prob` now sums to
+  1 in every race and `win_prob_norm` is the same column.
+- Params: depth 1, lr .05, 600 trees, mcw 2, lambda 5 (tuned 10-26 on 1998-2016 LOCO, log loss).
+- **Calibration found and fixed:** a temperature fitted on 1998-2016 (538's polls carry only the top
+  two per race; 46-60% of 2018-24 races have 3+ candidates) gave held-out candidates polling under
+  10% 9 expected wins (0 of 478 won) and favourites over 90% read 96.6% (98.5% won). T alone refitted
+  on 2018-24 still left 7.1 and made 70-90% overconfident. T and the offset are now fitted together
+  on LOCO predictions of the full-field cycles 2018-24: T .9655, offset -8.0 (the grid edge: the data
+  wants ~0 for them). Held out (each cycle fitted only on earlier full-field cycles): every band
+  from 10% up within ~3 pts; Brier .065, AUC .972, race-acc .875 (sanity only).
+- model.ipynb's per-candidate classifier is no longer served (its raw odds summed 0.80-1.42 per race);
+  the notebook still sets the feature list that this model and the no-polls model read.
+
+**Margin** - `models/poll/race_margin_model.py` -> `data/race_margin_model_*.json`, served by
+`src/predict_margin.py`.
+- XGBRegressor on vote share (margin_model.ipynb's rows and feature list); published margin = share
+  minus the best rival's predicted share (`race_level.race_margins`), so one candidate is ahead and
+  the top two cancel. New `pred_share` column. Shares in float64 (XGBoost predicts float32).
+- Tuned on 1998-2016 LOCO (tune folds train on tune cycles only), score = MAE of the derived margin,
+  60 settings + top 8 on 3 seeds: depth 3, lr .03, 800 trees, mcw 8, subsample .8, colsample .4,
+  lambda 1, alpha 1 (5.457 vs 5.476 runner-up). Held out 2018-24: margin MAE 5.42, race-acc .881;
+  margins cancel and one winner in every held-out race.
+
+**Explanations** (`explain_2026.py`): both blocks explain the candidate against the strongest rival
+(`vs`, `vs_val`): win bars = (SHAP_i - SHAP_j) / T in head-to-head log-odds (base 0.5); margin bars =
+SHAP_i - SHAP_j of the share model, adding up to the published margin.
+
+**Gate** (`tests/test_publish.py`): odds summing to 1, two-candidate margins cancelling, one winner per
+race and margins derived from the shares are hard checks; new `test_one_nominee_per_party` (outside
+CA/WA/AK/LA). Win and margin favourites agreeing stays xfail (separately trained; flagged on the pages).
+27 passed, 1 xfailed on the 10-27 run.
+
+**2026 effect (same feeds, vs the 10-27 04:18 publish):** polled races move a median 3.1 pts (40 over
+10 pts); 10 favourite flips, 8 toward the market favourite (AL-2, AZ-6, CO-8, IA-3, ME-2, MT-1, TX-35,
+WA-3), AK-Sen (Sullivan 56%) and AZ-1 away. D-R margins move a median 0.7 pts. Minor candidates go
+from 1-2% each to ~0. Senate/Governor races with the favourite at 75% or less: 14 -> 9 (KS-Gov, MI-Sen,
+NE-Sen, OR-Gov, TX-Gov drop out) - polling-agg's `State election results` race list is NOT rebuilt.
+
+**Next (user call 10-27):** `pres_lean_cand` is the STATE presidential lean even for House races (no
+district presidential results in the data). The race-level ranker leans on it: CO-5 (tied polls, R+14
+seat, R incumbent) reads D 79% vs the markets' 26%. Give House races their district's lean, retrain,
+republish.
+
 ## 2026-10-26/27 - publish gate (tests/ before every copy to polling-agg); no-polls model retrained
 
 polling-agg audit item 1. `src/refresh_dashboard.py` now runs `pytest tests` after predicting and

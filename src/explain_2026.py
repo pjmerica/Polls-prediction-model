@@ -8,10 +8,17 @@ Framing: we explain the LEADING DEMOCRAT's row (highest win_prob among DEM candi
 because the tab's headline number is the race's Democratic win probability. If a race has
 no Democrat, the overall leader is explained instead (party is recorded either way).
 
-Units: the win model's SHAP values are in LOG-ODDS (XGBoost's native output for a
-classifier) — sign/direction and relative size are what matter for the chart; the base and
-final values are converted to probabilities for display. The margin model's SHAP values
-are directly in PERCENTAGE POINTS of victory margin.
+Race-level models (2026-10-27, audit item 7): both blocks explain the candidate AGAINST THEIR
+STRONGEST RIVAL (`vs` in each block), because that is what both published numbers are.
+- Win: the ranker's within-race softmax. Against one rival it is sigmoid((s_i - s_j) / T), so each
+  bar is (SHAP_i - SHAP_j) / T in LOG-ODDS of the head-to-head; base = 0.5 (an even race, moved
+  only by the minor-candidate offset in src/race_level.py) and pred = the head-to-head chance,
+  which IS the published win_prob in a two-candidate race (a bigger field takes some of it: the
+  page shows the published number beside it).
+- Margin: the published margin is predicted share minus the best rival's predicted share, so each
+  bar is SHAP_i - SHAP_j of the share model in PERCENTAGE POINTS; base = 0 and the bars add up
+  exactly to the published margin.
+Each feature also carries the rival's value (`vs_val`).
 
 Inputs are identical to predict.py (same loaders, same redistricting patch), so the
 explained prediction matches the published one when run in the same refresh.
@@ -30,6 +37,7 @@ import xgboost as xgb
 import features as F
 from cycles import natl_env as natl_env_hist
 from macro_features import build_macro
+from race_level import minor_flag, race_margins, race_win_probs
 from predict import DEFAULT_POLLS, load_agg_polls, patch_redistricted_priors
 
 import os as _os, sys as _sys  # noqa: E402  - bootstrap: this file lives in src/,
@@ -249,17 +257,24 @@ def describe(f):
                     f"election. National condition - same value for every race this cycle.")
     return ""
 
-def top_shap(feats, values, shap_row, base, pred, k=10):
-    """Top-k features by |SHAP| -> [{f, label, val, shap}] + base/pred."""
+def _num(v):
+    return None if (isinstance(v, float) and np.isnan(v)) else round(float(v), 3)
+
+
+def top_shap(feats, values, shap_row, base, pred, k=10, vs=None, vs_values=None):
+    """Top-k features by |SHAP| -> [{f, label, val, vs_val, shap}] + base/pred (+ vs)."""
     order = np.argsort(-np.abs(shap_row))[:k]
     out = []
     for i in order:
-        v = values[i]
         out.append(dict(
             f=feats[i], label=friendly(feats[i]), desc=describe(feats[i]),
-            val=(None if (isinstance(v, float) and np.isnan(v)) else round(float(v), 3)),
+            val=_num(values[i]),
+            vs_val=(_num(vs_values[i]) if vs_values is not None else None),
             shap=round(float(shap_row[i]), 4)))
-    return dict(base=round(float(base), 4), pred=round(float(pred), 4), feats=out)
+    blk = dict(base=round(float(base), 4), pred=round(float(pred), 4), feats=out)
+    if vs is not None:
+        blk["vs"] = vs
+    return blk
 
 def sigmoid(x):
     return 1.0 / (1.0 + np.exp(-x))
@@ -273,8 +288,8 @@ def main():
     args = ap.parse_args()
 
     metas, models = {}, {}
-    for name, mf, cls in [("win", "model", xgb.XGBClassifier),
-                          ("margin", "margin_model", xgb.XGBRegressor)]:
+    for name, mf, cls in [("win", "race_win_model", xgb.XGBRanker),
+                          ("margin", "race_margin_model", xgb.XGBRegressor)]:
         with open(os.path.join(HERE, "data", f"{mf}_features.json")) as f:
             metas[name] = json.load(f)
         m = cls()
@@ -311,8 +326,15 @@ def main():
 
     Xw = cand.reindex(columns=metas["win"]["features"])
     Xm = cand.reindex(columns=metas["margin"]["features"])
-    cand["win_prob"] = models["win"].predict_proba(Xw)[:, 1]
-    cand["pred_margin"] = models["margin"].predict(Xm)
+    temp = float(metas["win"]["softmax_temp"])
+    offset = float(metas["win"].get("minor_offset", 0.0))
+    cand["score"] = models["win"].predict(Xw)
+    cand["win_prob"] = race_win_probs(cand, "score", temp, offset)
+    # the minor-candidate offset (race_level.py) is a constant, not a feature: it starts the
+    # head-to-head base away from 0.5 when exactly one of the two is a minor candidate
+    cand["_off"] = offset * minor_flag(cand)
+    cand["share"] = models["margin"].predict(Xm).astype("float64")
+    cand["pred_margin"] = race_margins(cand, "share")
     # consistency check against the published predictions (same model, same inputs)
     _pp = os.path.join(HERE, "outputs", "predictions_2026.csv")
     if os.path.exists(_pp):
@@ -323,8 +345,8 @@ def main():
             _gap = float((_j["win_prob"] - _j["win_prob_pub"]).abs().max())
             print(f"explainer vs published win_prob: max gap {_gap:.4f} over {len(_j)} candidates")
 
-    sv_w = shap.TreeExplainer(models["win"])(Xw)       # log-odds space
-    sv_m = shap.TreeExplainer(models["margin"])(Xm)    # margin points
+    sv_w = shap.TreeExplainer(models["win"])(Xw)       # ranker score space
+    sv_m = shap.TreeExplainer(models["margin"])(Xm)    # vote-share points
 
     out = {}
     for rid, g in cand.groupby("race_id"):
@@ -332,12 +354,20 @@ def main():
         row = (dems.loc[dems["win_prob"].idxmax()] if len(dems)
                else g.loc[g["win_prob"].idxmax()])
         i = cand.index.get_loc(row.name)
-        win = top_shap(metas["win"]["features"], Xw.iloc[i].values,
-                       sv_w.values[i], sigmoid(sv_w.base_values[i]),
-                       row["win_prob"])
-        margin = top_shap(metas["margin"]["features"], Xm.iloc[i].values,
-                          sv_m.values[i], sv_m.base_values[i],
-                          row["pred_margin"])
+        others = g.drop(index=row.name)
+        win = margin = None
+        if len(others):
+            # strongest rival on each model's own scale: highest win chance / predicted share
+            jw = cand.index.get_loc(others["win_prob"].idxmax())
+            jm = cand.index.get_loc(others["share"].idxmax())
+            d_off = cand["_off"].iloc[i] - cand["_off"].iloc[jw]
+            win = top_shap(metas["win"]["features"], Xw.iloc[i].values,
+                           (sv_w.values[i] - sv_w.values[jw]) / temp, sigmoid(d_off),
+                           sigmoid((cand["score"].iloc[i] - cand["score"].iloc[jw]) / temp + d_off),
+                           vs=cand["candidate"].iloc[jw], vs_values=Xw.iloc[jw].values)
+            margin = top_shap(metas["margin"]["features"], Xm.iloc[i].values,
+                              sv_m.values[i] - sv_m.values[jm], 0.0, row["pred_margin"],
+                              vs=cand["candidate"].iloc[jm], vs_values=Xm.iloc[jm].values)
         # display_party = real affiliation (e.g. Osborn shows IND though modeled in the
         # DEM two-party slot); fall back to model party if the column isn't present
         disp = row["display_party"] if "display_party" in cand.columns else row["party"]
@@ -346,8 +376,9 @@ def main():
 
     payload = dict(cycle=args.cycle,
                    note="SHAP top-10 per model, explaining the leading Democrat "
-                        "(or overall leader if no Democrat). Win model in log-odds "
-                        "(base/pred shown as probabilities); margin model in points.",
+                        "(or overall leader if no Democrat) against the strongest rival (vs). "
+                        "Win: log-odds of the head-to-head (base 0.5, pred = head-to-head "
+                        "chance); margin: points, adding up to the published margin.",
                    generated_at=pd.Timestamp.now().isoformat(), races=out)
     p1 = _paths.out(f"model_explanations_{args.cycle}.json")
     with open(p1, "w", encoding="utf-8") as f:

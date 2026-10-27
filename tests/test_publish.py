@@ -4,10 +4,11 @@ src/refresh_dashboard.py runs `pytest tests` after predicting and before copying
 polling-agg, so a failure here stops the publish (locally and in polling-agg's Model refresh
 workflow). Run by hand after a refresh:  py -m pytest tests -q -rxX
 
-Hard checks block. The model-shape checks at the bottom (raw odds summing to 1, margins
-cancelling, one winner per race, win and margin favourites agreeing) are expected to fail while
-the win and margin models score each candidate separately (audit M1-M3); the race-level models
-(audit item 7) fix them by construction, and then they become hard checks.
+Hard checks block. The model-shape checks at the bottom (odds summing to 1, margins cancelling,
+one winner per race) became hard checks on 2026-10-27 with the race-level win and margin models
+(audit item 7), which make them true by construction. Win and margin favourites agreeing stays
+an expected failure: the two models are trained separately, so nothing forces them to agree, and
+those races are flagged on the pages instead (audit item 3).
 """
 import json
 import os
@@ -95,6 +96,21 @@ def test_margins_sane(margin):
 def test_polled_races_have_two_candidates(win):
     n = win.groupby("race_id").size()
     assert (n >= 2).all(), f"polled race with one candidate: {list(n[n < 2].index)}"
+
+
+# fields where several candidates of one party are real co-candidates in November: top-two
+# (CA, WA), top-four (AK) and Louisiana's all-party first round
+MULTI_PARTY_STATES = {"CA", "WA", "AK", "LA"}
+
+
+@pytest.mark.parametrize("which", ["win", "fund"])
+def test_one_nominee_per_party(which, request):
+    # elsewhere two Democrats (or Republicans) in a race are leftover hypothetical matchups, and
+    # the pages add a party's candidates up (audit item 2), so the gate keeps them out
+    d = request.getfixturevalue(which)
+    d = d[~d["state"].isin(MULTI_PARTY_STATES) & d["party"].isin(["DEM", "REP"])]
+    n = d.groupby(["race_id", "party"]).size()
+    assert (n == 1).all(), f"{which}: several nominees of one party: {list(n[n > 1].index)[:6]}"
 
 
 def test_one_candidate_races_are_uncontested(fund, roster):
@@ -186,33 +202,36 @@ def test_candidate_bios_rebuild_matches(tmp_path):
         "data/candidate_bios.csv differs from a rebuild: run pipeline/build/build_office_level_table.py"
 
 
-# ---- model shape (expected to fail until the race-level models, audit item 7) ---------------
-SHAPE = pytest.mark.xfail(reason="per-candidate win and margin models (audit M1-M3); "
-                                 "the race-level models fix this - then drop the xfail")
-
-
-@SHAPE
+# ---- model shape (race-level models since 2026-10-27, audit item 7) ------------------------
 def test_raw_win_odds_sum_to_one(win):
     s = win.groupby("race_id")["win_prob"].sum()
-    off = s[~s.between(0.9, 1.1)]
+    off = s[~np.isclose(s, 1, atol=1e-6)]
     assert off.empty, f"{len(off)} races: {off.round(2).to_dict()}"
 
 
-@SHAPE
 def test_two_candidate_margins_cancel(margin):
     two = margin.groupby("race_id").filter(lambda g: len(g) == 2)
     s = two.groupby("race_id")["pred_margin"].sum()
-    off = s[s.abs() > 1]
+    off = s[s.abs() > 1e-6]
     assert off.empty, f"{len(off)} races: {off.round(1).to_dict()}"
 
 
-@SHAPE
+def test_margins_come_from_the_shares(margin):
+    # every published margin is its predicted share minus the best rival's (src/race_level.py)
+    import paths  # noqa: F401  (src/ on sys.path)
+    from race_level import race_margins
+    gap = (race_margins(margin, "pred_share") - margin["pred_margin"]).abs()
+    # 1e-4 pts: the CSV holds shares and margins as printed floats
+    assert gap.max() < 1e-4, f"margins not derived from the shares: {margin.loc[gap.idxmax(), KEY].tolist()}"
+
+
 def test_one_predicted_winner_per_race(margin):
     n = (margin["pred_margin"] > 0).groupby(margin["race_id"]).sum()
     assert (n == 1).all(), f"two winners: {list(n[n > 1].index)}; none: {list(n[n == 0].index)}"
 
 
-@SHAPE
+@pytest.mark.xfail(reason="separately trained win and margin models can pick different "
+                          "favourites; flagged on the pages (audit item 3)")
 def test_win_and_margin_favourites_agree(win, margin):
     wf = win.loc[win.groupby("race_id")["win_prob"].idxmax()].set_index("race_id")["cand_key"]
     mf = margin.loc[margin.groupby("race_id")["pred_margin"].idxmax()].set_index("race_id")["cand_key"]

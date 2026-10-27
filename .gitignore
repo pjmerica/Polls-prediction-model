@@ -96,11 +96,18 @@ data/*
 !data/fred_cache/
 !data/fred_cache/*.csv
 
-# ...and the trained production model artifacts (predict.py / predict_margin.py load these)
+# ...and the trained model artifacts: the per-candidate notebooks' (their feature lists feed the race-level
+# models and the no-polls model)
 !data/model_xgb.json
 !data/model_features.json
 !data/margin_model_xgb.json
 !data/margin_model_features.json
+# the SERVED general models since 2026-10-27 (race-level, audit item 7): models/poll/race_win_model.py
+# and race_margin_model.py (predict.py / predict_margin.py load these)
+!data/race_win_model_xgb.json
+!data/race_win_model_features.json
+!data/race_margin_model_xgb.json
+!data/race_margin_model_features.json
 # ...and the training fill rates the publish gate compares live features against
 # (tools/feature_fill_reference.py; re-run after a retrain)
 !data/feature_fill_train.json

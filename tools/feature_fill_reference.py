@@ -27,7 +27,8 @@ from cycles import CYCLES, EVAL_CYCLES, natl_env   # noqa: E402
 from macro_features import build_macro     # noqa: E402
 
 OUT = os.path.join(ROOT, "data", "feature_fill_train.json")
-ARTIFACTS = {"win": "model_features.json", "margin": "margin_model_features.json"}
+# the served (race-level) models; their feature lists are the per-candidate notebooks' lists
+ARTIFACTS = {"win": "race_win_model_features.json", "margin": "race_margin_model_features.json"}
 
 
 def training_table():

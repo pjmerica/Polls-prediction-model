@@ -44,8 +44,8 @@ differently:**
 
 | model | target | notebook/script | headline (honest, expanding-window) |
 |---|---|---|---|
-| **Win** | `won ∈ {0,1}` | `model.ipynb` | AUC .974 / AUC-PR .956 / Brier .064 / race-acc .875 vs. poll-leader .869 (2018-24, retrain 2026-10-26) |
-| **Margin** | signed vote margin vs. best opponent | `margin_model.ipynb` | MAE 5.66 vs. 6.26 calibrated-poll / 6.59 raw-poll baseline (**beats polls**; 2018-24, retrain 2026-10-26) |
+| **Win** (race-level, served since 2026-10-27) | `won ∈ {0,1}`, ranked within the race | `models/poll/race_win_model.py` (feature list from `model.ipynb`) | within-race softmax sums to 1 per race; Brier .065 / AUC .972 / race-acc .875 (2018-24, sanity only) |
+| **Margin** (race-level, served since 2026-10-27) | vote share; margin = share minus best rival's | `models/poll/race_margin_model.py` (feature list from `margin_model.ipynb`) | margins cancel and one winner per race by construction; margin MAE 5.42 / race-acc .881 (2018-24, sanity only) |
 | **Primary nominee** | `won ∈ {0,1}` (becomes the party's nominee) | `models/poll/primary_model.py` | AUC-PR .97 / Brier .02 / race-acc .93 vs. poll-leader .72 baseline |
 | **Primary margin** | vote margin vs. best other candidate | `models/poll/primary_margin_model.py` | MAE 17.0 vs. 18.5 calibrated-poll baseline — beats it on the mean, but LOSES the 2022 fold; two eval cycles only |
 
@@ -102,8 +102,10 @@ that is usually the fastest way in. [`src/`](src/README.md) (the code) ·
 2. fetch_approval.py        → approval feed (Gallup/UCSB 1993-2025 + VoteHub API 2025+)
    fetch_macro.py           → economy: DBnomics history + BLS-API overlay (current)
    fetch_generic_ballot.py  → generic-ballot monthly (re-run to EXTEND; committed, static otherwise)
-3. model.ipynb              → WIN model: nested tune/eval, final fit on all 14 cycles
-   margin_model.ipynb       → MARGIN model (separate artifact, same scheme)
+3. model.ipynb              → WIN feature list + per-candidate reference model (not served)
+   margin_model.ipynb       → MARGIN feature list + per-candidate reference model (not served)
+   models/poll/race_win_model.py / race_margin_model.py
+                            → the SERVED race-level win and margin models (since 2026-10-27)
    primary_model.py         → PRIMARY nominee model (script, runs in minutes)
    primary_margin_model.py  → PRIMARY margin model (script; same data, regression target)
 4. src/predict.py / predict_margin.py / predict_primary.py / predict_primary_margin.py
@@ -129,7 +131,9 @@ All commands run from the **repo root** (paths after the 2026-08-02 move — see
 1. **`pipeline/build/build_dataset.ipynb`** — only needed if `polls_long_with_results.csv` is
    missing. It **is committed** (~14MB, force-added past the `*.csv` rule so CI can see it),
    so a fresh clone does NOT need this step; run it only to rebuild or extend the file.
-2. **`models/poll/model.ipynb`**, then **`models/poll/margin_model.ipynb`**, then
+2. **`models/poll/model.ipynb`**, then **`models/poll/margin_model.ipynb`** (they set the feature
+   lists), then **`py -X utf8 models/poll/race_win_model.py`** and
+   **`py -X utf8 models/poll/race_margin_model.py`** (the served general models), then
    **`py -X utf8 models/poll/primary_model.py`**, then
    **`py -X utf8 models/poll/primary_margin_model.py`** — run top to bottom. **Run notebooks one at a
    time**, never concurrently (nbconvert races and overwrites outputs on parallel runs).

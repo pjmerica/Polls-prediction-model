@@ -1,14 +1,18 @@
 """Predict VICTORY MARGINS for future races from the polling-agg raw poll feed.
 
-Completely separate model from the win/lose classifier (user decision): this loads the
-artifact saved by margin_model.ipynb (data/margin_model_xgb.json), while predict.py loads
-the classifier from model.ipynb. The poll loading/dedup/feature code is shared (imported),
-so the two scripts can never diverge on inputs.
+Completely separate model from the win model (user decision): this loads the RACE-LEVEL margin
+model (data/race_margin_model_xgb.json, models/poll/race_margin_model.py; audit item 7, served
+since 2026-10-27). It predicts each candidate's vote share, and the published margin is that
+share minus the best rival's predicted share in the same race (src/race_level.py), so exactly one
+candidate is ahead and the top two's margins cancel. Before 2026-10-27 it loaded
+margin_model.ipynb's per-candidate margin regressor (data/margin_model_xgb.json), no longer
+served. The poll loading/dedup/feature code is shared with predict.py (imported), so the two
+scripts can never diverge on inputs.
 
     python predict_margin.py [--cycle 2026] [--natl-env 5.8] [--polls ...] [--out preds.csv]
 
 Output: predicted margin in percentage points vs the best opponent (positive = wins by that
-much), per candidate, plus the implied race winner.
+much), per candidate, plus pred_share (the predicted vote share it is derived from).
 """
 import argparse
 import json
@@ -20,6 +24,7 @@ import xgboost as xgb
 import features as F
 from cycles import natl_env as natl_env_hist
 from macro_features import build_macro
+from race_level import race_margins
 from predict import DEFAULT_POLLS, load_agg_polls, patch_redistricted_priors
 
 import os as _os, sys as _sys  # noqa: E402  - bootstrap: this file lives in src/,
@@ -39,10 +44,16 @@ def main():
     ap.add_argument("--out", default=None)
     args = ap.parse_args()
 
-    with open(os.path.join(HERE, "data", "margin_model_features.json")) as f:
+    with open(os.path.join(HERE, "data", "race_margin_model_features.json")) as f:
         meta = json.load(f)
     model = xgb.XGBRegressor()
-    model.load_model(os.path.join(HERE, "data", "margin_model_xgb.json"))
+    model.load_model(os.path.join(HERE, "data", "race_margin_model_xgb.json"))
+
+    def shares_and_margins(table):
+        t = table[["race_id"]].copy()
+        # float64: XGBoost predicts in float32, and the margins are differences of shares
+        t["share"] = model.predict(table.reindex(columns=meta["features"])).astype("float64")
+        return t["share"], race_margins(t, "share")
     print(f"margin model: trained on cycles {meta['trained_on_cycles'][0]}-"
           f"{meta['trained_on_cycles'][-1]}, {len(meta['features'])} features")
 
@@ -86,7 +97,7 @@ def main():
     missing = [f for f in meta["features"] if f not in cand.columns]
     assert not missing, f"artifact expects features absent from the built table: {missing[:8]}"
     X = cand.reindex(columns=meta["features"])
-    cand["pred_margin"] = model.predict(X)
+    cand["pred_share"], cand["pred_margin"] = shares_and_margins(cand)
 
     # poll-bias robustness sweep (see predict.py / HANDOFF.md): margins under a uniform
     # 3-point national poll shift each way
@@ -97,7 +108,7 @@ def main():
         cs = patch_redistricted_priors(
             F.build_candidate_table(ds, macro, ne, funds, house=house, fec=fec, bias_priors=bias,
                                     candidate_bios=bios, primary_results=primres))
-        cs["p"] = model.predict(cs.reindex(columns=meta["features"]))
+        cs["p"] = shares_and_margins(cs)[1]
         mm = cs.set_index(["race_id", "cand_key"])["p"]
         cand[f"pred_margin_{label}"] = [mm.get((r, c)) for r, c in
                                         zip(cand["race_id"], cand["cand_key"])]
@@ -105,7 +116,7 @@ def main():
     out_cols = ["race_id", "state", "office", "district", "candidate", "cand_key", "party",
                 "display_party",
                 "n_polls", "poll_avg", "poll_lead", "avg_margin_over_time",
-                "prior_margin_cand", "is_incumbent", "pred_margin",
+                "prior_margin_cand", "is_incumbent", "pred_share", "pred_margin",
                 "pred_margin_R3", "pred_margin_D3"]
     out = cand[out_cols].sort_values(["race_id", "pred_margin"], ascending=[True, False])
     out_path = args.out or _paths.out(f"margin_predictions_{args.cycle}.csv")
