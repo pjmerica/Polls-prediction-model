@@ -179,6 +179,12 @@ venv/
 # poll-free prior can actually do. NOT wired into predict.py or the dashboard.
 !data/fundamentals_model_general.json
 !data/fundamentals_model_general_features.json
+# the averaged settings' extra members (2026-10-27, audit item 6)
+!data/fundamentals_model_general_[0-9].json
+!data/race_win_model_xgb_[0-9].json
+!data/race_margin_model_xgb_[0-9].json
+# shared national error for the seat simulation (analysis/national_error_corr.py)
+!data/seat_sim_params.json
 !data/fundamentals_model_primary.json
 !data/fundamentals_model_primary_features.json
 

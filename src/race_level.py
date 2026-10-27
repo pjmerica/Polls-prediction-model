@@ -26,15 +26,49 @@ def minor_flag(df):
     return (df["poll_avg"] < MINOR_POLL_MAX).astype(float)
 
 
-def race_win_probs(df, score_col, temp, minor_offset=0.0):
+def race_win_probs(df, score_col, temp, minor_offset=0.0, minor=None):
     """Within-race softmax of score / temp, plus minor_offset (log scale) for minor candidates.
-    df needs race_id and, when minor_offset != 0, poll_avg."""
+    df needs race_id and, when minor_offset != 0 and no `minor` mask is given, poll_avg (the
+    no-polls model passes its own mask: party not DEM/REP)."""
     z = df[score_col] / temp
     if minor_offset:
-        z = z + minor_offset * minor_flag(df)
+        z = z + minor_offset * (minor if minor is not None else minor_flag(df))
     z = z - z.groupby(df["race_id"]).transform("max")
     e = np.exp(z)
     return e / e.groupby(df["race_id"]).transform("sum")
+
+
+class Ensemble:
+    """The served model = the AVERAGE of the top tuned settings (2026-10-27, audit item 6 / M5):
+    picking one winner from a near-tie flipped settings on retrain after retrain and moved races
+    by settings alone (TX-Sen, ME-Sen on 10-27). Scores (ranker) or shares (regressor) are the
+    mean over the members; SHAP values of a mean are the mean of the members' SHAP values."""
+
+    def __init__(self, models):
+        self.models = list(models)
+
+    def predict(self, X):
+        return np.mean([m.predict(X) for m in self.models], axis=0)
+
+    def shap(self, X):
+        import shap
+        vals = [shap.TreeExplainer(m)(X) for m in self.models]
+        return (np.mean([v.values for v in vals], axis=0),
+                np.mean([v.base_values for v in vals], axis=0))
+
+
+def load_ensemble(meta, data_dir, kind):
+    """Load a race-level artifact's members (meta["ensemble_files"]; a lone model before 10-27).
+    kind: "ranker" or "regressor"."""
+    import os
+    import xgboost as xgb
+    files = meta.get("ensemble_files") or [meta["model_file"]]
+    models = []
+    for f in files:
+        m = xgb.XGBRanker() if kind == "ranker" else xgb.XGBRegressor()
+        m.load_model(os.path.join(data_dir, f))
+        models.append(m)
+    return Ensemble(models)
 
 
 def race_margins(df, share_col):

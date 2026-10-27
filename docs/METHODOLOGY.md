@@ -136,6 +136,31 @@ on the same training rows and feature lists as the notebooks above (`data/model_
   served: their raw odds summed to 0.80-1.42 per race, and their margins did not cancel (51 races)
   or crowned two winners (5 races) in the 2026-10-27 run.
 
+### 2026-10-27 (later): inputs and tuning (polling-agg audit items 6, 9, 11-15, D3, D7)
+- **Averaged settings (item 6):** each served model (win, margin, no-polls) is the average of its
+  top 3 stage-2 settings (`race_level.Ensemble`; `ensemble_files` in each artifact), not the single
+  winner of a near-tie. SHAP of the average is the average of the members' SHAP.
+- **Economy (item 11, M7):** the 144 unsigned per-cycle macro constants are gone. A race-level model
+  cannot use a number that is the same for every candidate in a race. In their place,
+  `PRES_ECON_FEATS`, signed +1 for the president's party / -1 the other major party / 0 others:
+  approval - 50, minus the 12-month unemployment change, minus (inflation - 2), and consumer
+  sentiment - 82 (its 1998-2024 election-eve mean).
+- **Window-matched polls (item 12, D3):** `poll_avg_60`, `poll_lead_60`, `poll_std_60`, `n_polls_60`,
+  `race_total_polls_60` use only polls ending in the last 60 days, so they mean the same thing in the
+  1998-2016 file (last ~60 days only) and in 2018+ / live feeds (the whole cycle). The full-cycle
+  versions stay.
+- **PAC share (item 15, D7):** `fund_pac_pct` -> `fund_pac_rel`, the share minus the median for the
+  candidate's party that cycle (from every FEC candidate, `load_fec`). The raw share had become a
+  party marker that flipped: Democrats above Republicans in 2018-24, far below in 2026.
+- **District lean:** `dist_pres_lean_cand` is NaN for Senate / Governor (the state lean covers them).
+- **Never-polled winners (item 13):** `race_win_model.py` grades them, scored as every polled
+  candidate losing. After the dead-matchup filter none fall in 2018-24 (NY-18 2022 and CO-3 2024
+  were matchups that never happened: the polled opponent ran in another district).
+- **Louisiana House:** published as the chance to win the seat, first round plus Dec 12 runoff,
+  simulated from the margin model's shares (`src/la_runoff.py`).
+- **Seat counts (item 4):** `src/simulate_seats.py`, one shared national error per run (Gaussian
+  copula, rho fitted on 1998-2024 out-of-sample predictions, `analysis/national_error_corr.py`).
+
 ## Static-data principle
 Every input is pulled once and **committed**: polls (all vintages), results, races.csv, macro,
 approval, generic ballot. No model or predict run touches the network. Re-pull only to extend

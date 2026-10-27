@@ -44,8 +44,8 @@ differently:**
 
 | model | target | notebook/script | headline (honest, expanding-window) |
 |---|---|---|---|
-| **Win** (race-level, served since 2026-10-27) | `won ∈ {0,1}`, ranked within the race | `models/poll/race_win_model.py` (feature list from `model.ipynb`) | within-race softmax sums to 1 per race; Brier .060 / AUC .976 / race-acc .876 (2018-24, sanity only; retrain 2026-10-27 with the district lean) |
-| **Margin** (race-level, served since 2026-10-27) | vote share; margin = share minus best rival's | `models/poll/race_margin_model.py` (feature list from `margin_model.ipynb`) | margins cancel and one winner per race by construction; margin MAE 5.09 / race-acc .901 (2018-24, sanity only; retrain 2026-10-27) |
+| **Win** (race-level, served since 2026-10-27) | `won ∈ {0,1}`, ranked within the race | `models/poll/race_win_model.py` (feature list from `model.ipynb`) | within-race softmax sums to 1 per race; Brier .059 / AUC .976 / race-acc .884 (2018-24, sanity only; averaged top-3 settings, retrain 2026-10-27 evening) |
+| **Margin** (race-level, served since 2026-10-27) | vote share; margin = share minus best rival's | `models/poll/race_margin_model.py` (feature list from `margin_model.ipynb`) | margins cancel and one winner per race by construction; margin MAE 4.91 / race-acc .886 (2018-24, sanity only; averaged top-3 settings, retrain 2026-10-27 evening) |
 | **Primary nominee** | `won ∈ {0,1}` (becomes the party's nominee) | `models/poll/primary_model.py` | AUC-PR .97 / Brier .02 / race-acc .93 vs. poll-leader .72 baseline |
 | **Primary margin** | vote margin vs. best other candidate | `models/poll/primary_margin_model.py` | MAE 17.0 vs. 18.5 calibrated-poll baseline — beats it on the mean, but LOSES the 2022 fold; two eval cycles only |
 
@@ -55,10 +55,10 @@ current run, and `HANDOFF.md` for the dated history of every retrain.)
 
 A fifth model, `models/fundamentals/fundamentals_model.py`, trains NO-POLLING variants of the
 general and primary models. Since 2026-10-23 the general one scores every race without polls
-(`models/fundamentals/predict_unpolled.py`). It reaches race-acc .871 / Brier .074 (2018-24,
-retrain 2026-10-27) vs .870 / .064 with polls - most general elections are structurally
-determined, with `is_incumbent` alone carrying about 25% of the gain and `bio_office_level`
-the next most (3%). The primary one only reaches .435, BELOW its own
+(`models/fundamentals/predict_unpolled.py`). Race-level since 2026-10-27 (`models/fundamentals/race_fundamentals_model.py`, trained on polled and unpolled races); graded on held-out UNPOLLED races it reaches race-acc .997 / Brier .003 (2018-24,
+retrain 2026-10-27; unpolled races are mostly safe seats) - most general elections are
+structurally determined, with `is_incumbent` carrying about two thirds of the gain and
+`fund_cash_share` and `bio_office_level` next. The primary one only reaches .435, BELOW its own
 naive "pick the highest office-level candidate" baseline of .451, because within one party
 there is no incumbency edge, no partisan lean and no seat history to lean on. Neither is blended
 into the polled races' numbers — see CONCERNS.md #28.

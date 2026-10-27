@@ -3,7 +3,7 @@
   "fund_receipts_ln",
   "fund_share",
   "fund_indiv_pct",
-  "fund_pac_pct",
+  "fund_pac_rel",
   "fund_party_pct",
   "fund_self_pct",
   "fund_smalldollar_pct",
@@ -48,6 +48,11 @@
   "min_margin",
   "margin_trend",
   "is_president_party",
+  "poll_avg_60",
+  "poll_lead_60",
+  "poll_std_60",
+  "n_polls_60",
+  "race_total_polls_60",
   "poll_avg_dpoll",
   "poll_avg_rpoll",
   "poll_avg_npoll",
@@ -64,162 +69,47 @@
   "n_pollsters",
   "midterm_pres_party",
   "midterm_approval_cand",
-  "approval_avg_12mo",
-  "approval_avg_3mo",
-  "approval_avg_6mo",
-  "approval_eve",
-  "approval_last12_delta",
-  "approval_max",
-  "approval_max_12mo",
-  "approval_max_3mo",
-  "approval_max_6mo",
-  "approval_mean",
-  "approval_min",
-  "approval_std",
-  "approval_trend",
-  "approval_trend_12mo",
-  "approval_trend_3mo",
-  "approval_trend_6mo",
-  "cpi_core_avg_12mo",
-  "cpi_core_avg_3mo",
-  "cpi_core_avg_6mo",
-  "cpi_core_eve",
-  "cpi_core_last12_delta",
-  "cpi_core_max",
-  "cpi_core_max_12mo",
-  "cpi_core_max_3mo",
-  "cpi_core_max_6mo",
-  "cpi_core_mean",
-  "cpi_core_min",
-  "cpi_core_std",
-  "cpi_core_trend",
-  "cpi_core_trend_12mo",
-  "cpi_core_trend_3mo",
-  "cpi_core_trend_6mo",
-  "fed_funds_avg_12mo",
-  "fed_funds_avg_3mo",
-  "fed_funds_avg_6mo",
-  "fed_funds_eve",
-  "fed_funds_last12_delta",
-  "fed_funds_max",
-  "fed_funds_max_12mo",
-  "fed_funds_max_3mo",
-  "fed_funds_max_6mo",
-  "fed_funds_mean",
-  "fed_funds_min",
-  "fed_funds_std",
-  "fed_funds_trend",
-  "fed_funds_trend_12mo",
-  "fed_funds_trend_3mo",
-  "fed_funds_trend_6mo",
-  "gas_avg_12mo",
-  "gas_avg_3mo",
-  "gas_avg_6mo",
-  "gas_eve",
-  "gas_last12_delta",
-  "gas_max",
-  "gas_max_12mo",
-  "gas_max_3mo",
-  "gas_max_6mo",
-  "gas_mean",
-  "gas_min",
-  "gas_std",
-  "gas_trend",
-  "gas_trend_12mo",
-  "gas_trend_3mo",
-  "gas_trend_6mo",
-  "generic_ballot_avg_12mo",
-  "generic_ballot_avg_3mo",
-  "generic_ballot_avg_6mo",
-  "generic_ballot_eve",
-  "generic_ballot_last12_delta",
-  "generic_ballot_max",
-  "generic_ballot_max_12mo",
-  "generic_ballot_max_3mo",
-  "generic_ballot_max_6mo",
-  "generic_ballot_mean",
-  "generic_ballot_min",
-  "generic_ballot_std",
-  "generic_ballot_trend",
-  "generic_ballot_trend_12mo",
-  "generic_ballot_trend_3mo",
-  "generic_ballot_trend_6mo",
-  "inflation_avg_12mo",
-  "inflation_avg_3mo",
-  "inflation_avg_6mo",
-  "inflation_eve",
-  "inflation_last12_delta",
-  "inflation_max",
-  "inflation_max_12mo",
-  "inflation_max_3mo",
-  "inflation_max_6mo",
-  "inflation_mean",
-  "inflation_min",
-  "inflation_std",
-  "inflation_trend",
-  "inflation_trend_12mo",
-  "inflation_trend_3mo",
-  "inflation_trend_6mo",
-  "sentiment_avg_12mo",
-  "sentiment_avg_3mo",
-  "sentiment_avg_6mo",
-  "sentiment_eve",
-  "sentiment_last12_delta",
-  "sentiment_max",
-  "sentiment_max_12mo",
-  "sentiment_max_3mo",
-  "sentiment_max_6mo",
-  "sentiment_mean",
-  "sentiment_min",
-  "sentiment_std",
-  "sentiment_trend",
-  "sentiment_trend_12mo",
-  "sentiment_trend_3mo",
-  "sentiment_trend_6mo",
-  "unemp_u6_avg_12mo",
-  "unemp_u6_avg_3mo",
-  "unemp_u6_avg_6mo",
-  "unemp_u6_eve",
-  "unemp_u6_last12_delta",
-  "unemp_u6_max",
-  "unemp_u6_max_12mo",
-  "unemp_u6_max_3mo",
-  "unemp_u6_max_6mo",
-  "unemp_u6_mean",
-  "unemp_u6_min",
-  "unemp_u6_std",
-  "unemp_u6_trend",
-  "unemp_u6_trend_12mo",
-  "unemp_u6_trend_3mo",
-  "unemp_u6_trend_6mo",
-  "unemployment_avg_12mo",
-  "unemployment_avg_3mo",
-  "unemployment_avg_6mo",
-  "unemployment_eve",
-  "unemployment_last12_delta",
-  "unemployment_max",
-  "unemployment_max_12mo",
-  "unemployment_max_3mo",
-  "unemployment_max_6mo",
-  "unemployment_mean",
-  "unemployment_min",
-  "unemployment_std",
-  "unemployment_trend",
-  "unemployment_trend_12mo",
-  "unemployment_trend_3mo",
-  "unemployment_trend_6mo"
+  "pres_approval_cand",
+  "pres_unemp_cand",
+  "pres_inflation_cand",
+  "pres_sentiment_cand"
  ],
  "model_type": "xgbranker",
  "objective": "rank:pairwise",
- "xgb_params": {
-  "max_depth": 1,
-  "learning_rate": 0.05,
-  "n_estimators": 600,
-  "min_child_weight": 8,
-  "subsample": 1.0,
-  "colsample_bytree": 1.0,
-  "reg_lambda": 1
- },
+ "ensemble_files": [
+  "race_win_model_xgb.json",
+  "race_win_model_xgb_1.json",
+  "race_win_model_xgb_2.json"
+ ],
+ "xgb_params": [
+  {
+   "max_depth": 1,
+   "learning_rate": 0.05,
+   "n_estimators": 300,
+   "min_child_weight": 0.5,
+   "subsample": 1.0,
+   "colsample_bytree": 0.4,
+   "reg_lambda": 1
+  },
+  {
+   "max_depth": 1,
+   "learning_rate": 0.05,
+   "n_estimators": 600,
+   "min_child_weight": 8,
+   "subsample": 1.0,
+   "colsample_bytree": 1.0,
+   "reg_lambda": 1
+  },
+  {
+   "max_depth": 1,
+   "learning_rate": 0.05,
+   "n_estimators": 600,
+   "min_child_weight": 2,
+   "subsample": 1.0,
+   "colsample_bytree": 1.0,
+   "reg_lambda": 5
+  }
+ ],
  "softmax_temp": 0.9655,
  "minor_offset": -8.0,
  "minor_poll_max": 10.0,
@@ -265,19 +155,7 @@
   "metric": "log loss of softmaxed probability",
   "stage2": [
    [
-    0.2705,
-    {
-     "max_depth": 1,
-     "learning_rate": 0.05,
-     "n_estimators": 600,
-     "min_child_weight": 8,
-     "subsample": 1.0,
-     "colsample_bytree": 1.0,
-     "reg_lambda": 1
-    }
-   ],
-   [
-    0.273,
+    0.2667,
     {
      "max_depth": 1,
      "learning_rate": 0.05,
@@ -289,7 +167,79 @@
     }
    ],
    [
+    0.2703,
+    {
+     "max_depth": 1,
+     "learning_rate": 0.05,
+     "n_estimators": 600,
+     "min_child_weight": 8,
+     "subsample": 1.0,
+     "colsample_bytree": 1.0,
+     "reg_lambda": 1
+    }
+   ],
+   [
+    0.2714,
+    {
+     "max_depth": 1,
+     "learning_rate": 0.05,
+     "n_estimators": 600,
+     "min_child_weight": 2,
+     "subsample": 1.0,
+     "colsample_bytree": 1.0,
+     "reg_lambda": 5
+    }
+   ],
+   [
     0.2734,
+    {
+     "max_depth": 3,
+     "learning_rate": 0.05,
+     "n_estimators": 150,
+     "min_child_weight": 2,
+     "subsample": 1.0,
+     "colsample_bytree": 1.0,
+     "reg_lambda": 1
+    }
+   ],
+   [
+    0.2736,
+    {
+     "max_depth": 3,
+     "learning_rate": 0.05,
+     "n_estimators": 150,
+     "min_child_weight": 0.5,
+     "subsample": 0.8,
+     "colsample_bytree": 0.4,
+     "reg_lambda": 1
+    }
+   ],
+   [
+    0.2741,
+    {
+     "max_depth": 2,
+     "learning_rate": 0.05,
+     "n_estimators": 150,
+     "min_child_weight": 2,
+     "subsample": 1.0,
+     "colsample_bytree": 0.6,
+     "reg_lambda": 20
+    }
+   ],
+   [
+    0.2742,
+    {
+     "max_depth": 3,
+     "learning_rate": 0.02,
+     "n_estimators": 150,
+     "min_child_weight": 8,
+     "subsample": 1.0,
+     "colsample_bytree": 0.4,
+     "reg_lambda": 5
+    }
+   ],
+   [
+    0.2743,
     {
      "max_depth": 1,
      "learning_rate": 0.1,
@@ -299,114 +249,68 @@
      "colsample_bytree": 0.6,
      "reg_lambda": 5
     }
-   ],
-   [
-    0.2738,
-    {
-     "max_depth": 1,
-     "learning_rate": 0.05,
-     "n_estimators": 600,
-     "min_child_weight": 2,
-     "subsample": 1.0,
-     "colsample_bytree": 1.0,
-     "reg_lambda": 5
-    }
-   ],
-   [
-    0.2741,
-    {
-     "max_depth": 2,
-     "learning_rate": 0.1,
-     "n_estimators": 150,
-     "min_child_weight": 2,
-     "subsample": 1.0,
-     "colsample_bytree": 0.4,
-     "reg_lambda": 1
-    }
-   ],
-   [
-    0.2746,
-    {
-     "max_depth": 2,
-     "learning_rate": 0.05,
-     "n_estimators": 150,
-     "min_child_weight": 0.5,
-     "subsample": 1.0,
-     "colsample_bytree": 1.0,
-     "reg_lambda": 20
-    }
-   ],
-   [
-    0.2746,
-    {
-     "max_depth": 2,
-     "learning_rate": 0.05,
-     "n_estimators": 150,
-     "min_child_weight": 2,
-     "subsample": 1.0,
-     "colsample_bytree": 0.6,
-     "reg_lambda": 20
-    }
-   ],
-   [
-    0.2766,
-    {
-     "max_depth": 2,
-     "learning_rate": 0.1,
-     "n_estimators": 150,
-     "min_child_weight": 2,
-     "subsample": 1.0,
-     "colsample_bytree": 0.6,
-     "reg_lambda": 20
-    }
    ]
   ]
  },
  "eval_expanding_window": {
   "mean": {
-   "Brier": 0.0602,
-   "LogLoss": 0.1923,
-   "AUC": 0.9759,
-   "race_acc": 0.8763
+   "Brier": 0.0593,
+   "LogLoss": 0.1932,
+   "AUC": 0.9758,
+   "race_acc": 0.8836,
+   "Brier_all": 0.0593,
+   "LogLoss_all": 0.1932
   },
   "per_cycle": [
    {
     "cycle": 2018,
     "temp": 0.9655,
     "minor_offset": 0.0,
-    "Brier": 0.0544,
+    "unwon_races": 0,
+    "Brier": 0.0536,
     "LogLoss": 0.1881,
-    "AUC": 0.9772,
-    "race_acc": 0.8865
+    "AUC": 0.9766,
+    "race_acc": 0.8908,
+    "Brier_all": 0.0536,
+    "LogLoss_all": 0.1881
    },
    {
     "cycle": 2020,
     "temp": 0.8849,
     "minor_offset": -8.0,
-    "Brier": 0.0725,
-    "LogLoss": 0.2231,
-    "AUC": 0.9674,
-    "race_acc": 0.8333
+    "unwon_races": 0,
+    "Brier": 0.071,
+    "LogLoss": 0.2206,
+    "AUC": 0.9684,
+    "race_acc": 0.8467,
+    "Brier_all": 0.071,
+    "LogLoss_all": 0.2206
    },
    {
     "cycle": 2022,
     "temp": 0.9655,
     "minor_offset": -8.0,
-    "Brier": 0.0555,
-    "LogLoss": 0.1778,
-    "AUC": 0.9802,
-    "race_acc": 0.8908
+    "unwon_races": 0,
+    "Brier": 0.0553,
+    "LogLoss": 0.1817,
+    "AUC": 0.9794,
+    "race_acc": 0.9023,
+    "Brier_all": 0.0553,
+    "LogLoss_all": 0.1817
    },
    {
     "cycle": 2024,
     "temp": 0.8849,
     "minor_offset": -8.0,
-    "Brier": 0.0582,
-    "LogLoss": 0.1803,
+    "unwon_races": 0,
+    "Brier": 0.0574,
+    "LogLoss": 0.1825,
     "AUC": 0.9789,
-    "race_acc": 0.8947
+    "race_acc": 0.8947,
+    "Brier_all": 0.0574,
+    "LogLoss_all": 0.1825
    }
   ]
  },
- "note": "race-level win model: within-race softmax of ranker scores is the one probability. Served by src/predict.py since 2026-10-27."
+ "note": "race-level win model: within-race softmax of the averaged ranker scores (top-3 settings) is the one probability. Served by src/predict.py."
 }

@@ -65,6 +65,8 @@ STEPS_PREDICT = [
     ([sys.executable, os.path.join(SRC, "predict_margin.py")], "margins"),
     ([sys.executable, os.path.join(SRC, "predict_primary.py")], "primary nominee probabilities"),
     ([sys.executable, os.path.join(SRC, "predict_primary_margin.py")], "primary margins"),
+    # seat-count ranges + control odds, one shared national error per run (2026-10-27, audit item 4)
+    ([sys.executable, os.path.join(SRC, "simulate_seats.py")], "seat-count simulation"),
     ([sys.executable, os.path.join(SRC, "explain_2026.py")],
      "SHAP explanations (writes polling-agg copy itself)"),
     ([sys.executable, os.path.join(SRC, "explain_primary.py")],
@@ -143,7 +145,8 @@ def main():
                       "model_primary_margin_predictions_2026.csv"),
                      ("fundamentals_predictions_2026.csv", "model_fundamentals_predictions_2026.csv"),
                      ("fundamentals_explanations_2026.json",
-                      "model_fundamentals_explanations_2026.json")]:
+                      "model_fundamentals_explanations_2026.json"),
+                     ("seat_sim_2026.json", "model_seat_sim_2026.json")]:
         if src.startswith("fundamentals_") and not unpolled_ok:
             print(f"kept polling-agg's last {dst} (the no-polls step failed)")
             continue

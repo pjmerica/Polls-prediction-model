@@ -33,7 +33,8 @@ import pandas as pd
 import xgboost as xgb
 
 import features as F
-from race_level import race_win_probs
+from race_level import load_ensemble, race_win_probs
+from la_runoff import seat_probs
 import features_primary as FP   # merge_nickname_aliases - shared with the primary path
 from cycles import natl_env as natl_env_hist
 from macro_features import build_macro
@@ -514,18 +515,30 @@ def main():
 
     with open(os.path.join(HERE, "data", "race_win_model_features.json")) as f:
         meta = json.load(f)
-    model = xgb.XGBRanker()
-    model.load_model(os.path.join(HERE, "data", "race_win_model_xgb.json"))
+    # the averaged top settings (race_level.Ensemble, audit item 6)
+    model = load_ensemble(meta, os.path.join(HERE, "data"), "ranker")
     temp, offset = float(meta["softmax_temp"]), float(meta.get("minor_offset", 0.0))
     print(f"race win model: trained on cycles {meta['trained_on_cycles'][0]}-"
           f"{meta['trained_on_cycles'][-1]}, {len(meta['features'])} features, softmax T={temp}, "
           f"minor offset {offset}")
 
+    # Louisiana House: the seat goes to the Dec 12 runoff winner, so those races publish the chance
+    # to win the SEAT, simulated from the margin model's first-round shares (src/la_runoff.py)
+    with open(os.path.join(HERE, "data", "race_margin_model_features.json")) as f:
+        mmeta = json.load(f)
+    share_model = load_ensemble(mmeta, os.path.join(HERE, "data"), "regressor")
+
     def race_probs(table):
         # ranker scores -> within-race softmax: THE published probability (src/race_level.py)
         t = table[["race_id", "poll_avg"]].copy()
         t["_score"] = model.predict(table.reindex(columns=meta["features"]))
-        return race_win_probs(t, "_score", temp, offset)
+        p = race_win_probs(t, "_score", temp, offset)
+        la = (table["state"] == "LA") & (table["office"] == "House")
+        if la.any():
+            s = table.loc[la, ["race_id", "party"]].copy()
+            s["share"] = share_model.predict(table.loc[la].reindex(columns=mmeta["features"]))
+            p.loc[la] = seat_probs(s)
+        return p
 
     d = load_agg_polls(args.polls, args.cycle)
     if len(d) == 0:
@@ -541,13 +554,15 @@ def main():
 
     macro = build_macro(cycles=[args.cycle])
     ne = dict(natl_env_hist())
+    natl_sources = None
     if args.natl_env is not None:
         ne[args.cycle] = args.natl_env
         print(f"natl_env({args.cycle}) = {args.natl_env:+.1f} (given via --natl-env)")
     else:
         # the one live fetch in the project: current-cycle info can't be frozen by definition
-        from fetch_generic_ballot import get_natl_env
+        from fetch_generic_ballot import LAST_SOURCES, get_natl_env
         v = get_natl_env(args.cycle)
+        natl_sources = [list(x) for x in LAST_SOURCES]
         if v is not None:
             ne[args.cycle] = v
             print(f"natl_env({args.cycle}) = {v:+.1f} (Wikipedia aggregator mean; "
@@ -582,7 +597,9 @@ def main():
     # ---- poll-bias robustness sweep (cycle-level poll error is historically ±4-7 pts,
     # shared across ALL races — see HANDOFF.md). Re-predict under a uniform 3-point
     # national margin shift each way; picks that flip are bias-fragile, not edges. ----
-    for label, dem_shift in [("R3", -3.0), ("D3", +3.0)]:
+    # +/-6 too (2026-10-27, audit item 4): the measured national misses run 5-8 margin pts; the
+    # "fragile" flag keeps its +/-3 meaning
+    for label, dem_shift in [("R3", -3.0), ("D3", +3.0), ("R6", -6.0), ("D6", +6.0)]:
         ds = d.copy()
         sgn = ds["party_std"].map({"DEM": 1, "REP": -1}).fillna(0)
         ds["pct"] = ds["pct"] + sgn * dem_shift / 2
@@ -616,7 +633,7 @@ def main():
                 "display_party",
                 "n_polls", "n_surveys", "poll_avg", "poll_lead", "prior_margin_cand",
                 "is_incumbent", "win_prob", "win_prob_norm",
-                "win_prob_R3", "win_prob_D3", "bias_fragile"]
+                "win_prob_R3", "win_prob_D3", "win_prob_R6", "win_prob_D6", "bias_fragile"]
     out = cand[out_cols].sort_values(["race_id", "win_prob"], ascending=[True, False])
     out_path = args.out or _paths.out(f"predictions_{args.cycle}.csv")
     out.to_csv(out_path, index=False)
@@ -630,6 +647,8 @@ def main():
         polls_max_end_date=str(d["end_date"].max().date()),
         n_poll_rows=int(len(d)), n_races=int(out["race_id"].nunique()),
         natl_env=ne.get(args.cycle),
+        # each aggregator behind natl_env (audit safeguard D6, 2026-10-27); None when given by hand
+        natl_env_sources=natl_sources,
         # publish gate (tests/test_publish.py): every file of one refresh carries the same run id,
         # and each feature's live fill rate is compared with training's (data/feature_fill_train.json)
         run_id=os.environ.get("MODEL_RUN_ID"),

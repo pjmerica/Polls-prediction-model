@@ -317,7 +317,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,REP,Duke Aiona,former lieutenant governor and nominee for governor in 2010,2014,Governor,HI,aiona d,3,0,1
 ,REP,Charles Djou,former U.S. Representative ( running for HI-01 ),2014,Governor,HI,djou c,4,1,0
 ,REP,Mufi Hannemann,"Democratic former mayor of Honolulu , candidate for governor in 2010 and candidate for HI-02 in 2012 (running as an Independent)",2014,Governor,HI,hannemann m,1,0,1
-,REP,Elwin Ahu,pastor and former circuit court judge,2014,Governor,HI,ahu e,1,0,0
+,REP,Elwin Ahu,pastor and former circuit court judge,2014,Governor,HI,ahu e,0.5,0,0
 ,REP,"Warner ""Kimo"" Sutton",businessman,2014,Governor,HI,sutton w,0,0,0
 ,REP,Jeff Davis,solar contractor and radio show host,2014,Governor,HI,davis j,0,0,0
 ,IND,Mufi Hannemann,"Democratic former mayor of Honolulu , candidate for governor in 2010 and candidate for Hawaii's 2nd congressional district in 2012",2014,Governor,HI,hannemann m,1,0,1
@@ -495,7 +495,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,DEM,Vicki Barnett,Minority Whip of the Michigan House of Representatives,2014,Governor,MI,barnett v,2,1,0
 ,DEM,Jocelyn Benson,dean of Wayne State University Law School and nominee for Michigan Secretary of State in 2010,2014,Governor,MI,benson j,0,0,1
 ,DEM,Virgil Bernero,Mayor of Lansing and nominee for governor in 2010,2014,Governor,MI,bernero v,1,0,1
-,DEM,Mark Bernstein,attorney and Regent of the University of Michigan,2014,Governor,MI,bernstein m,0,0,0
+,DEM,Mark Bernstein,attorney and Regent of the University of Michigan,2014,Governor,MI,bernstein m,3,0,0
 ,DEM,Mike Duggan,Mayor-elect of Detroit and former Wayne County Prosecutor,2014,Governor,MI,duggan m,1,0,0
 ,DEM,Mark Hackel,Macomb County Executive,2014,Governor,MI,hackel m,1,0,0
 ,DEM,Dan Kildee,U.S. representative,2014,Governor,MI,kildee d,4,1,0
@@ -559,7 +559,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,REP,Bob Krist,state senator,2014,Governor,NE,krist b,2,0,0
 ,REP,Ben Sasse,President of Midland University (running for the U.S. Senate),2014,Governor,NE,sasse b,0,0,0
 ,REP,Don Stenberg,"Treasurer of Nebraska, candidate for the U.S. Senate in 1996 , 2006 and 2012 and nominee for the U.S. Senate in 2000 (running for re-election)",2014,Governor,NE,stenberg d,0,0,1
-,DEM,Center for Rural Affairs,former Regent of the University of Nebraska and candidate for the U.S. Senate in 2012,2014,Governor,NE,affairs c,0,0,1
+,DEM,Center for Rural Affairs,former Regent of the University of Nebraska and candidate for the U.S. Senate in 2012,2014,Governor,NE,affairs c,3,0,1
 ,DEM,Annette Dubas,state senator,2014,Governor,NE,dubas a,2,0,0
 ,DEM,Chris Beutler,Mayor of Lincoln,2014,Governor,NE,beutler c,1,0,0
 ,DEM,Steve Lathrop,state senator,2014,Governor,NE,lathrop s,2,0,0
@@ -748,7 +748,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,REP,"Curtis M. Loftis, Jr.",state treasurer,2014,Governor,SC,loftis c,3,0,0
 ,REP,Glenn F. McConnell,Lieutenant Governor,2014,Governor,SC,mcconnell g,3,0,0
 ,REP,Mick Mulvaney,U.S. representative,2014,Governor,SC,mulvaney m,4,1,0
-,REP,William Walter Wilkins,former Chief Judge of the United States Court of Appeals for the Fourth Circuit,2014,Governor,SC,wilkins w,1,0,0
+,REP,William Walter Wilkins,former Chief Judge of the United States Court of Appeals for the Fourth Circuit,2014,Governor,SC,wilkins w,0.75,0,0
 ,REP,Alan Wilson,Attorney General of South Carolina,2014,Governor,SC,wilson a,3,0,0
 ,DEM,Vincent Sheheen,state senator and nominee for governor in 2010,2014,Governor,SC,sheheen v,2,0,1
 ,DEM,Stephen K. Benjamin,Mayor of Columbia,2014,Governor,SC,benjamin s,1,0,0
@@ -1438,8 +1438,8 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,REP,Arlan Meekhof,Majority Leader of the Michigan Senate,2018,Governor,MI,meekhof a,2,0,0
 ,REP,Candice Miller,Macomb County Public Works Commissioner and former U.S. representative (endorsed Bill Schuette),2018,Governor,MI,miller c,4,1,0
 ,DEM,Gretchen Whitmer,former Ingham County Prosecuting Attorney and former Minority Leader of the Michigan Senate,2018,Governor,MI,whitmer g,2,0,0
-,DEM,John Austin,former president of the Michigan Board of Education,2018,Governor,MI,austin j,0,0,0
-,DEM,Mark Bernstein,member of University of Michigan Board of Regents,2018,Governor,MI,bernstein m,0,0,0
+,DEM,John Austin,former president of the Michigan Board of Education,2018,Governor,MI,austin j,3,0,0
+,DEM,Mark Bernstein,member of University of Michigan Board of Regents,2018,Governor,MI,bernstein m,3,0,0
 ,DEM,Mike Duggan,Mayor of Detroit,2018,Governor,MI,duggan m,1,0,0
 ,DEM,Geoffrey Fieger,attorney and nominee for governor in 1998,2018,Governor,MI,fieger g,0,0,1
 ,DEM,Mark Hackel,Macomb County Executive,2018,Governor,MI,hackel m,1,0,0
@@ -1654,7 +1654,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,REP,Mikee Johnson,businessman and former chairman of the South Carolina Chamber of Commerce (endorsed Catherine Templeton),2018,Governor,SC,johnson m,0,0,0
 ,REP,Tim Scott,U.S. senator,2018,Governor,SC,scott t,4,0,0
 ,REP,Joe Taylor,former South Carolina secretary of commerce,2018,Governor,SC,taylor j,0.5,0,0
-,REP,Billy Wilkins,former chief judge of the United States Court of Appeals for the Fourth Circuit,2018,Governor,SC,wilkins b,1,0,0
+,REP,Billy Wilkins,former chief judge of the United States Court of Appeals for the Fourth Circuit,2018,Governor,SC,wilkins b,0.75,0,0
 ,REP,Alan Wilson,attorney general ( ran for re-election ),2018,Governor,SC,wilson a,3,0,0
 ,DEM,James Smith,"state representative  Running mate: Mandy Powers Norrell , state representative",2018,Governor,SC,smith j,2,1,0
 ,DEM,Mandy Powers Norrell,state representative,2018,Governor,SC,norrell m,2,1,0
@@ -1938,7 +1938,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,REP,Kimberly Guilfoyle,"television personality, former advisor to Donald Trump and ex-wife of Gavin Newsom",2022,Governor,CA,guilfoyle k,0,0,0
 ,REP,Kevin Kiley,state assemblyman from the 6th district (2016–2022) and candidate in the 2021 recall election ( ran for CA-03 ),2022,Governor,CA,kiley k,2,0,0
 ,IND,Adriel Hampton,digital media businessman and candidate for California's 10th congressional district in 2009,2022,Governor,CA,hampton a,0,0,1
-,REP,Heidi Ganahl,"member of the Regents of the University of Colorado   Running mate: Danny Moore, businessman",2022,Governor,CO,ganahl h,0,0,0
+,REP,Heidi Ganahl,"member of the Regents of the University of Colorado   Running mate: Danny Moore, businessman",2022,Governor,CO,ganahl h,3,0,0
 ,REP,Running mate: Danny Moore,businessman,2022,Governor,CO,moore r,0,0,0
 ,REP,Guy Benson,"political pundit, Fox News contributor, and political editor for Townhall",2022,Governor,CO,benson g,0,0,0
 ,REP,Ken Buck,"U.S. representative from Colorado's 4th congressional district , former chair of the Colorado Republican Party , and nominee for U.S. Senate in 2010",2022,Governor,CO,buck k,4,1,1
@@ -2160,7 +2160,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,IND,Tom Bakk,state senator and DFL candidate for governor in 2010,2022,Governor,MN,bakk t,2,0,1
 ,IND,Christopher Chamberlin,"candidate for governor, senate, and house in 2018",2022,Governor,MN,chamberlin c,0,0,1
 ,IND,Richard Painter,"University of Minnesota Law School professor, former chief White House ethics lawyer, and DFL candidate for U.S. Senate in 2018 (ran for Congress )",2022,Governor,MN,painter r,0.75,0,1
-,REP,Jim Pillen,"member and former chair of the University of Nebraska Board of Regents  Running mate: Joe Kelly , former U.S. Attorney for the District of Nebraska",2022,Governor,NE,pillen j,0,0,0
+,REP,Jim Pillen,"member and former chair of the University of Nebraska Board of Regents  Running mate: Joe Kelly , former U.S. Attorney for the District of Nebraska",2022,Governor,NE,pillen j,3,0,0
 ,REP,Joe Kelly,former U.S. Attorney for the District of Nebraska,2022,Governor,NE,kelly j,0.75,0,0
 ,REP,Don Bacon,U.S. representative for Nebraska's 2nd congressional district ( successfully ran for re-election ),2022,Governor,NE,bacon d,4,1,0
 ,REP,Deb Fischer,U.S. senator,2022,Governor,NE,fischer d,4,0,0
@@ -4490,7 +4490,7 @@ additional terms may apply. By using this site, you agree to the Terms of Use an
 ,OTH,William Toien,,2010,Governor,AK,toien w,0,0,0
 ,OTH,Billy Toien,,2010,Governor,AK,toien b,0,0,0
 ,REP,Robert J. Bentley,state representative,2010,Governor,AL,bentley r,2,1,0
-,REP,Bradley Byrne,"former state two-year college chancellor , former state senator and former member of the Alabama State Board of Education",2010,Governor,AL,byrne b,2,0,0
+,REP,Bradley Byrne,"former state two-year college chancellor , former state senator and former member of the Alabama State Board of Education",2010,Governor,AL,byrne b,3,0,0
 ,REP,Tim James,"businessman, son of former Governor Fob James and candidate for governor in 2002",2010,Governor,AL,james t,0,0,1
 ,REP,Birmingham,City Councilman,2010,Governor,AL,birmingham,1,0,0
 ,REP,Roy Moore,former Chief Justice of the Alabama Supreme Court and candidate for governor in 2006,2010,Governor,AL,moore r,3,0,1

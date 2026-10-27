@@ -238,6 +238,11 @@ def office_level(o):
     the start year decides."""
     if len(o) >= 4 and o[3] is not None:
         return float(o[3])
+    from fetch_candidate_bios import ELECTED_BOARD_RX, appointed_judge
+    if ELECTED_BOARD_RX.search(str(o[0])):          # elected state boards = 3 (2026-10-27)
+        return 3.0
+    if appointed_judge(o[0]):                        # appointed-state judges = 0.5 (2026-10-27)
+        return APPOINTED_STATE
     lvl = classify_ballotpedia(o[0])
     if (lvl == 3 and len(o) >= 2 and o[1] is not None and int(o[1]) >= 2003
             and _FL_SOS_RX.search(str(o[0]))):

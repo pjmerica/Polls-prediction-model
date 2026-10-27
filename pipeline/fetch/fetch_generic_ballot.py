@@ -38,8 +38,15 @@ def _margin_from_text(s):
     v = float(m.group(2))
     return v if m.group(1).startswith("Democrat") else -v
 
+# each aggregator's margin behind the last get_natl_env() value, [(source, D-R margin)] - predict.py
+# records it in its meta, so every published forecast keeps the inputs of its generic ballot
+# (2026-10-27, audit safeguard D6)
+LAST_SOURCES = []
+
+
 def get_natl_env(cycle=2026, verbose=False):
     """Mean aggregator generic-ballot D-R margin for `cycle`, or None if unavailable."""
+    LAST_SOURCES.clear()
     try:
         r = requests.get(URL.format(cycle=cycle), timeout=60, headers=H)
         r.raise_for_status()
@@ -63,6 +70,8 @@ def get_natl_env(cycle=2026, verbose=False):
             margins = t["_m"].dropna()
             if len(margins) == 0:
                 continue
+            LAST_SOURCES.extend((s.strip()[:60], round(float(m), 2))
+                                for s, m in zip(t["_src"], t["_m"]) if pd.notna(m))
             if verbose:
                 for s, m in zip(t["_src"], t["_m"]):
                     if pd.notna(m):

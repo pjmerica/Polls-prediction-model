@@ -2,8 +2,10 @@
 2026-10-23 (user: "every race should be scored by the model").
 
 The poll model (src/predict.py) scores only polled races: 173 of the 506 on the ballot. This
-scores the other 333 with the no-polling model (models/fundamentals/fundamentals_model.py:
-incumbency, seat history, national environment, fundraising, candidate office level, macro),
+scores the other 333 with the no-polling model - since 2026-10-27 the RACE-LEVEL one
+(models/fundamentals/race_fundamentals_model.py: averaged rankers, within-race softmax with a
+minor-party offset; incumbency, seat history, district lean, national environment, fundraising,
+candidate office level, the economy signed toward the president's party),
 which the 2026-08-02 head-to-head kept OUT of polled races because polls beat it everywhere
 they exist (CONCERNS #28). Here there is nothing to beat: it is the model's estimate or none.
 
@@ -34,6 +36,7 @@ import features as F  # noqa: E402
 from cycles import natl_env as natl_env_hist  # noqa: E402
 from macro_features import build_macro  # noqa: E402
 from predict import patch_redistricted_priors  # noqa: E402
+from race_level import load_ensemble, race_win_probs  # noqa: E402
 
 CYCLE = 2026
 OUT = _os.path.join(ROOT, "outputs", "fundamentals_predictions_2026.csv")
@@ -109,8 +112,17 @@ def table(r, ne, gb_shift=0.0):
 def main():
     meta = json.load(open(_os.path.join(ROOT, "data", "fundamentals_model_general_features.json")))
     FE = meta["features"]
-    model = xgb.XGBClassifier()
-    model.load_model(_os.path.join(ROOT, "data", "fundamentals_model_general.json"))
+    # RACE-LEVEL no-polls model (2026-10-27, models/fundamentals/race_fundamentals_model.py): a
+    # ranker (average of the top settings) whose within-race softmax, with an offset for minor-party
+    # candidates, is the published probability - it sums to 1 in every race
+    model = load_ensemble(meta, _os.path.join(ROOT, "data"), "ranker")
+    temp, offset = float(meta["softmax_temp"]), float(meta.get("minor_offset", 0.0))
+
+    def race_probs(table):
+        t = table[["race_id", "party"]].copy()
+        t["_score"] = model.predict(table.reindex(columns=FE))
+        return race_win_probs(t, "_score", temp, offset,
+                              minor=(~t["party"].isin(["DEM", "REP"])).astype(float))
 
     polled = pd.read_csv(_os.path.join(ROOT, "outputs", "predictions_2026.csv"))
     pmeta = json.load(open(_os.path.join(ROOT, "outputs", "predictions_2026_meta.json")))
@@ -122,17 +134,17 @@ def main():
     c = table(r, ne)
     missing = [f for f in FE if f not in c.columns]
     assert not missing, f"the model expects features the table lacks: {missing[:8]}"
-    c["win_prob"] = model.predict_proba(c.reindex(columns=FE))[:, 1]
+    c["win_prob"] = race_probs(c)
     # stress test: the national mood 3 points more Republican / Democratic than measured - the
     # national environment AND every generic-ballot level feature move together (2026-10-24:
     # moving natl_env alone barely registered, since the trees read the mood mostly through the
     # generic-ballot features, so no race ever came out fragile)
     picks = {}
-    for label, shift in (("R3", -3.0), ("D3", +3.0)):
+    for label, shift in (("R3", -3.0), ("D3", +3.0), ("R6", -6.0), ("D6", +6.0)):
         ne2 = dict(ne)
         ne2[CYCLE] = ne.get(CYCLE, 0.0) + shift
         cs = table(r, ne2, gb_shift=shift)
-        cs["p"] = model.predict_proba(cs.reindex(columns=FE))[:, 1]
+        cs["p"] = race_probs(cs)
         m = cs.set_index(["race_id", "cand_key"])["p"]
         c[f"win_prob_{label}"] = [m.get((a, b)) for a, b in zip(c["race_id"], c["cand_key"])]
         picks[label] = c.loc[c.groupby("race_id")[f"win_prob_{label}"].idxmax()].set_index("race_id")["cand_key"]
@@ -141,7 +153,7 @@ def main():
     for label in ("R3", "D3"):
         fragile |= set(base.index[base != picks[label].reindex(base.index)])
     c["bias_fragile"] = c["race_id"].isin(fragile).astype(int)
-    c["win_prob_norm"] = c["win_prob"] / c.groupby("race_id")["win_prob"].transform("sum")
+    c["win_prob_norm"] = c["win_prob"]        # already a race-level probability
     c["n_polls"] = 0
     c["n_surveys"] = 0
     c["basis"] = "fundamentals"
@@ -150,7 +162,7 @@ def main():
             c[col] = np.nan
     cols = ["race_id", "state", "office", "district", "candidate", "cand_key", "party", "display_party",
             "n_polls", "n_surveys", "poll_avg", "poll_lead", "prior_margin_cand", "is_incumbent",
-            "bio_office_level", "fund_share", "win_prob", "win_prob_norm", "win_prob_R3", "win_prob_D3",
+            "bio_office_level", "fund_share", "win_prob", "win_prob_norm", "win_prob_R3", "win_prob_D3", "win_prob_R6", "win_prob_D6",
             "bias_fragile", "basis"]
     out = c.reindex(columns=cols).sort_values(["race_id", "win_prob"], ascending=[True, False])
     _os.makedirs(_os.path.dirname(OUT), exist_ok=True)
@@ -169,30 +181,38 @@ def main():
     print(f"unpolled races scored: {out['race_id'].nunique()} ({dict(top.groupby('office').size())}); "
           f"fragile: {len(fragile)}; natl_env {ne.get(CYCLE):+.1f}")
     print(f"saved -> {OUT}")
-    explain(c, model, FE)
+    explain(c, model, FE, temp, offset)
 
 
-def explain(c, model, FE):
-    """SHAP top-10 for each race's leading Democrat (or its leader), the same shape as
-    src/explain_2026.py writes for the polled races, so the forecast page's "Why?" drawer works
-    for every race. Win model only: there is no no-polls margin model."""
-    import shap
+def explain(c, model, FE, temp, offset):
+    """SHAP top-10 for each race's leading Democrat (or its leader) against the strongest rival,
+    the same shape src/explain_2026.py writes for polled races: bars = (SHAP_i - SHAP_j) / T in
+    head-to-head log-odds, base 0.5 (moved only by the minor-party offset). Win block only: there
+    is no no-polls margin model."""
     from explain_2026 import sigmoid, top_shap
     X = c.reindex(columns=FE)
-    sv = shap.TreeExplainer(model)(X)
+    sv, _ = model.shap(X)
+    score = model.predict(X)
+    off = offset * (~c["party"].isin(["DEM", "REP"])).astype(float).values
     races = {}
     for rid, g in c.groupby("race_id"):
         dems = g[g["party"] == "DEM"]
         row = dems.loc[dems["win_prob"].idxmax()] if len(dems) else g.loc[g["win_prob"].idxmax()]
         i = c.index.get_loc(row.name)
+        others = g.drop(index=row.name)
+        win = None
+        if len(others):
+            j = c.index.get_loc(others["win_prob"].idxmax())
+            d_off = off[i] - off[j]
+            win = top_shap(FE, X.iloc[i].values, (sv[i] - sv[j]) / temp, sigmoid(d_off),
+                           sigmoid((score[i] - score[j]) / temp + d_off),
+                           vs=c["candidate"].iloc[j], vs_values=X.iloc[j].values)
         races[rid] = dict(candidate=row["candidate"], party=row.get("display_party", row["party"]),
-                          win=top_shap(FE, X.iloc[i].values, sv.values[i], sigmoid(sv.base_values[i]),
-                                       row["win_prob"]),
-                          margin=None)
+                          win=win, margin=None)
     p = _os.path.join(ROOT, "outputs", "fundamentals_explanations_2026.json")
     with open(p, "w", encoding="utf-8") as f:
-        json.dump(dict(cycle=CYCLE, note="No-polls model (models/fundamentals): SHAP top-10 explaining the "
-                       "leading Democrat (or the leader if no Democrat), log-odds; base/pred as probabilities.",
+        json.dump(dict(cycle=CYCLE, note="No-polls model (race-level): SHAP top-10 explaining the leading "
+                       "Democrat (or the leader) against the strongest rival (vs); head-to-head log-odds.",
                        generated_at=pd.Timestamp.now().isoformat(), races=races), f)
     print(f"explanations: {len(races)} races -> {p}")
 

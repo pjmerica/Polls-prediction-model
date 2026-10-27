@@ -45,9 +45,10 @@ from sklearn.metrics import brier_score_loss, log_loss, roc_auc_score
 import features as F
 from cycles import CYCLES, TUNE_CYCLES, EVAL_CYCLES, natl_env
 from macro_features import build_macro
-from race_level import MINOR_POLL_MAX, softmax, race_win_probs
+from race_level import MINOR_POLL_MAX, Ensemble, softmax, race_win_probs
 
 N_CONFIGS = 60
+N_ENSEMBLE = 3       # the served model averages the top 3 stage-2 settings (audit item 6, 2026-10-27)
 TOP_K = 8
 TUNE_SEEDS = (42, 7, 123)
 TEMP_GRID = np.round(np.exp(np.linspace(np.log(0.1), np.log(3.0), 40)), 4)
@@ -58,7 +59,11 @@ GRID = dict(max_depth=[1, 2, 3], learning_rate=[0.02, 0.05, 0.1],
 
 
 # ---- training rows: identical construction to model.ipynb cells 4-12 ----------------------
-def training_table():
+def training_polls(keep_unwon=False):
+    """The training poll rows (model.ipynb cells 4-12), before the candidate table is built.
+    keep_unwon=True keeps the races whose winner was never polled (audit item 13: they are graded,
+    scored as every polled candidate losing, though a softmax over the polled field cannot be
+    TRAINED on them)."""
     d = pd.read_csv(os.path.join(ROOT, "polls_long_with_results.csv"), low_memory=False)
     gen = d[d["stage"] == "general"]
     q = gen.groupby(["race_id", "question_id"])["has_result"].agg(["sum", "size"])
@@ -67,11 +72,18 @@ def training_table():
             & (d["stage"] == "general"))
     d = d[~drop]
     d = d[d["has_result"] == 1].copy()
-    d = d[d.groupby("race_id")["won"].transform("max") == 1].copy()
+    if not keep_unwon:
+        d = d[d.groupby("race_id")["won"].transform("max") == 1].copy()
     d = F.prepare_polls(d)
     d = d[d["year"].isin(CYCLES)].copy()
     d["race_id"] = (d["year"].astype(str) + "_" + d["state"] + "_" + d["office"]
                     + d["district"].radd("-").where(d["district"] != "", ""))
+    return d
+
+
+def training_table(d=None):
+    """Candidate table for training; pass `d` (training_polls(), possibly truncated) to reuse it."""
+    d = training_polls() if d is None else d
     return F.build_candidate_table(d, build_macro(), natl_env(), F.load_fundamentals(),
                                    house_train_years=CYCLES, fec=F.load_fec(extended=True),
                                    bias_priors=F.compute_bias_priors(d),
@@ -91,6 +103,10 @@ def fit_ranker(tr, feats, params, seed=42):
     m = xgb.XGBRanker(objective="rank:pairwise", random_state=seed, n_jobs=-1, **params)
     m.fit(tr[feats], tr["won"].astype(int), group=grp)
     return m
+
+
+def fit_ensemble(tr, feats, params_list, seed=42):
+    return Ensemble([fit_ranker(tr, feats, p, seed) for p in params_list])
 
 
 def fit_temp(df, score_col="_score"):
@@ -202,24 +218,54 @@ def main():
         # copies of every candidate
         return pd.concat([f.assign(race_id=lambda t, s=s: t["race_id"] + f"#{s}") for s, f in frames])
 
-    tune_pred = seeded([(s, loco_tune_scores(c, FEATS, PARAMS, s)) for s in TUNE_SEEDS])
+    # the served model: the average of the top N_ENSEMBLE stage-2 settings (audit item 6)
+    ENS = [p for _, p in stage2[:N_ENSEMBLE]]
+    print(f"ensemble of {len(ENS)} settings: {ENS}", flush=True)
+
+    def loco_ens(pool, cycles, seed):
+        out = []
+        for ty in cycles:
+            tr, te = pool[pool["year"] != ty], c[c["year"] == ty].copy()
+            if len(te):
+                te["_score"] = fit_ensemble(tr, FEATS, ENS, seed).predict(te[FEATS])
+                out.append(te)
+        return pd.concat(out)
+
+    tune = c[c["year"].isin(TUNE_CYCLES)]
+    tune_pred = seeded([(s, loco_ens(tune, TUNE_CYCLES, s)) for s in TUNE_SEEDS])
     TUNE_TEMP, tune_ll = fit_temp(tune_pred)
     n_cand = c.groupby("race_id")["race_id"].transform("size")
     FULL = sorted(int(y) for y in c.loc[n_cand > 2, "year"].unique())
     print(f"tune-cycle temperature {TUNE_TEMP} (log loss {tune_ll:.4f}); full-field cycles {FULL}")
 
+    # races whose winner no pollster covered (audit item 13): graded, all polled candidates lost
+    with contextlib.redirect_stdout(io.StringIO()):
+        dk = training_polls(keep_unwon=True)
+        un_ids = set(dk.loc[dk.groupby("race_id")["won"].transform("max") == 0, "race_id"])
+        # built on the FULL poll set so poll-bias priors match the training table's, then filtered
+        unwon = training_table(dk) if un_ids else c.iloc[0:0]
+        unwon = unwon[unwon["race_id"].isin(un_ids)]
+
     # ---- honest eval: expanding-window 2018-24 on the PUBLISHED number ----
     rows, preds = [], []
     for ty in EVAL_CYCLES:
         tr, te = c[c["year"] < ty], c[c["year"] == ty].copy()
-        te["_score"] = fit_ranker(tr, FEATS, PARAMS).predict(te[FEATS])
+        ens = fit_ensemble(tr, FEATS, ENS)
+        te["_score"] = ens.predict(te[FEATS])
         prior = [p for p in preds if p["year"].iloc[0] in FULL]
         T_ty, d_ty = fit_calibration(pd.concat(prior))[:2] if prior else (TUNE_TEMP, 0.0)
         te["p_race"] = race_win_probs(te, "_score", T_ty, d_ty)
-        rows.append(dict(cycle=ty, temp=T_ty, minor_offset=d_ty, **metrics(te, "p_race")))
+        ue = unwon[unwon["year"] == ty].copy()
+        if len(ue):
+            ue["_score"] = ens.predict(ue[FEATS])
+            ue["p_race"] = race_win_probs(ue, "_score", T_ty, d_ty)
+        both = pd.concat([te, ue]) if len(ue) else te
+        rows.append(dict(cycle=ty, temp=T_ty, minor_offset=d_ty, unwon_races=int(ue["race_id"].nunique()) if len(ue) else 0,
+                         **metrics(te, "p_race"),
+                         **{f"{k}_all": v for k, v in metrics(both, "p_race").items() if k in ("Brier", "LogLoss")}))
         preds.append(te)
     ev = pd.DataFrame(rows).set_index("cycle")
-    print("\n=== held-out 2018-24, expanding window (sanity check) ===")
+    print("\n=== held-out 2018-24, expanding window (sanity check; *_all adds the races whose winner was never polled) ===")
     print(ev.round(4).to_string())
     P = pd.concat(preds)
     P["bin"] = pd.cut(P["p_race"], [0, .02, .1, .3, .5, .7, .9, 1.0])
@@ -231,21 +277,19 @@ def main():
           f"won {int(low['won'].sum())}")
 
     # ---- production: all cycles; temperature from LOCO predictions of the full-field cycles ----
-    loco = []
-    for s in TUNE_SEEDS:
-        for ty in FULL:
-            tr, te = c[c["year"] != ty], c[c["year"] == ty].copy()
-            te["_score"] = fit_ranker(tr, FEATS, PARAMS, s).predict(te[FEATS])
-            loco.append((s, te))
-    TEMP, OFFSET, full_ll = fit_calibration(seeded(loco))
+    TEMP, OFFSET, full_ll = fit_calibration(seeded([(s, loco_ens(c, FULL, s)) for s in TUNE_SEEDS]))
     print(f"\nproduction softmax temperature = {TEMP}, minor offset = {OFFSET} "
           f"(LOCO log loss on {FULL}: {full_ll:.4f})")
-    m = fit_ranker(c, FEATS, PARAMS)
-    m.save_model(os.path.join(ROOT, "data", "race_win_model_xgb.json"))
-    means = ev[["Brier", "LogLoss", "AUC", "race_acc"]].mean().round(4)
+    ens = fit_ensemble(c, FEATS, ENS)
+    files = []
+    for i, m in enumerate(ens.models):
+        fn = "race_win_model_xgb.json" if i == 0 else f"race_win_model_xgb_{i}.json"
+        m.save_model(os.path.join(ROOT, "data", fn))
+        files.append(fn)
+    means = ev[["Brier", "LogLoss", "AUC", "race_acc", "Brier_all", "LogLoss_all"]].mean().round(4)
     with open(os.path.join(ROOT, "data", "race_win_model_features.json"), "w") as f:
         json.dump(dict(features=FEATS, model_type="xgbranker", objective="rank:pairwise",
-                       xgb_params=PARAMS, softmax_temp=TEMP, minor_offset=OFFSET,
+                       ensemble_files=files, xgb_params=ENS, softmax_temp=TEMP, minor_offset=OFFSET,
                        minor_poll_max=MINOR_POLL_MAX,
                        temp_fit=dict(cycles=FULL, scheme="temperature + minor offset fitted on LOCO "
                                      "predictions of the full-field cycles",
@@ -255,10 +299,10 @@ def main():
                                  stage2=[[round(s[0][0], 4), s[1]] for s in stage2]),
                        eval_expanding_window=dict(mean=means.to_dict(),
                                                   per_cycle=ev.round(4).reset_index().to_dict("records")),
-                       note="race-level win model: within-race softmax of ranker scores is the "
-                            "one probability. Served by src/predict.py since 2026-10-27."),
+                       note="race-level win model: within-race softmax of the averaged ranker scores "
+                            "(top-3 settings) is the one probability. Served by src/predict.py."),
                   f, indent=1)
-    print(f"\nsaved data/race_win_model_xgb.json + _features.json  ({time.time() - t0:.0f}s total)")
+    print(f"\nsaved {files} + race_win_model_features.json  ({time.time() - t0:.0f}s total)")
 
 
 if __name__ == "__main__":

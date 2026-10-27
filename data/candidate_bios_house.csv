@@ -128,7 +128,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 9.0,DEM,U.S. Navy,veteran,2026,House,AZ,navy u,0,0,0
 1.0,DEM,Melat Kiros,graduate student and former attorney,2026,House,CO,kiros m,0,0,0
 1.0,DEM,Diana DeGette,incumbent U.S. representative,2026,House,CO,degette d,4,1,0
-1.0,DEM,Wanda James,member of the University of Colorado Board of Regents from the 1st district (2023–present),2026,House,CO,james w,0,1,0
+1.0,DEM,Wanda James,member of the University of Colorado Board of Regents from the 1st district (2023–present),2026,House,CO,james w,3,1,0
 1.0,DEM,Carter Hanson,substitute teacher,2026,House,CO,hanson c,0,0,0
 1.0,DEM,Santiago Palomino,teacher,2026,House,CO,palomino s,0,0,0
 1.0,DEM,Tiffany Rodgers,medical office manager,2026,House,CO,rodgers t,0,0,0
@@ -3900,7 +3900,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 7.0,DEM,Joan Fitz-Gerald,State Senate Minority Leader,2004,House,CO,fitzgerald j,2,0,0
 7.0,DEM,Michael Garcia,state representative,2004,House,CO,garcia m,2,1,0
 7.0,DEM,Ed Perlmutter,former state senator,2004,House,CO,perlmutter e,2,0,0
-7.0,DEM,Jared Polis,Colorado Board of Education President,2004,House,CO,polis j,0,0,0
+7.0,DEM,Jared Polis,Colorado Board of Education President,2004,House,CO,polis j,3,0,0
 1.0,REP,Gil Gutknecht,incumbent U.S. Representative,2004,House,MN,gutknecht g,4,1,0
 1.0,REP,Mankato,Planning Commission,2004,House,MN,mankato,0,0,0
 1.0,REP,Rochester,"City Council member, former chair of the Olmsted County DFL, retired teacher and football coach at Rochester Lourdes High School (Withdrew June 16, due to health issues)",2004,House,MN,rochester,1,0,0
@@ -4243,7 +4243,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 5.0,DEM,Green Beret,and nominee for this seat in 2004,2006,House,VA,beret g,0,0,1
 6.0,REP,Bob Goodlatte,incumbent U.S. Representative,2006,House,VA,goodlatte b,4,1,0
 6.0,DEM,Andre Peery,ex-quality assurance specialist (Independent),2006,House,VA,peery a,0,0,0
-6.0,DEM,Barbara Pryor,ex-magistrate (Independent),2006,House,VA,pryor b,0,0,0
+6.0,DEM,Barbara Pryor,ex-magistrate (Independent),2006,House,VA,pryor b,0.5,0,0
 7.0,REP,Eric Cantor,incumbent U.S. Representative,2006,House,VA,cantor e,4,1,0
 7.0,DEM,Jim Nachman,attorney,2006,House,VA,nachman j,0,0,0
 7.0,IND,2004,withdrew October 2008 and endorsed Nachman,2006,House,VA,,0,0,0
@@ -4312,7 +4312,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 8.0,REP,Tim Bee,president of the Arizona Senate,2008,House,AZ,bee t,2,0,0
 1.0,DEM,Diana DeGette,incumbent U.S. Representative,2008,House,CO,degette d,4,1,0
 1.0,REP,state representative,in 2000 and for this seat in 2002 & 2004,2008,House,CO,representative s,0,0,0
-2.0,DEM,Jared Polis,Colorado Board of Education President,2008,House,CO,polis j,0,0,0
+2.0,DEM,Jared Polis,Colorado Board of Education President,2008,House,CO,polis j,3,0,0
 2.0,DEM,Alice Madden,Majority Leader of the state house,2008,House,CO,madden a,2,0,0
 2.0,DEM,Ron Tupa,state senator,2008,House,CO,tupa r,2,0,0
 2.0,DEM,Mark Udall,incumbent U.S. Representative,2008,House,CO,udall m,4,1,0
@@ -6953,7 +6953,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 8.0,DEM,2004,and 2008,2014,House,MI,,0,0,0
 8.0,DEM,Virgil Bernero,Mayor of Lansing and nominee for Governor of Michigan in 2010,2014,House,MI,bernero v,1,0,1
 8.0,DEM,Barb Byrum,Ingham County Clerk and former state representative,2014,House,MI,byrum b,2,1,0
-8.0,DEM,Dianne Byrum,"member of the Michigan State University board of trustees , former state representative, former state senator and nominee for the seat in 2000",2014,House,MI,byrum d,2,1,1
+8.0,DEM,Dianne Byrum,"member of the Michigan State University board of trustees , former state representative, former state senator and nominee for the seat in 2000",2014,House,MI,byrum d,3,1,1
 8.0,DEM,Mark Meadows,former state representative and former mayor of East Lansing,2014,House,MI,meadows m,2,1,0
 8.0,DEM,Sam Singh,state representative and former mayor of East Lansing,2014,House,MI,singh s,2,1,0
 8.0,DEM,Peter Spadafore,President of the Lansing Board of Education,2014,House,MI,spadafore p,0,0,0
@@ -6963,7 +6963,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 11.0,REP,David Trott,foreclosure attorney,2014,House,MI,trott d,0,0,0
 11.0,DEM,Bobby McKenzie,counter-terrorism specialist,2014,House,MI,mckenzie b,0,0,0
 11.0,DEM,Jocelyn Benson,Dean of Wayne State University Law School and nominee for Michigan Secretary of State in 2010,2014,House,MI,benson j,0,0,1
-12.0,DEM,Deborah Dingell,Member of the Wayne State University Board of Governors,2014,House,MI,dingell d,0,0,0
+12.0,DEM,Deborah Dingell,Member of the Wayne State University Board of Governors,2014,House,MI,dingell d,3,0,0
 12.0,DEM,John Dingell,incumbent U.S. Representative,2014,House,MI,dingell j,4,1,0
 12.0,DEM,Lynn N. Rivers,former U.S. Representative,2014,House,MI,rivers l,4,1,0
 12.0,DEM,Rebekah Warren,state senator,2014,House,MI,warren r,2,0,0
@@ -7865,7 +7865,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 6.0,DEM,Edward Casso,former state representative,2016,House,CO,casso e,2,1,0
 6.0,DEM,Rhonda Fields,state representative,2016,House,CO,fields r,2,1,0
 6.0,DEM,Centennial,city councilor,2016,House,CO,centennial,1,0,0
-6.0,DEM,Karen Middleton,former state representative and former member of the Colorado State Board of Education,2016,House,CO,middleton k,2,1,0
+6.0,DEM,Karen Middleton,former state representative and former member of the Colorado State Board of Education,2016,House,CO,middleton k,3,1,0
 6.0,DEM,Andrew Romanoff,"former Speaker of the Colorado House of Representatives , candidate for U.S. Senate in 2010 and nominee for the seat in 2014",2016,House,CO,romanoff a,2,1,1
 7.0,DEM,Ed Perlmutter,incumbent U.S. representative,2016,House,CO,perlmutter e,4,1,0
 1.0,DEM,John B. Larson,incumbent U.S. Representative,2016,House,CT,larson j,4,1,0
@@ -11115,7 +11115,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 2.0,DEM,Amy Kennedy,mental health advocate and wife of former U.S. Representative Patrick J. Kennedy,2020,House,NJ,kennedy a,0,1,0
 2.0,DEM,FBI,agent and Republican candidate for New Jersey's 2nd congressional district in 2018,2020,House,NJ,fbi,0,0,1
 2.0,DEM,Atlantic County,freeholder,2020,House,NJ,county a,1,0,0
-2.0,DEM,New Jersey Superior Court,judge,2020,House,NJ,court n,1,0,0
+2.0,DEM,New Jersey Superior Court,judge,2020,House,NJ,court n,0.5,0,0
 2.0,DEM,Cumberland County,freeholder,2020,House,NJ,county c,1,0,0
 2.0,DEM,Adam Taliaferro,state assemblyman,2020,House,NJ,taliaferro a,2,0,0
 3.0,DEM,Andy Kim,incumbent U.S. representative,2020,House,NJ,kim a,4,1,0
@@ -13172,7 +13172,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 11.0,DEM,Gerry Connolly,incumbent U.S. representative,2022,House,VA,connolly g,4,1,0
 11.0,DEM,Ally Dalsimer,"DoD Natural Resources Program manager (2015–2019), Obama Climate Task Force",2022,House,VA,dalsimer a,0,0,0
 11.0,DEM,Dereje Gerawork,"community activist, talk show host",2022,House,VA,gerawork d,0,0,0
-11.0,REP,Jim Myles,retired federal judge,2022,House,VA,myles j,1,0,0
+11.0,REP,Jim Myles,retired federal judge,2022,House,VA,myles j,0.75,0,0
 11.0,REP,VA-11,in 2020,2022,House,VA,va,0,0,0
 11.0,REP,Joe Babb,former U.S. diplomat,2022,House,VA,babb j,0,0,0
 11.0,REP,Matthew Chappell,U.S. Army veteran,2022,House,VA,chappell m,0,0,0
@@ -13299,7 +13299,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 4.0,REP,Arapahoe County,District Attorney and nominee for Attorney General in 2018  (ran for district attorney),2024,House,CO,county a,1,0,1
 4.0,REP,Greg Brophy,former state senator and former chief of staff to incumbent Ken Buck,2024,House,CO,brophy g,2,0,0
 4.0,REP,Ken Buck,former U.S. representative,2024,House,CO,buck k,4,1,0
-4.0,REP,Heidi Ganahl,former at-large member of the University of Colorado Board of Regents and nominee for governor in 2022,2024,House,CO,ganahl h,0,0,1
+4.0,REP,Heidi Ganahl,former at-large member of the University of Colorado Board of Regents and nominee for governor in 2022,2024,House,CO,ganahl h,3,0,1
 4.0,REP,Colorado Christian University,'s Centennial Institute,2024,House,CO,university c,0,0,0
 4.0,REP,Barbara Kirkmeyer,"state senator for the 23rd district , candidate for this district in 2014 , and nominee for the 8th district in 2022 ( ran for re-election )",2024,House,CO,kirkmeyer b,2,0,1
 4.0,REP,Douglas County,commissioner,2024,House,CO,county d,0,0,0
@@ -19295,7 +19295,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 6.0,REP,Shelley Hendrix,autism awareness advocate,2014,House,LA,hendrix s,0,0,0
 6.0,REP,Jeff Landry,former U.S. Representative ( running for Attorney General of Louisiana in 2015 ),2014,House,LA,landry j,4,1,0
 6.0,REP,Erich Ponti,state representative,2014,House,LA,ponti e,2,1,0
-6.0,REP,Chas Roemer,president of the Louisiana Board of Elementary and Secondary Education,2014,House,LA,roemer c,0,0,0
+6.0,REP,Chas Roemer,president of the Louisiana Board of Elementary and Secondary Education,2014,House,LA,roemer c,3,0,0
 6.0,DEM,Edwin Edwards,former Governor of Louisiana and former U.S. Representative,2014,House,LA,edwards e,4,1,0
 6.0,DEM,Richard Dean Lieberman,real estate broker,2014,House,LA,lieberman r,0,0,0
 6.0,DEM,Quentin Anderson,resource development campaign manager for the Capital Area United Way,2014,House,LA,anderson q,0,0,0
@@ -19337,7 +19337,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 3.0,DEM,Brian Wonnacott,software engineer,2014,House,UT,wonnacott b,0,0,0
 4.0,DEM,Doug Owens,attorney and son of former representative Wayne Owens,2014,House,UT,owens d,0,1,0
 4.0,REP,Mia Love,former mayor of Saratoga Springs and nominee for this seat in 2012,2014,House,UT,love m,1,0,1
-4.0,REP,Jennifer Johnson,investment fund manager and Utah State Board of Education member,2014,House,UT,johnson j,0,0,0
+4.0,REP,Jennifer Johnson,investment fund manager and Utah State Board of Education member,2014,House,UT,johnson j,3,0,0
 1.0,DEM,Donna McAleer,,2014,House,UT,mcaleer d,0,0,0
 1.0,OTH,Craig Bowden,,2014,House,UT,bowden c,0,0,0
 1.0,OTH,Dwayne A. Vance,,2014,House,UT,vance d,0,0,0

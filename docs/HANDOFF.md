@@ -4,6 +4,68 @@ For the next agent. Read AGENTS.md first (architecture + rules), CONCERNS.md sec
 (risk register + roadmap). This file: what's mid-flight RIGHT NOW, what's most likely to
 break, and what to do next, in order.
 
+## 2026-10-27 (evening) - every remaining audit item before the election (user: "we are going to do everything before the election")
+
+polling-agg audit items 3, 4, 6, 8, 9, 10, 11, 12, 13, 14, 15, D6 and the office-level rule calls.
+Method changes judged on correctness (user 2026-10-26); held-out numbers below are sanity checks.
+
+**Features (`src/features.py`; all three general models retrained, 73 poll-model / 32 no-polls features):**
+- Economy (item 11, M7): the 144 unsigned per-cycle macro constants are out - a race-level model
+  cannot use a value identical for every candidate in a race. `PRES_ECON_FEATS` (signed +1 president's
+  party / -1 other major party / 0 others): approval - 50, -12-month unemployment change,
+  -(inflation - 2), consumer sentiment - 82. 2026: approval 36.8, sentiment 48.1 (below every training
+  cycle; trees treat it like the 2022 low).
+- Last-60-days poll features (item 12, D3): `poll_avg_60`, `poll_lead_60`, `poll_std_60`, `n_polls_60`,
+  `race_total_polls_60`; the full-cycle ones stay.
+- `fund_pac_pct` -> `fund_pac_rel` (item 15, D7): minus the party's median that cycle (`load_fec`
+  `__pac_median__`, every FEC candidate). Democrats' raw PAC share fell from above Republicans' (2018-24)
+  to far below (2026).
+- `dist_pres_lean_cand` is NaN for Senate / Governor: copying the state lean there let House-learned
+  weights drive statewide races (ME-Sen's +8.4 was its top driver).
+- Feature lists from `features.general_features()` (the notebooks' saved lists are stale now).
+
+**Models:**
+- Averaged top-3 settings everywhere (item 6, M5): `race_level.Ensemble`, `ensemble_files` in each
+  artifact (`*_xgb.json`, `*_xgb_1.json`, `*_xgb_2.json`; no-polls `fundamentals_model_general[_N].json`).
+- Win: held out 2018-24 Brier .059, race-acc .884; candidates under 10% 7.0 expected wins, 0 won (all in
+  2018, which has no earlier full-field cycle to fit the offset on). T .9655, offset -8.
+- Margin: held out MAE 4.91, race-acc .886; margins cancel, one winner, every held-out race.
+- No-polls (item 14): now race-level (`models/fundamentals/race_fundamentals_model.py`), trained on
+  polled AND 4,795 unpolled archive races, built the way `predict_unpolled.py` builds 2026 rows. Graded
+  on UNPOLLED held-out races: race-acc .997, Brier .003; 0-2% band 1,068 candidates won 0, 98%+ band
+  1,173 won all. T .811, minor-party offset -1.75. `predict_unpolled.py` serves it.
+- Never-polled winners (item 13): graded by `race_win_model.py`; none in 2018-24 after the dead-matchup
+  filter (NY-18 2022, CO-3 2024 were matchups that never happened).
+
+**New outputs:**
+- Seat counts (item 4): `src/simulate_seats.py` -> `outputs/seat_sim_2026.json` (copied as
+  `model_seat_sim_2026.json`), rho .14 (95% .08-.22) from `analysis/national_error_corr.py`. 2026:
+  Senate D median 52 (80% 49-55), D control 75%; House D 232 (220-245), 95%; governors D 27 (24-30).
+- Stress test at +/-6 too (`win_prob_R6`/`_D6`); `bias_fragile` keeps its +/-3 meaning.
+- Louisiana House: chance to win the SEAT, first round + Dec 12 runoff (`src/la_runoff.py`, share SD 4,
+  runoff margin SD 8). LA-6: R 98.6% (Edmonds 92%); markets ~93% R.
+- `natl_env_sources` in the meta (D6): each aggregator behind the generic ballot; gate range-checks each.
+
+**Analysis:** `docs/HORIZON_CALIBRATION.md` (`analysis/race_horizon_eval.py`, item 8): calibrated at 0,
+10, 35 and 60 days out. Statewide close-race check: too few held-out races (31 with polls within 3 pts)
+to show over- or under-confidence.
+
+**Office levels (user calls 2026-10-27):** elected statewide boards = 3 (CO State Board of Education,
+elected NU / CU / MI / NV boards, plus CA BOE and NH Executive Council already 3); appointed-state
+lower-court judges = 0.5; FEDERAL judges = 0.75 (federal appointee rule). 31 Wikipedia source rows and 35
+table rows changed. Item 10: the 26 rows that differ on purpose re-checked; 1,349 junk-name rows
+("Newmarket", "1996", "Constitution Party") from the race-page parser are harmless (keyed by cand_key,
+never attach to a candidate) - parser cleanup left for later.
+
+**Gate:** 32 passed, 1 xfailed (new: seat simulation keeps the odds; generic-ballot sources in range;
+district-lean tests).
+
+**2026 vs the 18:49Z publish:** median 0.6 pts, 23 races over 10, 8 favourite flips: AK-Sen Peltola 64%
+(market 73), TX-Sen Talarico 64% (63), KS-Sen Hamilton 51% (38), CO-5 Killin 51% (26), CO-8 Evans (D
+85), IA-2, WA-3 MGP 50% (90), LA-6 Edmonds (runoff). ME-Sen 87 -> 70 (58), GA-Gov 82 -> 70 (47), OH-Gov
+56 -> 74 (70), IA-Sen 25 -> 48 (43), NE-Sen Osborn 19 -> 47 (28; polls tied). Sen/Gov at 75% or less:
+11 races.
+
 ## 2026-10-27 (later) - district presidential lean added next to the state lean; all three general models retrained
 
 User 2026-10-27: "keep a column for state presidential lean and district presidential lean".

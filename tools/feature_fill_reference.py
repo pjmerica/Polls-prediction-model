@@ -59,9 +59,10 @@ def main():
         feats = json.load(open(os.path.join(ROOT, "data", fn)))["features"]
         out[name] = {f: round(float(recent[f].notna().mean()), 4) if f in recent else None
                      for f in feats}
-    # the no-polls model trains on its own table (polled races, poll features dropped)
-    from fundamentals_model import general_table
-    fund = general_table()
+    # the no-polls model trains on its own table: polled AND unpolled races (race-level since
+    # 2026-10-27, models/fundamentals/race_fundamentals_model.py), built the way serving builds them
+    import race_fundamentals_model as RFM
+    fund = RFM.training_table()
     fund = fund[fund["year"].isin(EVAL_CYCLES)]
     feats = json.load(open(os.path.join(ROOT, "data", "fundamentals_model_general_features.json")))["features"]
     out["fundamentals"] = {f: round(float(fund[f].notna().mean()), 4) if f in fund else None

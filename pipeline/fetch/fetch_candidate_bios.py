@@ -217,6 +217,12 @@ _STATE_APPOINTEE_RX = re.compile(
 _PARTY_POST_RX = re.compile(r"\b(?:democratic|republican|libertarian|green)\s+party\b|\bparty\b")
 _FED_APPOINTEE_RX = re.compile(
     r"(?:u\.?s\.?|united states) secretary\b|\busda\b|rural development|"
+    # FEDERAL judges are presidential appointees (2026-10-27, with the appointed-judge rule):
+    # "Chief Judge of the United States Court of Appeals" (Wilkins, SC-Gov 2014) read 1
+    r"\bfederal\s+(?:district\s+|appeals\s+|circuit\s+|bankruptcy\s+|magistrate\s+)?judge\b|"
+    r"\b(?:judge|magistrate)\b[^.;]{0,40}?\b(?:united states|u\.s\.)\s+(?:district\s+court|court\s+of\s+appeals|"
+    r"bankruptcy\s+court|court\s+of\s+federal\s+claims|tax\s+court)|"
+    r"(?:united states|u\.s\.)\s+(?:district|circuit|bankruptcy|magistrate)\s+judge|"
     # senior White House titles that do not say "White House" (Bill Curry, CT-Gov 2002)
     r"(?:counselor|assistant|deputy assistant) to the president\b|"
     # White House POSTS (press secretary, chief of staff, office directors) - not junior staff
@@ -318,6 +324,53 @@ _APPT_REGENTS_RX = re.compile(
     r"(?:\s+state)?(?:\s+a&m)?(?:\s+university)?(?:\s+system)?\s+board\s+of\s+regents\b")
 
 
+
+# ELECTED state-level boards = 3 (user call 2026-10-27: "3 for all elected statewide boards"): state
+# boards of education in the states that elect them, and the university boards chosen by popular vote
+# (Nebraska, Colorado and Nevada regents; Michigan's UM regents, MSU trustees and Wayne State
+# governors). California's Board of Equalization and New Hampshire's Executive Council were 3 already.
+_ELECTED_SBOE_STATES = r"(alabama|colorado|kansas|louisiana|michigan|nebraska|new mexico|ohio|texas|utah)"
+ELECTED_BOARD_RX = re.compile(
+    _ELECTED_SBOE_STATES + r"\s+(?:state\s+)?board\s+of\s+(?:elementary\s+and\s+secondary\s+)?education|"
+    r"state\s+board\s+of\s+(?:elementary\s+and\s+secondary\s+)?education\s+of\s+" + _ELECTED_SBOE_STATES + r"|"
+    r"university\s+of\s+(?:nebraska|colorado|michigan)\s+board\s+of\s+regents|"
+    r"board\s+of\s+regents\s+of\s+the\s+university\s+of\s+(?:nebraska|colorado|michigan)|"
+    r"regents?\s+of\s+the\s+university\s+of\s+(?:nebraska|colorado|michigan)|"
+    r"(?:nevada|community\s+college\s+system\s+of\s+nevada|nevada\s+system\s+of\s+higher\s+education)"
+    r"\s+board\s+of\s+regents|"
+    r"michigan\s+state\s+university\s+board\s+of\s+trustees|wayne\s+state\s+university\s+board\s+of\s+governors",
+    re.I)
+
+# APPOINTED lower-court judges = 0.5 (user call 2026-10-27), like other appointed state posts: states
+# whose trial-court judges are appointed (governor, legislature or merit commission), not elected.
+# Probate judges are left out (elected in Connecticut, Maine and Vermont).
+_APPT_JUDGE_STATES = r"(new jersey|delaware|massachusetts|rhode island|hawaii|new hampshire|connecticut|(?<!west )virginia|south carolina)"
+_APPT_JUDGE_ABBR = {"NJ", "DE", "MA", "RI", "HI", "NH", "CT", "VA", "SC"}
+_JUDGE_RX = re.compile(r"\b(?:judge|magistrate|justice of the peace)\b", re.I)
+_APPT_JUDGE_NAMED_RX = re.compile(
+    r"\b(?:judge|magistrate)\b[^.;]{0,60}?\b" + _APPT_JUDGE_STATES + r"\b|"
+    r"\b" + _APPT_JUDGE_STATES + r"\b[^.;]{0,50}?\b(?:court|judicial)\b[^.;]{0,20}?\b(?:judge|magistrate)\b", re.I)
+_ANY_STATE_RX = None   # set lazily from _STATE_LIST
+
+
+def appointed_judge(d, state=None):
+    """True when a judgeship in the text is an APPOINTED lower-court post: it names an appointing
+    state, or names no state while the race is in one. Probate judges and high courts excluded
+    (high courts have their own rule)."""
+    d = str(d)
+    # probate (elected in CT, ME, VT), high courts (own rule) and FEDERAL judges (appointed federal,
+    # 0.75, by the federal-appointee rule) are not this rule's
+    if not _JUDGE_RX.search(d) or re.search(r"probate|supreme|federal|united states|u\.s\.", d, re.I):
+        return False
+    if _APPT_JUDGE_NAMED_RX.search(d):
+        return True
+    global _ANY_STATE_RX
+    if _ANY_STATE_RX is None:
+        _ANY_STATE_RX = re.compile(_STATE_LIST, re.I)
+    return (state is not None and str(state).upper() in _APPT_JUDGE_ABBR
+            and not _ANY_STATE_RX.search(d))
+
+
 def appointed_ag(d, state=None):
     """Rewrite a named-state agriculture commissioner / secretary in an APPOINTING state to a
     department-head phrase (appointed, 0.5) so the elected level-3 pattern cannot match it, and
@@ -344,7 +397,13 @@ def appointed_ag(d, state=None):
                                    "(appointed state post)", d)
     d = _APPT_REGENTS_RX.sub(lambda m: f"{m.group(1) or m.group(2)} board-of-regents "
                                        "(appointed state post)", d)
-    return _APPT_COURT_RX.sub(" commissioner of the judiciary (appointed justice)", d)
+    d = _APPT_COURT_RX.sub(" commissioner of the judiciary (appointed justice)", d)
+    # elected state boards -> a level-3 phrase; appointed-state judges -> an appointed post
+    d = ELECTED_BOARD_RX.sub(" public service commission ", d)
+    if appointed_judge(d, state):
+        d = re.sub(r"\b(?:superior |family |district |municipal |county |circuit |tax )?(?:court )?"
+                   r"(?:judge|magistrate)\b", " judiciary department commissioner (appointed state post) ", d)
+    return d
 
 
 def _federal_appointee(d):

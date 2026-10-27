@@ -1,0 +1,126 @@
+{
+ "rho": 0.14,
+ "rho_ci95": [
+  0.08,
+  0.22
+ ],
+ "n_races": 1953,
+ "cycles": [
+  1998,
+  2000,
+  2002,
+  2004,
+  2006,
+  2008,
+  2010,
+  2012,
+  2014,
+  2016,
+  2018,
+  2020,
+  2022,
+  2024
+ ],
+ "method": "Gaussian copula, one shared national factor; MLE on LOCO race-level win predictions (production settings), D-vs-R races, g integrated per cycle",
+ "per_cycle": [
+  {
+   "year": 1998,
+   "races": 87,
+   "dem_won": 44,
+   "expected": 39.79,
+   "miss": 4.21
+  },
+  {
+   "year": 2000,
+   "races": 71,
+   "dem_won": 39,
+   "expected": 40.6,
+   "miss": -1.6
+  },
+  {
+   "year": 2002,
+   "races": 119,
+   "dem_won": 47,
+   "expected": 45.91,
+   "miss": 1.09
+  },
+  {
+   "year": 2004,
+   "races": 89,
+   "dem_won": 35,
+   "expected": 36.04,
+   "miss": -1.04
+  },
+  {
+   "year": 2006,
+   "races": 166,
+   "dem_won": 91,
+   "expected": 92.36,
+   "miss": -1.36
+  },
+  {
+   "year": 2008,
+   "races": 132,
+   "dem_won": 71,
+   "expected": 58.72,
+   "miss": 12.28
+  },
+  {
+   "year": 2010,
+   "races": 230,
+   "dem_won": 94,
+   "expected": 109.15,
+   "miss": -15.15
+  },
+  {
+   "year": 2012,
+   "races": 135,
+   "dem_won": 74,
+   "expected": 61.06,
+   "miss": 12.94
+  },
+  {
+   "year": 2014,
+   "races": 145,
+   "dem_won": 49,
+   "expected": 58.4,
+   "miss": -9.4
+  },
+  {
+   "year": 2016,
+   "races": 106,
+   "dem_won": 36,
+   "expected": 43.9,
+   "miss": -7.9
+  },
+  {
+   "year": 2018,
+   "races": 225,
+   "dem_won": 99,
+   "expected": 88.87,
+   "miss": 10.13
+  },
+  {
+   "year": 2020,
+   "races": 147,
+   "dem_won": 48,
+   "expected": 68.61,
+   "miss": -20.61
+  },
+  {
+   "year": 2022,
+   "races": 172,
+   "dem_won": 89,
+   "expected": 83.53,
+   "miss": 5.47
+  },
+  {
+   "year": 2024,
+   "races": 129,
+   "dem_won": 64,
+   "expected": 69.55,
+   "miss": -5.55
+  }
+ ],
+ "generated_by": "analysis/national_error_corr.py"
+}

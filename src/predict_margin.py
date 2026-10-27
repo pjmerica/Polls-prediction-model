@@ -24,7 +24,7 @@ import xgboost as xgb
 import features as F
 from cycles import natl_env as natl_env_hist
 from macro_features import build_macro
-from race_level import race_margins
+from race_level import load_ensemble, race_margins
 from predict import DEFAULT_POLLS, load_agg_polls, patch_redistricted_priors
 
 import os as _os, sys as _sys  # noqa: E402  - bootstrap: this file lives in src/,
@@ -46,8 +46,7 @@ def main():
 
     with open(os.path.join(HERE, "data", "race_margin_model_features.json")) as f:
         meta = json.load(f)
-    model = xgb.XGBRegressor()
-    model.load_model(os.path.join(HERE, "data", "race_margin_model_xgb.json"))
+    model = load_ensemble(meta, os.path.join(HERE, "data"), "regressor")   # averaged top settings
 
     def shares_and_margins(table):
         t = table[["race_id"]].copy()

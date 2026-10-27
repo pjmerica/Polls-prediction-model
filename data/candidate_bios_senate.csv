@@ -398,11 +398,11 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,DEM,University of Alaska,Brooks Range research station operations manager,2014,Senate,AK,alaska u,0,0,0
 ,DEM,Joe Miller,"former magistrate judge, Republican nominee for the U.S. Senate in 2010 and candidate for the U.S. Senate in 2014",2014,Senate,AK,miller j,1,0,1
 ,REP,John Jaramillo,air force veteran,2014,Senate,AK,jaramillo j,0,0,0
-,REP,Joe Miller,former U.S. magistrate judge and nominee for the U.S. Senate in 2010,2014,Senate,AK,miller j,1,0,1
+,REP,Joe Miller,former U.S. magistrate judge and nominee for the U.S. Senate in 2010,2014,Senate,AK,miller j,0.75,0,1
 ,REP,Dan Sullivan,former Commissioner of the Alaska Department of Natural Resources and former Alaska Attorney General,2014,Senate,AK,sullivan d,3,0,0
 ,REP,Mead Treadwell,Lieutenant Governor of Alaska,2014,Senate,AK,treadwell m,3,0,0
 ,REP,Kathleen Tonn,anti-abortion activist,2014,Senate,AK,tonn k,0,0,0
-,REP,Timothy Mark Burgess,judge on the United States District Court for the District of Alaska,2014,Senate,AK,burgess t,1,0,0
+,REP,Timothy Mark Burgess,judge on the United States District Court for the District of Alaska,2014,Senate,AK,burgess t,0.75,0,0
 ,REP,Loren Leman,former lieutenant governor,2014,Senate,AK,leman l,3,0,0
 ,REP,Lesil McGuire,state senator,2014,Senate,AK,mcguire l,2,0,0
 ,REP,Sarah Palin,former Governor of Alaska and nominee for Vice President of the United States in 2008,2014,Senate,AK,palin s,3,0,1
@@ -633,9 +633,9 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,DEM,Shane Battier,National Basketball Association player,2014,Senate,MI,battier s,0,0,0
 ,DEM,Jocelyn Benson,Dean of Wayne State University Law School and nominee for Michigan Secretary of State in 2010,2014,Senate,MI,benson j,0,0,1
 ,DEM,Virgil Bernero,Mayor of Lansing and nominee for Governor in 2010,2014,Senate,MI,bernero v,1,0,1
-,DEM,Mark Bernstein,attorney and Regent of the University of Michigan,2014,Senate,MI,bernstein m,0,0,0
+,DEM,Mark Bernstein,attorney and Regent of the University of Michigan,2014,Senate,MI,bernstein m,3,0,0
 ,DEM,James Blanchard,former governor of Michigan,2014,Senate,MI,blanchard j,3,0,0
-,DEM,Debbie Dingell,chairman of the Wayne State University board of governors and wife of U.S. Representative John Dingell ( running for MI-12 ),2014,Senate,MI,dingell d,0,1,0
+,DEM,Debbie Dingell,chairman of the Wayne State University board of governors and wife of U.S. Representative John Dingell ( running for MI-12 ),2014,Senate,MI,dingell d,3,1,0
 ,DEM,Jennifer Granholm,former governor of Michigan,2014,Senate,MI,granholm j,3,0,0
 ,DEM,Dan Kildee,U.S. Representative,2014,Senate,MI,kildee d,4,1,0
 ,DEM,Carl Levin,incumbent U.S. Senator,2014,Senate,MI,levin c,4,0,0
@@ -1168,7 +1168,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,REP,Jerry Eller,former insurance and real estate agent,2016,Senate,CO,eller j,0,0,0
 ,REP,Brighton,School board member and perennial candidate,2016,Senate,CO,brighton,1,0,0
 ,REP,Michael Kinlaw,mortgage broker,2016,Senate,CO,kinlaw m,0,0,0
-,REP,Peggy Littleton,El Paso County commissioner and former Colorado State Board of Education member,2016,Senate,CO,littleton p,1,0,0
+,REP,Peggy Littleton,El Paso County commissioner and former Colorado State Board of Education member,2016,Senate,CO,littleton p,3,0,0
 ,REP,Jerry Natividad,businessman,2016,Senate,CO,natividad j,0,0,0
 ,REP,Tim Neville,state senator,2016,Senate,CO,neville t,2,0,0
 ,REP,Jefferson County,commissioner,2016,Senate,CO,county j,0,0,0
@@ -1596,7 +1596,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,DEM,Kelli Prather,occupational therapist and community organizer,2016,Senate,OH,prather k,0,0,0
 ,DEM,P.G. Sittenfeld,Cincinnati city councilman (2011-2022),2016,Senate,OH,sittenfeld p,1,0,0
 ,DEM,Ted Strickland,"former governor of Ohio (2007-2011) and former U.S. representative of Ohio's 6th congressional district (1993-1995, 1997-2007)",2016,Senate,OH,strickland t,4,1,0
-,DEM,Bob Hagan,"former member of the Ohio State Board of Education (2014-2015), former state senator from the 33rd district (1987-1997, 2007-2014) and former state representative from the 58th district (1997-2006)",2016,Senate,OH,hagan b,2,1,0
+,DEM,Bob Hagan,"former member of the Ohio State Board of Education (2014-2015), former state senator from the 33rd district (1987-1997, 2007-2014) and former state representative from the 58th district (1997-2006)",2016,Senate,OH,hagan b,3,1,0
 ,DEM,Joyce Beatty,U.S. representative of Ohio's 3rd congressional district (2013-present) and former state representative from the 27th district (1999-2008),2016,Senate,OH,beatty j,4,1,0
 ,DEM,John Boccieri,"state representative from the 59th district (2015-2018), former U.S. representative of Ohio's 16th congressional district (2009-2011) and former state senator from the 33rd district (2007-2008)",2016,Senate,OH,boccieri j,4,1,0
 ,DEM,Jennifer Brunner,"judge on the Ohio Tenth District Court of Appeals (2015-2021), former Ohio Secretary of State (2007-2011) and candidate for the U.S. Senate in 2010",2016,Senate,OH,brunner j,3,0,1
@@ -3123,7 +3123,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,DEM,Elissa Slotkin,U.S. representative for Michigan's 7th congressional district (2019–2025),2024,Senate,MI,slotkin e,4,1,0
 ,DEM,Zack Burns,attorney,2024,Senate,MI,burns z,0,0,0
 ,DEM,Leslie Love,former state representative for the 10th district (2014–2020),2024,Senate,MI,love l,2,1,0
-,DEM,Pamela Pugh,president of the Michigan State Board of Education (2015–present) ( ran for U.S. House ),2024,Senate,MI,pugh p,0,1,0
+,DEM,Pamela Pugh,president of the Michigan State Board of Education (2015–present) ( ran for U.S. House ),2024,Senate,MI,pugh p,3,1,0
 ,DEM,Jocelyn Benson,Michigan Secretary of State (2019–present),2024,Senate,MI,benson j,3,1,0
 ,DEM,Pete Buttigieg,"U.S. Secretary of Transportation (2021–2025), former mayor of South Bend, Indiana (2012–2020), and candidate for President of the United States in 2020",2024,Senate,MI,buttigieg p,1,0,1
 ,DEM,Debbie Dingell,U.S. representative for Michigan's 6th congressional district (2015–present)  ( ran for re-election ),2024,Senate,MI,dingell d,4,1,0
@@ -3226,7 +3226,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,IND,New Jersey Cannabis Regulatory Commission,(2021–present),2024,Senate,NJ,commission n,0,1,0
 ,IND,Andy Kim,U.S. representative from New Jersey's 3rd congressional district (2019–2024) and Democratic nominee for this seat,2024,Senate,NJ,kim a,4,1,1
 ,IND,Matthew Platkin,New Jersey attorney general (2022–2026),2024,Senate,NJ,platkin m,3,0,0
-,IND,Esther Salas,judge of the U.S. District Court for New Jersey (2011–present),2024,Senate,NJ,salas e,1,1,0
+,IND,Esther Salas,judge of the U.S. District Court for New Jersey (2011–present),2024,Senate,NJ,salas e,0.75,1,0
 ,IND,Loretta Weinberg,former majority leader of the New Jersey Senate (2012–2022) from the 37th district (2005–2022),2024,Senate,NJ,weinberg l,2,0,0
 ,IND,Tammy Murphy,"First Lady of New Jersey (2018–present), co-owner and chair of NJ/NY Gotham FC , and former candidate for this seat",2024,Senate,NJ,murphy t,0,1,1
 ,DEM,Martin Heinrich,incumbent U.S. senator,2024,Senate,NM,heinrich m,4,0,0
@@ -5344,7 +5344,7 @@ district,party,name,descriptor,year,office,state,cand_key,office_level,bio_in_of
 ,DEM,Chris Rothfuss,university professor,2008,Senate,WY,rothfuss c,0,0,0
 ,DEM,Al Hamburg,,2008,Senate,WY,hamburg a,0,0,0
 ,REP,Lisa Murkowski,incumbent U.S. Senator since 2002,2010,Senate,AK,murkowski l,4,0,0
-,REP,Joe Miller,former U.S. magistrate judge,2010,Senate,AK,miller j,1,0,0
+,REP,Joe Miller,former U.S. magistrate judge,2010,Senate,AK,miller j,0.75,0,0
 ,DEM,Scott McAdams,,2010,Senate,AK,mcadams s,0,0,0
 ,DEM,Jacob Seth Kern,,2010,Senate,AK,kern j,0,0,0
 ,OTH,David Haase,,2010,Senate,AK,haase d,0,0,0

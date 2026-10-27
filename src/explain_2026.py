@@ -37,7 +37,7 @@ import xgboost as xgb
 import features as F
 from cycles import natl_env as natl_env_hist
 from macro_features import build_macro
-from race_level import minor_flag, race_margins, race_win_probs
+from race_level import load_ensemble, minor_flag, race_margins, race_win_probs
 from predict import DEFAULT_POLLS, load_agg_polls, patch_redistricted_priors
 
 import os as _os, sys as _sys  # noqa: E402  - bootstrap: this file lives in src/,
@@ -113,6 +113,16 @@ FRIENDLY = {
     "is_personal_inc": "Candidate is the sitting officeholder",
     "open_seat": "Open seat",
     "pres_lean_cand": "State presidential lean (pts)",
+    "fund_pac_rel": "PAC share vs party norm",
+    "poll_avg_60": "Polling average, last 60 days",
+    "poll_lead_60": "Polling lead, last 60 days (pts)",
+    "poll_std_60": "Poll-to-poll variability, last 60 days",
+    "n_polls_60": "# of polls, last 60 days",
+    "race_total_polls_60": "Polls in the race, last 60 days",
+    "pres_approval_cand": "Presidential approval (for the president's party)",
+    "pres_unemp_cand": "Unemployment change (for the president's party)",
+    "pres_inflation_cand": "Inflation (for the president's party)",
+    "pres_sentiment_cand": "Consumer sentiment (for the president's party)",
     "dist_pres_lean_cand": "District presidential lean (pts)",
     "poll_avg_rw": "Recency-weighted polling avg (%)",
     "poll_lead_rw": "Recency-weighted polling lead (pts)",
@@ -217,9 +227,23 @@ DESC = {
     "open_seat": "1 if no candidate in the race is the sitting officeholder.",
     "pres_lean_cand": "How much more the state voted for this candidate's party than the "
                       "nation did in the last presidential election (state-level, even for House).",
+    "fund_pac_rel": "Share of the candidate's money from PACs, minus the median for their party "
+                    "that cycle (Democrats largely stopped taking corporate PAC money after 2018).",
+    "poll_avg_60": "The candidate's polling average over the last 60 days before the election only.",
+    "poll_lead_60": "The candidate's lead or deficit over the last 60 days of polls.",
+    "poll_std_60": "How much the candidate's polls moved over the last 60 days.",
+    "n_polls_60": "How many polls of the candidate ended in the last 60 days.",
+    "race_total_polls_60": "How many polls of this race ended in the last 60 days.",
+    "pres_approval_cand": "The president's approval minus 50, counted for the president's party and "
+                          "against the other major party.",
+    "pres_unemp_cand": "The last year's change in unemployment, counted against the president's party "
+                       "when it rises.",
+    "pres_inflation_cand": "Inflation above 2%, counted against the president's party.",
+    "pres_sentiment_cand": "Consumer sentiment against its long-run average, counted for the "
+                           "president's party when high.",
     "dist_pres_lean_cand": "How much more the DISTRICT voted for this candidate's party than the nation "
                            "did in the last presidential election, on this year's district lines "
-                           "(the state's lean for Senate and Governor races).",
+                           "(blank for Senate and Governor races, which use the state lean).",
     "poll_avg_rw": "Polling average where a poll's weight halves every 14 days, so recent "
                    "polls count most.",
     "poll_lead_rw": "Recency-weighted polling lead over the best opponent.",
@@ -292,13 +316,12 @@ def main():
     args = ap.parse_args()
 
     metas, models = {}, {}
-    for name, mf, cls in [("win", "race_win_model", xgb.XGBRanker),
-                          ("margin", "race_margin_model", xgb.XGBRegressor)]:
+    for name, mf, kind in [("win", "race_win_model", "ranker"),
+                           ("margin", "race_margin_model", "regressor")]:
         with open(os.path.join(HERE, "data", f"{mf}_features.json")) as f:
             metas[name] = json.load(f)
-        m = cls()
-        m.load_model(os.path.join(HERE, "data", f"{mf}_xgb.json"))
-        models[name] = m
+        # the averaged top settings (audit item 6): SHAP of the mean = mean of the members' SHAP
+        models[name] = load_ensemble(metas[name], os.path.join(HERE, "data"), kind)
 
     # same inputs as predict.py
     d = load_agg_polls(args.polls, args.cycle)
@@ -345,12 +368,15 @@ def main():
         _p = pd.read_csv(_pp)[["race_id", "candidate", "win_prob"]]
         _j = cand[["race_id", "candidate", "win_prob"]].merge(_p, on=["race_id", "candidate"],
                                                              suffixes=("", "_pub"))
+        # Louisiana House publishes the seat chance incl. the runoff (src/la_runoff.py); the
+        # explanation describes the first-round ranking, so those races are left out of the check
+        _j = _j[~_j["race_id"].str.contains("_LA_House")]
         if len(_j):
             _gap = float((_j["win_prob"] - _j["win_prob_pub"]).abs().max())
             print(f"explainer vs published win_prob: max gap {_gap:.4f} over {len(_j)} candidates")
 
-    sv_w = shap.TreeExplainer(models["win"])(Xw)       # ranker score space
-    sv_m = shap.TreeExplainer(models["margin"])(Xm)    # vote-share points
+    sv_w_vals, _ = models["win"].shap(Xw)       # ranker score space
+    sv_m_vals, _ = models["margin"].shap(Xm)    # vote-share points
 
     out = {}
     for rid, g in cand.groupby("race_id"):
@@ -366,11 +392,11 @@ def main():
             jm = cand.index.get_loc(others["share"].idxmax())
             d_off = cand["_off"].iloc[i] - cand["_off"].iloc[jw]
             win = top_shap(metas["win"]["features"], Xw.iloc[i].values,
-                           (sv_w.values[i] - sv_w.values[jw]) / temp, sigmoid(d_off),
+                           (sv_w_vals[i] - sv_w_vals[jw]) / temp, sigmoid(d_off),
                            sigmoid((cand["score"].iloc[i] - cand["score"].iloc[jw]) / temp + d_off),
                            vs=cand["candidate"].iloc[jw], vs_values=Xw.iloc[jw].values)
             margin = top_shap(metas["margin"]["features"], Xm.iloc[i].values,
-                              sv_m.values[i] - sv_m.values[jm], 0.0, row["pred_margin"],
+                              sv_m_vals[i] - sv_m_vals[jm], 0.0, row["pred_margin"],
                               vs=cand["candidate"].iloc[jm], vs_values=Xm.iloc[jm].values)
         # display_party = real affiliation (e.g. Osborn shows IND though modeled in the
         # DEM two-party slot); fall back to model party if the column isn't present

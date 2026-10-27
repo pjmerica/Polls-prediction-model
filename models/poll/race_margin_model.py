@@ -41,7 +41,7 @@ import xgboost as xgb
 
 import features as F
 from cycles import TUNE_CYCLES, EVAL_CYCLES
-from race_level import race_margins
+from race_level import Ensemble, race_margins
 from race_win_model import training_table
 
 N_CONFIGS = 60
@@ -109,11 +109,17 @@ def main():
     print(f"PARAMS = {PARAMS}  (tune MAE of derived margin {best:.3f}; runner-up "
           f"{stage2[1][0]:.3f})", flush=True)
 
+    # the served model averages the top 3 settings' shares (audit item 6, 2026-10-27)
+    ENS = [p for _, p in stage2[:3]]
+
+    def fit_ens(tr):
+        return Ensemble([fit_share(tr, FEATS, p) for p in ENS])
+
     # ---- held-out 2018-24, expanding window, on the published (derived) margin ----
     rows, preds = [], []
     for ty in EVAL_CYCLES:
         tr, te = c[c["year"] < ty], c[c["year"] == ty].copy()
-        te["_share"] = fit_share(tr, FEATS, PARAMS).predict(te[FEATS])
+        te["_share"] = fit_ens(tr).predict(te[FEATS])
         te["_margin"] = race_margins(te, "_share")
         lead = te.loc[te.groupby("race_id")["_margin"].idxmax()]
         rows.append(dict(cycle=ty, n_races=te["race_id"].nunique(), MAE_margin=mae(te),
@@ -127,23 +133,28 @@ def main():
     print("mean:", means.to_dict())
 
     # ---- production artifact: all cycles ----
-    m = fit_share(c, FEATS, PARAMS)
-    m.save_model(os.path.join(ROOT, "data", "race_margin_model_xgb.json"))
-    imp = pd.Series(m.feature_importances_, index=FEATS).sort_values(ascending=False)
+    ens = fit_ens(c)
+    files = []
+    for i, m in enumerate(ens.models):
+        fn = "race_margin_model_xgb.json" if i == 0 else f"race_margin_model_xgb_{i}.json"
+        m.save_model(os.path.join(ROOT, "data", fn))
+        files.append(fn)
+    imp = pd.Series(np.mean([m.feature_importances_ for m in ens.models], axis=0),
+                    index=FEATS).sort_values(ascending=False)
     imp.rename("gain_importance").rename_axis("feature").reset_index().to_csv(
         os.path.join(ROOT, "models", "poll", "race_margin_feature_importance.csv"), index=False)
     with open(os.path.join(ROOT, "data", "race_margin_model_features.json"), "w") as f:
         json.dump(dict(features=FEATS, model_type="xgbregressor", target="vote_pct",
                        published="margin = predicted share minus the best rival's predicted share "
                                  "in the same race (race_margins)",
-                       xgb_params=PARAMS,
+                       ensemble_files=files, xgb_params=ENS,
                        trained_on_cycles=sorted(int(y) for y in c["year"].unique()),
                        tune=dict(cycles=TUNE_CYCLES, metric="MAE of the derived margin",
                                  stage2=[[round(s[0], 4), s[1]] for s in stage2]),
                        eval_expanding_window=dict(mean=means.to_dict(),
                                                   per_cycle=ev.round(4).reset_index().to_dict("records"))),
                   f, indent=1)
-    print(f"\nsaved data/race_margin_model_xgb.json + _features.json  ({time.time() - t0:.0f}s total)")
+    print(f"\nsaved {files} + race_margin_model_features.json  ({time.time() - t0:.0f}s total)")
 
 
 if __name__ == "__main__":

@@ -894,6 +894,19 @@ def load_fec(path=None, extended=False):
                           # report an overdraft, which would push a race share below 0 / above 1
                           cash=max(float(getattr(r, "cash_on_hand", np.nan)), 0.0),
                           spend=float(getattr(r, "disbursements", np.nan)))
+    # PAC share relative to the party's median that cycle (2026-10-27, audit D7): Democrats raised
+    # MORE of their money from PACs than Republicans in 2018-24 (3.3% vs 2.4% median, Senate) and
+    # far LESS in 2026 (1.8% vs 7.2%) after many swore off corporate PAC money, so the raw share
+    # had become a party marker that flipped sign. Medians over every FEC candidate of that party
+    # and cycle (House + Senate), not over whichever races a run happens to score.
+    pacs = {}
+    for lst in by_race.values():
+        for _, pty, k in lst:
+            v = out.get(k)
+            if v and pty in ("DEM", "REP") and v.get("receipts", 0) and v["receipts"] > 0 \
+                    and pd.notna(v.get("pac")):
+                pacs.setdefault((k[0], pty), []).append(min(v["pac"] / v["receipts"], 1.0))
+    out["__pac_median__"] = {key: float(np.median(v)) for key, v in pacs.items() if len(v) >= 20}
     if not extended:
         return out
 
@@ -1713,6 +1726,10 @@ def build_candidate_table(d, macro, natl_env_map, funds, house_train_years=None,
             dated = gc.dropna(subset=["end_date"])          # NaT polls can't be "most recent"
             last30 = gc[gc["days_to_elec"] <= 30]
             last7 = gc[gc["days_to_elec"] <= 7]
+            # WINDOW-MATCHED (2026-10-27, audit D3): 1998-2016 polls (538's file) cover only the
+            # last ~60 days, 2018+ and live polls the whole cycle, so poll_avg / n_polls / poll_std
+            # mean different things by era. These use the last 60 days only, in every era.
+            last60 = gc[gc["days_to_elec"] <= 60]
             # majority party over the candidate's rows (2026-10-13; was the FIRST row, so one
             # hypothetical REP row made Neuschwanger, American Constitution, a second CO-Gov 2022
             # Republican). predict.py majority-votes the same way at serve time.
@@ -1797,6 +1814,10 @@ def build_candidate_table(d, macro, natl_env_map, funds, house_train_years=None,
                 # recoverable from the file, so the impossible value is bounded, not guessed.
                 fund_indiv_pct=(min(fe["indiv"] / rec, 1.0) if fe and rec > 0 else np.nan),
                 fund_pac_pct=(min(fe["pac"] / rec, 1.0) if fe and rec > 0 else np.nan),
+                # vs the party's median that cycle (load_fec's __pac_median__, audit D7)
+                fund_pac_rel=((min(fe["pac"] / rec, 1.0)
+                               - fec.get("__pac_median__", {}).get((yr, party), np.nan))
+                              if fe and rec > 0 else np.nan),
                 fund_party_pct=(min(fe["party"] / rec, 1.0) if fe and rec > 0 else np.nan),
                 fund_self_pct=(min(fe["self"] / rec, 1.0) if fe and rec > 0 else np.nan),
                 fund_smalldollar_pct=(fe.get("small", np.nan) if fe else np.nan),
@@ -1844,6 +1865,9 @@ def build_candidate_table(d, macro, natl_env_map, funds, house_train_years=None,
                 n_polls_last7=len(last7),
                 poll_std=gc["pct"].std(),
                 n_polls=len(gc),
+                poll_avg_60=(last60["pct"].mean() if len(last60) else np.nan),
+                poll_std_60=(last60["pct"].std() if len(last60) > 1 else np.nan),
+                n_polls_60=len(last60),
                 n_polls_over50=int((gc["pct"] > 50).sum()),
                 avg_sample=gc["sample_size"].mean(),
                 min_days=gc["days_to_elec"].min(),
@@ -1885,10 +1909,11 @@ def build_candidate_table(d, macro, natl_env_map, funds, house_train_years=None,
                                 if sign != 0 else np.nan),
                 # DISTRICT presidential lean (2026-10-27, user: keep a state AND a district column):
                 # the district's own lean for House races (NaN where no table covers it: 1998-2000,
-                # FL 2016), the state's for Senate / Governor (the state is the district there)
-                dist_pres_lean_cand=(np.nan if sign == 0 else sign * (
-                    funds.get("dist_pres_lean", {}).get((yr, st, di), np.nan) if of == "House"
-                    else pres_lean_asof(funds.get("pres_lean", {}), yr, st))),
+                # FL 2016). NaN for Senate / Governor (later on 2026-10-27): copying the state lean
+                # there let House-learned weights apply to statewide races - ME-Sen's +8.4 state
+                # lean became its biggest driver - while pres_lean_cand already carries it
+                dist_pres_lean_cand=(sign * funds.get("dist_pres_lean", {}).get((yr, st, di), np.nan)
+                                     if sign != 0 and of == "House" else np.nan),
                 # MIDTERM penalty: the president's party in a midterm, and the same scaled by
                 # approval - +1 president's party / -1 the other major party / 0 others, times
                 # (approval_eve - 50). Zero in presidential years.
@@ -1896,6 +1921,14 @@ def build_candidate_table(d, macro, natl_env_map, funds, house_train_years=None,
                 midterm_approval_cand=(is_midterm * (1 if party == pres else
                                                      -1 if party in ("DEM", "REP") else 0)
                                        * (appr - 50) if pd.notna(appr) else np.nan),
+                # THE ECONOMY, SIGNED toward the president's party (2026-10-27, audit M7): +1 the
+                # president's party, -1 the other major party, 0 others. Replaces 144 unsigned
+                # per-cycle constants that are identical for every candidate in a race, so a
+                # race-level model cannot use them at all. Centres: approval 50, inflation 2%,
+                # consumer sentiment 82 (its 1998-2024 election-eve mean); rising unemployment
+                # and inflation count against the president's party.
+                **_pres_econ(macro.get(yr, {}), 1 if party == pres else
+                             -1 if party in ("DEM", "REP") else 0),
                 # how contested/lopsided THIS candidate's own primary was (NaN = no matched
                 # primary-results page, not "ran unopposed" - see load_primary_results)
                 primary_margin=(pr["primary_margin"] if pr else np.nan),
@@ -2011,6 +2044,11 @@ def build_candidate_table(d, macro, natl_env_map, funds, house_train_years=None,
     c["poll_share"] = c["poll_avg"] / c.groupby("race_id")["poll_avg"].transform("sum")
     c["n_cands"] = c.groupby("race_id")["cand_key"].transform("count")
     c["race_total_polls"] = c.groupby("race_id")["n_polls"].transform("sum")
+    if "poll_avg_60" in c.columns:     # window-matched lead and race poll count (audit D3)
+        best = c.groupby("race_id")["poll_avg_60"].transform(lambda s: s.nlargest(2).iloc[-1] if s.notna().sum() > 1 else np.nan)
+        top = c.groupby("race_id")["poll_avg_60"].transform("max")
+        c["poll_lead_60"] = c["poll_avg_60"] - top.where(c["poll_avg_60"] < top, best)
+        c["race_total_polls_60"] = c.groupby("race_id")["n_polls_60"].transform("sum")
     c["frac_polls_over50"] = c["n_polls_over50"] / c["n_polls"]
     c["is_dem"] = (c["party"] == "DEM").astype(int)
     c["is_rep"] = (c["party"] == "REP").astype(int)
@@ -2028,6 +2066,23 @@ def build_candidate_table(d, macro, natl_env_map, funds, house_train_years=None,
     c["undecided_q"] = c["race_id"].map(undecided_per_question(d))
     c["gap_x_recency"] = c["poll_lead"] * (1.0 / (1.0 + c["min_days"].clip(lower=0) / 30.0))
     return c
+
+PRES_ECON_FEATS = ["pres_approval_cand", "pres_unemp_cand", "pres_inflation_cand",
+                   "pres_sentiment_cand"]
+
+
+def _pres_econ(mac, s):
+    """The four economy features for one candidate, signed s toward the president's party."""
+    def v(k):
+        x = mac.get(k, np.nan)
+        return np.nan if x is None else x
+    if s == 0:
+        return {f: 0.0 for f in PRES_ECON_FEATS}      # as midterm_approval_cand: 0 for others
+    return dict(pres_approval_cand=s * (v("approval_eve") - 50),
+                pres_unemp_cand=-s * v("unemployment_last12_delta"),
+                pres_inflation_cand=-s * (v("inflation_eve") - 2.0),
+                pres_sentiment_cand=s * (v("sentiment_eve") - 82.0))
+
 
 def sponsor_class(p):
     """Poll sponsor -> 'D' (Dem-sponsored), 'R' (Rep-sponsored) or 'N' (nonpartisan / other).
@@ -2106,7 +2161,11 @@ def feature_list(macro_feats, fund=False, primary_results=False, candidate_bios=
     candidate_bios=True appends bio_office_level (2026-07-23; pass
     candidate_bios=load_candidate_bios() to the builder) - ablate before trusting."""
     # exclude: per-model ablation drops (2026-10-02) - see NEW_FEATS_1002
-    return (([] if not fund else [f for f in FUND_FEATS_EXT if f not in exclude])
+    # 2026-10-27 (audit D7, M7, D3): fund_pac_pct -> fund_pac_rel (vs the party's median that
+    # cycle); the per-cycle economic constants -> PRES_ECON_FEATS (signed toward the president's
+    # party; macro_feats is no longer used); the last-60-days poll features added
+    fund_feats = [("fund_pac_rel" if f == "fund_pac_pct" else f) for f in FUND_FEATS_EXT]
+    return (([] if not fund else [f for f in fund_feats if f not in exclude])
            + ([] if not primary_results else ["primary_margin", "opp_primary_margin",
                                                "primary_margin_diff"])
            + ([] if not candidate_bios else ["bio_office_level"])) + [
@@ -2139,4 +2198,5 @@ def feature_list(macro_feats, fund=False, primary_results=False, candidate_bios=
         "n_lead_changes", "lead_changed",
         "avg_margin_over_time", "margin_volatility", "min_margin", "margin_trend",
         "is_president_party",
-    ] + SPONSOR_FEATS + [f for f in NEW_FEATS_1002 if f not in exclude] + list(macro_feats)
+        "poll_avg_60", "poll_lead_60", "poll_std_60", "n_polls_60", "race_total_polls_60",
+    ] + SPONSOR_FEATS + [f for f in NEW_FEATS_1002 if f not in exclude] + PRES_ECON_FEATS

@@ -167,6 +167,9 @@ def test_generic_ballot_in_range(metas):
         v = m.get("natl_env")
         assert v is not None, f"{k}: generic ballot missing"
         assert NATL_ENV_RANGE[0] <= v <= NATL_ENV_RANGE[1], f"{k}: generic ballot {v:+.1f}"
+    # each aggregator behind it (predict.py's meta, 2026-10-27): every one in range too
+    for src, v in metas["win"].get("natl_env_sources") or []:
+        assert NATL_ENV_RANGE[0] <= v <= NATL_ENV_RANGE[1], f"generic ballot source {src}: {v:+.1f}"
     vals = {round(m["natl_env"], 6) for m in metas.values()}
     assert len(vals) == 1, f"models used different generic-ballot numbers: {vals}"
 
@@ -186,6 +189,18 @@ def test_feature_fill_matches_training(metas):
             if v == 0 or v < t - FILL_MAX_DROP:
                 bad.append(f"{k}:{feat} train {t:.2f} live {v:.2f}")
     assert not bad, "features empty at serve time: " + "; ".join(bad[:12])
+
+
+def test_seat_simulation_keeps_the_published_odds(win):
+    # the copula keeps each race's odds, so the average seat count must equal the odds' sum
+    # (src/simulate_seats.py; Monte Carlo noise at 20,000 runs is ~0.1 seat)
+    sim = _meta("seat_sim_2026.json")
+    assert sim.get("run_id") == _meta("predictions_2026_meta.json").get("run_id"), "seat sim from another run"
+    for office, s in sim["chambers"].items():
+        assert abs(s["dem_seats"]["mean"] - s["expected_dem_from_odds"]) < 0.6, \
+            f"{office}: simulated {s['dem_seats']['mean']} vs odds {s['expected_dem_from_odds']}"
+        assert s["p_dem_control"] + s["p_rep_control"] + s["p_neither"] == pytest.approx(1, abs=1e-3)
+        assert s["races"] + sum(s["not_up"].values()) == s["total"], f"{office}: seats don't add up"
 
 
 # ---- inputs ---------------------------------------------------------------------------------
