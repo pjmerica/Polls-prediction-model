@@ -55,10 +55,10 @@ current run, and `HANDOFF.md` for the dated history of every retrain.)
 
 A fifth model, `models/fundamentals/fundamentals_model.py`, trains NO-POLLING variants of the
 general and primary models. Since 2026-10-23 the general one scores every race without polls
-(`models/fundamentals/predict_unpolled.py`). It reaches race-acc .818 / Brier .094 (2018-24,
-retrain 2026-10-26) vs .870 / .064 with polls - most general elections are structurally
+(`models/fundamentals/predict_unpolled.py`). It reaches race-acc .825 / Brier .096 (2018-24,
+retrain 2026-10-27) vs .870 / .064 with polls - most general elections are structurally
 determined, with `is_incumbent` alone carrying about 25% of the gain and `bio_office_level`
-the next most (4%). The primary one only reaches .435, BELOW its own
+the next most (3%). The primary one only reaches .435, BELOW its own
 naive "pick the highest office-level candidate" baseline of .451, because within one party
 there is no incumbency edge, no partisan lean and no seat history to lean on. Neither is blended
 into the polled races' numbers — see CONCERNS.md #28.

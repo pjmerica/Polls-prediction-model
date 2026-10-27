@@ -119,11 +119,20 @@ def main():
         for cmd, label in STEPS_FEEDS:
             run(cmd, label)
     check_feed_freshness()
+    # one id for every file this refresh writes; the publish gate checks they all carry it
+    import datetime
+    os.environ["MODEL_RUN_ID"] = datetime.datetime.now().strftime("%Y%m%dT%H%M%S")
     unpolled_ok = True
     for cmd, label, *fatal in STEPS_PREDICT:
         ok = run(cmd, label, fatal=fatal[0] if fatal else True)
         if "unpolled" in label:
             unpolled_ok = ok
+
+    # PUBLISH GATE (2026-10-26, audit item 1): nothing reaches polling-agg unless tests/ passes on
+    # the files just written. A failed no-polls step keeps polling-agg's last good copy, so its
+    # checks are skipped then (MODEL_UNPOLLED_FAILED).
+    os.environ["MODEL_UNPOLLED_FAILED"] = "" if unpolled_ok else "1"
+    run([sys.executable, "-m", "pytest", "tests", "-q", "-rxX"], "publish gate (tests/)")
 
     for src, dst in [("predictions_2026.csv", "model_predictions_2026.csv"),
                      ("predictions_2026_meta.json", "model_predictions_meta.json"),

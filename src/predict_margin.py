@@ -102,7 +102,7 @@ def main():
         cand[f"pred_margin_{label}"] = [mm.get((r, c)) for r, c in
                                         zip(cand["race_id"], cand["cand_key"])]
 
-    out_cols = ["race_id", "state", "office", "district", "candidate", "party",
+    out_cols = ["race_id", "state", "office", "district", "candidate", "cand_key", "party",
                 "display_party",
                 "n_polls", "poll_avg", "poll_lead", "avg_margin_over_time",
                 "prior_margin_cand", "is_incumbent", "pred_margin",
@@ -110,6 +110,20 @@ def main():
     out = cand[out_cols].sort_values(["race_id", "pred_margin"], ascending=[True, False])
     out_path = args.out or _paths.out(f"margin_predictions_{args.cycle}.csv")
     out.to_csv(out_path, index=False)
+
+    # meta sidecar, same fields as predict.py's: the publish gate (tests/test_publish.py) checks
+    # that the win and margin files come from the same run and poll feed, and the fill rates
+    import datetime
+    meta_out = dict(
+        generated_at=datetime.datetime.now().isoformat(timespec="seconds"),
+        polls_max_end_date=str(d["end_date"].max().date()),
+        n_poll_rows=int(len(d)), n_races=int(out["race_id"].nunique()),
+        natl_env=ne.get(args.cycle),
+        run_id=os.environ.get("MODEL_RUN_ID"),
+        feature_fill={f: round(float(X[f].notna().mean()), 4) for f in meta["features"]},
+    )
+    with open(os.path.splitext(out_path)[0] + "_meta.json", "w") as f:
+        json.dump(meta_out, f, indent=1)
 
     picks = out.loc[out.groupby("race_id")["pred_margin"].idxmax()]
     print(f"\nraces: {out['race_id'].nunique()} | saved -> {out_path}")

@@ -71,7 +71,10 @@ _POLL_PREFIXES = ("poll_", "n_polls", "avg_sample", "min_days", "gap_x_recency",
                   "undecided", "n_lead_changes", "lead_changed", "avg_margin_over_time",
                   "margin_volatility", "min_margin", "margin_trend", "twoparty_margin_cand",
                   "abs_gap", "tossup", "frac_polls_over50", "race_total_polls", "n_cands",
-                  "n_polls_over50")
+                  "n_polls_over50",
+                  # spread between pollsters (2026-10-26): race-poll-derived, 65% filled in
+                  # training and empty for every unpolled race - caught by tests/test_publish.py
+                  "pollster_")
 # NATIONAL polling aggregates are KEPT (user call 2026-08-02): "generic ballot is fine as
 # long as it is not specific to the region - so national generic ballots but not one from the
 # district or state". generic_ballot_* and natl_env are national-environment measures, the
@@ -101,15 +104,22 @@ def general_table():
 
     d = pd.read_csv(os.path.join(HERE, "polls_long_with_results.csv"), low_memory=False)
     d = d[d["has_result"] == 1].copy()
+    # WINNER NEVER POLLED (2026-10-26, as model.ipynb since 10-13): 8 races whose winner is in no
+    # poll (King ME-Sen 2012, Lieberman CT-Sen 2006, Murkowski AK-Sen 2010, ...) trained as "every
+    # candidate lost" - a wrong label, since the winner is missing from the candidate set
+    d = d[d.groupby("race_id")["won"].transform("max") == 1].copy()
     d = F.prepare_polls(d)
     d = d[d["year"].isin(CYCLES)].copy()
     d["race_id"] = (d["year"].astype(str) + "_" + d["state"] + "_" + d["office"]
                     + d["district"].radd("-").where(d["district"] != "", ""))
     funds, fec = F.load_fundamentals(), F.load_fec(extended=True)
+    # primary_results too (2026-10-26): predict_unpolled.py fills primary_margin at serve time,
+    # while training left it all-NaN, so the trees could never use it (tests/test_publish.py)
     c = F.build_candidate_table(d, build_macro(), natl_env(), funds,
                                 house_train_years=CYCLES, fec=fec,
                                 bias_priors=F.compute_bias_priors(d),
-                                candidate_bios=F.load_candidate_bios())
+                                candidate_bios=F.load_candidate_bios(),
+                                primary_results=F.load_primary_results())
     return c
 
 

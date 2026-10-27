@@ -80,7 +80,8 @@ def _wiki_evidence(r):
     return f"{ev} {src}" if lvl > 0 else f"no office named in the bio {src}"
 
 
-def main():
+def main(out=OUT):
+    """out: where to write (tests/test_publish.py rebuilds into a temp file and compares)."""
     # ---- Wikipedia: already per-year contemporaneous, used as-is ----
     wiki_frames = []
     for fn in WIKI_SOURCES:
@@ -322,8 +323,8 @@ def main():
     # one fixed row order (the key) and LF line endings, so a rebuild's git diff shows only the
     # rows that changed (2026-10-24: the level-sorted order moved every row whose level moved)
     combined = combined.sort_values(KEY, kind="stable", key=lambda s: s.astype(str))
-    combined.to_csv(OUT, index=False, lineterminator="\n")
-    print(f"\nsaved -> {OUT}: {len(combined)} rows "
+    combined.to_csv(out, index=False, lineterminator="\n")
+    print(f"\nsaved -> {out}: {len(combined)} rows "
           f"({(combined['src']=='wikipedia').sum()} wiki, {(combined['src']=='ballotpedia').sum()} ballotpedia)")
     print("office_level distribution:", combined["office_level"].value_counts().sort_index().to_dict())
 

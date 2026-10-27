@@ -148,7 +148,7 @@ def main():
     for col in ("poll_avg", "poll_lead"):
         if col not in c.columns:
             c[col] = np.nan
-    cols = ["race_id", "state", "office", "district", "candidate", "party", "display_party",
+    cols = ["race_id", "state", "office", "district", "candidate", "cand_key", "party", "display_party",
             "n_polls", "n_surveys", "poll_avg", "poll_lead", "prior_margin_cand", "is_incumbent",
             "bio_office_level", "fund_share", "win_prob", "win_prob_norm", "win_prob_R3", "win_prob_D3",
             "bias_fragile", "basis"]
@@ -159,7 +159,12 @@ def main():
         json.dump(dict(generated_at=datetime.datetime.now().isoformat(timespec="seconds"),
                        natl_env=ne.get(CYCLE), n_races=int(out["race_id"].nunique()),
                        roster=_os.path.join("data", "general_roster_2026.csv"),
-                       model="data/fundamentals_model_general.json"), f, indent=1)
+                       model="data/fundamentals_model_general.json",
+                       # publish gate (tests/test_publish.py): same run as the poll model's files
+                       run_id=_os.environ.get("MODEL_RUN_ID"),
+                       polled_run_id=pmeta.get("run_id"),
+                       feature_fill={f: round(float(c[f].notna().mean()), 4) if f in c else 0.0
+                                     for f in FE}), f, indent=1)
     top = out.loc[out.groupby("race_id")["win_prob_norm"].idxmax()]
     print(f"unpolled races scored: {out['race_id'].nunique()} ({dict(top.groupby('office').size())}); "
           f"fragile: {len(fragile)}; natl_env {ne.get(CYCLE):+.1f}")

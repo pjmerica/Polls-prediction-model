@@ -25,7 +25,6 @@
   "is_personal_inc",
   "open_seat",
   "pres_lean_cand",
-  "pollster_sd",
   "midterm_pres_party",
   "midterm_approval_cand",
   "approval_avg_12mo",
@@ -205,27 +204,27 @@
  "eval_expanding_window": {
   "2018": {
    "n_races": 229.0,
-   "AUC": 0.9344,
-   "Brier": 0.1011,
-   "race_acc": 0.786
+   "AUC": 0.9287,
+   "Brier": 0.1061,
+   "race_acc": 0.7948
   },
   "2020": {
    "n_races": 153.0,
-   "AUC": 0.9153,
-   "Brier": 0.1207,
-   "race_acc": 0.7843
+   "AUC": 0.9125,
+   "Brier": 0.1222,
+   "race_acc": 0.7974
   },
   "2022": {
-   "n_races": 178.0,
-   "AUC": 0.9627,
-   "Brier": 0.0791,
-   "race_acc": 0.8427
+   "n_races": 177.0,
+   "AUC": 0.962,
+   "Brier": 0.0794,
+   "race_acc": 0.8475
   },
   "2024": {
-   "n_races": 135.0,
-   "AUC": 0.9654,
-   "Brier": 0.0764,
-   "race_acc": 0.8593
+   "n_races": 134.0,
+   "AUC": 0.9652,
+   "Brier": 0.0749,
+   "race_acc": 0.8582
   }
  }
 }

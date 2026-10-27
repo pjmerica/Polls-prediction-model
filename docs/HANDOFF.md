@@ -4,6 +4,41 @@ For the next agent. Read AGENTS.md first (architecture + rules), CONCERNS.md sec
 (risk register + roadmap). This file: what's mid-flight RIGHT NOW, what's most likely to
 break, and what to do next, in order.
 
+## 2026-10-26/27 - publish gate (tests/ before every copy to polling-agg); no-polls model retrained
+
+polling-agg audit item 1. `src/refresh_dashboard.py` now runs `pytest tests` after predicting and
+BEFORE copying anything into polling-agg, so a failure stops the publish locally and in
+polling-agg's Model refresh workflow (that step fails, nothing commits). New `tests/test_publish.py`:
+- **Hard checks:** odds present, in [0, 1], normalized odds sum to 1, no candidate twice; polled
+  races have 2+ candidates and no-polls races 1 only when uncontested; win and margin files score
+  the same (race, cand_key) set; every roster race scored by exactly one model; no withdrawn
+  candidate (dropped_out_2026.csv, roster `dropped`); all files from one run (`MODEL_RUN_ID`, set
+  by refresh_dashboard, in every _meta.json) and the same poll feed; generic ballot within +/-15
+  and the same in all three; each feature's live fill rate vs training's
+  (`data/feature_fill_train.json`, from `tools/feature_fill_reference.py` - re-run after a retrain
+  or feature change); `candidate_bios.csv` equals a fresh rebuild.
+- **Expected failures (xfail)** until the race-level models (audit item 7): raw odds summing to
+  0.9-1.1 (25 races miss), two-candidate margins cancelling (51 miss), one predicted winner per race
+  (5 with two, 1 with none), win and margin favourites agreeing (7 split). They flip to XPASS once
+  fixed; then make them hard.
+- Output changes: `cand_key` column in predictions / margin / fundamentals CSVs; a new
+  `margin_predictions_2026_meta.json`; `run_id` + `feature_fill` in every meta;
+  `build_office_level_table.main(out=...)`.
+- If the no-polls step fails, `MODEL_UNPOLLED_FAILED=1` skips its checks (polling-agg keeps its
+  last good copy, as before).
+
+**What the gate found on its first run, fixed and retrained (`fundamentals_model.py --general-only`):**
+- `pollster_sd` (spread between pollsters) was in the NO-POLLS model: race-poll-derived, 65% filled
+  in training, empty for every unpolled race. `_POLL_PREFIXES` matched `poll_` but not `pollster_`.
+- Its training table left out `primary_results`, so `primary_margin` / `opp_primary_margin` trained
+  all-NaN while `predict_unpolled.py` fills them for 30% of live rows.
+- Its training kept the 8 winner-never-polled races (ME-Gov / MN-Gov 1998, CT-Sen 2006, AK-Sen 2010,
+  RI-Gov 2010, ME-Sen 2012, NY-18 2022, CO-3 2024) that model.ipynb drops since 10-13: every
+  candidate trained as a loser.
+- Tuner kept its settings (depth 3, lr .05, mcw 30); 171 features. Held-out 2018-24 AUC .942,
+  Brier .096, race-acc .825 (sanity only). 2026 unpolled races: no favourite changes, median move
+  0.2 pts; biggest NY-11 Dem 15 -> 28, NC-8 14 -> 26, MI-1 37 -> 48, CA-1 53 -> 63, TX-33 89 -> 79.
+
 ## 2026-10-25/26 - prior margin = latest real D-vs-R race (retrained and published 10-26)
 
 From the polling-agg model audit (prior_margin checklist). `features.load_fundamentals` now

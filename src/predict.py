@@ -600,7 +600,7 @@ def main():
                        include_groups=False))
     cand["n_surveys"] = cand["race_id"].map(surveys).fillna(0).astype(int)
 
-    out_cols = ["race_id", "state", "office", "district", "candidate", "party",
+    out_cols = ["race_id", "state", "office", "district", "candidate", "cand_key", "party",
                 "display_party",
                 "n_polls", "n_surveys", "poll_avg", "poll_lead", "prior_margin_cand",
                 "is_incumbent", "win_prob", "win_prob_norm",
@@ -618,6 +618,10 @@ def main():
         polls_max_end_date=str(d["end_date"].max().date()),
         n_poll_rows=int(len(d)), n_races=int(out["race_id"].nunique()),
         natl_env=ne.get(args.cycle),
+        # publish gate (tests/test_publish.py): every file of one refresh carries the same run id,
+        # and each feature's live fill rate is compared with training's (data/feature_fill_train.json)
+        run_id=os.environ.get("MODEL_RUN_ID"),
+        feature_fill={f: round(float(X[f].notna().mean()), 4) for f in meta["features"]},
     )
     with open(os.path.splitext(out_path)[0] + "_meta.json", "w") as f:
         json.dump(meta_out, f, indent=1)

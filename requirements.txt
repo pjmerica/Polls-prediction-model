@@ -8,3 +8,4 @@ shap
 scikit-learn
 requests
 lxml
+pytest
