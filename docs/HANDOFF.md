@@ -4,6 +4,45 @@ For the next agent. Read AGENTS.md first (architecture + rules), CONCERNS.md sec
 (risk register + roadmap). This file: what's mid-flight RIGHT NOW, what's most likely to
 break, and what to do next, in order.
 
+## 2026-10-28 - re-tune stability (audit M5), roster checks, calibration detail, open CONCERNS items (user: "keep going through all of the items listed as issues")
+
+**Re-tune stability (M5)** - `analysis/retune_stability.py` repeats a trainer's whole tuning procedure
+with fresh randomness and scores the SAME served 2026 table (`predict.py --dump-table`,
+`predict_unpolled.py --dump-table`); docs/RETUNE_STABILITY*.md. The audit's bar: no race moves 5+ pts.
+- Top 3 settings x 1 seed (10-27): margin model passed (largest 3.3 margin pts); the WIN model failed:
+  25 of 175 races moved 5+ win pts, up to 15.7 (TX-15, IA-3, FL-9), 4 favourite flips.
+- Now every served ranker averages the top 5 settings x 3 seeds (15 members; `N_ENSEMBLE`,
+  `N_MODEL_SEEDS` in race_win_model.py; race_fundamentals_model.fit_ens). Margin model unchanged.
+- Win model, the audit's test (same settings sample, new seeds; `--fixed-search`): PASSES - largest
+  move 3.9 (CO-5), median 0.7, 1 favourite flip; re-tunes share 4 of 5 settings. Stricter test (a new
+  settings sample each run): 15 races 5+, largest 10.9 - uncertainty about the best settings, in
+  thin-poll House races near 50% (docs/RETUNE_STABILITY.md).
+- No-polls model: passes even the strict test (largest 3.5, CA-4; median 0.09; 0 flips).
+- Held out 2018-24 (sanity): win Brier .059, race-acc .887, temperature .885 (all three re-tunes
+  agree on it; the 3x1 model's .966 did not); no-polls on unpolled races race-acc .997, Brier .003.
+- `.gitignore` now admits two-digit member files (`_[0-9][0-9].json`): members 10-14 were ignored.
+
+**Roster checks** (audit safeguard added 10-25; `src/roster_align.py`, tests/test_publish.py,
+tests/test_roster_align.py): every polled candidate matches exactly one roster entry (same key, or
+surname + nickname, or a surname unique in the race) and every roster nominee won its primary. Feed keys
+are KEPT (the bio table and candidate history use them; renaming to the roster's spelling broke those
+joins in a trial). Found: AZ-3's Republican primary winner Glenn (437-vote write-in, not on the ballot;
+`data/nominee_exceptions_2026.csv`), NM-1 Okpareke's bio row lost to Ndidiamaka/Didi (name_aliases).
+
+**Calibration detail (M8)**, docs/HORIZON_CALIBRATION.md: per-cycle table, Wilson intervals per band, exact
+(Poisson-binomial) upset test. 10 days out: 95%+ favourites 4 upsets vs 5.4 expected; 2020 25 vs 19.3
+(the national miss); 2-10% long shots win 2.3-2.5% vs 4.5-4.9% predicted (underdogs slightly overrated).
+
+**Other fixes:** September CPI/jobs pulled (training reads September, 2026 had read August; a shrunk
+BLS series now skips the write); `newest_poll_days` in predictions_2026.csv (26 races' newest poll is
+60+ days old - noted on the pages); primary-results date guard; win-model gain file
+(`race_win_feature_importance.csv`: 6 of 73 features zero gain). Checked and closed in CONCERNS: #21,
+#36, #37, #40, #47, #50, #55, MN-Gov-REP; #20 via polling-agg `tools/forecast_history.py`.
+
+**2026 vs the previous publish** (same feeds): polled median 0.6 pts, 7 races 5+ (largest IA-3 -9.0),
+favourites change in IA-Sen (Hinson 55%), KS-Sen (Marshall 55%), KY-6 (Alvarado 52%); no-polls median
+0.01. OH-Gov (Dem 75.9%) leaves the 75% list: 11 Senate/Governor races. Gate: 40 passed, 1 xfailed.
+
 ## 2026-10-27 (evening) - every remaining audit item before the election (user: "we are going to do everything before the election")
 
 polling-agg audit items 3, 4, 6, 8, 9, 10, 11, 12, 13, 14, 15, D6 and the office-level rule calls.

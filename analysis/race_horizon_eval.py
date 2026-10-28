@@ -35,6 +35,24 @@ HORIZONS = (0, 10, 35, 60)
 BINS = [0, .02, .1, .3, .5, .7, .9, .98, 1.0]
 
 
+def wilson(k, n, z=1.96):
+    """95% Wilson interval for k successes in n."""
+    if n == 0:
+        return (0.0, 1.0)
+    p = k / n
+    c = (p + z * z / (2 * n)) / (1 + z * z / n)
+    h = z * ((p * (1 - p) / n + z * z / (4 * n * n)) ** 0.5) / (1 + z * z / n)
+    return (max(0.0, c - h), min(1.0, c + h))
+
+
+def upset_tail(q, k):
+    """P(at least k upsets) when favourite i loses with probability q[i] (Poisson-binomial)."""
+    dist = [1.0]
+    for qi in q:
+        dist = [a * (1 - qi) + b * qi for a, b in zip(dist + [0.0], [0.0] + dist)]
+    return float(sum(dist[k:]))
+
+
 def main():
     meta = json.load(open(os.path.join(ROOT, "data", "race_win_model_features.json")))
     FE, P = meta["features"], meta["xgb_params"]
@@ -54,7 +72,7 @@ def main():
         te["_score"] = models[ty].predict(te[FE])
         cal[ty] = R.fit_calibration(pd.concat(h0))[:2] if h0 else (meta["temp_fit"]["tune_cycle_temp"], 0.0)
         h0.append(te)
-    rows, calib = [], []
+    rows, calib, favs = [], [], []
     for H in HORIZONS:
         dh = d if H == 0 else d[~d["year"].isin(EVAL_CYCLES) | (d["days_to_elec"] >= H)]
         with contextlib.redirect_stdout(io.StringIO()):
@@ -72,6 +90,7 @@ def main():
                              LogLoss=log_loss(y, te["p"].clip(1e-6, 1 - 1e-6)),
                              race_acc=lead["won"].mean(), fav_prob=lead["p"].mean()))
             calib.append(te[["p", "won", "office"]].assign(H=H))
+            favs.append(lead[["p", "won"]].assign(H=H, cycle=ty))
     r = pd.DataFrame(rows)
     summ = r.groupby("H").agg(races=("races", "sum"), Brier=("Brier", "mean"), LogLoss=("LogLoss", "mean"),
                               race_acc=("race_acc", "mean"), fav_prob=("fav_prob", "mean")).round(3)
@@ -79,8 +98,14 @@ def main():
     c["band"] = pd.cut(c["p"], BINS)
     cal_t = (c.groupby(["H", "band"], observed=True).agg(n=("won", "size"), predicted=("p", "mean"),
                                                          won=("won", "mean")).round(3).reset_index())
+    cal_t[["lo", "hi"]] = [wilson(round(w * n), n) for w, n in zip(cal_t["won"], cal_t["n"])]
     print(summ.to_string())
     print(cal_t.to_string(index=False))
+    # audit M8 (2026-10-27): ~50 statewide races a cycle, so pooled numbers can hide a bad cycle and
+    # a band's win rate is only known to within its interval; and the confident favourites (57 of
+    # them at 95%+ on 10-24) are judged on expected vs actual upsets, cycle by cycle
+    fv = pd.concat(favs)
+    fv["lost"] = 1 - fv["won"]
 
     lines = ["# Calibration of the published win odds by horizon", "",
              "Built by `analysis/race_horizon_eval.py` (audit item 8). Held-out 2018-24: each cycle is "
@@ -93,10 +118,35 @@ def main():
              "|---|---|---|---|---|---|"]
     for H, s in summ.iterrows():
         lines.append(f"| {H} | {int(s.races)} | {s.Brier:.3f} | {s.LogLoss:.3f} | {s.race_acc:.1%} | {s.fav_prob:.1%} |")
+    lines += ["", "## By cycle, 10 days out (the horizon closest to the last week of the campaign)", "",
+              "| Cycle | Races | Brier | Favourite won | Favourite's average chance | Upsets expected | Upsets |",
+              "|---|---|---|---|---|---|---|"]
+    for t in r[r["H"] == 10].itertuples():
+        f = fv[(fv["H"] == 10) & (fv["cycle"] == t.cycle)]
+        lines.append(f"| {t.cycle} | {t.races} | {t.Brier:.3f} | {t.race_acc:.1%} | {t.fav_prob:.1%} | "
+                     f"{(1 - f['p']).sum():.1f} | {int(f['lost'].sum())} |")
+    lines += ["", "## Confident favourites: expected vs actual upsets", "",
+              "Each race's favourite, by its published chance. \"Chance of this many upsets or more\" is exact "
+              "(Poisson-binomial over the favourites' own odds): a small number means the favourites lost more "
+              "often than their odds said.", "",
+              "| Days out | Favourite's chance | Favourites | Upsets expected | Upsets | Chance of this many upsets or more |",
+              "|---|---|---|---|---|---|"]
+    for H in HORIZONS:
+        for lo_, hi_ in ((0.95, 1.01), (0.90, 0.95), (0.75, 0.90)):
+            f = fv[(fv["H"] == H) & (fv["p"] >= lo_) & (fv["p"] < hi_)]
+            if not len(f):
+                continue
+            k = int(f["lost"].sum())
+            lines.append(f"| {H} | {lo_:.0%}{'+' if hi_ > 1 else f'-{hi_:.0%}'} | {len(f)} | {(1 - f['p']).sum():.1f} | {k} | "
+                         f"{upset_tail(1 - f['p'].values, k):.2f} |")
     lines += ["", "## Calibration by confidence band (every candidate)", "",
-              "| Days out | Band | Candidates | Predicted | Won |", "|---|---|---|---|---|"]
+              "The 95% interval is the Wilson interval on the band's actual win rate; a band is off only when its "
+              "predicted rate falls outside it.", "",
+              "| Days out | Band | Candidates | Predicted | Won | 95% interval |", "|---|---|---|---|---|---|"]
     for t in cal_t.itertuples():
-        lines.append(f"| {t.H} | {t.band.left:.0%}-{t.band.right:.0%} | {t.n} | {t.predicted:.1%} | {t.won:.1%} |")
+        flag = "" if t.lo <= t.predicted <= t.hi else " (outside)"
+        lines.append(f"| {t.H} | {t.band.left:.0%}-{t.band.right:.0%} | {t.n} | {t.predicted:.1%} | {t.won:.1%} | "
+                     f"{t.lo:.1%}-{t.hi:.1%}{flag} |")
     out = os.path.join(ROOT, "docs", "HORIZON_CALIBRATION.md")
     with open(out, "w", encoding="utf-8", newline="\n") as f:
         f.write("\n".join(lines) + "\n")

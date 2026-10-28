@@ -304,6 +304,28 @@ def main():
             print(f"   {r}: {int(totals[r]):,} votes")
         fin = fin[~fin["race_id"].isin(suspect)].copy()
 
+    # ---- DATE GUARD (CONCERNS #37, 2026-10-27): no result for a primary that has not happened ----
+    # The vote floor above catches convention tables by size; this catches them, and a pre-filled
+    # "results" table for an upcoming primary, by date. Dates come from the calendar the primary
+    # model uses (predict_primary.primary_dates: per race, then per state, then the manual file).
+    if not args.hist and not args.deep:
+        import datetime as _dt
+        sys.path.insert(0, os.path.join(HERE, "src"))
+        from predict_primary import primary_dates
+        per_race, per_state = primary_dates(2026)
+        today = pd.Timestamp(_dt.date.today())
+        parts = fin["race_id"].str.extract(r"^\d{4}_([A-Z]{2})_(Senate|Governor|House)")
+        when = [per_race.get((st, off), per_state.get(st)) for st, off in zip(parts[0], parts[1])]
+        fin["_date"] = pd.to_datetime(pd.Series(when, index=fin.index))
+        future = sorted(set(fin.loc[fin["_date"] > today, "race_id"]))
+        undated = sorted(set(fin.loc[fin["_date"].isna(), "race_id"]))
+        if future:
+            print(f"\nDROPPED {len(future)} party-race(s) whose primary is still to come: {future[:12]}")
+            fin = fin[~fin["race_id"].isin(future)].copy()
+        if undated:
+            print(f"WARNING: no primary date for {len(undated)} party-race(s), kept unchecked: {undated[:12]}")
+        fin = fin.drop(columns="_date")
+
     # hand-checked ground truth: hard-fail on regression (these are the exact races the
     # Lieutenant-Governor table bug corrupted, plus a runoff case)
     KNOWN = {"2018_OH_Governor_DEM": "cordray r", "2018_OH_Governor_REP": "dewine m",

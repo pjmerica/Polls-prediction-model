@@ -38,7 +38,19 @@
  "ensemble_files": [
   "fundamentals_model_general.json",
   "fundamentals_model_general_1.json",
-  "fundamentals_model_general_2.json"
+  "fundamentals_model_general_2.json",
+  "fundamentals_model_general_3.json",
+  "fundamentals_model_general_4.json",
+  "fundamentals_model_general_5.json",
+  "fundamentals_model_general_6.json",
+  "fundamentals_model_general_7.json",
+  "fundamentals_model_general_8.json",
+  "fundamentals_model_general_9.json",
+  "fundamentals_model_general_10.json",
+  "fundamentals_model_general_11.json",
+  "fundamentals_model_general_12.json",
+  "fundamentals_model_general_13.json",
+  "fundamentals_model_general_14.json"
  ],
  "xgb_params": [
   {
@@ -66,6 +78,24 @@
    "min_child_weight": 30,
    "subsample": 0.6,
    "colsample_bytree": 1.0,
+   "reg_lambda": 5
+  },
+  {
+   "max_depth": 3,
+   "learning_rate": 0.05,
+   "n_estimators": 300,
+   "min_child_weight": 8,
+   "subsample": 1.0,
+   "colsample_bytree": 0.6,
+   "reg_lambda": 20
+  },
+  {
+   "max_depth": 3,
+   "learning_rate": 0.05,
+   "n_estimators": 300,
+   "min_child_weight": 2,
+   "subsample": 1.0,
+   "colsample_bytree": 0.4,
    "reg_lambda": 5
   }
  ],
@@ -208,14 +238,14 @@
  "eval_expanding_window": {
   "mean": {
    "polled": {
-    "Brier": 0.083,
-    "LogLoss": 0.2799,
-    "AUC": 0.9556,
-    "race_acc": 0.8467
+    "Brier": 0.0825,
+    "LogLoss": 0.2758,
+    "AUC": 0.9565,
+    "race_acc": 0.846
    },
    "unpolled": {
-    "Brier": 0.0029,
-    "LogLoss": 0.0136,
+    "Brier": 0.0028,
+    "LogLoss": 0.0132,
     "AUC": 1.0,
     "race_acc": 0.9969
    }
@@ -223,59 +253,59 @@
   "per_cycle": {
    "unpolled_2018": {
     "n_races": 269.0,
-    "Brier": 0.0018,
-    "LogLoss": 0.0149,
+    "Brier": 0.0016,
+    "LogLoss": 0.0141,
     "AUC": 1.0,
     "race_acc": 1.0
    },
    "polled_2018": {
     "n_races": 229.0,
-    "Brier": 0.078,
-    "LogLoss": 0.2546,
-    "AUC": 0.9612,
+    "Brier": 0.0784,
+    "LogLoss": 0.2563,
+    "AUC": 0.9602,
     "race_acc": 0.8472
    },
    "unpolled_2020": {
     "n_races": 320.0,
-    "Brier": 0.0031,
-    "LogLoss": 0.0111,
+    "Brier": 0.003,
+    "LogLoss": 0.0104,
     "AUC": 1.0,
     "race_acc": 0.9969
    },
    "polled_2020": {
     "n_races": 153.0,
-    "Brier": 0.1193,
-    "LogLoss": 0.4434,
-    "AUC": 0.9185,
-    "race_acc": 0.8039
+    "Brier": 0.1177,
+    "LogLoss": 0.4285,
+    "AUC": 0.9213,
+    "race_acc": 0.8105
    },
    "unpolled_2022": {
     "n_races": 320.0,
-    "Brier": 0.0044,
-    "LogLoss": 0.0186,
+    "Brier": 0.0045,
+    "LogLoss": 0.019,
     "AUC": 0.9999,
     "race_acc": 0.9938
    },
    "polled_2022": {
     "n_races": 177.0,
-    "Brier": 0.0671,
-    "LogLoss": 0.2102,
-    "AUC": 0.9715,
-    "race_acc": 0.8475
+    "Brier": 0.0668,
+    "LogLoss": 0.2088,
+    "AUC": 0.9721,
+    "race_acc": 0.8531
    },
    "unpolled_2024": {
     "n_races": 338.0,
-    "Brier": 0.0024,
-    "LogLoss": 0.0097,
+    "Brier": 0.0022,
+    "LogLoss": 0.0094,
     "AUC": 1.0,
     "race_acc": 0.997
    },
    "polled_2024": {
     "n_races": 134.0,
-    "Brier": 0.0677,
-    "LogLoss": 0.2112,
-    "AUC": 0.9712,
-    "race_acc": 0.8881
+    "Brier": 0.0669,
+    "LogLoss": 0.2097,
+    "AUC": 0.9724,
+    "race_acc": 0.8731
    }
   }
  },

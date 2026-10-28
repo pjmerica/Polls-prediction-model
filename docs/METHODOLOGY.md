@@ -140,6 +140,12 @@ on the same training rows and feature lists as the notebooks above (`data/model_
 - **Averaged settings (item 6):** each served model (win, margin, no-polls) is the average of its
   top 3 stage-2 settings (`race_level.Ensemble`; `ensemble_files` in each artifact), not the single
   winner of a near-tie. SHAP of the average is the average of the members' SHAP.
+  **Since 2026-10-28 (audit M5):** the win and no-polls rankers average the top **5** settings, each
+  fitted with **3** seeds (15 members); the margin model keeps its top 3. Reason and test:
+  `analysis/retune_stability.py` repeats the whole tuning with fresh seeds and scores the same served
+  2026 table. With 3 x 1, 25 of 175 races moved 5+ win pts; with 5 x 3, none (largest 3.9). The margin
+  model already passed (3.3 margin pts) and the no-polls model passes even with a new settings sample
+  (3.5). docs/RETUNE_STABILITY*.md.
 - **Economy (item 11, M7):** the 144 unsigned per-cycle macro constants are gone. A race-level model
   cannot use a number that is the same for every candidate in a race. In their place,
   `PRES_ECON_FEATS`, signed +1 for the president's party / -1 the other major party / 0 others:

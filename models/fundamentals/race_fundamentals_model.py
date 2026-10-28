@@ -54,7 +54,7 @@ from cycles import natl_env  # noqa: E402
 from race_level import Ensemble, race_win_probs  # noqa: E402
 import fundamentals_model as FM  # noqa: E402
 import fundamentals_on_unpolled as FU  # noqa: E402
-from race_win_model import fit_ranker, TEMP_GRID  # noqa: E402
+from race_win_model import fit_ranker, TEMP_GRID, N_ENSEMBLE, N_MODEL_SEEDS  # noqa: E402
 
 N_CONFIGS = 60
 TOP_K = 8
@@ -129,9 +129,11 @@ def temp_only(df, score_col="_score"):
 
 
 def fit_ens(tr, feats, params, seed=42):
-    """params: one setting (tuning) or a list of them - the served average (audit item 6)."""
-    plist = params if isinstance(params, list) else [params]
-    return Ensemble([fit_ranker(tr, feats, p, seed) for p in plist])
+    """params: one setting (tuning, one fit) or a list of them - the served average, each setting
+    fitted with N_MODEL_SEEDS seeds (audit items 6 / M5; race_win_model.fit_ensemble)."""
+    if not isinstance(params, list):
+        return Ensemble([fit_ranker(tr, feats, params, seed)])
+    return Ensemble([fit_ranker(tr, feats, p, seed + 1009 * k) for p in params for k in range(N_MODEL_SEEDS)])
 
 
 def loco(c, feats, params, cycles, train_pool, seed=42):
@@ -194,7 +196,7 @@ def main():
     best, PARAMS = stage2[0]
     print(f"stage 2: {[round(s[0], 4) for s in stage2]}\nPARAMS = {PARAMS} (tune log loss {best:.4f}; "
           f"runner-up {stage2[1][0]:.4f})", flush=True)
-    ENS = [p for _, p in stage2[:3]]          # the served model averages the top 3 settings
+    ENS = [p for _, p in stage2[:N_ENSEMBLE]]  # the served model averages the top settings x seeds
     TUNE_TEMP = temp_only(seeded([(s, loco(tune, FEATS, ENS, TUNE_CYCLES, tune, s)) for s in TUNE_SEEDS]))[0]
 
     # ---- held-out 2018-24, expanding window; graded on unpolled and polled races ----

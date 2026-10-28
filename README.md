@@ -44,7 +44,7 @@ differently:**
 
 | model | target | notebook/script | headline (honest, expanding-window) |
 |---|---|---|---|
-| **Win** (race-level, served since 2026-10-27) | `won ∈ {0,1}`, ranked within the race | `models/poll/race_win_model.py` (feature list from `model.ipynb`) | within-race softmax sums to 1 per race; Brier .059 / AUC .976 / race-acc .884 (2018-24, sanity only; averaged top-3 settings, retrain 2026-10-27 evening) |
+| **Win** (race-level, served since 2026-10-27) | `won ∈ {0,1}`, ranked within the race | `models/poll/race_win_model.py` (feature list from `model.ipynb`) | within-race softmax sums to 1 per race; Brier .059 / race-acc .887 (2018-24, sanity only; average of the top 5 settings x 3 seeds, retrain 2026-10-28) |
 | **Margin** (race-level, served since 2026-10-27) | vote share; margin = share minus best rival's | `models/poll/race_margin_model.py` (feature list from `margin_model.ipynb`) | margins cancel and one winner per race by construction; margin MAE 4.91 / race-acc .886 (2018-24, sanity only; averaged top-3 settings, retrain 2026-10-27 evening) |
 | **Primary nominee** | `won ∈ {0,1}` (becomes the party's nominee) | `models/poll/primary_model.py` | AUC-PR .97 / Brier .02 / race-acc .93 vs. poll-leader .72 baseline |
 | **Primary margin** | vote margin vs. best other candidate | `models/poll/primary_margin_model.py` | MAE 17.0 vs. 18.5 calibrated-poll baseline — beats it on the mean, but LOSES the 2022 fold; two eval cycles only |

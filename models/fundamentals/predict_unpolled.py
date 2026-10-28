@@ -134,6 +134,8 @@ def main():
     c = table(r, ne)
     missing = [f for f in FE if f not in c.columns]
     assert not missing, f"the model expects features the table lacks: {missing[:8]}"
+    if "--dump-table" in _sys.argv:   # the served table, for analysis/retune_stability.py
+        c.to_pickle(_sys.argv[_sys.argv.index("--dump-table") + 1])
     c["win_prob"] = race_probs(c)
     # stress test: the national mood 3 points more Republican / Democratic than measured - the
     # national environment AND every generic-ballot level feature move together (2026-10-24:

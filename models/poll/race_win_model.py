@@ -48,7 +48,10 @@ from macro_features import build_macro
 from race_level import MINOR_POLL_MAX, Ensemble, softmax, race_win_probs
 
 N_CONFIGS = 60
-N_ENSEMBLE = 3       # the served model averages the top 3 stage-2 settings (audit item 6, 2026-10-27)
+N_ENSEMBLE = 5       # the served model averages the top 5 stage-2 settings...
+N_MODEL_SEEDS = 3    # ...each fitted with 3 seeds (15 members). 2026-10-28, audit M5: with the top 3
+                     # on one seed (10-27), a re-tune with fresh randomness moved 25 of 175 races by
+                     # 5+ win pts (docs/RETUNE_STABILITY.md, analysis/retune_stability.py)
 TOP_K = 8
 TUNE_SEEDS = (42, 7, 123)
 TEMP_GRID = np.round(np.exp(np.linspace(np.log(0.1), np.log(3.0), 40)), 4)
@@ -105,8 +108,12 @@ def fit_ranker(tr, feats, params, seed=42):
     return m
 
 
-def fit_ensemble(tr, feats, params_list, seed=42):
-    return Ensemble([fit_ranker(tr, feats, p, seed) for p in params_list])
+def fit_ensemble(tr, feats, params_list, seed=42, n_seeds=None):
+    """Every setting fitted with n_seeds seeds (seed, seed + 1009, ...): subsample / colsample make
+    each fit one draw, so averaging seeds removes that noise as averaging settings removes the
+    tuner's."""
+    n_seeds = N_MODEL_SEEDS if n_seeds is None else n_seeds
+    return Ensemble([fit_ranker(tr, feats, p, seed + 1009 * k) for p in params_list for k in range(n_seeds)])
 
 
 def fit_temp(df, score_col="_score"):
@@ -286,6 +293,13 @@ def main():
         fn = "race_win_model_xgb.json" if i == 0 else f"race_win_model_xgb_{i}.json"
         m.save_model(os.path.join(ROOT, "data", fn))
         files.append(fn)
+    # gain per feature, averaged over the members (audit M7: the per-candidate notebook's file
+    # is not this model's; zero-gain features carry nothing into the explanations)
+    imp = pd.Series(np.mean([m.feature_importances_ for m in ens.models], axis=0),
+                    index=FEATS).sort_values(ascending=False)
+    imp.rename("gain_importance").rename_axis("feature").reset_index().to_csv(
+        os.path.join(ROOT, "models", "poll", "race_win_feature_importance.csv"), index=False)
+    print(f"features with zero gain: {int((imp == 0).sum())} of {len(imp)}")
     means = ev[["Brier", "LogLoss", "AUC", "race_acc", "Brier_all", "LogLoss_all"]].mean().round(4)
     with open(os.path.join(ROOT, "data", "race_win_model_features.json"), "w") as f:
         json.dump(dict(features=FEATS, model_type="xgbranker", objective="rank:pairwise",

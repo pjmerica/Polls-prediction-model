@@ -1358,6 +1358,7 @@ date,value,metric
 2026-06-01,332.568,cpi
 2026-07-01,332.813,cpi
 2026-08-01,334.131,cpi
+2026-09-01,336.298,cpi
 1957-01-01,28.5,cpi_core
 1957-02-01,28.6,cpi_core
 1957-03-01,28.7,cpi_core
@@ -2194,6 +2195,7 @@ date,value,metric
 2026-06-01,336.065,cpi_core
 2026-07-01,336.789,cpi_core
 2026-08-01,337.765,cpi_core
+2026-09-01,338.896,cpi_core
 1954-07-01,0.8,fed_funds
 1954-08-01,1.22,fed_funds
 1954-09-01,1.07,fed_funds
@@ -3060,6 +3062,7 @@ date,value,metric
 2026-06-01,3.63,fed_funds
 2026-07-01,3.63,fed_funds
 2026-08-01,3.63,fed_funds
+2026-09-01,3.75,fed_funds
 1990-08-01,1.218,gas
 1990-09-01,1.258,gas
 1990-10-01,1.3354,gas
@@ -4736,6 +4739,7 @@ date,value,metric
 2026-07-01,55.2,sentiment
 2026-08-01,51.7,sentiment
 2026-09-01,48.1,sentiment
+2026-10-01,48.0,sentiment
 1994-01-01,11.7,unemp_u6
 1994-02-01,11.4,unemp_u6
 1994-03-01,11.5,unemp_u6
@@ -5128,6 +5132,7 @@ date,value,metric
 2026-06-01,7.9,unemp_u6
 2026-07-01,7.9,unemp_u6
 2026-08-01,7.7,unemp_u6
+2026-09-01,7.6,unemp_u6
 1948-01-01,3.4,unemployment
 1948-02-01,3.8,unemployment
 1948-03-01,4.0,unemployment
@@ -6072,3 +6077,4 @@ date,value,metric
 2026-06-01,4.2,unemployment
 2026-07-01,4.1,unemployment
 2026-08-01,4.1,unemployment
+2026-09-01,4.2,unemployment

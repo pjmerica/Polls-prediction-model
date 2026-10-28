@@ -20,6 +20,7 @@ import pytest
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, ROOT)
+sys.path.insert(0, os.path.join(ROOT, "src"))
 OUT = os.path.join(ROOT, "outputs")
 DATA = os.path.join(ROOT, "data")
 UNPOLLED_FAILED = os.environ.get("MODEL_UNPOLLED_FAILED") == "1"
@@ -146,6 +147,50 @@ def test_no_withdrawn_candidate_published(win, margin, roster, request):
     for name, d in frames.items():
         hit = sorted(set(zip(d["race_id"], d["cand_key"])) & gone)
         assert not hit, f"{name}: withdrawn candidates published: {hit[:6]}"
+
+
+def test_every_polled_candidate_is_on_the_roster(win):
+    # audit check added 10-25: the 5 off-ballot candidates found by hand on 10-24 (Roth, Beaudion,
+    # Mujica, Villee, Schmidt) were polled names with no roster entry. Feed spellings are allowed
+    # (src/roster_align.py: same surname plus a nickname, or a surname unique in the race), but
+    # each published candidate must match exactly one roster candidate, and no two the same one.
+    import roster_align as RA
+    m = RA.match_roster(win, RA.load_roster())
+    off = m[m["roster_key"].isna()]
+    assert off.empty, f"published but not on the roster: {off[['race_id', 'candidate']].values[:8].tolist()}"
+    dup = m[m.duplicated(["race_id", "roster_key"], keep=False)]
+    assert dup.empty, f"two published candidates are one roster entry: {dup[['race_id', 'candidate']].values[:8].tolist()}"
+
+
+def test_roster_nominees_won_their_primaries(roster):
+    # audit check added 10-25: ME-2 was published with the primary's round-1 leader (Baldacci), not
+    # its ranked-choice winner (Dunlap). Every decided party primary's winner must be that party's
+    # candidate on the roster, unless a committee replaced them (replacement_nominees_2026.csv) or a
+    # checked exception says the winner is not on the ballot (nominee_exceptions_2026.csv).
+    import features as F
+    import roster_align as RA
+    p = pd.read_csv(os.path.join(DATA, "primary_results_2026.csv"))
+    p = p[p["is_winner"].astype(bool)].copy()
+    p["general"] = p["race_id"].str.rsplit("_", n=1).str[0]
+    skip = set()
+    for f in ("replacement_nominees_2026.csv", "nominee_exceptions_2026.csv"):
+        x = pd.read_csv(os.path.join(DATA, f))
+        skip |= set(zip(x["race_id"], x["party"].map(F.npar)))
+    by_race = {rid: g for rid, g in roster.groupby("race_id")}
+    bad, unknown = [], []
+    for (rid, party), grp in p.groupby(["general", "party"]):
+        # Senate specials: the primary results drop the "-S" (2026_OH_Senate -> 2026_OH_Senate-S)
+        rid = rid if rid in by_race else (rid + "-S" if rid + "-S" in by_race else rid)
+        if (rid, F.npar(party)) in skip:
+            continue
+        if rid not in by_race:
+            unknown.append(rid)
+            continue
+        field = by_race[rid][by_race[rid]["party"].map(F.npar) == F.npar(party)]
+        if not any(RA.match_one(x.candidate, x.cand_key, field)[0] for x in grp.itertuples()):
+            bad.append((rid, party, grp["candidate"].tolist(), field["candidate"].tolist()))
+    assert not unknown, f"primary results for races not on the roster: {sorted(set(unknown))[:8]}"
+    assert not bad, f"roster nominee is not the primary winner: {bad[:6]}"
 
 
 # ---- one run, one feed ----------------------------------------------------------------------

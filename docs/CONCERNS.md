@@ -235,6 +235,15 @@ above:
     `norm_name` itself (punctuation splitting one person into two keys; see the
     `cand_key` entry in DATA_DICTIONARY.md). The NICKNAME half of this item is still open
     for the general path.
+    **RESOLVED (verified 2026-10-27):** `predict.load_agg_polls` has run
+    `features_primary.merge_nickname_aliases` since 2026-08-08 (the call cites this item). Cross-source
+    spellings against the ROSTER are a separate check since 2026-10-27: `tests/test_publish.py`
+    requires every polled candidate to match one roster entry (`src/roster_align.py`: same key, or
+    surname + nickname, or a surname unique in the race) and every roster nominee to be the primary
+    winner. First run: GA-7 Anthony/Tony Kozycki, OH-Sen-S Bill/William Redpath (feed keys kept:
+    their bio and history rows use them), NM-1 Ndidiamaka/Didi Okpareke (her bio row used Didi, so
+    `name_aliases.csv` now maps both feed spellings to Didi), and AZ-3's Republican primary winner
+    (Glenn, a 437-vote write-in not on the November ballot; `data/nominee_exceptions_2026.csv`).
 
 ## Added by the 2026-08-01 name-key / bio-leakage pass
 
@@ -445,11 +454,27 @@ up a single dominant failure mode that had nothing to do with the model.
     is emitted only by `predict_primary.py`. The general side has the same exposure — its feed
     carries hypothetical matchups for months — and `drop_stale_candidates` (14-day relative
     rule) does not catch a race where EVERY poll is old.
+    **RESOLVED 2026-10-27.** The two halves: (1) old polls of the WRONG candidates (stale
+    hypotheticals) are now blocked by the publish gate's roster check (every polled candidate must
+    be on `general_roster_2026.csv`; #21). (2) A race whose only polls are old: the model already
+    reads the race's freshest-poll age (`min_days`), and the published odds are calibrated back to
+    60 days out (docs/HORIZON_CALIBRATION.md), but 37 of 177 races rest on polls 45+ days old
+    (NY-1: one poll, 327 days out). predictions_2026.csv now carries `newest_poll_days`, and the
+    forecast page and map note every race whose newest poll is older than 60 days (polling-agg
+    `build_forecast.py` NOTES["STALE"]).
 
 37. **OPEN: results scraped for races that have not happened.** The convention-vote guard
     (item 31) fires on statewide races under 25k votes, and caught a fifth race live
     (ME-Sen-DEM, 571 votes). But the underlying scraper still takes "the last table on the
     page" with no check that the election date has passed. A date guard would be the real fix.
+    **RESOLVED 2026-10-27:** `fetch_primary_results_2026.py` drops any party-race whose primary
+    date (predict_primary.primary_dates: per race, per state, then the manual file) is after today,
+    and lists races with no date. On the committed file: 639 party-races, all dated, none future.
+    Found doing it: the per-race dates for AL and GA read June 16, their RUNOFF date (both primaries
+    were May 19), because `primary_dates` takes the most common election_date across rows. Harmless
+    for this guard (later = stricter). It also skewed the frozen primary model's recency inputs in
+    those states; primaries are over and the primary models stay frozen to 2028, so it is fixed
+    then: take the earliest non-runoff date per race.
 
 ## Added 2026-08-06 — dead matchups (the biggest training-data fix since the name key)
 
@@ -512,6 +537,9 @@ up a single dominant failure mode that had nothing to do with the model.
     **Lesson: a green push is not a deploy.** Verify the PUBLISHED file
     (`https://pjmerica.github.io/polling-agg-2026/primary_model_data.js`) after any deploy that
     matters, not the commit.
+    **RESOLVED 2026-10-27:** polling-agg's Model refresh and Market refresh workflows end with
+    `tools/verify_pages.py`, which polls the live copies of the files they pushed (cache-busted)
+    until the bytes match that commit or a newer origin/master, and fails the run after 20 min.
 
 ## Added 2026-08-07 — primary-strength features, the deep archive, and four bugs found auditing them
 
@@ -585,6 +613,13 @@ up a single dominant failure mode that had nothing to do with the model.
     cases above are the tractable slice. The rest are unexamined - some are third-party
     also-rans who genuinely have no result row, but the Menendez/Young pattern says others
     may be real join failures. A candidate polled but never matched is invisible to training.
+    **RESOLVED 2026-10-27 (checked, no join failures left):** of the 1998-2024 general-election
+    candidates polled at 10%+ with no result, NONE shares a surname with any candidate on that race's
+    result lines (`results_labels.load_result_lines`, 26,995 lines): all 75 were never on the
+    November ballot (primary losers and people who did not run - Renacci and Mary Taylor OH-Gov
+    2022, Sessions AL-Sen 2020, Sununu NH-Sen 2022, Hogan MD-Sen 2022 ...), whose questions training
+    already drops as dead matchups. Only two odd-year specials have no result lines at all
+    (OH-15 2021, RI-1 2023).
 
 ## Added 2026-08-08 — data/organisation audit
 
@@ -626,6 +661,11 @@ up a single dominant failure mode that had nothing to do with the model.
     pooling is worst. Fixing it properly means making the general path matchup-aware
     (`question_id`-scoped features), the same treatment `drop_dead_matchups` applies. Not
     attempted here: it changes training features and so forces a full retrain.
+    **RESOLVED for 2026 (checked 2026-10-27):** every 2026 primary is decided, so the dead-matchup
+    filter, `one_question_per_survey` (10-21) and the roster gate leave no pooled field: no served
+    race's poll averages sum above 100.5% (largest 100.0; ME-Sen was 305%). Training keeps only
+    candidates with results and drops questions naming a primary loser. Pre-primary serving (the
+    2028 cycle's spring) still pools; a question-scoped feature set is the fix then.
 
 51. **RESOLVED 2026-08-08 (housekeeping): stale/duplicated artefacts.** (a) `MISSINGNESS_REPORT.md` reports
     **22,546 rows** for a `polls_long_with_results.csv` that now has **35,052** — it predates
@@ -686,6 +726,11 @@ up a single dominant failure mode that had nothing to do with the model.
     warning is not a block — **check for `!! ... SHRANK` in the output before committing
     `macro_monthly.csv`**, and re-run once BLS is back. Consider promoting the shrink warning
     to a hard failure for the BLS-backed series specifically.
+    **RESOLVED 2026-10-27:** BLS answers again (Sep 2026 added for all four series), and a shrink
+    of any BLS-backed series now stops `fetch_macro.py` before it writes. The re-pull also fixed a
+    train/serve gap: every cycle's economy window ends Sep 30, so training cycles read SEPTEMBER
+    CPI and unemployment while 2026 had read August (the file had not been re-pulled since the
+    September prints came out in mid-October).
 
 56. **MEASURED 2026-08-08: the win model is UNDER-confident at both extremes.** Decile
     calibration on the 4,230 out-of-fold rows (2000-2024, `data/oof_predictions.csv`):
@@ -854,6 +899,8 @@ up a single dominant failure mode that had nothing to do with the model.
     (17,187 votes) and the <25,000 guard correctly rejected it. The general model therefore
     still scores Qualls and Lindell, who both lost to Demuth. Re-run the scraper once the
     count completes.
+    **RESOLVED (verified 2026-10-27):** `primary_results_2026.csv` has the full count (Demuth 43.4%,
+    Lindell 32.5%, Qualls 21.4%; 413k votes), and the roster's Republican is Demuth.
 
 64. **NULL RESULT 2026-08-14: fixing `undecided` does not help. Verdict: do not ship.**
     The shipped feature is `100 - sum(poll_avg over candidates)`, clipped at 0, and the

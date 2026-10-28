@@ -79,7 +79,19 @@
  "ensemble_files": [
   "race_win_model_xgb.json",
   "race_win_model_xgb_1.json",
-  "race_win_model_xgb_2.json"
+  "race_win_model_xgb_2.json",
+  "race_win_model_xgb_3.json",
+  "race_win_model_xgb_4.json",
+  "race_win_model_xgb_5.json",
+  "race_win_model_xgb_6.json",
+  "race_win_model_xgb_7.json",
+  "race_win_model_xgb_8.json",
+  "race_win_model_xgb_9.json",
+  "race_win_model_xgb_10.json",
+  "race_win_model_xgb_11.json",
+  "race_win_model_xgb_12.json",
+  "race_win_model_xgb_13.json",
+  "race_win_model_xgb_14.json"
  ],
  "xgb_params": [
   {
@@ -108,9 +120,27 @@
    "subsample": 1.0,
    "colsample_bytree": 1.0,
    "reg_lambda": 5
+  },
+  {
+   "max_depth": 3,
+   "learning_rate": 0.05,
+   "n_estimators": 150,
+   "min_child_weight": 2,
+   "subsample": 1.0,
+   "colsample_bytree": 1.0,
+   "reg_lambda": 1
+  },
+  {
+   "max_depth": 3,
+   "learning_rate": 0.05,
+   "n_estimators": 150,
+   "min_child_weight": 0.5,
+   "subsample": 0.8,
+   "colsample_bytree": 0.4,
+   "reg_lambda": 1
   }
  ],
- "softmax_temp": 0.9655,
+ "softmax_temp": 0.8849,
  "minor_offset": -8.0,
  "minor_poll_max": 10.0,
  "temp_fit": {
@@ -254,12 +284,12 @@
  },
  "eval_expanding_window": {
   "mean": {
-   "Brier": 0.0593,
-   "LogLoss": 0.1932,
-   "AUC": 0.9758,
-   "race_acc": 0.8836,
-   "Brier_all": 0.0593,
-   "LogLoss_all": 0.1932
+   "Brier": 0.059,
+   "LogLoss": 0.1919,
+   "AUC": 0.9763,
+   "race_acc": 0.8869,
+   "Brier_all": 0.059,
+   "LogLoss_all": 0.1919
   },
   "per_cycle": [
    {
@@ -268,47 +298,47 @@
     "minor_offset": 0.0,
     "unwon_races": 0,
     "Brier": 0.0536,
-    "LogLoss": 0.1881,
-    "AUC": 0.9766,
+    "LogLoss": 0.1887,
+    "AUC": 0.9775,
     "race_acc": 0.8908,
     "Brier_all": 0.0536,
-    "LogLoss_all": 0.1881
+    "LogLoss_all": 0.1887
    },
    {
     "cycle": 2020,
     "temp": 0.8849,
     "minor_offset": -8.0,
     "unwon_races": 0,
-    "Brier": 0.071,
-    "LogLoss": 0.2206,
-    "AUC": 0.9684,
+    "Brier": 0.0717,
+    "LogLoss": 0.2228,
+    "AUC": 0.9678,
     "race_acc": 0.8467,
-    "Brier_all": 0.071,
-    "LogLoss_all": 0.2206
+    "Brier_all": 0.0717,
+    "LogLoss_all": 0.2228
    },
    {
     "cycle": 2022,
-    "temp": 0.9655,
+    "temp": 0.8849,
     "minor_offset": -8.0,
     "unwon_races": 0,
-    "Brier": 0.0553,
-    "LogLoss": 0.1817,
-    "AUC": 0.9794,
-    "race_acc": 0.9023,
-    "Brier_all": 0.0553,
-    "LogLoss_all": 0.1817
+    "Brier": 0.0541,
+    "LogLoss": 0.1753,
+    "AUC": 0.9809,
+    "race_acc": 0.908,
+    "Brier_all": 0.0541,
+    "LogLoss_all": 0.1753
    },
    {
     "cycle": 2024,
     "temp": 0.8849,
     "minor_offset": -8.0,
     "unwon_races": 0,
-    "Brier": 0.0574,
-    "LogLoss": 0.1825,
-    "AUC": 0.9789,
-    "race_acc": 0.8947,
-    "Brier_all": 0.0574,
-    "LogLoss_all": 0.1825
+    "Brier": 0.0566,
+    "LogLoss": 0.1809,
+    "AUC": 0.9791,
+    "race_acc": 0.9023,
+    "Brier_all": 0.0566,
+    "LogLoss_all": 0.1809
    }
   ]
  },

@@ -364,12 +364,24 @@ def build():
 
         # Second guard: a metric that came back but SHRANK is also suspicious (a partial or
         # truncated response). Warn loudly rather than silently accepting fewer rows.
+        # The BLS-backed series BLOCK the write (CONCERNS #55, 2026-10-27): they shrink by ~18
+        # months when the BLS API is down and only the stalled DBnomics mirror answers.
+        BLS_BACKED = {"cpi", "cpi_core", "unemp_u6", "unemployment"}
+        blocked = []
         for m_ in sorted(set(allm["metric"]) & set(prev["metric"])):
             n_new = int((allm["metric"] == m_).sum())
             n_old = int((prev["metric"] == m_).sum())
             if n_new < n_old:
                 print(f"  !! {m_} SHRANK {n_old} -> {n_new} rows - check the source before "
                       f"trusting this file")
+                if m_ in BLS_BACKED:
+                    blocked.append(m_)
+        if blocked:
+            # skip the write, not the refresh: the committed file is intact, and a refresh that
+            # dies here would stop the forecast publishing until BLS answers again
+            print(f"\n  !! NOT WRITTEN: BLS-backed series shrank ({blocked}) - the BLS API is "
+                  f"probably down. {OUT} is unchanged; re-run when it is back.")
+            return
 
     allm.to_csv(OUT, index=False)
     print(f"\nsaved -> {OUT}  ({len(allm)} rows)")

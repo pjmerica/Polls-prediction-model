@@ -511,6 +511,8 @@ def main():
                     help="generic-ballot DEM-REP margin (e.g. RealClearPolling average)")
     ap.add_argument("--polls", nargs="*", default=DEFAULT_POLLS)
     ap.add_argument("--out", default=None)
+    ap.add_argument("--dump-table", default=None,
+                    help="also save the served candidate table (pickle), for analysis/retune_stability.py")
     args = ap.parse_args()
 
     with open(os.path.join(HERE, "data", "race_win_model_features.json")) as f:
@@ -592,6 +594,8 @@ def main():
     missing = [f for f in meta["features"] if f not in cand.columns]
     assert not missing, f"artifact expects features absent from the built table: {missing[:8]}"
     X = cand.reindex(columns=meta["features"])
+    if args.dump_table:
+        cand.to_pickle(args.dump_table)
     cand["win_prob"] = race_probs(cand)
 
     # ---- poll-bias robustness sweep (cycle-level poll error is historically ±4-7 pts,
@@ -628,10 +632,14 @@ def main():
                 .apply(lambda g: g.groupby(["pollster", "end_date"]).ngroups,
                        include_groups=False))
     cand["n_surveys"] = cand["race_id"].map(surveys).fillna(0).astype(int)
+    # how many days before the election the race's NEWEST poll ended (CONCERNS #36, 2026-10-27):
+    # min_days is a model input already, but the pages never showed it; the published odds are
+    # calibrated back to 60 days out (docs/HORIZON_CALIBRATION.md), and older polls miss late moves
+    cand["newest_poll_days"] = cand.groupby("race_id")["min_days"].transform("min").round().astype("Int64")
 
     out_cols = ["race_id", "state", "office", "district", "candidate", "cand_key", "party",
                 "display_party",
-                "n_polls", "n_surveys", "poll_avg", "poll_lead", "prior_margin_cand",
+                "n_polls", "n_surveys", "newest_poll_days", "poll_avg", "poll_lead", "prior_margin_cand",
                 "is_incumbent", "win_prob", "win_prob_norm",
                 "win_prob_R3", "win_prob_D3", "win_prob_R6", "win_prob_D6", "bias_fragile"]
     out = cand[out_cols].sort_values(["race_id", "win_prob"], ascending=[True, False])
