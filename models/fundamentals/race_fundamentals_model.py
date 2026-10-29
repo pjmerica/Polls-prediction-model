@@ -51,16 +51,17 @@ import features as F  # noqa: E402
 from cycles import TUNE_CYCLES, EVAL_CYCLES  # noqa: E402
 from macro_features import build_macro  # noqa: E402
 from cycles import natl_env  # noqa: E402
-from race_level import Ensemble, race_win_probs  # noqa: E402
+from race_level import Ensemble, race_win_probs, refine_search  # noqa: E402
 import fundamentals_model as FM  # noqa: E402
 import fundamentals_on_unpolled as FU  # noqa: E402
 from race_win_model import fit_ranker, TEMP_GRID, N_ENSEMBLE, N_MODEL_SEEDS  # noqa: E402
 
-N_CONFIGS = 60
-TOP_K = 8
+N_CONFIGS = 300      # 60 until 2026-10-28 (wider search before the final 2026 train; the first 60
+TOP_K = 12           # are the old sample, same shuffle)
 TUNE_SEEDS = (42, 7, 123)
 OFFSET_GRID = np.round(np.linspace(-8, 0, 33), 2)
-GRID = dict(max_depth=[1, 2, 3], learning_rate=[0.02, 0.05, 0.1],
+# max_depth widened 2026-10-28: all 5 chosen settings sat at 3, the deepest the grid allowed
+GRID = dict(max_depth=[1, 2, 3, 4, 5], learning_rate=[0.02, 0.05, 0.1],
             n_estimators=[150, 300, 600], min_child_weight=[2, 8, 30],
             subsample=[0.6, 0.8, 1.0], colsample_bytree=[0.4, 0.6, 1.0],
             reg_lambda=[1, 5, 20])
@@ -192,6 +193,10 @@ def main():
     stage1 = sorted(((score(p, (42,)), p) for p in combos), key=lambda t: t[0])
     print(f"stage 1: {len(combos)} settings in {time.time() - t1:.0f}s; best {[round(s[0], 4) for s in stage1[:5]]}",
           flush=True)
+    n1 = len(stage1)
+    stage1 = refine_search(stage1, GRID, lambda q: score(q, (42,)), lambda t: t[0])
+    print(f"refinement: {len(stage1) - n1} one-step neighbours of the top 5; best now "
+          f"{[round(s[0], 4) for s in stage1[:5]]}", flush=True)
     stage2 = sorted(((score(p, TUNE_SEEDS), p) for _, p in stage1[:TOP_K]), key=lambda t: t[0])
     best, PARAMS = stage2[0]
     print(f"stage 2: {[round(s[0], 4) for s in stage2]}\nPARAMS = {PARAMS} (tune log loss {best:.4f}; "

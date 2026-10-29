@@ -41,14 +41,17 @@ import xgboost as xgb
 
 import features as F
 from cycles import TUNE_CYCLES, EVAL_CYCLES
-from race_level import Ensemble, race_margins
+from race_level import Ensemble, race_margins, refine_search
 from race_win_model import training_table
 
-N_CONFIGS = 60
-TOP_K = 8
+N_CONFIGS = 200      # 60 until 2026-10-28 (wider search before the final 2026 train; the slowest
+                     # trainer, so 200 of its 4,374-setting grid; the first 60 are the old sample)
+TOP_K = 12
 TUNE_SEEDS = (42, 7, 123)
+# widened 2026-10-28 where all 3 chosen settings sat on the edge: n_estimators 800 (the most) and
+# min_child_weight 8 (the least)
 GRID = dict(max_depth=[2, 3, 4], learning_rate=[0.02, 0.03, 0.05],
-            n_estimators=[200, 400, 800], min_child_weight=[8, 15, 30],
+            n_estimators=[200, 400, 800, 1600], min_child_weight=[3, 8, 15, 30],
             subsample=[0.6, 0.8, 1.0], colsample_bytree=[0.4, 0.6, 1.0],
             reg_lambda=[1, 5, 20], reg_alpha=[0, 1])
 
@@ -101,6 +104,10 @@ def main():
     t1 = time.time()
     stage1 = sorted(((loco_tune(c, FEATS, p, 42), p) for p in combos), key=lambda t: t[0])
     print(f"stage 1: {len(combos)} settings in {time.time() - t1:.0f}s; best tune MAE "
+          f"{[round(s[0], 3) for s in stage1[:5]]}", flush=True)
+    n1 = len(stage1)
+    stage1 = refine_search(stage1, GRID, lambda q: loco_tune(c, FEATS, q, 42), lambda t: t[0])
+    print(f"refinement: {len(stage1) - n1} one-step neighbours of the top 5; best now "
           f"{[round(s[0], 3) for s in stage1[:5]]}", flush=True)
     stage2 = sorted(((float(np.mean([loco_tune(c, FEATS, p, s) for s in TUNE_SEEDS])), p)
                      for _, p in stage1[:TOP_K]), key=lambda t: t[0])

@@ -4,6 +4,51 @@ For the next agent. Read AGENTS.md first (architecture + rules), CONCERNS.md sec
 (risk register + roadmap). This file: what's mid-flight RIGHT NOW, what's most likely to
 break, and what to do next, in order.
 
+## 2026-10-28 (night) - data sweep and the final 2026 train (user: "find any data issues and fix them. Then ... make the tuner search more expansive and do one final train")
+
+**2026 incumbency** (features.load_fundamentals, appointed_incumbents.csv): the ten House members elected
+in 2025-26 specials (Grijalva AZ-7, Patronis FL-1, Fine FL-6, Walkinshaw VA-11, Van Epps TN-7, Menefee TX-18,
+Mejia NJ-11, Fuller GA-14, Gallagher CA-1, Wahab CA-14) read as challengers and their races as OPEN seats:
+res_house.csv's specials end before 2025. `data/special_winners_2026.csv` (force-added; from the roster,
+CA-1/CA-14 checked against AP/KQED) feeds them into the winners list; Rhoden (SD-Gov, succeeded Noem) and Kiley
+(CA-6, sitting member now an independent) added to appointed_incumbents.csv. Their office level is now 4.
+
+**FEC money joins** (features.load_fec; training AND 2026):
+- every candidate id of a key is kept: Harris NC-8 and Onder MO-3 have two ids, and the as-of-Sep-30 report sat
+  under the one the dedup dropped, so both sitting members had no money;
+- 6,030 of 26,158 as-of records had no fec_summary row for their cycle (the bulk files keep a candidate's LATEST
+  run; Issa 2020 $11.1M, Tarkanian 2018): identity now from the same id's nearest summary cycle, found by the
+  existing race-level / state-wide fallbacks;
+- `data/fec_name_overrides.csv` (force-added): FEC legal names the polls never use, added as aliases - Mike Kelly
+  ('KELLY, GEORGE J JR', no money in any race since 2011), Chet Edwards, Chip Cravaack, Leger Fernandez,
+  Herrera Beutler and 5 more;
+- 24 campaigns fetched: 23 small paper filers (`fetch_fec_asof.py --paper`), Gillen NY-4 2024 ($5.7M) via the new
+  `pipeline/fetch/fetch_fec_asof_api_link.py` (committees from the API when the bulk linkage misses them). Not
+  recoverable: Kunce 2024 (his committee converted to a PAC; its Q3 2024 report has no cycle-to-date totals),
+  Demings 2016 (only a 2015 report in the API).
+- 2006+ federal D/R candidates with no money: 85 -> about 70, nearly all minor candidates who never filed.
+
+**Checked, consistent:** training labels (one winner per race; the 5 "top share lost" races are LA jungle runoffs
+and GA-Sen 2020), vote shares, duplicates, polls after election day (none), money shares sum to 1, the 2026 poll
+averages, party labels, district leans, prior margins.
+
+**Final train:** the tuners search 300 settings (win, no-polls) / 200 (margin) instead of 60, then refine:
+every untried one-step grid neighbour of the top 5 (`race_level.refine_search`), and re-score the top 12 on 3
+seeds (was 8); top 5 x 3 seeds for the rankers as before. Grids widened where the 10-28 picks sat on an edge
+that can be extended: win reg_lambda / min_child_weight down to 0.25 (4 of 5 picks at the lowest lambda);
+margin n_estimators up to 1,600 and min_child_weight down to 3 (all 3 picks at 800 trees and weight 8);
+no-polls max_depth up to 5 (all 5 picks at 3). Subsample / colsample at 1.0 and depth 1 are hard limits.
+Results: the refinement improved every stage-1 best. Tune scores: win log loss .2678; margin MAE 5.137 -> 5.083;
+no-polls log loss .1711 -> .1665. Held out 2018-24: win Brier .059; margin MAE 4.90, race-acc .887; no-polls on
+unpolled races race-acc .997, Brier .003. Gate 44 passed, 1 xfailed.
+**Still on an edge after the widening** (a further pass could help): margin depth 4, 1,600 trees, colsample 0.4,
+reg_alpha 1 (all 3 picks); no-polls depth 5 (all 5), learning rate .02 / min_child_weight 30 (4 of 5); win
+reg_lambda .25 and colsample .4 (all 5).
+2026 vs the previous publish: polled median 0.9 pts; data fixes alone move OH-9 +28 (Kaptur now has her $5.8M vs
+Merrin's $1.9M) and FL-14 -14 (Castor's money found under her FL-11 registration; Beltran has more cash on hand),
+NY-17 +11, MT-1 -12; the new models move a median 0.8. Favourites change in IA-Sen (Turek 52%), KY-6 (Dembo 52%),
+OH-9 (Kaptur 55%), WA-3 (Braun 54%). Senate/Governor races at 75% or less: 9.
+
 ## 2026-10-28 - re-tune stability (audit M5), roster checks, calibration detail, open CONCERNS items (user: "keep going through all of the items listed as issues")
 
 **Re-tune stability (M5)** - `analysis/retune_stability.py` repeats a trainer's whole tuning procedure

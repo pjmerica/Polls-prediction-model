@@ -40,7 +40,7 @@ import pandas as pd
 import race_margin_model as RMM
 import race_win_model as RWM
 import features as F
-from race_level import load_ensemble, race_margins, race_win_probs
+from race_level import load_ensemble, race_margins, race_win_probs, refine_search
 
 DATA = os.path.join(ROOT, "data")
 THRESHOLD = 5.0   # pts, the audit's bar
@@ -56,6 +56,7 @@ def _grid_sample(grid, n, seed):
 def retune_win(c, feats, search_seed, seeds):
     combos = _grid_sample(RWM.GRID, RWM.N_CONFIGS, search_seed)
     stage1 = sorted(((RWM.score_config(c, feats, p, seeds[:1]), p) for p in combos), key=lambda t: t[0][0])
+    stage1 = refine_search(stage1, RWM.GRID, lambda q: RWM.score_config(c, feats, q, seeds[:1]), lambda t: t[0][0])
     stage2 = sorted(((RWM.score_config(c, feats, p, seeds), p) for _, p in stage1[:RWM.TOP_K]),
                     key=lambda t: t[0][0])
     ens_params = [p for _, p in stage2[:RWM.N_ENSEMBLE]]
@@ -77,6 +78,7 @@ def retune_win(c, feats, search_seed, seeds):
 def retune_margin(c, feats, search_seed, seeds):
     combos = _grid_sample(RMM.GRID, RMM.N_CONFIGS, search_seed)
     stage1 = sorted(((RMM.loco_tune(c, feats, p, seeds[0]), p) for p in combos), key=lambda t: t[0])
+    stage1 = refine_search(stage1, RMM.GRID, lambda q: RMM.loco_tune(c, feats, q, seeds[0]), lambda t: t[0])
     stage2 = sorted(((float(np.mean([RMM.loco_tune(c, feats, p, s) for s in seeds])), p)
                      for _, p in stage1[:RMM.TOP_K]), key=lambda t: t[0])
     ens_params = [p for _, p in stage2[:3]]
@@ -94,6 +96,7 @@ def retune_fund(c, feats, search_seed, seeds):
     def score(p, ss):
         return float(np.mean([RF.temp_only(RF.loco(tune, feats, p, TUNE_CYCLES, tune, s))[1] for s in ss]))
     stage1 = sorted(((score(p, seeds[:1]), p) for p in combos), key=lambda t: t[0])
+    stage1 = refine_search(stage1, RF.GRID, lambda q: score(q, seeds[:1]), lambda t: t[0])
     stage2 = sorted(((score(p, seeds), p) for _, p in stage1[:RF.TOP_K]), key=lambda t: t[0])
     ens_params = [p for _, p in stage2[:RF.N_ENSEMBLE]]
     pc = c[c["polled"] == 1]

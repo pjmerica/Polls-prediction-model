@@ -454,6 +454,16 @@ def load_fundamentals():
                     (t, ck.split(" ")[0], npar(r.ballot_party), _name_tokens(r.candidate_name)))
     except (OSError, KeyError, ValueError):
         pass
+    # 2025-26 House SPECIAL winners (2026-10-28): res_house.csv's specials end before 2025, so the
+    # ten members elected in specials since (Grijalva AZ-7, Patronis FL-1, Fine FL-6, Walkinshaw
+    # VA-11, Van Epps TN-7, Menefee TX-18, Mejia NJ-11, Fuller GA-14, Gallagher CA-1, Wahab CA-14)
+    # read as challengers and their races as OPEN seats. Hand-kept from the roster, which names each
+    # as "<year> (special) Incumbent"; timed mid-year, inside the window before the 2026 general.
+    _sw = os.path.join(DATA_DIR, "special_winners_2026.csv")
+    if os.path.exists(_sw):
+        for r in pd.read_csv(_sw).itertuples():
+            winners.setdefault((r.state, "House"), []).append(
+                (int(r.year) + 0.5, norm_name(r.candidate).split(" ")[0], r.party, _name_tokens(r.candidate)))
     # APPOINTED / SUCCEEDED sitting officeholders running for the first time (hand-curated,
     # data/appointed_incumbents.csv) - they never won the seat, so the results table alone
     # reads them as challengers (Moody, Husted, Graham 2026; Loeffler, Tina Smith earlier)
@@ -891,8 +901,15 @@ def load_fec(path=None, extended=False):
     f["district"] = [("" if o == "Senate"
                       else ("1" if str(di) in ("00", "0", "nan") else str(int(float(di)))))
                      for o, di in zip(f["office"], f["district"])]
-    f = f.sort_values("receipts", ascending=False).drop_duplicates(
-        ["cycle", "state", "office", "district", "cand_key"])
+    f = f.sort_values("receipts", ascending=False)
+    f_all = f.copy()          # every row, before the per-key dedup (identity for as-of orphans)
+    # EVERY candidate id of a key (2026-10-28): one person can hold two FEC ids in a cycle (Mark
+    # Harris NC-8: H4NC08066 and H6NC09200; Bob Onder MO-3). The dedup below keeps one, and when the
+    # as-of-Sep-30 report sat under the OTHER id, the candidate had no money at all.
+    ids_of = {}
+    for r in f.itertuples():
+        ids_of.setdefault((r.cycle, r.state, r.office, r.district, r.cand_key), []).append(r.cand_id)
+    f = f.drop_duplicates(["cycle", "state", "office", "district", "cand_key"])
     out, by_id, by_race = {}, {}, {}
     for r in f.itertuples():
         k = (r.cycle, r.state, r.office, r.district, r.cand_key)
@@ -915,7 +932,9 @@ def load_fec(path=None, extended=False):
         a = pd.read_csv(asof_path)
         av = {(int(r.cycle), r.cand_id): r for r in a.itertuples()}
         for (cyc, cid), k in by_id.items():
-            r = av.get((cyc, cid))
+            # the kept id first, then the key's other ids (largest summary receipts first)
+            r = next((av[(cyc, c)] for c in [cid] + [c for c in ids_of.get(k, []) if c != cid]
+                      if (cyc, c) in av), None)
             if r is None:
                 out[k] = dict(receipts=np.nan, indiv=np.nan, pac=np.nan, party=np.nan,
                               self=np.nan, small=np.nan, cash=np.nan, spend=np.nan)
@@ -929,6 +948,47 @@ def load_fec(path=None, extended=False):
                           # report an overdraft, which would push a race share below 0 / above 1
                           cash=max(float(getattr(r, "cash_on_hand", np.nan)), 0.0),
                           spend=float(getattr(r, "disbursements", np.nan)))
+        # AS-OF MONEY WITH NO SUMMARY ROW THAT CYCLE (2026-10-28): fec_summary keeps a candidate's
+        # identity only for some of their runs (the bulk files record their LATEST election), so
+        # 6,030 of 26,158 as-of records - Issa 2020 ($11.1M, CA-50), Tarkanian 2018 (NV-3) - had
+        # money nobody could join to. Identity (name, party, state, office) comes from the same
+        # candidate id's nearest other summary cycle; the district from that cycle may be stale,
+        # which the race-level and state-wide fallbacks in fec_lookup already tolerate.
+        ident = {}
+        for r in f_all.itertuples():
+            ident.setdefault(r.cand_id, []).append(r)
+        for (cyc, cid), r in av.items():
+            if (cyc, cid) in by_id or cid not in ident:
+                continue
+            s = min(ident[cid], key=lambda x: abs(int(x.cycle) - cyc))
+            k = (cyc, s.state, s.office, s.district, s.cand_key)
+            if k in out:
+                continue
+            indiv = float(r.indiv_contrib)
+            out[k] = dict(receipts=float(r.receipts), indiv=indiv, pac=float(r.pac_contrib),
+                          party=float(r.party_contrib), self=float(r.self_fund),
+                          small=(float(np.clip(1 - r.indiv_itemized / indiv, 0, 1)) if indiv > 0 else np.nan),
+                          cash=max(float(getattr(r, "cash_on_hand", np.nan)), 0.0),
+                          spend=float(getattr(r, "disbursements", np.nan)))
+            by_id[(cyc, cid)] = k
+            by_race.setdefault(k[:4], []).append((_name_tokens(s.cand_name), npar(s.party), k))
+    # NAMES THE POLLS USE THAT THE FEC NEVER FILES (2026-10-28): 'KELLY, GEORGE J JR' is Mike Kelly
+    # (PA-16), 'EDWARDS, CHET' is polled as Thomas Edwards, 'CRAVAACK, RAYMOND' as Chip - no nickname
+    # rule bridges these, so those races had no money. data/fec_name_overrides.csv gives each FEC id
+    # the poll's name as an ALIAS (added beside the FEC key, in every cycle of that id, so polls that
+    # use the FEC's own name still match).
+    _ov = os.path.join(DATA_DIR, "fec_name_overrides.csv")
+    if os.path.exists(_ov):
+        alias = {r.cand_id: r for r in pd.read_csv(_ov).itertuples()}
+        for (cyc, cid), k in list(by_id.items()):
+            a_ = alias.get(cid)
+            if a_ is None or k not in out:
+                continue
+            ak = k[:4] + (norm_name(a_.poll_name),)
+            if ak not in out:
+                out[ak] = out[k]
+                pty = next((p for _, p, kk in by_race.get(k[:4], []) if kk == k), None)
+                by_race.setdefault(k[:4], []).append((_name_tokens(a_.poll_name), pty, ak))
     # PAC share relative to the party's median that cycle (2026-10-27, audit D7): Democrats raised
     # MORE of their money from PACs than Republicans in 2018-24 (3.3% vs 2.4% median, Senate) and
     # far LESS in 2026 (1.8% vs 7.2%) after many swore off corporate PAC money, so the raw share

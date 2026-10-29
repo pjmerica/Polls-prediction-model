@@ -86,32 +86,32 @@
   {
    "max_depth": 4,
    "learning_rate": 0.03,
-   "n_estimators": 800,
+   "n_estimators": 1600,
    "min_child_weight": 8,
    "subsample": 1.0,
-   "colsample_bytree": 0.6,
-   "reg_lambda": 5,
-   "reg_alpha": 0
-  },
-  {
-   "max_depth": 3,
-   "learning_rate": 0.03,
-   "n_estimators": 800,
-   "min_child_weight": 8,
-   "subsample": 0.8,
    "colsample_bytree": 0.4,
-   "reg_lambda": 1,
+   "reg_lambda": 5,
    "reg_alpha": 1
   },
   {
-   "max_depth": 3,
-   "learning_rate": 0.05,
-   "n_estimators": 800,
+   "max_depth": 4,
+   "learning_rate": 0.02,
+   "n_estimators": 1600,
    "min_child_weight": 8,
-   "subsample": 0.8,
-   "colsample_bytree": 0.6,
-   "reg_lambda": 1,
-   "reg_alpha": 0
+   "subsample": 1.0,
+   "colsample_bytree": 0.4,
+   "reg_lambda": 5,
+   "reg_alpha": 1
+  },
+  {
+   "max_depth": 4,
+   "learning_rate": 0.02,
+   "n_estimators": 1600,
+   "min_child_weight": 3,
+   "subsample": 1.0,
+   "colsample_bytree": 0.4,
+   "reg_lambda": 5,
+   "reg_alpha": 1
   }
  ],
  "trained_on_cycles": [
@@ -146,25 +146,142 @@
   "metric": "MAE of the derived margin",
   "stage2": [
    [
-    5.1373,
+    5.0829,
     {
      "max_depth": 4,
      "learning_rate": 0.03,
-     "n_estimators": 800,
+     "n_estimators": 1600,
      "min_child_weight": 8,
      "subsample": 1.0,
-     "colsample_bytree": 0.6,
+     "colsample_bytree": 0.4,
+     "reg_lambda": 5,
+     "reg_alpha": 1
+    }
+   ],
+   [
+    5.0831,
+    {
+     "max_depth": 4,
+     "learning_rate": 0.02,
+     "n_estimators": 1600,
+     "min_child_weight": 8,
+     "subsample": 1.0,
+     "colsample_bytree": 0.4,
+     "reg_lambda": 5,
+     "reg_alpha": 1
+    }
+   ],
+   [
+    5.0936,
+    {
+     "max_depth": 4,
+     "learning_rate": 0.02,
+     "n_estimators": 1600,
+     "min_child_weight": 3,
+     "subsample": 1.0,
+     "colsample_bytree": 0.4,
+     "reg_lambda": 5,
+     "reg_alpha": 1
+    }
+   ],
+   [
+    5.0939,
+    {
+     "max_depth": 4,
+     "learning_rate": 0.02,
+     "n_estimators": 1600,
+     "min_child_weight": 8,
+     "subsample": 1.0,
+     "colsample_bytree": 0.4,
      "reg_lambda": 5,
      "reg_alpha": 0
     }
    ],
    [
-    5.1688,
+    5.0985,
+    {
+     "max_depth": 4,
+     "learning_rate": 0.02,
+     "n_estimators": 1600,
+     "min_child_weight": 8,
+     "subsample": 1.0,
+     "colsample_bytree": 0.4,
+     "reg_lambda": 1,
+     "reg_alpha": 1
+    }
+   ],
+   [
+    5.1007,
+    {
+     "max_depth": 4,
+     "learning_rate": 0.02,
+     "n_estimators": 1600,
+     "min_child_weight": 8,
+     "subsample": 1.0,
+     "colsample_bytree": 0.6,
+     "reg_lambda": 5,
+     "reg_alpha": 1
+    }
+   ],
+   [
+    5.1187,
+    {
+     "max_depth": 4,
+     "learning_rate": 0.02,
+     "n_estimators": 800,
+     "min_child_weight": 8,
+     "subsample": 1.0,
+     "colsample_bytree": 0.4,
+     "reg_lambda": 5,
+     "reg_alpha": 1
+    }
+   ],
+   [
+    5.1218,
+    {
+     "max_depth": 4,
+     "learning_rate": 0.02,
+     "n_estimators": 800,
+     "min_child_weight": 3,
+     "subsample": 0.8,
+     "colsample_bytree": 0.4,
+     "reg_lambda": 1,
+     "reg_alpha": 0
+    }
+   ],
+   [
+    5.1265,
+    {
+     "max_depth": 4,
+     "learning_rate": 0.02,
+     "n_estimators": 800,
+     "min_child_weight": 3,
+     "subsample": 1.0,
+     "colsample_bytree": 0.4,
+     "reg_lambda": 5,
+     "reg_alpha": 0
+    }
+   ],
+   [
+    5.1308,
+    {
+     "max_depth": 4,
+     "learning_rate": 0.02,
+     "n_estimators": 800,
+     "min_child_weight": 8,
+     "subsample": 0.8,
+     "colsample_bytree": 0.6,
+     "reg_lambda": 1,
+     "reg_alpha": 0
+    }
+   ],
+   [
+    5.1391,
     {
      "max_depth": 3,
      "learning_rate": 0.03,
      "n_estimators": 800,
-     "min_child_weight": 8,
+     "min_child_weight": 3,
      "subsample": 0.8,
      "colsample_bytree": 0.4,
      "reg_lambda": 1,
@@ -172,97 +289,32 @@
     }
    ],
    [
-    5.17,
-    {
-     "max_depth": 3,
-     "learning_rate": 0.05,
-     "n_estimators": 800,
-     "min_child_weight": 8,
-     "subsample": 0.8,
-     "colsample_bytree": 0.6,
-     "reg_lambda": 1,
-     "reg_alpha": 0
-    }
-   ],
-   [
-    5.1762,
+    5.1437,
     {
      "max_depth": 4,
-     "learning_rate": 0.05,
-     "n_estimators": 200,
-     "min_child_weight": 15,
-     "subsample": 1.0,
-     "colsample_bytree": 0.4,
-     "reg_lambda": 1,
-     "reg_alpha": 0
-    }
-   ],
-   [
-    5.1851,
-    {
-     "max_depth": 3,
      "learning_rate": 0.02,
-     "n_estimators": 800,
-     "min_child_weight": 15,
-     "subsample": 1.0,
-     "colsample_bytree": 0.4,
-     "reg_lambda": 1,
-     "reg_alpha": 0
-    }
-   ],
-   [
-    5.1934,
-    {
-     "max_depth": 3,
-     "learning_rate": 0.03,
-     "n_estimators": 800,
-     "min_child_weight": 15,
+     "n_estimators": 1600,
+     "min_child_weight": 3,
      "subsample": 0.8,
-     "colsample_bytree": 1.0,
+     "colsample_bytree": 0.4,
      "reg_lambda": 5,
      "reg_alpha": 0
-    }
-   ],
-   [
-    5.2,
-    {
-     "max_depth": 4,
-     "learning_rate": 0.02,
-     "n_estimators": 400,
-     "min_child_weight": 15,
-     "subsample": 0.8,
-     "colsample_bytree": 0.6,
-     "reg_lambda": 1,
-     "reg_alpha": 0
-    }
-   ],
-   [
-    5.2125,
-    {
-     "max_depth": 4,
-     "learning_rate": 0.05,
-     "n_estimators": 400,
-     "min_child_weight": 15,
-     "subsample": 0.8,
-     "colsample_bytree": 1.0,
-     "reg_lambda": 1,
-     "reg_alpha": 1
     }
    ]
   ]
  },
  "eval_expanding_window": {
   "mean": {
-   "MAE_margin": 4.9094,
-   "MAE_share": 2.941,
-   "race_acc": 0.8855
+   "MAE_margin": 4.8988,
+   "MAE_share": 2.9321,
+   "race_acc": 0.8872
   },
   "per_cycle": [
    {
     "cycle": 2018,
     "n_races": 229,
-    "MAE_margin": 6.533,
-    "MAE_share": 5.2065,
+    "MAE_margin": 6.4759,
+    "MAE_share": 5.1553,
     "race_acc": 0.8908,
     "max_two_cand_sum": 0.0,
     "races_not_one_winner": 0
@@ -270,27 +322,27 @@
    {
     "cycle": 2020,
     "n_races": 150,
-    "MAE_margin": 5.4262,
-    "MAE_share": 2.7279,
-    "race_acc": 0.8467,
+    "MAE_margin": 5.5093,
+    "MAE_share": 2.7733,
+    "race_acc": 0.84,
     "max_two_cand_sum": 0.0,
     "races_not_one_winner": 0
    },
    {
     "cycle": 2022,
     "n_races": 174,
-    "MAE_margin": 3.8398,
-    "MAE_share": 1.938,
-    "race_acc": 0.9023,
+    "MAE_margin": 3.8972,
+    "MAE_share": 1.9545,
+    "race_acc": 0.908,
     "max_two_cand_sum": 0.0,
     "races_not_one_winner": 0
    },
    {
     "cycle": 2024,
     "n_races": 133,
-    "MAE_margin": 3.8388,
-    "MAE_share": 1.8916,
-    "race_acc": 0.9023,
+    "MAE_margin": 3.7129,
+    "MAE_share": 1.8455,
+    "race_acc": 0.9098,
     "max_two_cand_sum": 0.0,
     "races_not_one_winner": 0
    }

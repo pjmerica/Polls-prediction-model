@@ -57,6 +57,37 @@ class Ensemble:
                 np.mean([v.base_values for v in vals], axis=0))
 
 
+def grid_neighbors(params, grid):
+    """Every setting one grid step away from `params` in one hyperparameter (2026-10-28): the
+    local refinement after a trainer's random search. Random search finds the right region;
+    this finds the best point in it, at a fraction of the cost of more random draws."""
+    out = []
+    for k, vals in grid.items():
+        if params.get(k) not in vals:
+            continue
+        i = vals.index(params[k])
+        for j in (i - 1, i + 1):
+            if 0 <= j < len(vals):
+                q = dict(params)
+                q[k] = vals[j]
+                out.append(q)
+    return out
+
+
+def refine_search(stage1, grid, score, sort_key, top=5):
+    """stage1: [(score, params), ...] from the random search, sorted best first. Scores every
+    untried one-step neighbour of the `top` best and returns the merged list, sorted best first."""
+    seen = {tuple(sorted(p.items())) for _, p in stage1}
+    new = []
+    for _, p in stage1[:top]:
+        for q in grid_neighbors(p, grid):
+            k = tuple(sorted(q.items()))
+            if k not in seen:
+                seen.add(k)
+                new.append(q)
+    return sorted(stage1 + [(score(q), q) for q in new], key=sort_key)
+
+
 def load_ensemble(meta, data_dir, kind):
     """Load a race-level artifact's members (meta["ensemble_files"]; a lone model before 10-27).
     kind: "ranker" or "regressor"."""
