@@ -300,6 +300,36 @@ def best_other(s):
 PRIOR_OTHER_MIN = 20.0
 
 
+def _apply_2026_redrawn_incumbents(inc_map):
+    """2026 House seats on the 2025-26 maps (2026-10-28). races.csv keys incumbency by district
+    NUMBER, so a redrawn seat inherited the party of whoever held that number on the old map: CA-3
+    read Republican (Kiley's old seat) with Democrat Ami Bera, redistricted from CA-6, running there;
+    8 brand-new seats (TX-9, TX-30, TX-32, TX-35, FL-22, UT-1, AL-1, CA-38) each got a holding party.
+    Training saw the 2022 redraw's new seats as 'new_seat' (no party holds them), so 2026 must too.
+    The roster (data/general_roster_2026.csv, from the state's candidate list) names each NEW
+    district's sitting member: a new seat -> 'new_seat'; a member's party otherwise (Kiley's CA-6 is
+    an independent hold). Vacancies keep races.csv's party, as training's did. Redrawn states only
+    (data/redistricted_2026.csv); elsewhere the numbers still mean the same place."""
+    rp, dp = os.path.join(DATA_DIR, "general_roster_2026.csv"), os.path.join(DATA_DIR, "redistricted_2026.csv")
+    if not (os.path.exists(rp) and os.path.exists(dp)):
+        return
+    redrawn = set(pd.read_csv(dp)["state"])
+    ro = pd.read_csv(rp)
+    ro = ro[(ro["office"] == "House") & ro["state"].isin(redrawn)].drop_duplicates("race_id")
+    for r in ro.itertuples():
+        inc, status = str(r.incumbent), str(r.status)
+        if re.search(r"new seat", inc + " " + status, re.I):
+            party = "new_seat"
+        elif re.match(r"\s*vacant", inc, re.I):
+            continue
+        else:
+            m = re.search(r"\b(Republican|Democratic|Independent)\b", status)
+            if not m:
+                continue
+            party = npar(m.group(1))
+        inc_map[(2026, r.state, "House", dist_str(r.district))] = party
+
+
 def load_fundamentals():
     """Incumbency + prior-margin lookups from the committed static files in data/.
 
@@ -336,6 +366,7 @@ def load_fundamentals():
     for part in (_ok[~_gen], _ok[_gen]):          # general rows written last, so they win
         for r in part.itertuples():
             inc_map[(r.cycle, r.state, r.office, r.district)] = npar(r.incumbent_party)
+    _apply_2026_redrawn_incumbents(inc_map)
 
     # Per-CANDIDATE totals from the shared aggregation (2026-09-25). This used to take the
     # biggest single DEM/REP ballot LINE, which dropped fusion lines (a NY Republican's
@@ -565,6 +596,10 @@ def personal_incumbent(winners, year, state, office, cand_key, party, name=None,
 _DECENNIAL_REDRAW = (2002, 2012, 2022)
 _MIDDECADE_REDRAW = {"TX": (2004,), "GA": (2006, 2024), "FL": (2016,), "NC": (2016, 2020, 2024),
                      "VA": (2016,), "PA": (2018,), "AL": (2024,), "LA": (2024,), "NY": (2024,)}
+# the 2025-26 redraws (data/redistricted_2026.csv; MO votes on its 2022 lines, VA on its 2021 map).
+# Missing until 2026-10-28, so the redraw-year incumbency rule never fired for 2026 (CA-3, CA-41).
+for _st in ("TX", "NC", "OH", "CA", "UT", "FL", "TN", "LA", "AL"):
+    _MIDDECADE_REDRAW[_st] = _MIDDECADE_REDRAW.get(_st, ()) + (2026,)
 
 
 def _last_redraw(state, year):

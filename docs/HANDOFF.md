@@ -39,6 +39,11 @@ BLS series now skips the write); `newest_poll_days` in predictions_2026.csv (26 
 (`race_win_feature_importance.csv`: 6 of 73 features zero gain). Checked and closed in CONCERNS: #21,
 #36, #37, #40, #47, #50, #55, MN-Gov-REP; #20 via polling-agg `tools/forecast_history.py`.
 
+**Redrawn-map incumbency (CONCERNS #19, later on 10-28):** the 2025-26 maps were missing from
+`_MIDDECADE_REDRAW`, so 13 redrawn-state House races carried the old district number's holding party
+(CA-3/CA-41 read R with Democratic incumbents running; new seats like TX-9 and UT-1 had a holder).
+Fixed from the roster, matching how training saw 2022's new seats; FL-22, TX-35, CA-6 move 2-3 pts.
+
 **2026 vs the previous publish** (same feeds): polled median 0.6 pts, 7 races 5+ (largest IA-3 -9.0),
 favourites change in IA-Sen (Hinson 55%), KS-Sen (Marshall 55%), KY-6 (Alvarado 52%); no-polls median
 0.01. OH-Gov (Dem 75.9%) leaves the 75% list: 11 Senate/Governor races. Gate: 40 passed, 1 xfailed.

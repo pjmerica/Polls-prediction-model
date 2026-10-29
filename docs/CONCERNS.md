@@ -223,6 +223,15 @@ above:
     disagreement) so thin-poll mega-edges rank below well-supported small ones.
 19. **is_incumbent still wrong-district in redrawn states** (PVI patch fixes prior_margin
     only); consider is_redistricted feature or NaN-ing incumbency there (⇒ retrain).
+    **RESOLVED 2026-10-28 (no retrain: 2026 inputs only).** `_MIDDECADE_REDRAW` lacked the 2025-26
+    maps, so the 10-13 redraw-year rule never fired for 2026, and races.csv handed each redrawn seat
+    the party of its old NUMBER: CA-3 and CA-41 read Republican with Democrats Bera and Sanchez,
+    redistricted from CA-6 / CA-38, running there; 8 new seats got a holding party where training's
+    2022 new seats read 'new_seat'. Now the nine states carry 2026, and
+    `features._apply_2026_redrawn_incumbents` takes each new district's incumbent from the roster
+    (new seat -> 'new_seat', Kiley's CA-6 an independent hold, vacancies unchanged).
+    tests/test_redrawn_incumbency.py. Effect: FL-22 D -3.3, TX-35 R +2.9, CA-6 Kiley +2.3; no other
+    race 1+ pt.
 20. Backtest logging schema NOW (pre-Nov-2026) so the edge backtest is a join, not
     archaeology (extends #15).
 21. **Nickname-duplicate candidates in the GENERAL model's feed** (found 2026-07-15 via the
