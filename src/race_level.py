@@ -74,18 +74,52 @@ def grid_neighbors(params, grid):
     return out
 
 
-def refine_search(stage1, grid, score, sort_key, top=5):
+def _pkey(p):
+    return tuple(sorted(p.items()))
+
+
+def refine_search(stage1, grid, score, sort_key, top=5, rounds=8):
     """stage1: [(score, params), ...] from the random search, sorted best first. Scores every
-    untried one-step neighbour of the `top` best and returns the merged list, sorted best first."""
-    seen = {tuple(sorted(p.items())) for _, p in stage1}
-    new = []
-    for _, p in stage1[:top]:
-        for q in grid_neighbors(p, grid):
-            k = tuple(sorted(q.items()))
-            if k not in seen:
-                seen.add(k)
-                new.append(q)
-    return sorted(stage1 + [(score(q), q) for q in new], key=sort_key)
+    untried one-step neighbour of the `top` best; repeats from the new top while the top set keeps
+    changing (a hill-climb, at most `rounds` passes - 2026-10-29: one pass let the best walk only one
+    step from where the random sample landed). Returns the merged list, sorted best first."""
+    out = sorted(stage1, key=sort_key)
+    seen = {_pkey(p) for _, p in out}
+    for _ in range(rounds):
+        before = [_pkey(p) for _, p in out[:top]]
+        new = []
+        for _, p in out[:top]:
+            for q in grid_neighbors(p, grid):
+                k = _pkey(q)
+                if k not in seen:
+                    seen.add(k)
+                    new.append(q)
+        if not new:
+            break
+        out = sorted(out + [(score(q), q) for q in new], key=sort_key)
+        if [_pkey(p) for _, p in out[:top]] == before:
+            break
+    return out
+
+
+def sample_grid(grid, n, seed=0):
+    """n distinct random settings from `grid`, reproducible for a seed, without building the full
+    product (the 2026-10-29 win grid has ~1.3 million combinations)."""
+    import random
+    rng = random.Random(seed)
+    keys = list(grid)
+    total = 1
+    for k in keys:
+        total *= len(grid[k])
+    n = min(n, total)
+    out, seen = [], set()
+    while len(out) < n:
+        p = {k: rng.choice(grid[k]) for k in keys}
+        k_ = _pkey(p)
+        if k_ not in seen:
+            seen.add(k_)
+            out.append(p)
+    return out
 
 
 def load_ensemble(meta, data_dir, kind):

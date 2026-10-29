@@ -41,19 +41,22 @@ import xgboost as xgb
 
 import features as F
 from cycles import TUNE_CYCLES, EVAL_CYCLES
-from race_level import Ensemble, race_margins, refine_search
+from race_level import Ensemble, race_margins, refine_search, sample_grid
 from race_win_model import training_table
 
-N_CONFIGS = 200      # 60 until 2026-10-28 (wider search before the final 2026 train; the slowest
-                     # trainer, so 200 of its 4,374-setting grid; the first 60 are the old sample)
-TOP_K = 12
+N_CONFIGS = 300      # random draws from GRID (60 until 10-28, 200 on 10-28); then refinement
+TOP_K = 15
 TUNE_SEEDS = (42, 7, 123)
-# widened 2026-10-28 where all 3 chosen settings sat on the edge: n_estimators 800 (the most) and
-# min_child_weight 8 (the least)
-GRID = dict(max_depth=[2, 3, 4], learning_rate=[0.02, 0.03, 0.05],
-            n_estimators=[200, 400, 800, 1600], min_child_weight=[3, 8, 15, 30],
-            subsample=[0.6, 0.8, 1.0], colsample_bytree=[0.4, 0.6, 1.0],
-            reg_lambda=[1, 5, 20], reg_alpha=[0, 1])
+# 2026-10-29 (final search, user: "even wider and more options"): the 10-28 picks all sat at depth 4,
+# 1,600 trees, colsample 0.4 and reg_alpha 1 - each extended - with finer steps throughout
+GRID = dict(max_depth=[2, 3, 4, 5, 6],
+            learning_rate=[0.01, 0.02, 0.03, 0.05],
+            n_estimators=[400, 800, 1600, 2400, 3200],
+            min_child_weight=[3, 5, 8, 15, 30],
+            subsample=[0.6, 0.8, 0.9, 1.0],
+            colsample_bytree=[0.2, 0.3, 0.4, 0.5, 0.6, 1.0],
+            reg_lambda=[1, 3, 5, 10, 20],
+            reg_alpha=[0, 0.5, 1, 2, 4])
 
 
 def fit_share(tr, feats, params, seed=42):
@@ -97,10 +100,7 @@ def main():
     print(f"training rows {len(c)} | races {c['race_id'].nunique()} | features {len(FEATS)} "
           f"| built in {time.time() - t0:.0f}s", flush=True)
 
-    keys = list(GRID)
-    combos = list(itertools.product(*[GRID[k] for k in keys]))
-    random.seed(0); random.shuffle(combos)
-    combos = [dict(zip(keys, cb)) for cb in combos[:N_CONFIGS]]
+    combos = sample_grid(GRID, N_CONFIGS, seed=0)
     t1 = time.time()
     stage1 = sorted(((loco_tune(c, FEATS, p, 42), p) for p in combos), key=lambda t: t[0])
     print(f"stage 1: {len(combos)} settings in {time.time() - t1:.0f}s; best tune MAE "

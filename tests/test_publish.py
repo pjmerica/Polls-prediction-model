@@ -6,9 +6,9 @@ workflow). Run by hand after a refresh:  py -m pytest tests -q -rxX
 
 Hard checks block. The model-shape checks at the bottom (odds summing to 1, margins cancelling,
 one winner per race) became hard checks on 2026-10-27 with the race-level win and margin models
-(audit item 7), which make them true by construction. Win and margin favourites agreeing stays
-an expected failure: the two models are trained separately, so nothing forces them to agree, and
-those races are flagged on the pages instead (audit item 3).
+(audit item 7), which make them true by construction. The win and margin models picking different
+favourites is reported, not failed (test_models_split_is_reported; user 2026-10-29): they are
+trained separately, and those races are flagged on the pages (audit item 3).
 """
 import json
 import os
@@ -290,10 +290,13 @@ def test_one_predicted_winner_per_race(margin):
     assert (n == 1).all(), f"two winners: {list(n[n > 1].index)}; none: {list(n[n == 0].index)}"
 
 
-@pytest.mark.xfail(reason="separately trained win and margin models can pick different "
-                          "favourites; flagged on the pages (audit item 3)")
-def test_win_and_margin_favourites_agree(win, margin):
+def test_models_split_is_reported(win, margin):
+    # The win and margin models are trained separately, so they can pick different favourites in a
+    # close race. That is a legitimate result, not a failure (user 2026-10-29): the pages flag those
+    # races "models split" and mute the market gap (audit item 3). Reported here, never blocking;
+    # what IS checked is that every race has exactly one favourite in each file.
     wf = win.loc[win.groupby("race_id")["win_prob"].idxmax()].set_index("race_id")["cand_key"]
     mf = margin.loc[margin.groupby("race_id")["pred_margin"].idxmax()].set_index("race_id")["cand_key"]
-    split = list(wf.index[wf != mf.reindex(wf.index)])
-    assert not split, f"{len(split)} races: {split}"
+    assert set(wf.index) == set(mf.index), "win and margin files cover different races"
+    split = sorted(wf.index[wf != mf.reindex(wf.index)])
+    print(f"\nmodels split in {len(split)} races (flagged on the pages): {split}")

@@ -51,20 +51,24 @@ import features as F  # noqa: E402
 from cycles import TUNE_CYCLES, EVAL_CYCLES  # noqa: E402
 from macro_features import build_macro  # noqa: E402
 from cycles import natl_env  # noqa: E402
-from race_level import Ensemble, race_win_probs, refine_search  # noqa: E402
+from race_level import Ensemble, race_win_probs, refine_search, sample_grid  # noqa: E402
 import fundamentals_model as FM  # noqa: E402
 import fundamentals_on_unpolled as FU  # noqa: E402
 from race_win_model import fit_ranker, TEMP_GRID, N_ENSEMBLE, N_MODEL_SEEDS  # noqa: E402
 
-N_CONFIGS = 300      # 60 until 2026-10-28 (wider search before the final 2026 train; the first 60
-TOP_K = 12           # are the old sample, same shuffle)
+N_CONFIGS = 500      # random draws from GRID (60 until 10-28, 300 on 10-28); then refinement
+TOP_K = 15
 TUNE_SEEDS = (42, 7, 123)
 OFFSET_GRID = np.round(np.linspace(-8, 0, 33), 2)
-# max_depth widened 2026-10-28: all 5 chosen settings sat at 3, the deepest the grid allowed
-GRID = dict(max_depth=[1, 2, 3, 4, 5], learning_rate=[0.02, 0.05, 0.1],
-            n_estimators=[150, 300, 600], min_child_weight=[2, 8, 30],
-            subsample=[0.6, 0.8, 1.0], colsample_bytree=[0.4, 0.6, 1.0],
-            reg_lambda=[1, 5, 20])
+# 2026-10-29 (final search, user: "even wider and more options"): the 10-28 picks sat at depth 5 (all 5),
+# learning rate 0.02 and min_child_weight 30 (4 of 5) - each extended - with finer steps throughout
+GRID = dict(max_depth=[3, 4, 5, 6, 7, 8],
+            learning_rate=[0.005, 0.01, 0.02, 0.03, 0.05],
+            n_estimators=[150, 300, 600, 1200],
+            min_child_weight=[8, 15, 30, 60, 100],
+            subsample=[0.6, 0.8, 0.9, 1.0],
+            colsample_bytree=[0.4, 0.6, 0.8, 1.0],
+            reg_lambda=[0.25, 1, 5, 20])
 TABLE = os.path.join(ROOT, "data", "raw", "fundamentals_training_table.pkl")   # gitignored cache
 
 
@@ -182,10 +186,7 @@ def main():
 
     # ---- tuning: LOCO over the tune cycles, trained on the tune cycles only ----
     tune = c[c["year"].isin(TUNE_CYCLES)]
-    keys = list(GRID)
-    combos = list(itertools.product(*[GRID[k] for k in keys]))
-    random.seed(0); random.shuffle(combos)
-    combos = [dict(zip(keys, cb)) for cb in combos[:N_CONFIGS]]
+    combos = sample_grid(GRID, N_CONFIGS, seed=0)
 
     def score(p, seeds):
         return float(np.mean([temp_only(loco(tune, FEATS, p, TUNE_CYCLES, tune, s))[1] for s in seeds]))

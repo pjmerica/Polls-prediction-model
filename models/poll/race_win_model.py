@@ -45,24 +45,27 @@ from sklearn.metrics import brier_score_loss, log_loss, roc_auc_score
 import features as F
 from cycles import CYCLES, TUNE_CYCLES, EVAL_CYCLES, natl_env
 from macro_features import build_macro
-from race_level import MINOR_POLL_MAX, Ensemble, refine_search, softmax, race_win_probs
+from race_level import MINOR_POLL_MAX, Ensemble, refine_search, sample_grid, softmax, race_win_probs
 
-N_CONFIGS = 300      # 60 until 2026-10-28: a re-tune drawing a NEW 60-setting sample still moved 15
-                     # close House races 5+ pts (docs/RETUNE_STABILITY.md); 300 of the 2,187-setting
-                     # grid, the first 60 being the old sample (same shuffle)
+N_CONFIGS = 600      # random draws from GRID (60 until 10-28, 300 on 10-28); then refinement
 N_ENSEMBLE = 5       # the served model averages the top 5 stage-2 settings...
 N_MODEL_SEEDS = 3    # ...each fitted with 3 seeds (15 members). 2026-10-28, audit M5: with the top 3
                      # on one seed (10-27), a re-tune with fresh randomness moved 25 of 175 races by
                      # 5+ win pts (docs/RETUNE_STABILITY.md, analysis/retune_stability.py)
-TOP_K = 12           # settings re-scored on 3 seeds (8 until 2026-10-28)
+TOP_K = 15           # settings re-scored on 3 seeds (8 until 10-28, 12 on 10-28)
 TUNE_SEEDS = (42, 7, 123)
 TEMP_GRID = np.round(np.exp(np.linspace(np.log(0.1), np.log(3.0), 40)), 4)
-# widened 2026-10-28 where the chosen settings sat on the edge: 4 of 5 at reg_lambda 1 (the lowest),
-# 2 of 5 at min_child_weight 0.5 (subsample / colsample at 1.0 and depth 1 are hard limits)
-GRID = dict(max_depth=[1, 2, 3], learning_rate=[0.02, 0.05, 0.1],
-            n_estimators=[150, 300, 600], min_child_weight=[0.25, 0.5, 2, 8],
-            subsample=[0.6, 0.8, 1.0], colsample_bytree=[0.4, 0.6, 1.0],
-            reg_lambda=[0.25, 1, 5, 20])
+# 2026-10-29 (final search, user: "even wider and more options"): every edge the 10-28 picks sat on
+# extended (all 5 at reg_lambda 0.25 and colsample 0.4, the lowest), finer steps throughout, and L1
+# (reg_alpha) searched for the first time. Depth 1 and subsample 1.0 are hard limits.
+GRID = dict(max_depth=[1, 2, 3],
+            learning_rate=[0.01, 0.02, 0.03, 0.05, 0.075, 0.1],
+            n_estimators=[100, 150, 200, 300, 450, 600, 900],
+            min_child_weight=[0.1, 0.25, 0.5, 1, 2, 4, 8],
+            subsample=[0.6, 0.7, 0.8, 0.9, 1.0],
+            colsample_bytree=[0.15, 0.2, 0.3, 0.4, 0.5, 0.6, 0.8, 1.0],
+            reg_lambda=[0, 0.05, 0.1, 0.25, 0.5, 1, 2, 5, 20],
+            reg_alpha=[0, 0.1, 0.5, 1])
 
 
 # ---- training rows: identical construction to model.ipynb cells 4-12 ----------------------
@@ -197,10 +200,7 @@ def main():
                                               for s in prev["tune"]["stage2"]]
         print(f"PARAMS reused from {os.path.basename(art)}: {PARAMS}")
     else:
-        keys = list(GRID)
-        combos = list(itertools.product(*[GRID[k] for k in keys]))
-        random.seed(0); random.shuffle(combos)
-        combos = [dict(zip(keys, cb)) for cb in combos[:N_CONFIGS]]
+        combos = sample_grid(GRID, N_CONFIGS, seed=0)
         t1 = time.time()
         stage1 = sorted(((score_config(c, FEATS, p, (42,)), p) for p in combos), key=lambda t: t[0][0])
         print(f"stage 1: {len(combos)} settings in {time.time() - t1:.0f}s; best tune log loss "

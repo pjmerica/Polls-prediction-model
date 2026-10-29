@@ -40,17 +40,14 @@ import pandas as pd
 import race_margin_model as RMM
 import race_win_model as RWM
 import features as F
-from race_level import load_ensemble, race_margins, race_win_probs, refine_search
+from race_level import load_ensemble, race_margins, race_win_probs, refine_search, sample_grid
 
 DATA = os.path.join(ROOT, "data")
 THRESHOLD = 5.0   # pts, the audit's bar
 
 
 def _grid_sample(grid, n, seed):
-    keys = list(grid)
-    combos = list(itertools.product(*[grid[k] for k in keys]))
-    random.seed(seed); random.shuffle(combos)
-    return [dict(zip(keys, cb)) for cb in combos[:n]]
+    return sample_grid(grid, n, seed)
 
 
 def retune_win(c, feats, search_seed, seeds):
