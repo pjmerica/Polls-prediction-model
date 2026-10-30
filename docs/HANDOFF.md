@@ -4,6 +4,35 @@ For the next agent. Read AGENTS.md first (architecture + rules), CONCERNS.md sec
 (risk register + roadmap). This file: what's mid-flight RIGHT NOW, what's most likely to
 break, and what to do next, in order.
 
+## 2026-10-29 - wide hyperparameter search, published (user: "do another search with even wider and more options ... It can take more than 10 hours if needed")
+
+**Search** (68dc85f): grids extended past every edge the 10-28 picks sat on, with finer steps; random draws
+`race_level.sample_grid` (win 600, margin 300, no-polls 500), then `refine_search` as an iterative hill-climb
+(up to 8 passes from the top 5), then the top 15 re-scored on 3 seeds. Run time: win 1.9 h, margin 5.8 h,
+no-polls 3.4 h. The hill-climb found the best setting for every model (220 / 220 / 134 neighbours).
+
+| model | tune score 10-28 -> 10-29 | held out 2018-24 (10-29) |
+|---|---|---|
+| win | log loss .2678 -> .2667 | Brier .059, log loss .193, AUC .976, race-acc .878 |
+| margin | MAE 5.083 -> 5.070 | margin MAE 4.85 (was 4.90), share MAE 2.92, race-acc .886 |
+| no-polls | log loss .1665 -> .1587 | unpolled: Brier .003, race-acc .997; polled: Brier .082 (was .078), log loss .262 (was .253), race-acc .847 |
+
+The no-polls model now uses depth-8 trees (was 5): clearly better on the 1998-2016 tune folds, slightly worse
+on the 2018-24 expanding window (its 2018 fit sees 10 cycles; production trains on 14) and slightly better on
+the 2018-24 LOCO calibration fit (.1129 -> .1122). Published as the tuner's pick (user call 2026-10-22).
+
+**Edges still binding, left on purpose** (user 10-29: "the amount of edge we will get from training a little
+deeper isn't worth it"): margin learning rate .01 / 3,200 trees / reg_lambda 1 (all 3 picks); no-polls depth 8
+(all 5). Win: 1,350 / 1,800 trees and min_child_weight 16 were tried with `--extend` (each trainer's new flag:
+no random draws, the hill-climb starts from the saved stage-2 settings) - 51 neighbours, same 5 settings, so
+900 trees is not a real limit. Depth 1, subsample / colsample 1.0 and reg_alpha 0 are hard limits.
+Re-tune stability (M5) was not re-run on these settings.
+
+**2026 vs the 10-28 publish:** polled median 0.4 pts, 4 races over 5 (TX-34 +7.7, OH-9 Kaptur 55 -> 63,
+FL-9 +5.7, TX-28 +5.5), no favourite changes; no-polls median 0.03, CA-1 McGuire 74 -> 62 (further from the
+market's ~96), ME-Gov Pingree 78 -> 67, no favourite changes. Senate/Governor races at 75% or less: 11 (ME-Gov
+and NV-Gov added). Gate 47 passed.
+
 ## 2026-10-28 (night) - data sweep and the final 2026 train (user: "find any data issues and fix them. Then ... make the tuner search more expansive and do one final train")
 
 **2026 incumbency** (features.load_fundamentals, appointed_incumbents.csv): the ten House members elected

@@ -48,7 +48,9 @@ N_CONFIGS = 300      # random draws from GRID (60 until 10-28, 200 on 10-28); th
 TOP_K = 15
 TUNE_SEEDS = (42, 7, 123)
 # 2026-10-29 (final search, user: "even wider and more options"): the 10-28 picks all sat at depth 4,
-# 1,600 trees, colsample 0.4 and reg_alpha 1 - each extended - with finer steps throughout
+# 1,600 trees, colsample 0.4 and reg_alpha 1 - each extended - with finer steps throughout.
+# The 10-29 picks sit at learning rate 0.01, 3,200 trees and reg_lambda 1 (edges); extending them was
+# judged not worth the run time (user, 10-29). `--extend` hill-climbs from the saved picks if revisited.
 GRID = dict(max_depth=[2, 3, 4, 5, 6],
             learning_rate=[0.01, 0.02, 0.03, 0.05],
             n_estimators=[400, 800, 1600, 2400, 3200],
@@ -100,7 +102,10 @@ def main():
     print(f"training rows {len(c)} | races {c['race_id'].nunique()} | features {len(FEATS)} "
           f"| built in {time.time() - t0:.0f}s", flush=True)
 
-    combos = sample_grid(GRID, N_CONFIGS, seed=0)
+    # --extend: no random draws; the hill-climb starts from the saved stage-2 settings
+    art = os.path.join(ROOT, "data", "race_margin_model_features.json")
+    combos = ([s[1] for s in json.load(open(art))["tune"]["stage2"]] if "--extend" in _sys.argv
+              else sample_grid(GRID, N_CONFIGS, seed=0))
     t1 = time.time()
     stage1 = sorted(((loco_tune(c, FEATS, p, 42), p) for p in combos), key=lambda t: t[0])
     print(f"stage 1: {len(combos)} settings in {time.time() - t1:.0f}s; best tune MAE "

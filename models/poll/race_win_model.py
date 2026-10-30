@@ -58,10 +58,13 @@ TEMP_GRID = np.round(np.exp(np.linspace(np.log(0.1), np.log(3.0), 40)), 4)
 # 2026-10-29 (final search, user: "even wider and more options"): every edge the 10-28 picks sat on
 # extended (all 5 at reg_lambda 0.25 and colsample 0.4, the lowest), finer steps throughout, and L1
 # (reg_alpha) searched for the first time. Depth 1 and subsample 1.0 are hard limits.
+# Later on 10-29 (--extend): all 5 picks used 900 trees, the most, so 1,350 / 1,800 added, and
+# min_child_weight 16 above the one pick at 8. The hill-climb scored 51 new neighbours and kept the
+# same 5 settings: more trees did not help.
 GRID = dict(max_depth=[1, 2, 3],
             learning_rate=[0.01, 0.02, 0.03, 0.05, 0.075, 0.1],
-            n_estimators=[100, 150, 200, 300, 450, 600, 900],
-            min_child_weight=[0.1, 0.25, 0.5, 1, 2, 4, 8],
+            n_estimators=[100, 150, 200, 300, 450, 600, 900, 1350, 1800],
+            min_child_weight=[0.1, 0.25, 0.5, 1, 2, 4, 8, 16],
             subsample=[0.6, 0.7, 0.8, 0.9, 1.0],
             colsample_bytree=[0.15, 0.2, 0.3, 0.4, 0.5, 0.6, 0.8, 1.0],
             reg_lambda=[0, 0.05, 0.1, 0.25, 0.5, 1, 2, 5, 20],
@@ -200,7 +203,10 @@ def main():
                                               for s in prev["tune"]["stage2"]]
         print(f"PARAMS reused from {os.path.basename(art)}: {PARAMS}")
     else:
-        combos = sample_grid(GRID, N_CONFIGS, seed=0)
+        # --extend: no random draws; the hill-climb starts from the saved stage-2 settings, so a
+        # grid widened at an edge the last search's picks sat on is explored from where they are
+        combos = ([s[1] for s in json.load(open(art))["tune"]["stage2"]] if "--extend" in _sys.argv
+                  else sample_grid(GRID, N_CONFIGS, seed=0))
         t1 = time.time()
         stage1 = sorted(((score_config(c, FEATS, p, (42,)), p) for p in combos), key=lambda t: t[0][0])
         print(f"stage 1: {len(combos)} settings in {time.time() - t1:.0f}s; best tune log loss "

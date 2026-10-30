@@ -61,7 +61,9 @@ TOP_K = 15
 TUNE_SEEDS = (42, 7, 123)
 OFFSET_GRID = np.round(np.linspace(-8, 0, 33), 2)
 # 2026-10-29 (final search, user: "even wider and more options"): the 10-28 picks sat at depth 5 (all 5),
-# learning rate 0.02 and min_child_weight 30 (4 of 5) - each extended - with finer steps throughout
+# learning rate 0.02 and min_child_weight 30 (4 of 5) - each extended - with finer steps throughout.
+# The 10-29 picks all sit at depth 8 (the edge); going deeper was judged not worth the run time (user,
+# 10-29). `--extend` hill-climbs from the saved picks if revisited.
 GRID = dict(max_depth=[3, 4, 5, 6, 7, 8],
             learning_rate=[0.005, 0.01, 0.02, 0.03, 0.05],
             n_estimators=[150, 300, 600, 1200],
@@ -186,7 +188,10 @@ def main():
 
     # ---- tuning: LOCO over the tune cycles, trained on the tune cycles only ----
     tune = c[c["year"].isin(TUNE_CYCLES)]
-    combos = sample_grid(GRID, N_CONFIGS, seed=0)
+    # --extend: no random draws; the hill-climb starts from the saved stage-2 settings
+    art = os.path.join(ROOT, "data", "fundamentals_model_general_features.json")
+    combos = ([s[1] for s in json.load(open(art))["tune"]["stage2"]] if "--extend" in _sys.argv
+              else sample_grid(GRID, N_CONFIGS, seed=0))
 
     def score(p, seeds):
         return float(np.mean([temp_only(loco(tune, FEATS, p, TUNE_CYCLES, tune, s))[1] for s in seeds]))
