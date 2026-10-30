@@ -90,6 +90,11 @@ FRIENDLY = {
     "min_margin": "Worst polled margin (pts)",
     "margin_trend": "Polled-margin trend",
     "is_president_party": "President's party",
+    # primary strength (features.load_primary_results; 2026-10-30: published with no label)
+    "primary_margin": "Own primary winning margin (pts)",
+    "opp_primary_margin": "Opponent's primary winning margin (pts)",
+    "primary_margin_diff": "Primary margin vs opponent's (pts)",
+    "primary_uncontested": "Uncontested primary",
     "fund_receipts_ln": "Fundraising total (log $)",
     "fund_share": "Share of race fundraising",
     "fund_indiv_pct": "Individual-donor share of funds",
@@ -198,6 +203,15 @@ DESC = {
     "margin_trend": "Whether the candidate's polled margin is improving or worsening.",
     "is_president_party": "1 if the candidate's party holds the White House "
                           "(midterms usually punish it).",
+    "primary_margin": "How much the candidate won their own primary by: the winner's share minus "
+                      "the runner-up's, in points. Blank if the primary had one candidate or no "
+                      "result was found.",
+    "opp_primary_margin": "How much the main opponent (the strongest other candidate) won their "
+                          "primary by, in points.",
+    "primary_margin_diff": "The candidate's primary margin minus the opponent's. Positive means "
+                           "this candidate had the easier primary of the two.",
+    "primary_uncontested": "1 if the candidate's primary had no real contest (one candidate, or a "
+                           "runner-up under 5%).",
     "fund_receipts_ln": "Total campaign money raised (log scale).",
     "fund_share": "Candidate's share of ALL money raised in the race - "
                   "donors are forecasters with skin in the game.",
