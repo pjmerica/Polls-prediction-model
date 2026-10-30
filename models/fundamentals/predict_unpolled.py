@@ -1,5 +1,6 @@
 """Win probabilities for the 2026 races NO pollster covers -> outputs/fundamentals_predictions_2026.csv.
-2026-10-23 (user: "every race should be scored by the model").
+2026-10-23 (user: "every race should be scored by the model"). Since 2026-10-29 also a predicted vote
+share and margin (pred_share, pred_margin) from race_fundamentals_margin_model.py.
 
 The poll model (src/predict.py) scores only polled races: 173 of the 506 on the ballot. This
 scores the other 333 with the no-polling model - since 2026-10-27 the RACE-LEVEL one
@@ -36,7 +37,7 @@ import features as F  # noqa: E402
 from cycles import natl_env as natl_env_hist  # noqa: E402
 from macro_features import build_macro  # noqa: E402
 from predict import patch_redistricted_priors  # noqa: E402
-from race_level import load_ensemble, race_win_probs  # noqa: E402
+from race_level import load_ensemble, race_margins, race_win_probs  # noqa: E402
 
 CYCLE = 2026
 OUT = _os.path.join(ROOT, "outputs", "fundamentals_predictions_2026.csv")
@@ -156,6 +157,15 @@ def main():
         fragile |= set(base.index[base != picks[label].reindex(base.index)])
     c["bias_fragile"] = c["race_id"].isin(fragile).astype(int)
     c["win_prob_norm"] = c["win_prob"]        # already a race-level probability
+    # margin (2026-10-29, models/fundamentals/race_fundamentals_margin_model.py): predicted vote share,
+    # margin = share minus the best rival's in the race; blank in an uncontested race
+    mpath = _os.path.join(ROOT, "data", "fundamentals_margin_model_features.json")
+    if _os.path.exists(mpath):
+        mm = json.load(open(mpath))
+        c["pred_share"] = load_ensemble(mm, _os.path.join(ROOT, "data"), "regressor").predict(
+            c.reindex(columns=mm["features"])).astype("float64")
+        n = c.groupby("race_id")["race_id"].transform("size")
+        c["pred_margin"] = race_margins(c, "pred_share").where(n > 1)
     c["n_polls"] = 0
     c["n_surveys"] = 0
     c["basis"] = "fundamentals"
@@ -165,7 +175,7 @@ def main():
     cols = ["race_id", "state", "office", "district", "candidate", "cand_key", "party", "display_party",
             "n_polls", "n_surveys", "poll_avg", "poll_lead", "prior_margin_cand", "is_incumbent",
             "bio_office_level", "fund_share", "win_prob", "win_prob_norm", "win_prob_R3", "win_prob_D3", "win_prob_R6", "win_prob_D6",
-            "bias_fragile", "basis"]
+            "bias_fragile", "basis", "pred_share", "pred_margin"]
     out = c.reindex(columns=cols).sort_values(["race_id", "win_prob"], ascending=[True, False])
     _os.makedirs(_os.path.dirname(OUT), exist_ok=True)
     out.to_csv(OUT, index=False)

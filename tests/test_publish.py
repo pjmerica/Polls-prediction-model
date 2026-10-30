@@ -300,3 +300,28 @@ def test_models_split_is_reported(win, margin):
     assert set(wf.index) == set(mf.index), "win and margin files cover different races"
     split = sorted(wf.index[wf != mf.reindex(wf.index)])
     print(f"\nmodels split in {len(split)} races (flagged on the pages): {split}")
+
+
+def test_no_polls_margins_coherent(fund):
+    # the no-polls margin (2026-10-29, race_fundamentals_margin_model.py): blank only in an
+    # uncontested race; otherwise derived from the shares, so two-candidate margins cancel and
+    # exactly one candidate leads
+    if "pred_margin" not in fund.columns:
+        pytest.skip("no no-polls margin model in this checkout")
+    import paths  # noqa: F401  (src/ on sys.path)
+    from race_level import race_margins
+    n = fund.groupby("race_id")["race_id"].transform("size")
+    assert fund.loc[n > 1, "pred_margin"].notna().all(), "contested no-polls race without a margin"
+    assert fund.loc[n == 1, "pred_margin"].isna().all(), "uncontested race given a margin"
+    k = fund[n > 1]
+    assert k["pred_margin"].abs().le(100).all(), "margin beyond 100 pts"
+    gap = (race_margins(k, "pred_share") - k["pred_margin"]).abs()
+    assert gap.max() < 1e-4, f"margins not derived from the shares: {k.loc[gap.idxmax(), KEY].tolist()}"
+    two = k.groupby("race_id").filter(lambda g: len(g) == 2).groupby("race_id")["pred_margin"].sum()
+    assert two.abs().max() < 1e-6, f"two-candidate margins don't cancel: {two[two.abs() > 1e-6].round(1).to_dict()}"
+    lead = (k["pred_margin"] > 0).groupby(k["race_id"]).sum()
+    assert (lead == 1).all(), f"not one leader: {list(lead[lead != 1].index)[:6]}"
+    wf = k.loc[k.groupby("race_id")["win_prob"].idxmax()].set_index("race_id")["cand_key"]
+    mf = k.loc[k.groupby("race_id")["pred_margin"].idxmax()].set_index("race_id")["cand_key"]
+    split = sorted(wf.index[wf != mf.reindex(wf.index)])
+    print(f"\nno-polls win and margin models split in {len(split)} races: {split}")

@@ -4,6 +4,40 @@ For the next agent. Read AGENTS.md first (architecture + rules), CONCERNS.md sec
 (risk register + roadmap). This file: what's mid-flight RIGHT NOW, what's most likely to
 break, and what to do next, in order.
 
+## 2026-10-29/30 - no-polls MARGIN model (user: "do the no polls margin model too ... then we will be done")
+
+Before this, the ~326 races no pollster covers got win chances only. New
+`models/fundamentals/race_fundamentals_margin_model.py` uses race_margin_model.py's scheme: XGBRegressor on
+vote_pct, margin = share minus the best rival's share (`race_margins`), served as the average of the top 3
+settings. It runs on race_fundamentals_model.py's rows (1998-2024: polled races with full fields plus unpolled
+D/R rows) and its no-polls feature list. Unpolled rows take their share from `results_universe` "percent".
+58 races are dropped for a missing share. 636 one-candidate races train the share, but their margin is not scored.
+Tuning: 120 draws + hill-climb (168 neighbours) + 3-seed stage 2, 70 min. The pick is depth 6, lr .02,
+200 trees, mcw 5, tune MAE 8.73. **It sits on grid edges:** depth 6 is the top of the grid; lr .02, 200 trees,
+mcw 5 and reg_lambda 1 are the bottom. Not widened because of the user's 10-29 call (above). It is the first
+target for the wider search below.
+
+| held out 2018-24 (expanding) | margin MAE | share MAE | race-acc | naive prior-margin MAE |
+|---|---|---|---|---|
+| unpolled races | 6.74 | 4.31 | .998 | 9.94 |
+| polled races | 7.94 | 5.54 | .857 | 10.16 |
+
+- **Integration:** `predict_unpolled.py` writes `pred_share` / `pred_margin`. Uncontested races get no margin.
+- **Publish gate:** `test_no_polls_margins_coherent` checks that every margin comes from the shares, that each
+  race has one leader, and that two-way margins cancel.
+- **polling-agg:** build_forecast passes the margin through and flags a win/margin split as for polled races.
+  The forecast drawer shows a Margin column for no-polls races.
+- **2026:** 321 contested no-polls races. The win and margin models never pick different leaders. The closest
+  are CA-14 Wahab +1.5, CA-1 McGuire +3.2 and ME-Gov Pingree +3.8. Gate 48 passed.
+- **Known quirk:** minor candidates' shares are predicted one by one and are not normalised (MI-1's five minor
+  candidates get ~3.5% each). The published margin only uses gaps to the leader, so it barely matters.
+
+**Work is done for 2026.** Left open (user 10-29): a wider tree search for ALL models, maybe while the user is
+away for a long time. Each trainer takes `--extend` (no random draws; the hill-climb starts from the saved
+stage-2 settings): widen GRID past the binding edges listed below, then run the trainer with `--extend`.
+Expect margin ~6 h and no-polls ~3 h. After that, re-run the predict chain and the gate, then publish through
+polling-agg's Model refresh.
+
 ## 2026-10-29 - wide hyperparameter search, published (user: "do another search with even wider and more options ... It can take more than 10 hours if needed")
 
 **Search** (68dc85f): grids extended past every edge the 10-28 picks sat on, with finer steps; random draws

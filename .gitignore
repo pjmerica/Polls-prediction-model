@@ -186,6 +186,10 @@ venv/
 # 15 members since 2026-10-28 (top 5 settings x 3 seeds)
 !data/race_win_model_xgb_[0-9][0-9].json
 !data/race_margin_model_xgb_[0-9].json
+# no-polls margin model (2026-10-29, race_fundamentals_margin_model.py; predict_unpolled.py loads it)
+!data/fundamentals_margin_model.json
+!data/fundamentals_margin_model_[0-9].json
+!data/fundamentals_margin_model_features.json
 # shared national error for the seat simulation (analysis/national_error_corr.py)
 !data/seat_sim_params.json
 !data/fundamentals_model_primary.json
